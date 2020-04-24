@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tutor Course Title Module for Divi Builder
  * @since 1.0.0
@@ -11,24 +12,24 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * Initialize.
 	 */
 	public function init() {
-		$this->name       = esc_html__( 'Tutor Course Title', 'tutor-divi-modules' );
+		$this->name       = esc_html__('Tutor Course Title', 'tutor-divi-modules');
 		$this->slug       = 'tutor_course_title';
 		$this->vb_support = 'on';
 
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Content', 'tutor-divi-modules' ),
+					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'header' => array(
-						'title'    => esc_html__( 'Title Text', 'tutor-divi-modules' ),
+						'title'    => esc_html__('Title Text', 'tutor-divi-modules'),
 						'priority' => 49,
 					),
 					'width'  => array(
-						'title'    => esc_html__( 'Sizing', 'tutor-divi-modules' ),
+						'title'    => esc_html__('Sizing', 'tutor-divi-modules'),
 						'priority' => 65,
 					),
 				),
@@ -38,7 +39,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'header' => array(
-					'label'        => esc_html__( 'Title', 'tutor-divi-modules' ),
+					'label'        => esc_html__('Title', 'tutor-divi-modules'),
 					'css'          => array(
 						'main' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 					),
@@ -82,7 +83,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 
 		$this->custom_css_fields = array(
 			'title_text' => array(
-				'label'    => esc_html__( 'Title Text', 'tutor-divi-modules' ),
+				'label'    => esc_html__('Title Text', 'tutor-divi-modules'),
 				'selector' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 			),
 		);
@@ -95,7 +96,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$fields = array(
 			'course'       	=> Helper::get_field(
 				array(
-					'computed_affects'=> array(
+					'computed_affects' => array(
 						'__title',
 					),
 				)
@@ -126,13 +127,14 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 *
 	 * @return string
 	 */
-	public static function get_title( $args = array() ) {
+	public static function get_title($args = array()) {
 		$title = __('Course Title', 'tutor-divi-modules');
+		//print_r($args);
 		$course = Helper::get_course($args);
 		if ($course) {
 			$title = get_the_title();
 			wp_reset_postdata();
-        }
+		}
 		return $title;
 	}
 
@@ -143,12 +145,12 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	protected function get_title_markup() {
 		$header_level  = $this->props['header_level'];
-		$course_title = self::get_title( $this->props );
+		$course_title = self::get_title($this->props);
 
 		return sprintf(
 			'<%1$s class="tutor-course-title">%2$s</%1$s>',
-			et_pb_process_header_level( $header_level, 'h1' ),
-			et_core_esc_previously( $course_title )
+			et_pb_process_header_level($header_level, 'h1'),
+			et_core_esc_previously($course_title)
 		);
 	}
 
@@ -161,19 +163,19 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 *
 	 * @return string
 	 */
-	public function render( $attrs, $content = null, $render_slug ) {
-		Helper::process_background_layout_data( $render_slug, $this );
+	public function render($attrs, $content = null, $render_slug) {
+		Helper::process_background_layout_data($render_slug, $this);
 
-		$this->add_classname( $this->get_text_orientation_classname() );
+		$this->add_classname($this->get_text_orientation_classname());
 
 		$output = self::get_title_markup();
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
-		if ( '' === $output ) {
+		if ('' === $output) {
 			return '';
 		}
 
-		return $this->_render_module_wrapper( $output, $render_slug );
+		return $this->_render_module_wrapper($output, $render_slug);
 	}
 }
 

@@ -254,6 +254,6 @@ class Helper {
             $this_class->add_classname("et_pb_bg_layout_{$background_layout_phone}_phone");
         }
 
-        add_filter("et_builder_module_{$render_slug}_outer_wrapper_attrs", array('TutorModulesHelper', 'maybe_add_background_layout_data'), 10, 2);
+        add_filter("et_builder_module_{$render_slug}_outer_wrapper_attrs", array('\TutorLMS\Divi\Helper', 'maybe_add_background_layout_data'), 10, 2);
     }
 }

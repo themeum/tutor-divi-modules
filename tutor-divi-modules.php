@@ -25,16 +25,14 @@ You should have received a copy of the GNU General Public License
 along with Tutor LMS Divi Modules. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
-if ( ! function_exists( 'is_plugin_active' ) ){
-	require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-}
+defined('ABSPATH') || die();
 
-/**
- * Turn off template override from TutorLMS
- */
-//if (is_plugin_active('oxygen/functions.php')){
-	add_filter('tutor_lms_should_template_override', '__return_false');
-//}
+define('DTLMS_VERSION', '1.0.0');
+define('DTLMS_FILE__', __FILE__);
+define('DTLMS_DIR_PATH', plugin_dir_path(DTLMS_FILE__));
+define('DTLMS_DIR_URL', plugin_dir_url(DTLMS_FILE__));
+define('DTLMS_ASSETS', trailingslashit(DTLMS_DIR_URL . 'assets'));
+
 
 if ( ! function_exists( 'tudm_initialize_extension' ) ):
 /**
@@ -42,7 +40,6 @@ if ( ! function_exists( 'tudm_initialize_extension' ) ):
  *
  * @since 1.0.0
  */
-
 function tudm_initialize_extension() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/TutorDiviModules.php';
 }

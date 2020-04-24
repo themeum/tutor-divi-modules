@@ -12,7 +12,7 @@ if (!function_exists( 'dtlms_get_template' )) {
 		$template = str_replace( '.', DIRECTORY_SEPARATOR, $template );
 
 		$template_dir = apply_filters( 'dtlms_template_dir', DTLMS_DIR_PATH );
-		$template_location = trailingslashit( $template_dir ) . "templates/{$template}.php";
+		$template_location = trailingslashit( $template_dir ) . "includes/templates/{$template}.php";
 		return apply_filters( 'dtlms_get_template_path', $template_location, $template );
 	}
 }

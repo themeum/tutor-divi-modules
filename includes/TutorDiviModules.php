@@ -47,7 +47,7 @@ class TutorDiviModules extends DiviExtension {
 	public function load_dependencies() {
 		require_once $this->plugin_dir . 'functions.php';
 		require_once $this->plugin_dir . 'classes/Helper.php';
-		//require_once $this->plugin_dir . 'classes/Template.php';
+		require_once $this->plugin_dir . 'classes/Template.php';
 	}
 }
 
