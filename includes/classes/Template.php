@@ -17,22 +17,17 @@ defined('ABSPATH') || exit;
 class Template {
 
     public function __construct() {
-        /**
-         * Turn off template override from TutorLMS
-         */
-        add_filter('tutor_lms_should_template_override', '__return_false');
-
         add_filter('template_include', [$this, 'single_course_template'], 100);
     }
 
     /**
-     * Load Single Course Elementor Template
+     * Load Single Course Divi Template
      * @param $template
      * @since v.1.0.0
      */
     public function single_course_template($template) {
         global $wp_query;
-        
+
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
             
             $is_page_builder_used = et_pb_is_pagebuilder_used(get_the_ID());

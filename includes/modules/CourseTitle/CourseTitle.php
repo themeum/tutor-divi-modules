@@ -129,7 +129,8 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public static function get_title($args = array()) {
 		$title = __('Course Title', 'tutor-divi-modules');
-		//print_r($args);
+		/* echo '<pre>';
+		print_r($args); */
 		$course = Helper::get_course($args);
 		if ($course) {
 			$title = get_the_title();
