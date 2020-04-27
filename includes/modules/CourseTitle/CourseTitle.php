@@ -96,6 +96,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$fields = array(
 			'course'       	=> Helper::get_field(
 				array(
+					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
 						'__title',
 					),
@@ -129,12 +130,9 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public static function get_title($args = array()) {
 		$title = __('Course Title', 'tutor-divi-modules');
-		/* echo '<pre>';
-		print_r($args); */
 		$course = Helper::get_course($args);
 		if ($course) {
 			$title = get_the_title();
-			wp_reset_postdata();
 		}
 		return $title;
 	}

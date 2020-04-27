@@ -33,7 +33,7 @@ class Template {
             $is_page_builder_used = et_pb_is_pagebuilder_used(get_the_ID());
             
             if ($is_page_builder_used) {
-                $template = dtlms_get_template('single-course');
+                $template = dtlms_get_template('page-template-blank');
             }
         }
         return $template;

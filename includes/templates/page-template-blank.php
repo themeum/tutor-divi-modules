@@ -1,7 +1,8 @@
 <?php
-/*
-Template Name: Single course
-*/
+/**
+ * Page Template Blank
+ * @since 1.0.0
+ */
 
 get_header();
 

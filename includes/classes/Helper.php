@@ -138,9 +138,6 @@ class Helper {
             'course' => self::format_course_id('current'),
         );
 
-        /* echo "<pre>";
-        print_r($args); */
-
         $args = wp_parse_args($args, $defaults);
         $arg_course = self::dformat_course_id($args['course']);
         $course_id = self::get_original_course_id($arg_course);
@@ -169,11 +166,8 @@ class Helper {
     public static function get_courses($default = false) {
         $courses = array();
         $current = self::format_course_id('current');
-        /* var_dump($current);
-        var_dump($default);
-        var_dump($default && $default == $current);
-        die(); */
-        if ($default && $default == $current) {
+
+        if ($default && $default === $current) {
             $courses[$current] = esc_html__('This Course', 'tutor-divi-modules');
         }
         $latest = self::format_course_id('latest');
@@ -197,12 +191,11 @@ class Helper {
      * @return string
      */
     public static function get_course_default() {
-        $post_id   = et_core_page_resource_get_the_ID();
-        $post_id   = $post_id ? $post_id : (int) et_()->array_get($_POST, 'current_page.id');
+        $post_id   = \ET_Builder_Element::get_current_post_id();
         $post_type = get_post_type($post_id);
 
         $course = 'latest';
-        if ($post_type === tutor()->course_post_type || et_theme_builder_is_layout_post_type($post_type)) {
+        if ($post_type === tutor()->course_post_type) {
             $course = 'current';
         }
 
