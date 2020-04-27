@@ -1,7 +1,6 @@
 <style>
-.tutor-single-course-meta.tutor-meta-top ul li {
-    width: 100%;
-}
+.tutor-single-course-meta.tutor-meta-top ul { list-style-type: none; }
+.tutor-single-course-meta.tutor-meta-top ul li { width: 100%; }
 </style>
 <?php
 

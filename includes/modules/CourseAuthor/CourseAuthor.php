@@ -1,21 +1,15 @@
 <?php
 
 /**
- * Tutor Course Title Module for Divi Builder
+ * Tutor Course Author Module for Divi Builder
  * @since 1.0.0
  */
 
 use TutorLMS\Divi\Helper;
 
-class TutorCourseTitle extends ET_Builder_Module {
+class TutorCourseAuthor extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_title';
-
-	// Visual Builder support (off|partial|on)
-	// - on:      you need to provide JS component for visual builder to render your content
-	//            dynamically in visual builder
-	// - partial: you don't need to provide JS component for visual builder to render your content
-	//            divi will generate blank placeholder for your module instead
+	public $slug       = 'tutor_course_author';
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -31,8 +25,8 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Title', 'tutor-divi-modules');
-		//$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$this->name			= esc_html__('Tutor Course Author', 'tutor-divi-modules');
+		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
@@ -84,7 +78,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 				'use_background_layout' => true,
 				'use_text_orientation'  => false,
 				'css'                   => array(
-					'text_shadow' => '%%order_class%% .tutor-course-title',
+					'text_shadow' => '%%order_class%% .tutor-course-author',
 				),
 				'options'               => array(
 					'background_layout' => array(
@@ -106,23 +100,11 @@ class TutorCourseTitle extends ET_Builder_Module {
 				'label'    => esc_html__('Title Text', 'tutor-divi-modules'),
 				'selector' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 			),
-		);
+		);		
 	}
 
 	/**
 	 * Module's specific fields
-	 *
-	 *
-	 * The following modules are automatically added regardless being defined or not:
-	 *   Tabs     | Toggles          | Fields
-	 *   --------- ------------------ -------------
-	 *   Content  | Admin Label      | Admin Label
-	 *   Advanced | CSS ID & Classes | CSS ID
-	 *   Advanced | CSS ID & Classes | CSS Class
-	 *   Advanced | Custom CSS       | Before
-	 *   Advanced | Custom CSS       | Main Element
-	 *   Advanced | Custom CSS       | After
-	 *   Advanced | Visibility       | Disable On
 	 *
 	 * @since 1.0.0
 	 *
@@ -134,15 +116,15 @@ class TutorCourseTitle extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__title',
+						'__author',
 					),
 				)
 			),
-			'__title'      	=> array(
+			'__author'		=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseTitle',
-					'get_title',
+					'TutorCourseAuthor',
+					'get_the_author',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -157,35 +139,18 @@ class TutorCourseTitle extends ET_Builder_Module {
 	}
 
 	/**
-	 * Get the Title.
-	 *
-	 * @param array $args Additional arguments.
+	 * Get the tutor course author
 	 *
 	 * @return string
 	 */
-	public static function get_title($args = array()) {
-		$title = __('Course Title', 'tutor-divi-modules');
+	public static function get_the_author($args = []) {
 		$course = Helper::get_course($args);
+		ob_start();
 		if ($course) {
-			$title = get_the_title();
+			include_once dtlms_get_template('course/author');
 		}
-		return $title;
-	}
 
-	/**
-	 * Get the tutor course Title markup.
-	 *
-	 * @return string
-	 */
-	protected function get_title_markup() {
-		$header_level  = $this->props['header_level'];
-		$course_title = self::get_title($this->props);
-
-		return sprintf(
-			'<%1$s class="tutor-course-title">%2$s</%1$s>',
-			et_pb_process_header_level($header_level, 'h1'),
-			et_core_esc_previously($course_title)
-		);
+		return ob_get_clean();
 	}
 
 	/**
@@ -201,7 +166,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public function render($attrs, $content = null, $render_slug) {
 
-		$output = self::get_title_markup();
+		$output = self::get_the_author($this->props);
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {
@@ -212,4 +177,4 @@ class TutorCourseTitle extends ET_Builder_Module {
 	}
 }
 
-new TutorCourseTitle;
+new TutorCourseAuthor;

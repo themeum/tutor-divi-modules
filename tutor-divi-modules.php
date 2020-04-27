@@ -5,7 +5,7 @@ Plugin URI:  https://www.themeum.com/product/tutor-lms/
 Description: Divi Modules Integration - Tutor LMS plugin let's you to design your courses, lesson page by Divi Builder.
 Version:     1.0.0
 Author:      Themeum
-Author URI:  http://themeum.com
+Author URI:  https://themeum.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tutor-divi-modules
