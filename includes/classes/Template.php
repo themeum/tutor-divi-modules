@@ -28,6 +28,10 @@ class Template {
     public function single_course_template($template) {
         global $wp_query;
 
+        if (is_admin()) {
+            return $template;
+        }
+
         if ($wp_query->is_single && !empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === tutor()->course_post_type) {
             
             $is_page_builder_used = et_pb_is_pagebuilder_used(get_the_ID());

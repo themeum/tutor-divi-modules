@@ -38,69 +38,40 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'header' => array(
-						'title'    => esc_html__('Title Text', 'tutor-divi-modules'),
-						'priority' => 49,
+					'author_image' => array(
+						'title'    => esc_html__('Author Image', 'tutor-divi-modules'),
 					),
-					'width'  => array(
-						'title'    => esc_html__('Sizing', 'tutor-divi-modules'),
-						'priority' => 65,
+					'author_label_text' => array(
+						'title'    => esc_html__('Author Label', 'tutor-divi-modules'),
+					),
+					'author_name_text' => array(
+						'title'    => esc_html__('Author Name', 'tutor-divi-modules'),
 					),
 				),
 			),
 		);
-
+		
+		$author_selector = '%%order_class%% .tutor-single-course-author-meta .tutor-single-course-author-name';
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'header' => array(
-					'label'        => esc_html__('Title', 'tutor-divi-modules'),
+				'author_label_text' => array(
+					'label'        => esc_html__('Label', 'tutor-divi-modules'),
 					'css'          => array(
-						'main' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
-					),
-					'header_level' => array(
-						'default' => 'h1',
+						'main' => $author_selector.' span',
 					),
 					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'header',
+					'toggle_slug'  => 'author_label_text',
 				),
-			),
-			'background'     => array(
-				'settings' => array(
-					'color' => 'alpha',
-				),
-			),
-			'margin_padding' => array(
-				'css' => array(
-					'important' => 'all',
-				),
-			),
-			'text'           => array(
-				'use_background_layout' => true,
-				'use_text_orientation'  => false,
-				'css'                   => array(
-					'text_shadow' => '%%order_class%% .tutor-course-author',
-				),
-				'options'               => array(
-					'background_layout' => array(
-						'default_on_front' => 'light',
-						'hover'            => 'tabs',
+				'author_name_text' => array(
+					'label'        => esc_html__('Name', 'tutor-divi-modules'),
+					'css'          => array(
+						'main' => $author_selector.' a',
 					),
+					'tab_slug'     => 'advanced',
+					'toggle_slug'  => 'author_name_text',
 				),
-				'toggle_slug'           => 'header',
 			),
-			'text_shadow'    => array(
-				// Don't add text-shadow fields since they already are via font-options.
-				'default' => false,
-			),
-			'button'         => false,
 		);
-
-		$this->custom_css_fields = array(
-			'title_text' => array(
-				'label'    => esc_html__('Title Text', 'tutor-divi-modules'),
-				'selector' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
-			),
-		);		
 	}
 
 	/**
@@ -132,6 +103,26 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'computed_minimum'    => array(
 					'course',
 				),
+			),
+			'image_height' => array(
+				'label'           => esc_html__( 'Height', 'tutor-divi-modules' ),
+				'type'            => 'range',
+				'range_settings'  => array(
+					'min'	=> 10,
+					'max'	=> 100,
+				),
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'author_image',
+			),
+			'image_width' => array(
+				'label'           => esc_html__( 'Width', 'tutor-divi-modules' ),
+				'type'            => 'range',
+				'range_settings'  => array(
+					'min'	=> 10,
+					'max'	=> 100,
+				),
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'author_image',
 			),
 		);
 
@@ -165,6 +156,28 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render($attrs, $content = null, $render_slug) {
+
+		// Process image size value into style
+		$img_selector = '%%order_class%% .tutor-single-course-avatar a span';
+		if ( '' !== $this->props['image_height'] ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'height: %1$s;',
+					esc_html( $this->props['image_height'] )
+				),
+			) );
+
+		}
+		if ( '' !== $this->props['image_width'] ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'width: %1$s;',
+					esc_html( $this->props['image_width'] )
+				),
+			) );
+		}
 
 		$output = self::get_the_author($this->props);
 

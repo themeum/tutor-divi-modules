@@ -32,7 +32,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	public function init() {
 		// Module name & icon
 		$this->name			= esc_html__('Tutor Course Title', 'tutor-divi-modules');
-		//$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
@@ -99,13 +99,6 @@ class TutorCourseTitle extends ET_Builder_Module {
 				'default' => false,
 			),
 			'button'         => false,
-		);
-
-		$this->custom_css_fields = array(
-			'title_text' => array(
-				'label'    => esc_html__('Title Text', 'tutor-divi-modules'),
-				'selector' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
-			),
 		);
 	}
 
