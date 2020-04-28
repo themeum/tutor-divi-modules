@@ -7,9 +7,9 @@
 
 use TutorLMS\Divi\Helper;
 
-class TutorCourseAuthor extends ET_Builder_Module {
+class TutorCourseRating extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_author';
+	public $slug       = 'tutor_course_rating';
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -25,7 +25,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Author', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Rating', 'tutor-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -38,39 +38,41 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'author_image' => array(
-						'title'    => esc_html__('Author Image', 'tutor-divi-modules'),
+					'stars' => array(
+						'title'    => esc_html__('Stars', 'tutor-divi-modules'),
 					),
-					'author_label_text' => array(
-						'title'    => esc_html__('Author Label', 'tutor-divi-modules'),
-					),
-					'author_name_text' => array(
-						'title'    => esc_html__('Author Name', 'tutor-divi-modules'),
+					'count_text' => array(
+						'title'    => esc_html__('Count Text', 'tutor-divi-modules'),
+						'priority' => 49,
 					),
 				),
 			),
 		);
-		
-		$author_selector = '%%order_class%% .tutor-single-course-author-meta .tutor-single-course-author-name';
+
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'author_label_text' => array(
-					'label'        => esc_html__('Label', 'tutor-divi-modules'),
+				'count_text' => array(
 					'css'          => array(
-						'main' => $author_selector.' span',
+						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count',
 					),
 					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'author_label_text',
-				),
-				'author_name_text' => array(
-					'label'        => esc_html__('Name', 'tutor-divi-modules'),
-					'css'          => array(
-						'main' => $author_selector.' a',
-					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'author_name_text',
+					'toggle_slug'  => 'count_text',
 				),
 			),
+			'background'     => array(
+				'settings' => array(
+					'color' => 'alpha',
+				),
+			),
+			'margin_padding' => array(
+				'css' => array(
+					'important' => 'all',
+				),
+			),
+			'text_shadow'    => array(
+				'default' => false,
+			),
+			'button'         => false,
 		);
 	}
 
@@ -87,15 +89,15 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__author',
+						'__rating',
 					),
 				)
 			),
-			'__author'		=> array(
+			'__rating'		=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseAuthor',
-					'get_the_author',
+					'TutorCourseRating',
+					'get_rating',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -104,8 +106,8 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					'course',
 				),
 			),
-			'image_height' => array(
-				'label'           => esc_html__( 'Height', 'tutor-divi-modules' ),
+			'star_size' => array(
+				'label'           => esc_html__( 'Size', 'tutor-divi-modules' ),
 				'type'            => 'range',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 				'default_unit'    => 'px',
@@ -119,19 +121,13 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					'max'	=> 100,
 				),
 				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'author_image',
+				'toggle_slug'     => 'stars',
 			),
-			'image_width' => array(
-				'label'           => esc_html__( 'Width', 'tutor-divi-modules' ),
-				'type'            => 'range',
-				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
-				'default_unit'    => 'px',
-				'range_settings'  => array(
-					'min'	=> 10,
-					'max'	=> 100,
-				),
+			'star_color' => array(
+				'label'           => esc_html__( 'Color', 'tutor-divi-modules' ),
+				'type'            => 'color',
 				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'author_image',
+				'toggle_slug'     => 'stars',
 			),
 		);
 
@@ -143,11 +139,11 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 *
 	 * @return string
 	 */
-	public static function get_the_author($args = []) {
+	public static function get_rating($args = []) {
 		$course = Helper::get_course($args);
 		ob_start();
 		if ($course) {
-			include_once dtlms_get_template('course/author');
+			include_once dtlms_get_template('course/rating');
 		}
 
 		return ob_get_clean();
@@ -167,28 +163,29 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	public function render($attrs, $content = null, $render_slug) {
 
 		// Process image size value into style
-		$img_selector = '%%order_class%% .tutor-single-course-avatar a span';
-		if ( '' !== $this->props['image_height'] ) {
+		$selector = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
+		if ( '' !== $this->props['star_size'] ) {
 			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $img_selector,
+				'selector'    => $selector,
 				'declaration' => sprintf(
-					'height: %1$s;',
-					esc_html( $this->props['image_height'] )
+					'font-size: %1$s;',
+					esc_html( $this->props['star_size'] )
 				),
 			) );
 
 		}
-		if ( '' !== $this->props['image_width'] ) {
+
+		if ( '' !== $this->props['star_color'] ) {
 			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $img_selector,
+				'selector'    => $selector,
 				'declaration' => sprintf(
-					'width: %1$s;',
-					esc_html( $this->props['image_width'] )
+					'color: %1$s;',
+					esc_html( $this->props['star_color'] )
 				),
 			) );
 		}
 
-		$output = self::get_the_author($this->props);
+		$output = self::get_rating($this->props);
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {
@@ -199,4 +196,4 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	}
 }
 
-new TutorCourseAuthor;
+new TutorCourseRating;
