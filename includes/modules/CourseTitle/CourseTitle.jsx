@@ -11,7 +11,7 @@ class CourseTitle extends Component {
         return (
             <Fragment>
                 <Header
-                    className="tutor-course-title"
+                    className="dtlms-course-title"
                     dangerouslySetInnerHTML={{ __html: __title }}
                 />
             </Fragment>

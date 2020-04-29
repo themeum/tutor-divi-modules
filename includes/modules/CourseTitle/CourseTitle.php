@@ -70,34 +70,6 @@ class TutorCourseTitle extends ET_Builder_Module {
 					'toggle_slug'  => 'header',
 				),
 			),
-			'background'     => array(
-				'settings' => array(
-					'color' => 'alpha',
-				),
-			),
-			'margin_padding' => array(
-				'css' => array(
-					'important' => 'all',
-				),
-			),
-			'text'           => array(
-				'use_background_layout' => true,
-				'use_text_orientation'  => false,
-				'css'                   => array(
-					'text_shadow' => '%%order_class%% .tutor-course-title',
-				),
-				'options'               => array(
-					'background_layout' => array(
-						'default_on_front' => 'light',
-						'hover'            => 'tabs',
-					),
-				),
-				'toggle_slug'           => 'header',
-			),
-			'text_shadow'    => array(
-				// Don't add text-shadow fields since they already are via font-options.
-				'default' => false,
-			),
 			'button'         => false,
 		);
 	}
@@ -175,7 +147,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$course_title = self::get_title($this->props);
 
 		return sprintf(
-			'<%1$s class="tutor-course-title">%2$s</%1$s>',
+			'<%1$s>%2$s</%1$s>',
 			et_pb_process_header_level($header_level, 'h1'),
 			et_core_esc_previously($course_title)
 		);
