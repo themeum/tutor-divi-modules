@@ -7,9 +7,9 @@
 
 use TutorLMS\Divi\Helper;
 
-class TutorCourseLevel extends ET_Builder_Module {
+class TutorCourseShare extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_level';
+	public $slug       = 'tutor_course_share';
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -25,7 +25,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Level', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Share', 'tutor-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -38,34 +38,42 @@ class TutorCourseLevel extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'label_text' => array(
+					'label' => array(
 						'title'    => esc_html__('Label', 'tutor-divi-modules'),
 					),
-					'value_text' => array(
-						'title'    => esc_html__('Value', 'tutor-divi-modules'),
+					'icons' => array(
+						'title'    => esc_html__('Icons', 'tutor-divi-modules'),
 					),
 				),
 			),
 		);
-		
-		$selector = '%%order_class%% .tutor-single-course-meta ul li.tutor-course-level';
+
+		$selector = '%%order_class%% .tutor-single-course-meta .tutor-social-share';
+        $icon_selector = $selector.' .tutor-social-share-wrap button';
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'label_text' => array(
+				'label' => array(
 					'label'        => esc_html__('Label', 'tutor-divi-modules'),
 					'css'          => array(
-						'main' => $selector.' strong',
+						'main'	=> $selector.' span',
 					),
 					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'label_text',
+					'toggle_slug'  => 'label',
 				),
-				'value_text' => array(
-					'label'        => esc_html__('Name', 'tutor-divi-modules'),
+				'icons' => array(
+					'label'        => esc_html__('Icons', 'tutor-divi-modules'),
 					'css'          => array(
-						'main' => $selector,
+						'main' 			=> $icon_selector,
+						'hover' 		=> $icon_selector.':hover',
+					),
+					'options' => array(
+						'background_layout' => array(
+							'default_on_front' => 'light',
+							'hover' => 'tabs',
+						),
 					),
 					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'value_text',
+					'toggle_slug'  => 'icons',
 				),
 			),
 		);
@@ -88,10 +96,10 @@ class TutorCourseLevel extends ET_Builder_Module {
 					),
 				)
 			),
-			'__level'		=> array(
+			'__share'		=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseLevel',
+					'TutorCourseShare',
 					'get_content',
 				),
 				'computed_depends_on' => array(
@@ -112,12 +120,8 @@ class TutorCourseLevel extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
 		ob_start();
-		if ($course) {
-			include_once dtlms_get_template('course/level');
-		}
-
+		include_once dtlms_get_template('course/share');
 		return ob_get_clean();
 	}
 
@@ -145,4 +149,4 @@ class TutorCourseLevel extends ET_Builder_Module {
 	}
 }
 
-new TutorCourseLevel;
+new TutorCourseShare;

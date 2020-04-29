@@ -95,7 +95,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseAuthor',
-					'get_the_author',
+					'get_content',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -143,7 +143,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 *
 	 * @return string
 	 */
-	public static function get_the_author($args = []) {
+	public static function get_content($args = []) {
 		$course = Helper::get_course($args);
 		ob_start();
 		if ($course) {
@@ -188,7 +188,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			) );
 		}
 
-		$output = self::get_the_author($this->props);
+		$output = self::get_content($this->props);
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {
