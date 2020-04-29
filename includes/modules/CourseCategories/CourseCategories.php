@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Categories Module for Divi Builder
  * @since 1.0.0
  */
 
 use TutorLMS\Divi\Helper;
 
-class TutorCourseShare extends ET_Builder_Module {
+class TutorCourseCategories extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_share';
+	public $slug       = 'tutor_course_categories';
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -25,7 +25,7 @@ class TutorCourseShare extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Share', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Categories', 'tutor-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -36,47 +36,9 @@ class TutorCourseShare extends ET_Builder_Module {
 					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
 			),
-			'advanced' => array(
-				'toggles' => array(
-					'label' => array(
-						'title'    => esc_html__('Label', 'tutor-divi-modules'),
-					),
-					'icons' => array(
-						'title'    => esc_html__('Icons', 'tutor-divi-modules'),
-					),
-				),
-			),
 		);
-
-		$selector = '%%order_class%% .tutor-single-course-meta .tutor-social-share';
-        $icon_selector = $selector.' .tutor-social-share-wrap button';
-		$this->advanced_fields = array(
-			'fonts'          => array(
-				'label' => array(
-					'label'        => esc_html__('Label', 'tutor-divi-modules'),
-					'css'          => array(
-						'main'	=> $selector.' span',
-					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'label',
-				),
-				'icons' => array(
-					'label'        => esc_html__('Icon', 'tutor-divi-modules'),
-					'css'          => array(
-						'main' 			=> $icon_selector,
-						'hover' 		=> $icon_selector.':hover',
-					),
-					'options' => array(
-						'background_layout' => array(
-							'default_on_front' => 'light',
-							'hover' => 'tabs',
-						),
-					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'icons',
-				),
-			),
-		);
+		
+		
 	}
 
 	/**
@@ -92,14 +54,14 @@ class TutorCourseShare extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__level',
+						'__categories',
 					),
 				)
 			),
-			'__share'		=> array(
+			'__categories'		=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseShare',
+					'TutorCourseCategories',
 					'get_content',
 				),
 				'computed_depends_on' => array(
@@ -120,9 +82,22 @@ class TutorCourseShare extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		ob_start();
-		include_once dtlms_get_template('course/share');
-		return ob_get_clean();
+		$course = Helper::get_course($args);
+		$markup = '<div class="tutor-single-course-meta-categories">';
+		if ($course) {
+			$course_categories = get_tutor_course_categories();
+			$count = 0;
+			foreach ($course_categories as $course_category) {
+				$category_name = $course_category->name;
+				$comma = count($course_categories) > $count ? ', ' : '';
+				$category_link = get_term_link($course_category->term_id);
+				$markup .= " <a href='$category_link'>$category_name</a>".$comma;
+				$count++;
+			}
+		}
+		$markup .= "</div>";
+
+		return $markup;
 	}
 
 	/**
@@ -149,4 +124,4 @@ class TutorCourseShare extends ET_Builder_Module {
 	}
 }
 
-new TutorCourseShare;
+new TutorCourseCategories;

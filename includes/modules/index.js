@@ -3,6 +3,7 @@ import CourseAuthor from './CourseAuthor/CourseAuthor';
 import CourseRating from './CourseRating/CourseRating';
 import CourseLevel from './CourseLevel/CourseLevel';
 import CourseShare from './CourseShare/CourseShare';
+import CourseCategories from './CourseCategories/CourseCategories';
 
 export default [
     CourseTitle,
@@ -10,4 +11,5 @@ export default [
     CourseRating,
     CourseLevel,
     CourseShare,
+    CourseCategories,
 ];
