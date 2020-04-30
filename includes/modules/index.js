@@ -5,6 +5,8 @@ import CourseLevel from './CourseLevel/CourseLevel';
 import CourseShare from './CourseShare/CourseShare';
 import CourseCategories from './CourseCategories/CourseCategories';
 import CourseDuration from './CourseDuration/CourseDuration';
+import CourseTotalEnroll from './CourseTotalEnroll/CourseTotalEnroll';
+import CourseLastUpdate from './CourseLastUpdate/CourseLastUpdate';
 
 export default [
     CourseTitle,
@@ -14,4 +16,6 @@ export default [
     CourseShare,
     CourseCategories,
     CourseDuration,
+    CourseTotalEnroll,
+    CourseLastUpdate,
 ];
