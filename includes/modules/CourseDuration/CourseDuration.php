@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Tutor Course Categories Module for Divi Builder
+ * Tutor Course Author Module for Divi Builder
  * @since 1.0.0
  */
 
 use TutorLMS\Divi\Helper;
 
-class TutorCourseCategories extends ET_Builder_Module {
+class TutorCourseDuration extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_categories';
+	public $slug       = 'tutor_course_duration';
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -25,7 +25,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Categories', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Duration', 'tutor-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -37,8 +37,8 @@ class TutorCourseCategories extends ET_Builder_Module {
 				),
 			),
 		);
-
-		$selector = '%%order_class%% .tutor-single-course-meta-categories a';
+		
+		$selector = '%%order_class%% .tutor-single-course-meta-duration';
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'text' => array(
@@ -66,14 +66,14 @@ class TutorCourseCategories extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__categories',
+						'__duration',
 					),
 				)
 			),
-			'__categories'		=> array(
+			'__duration'	=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseCategories',
+					'TutorCourseDuration',
 					'get_content',
 				),
 				'computed_depends_on' => array(
@@ -95,20 +95,16 @@ class TutorCourseCategories extends ET_Builder_Module {
 	 */
 	public static function get_content($args = []) {
 		$course = Helper::get_course($args);
-		$markup = '<div class="tutor-single-course-meta-categories">';
+		$markup = '';
 		if ($course) {
-			$course_categories = get_tutor_course_categories();
-			$count = 1;
-			foreach ($course_categories as $course_category) {
-				$category_name = $course_category->name;
-				$comma = count($course_categories) > $count ? ', ' : '';
-				$category_link = get_term_link($course_category->term_id);
-				$markup .= " <a href='$category_link'>$category_name</a>".$comma;
-				$count++;
+			$course_duration = get_tutor_course_duration_context();
+			$disable_course_duration = get_tutor_option('disable_course_duration');
+			if (!empty($course_duration) && !$disable_course_duration) {
+				$markup = '<div class="tutor-single-course-meta-duration">';
+				$markup .= $course_duration;
+				$markup .= '</div>';
 			}
 		}
-		$markup .= "</div>";
-
 		return $markup;
 	}
 
@@ -136,4 +132,4 @@ class TutorCourseCategories extends ET_Builder_Module {
 	}
 }
 
-new TutorCourseCategories;
+new TutorCourseDuration;
