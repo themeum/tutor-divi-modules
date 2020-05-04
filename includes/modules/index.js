@@ -8,6 +8,7 @@ import CourseDuration from './CourseDuration/CourseDuration';
 import CourseTotalEnroll from './CourseTotalEnroll/CourseTotalEnroll';
 import CourseLastUpdate from './CourseLastUpdate/CourseLastUpdate';
 import CourseAbout from './CourseAbout/CourseAbout';
+import CourseDescription from './CourseDescription/CourseDescription';
 
 export default [
     CourseTitle,
@@ -20,4 +21,5 @@ export default [
     CourseTotalEnroll,
     CourseLastUpdate,
     CourseAbout,
+    CourseDescription,
 ];
