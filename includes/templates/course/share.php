@@ -1,10 +1,4 @@
-<style>
-.tutor-single-course-meta.tutor-meta-top ul li {
-    width: 100%;
-}
-</style>
 <?php
-
 global $post;
 $disable_course_share = get_tutor_option('disable_course_share');
 

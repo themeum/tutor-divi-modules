@@ -1,9 +1,4 @@
-<style>
-.tutor-single-course-meta.tutor-meta-top ul { list-style-type: none; }
-.tutor-single-course-meta.tutor-meta-top ul li { width: 100%; }
-</style>
 <?php
-
 global $post;
 $disable_course_author = get_tutor_option('disable_course_author');
 $profile_url = tutils()->profile_url($post->post_author);
