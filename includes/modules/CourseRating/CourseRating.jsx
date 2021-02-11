@@ -14,10 +14,12 @@ class CourseRating extends Component {
     static css(props) {
         const additionalCss = [];
         const star_selector = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
+        const star_icon_group = '%%order_class%% .tutor-star-rating-group';
+        const star_icon = '%%order_class%% .tutor-icon-star-line';
         
         if (props.star_size) {
             additionalCss.push([{
-                selector:    star_selector,
+                selector:    star_icon,
                 declaration: `font-size: ${props.star_size};`,
             }]);
         }
@@ -26,6 +28,13 @@ class CourseRating extends Component {
             additionalCss.push([{
                 selector:    star_selector,
                 declaration: `color: ${props.star_color};`,
+            }]);
+        }
+
+        if (props.star_color) {
+            additionalCss.push([{
+                selector:    star_icon_group,
+                declaration: `letter-spacing: ${props.star_gap};`,
             }]);
         }
 

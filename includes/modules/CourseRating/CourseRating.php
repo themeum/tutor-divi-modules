@@ -39,7 +39,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			'advanced' => array(
 				'toggles' => array(
 					'stars' => array(
-						'title'    => esc_html__('Stars', 'tutor-divi-modules'),
+						'title'    => esc_html__('Rating Stars', 'tutor-divi-modules'),
 					),
 					'count_text' => array(
 						'title'    => esc_html__('Count Text', 'tutor-divi-modules'),
@@ -123,9 +123,26 @@ class TutorCourseRating extends ET_Builder_Module {
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'stars',
 			),
+			'star_gap' => array(
+				'label'           => esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'type'            => 'range',
+				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
+				'default_unit'    => 'px',
+				'range_settings'  => array(
+					'min'  => '0',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'range_settings'  => array(
+					'min'	=> 0,
+					'max'	=> 100,
+				),
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'stars',
+			),
 			'star_color' => array(
 				'label'           => esc_html__( 'Color', 'tutor-divi-modules' ),
-				'type'            => 'color',
+				'type'            => 'color-alpha',
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'stars',
 			),
@@ -164,9 +181,12 @@ class TutorCourseRating extends ET_Builder_Module {
 
 		// Process image size value into style
 		$selector = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
+		$star_icon_group = '%%order_class%% .tutor-star-rating-group';
+		$star_icon = '%%order_class%% .tutor-icon-star-line';
+
 		if ( '' !== $this->props['star_size'] ) {
 			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $selector,
+				'selector'    => $star_icon,
 				'declaration' => sprintf(
 					'font-size: %1$s;',
 					esc_html( $this->props['star_size'] )
@@ -181,6 +201,16 @@ class TutorCourseRating extends ET_Builder_Module {
 				'declaration' => sprintf(
 					'color: %1$s;',
 					esc_html( $this->props['star_color'] )
+				),
+			) );
+		}
+
+		if ( '' !== $this->props['star_color'] ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $star_icon_group,
+				'declaration' => sprintf(
+					'letter-spacing: %1$s;',
+					esc_html( $this->props['star_gap'] )
 				),
 			) );
 		}
