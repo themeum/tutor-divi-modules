@@ -42,6 +42,9 @@ class TutorDiviModules extends DiviExtension {
 		parent::__construct( $name, $args );
 
 		$this->load_dependencies();
+
+		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
+		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_scripts'], 99);
 	}
 
 	public function load_dependencies() {
@@ -49,6 +52,19 @@ class TutorDiviModules extends DiviExtension {
 		require_once $this->plugin_dir . 'classes/Helper.php';
 		require_once $this->plugin_dir . 'classes/Template.php';
 	}
+
+    public function enqueue_divi_styles(){
+        wp_enqueue_style(
+            'tutor-divi-styles',
+            DTLMS_ASSETS . "css/tutor-divi-style.css",
+            array(), 
+            time(),
+        );
+    }
+
+    public function enqueue_divi_scripts(){
+
+    }	
 }
 
 new TutorDiviModules;
