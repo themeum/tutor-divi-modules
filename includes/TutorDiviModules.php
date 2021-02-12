@@ -54,9 +54,10 @@ class TutorDiviModules extends DiviExtension {
 	}
 
     public function enqueue_divi_styles(){
+		$css_file = DTLMS_ENV == 'DEV' ? "css/tutor-divi-style.css" : "css/tutor-divi-style.min.css"; 
         wp_enqueue_style(
             'tutor-divi-styles',
-            DTLMS_ASSETS . "css/tutor-divi-style.css",
+            DTLMS_ASSETS . $css_file,
             array(), 
             time(),
         );

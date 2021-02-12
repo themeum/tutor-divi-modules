@@ -32,7 +32,12 @@ define('DTLMS_FILE__', __FILE__);
 define('DTLMS_DIR_PATH', plugin_dir_path(DTLMS_FILE__));
 define('DTLMS_DIR_URL', plugin_dir_url(DTLMS_FILE__));
 define('DTLMS_ASSETS', trailingslashit(DTLMS_DIR_URL . 'assets'));
-
+/**
+ * Environment
+ * PROD 
+ * DEV
+ */
+define('DTLMS_ENV', 'DEV');
 
 if ( ! function_exists( 'tudm_initialize_extension' ) ):
 /**
