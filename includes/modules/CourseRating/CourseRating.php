@@ -53,7 +53,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			'fonts'          => array(
 				'count_text' => array(
 					'css'          => array(
-						'main' => '%%order_class%% .tutor-divi-rating-wrapper .tutor-single-course-rating .tutor-single-rating-count',
+						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count, %%order_class%% .tutor-divi-rating-wrapper',
 					),
 					'tab_slug'     		=> 'advanced',
 					'toggle_slug'  		=> 'rating_stars',
@@ -139,7 +139,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				),
 				'tab_slug'        	=> 'advanced',
 				'toggle_slug'     	=> 'rating_stars',
-				'mobile_options'	=> true
+				
 			),
 			'star_color' => array(
 				'label'           => esc_html__( 'Star Color', 'tutor-divi-modules' ),
