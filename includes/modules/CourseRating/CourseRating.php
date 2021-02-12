@@ -42,9 +42,6 @@ class TutorCourseRating extends ET_Builder_Module {
 						'title'			=> esc_html__('Rating Stars', 'tutor-divi-modules'),
 						'priority'		=> 49,
 					),
-					'text'			=> array(
-						'toggle_slug'	=> 'rating_stars'
-					)
 				),
 			),
 		);
@@ -73,6 +70,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				'default' => false,
 			),
 			'button'         => false,
+			'text'			 => false
 		);
 	}
 
