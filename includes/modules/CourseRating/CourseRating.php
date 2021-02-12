@@ -36,14 +36,11 @@ class TutorCourseRating extends ET_Builder_Module {
 					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
 			),
-			'advanced' => array(
-				'toggles' => array(
-					'stars' => array(
-						'title'    => esc_html__('Rating Stars', 'tutor-divi-modules'),
-					),
-					'count_text' => array(
-						'title'    => esc_html__('Count Text', 'tutor-divi-modules'),
-						'priority' => 49,
+			'advanced'	=> array(
+				'toggles'	=> array(
+					'rating_stars'	=> array(
+						'title'			=> esc_html__('Rating Stars', 'tutor-divi-modules'),
+						'priority'		=> 49,
 					),
 				),
 			),
@@ -53,10 +50,10 @@ class TutorCourseRating extends ET_Builder_Module {
 			'fonts'          => array(
 				'count_text' => array(
 					'css'          => array(
-						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count',
+						'main' => '%%order_class%% .tutor-divi-rating-wrapper .tutor-single-course-rating .tutor-single-rating-count',
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'count_text',
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'rating_stars',
 				),
 			),
 			'background'     => array(
@@ -107,7 +104,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				),
 			),
 			'star_size' => array(
-				'label'           => esc_html__( 'Size', 'tutor-divi-modules' ),
+				'label'           => esc_html__( 'Star Size', 'tutor-divi-modules' ),
 				'type'            => 'range',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 				'default_unit'    => 'px',
@@ -121,10 +118,10 @@ class TutorCourseRating extends ET_Builder_Module {
 					'max'	=> 100,
 				),
 				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'stars',
+				'toggle_slug'     => 'rating_stars',
 			),
 			'star_gap' => array(
-				'label'           => esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'label'           => esc_html__( 'Star Gap', 'tutor-divi-modules' ),
 				'type'            => 'range',
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 				'default_unit'    => 'px',
@@ -137,14 +134,15 @@ class TutorCourseRating extends ET_Builder_Module {
 					'min'	=> 0,
 					'max'	=> 100,
 				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'stars',
+				'tab_slug'        	=> 'advanced',
+				'toggle_slug'     	=> 'rating_stars',
+				'mobile_options'	=> true
 			),
 			'star_color' => array(
-				'label'           => esc_html__( 'Color', 'tutor-divi-modules' ),
+				'label'           => esc_html__( 'Star Color', 'tutor-divi-modules' ),
 				'type'            => 'color-alpha',
 				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'stars',
+				'toggle_slug'     => 'rating_stars',
 			),
 		);
 

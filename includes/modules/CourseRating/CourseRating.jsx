@@ -31,7 +31,7 @@ class CourseRating extends Component {
             }]);
         }
 
-        if (props.star_color) {
+        if (props.star_gap) {
             additionalCss.push([{
                 selector:    star_icon_group,
                 declaration: `letter-spacing: ${props.star_gap};`,
