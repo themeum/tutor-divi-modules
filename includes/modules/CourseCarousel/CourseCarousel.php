@@ -1,17 +1,17 @@
 <?php
 
-class CourseList extends ET_Builder_Module {
+class CourseCarousel extends ET_Builder_Module {
 
-	public $slug       = 'tutor_course_list';
+	public $slug       = 'tutor_course_carousel';
 	public $vb_support = 'on';
 
 	public function init() {
-		$this->name = esc_html__( 'Tutor Course List', 'tutor-divi-modules' );
+		$this->name = esc_html__( 'Tutor Course Carousel', 'tutor-divi-modules' );
 	}
 
 	public function get_fields() {
 		return array(
-			'tutor_course_list_heading_new'     => array(
+			'tutor_course_carousel_heading'     => array(
 				'label'           => esc_html__( 'Heading', 'tutor-divi-modules' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -35,10 +35,10 @@ class CourseList extends ET_Builder_Module {
             <h1>%s</h1>
             <p>%s</p>
             ', 
-            $this->props['tutor_course_list_heading_new'], 
+            $this->props['tutor_course_carousel_heading'], 
             $this->props['content']
         );
         
 	}
 }
-new CourseList;
+new CourseCarousel;

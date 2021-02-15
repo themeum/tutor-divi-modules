@@ -14,6 +14,7 @@ import CourseRequirements from './CourseRequirements/CourseRequirements';
 import CourseTargetAudience from './CourseTargetAudience/CourseTargetAudience';
 import CourseBenefits from './CourseBenefits/CourseBenefits';
 import CourseList from './CourseList/CourseList'
+import CourseCarousel from './CourseCarousel/CourseCarousel';
 
 export default [
     CourseTitle,
@@ -32,4 +33,5 @@ export default [
     CourseTargetAudience,
     CourseBenefits,
     CourseList,
+    CourseCarousel
 ];
