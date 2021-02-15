@@ -133,6 +133,59 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'tab_slug'        => 'advanced',
 				'toggle_slug'     => 'author_image',
 			),
+			//general settings fields
+			'profile_picture'	=> array(
+				'label'				=> esc_html__('Profile Picture', 'tutor-divi-modules'),
+				'type'				=> 'yes_no_button',
+				'option_category'	=> 'configuration',
+				'options'			=> array(
+					'off'	=> esc_html__('Hide', 'tutor-divi-modules'),
+					'on'	=> esc_html__('Show', 'tutor-divi-modules')
+				),
+				'default_on_front'	=> "on",
+				'toggle_slug'		=> 'main_content',	
+			),
+			'display_name'		=> array(
+				'label'				=> esc_html__('Display Name', 'tutor-divi-modules'),
+				'type'				=> 'yes_no_button',
+				'option_category'	=> 'configuration',
+				'options'			=> array(
+					'off'	=> esc_html__('Hide', 'tutor-divi-modules'),
+					'on'	=> esc_html__('Show', 'tutor-divi-modules')
+				),
+				'default_on_front'	=> "on",
+				'toggle_slug'		=> 'main_content',
+			),
+			'link'			=> array(
+				'label'				=> esc_html__('Link', 'tutor-divi-moduels'),
+				'type'				=> 'select',
+				'option_category'	=> 'layout',
+				'options'			=> array(
+					'new'			=> esc_html__('New Window', 'tutor-divi-modules'),
+					'same' 			=> esc_html__('Same Window', 'tutor-divi-modules')
+				),
+				'default'			=> 'new',
+				'toggle_slug'		=> 'main_content'
+			),
+			'layout'			=> array(
+				'label'				=> esc_html__('Layout', 'tutor-divi-moduels'),
+				'type'				=> 'select',
+				'option_category'	=> 'layout',
+				'options'			=> array(
+					'left'			=> esc_html__('Left', 'tutor-divi-modules'),
+					'up' 			=> esc_html__('Up', 'tutor-divi-modules')
+				),
+				'default'			=> 'left',
+				'toggle_slug'		=> 'main_content'
+			),
+			'author_alignment'	=> array(
+				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'type'				=> 'text_align',
+				'option_category'	=> 'configuration',
+				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'toggle_slug'		=> 'main_content'
+			)
+			//general settings end
 		);
 
 		return $fields;
