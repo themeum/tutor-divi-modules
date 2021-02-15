@@ -42,13 +42,13 @@ class TutorCourseAbout extends ET_Builder_Module {
 						'title'    => esc_html__('Heading', 'tutor-divi-modules'),
 					),
 					'text' => array(
-						'title'    => esc_html__('Text', 'tutor-divi-modules'),
+						'title'    => esc_html__('Paragraph', 'tutor-divi-modules'),
 					),
 				),
 			),
 		);
 		
-		$paragraph_selector = '%%order_class%% .tutor-course-summery';
+		$paragraph_selector = '%%order_class%% .tutor-course-summery p';
         $heading_selector = $paragraph_selector.' .tutor-segment-title';
 		$this->advanced_fields = array(
 			'fonts'          => array(

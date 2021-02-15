@@ -5,7 +5,9 @@ if (!empty($excerpt) && ! $disable_about) {
     ?>
     <div class="tutor-course-summery">
         <h4  class="tutor-segment-title"><?php esc_html_e('About Course', 'tutor') ?></h4>
-        <?php echo $excerpt; ?>
+        <p>
+            <?php echo $excerpt; ?>
+        </p>
     </div>
     <?php
 } ?>

@@ -2,11 +2,13 @@
 
 class CourseCarousel extends ET_Builder_Module {
 
-	public $slug       = 'tutor_course_carousel';
-	public $vb_support = 'on';
+	// public $slug       = 'tutor_course_carousel';
+	// public $vb_support = 'on';
 
 	public function init() {
-		$this->name = esc_html__( 'Tutor Course Carousel', 'tutor-divi-modules' );
+		$this->name         = esc_html__( 'Tutor Course Carousel', 'tutor-divi-modules' );
+        $this->slug         = "tutor_course_carousel";
+        $this->vb_support   = "on";
 	}
 
 	public function get_fields() {
