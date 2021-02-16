@@ -38,15 +38,25 @@ class TutorCourseDuration extends ET_Builder_Module {
 			),
 		);
 		
-		$selector = '%%order_class%% .tutor-single-course-meta-duration';
+		$label_selector = '%%order_class%% .tutor-single-course-meta-duration label';
+		$value_selector = '%%order_class%% .tutor-single-course-meta-duration span';
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'text' => array(
+				'label_text' => array(	
 					'css'          => array(
-						'main' => $selector,
+						'main' => $label_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'tab_slug'      => 'advanced',
+					'toggle_slug'   => 'duration_label_value_style',
+					'sub_toggle'	=> 	'label_subtoggle'
+				),
+				'value_text' => array(
+					'css'          => array(
+						'main' => $value_selector,
+					),
+					'tab_slug'      => 'advanced',
+					'toggle_slug'   => 'duration_label_value_style',
+					'sub_toggle'	=> 'value_subtoggle'
 				),
 			),
 			'button'         => false,
@@ -83,6 +93,47 @@ class TutorCourseDuration extends ET_Builder_Module {
 					'course',
 				),
 			),
+			//general settings
+			'duration_label'			=> array(
+				'label'						=> esc_html__('Label', 'tutor-divi-modules'),
+				'type'						=> 'text',
+				'toggle_slug'				=> 'main_content',
+				'default'					=> esc_html__('Course Duration', 'tutor-divi-modules')
+			),
+			'duration_layout'			=> array(
+				'label'						=> esc_html__('Layout', 'tutor-divi-moduels'),
+				'type'						=> 'select',
+				'option_category'			=> 'layout',
+				'options'					=> array(
+					'left'						=> esc_html__('Left', 'tutor-divi-modules'),
+					'up' 						=> esc_html__('Up', 'tutor-divi-modules')
+				),
+				'default'					=> 'left',
+				'toggle_slug'				=> 'main_content'
+			),
+			'duration_alignment'		=> array(
+				'label'						=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'type'						=> 'text_align',
+				'option_category'			=> 'configuration',
+				'options'					=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'toggle_slug'				=> 'main_content'
+			),
+			'gap'						=> array(
+				'label'						=> esc_html__('Gap', 'tutor-divi-modules'),
+				'type'						=> 'range',
+				'option_category'			=> 'layout',
+				'default_unit'				=> 'px',
+				'default'					=> '10px',
+				'range_settings'			=> array(
+					'min'		=> '1',
+					'max'		=> '100',
+					'step'		=> '1'
+				),
+				'mobile_options'			=> true,
+				'toggle_slug'				=> 'main_content'
+			),
+			//general settings end
+
 		);
 
 		return $fields;
@@ -100,12 +151,38 @@ class TutorCourseDuration extends ET_Builder_Module {
 			$course_duration = get_tutor_course_duration_context();
 			$disable_course_duration = get_tutor_option('disable_course_duration');
 			if (!empty($course_duration) && !$disable_course_duration) {
-				$markup = '<div class="tutor-single-course-meta-duration">';
-				$markup .= $course_duration;
-				$markup .= '</div>';
+				$markup 	 = '<div class="tutor-single-course-meta-duration">';
+				$markup 	.= sprintf( '<label>%s</label>', $args['duration_label'] );
+				$markup 	.= sprintf( '<span>%s</span>', $course_duration);
+				$markup 	.= '</div>';
 			}
 		}
 		return $markup;
+	}
+
+	/**
+	 * custom tabs for label & value
+	 */
+	public function get_settings_modal_toggles () {
+		return array(
+			'advanced'	=> array(
+				'toggles'	=> array(
+					'duration_label_value_style'		=> array(
+						'priority'		=> 24,
+						'sub_toggles'	=> array(
+							'label_subtoggle'	=> array(
+								'name'	=> esc_html__('Label', 'tutor-divi-modules')
+							),
+							'value_subtoggle'	=> array(
+								'name'	=> esc_html__('Value', 'tutor-divi-modules')
+							),
+						),
+						'tabbed_subtoggles' => true,
+						'title' => esc_html__('Style', 'tutor-divi-modules'),
+					),
+				)
+			)
+		);
 	}
 
 	/**
