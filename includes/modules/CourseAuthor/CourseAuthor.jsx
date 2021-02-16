@@ -33,10 +33,7 @@ class CourseAuthor extends Component {
     render() {
         return (
             <Fragment>
-                <div 
-                    className='tutor-course-author'
-                    dangerouslySetInnerHTML={{ __html: this.props.__author }} 
-                />
+
             </Fragment>
         );
     }

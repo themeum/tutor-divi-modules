@@ -91,19 +91,19 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					),
 				)
 			),
-			'__author'		=> array(
-				'type'                => 'computed',
-				'computed_callback'   => array(
-					'TutorCourseAuthor',
-					'get_content',
-				),
-				'computed_depends_on' => array(
-					'course'
-				),
-				'computed_minimum'    => array(
-					'course',
-				),
-			),
+			// '__author'		=> array(
+			// 	'type'                => 'computed',
+			// 	'computed_callback'   => array(
+			// 		'TutorCourseAuthor',
+			// 		'get_content',
+			// 	),
+			// 	'computed_depends_on' => array(
+			// 		'course'
+			// 	),
+			// 	'computed_minimum'    => array(
+			// 		'course',
+			// 	),
+			// ),
 			'image_height' => array(
 				'label'           => esc_html__( 'Height', 'tutor-divi-modules' ),
 				'type'            => 'range',
