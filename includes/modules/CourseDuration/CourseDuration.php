@@ -27,7 +27,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 		// Module name & icon
 		$this->name			= esc_html__('Tutor Course Duration', 'tutor-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
-
+		$this->fb_support   = true;
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
 		$this->settings_modal_toggles = array(
@@ -85,8 +85,8 @@ class TutorCourseDuration extends ET_Builder_Module {
 			'__duration'	=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'TutorCourseDuration',
-					'get_content',
+					$this,
+					'get_duration',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -139,6 +139,15 @@ class TutorCourseDuration extends ET_Builder_Module {
 		);
 
 		return $fields;
+	}
+
+	/**
+	 * get computed value
+	 */
+	public function get_duration() {
+		$course = Helper::get_course($this->props);
+		$course_duration = get_tutor_course_duration_context();
+		return $course_duration;
 	}
 
 	/**
@@ -199,6 +208,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render($attrs, $content = null, $render_slug) {
+
 		//settings attrs
 		$wrapper_selector	= '%%order_class%% .tutor-divi-course-duration';
 		$display			= "flex"; //default display:flex
