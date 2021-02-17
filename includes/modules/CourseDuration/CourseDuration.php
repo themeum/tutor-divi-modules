@@ -44,7 +44,8 @@ class TutorCourseDuration extends ET_Builder_Module {
 			'fonts'          => array(
 				'label_text' => array(	
 					'css'          => array(
-						'main' => $label_selector,
+						'main' 		=> $label_selector,
+						'important'	=> 'all'
 					),
 					'tab_slug'      => 'advanced',
 					'toggle_slug'   => 'duration_label_value_style',
@@ -52,7 +53,8 @@ class TutorCourseDuration extends ET_Builder_Module {
 				),
 				'value_text' => array(
 					'css'          => array(
-						'main' => $value_selector,
+						'main' 		=> $value_selector,
+						'important'	=> 'all' 
 					),
 					'tab_slug'      => 'advanced',
 					'toggle_slug'   => 'duration_label_value_style',
@@ -105,10 +107,10 @@ class TutorCourseDuration extends ET_Builder_Module {
 				'type'						=> 'select',
 				'option_category'			=> 'layout',
 				'options'					=> array(
-					'left'						=> esc_html__('Left', 'tutor-divi-modules'),
-					'up' 						=> esc_html__('Up', 'tutor-divi-modules')
+					'row'						=> esc_html__('Left', 'tutor-divi-modules'),
+					'column' 					=> esc_html__('Up', 'tutor-divi-modules')
 				),
-				'default'					=> 'left',
+				'default'					=> 'row',
 				'toggle_slug'				=> 'main_content'
 			),
 			'duration_alignment'		=> array(
@@ -197,9 +199,66 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render($attrs, $content = null, $render_slug) {
+		//settings attrs
+		$wrapper_selector	= '%%order_class%% .tutor-divi-course-duration';
+		$display			= "flex"; //default display:flex
+		$layout 			= $this->props['duration_layout'];
+		$alignment  		= $this->props['duration_alignment'];
+		$gap 				= $this->props['gap'];
+
+		//set styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $wrapper_selector,
+				'declaration'	=> sprintf(
+					'display: %1$s',
+					$display
+				)
+			)
+		);
+
+		if( '' !== $gap ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'gap: %1$s',
+						esc_html( $gap ) 
+					)
+				)				
+			);
+		}
+
+		if( '' !== $layout ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'flex-direction: %1$s',
+						esc_html( $layout )
+					)
+				)				
+			);
+		}
+		
+		if( '' !== $alignment ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s',
+						esc_html( $alignment )
+					)
+				)				
+			);
+		}
+		//set styles end
 
 		$output = self::get_content($this->props);
-
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {
 			return '';
