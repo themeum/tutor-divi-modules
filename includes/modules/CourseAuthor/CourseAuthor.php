@@ -95,7 +95,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseAuthor',
-					'get_computed_props',
+					'get_content',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -189,10 +189,6 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		);
 
 		return $fields;
-	}
-
-	public static function get_computed_props() {
-		return [ 'a' => 'apple'];
 	}
 
 	/**
