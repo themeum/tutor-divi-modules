@@ -29,12 +29,38 @@ class CourseAuthor extends Component {
 
         return additionalCss;
     }
+    Avatar(props) {
+        if(props.__author.profile_url) {
+            return <h3>ok</h3>;
+        }
+        return <h3>not ok</h3>;
+    }
 
     render() {
         return (
-            <Fragment>
-                {console.log(this.props.__author)}
-            </Fragment>
+        <Fragment>  
+            <div className="tutor-single-course-meta tutor-meta-top .tutor-divi-course-author-wrapper">
+                <ul>
+                    <li className="tutor-single-course-author-meta">
+                       
+                        <div className="tutor-single-course-avatar">
+                            <a href={ this.props.__author.profile_url }> 
+                                <img src= { this.props.__author.avatar_url } alt="avatar"/>
+                            </a>
+                        </div>
+                    
+                        <div className="tutor-single-course-author-name">
+                            <span> By </span>
+                            <a href= { this.props.__author.profile_url }>
+                                { this.props.__author.author_name }
+                            </a>
+                        </div>
+                    
+                    </li>
+                </ul>
+            </div>        
+        </Fragment>
+
         );
     }
 }

@@ -111,7 +111,7 @@ class Helper {
      * @return string
      */
     public static function format_course_id($course_id) {
-        return '_'.$course_id;
+        return $course_id;
     }
 
     /**
@@ -193,12 +193,10 @@ class Helper {
     public static function get_course_default() {
         $post_id   = \ET_Builder_Element::get_current_post_id();
         $post_type = get_post_type($post_id);
-
-        $course = 'latest';
         if ($post_type === tutor()->course_post_type) {
             $course = 'current';
         }
 
-        return self::format_course_id($course);
+        return $post_id;
     }
 }

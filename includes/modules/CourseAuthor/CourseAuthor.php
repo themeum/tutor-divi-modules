@@ -192,11 +192,15 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	}
 
 	public static function get_props( $args = [] ) {
-		$post = get_post( self::get_the_ID() );
-		$author 		= $post->post_author;
-		$profile_url 	= tutils()->profile_url($post->post_author);
+		$post_id 		= $args[ 'course' ];
+		$post 			= get_post( $post_id );
+		$author_id 		= $post->post_author;
+		$author_name 	= get_the_author_meta('display_name', $author_id);
+		$profile_url 	= tutils()->profile_url( $author_id );
+
 		return array(
-			'author'		=> $post,
+			'avatar_url'	=> get_avatar_url( $author_id ),
+			'author_name'	=> $author_name,
 			'profile_url'	=> $profile_url
 		);
 	}
