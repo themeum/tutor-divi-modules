@@ -95,7 +95,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseAuthor',
-					'get_content',
+					'get_props',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -191,6 +191,16 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		return $fields;
 	}
 
+	public static function get_props( $args = [] ) {
+		$post = get_post( self::get_the_ID() );
+		$author 		= $post->post_author;
+		$profile_url 	= tutils()->profile_url($post->post_author);
+		return array(
+			'author'		=> $post,
+			'profile_url'	=> $profile_url
+		);
+	}
+
 	/**
 	 * Get the tutor course author
 	 *
@@ -202,7 +212,6 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		if ($course) {
 			include_once dtlms_get_template('course/author');
 		}
-
 		return ob_get_clean();
 	}
 
