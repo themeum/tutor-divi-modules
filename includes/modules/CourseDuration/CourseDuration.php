@@ -147,7 +147,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 	public function get_duration() {
 		$course = Helper::get_course($this->props);
 		$course_duration = get_tutor_course_duration_context();
-		return $course_duration;
+		
 	}
 
 	/**

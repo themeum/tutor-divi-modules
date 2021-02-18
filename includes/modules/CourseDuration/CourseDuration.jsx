@@ -10,7 +10,7 @@ class CourseDuration extends Component {
             <Fragment>
                 <div className="tutor-single-course-meta-duration tutor-divi-course-duration">
                     <label> {this.props.duration_label} </label>
-                    <span> {this.props.__duration} </span>
+                
                 </div>
             </Fragment>
         );
