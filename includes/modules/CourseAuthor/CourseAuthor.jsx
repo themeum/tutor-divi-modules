@@ -29,12 +29,6 @@ class CourseAuthor extends Component {
 
         return additionalCss;
     }
-    Avatar(props) {
-        if(props.__author.profile_url) {
-            return <h3>ok</h3>;
-        }
-        return <h3>not ok</h3>;
-    }
 
     render() {
         return (
