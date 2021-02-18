@@ -43,23 +43,26 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'label_text' => array(	
-					'css'          => array(
+					'css'          		=> array(
 						'main' 		=> $label_selector,
 						'important'	=> 'all'
 					),
-					'tab_slug'      => 'advanced',
-					'toggle_slug'   => 'duration_label_value_style',
-					'sub_toggle'	=> 	'label_subtoggle'
+					'tab_slug'      	=> 'advanced',
+					'toggle_slug'   	=> 'duration_label_value_style',
+					'sub_toggle'		=> 	'label_subtoggle',
+					'hide_text_align'	=> true
 				),
 				'value_text' => array(
-					'css'          => array(
+					'css'          		=> array(
 						'main' 		=> $value_selector,
 						'important'	=> 'all' 
 					),
-					'tab_slug'      => 'advanced',
-					'toggle_slug'   => 'duration_label_value_style',
-					'sub_toggle'	=> 'value_subtoggle'
+					'tab_slug'      	=> 'advanced',
+					'toggle_slug'   	=> 'duration_label_value_style',
+					'sub_toggle'		=> 'value_subtoggle',
+					'hide_text_align'	=> true
 				),
+				
 			),
 			'button'         => false,
 		);
