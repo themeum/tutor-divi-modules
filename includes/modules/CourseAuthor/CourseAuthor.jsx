@@ -33,7 +33,7 @@ class CourseAuthor extends Component {
     render() {
         return (
             <Fragment>
-                <h3>Hello</h3>
+                <h3>Course Author</h3>
             </Fragment>
         );
     }

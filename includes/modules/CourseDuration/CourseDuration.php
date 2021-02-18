@@ -76,16 +76,13 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$fields = array(
 			'course'       	=> Helper::get_field(
 				array(
-					'default'          => Helper::get_course_default(),
-					'computed_affects' => array(
-						'__duration',
-					),
+					'default'          => Helper::get_course_default()
 				)
 			),
 			'__duration'	=> array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					$this,
+					'TutorCourseDuration',
 					'get_duration',
 				),
 				'computed_depends_on' => array(
@@ -144,14 +141,14 @@ class TutorCourseDuration extends ET_Builder_Module {
 	/**
 	 * get computed value
 	 */
-	public function get_duration() {
-		$course = Helper::get_course($this->props);
-		$course_duration = get_tutor_course_duration_context();
-		
+	public static function get_duration( $args=[] ) {
+		$course 			= Helper::get_course($args);
+		$course_duration	= get_tutor_course_duration_context();
+		return $course_duration;
 	}
 
 	/**
-	 * Get the tutor course author
+	 * Get the tutor course duration
 	 *
 	 * @return string
 	 */
@@ -216,17 +213,30 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$alignment  		= $this->props['duration_alignment'];
 		$gap 				= $this->props['gap'];
 
+		//set flext alignemnt as per alignment
+		if( $alignment === 'left' ) {
+			$alignment = 'flext-start';
+		}
+		elseif( $alignment === 'right' ) {
+			$alignment = 'flext-end';
+		}
+		else {
+			$alignment = 'center';
+		}
+
 		//set styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $wrapper_selector,
-				'declaration'	=> sprintf(
-					'display: %1$s',
-					$display
+		if( '' !== $display ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'display: %1$s;',
+						esc_html($display)
+					)
 				)
-			)
-		);
+			);			
+		}
 
 		if( '' !== $gap ) { 
 			ET_Builder_Element::set_style(
@@ -234,7 +244,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper_selector,
 					'declaration'	=> sprintf(
-						'gap: %1$s',
+						'gap: %1$s;',
 						esc_html( $gap ) 
 					)
 				)				
@@ -247,24 +257,43 @@ class TutorCourseDuration extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper_selector,
 					'declaration'	=> sprintf(
-						'flex-direction: %1$s',
+						'flex-direction: %1$s;',
 						esc_html( $layout )
 					)
 				)				
 			);
 		}
-		
-		if( '' !== $alignment ) { 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $wrapper_selector,
-					'declaration'	=> sprintf(
-						'justify-content: %1$s',
-						esc_html( $alignment )
-					)
-				)				
-			);
+		/**
+		 * if layout row set prop justify-content
+		 * if layout column set prop align-items
+		 */
+		if( $layout === 'row' ) {
+			if( '' !== $alignment ) { 
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $wrapper_selector,
+						'declaration'	=> sprintf(
+							'justify-content: %1$s',
+							esc_html( $alignment )
+						)
+					)				
+				);
+			}			
+		}
+		else {
+			if( '' !== $alignment ) { 
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $wrapper_selector,
+						'declaration'	=> sprintf(
+							'align-items: %1$s',
+							esc_html( $alignment )
+						)
+					)				
+				);
+			}				
 		}
 		//set styles end
 
