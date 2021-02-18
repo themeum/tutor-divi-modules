@@ -31,6 +31,9 @@ class CourseAuthor extends Component {
     }
 
     render() {
+        if( this.props.__author == null ) {
+            return '';
+        }
         return (
         <Fragment>  
             <div className="tutor-single-course-meta tutor-meta-top .tutor-divi-course-author-wrapper">
