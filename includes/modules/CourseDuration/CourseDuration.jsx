@@ -12,16 +12,18 @@ class CourseDuration extends Component {
         const layout = props.duration_layout;
         let alignment = props.duration_alignment;
         const gap = props.gap;
-
+        const is_responsive = props.gap_last_edited && props.gap_last_edited.startsWith("on");
+        const gap_tablet = is_responsive && props.gap_tablet ? props.gap_tablet : gap;
+        const gap_phone = is_responsive && props.gap_phone ? props.gap_phone : gap;
         /**
          * set flex alignment as per default alignment
          * left,right,center | flext-start, fext-end, center
          */
         if(alignment === 'left') {
-            alignment = 'flext-start';
+            alignment = 'flex-start';
         }
         else if(alignment === 'right') {
-            alignment = 'flext-end';
+            alignment = 'flex-end';
         }
         else {
             alignment = 'center';
@@ -43,34 +45,50 @@ class CourseDuration extends Component {
                 }
             ]);
         }
-        if(layout === 'row') {
-            if(alignment) {
-                additionalCss.push([
-                    {
-                        selector: wrapper_selector,
-                        declaration: `justify-content: ${alignment};`
-                    }
-                ]);
-            }
+        if(layout === 'row' && alignment) {
+            additionalCss.push([
+                {
+                    selector: wrapper_selector,
+                    declaration: `justify-content: ${alignment};`
+                }
+            ]);
         } else {
-            if(alignment) {
-                additionalCss.push([
-                    {
-                        selector: wrapper_selector,
-                        declaration: `align-items: ${alignment};`
-                    }
-                ]);
-            }            
+            additionalCss.push([
+                {
+                    selector: wrapper_selector,
+                    declaration: `align-items: ${alignment};`
+                }
+            ]);
         }
 
         if(gap) {
             additionalCss.push([
                 {
                     selector: wrapper_selector,
-                    declaration: `gap: ${gap};`
+                    declaration: layout === 'row' ? `column-gap: ${gap};` : `row-gap: ${gap}`
                 }
             ])
         }
+
+        if(gap_tablet){
+            additionalCss.push([
+                {
+                    selector: wrapper_selector,
+                    declaration: layout === 'row' ? `column-gap: ${gap_tablet};` : `row-gap: ${gap_tablet}`,
+                    device: 'tablet'
+                }
+            ]);
+        }
+        if(gap_phone){
+            additionalCss.push([
+                {
+                    selector: wrapper_selector,
+                    declaration: layout === 'row' ? `column-gap: ${gap_phone};` : `row-gap: ${gap_phone}`,
+                    device: 'phone'
+                }
+            ]);
+        }
+
         return additionalCss;
     }
 

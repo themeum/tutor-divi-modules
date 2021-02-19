@@ -49,7 +49,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 		);
 		
 		$paragraph_selector = '%%order_class%% .tutor-course-summery p';
-        $heading_selector = $paragraph_selector.' .tutor-segment-title';
+        $heading_selector = '%%order_class%% .tutor-segment-title';
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'heading' => array(

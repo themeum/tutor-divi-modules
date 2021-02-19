@@ -139,8 +139,8 @@ class Helper {
         );
 
         $args = wp_parse_args($args, $defaults);
-        $arg_course = self::dformat_course_id($args['course']);
-        $course_id = self::get_original_course_id($arg_course);
+        $arg_course     = $args['course'];
+        $course_id      = $arg_course;
 
         $query = new \WP_Query(array(
             'p' => $course_id,

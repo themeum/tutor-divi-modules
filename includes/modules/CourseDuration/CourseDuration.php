@@ -65,6 +65,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 				
 			),
 			'button'         => false,
+			'text'			 => false
 		);
 	}
 
@@ -215,13 +216,15 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$layout 			= $this->props['duration_layout'];
 		$alignment  		= $this->props['duration_alignment'];
 		$gap 				= $this->props['gap'];
+		$gap_tablet			= isset($this->props['gap_tablet']) ? $this->props['gap_tablet'] : '';
+		$gap_phone			= isset($this->props['gap_phone']) ? $this->props['gap_phone'] : '';
 
 		//set flext alignemnt as per alignment
 		if( $alignment === 'left' ) {
-			$alignment = 'flext-start';
+			$alignment = 'flex-start';
 		}
 		elseif( $alignment === 'right' ) {
-			$alignment = 'flext-end';
+			$alignment = 'flex-end';
 		}
 		else {
 			$alignment = 'center';
@@ -240,20 +243,84 @@ class TutorCourseDuration extends ET_Builder_Module {
 				)
 			);			
 		}
-
-		if( '' !== $gap ) { 
+		//gaping for desktop
+		if( '' !== $gap && $layout == 'row' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'		=> $wrapper_selector,
 					'declaration'	=> sprintf(
-						'gap: %1$s;',
+						'column-gap: %1$s;',
+						esc_html( $gap ) 
+					)
+				)				
+			);
+		} elseif ( '' !== $gap && $layout == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
 						esc_html( $gap ) 
 					)
 				)				
 			);
 		}
 
+		//gaping for tablet
+		if( '' !== $gap_tablet && $layout == 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						esc_html( $gap_tablet ) 
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)				
+			);
+		} elseif ( '' !== $gap_tablet && $layout == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						esc_html( $gap_tablet ) 
+					)
+				)				
+			);
+		}
+		//gaping for phone
+		if( '' !== $gap_phone && $layout == 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						esc_html( $gap_phone ),
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		} elseif ( '' !== $gap_phone && $layout == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper_selector,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						esc_html( $gap_phone ) 
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		}
+
+		//layout style
 		if( '' !== $layout ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
