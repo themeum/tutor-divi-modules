@@ -4,7 +4,7 @@ $disable_course_author = get_tutor_option('disable_course_author');
 $profile_url = tutils()->profile_url($post->post_author);
 
 if (!$disable_course_author) : ?>
-<div class="tutor-single-course-meta tutor-meta-top .tutor-divi-course-author-wrapper">
+<div class="tutor-single-course-meta tutor-meta-top ">
     <ul>
         <li class="tutor-single-course-author-meta">
             <?php if( 'on' === $args['profile_picture'] ) : ?>

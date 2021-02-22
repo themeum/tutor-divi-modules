@@ -39,7 +39,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			'advanced' => array(
 				'toggles' => array(
 					'author_image' => array(
-						'title'    => esc_html__('Author Image', 'tutor-divi-modules'),
+						'title'    	=> esc_html__('Author Image', 'tutor-divi-modules'),
 					),
 					'author_label_text' => array(
 						'title'    => esc_html__('Author Label', 'tutor-divi-modules'),
@@ -55,22 +55,28 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'author_label_text' => array(
-					'label'        => esc_html__('Label', 'tutor-divi-modules'),
-					'css'          => array(
+					'label'        		=> esc_html__('Label', 'tutor-divi-modules'),
+					'css'          		=> array(
 						'main' => $author_selector.' span',
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'author_label_text',
+					'hide_line_height'	=> true,
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'author_label_text',
 				),
+
 				'author_name_text' => array(
-					'label'        => esc_html__('Name', 'tutor-divi-modules'),
-					'css'          => array(
+					'label'        		=> esc_html__('Name', 'tutor-divi-modules'),
+					'css'          		=> array(
 						'main' => $author_selector.' a',
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'author_name_text',
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'author_name_text',
 				),
 			),
+
+			'text'			=> false,
 		);
 	}
 
@@ -104,35 +110,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					'course',
 				),
 			),
-			'image_height' => array(
-				'label'           => esc_html__( 'Height', 'tutor-divi-modules' ),
-				'type'            => 'range',
-				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
-				'default_unit'    => 'px',
-				'range_settings'  => array(
-					'min'  => '0',
-					'max'  => '100',
-					'step' => '1',
-				),
-				'range_settings'  => array(
-					'min'	=> 10,
-					'max'	=> 100,
-				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'author_image',
-			),
-			'image_width' => array(
-				'label'           => esc_html__( 'Width', 'tutor-divi-modules' ),
-				'type'            => 'range',
-				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
-				'default_unit'    => 'px',
-				'range_settings'  => array(
-					'min'	=> 10,
-					'max'	=> 100,
-				),
-				'tab_slug'        => 'advanced',
-				'toggle_slug'     => 'author_image',
-			),
+
 			//general settings fields
 			'profile_picture'	=> array(
 				'label'				=> esc_html__('Profile Picture', 'tutor-divi-modules'),
@@ -172,10 +150,10 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'				=> 'select',
 				'option_category'	=> 'layout',
 				'options'			=> array(
-					'left'			=> esc_html__('Left', 'tutor-divi-modules'),
-					'up' 			=> esc_html__('Up', 'tutor-divi-modules')
+					'row'			=> esc_html__('Left', 'tutor-divi-modules'),
+					'column' 		=> esc_html__('Up', 'tutor-divi-modules')
 				),
-				'default'			=> 'left',
+				'default'			=> 'row',
 				'toggle_slug'		=> 'main_content'
 			),
 			'author_alignment'	=> array(
@@ -183,9 +161,49 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'			=> 'left',
 				'toggle_slug'		=> 'main_content'
-			)
+			),
 			//general settings end
+
+			//author avatar settings in advanced tab
+			'avatar_size'	=> array(
+				'label'				=> esc_html__( 'Size', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'option_category'	=> 'layout',
+				'default_unit'		=> 'px',
+				'default'			=> '25px',
+				'range_settings'	=> array(
+					'min'	=> '10',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'author_image',
+				'show_if'			=> array(
+					'profile_picture'	=> 'on'
+				),
+				'mobile_options'	=> true
+			),	
+			'avatar_gap'	=> array(
+				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'option_category'	=> 'layout',
+				'default_unit'		=> 'px',
+				'default'			=> '5px',
+				'range_settings'	=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'author_image',
+				'show_if'			=> array(
+					'profile_picture'	=> 'on'
+				),
+				'mobile_options'	=> true
+			),
+			//author avatar settings in advanced tab end					
 		);
 
 		return $fields;
@@ -231,28 +249,181 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render($attrs, $content = null, $render_slug) {
+		// selectors
+		$wrapper			= '%%order_class%% .tutor-single-course-author-meta';
+		$img_selector 		= '%%order_class%% .tutor-single-course-avatar a img';
+		$level_selector		= '%%order_class%% .tutor-single-course-author-name > spane';
+		$name_selector		= '%%order_class%% .tutor-single-course-author-name > a';
 
-		// Process image size value into style
-		$img_selector = '%%order_class%% .tutor-single-course-avatar a span';
-		if ( '' !== $this->props['image_height'] ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $img_selector,
-				'declaration' => sprintf(
-					'height: %1$s;',
-					esc_html( $this->props['image_height'] )
-				),
-			) );
+		//props
+		$display			= 'flex';
+		$layout 			= $this->props[ 'layout' ];
+		$alignment			= $this->props[ 'author_alignment' ];
 
-		}
-		if ( '' !== $this->props['image_width'] ) {
+		$avatar_size		= $this->props[ 'avatar_size' ];
+		$avatar_size_tablet = isset( $this->props[ 'avatar_size_tablet' ] ) ? $this->props[ 'avatar_size_tablet' ] : '' ;
+		$avatar_size_phone 	= isset( $this->props[ 'avatar_size_phone' ] ) ? $this->props[ 'avatar_size_phone' ] : '' ;
+
+		$gap				= $this->props[ 'avatar_gap' ];
+		$gap_tablet 		= isset( $this->props[ 'avatar_gap_tablet' ] ) ? $this->props[ 'avatar_gap_tablet' ] : '' ;
+		$gap_phone 			= isset( $this->props[ 'avatar_gap_phone' ] ) ? $this->props[ 'avatar_gap_phone' ] : '' ;
+
+		$alignment			= ($alignment == 'left' ? 'flex-start ' : ( $alignment == 'center' ? 'center' : 'flex-end' )); 
+
+		if ( '' !== $avatar_size ) {
 			ET_Builder_Element::set_style( $render_slug, array(
 				'selector'    => $img_selector,
 				'declaration' => sprintf(
 					'width: %1$s;',
-					esc_html( $this->props['image_width'] )
+					esc_html( $avatar_size )
+				),
+			) );
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'height: %1$s;',
+					esc_html( $avatar_size )
 				),
 			) );
 		}
+
+		if( '' !== $avatar_size_tablet ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'width: %1$s;',
+					esc_html( $avatar_size_tablet )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_980' )
+			) );
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'height: %1$s;',
+					esc_html( $avatar_size_tablet )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_980' )
+			) );			
+		}
+
+		if( '' !== $avatar_size_phone ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'width: %1$s;',
+					esc_html( $avatar_size_phone )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_767' )
+			) );
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => $img_selector,
+				'declaration' => sprintf(
+					'height: %1$s;',
+					esc_html( $avatar_size_phone )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_767' )
+			) );			
+		}
+
+		//avatar gap
+		if( '' !== $gap && 'row' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'column-gap: %1$s;',
+					esc_html( $gap )
+				)
+			));
+		}
+		if( '' !== $gap && 'column' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'row-gap: %1$s;',
+					esc_html( $gap )
+				)
+			));
+		}
+
+		if( '' !== $gap_tablet && 'row' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'column-gap: %1$s;',
+					esc_html( $gap_tablet )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_980' )
+			));
+		}
+		if( '' !== $gap_tablet && 'column' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'row-gap: %1$s;',
+					esc_html( $gap_tablet )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_980' )
+			));
+		}
+
+		if( '' !== $gap_phone && 'row' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'column-gap: %1$s;',
+					esc_html( $gap_phone )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_767' )
+			));
+		}
+		if( '' !== $gap_phone && 'column' == $layout) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'row-gap: %1$s;',
+					esc_html( $gap_phone )
+				),
+				'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_767' )
+			));
+		}
+
+		ET_Builder_Element::set_style( $render_slug, array(
+			'selector'		=> $wrapper,
+			'declaration'	=> sprintf(
+				'display: %1$s;',
+				esc_html( $display ) 
+			)
+		) );
+
+		if( '' !== $layout ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'display-direction: %1$s;',
+					esc_html( $layout ) 
+				)
+			) );
+		}
+
+		if( $alignment && $layout === 'row' ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'justify-content: %1$s',
+					esc_html( $alignment )
+				)
+			) );	
+		} 
+
+		if( $alignment && $layout === 'row' ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'		=> $wrapper,
+				'declaration'	=> sprintf(
+					'align-items: %1$s',
+					esc_html( $alignment )
+				)
+			) );	
+		} 
 
 		$output = self::get_content($this->props);
 
