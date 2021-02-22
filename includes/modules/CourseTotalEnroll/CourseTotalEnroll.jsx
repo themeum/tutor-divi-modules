@@ -8,9 +8,10 @@ class CourseTotalEnroll extends Component {
     render() {
         return (
             <Fragment>
-                <div
-                    dangerouslySetInnerHTML={{ __html: this.props.__totalenroll }} 
-                />
+                <div className="tutor-single-course-meta-total-enroll">
+                    <label> {this.props.enroll_label} </label>
+                    <span> {this.props.__totalenroll} </span>
+                </div>
             </Fragment>
         );
     }
