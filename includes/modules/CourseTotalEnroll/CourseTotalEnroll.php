@@ -115,14 +115,15 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 				),
 				'default'			=> 'row',
 				'toggle_slug'		=> 'main_content',
-				'modile_options'	=> true
+				'mobile_options'	=> true
 			),
 			'alignment'		=> array(
 				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
-				'toggle_slug'		=> 'main_content'
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
 			),
 			'gap'			=> array(
 				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
