@@ -29,8 +29,24 @@ class CourseTotalEnroll extends Component {
         }
 
         const is_responsive_alignment = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");
+        
         const alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : layout; 
+        if(alignment_tablet === 'left') {
+            alignment_tablet = 'flex-start';
+        } else if(alignment_tablet === 'center') {
+            alignment_tablet = 'center';
+        } else {
+            alignment_tablet = 'flex-end';
+        }
+
         const alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : layout; 
+        if(alignment_phone === 'left') {
+            alignment_phone = 'flex-start';
+        } else if(alignment_phone === 'center') {
+            alignment_phone = 'center';
+        } else {
+            alignment_phone = 'flex-end';
+        }
 
         const gap = props.gap;
         const is_responsive_gap = props.gap_last_edited && props.gap_last_edited.startsWith("on");
