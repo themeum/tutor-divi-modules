@@ -49,22 +49,25 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 					'css'          => array(
 						'main' => $label_selector,
 					),
-					'tab_slug'     	=> 'advanced',
-					'toggle_slug'  	=> 'total_enroll_label_value_style',
-					'sub_toggle'	=> 'label_subtoggle'
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'total_enroll_label_value_style',
+					'sub_toggle'		=> 'label_subtoggle'
 				),
 
 				'value_text'	=> array(
 					'css'			=> array(
 						'main'	=> $value_selector
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'total_enroll_label_value_style',
-					'sub_toggle'	=> 'value_subtoggle'
+					'hide_text_align'	=> true,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'total_enroll_label_value_style',
+					'sub_toggle'		=> 'value_subtoggle'
 				)
 
 			),
-			'button'         => false,
+			'button'		=> false,
+			'text'			=> false	 
 		);
 	}
 
@@ -122,6 +125,7 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'			=> 'left',
 				'toggle_slug'		=> 'main_content',
 				'mobile_options'	=> true
 			),
@@ -175,7 +179,7 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 	 */
 	public function get_props( $args=[] ) {
 		$course_id = $args['course'];
-		$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course();
+		$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course( $course_id );
 		return $total_enrolled;
 	}
 
@@ -188,11 +192,11 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 		$course = Helper::get_course($args);
 		$markup = '';
 		if ($course) {
-			$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course();
+			$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course( );
 			$disable_total_enrolled = get_tutor_option('disable_course_total_enrolled');
 			if (!$disable_total_enrolled) {
 				$markup = '<div class="tutor-single-course-meta-total-enroll">';
-				$marup  .= sprintf( '<label>%1$s</label>' , $args['enroll_label'] );
+				$markup .= sprintf( '<label>%1$s</label>' , $args['enroll_label'] );
 				$markup .= sprintf( '<span>%1$s</span>' , $total_enrolled );
 				$markup .= '</div>';
 			}
