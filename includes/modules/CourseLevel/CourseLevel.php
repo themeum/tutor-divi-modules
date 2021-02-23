@@ -56,18 +56,24 @@ class TutorCourseLevel extends ET_Builder_Module {
 					'css'          => array(
 						'main' => $selector.' strong',
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'label_text',
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'course_level_label_value_style',
+					'sub_toggle'		=> 'label_subtoggle'
 				),
 				'value_text' => array(
-					'label'        => esc_html__('Name', 'tutor-divi-modules'),
-					'css'          => array(
+					'label'        		=> esc_html__('Name', 'tutor-divi-modules'),
+					'css'          		=> array(
 						'main' => $selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'value_text',
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'course_level_label_value_style',
+					'sub_toggle'		=> 'value_subtoggle'
 				),
 			),
+			'button'		=> false,
+			'text'			=> false
 		);
 	}
 
@@ -92,7 +98,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseLevel',
-					'get_content',
+					'get_props',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -101,9 +107,91 @@ class TutorCourseLevel extends ET_Builder_Module {
 					'course',
 				),
 			),
+			//general tab settings content toggle
+			'course_level_label'	=> array(
+				'label'			=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'type'			=> 'text',
+				'default'		=> 'Course Level:',
+				'toggle_slug'	=> 'main_content'
+			),
+			'layout'		=> array(
+				'label'				=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+				'type'				=> 'select',
+				'option_category'	=> 'layout',
+				'options'			=> array(
+					'row'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
+					'column'	=> esc_html__( 'Up', 'tutor-divi-modules' )
+				),
+				'default'			=> 'row',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'alignment'		=> array(
+				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'type'				=> 'text_align',
+				'option_category'	=> 'configuration',
+				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'			=> 'left',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'gap'			=> array(
+				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'option_category'	=> 'layout',
+				'default_unit'		=> 'px',
+				'default'			=> '5',
+				'range_settings'	=> array(
+					'min'		=> '1',
+					'max'		=> '100',
+					'step'		=> '1'
+				),
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),			
 		);
 
 		return $fields;
+	}
+
+	/**
+	 * custom tabs for label & value
+	 */
+	public function get_settings_modal_toggles () {
+		return array(
+			'advanced'	=> array(
+				'toggles'	=> array(
+					'course_level_label_value_style'		=> array(
+						'priority'		=> 24,
+						'sub_toggles'	=> array(
+							'label_subtoggle'	=> array(
+								'name'	=> esc_html__('Label', 'tutor-divi-modules')
+							),
+							'value_subtoggle'	=> array(
+								'name'	=> esc_html__('Value', 'tutor-divi-modules')
+							),
+						),
+						'tabbed_subtoggles' => true,
+						'title' => esc_html__('Style', 'tutor-divi-modules'),
+					),
+				)
+			)
+		);
+	}
+
+	/**
+	 * computed value
+	 * @return string | array course level
+	 */
+	public function get_props( $args = [] ) {
+		$course_id = $args['course'];
+		$disable_course_level = get_tutor_option('disable_course_level');
+		$level = get_tutor_course_level( $course_id ) ? get_tutor_course_level( $course_id ) : __('All Level', 'tutor-divi-modules');
+		$props = array(
+			'is_disable_level'	=> $disable_course_level,
+			'level'				=> $level
+		);
+		return $props;
 	}
 
 	/**
