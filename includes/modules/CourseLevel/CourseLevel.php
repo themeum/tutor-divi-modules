@@ -365,7 +365,8 @@ class TutorCourseLevel extends ET_Builder_Module {
 					'declaration'	=> sprintf(
 						'flex-direction: %1$s;',
 						esc_html( $layout_tablet )
-					)
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
 				)				
 			);
 		}
@@ -377,7 +378,8 @@ class TutorCourseLevel extends ET_Builder_Module {
 					'declaration'	=> sprintf(
 						'flex-direction: %1$s;',
 						esc_html( $layout_phone )
-					)
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
 				)				
 			);
 		}
@@ -392,7 +394,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 					array(
 						'selector'		=> $wrapper,
 						'declaration'	=> sprintf(
-							'justify-content: %1$s',
+							'justify-content: %1$s;',
 							esc_html( $alignment )
 						)
 					)				
@@ -404,7 +406,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'align-items: %1$s',
+						'align-items: %1$s;',
 						esc_html( $alignment )
 					)
 				)				
@@ -417,7 +419,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'justify-content: %1$s',
+						'justify-content: %1$s;',
 						esc_html( $alignment_tablet )
 					),
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
@@ -430,7 +432,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'align-items: %1$s',
+						'align-items: %1$s;',
 						esc_html( $alignment_tablet )
 					),
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
@@ -444,7 +446,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'justify-content: %1$s',
+						'justify-content: %1$s;',
 						esc_html( $alignment_phone )
 					),
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
@@ -457,7 +459,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'align-items: %1$s',
+						'align-items: %1$s;',
 						esc_html( $alignment_phone )
 					),
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
