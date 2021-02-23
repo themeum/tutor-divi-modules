@@ -30,22 +30,27 @@ class CourseTotalEnroll extends Component {
 
         const is_responsive_alignment = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");
         
-        let alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : layout; 
+        let alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : alignment; 
+          
         if(alignment_tablet === 'left') {
             alignment_tablet = 'flex-start';
         } else if(alignment_tablet === 'center') {
             alignment_tablet = 'center';
-        } else {
+        } else if(alignment_tablet === 'right') {
             alignment_tablet = 'flex-end';
+        } else {
+            alignment_tablet = 'flex-start';
         }
 
-        let alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : layout; 
+        let alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : alignment; 
         if(alignment_phone === 'left') {
             alignment_phone = 'flex-start';
         } else if(alignment_phone === 'center') {
             alignment_phone = 'center';
-        } else {
+        } else if(alignment_phone === 'right') {
             alignment_phone = 'flex-end';
+        } else {
+            alignment_phone = 'flex-start';
         }
 
         const gap = props.gap;
@@ -94,7 +99,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `justify-content: ${alignment}` : `align-items: ${alignment}`
+                    declaration: layout === 'row' ? `justify-content: ${alignment};` : `align-items: ${alignment};`
                 }
             ])
         }
@@ -102,7 +107,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `justify-content: ${alignment_tablet}` : `align-items: ${alignment_tablet}`,
+                    declaration: layout === 'row' ? `justify-content: ${alignment_tablet};` : `align-items: ${alignment_tablet};`,
                     device: 'tablet'
                 }
             ])
@@ -111,7 +116,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `justify-content: ${alignment_phone}` : `align-items: ${alignment_phone}`,
+                    declaration: layout === 'row' ? `justify-content: ${alignment_phone};` : `align-items: ${alignment_phone};`,
                     device: 'phone'
                 }
             ])
@@ -121,7 +126,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `column-gap: ${gap}` : `row-gap: ${gap}`
+                    declaration: layout === 'row' ? `column-gap: ${gap};` : `row-gap: ${gap};`
                 }
             ])            
         }
@@ -129,7 +134,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `column-gap: ${gap_tablet}` : `row-gap: ${gap_tablet}`,
+                    declaration: layout === 'row' ? `column-gap: ${gap_tablet};` : `row-gap: ${gap_tablet};`,
                     device: 'tablet'
                 }
             ])            
@@ -138,7 +143,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `column-gap: ${gap_phone}` : `row-gap: ${gap_phone}`,
+                    declaration: layout === 'row' ? `column-gap: ${gap_phone};` : `row-gap: ${gap_phone};`,
                     device: 'phone'
                 }
             ])            
