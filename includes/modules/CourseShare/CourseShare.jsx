@@ -57,10 +57,26 @@ class CourseShare extends Component {
         //selectors
         const wrapper = '%%order_class%% .tutor-social-share';
         const icon_wrapper_selector = '%%order_class%% .social-share-wrap';
-        const label_selector = '%%order_class%% .tutor-social-share > label';
+        const icon_selector = '%%order_class%% .social-share-wrap i';
+        //const label_selector = '%%order_class%% .tutor-social-share > label';
 
         //props
         const display = 'flex';
+        const color = props.color;
+        const icon_color = props.icon_color;
+        const shape_color = props.shape_color;
+        const icon_padding = props.icon_padding;
+
+        const icon_size = props.icon_size;
+        const is_responsive_icon_size = props.icon_size_last_edited && props.icon_size_last_edited.startsWith('on');
+        const icon_size_tablet = is_responsive_icon_size && props.icon_size_tablet ? props.icon_size_tablet : icon_size;
+        const icon_size_phone = is_responsive_icon_size && props.icon_size_phone ? props.icon_size_phone : icon_size;
+
+        const icon_spacing = props.icon_spacing;
+        const is_responsive_icon_spacing = props.icon_spacing_last_edited && props.icon_spacing_last_edited.startsWith('on');
+        const icon_spacing_tablet = is_responsive_icon_spacing && props.icon_spacing_tablet ? props.icon_spacing_tablet : icon_spacing;
+        const icon_spacing_phone = is_responsive_icon_spacing && props.icon_spacing_phone ? props.icon_spacing_phone : icon_spacing;
+
         let alignment = props.alignment;
 
         if(alignment === 'left') {
@@ -96,7 +112,7 @@ class CourseShare extends Component {
         } else {
             alignment_phone = 'flex-start';
         }
-        
+
         //set styles 
         additionalCss.push([
             {
@@ -139,6 +155,130 @@ class CourseShare extends Component {
                 }
             ]);            
         }
+
+        /**
+         * official social icon
+         * set color & background color
+         */
+
+        //fb icon style
+        additionalCss.push([
+            {
+                selector: `${icon_wrapper_selector} .tutor-icon-facebook`,
+                declaration: `color: #fff; background-color: #3b5998;`
+            }
+        ]);
+        //linkedin icon style
+        additionalCss.push([
+            {
+                selector: `${icon_wrapper_selector} .tutor-icon-linkedin`,
+                declaration: `color:#fff;background-color:#0077b5;`
+            }
+        ]);
+        //twitter icon style
+        additionalCss.push([
+            {
+                selector: `${icon_wrapper_selector} .tutor-icon-twitter`,
+                declaration: `color:#fff;background-color:#1da1f2;`
+            }
+        ]);
+        //tumblr icon style
+        additionalCss.push([
+            {
+                selector: `${icon_wrapper_selector} .tutor-icon-tumblr`,
+                declaration: `color:#fff;background-color:#000;`
+            }
+        ]);
+
+        //custom color
+        if(color === 'custom') {
+            if('' !== icon_color) {
+                additionalCss.push([
+                    {
+                        selector: `${icon_wrapper_selector} .tutor-icon-tumblr, ${icon_wrapper_selector} .tutor-icon-facebook, ${icon_wrapper_selector} .tutor-icon-linkedin, ${icon_wrapper_selector} .tutor-icon-twitter`,
+                        declaration: `color: ${icon_color} !important;`
+                    }
+                ]);            
+            }
+            if('' !== shape_color) {
+                additionalCss.push([
+                    {
+                        selector: `${icon_wrapper_selector} .tutor-icon-tumblr, ${icon_wrapper_selector} .tutor-icon-facebook, ${icon_wrapper_selector} .tutor-icon-linkedin, ${icon_wrapper_selector} .tutor-icon-twitter`,
+                        declaration: `background-color: ${shape_color}  !important;`
+                    }
+                ]);            
+            }
+        }
+        if(icon_padding) {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: `padding: ${icon_padding} !important;`
+                }
+            ]);            
+        }
+        //set icon display flex
+        additionalCss.push([
+            {
+                selector: icon_wrapper_selector,
+                declaration: `display: flex !important;`
+            }
+        ]);   
+        //icon spacing
+        if(icon_spacing) {
+            additionalCss.push([
+                {
+                    selector: icon_wrapper_selector,
+                    declaration: `column-gap: ${icon_spacing}!important;`
+                }
+            ]);              
+        }
+        if(icon_spacing_tablet) {
+            additionalCss.push([
+                {
+                    selector: icon_wrapper_selector,
+                    declaration: `column-gap: ${icon_spacing_tablet}!important;`,
+                    device: 'tablet'
+                }
+            ]);              
+        }
+        if(icon_spacing_phone) {
+            additionalCss.push([
+                {
+                    selector: icon_wrapper_selector,
+                    declaration: `column-gap: ${icon_spacing_phone}!important;`,
+                    device: 'phone'
+                }
+            ]);              
+        }
+
+        //icon sizing
+        if(icon_size) {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: `font-size: ${icon_size}!important;`
+                }
+            ]);              
+        }
+        if(icon_size_tablet) {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: `font-size: ${icon_size_tablet}!important;`,
+                    device: 'tablet'
+                }
+            ]);              
+        }
+        if(icon_size_phone) {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: `font-size: ${icon_size_phone}!important;`,
+                    device: 'phone'
+                }
+            ]);              
+        }
         //set styles end
         return additionalCss;
     }
@@ -150,6 +290,7 @@ class CourseShare extends Component {
         }
         return (
             <Fragment>
+                { console.log(this.props) }
                 { this.template(this.props) }
             </Fragment>
         );

@@ -66,15 +66,30 @@ class TutorCourseShare extends ET_Builder_Module {
 					'hide_text_align'	=> true,
 				),
 			),
-			'borders'    => array(
-				'default_unit'		=> 'px',	
-				'default'            => array(),
-				'image'              => array(
-					'css'             => array(
+			// 'borders'    => array(
+			
+			// 	'default'            => array(),
+			// 	'image'              => array(
+			// 		'css'             => array(
+			// 			'main' => array(
+			// 				'border_radii'  => $icon_selector,
+			// 				'border_styles' => $icon_selector,
+			// 			),
+			// 		),
+			// 		'tab_slug'        => 'advanced',
+			// 		'toggle_slug'     => 'icons',
+			// 	),
+			// ),	
+			'borders'        => array(
+				'icons' => array(
+					'css'      => array(
 						'main' => array(
-							'border_radii'  => $icon_selector,
+							'border_radii'	=>  "{$this->main_css_element} .tutor-social-share-wrap i",//$icon_selector,
 							'border_styles' => $icon_selector,
 						),
+					),
+					'defaults' => array(
+						'border_radii' => 'on|3px|3px|3px|3px',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'icons',
@@ -190,13 +205,28 @@ class TutorCourseShare extends ET_Builder_Module {
 					'step'	=> 1
 				),
 				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons',			
+				'toggle_slug'		=> 'icons',		
+				'mobile_options'	=> true	
 			),
+			//box_padding
+			// 'icon_padding'	=> array(
+			// 	'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+			// 	'type'			=> 'custom_padding',
+			// 	'default'		=> '10px|10px|10px|10px',
+			// 	'default_unit'	=> 'px',
+			// 	'tab_slug'		=> 'advanced',
+			// 	'toggle_slug'	=> 'icons'
+			// ),
 			'icon_padding'	=> array(
 				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
-				'type'			=> 'custom_padding',
-				'default'		=> '10|10|10|10',
+				'type'			=> 'range',
+				'default'		=> '10px',
 				'default_unit'	=> 'px',
+				'range_settings'	=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'icons'
 			),
@@ -261,10 +291,27 @@ class TutorCourseShare extends ET_Builder_Module {
 	public function render($attrs, $content = null, $render_slug) {
 		//selectors
         $wrapper 				= '%%order_class%% .tutor-social-share';
-        $icon_wrapper_selector	= '%%order_class%% .social-share-wrap';
+        $icon_wrapper_selector	= '%%order_class%% .tutor-social-share-wrap';
+		$icon_selector			= '%%order_class%% .tutor-social-share-wrap i';
         $label_selector			= '%%order_class%% .tutor-social-share > label';
 		
 		//props
+		$alignment 				= $this->props['alignment'];
+		$alignment_tablet 		= isset($this->props['alignment_tablet']) ? $this->props['alignment_tablet'] : $alignment;
+		$alignment_phone 		= isset($this->props['alignment_phone']) ? $this->props['alignment_phone'] : $alignment;
+		$color					= $this->props['color'];
+		$icon_color				= $this->props['icon_color'];
+		$shape_color			= $this->props['shape_color'];
+
+		$icon_size				= $this->props['icon_size'];
+		$icon_size_tablet		= $this->props['icon_size_tablet'];
+		$icon_size_phone		= $this->props['icon_size_phone'];
+
+		$icon_padding			= $this->props['icon_padding'];
+
+		$icon_spacing			= $this->props['icon_spacing'];
+		$icon_spacing_tablet	= $this->props['icon_spacing_tablet'];
+		$icon_spacing_phone		= $this->props['icon_spacing_phone'];
 
 		//set styles
 		ET_Builder_Element::set_style(
@@ -274,6 +321,174 @@ class TutorCourseShare extends ET_Builder_Module {
 				'declaration'	=> 'display:flex;column-gap: 10px;'
 			)
 		);
+		/**
+		 * set social icon official color
+		 */
+
+		//fb icon styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook',
+				'declaration'	=> 'color: #fff; background-color: #3b5998;'
+			)
+		);
+
+		//twitter icon styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-twitter',
+				'declaration'	=> 'color: #fff; background-color: #1da1f2;'
+			)
+		);
+
+		//linkedin icon styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-linkedin',
+				'declaration'	=> 'color: #fff; background-color: #0077b5;'
+			)
+		);
+		//tumblr icon styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-tumblr',
+				'declaration'	=> 'color: #fff; background-color: #000;'
+			)
+		);
+
+		if( $color === 'custom' ) {
+		 //if custom color 
+			if( '' !== $icon_color ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook , '. $icon_wrapper_selector. ' .tutor-icon-twitter , '. $icon_wrapper_selector.' .tutor-icon-linkedin , '. $icon_wrapper_selector.' .tutor-icon-tumblr',
+						'declaration'	=> sprintf(
+							'color: %1$s !important;',
+							esc_html($icon_color)
+						)
+					)
+				);
+			}
+			if( '' !== $shape_color ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook , '. $icon_wrapper_selector. ' .tutor-icon-twitter , '. $icon_wrapper_selector.' .tutor-icon-linkedin , '. $icon_wrapper_selector.' .tutor-icon-tumblr',
+						'declaration'	=> sprintf(
+							'background-color: %1$s !important;',
+							esc_html($shape_color)
+						)
+					)
+				);
+			}			
+		}
+
+		//icon size
+		if( '' !== $icon_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s !important;',
+						$icon_size
+					)
+				)
+			);
+		}
+		if( '' !== $icon_size_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s !important;',
+						$icon_size_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);
+		}
+		if( '' !== $icon_size_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s !important;',
+						$icon_size_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);
+		}
+
+		//icon spacing
+		//icon display flex default
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' 		=> $icon_wrapper_selector,
+				'declaration'	=> 'display: flex !important;'
+			)
+		);
+		if( '' !== $icon_spacing ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s !important;',
+						$icon_spacing
+					)
+				)
+			);			
+		}
+		if( '' !== $icon_spacing_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s !important;',
+						$icon_spacing_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);			
+		}
+		if( '' !== $icon_spacing_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s !important;',
+						$icon_spacing_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);			
+		}
+
+		//icon padding
+		if( '' !== $icon_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'padding: %1$s !important;',
+						$icon_padding
+					)
+				)
+			);			
+		}
 		//set styles end
 
 		$output = self::get_content($this->props);
