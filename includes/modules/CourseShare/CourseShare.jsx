@@ -356,7 +356,6 @@ class CourseShare extends Component {
         }
         return (
             <Fragment>
-                { console.log(this.props) }
                 { this.template(this.props) }
             </Fragment>
         );
