@@ -27,18 +27,18 @@ class CourseShare extends Component {
 
                             { this.labelTemplate(props) }
 
-                            <div className="social-share-wrap">
+                            <div className="social-share-wrap tutor-social-share-wrap">
                                 <button className="s-facebook">
                                     <i className="tutor-icon-facebook"></i>
+                                </button>
+                                <button className="s-twitter">
+                                    <i className="tutor-icon-twitter"></i>
                                 </button>
                                 <button className="s-linkedin">
                                     <i className="tutor-icon-linkedin"></i>
                                 </button>
                                 <button className="s-tumblr">
                                     <i className="tutor-icon-tumblr"></i>
-                                </button>
-                                <button className="s-twitter">
-                                    <i className="tutor-icon-twitter"></i>
                                 </button>
                             </div>
                         </li>
@@ -64,8 +64,11 @@ class CourseShare extends Component {
         const display = 'flex';
         const color = props.color;
         const icon_color = props.icon_color;
+        const shape = props.shape;
         const shape_color = props.shape_color;
         const icon_padding = props.icon_padding;
+        const icon_hover_color = props.icon_hover_color;
+        const shape_hover_color = props.shape_hover_color;
 
         const icon_size = props.icon_size;
         const is_responsive_icon_size = props.icon_size_last_edited && props.icon_size_last_edited.startsWith('on');
@@ -76,6 +79,8 @@ class CourseShare extends Component {
         const is_responsive_icon_spacing = props.icon_spacing_last_edited && props.icon_spacing_last_edited.startsWith('on');
         const icon_spacing_tablet = is_responsive_icon_spacing && props.icon_spacing_tablet ? props.icon_spacing_tablet : icon_spacing;
         const icon_spacing_phone = is_responsive_icon_spacing && props.icon_spacing_phone ? props.icon_spacing_phone : icon_spacing;
+
+        let icon_border_raidus = props.border_radii_icons.split("|");
 
         let alignment = props.alignment;
 
@@ -279,6 +284,67 @@ class CourseShare extends Component {
                 }
             ]);              
         }
+
+        //icon border raidus 
+        if(icon_border_raidus) {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: `border-raidus: ${icon_border_raidus[1]} ${icon_border_raidus[2]} ${icon_border_raidus[3]} ${icon_border_raidus[4]} !important;`
+                }
+            ]);
+        }
+
+        //some space on tutor social icon wrapper
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-social-share-wrap',
+                declaration: 'padding: 20px 0 20px;'
+            }
+        ]);
+
+        //icon shape style as shape dropdown
+        if(shape === 'rounded') {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: 'border-radius: 10%;'
+                }
+            ]);
+        } else if(shape === 'circle') {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: 'border-radius: 100%;'
+                }
+            ]);            
+        } else if(shape === 'square') {
+            additionalCss.push([
+                {
+                    selector: icon_selector,
+                    declaration: 'border-radius: none;'
+                }
+            ]);              
+        }
+
+        //icon & shape hover color
+        if(icon_hover_color) {
+            additionalCss.push([
+                {
+                    selector: `${icon_selector}:hover`,
+                    declaration: `color: ${icon_hover_color} !important;`
+                }
+            ]);              
+        }
+        if(shape_hover_color) {
+            additionalCss.push([
+                {
+                    selector: `${icon_selector}:hover`,
+                    declaration: `background-color: ${shape_hover_color} !important;`
+                }
+            ]);              
+        }
+
         //set styles end
         return additionalCss;
     }

@@ -38,12 +38,15 @@ class TutorCourseShare extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'label' => array(
-						'title'    => esc_html__('Label', 'tutor-divi-modules'),
+					'label'			=> array(
+						'title'	=> esc_html__('Label', 'tutor-divi-modules'),
 					),
-					'icons' => array(
-						'title'    => esc_html__('Icons', 'tutor-divi-modules'),
+					'icons' 		=> array(
+						'title' => esc_html__('Icons', 'tutor-divi-modules'),
 					),
+					'icon_hover'	=> array(
+						'title'	=> esc_html('Icon Hover', 'tutor-divi-modules' )	
+					)
 				),
 			),
 		);
@@ -66,36 +69,22 @@ class TutorCourseShare extends ET_Builder_Module {
 					'hide_text_align'	=> true,
 				),
 			),
-			// 'borders'    => array(
+			'borders'    => array(
 			
-			// 	'default'            => array(),
-			// 	'image'              => array(
-			// 		'css'             => array(
-			// 			'main' => array(
-			// 				'border_radii'  => $icon_selector,
-			// 				'border_styles' => $icon_selector,
-			// 			),
-			// 		),
-			// 		'tab_slug'        => 'advanced',
-			// 		'toggle_slug'     => 'icons',
-			// 	),
-			// ),	
-			'borders'        => array(
-				'icons' => array(
-					'css'      => array(
+				'default'            => array(),
+				'icons'              => array(
+					'css'             	=> array(
 						'main' => array(
-							'border_radii'	=>  "{$this->main_css_element} .tutor-social-share-wrap i",//$icon_selector,
-							'border_styles' => $icon_selector,
+							'border_radii'  => "%%order_class%% .tutor-social-share-wrap i",//"{$this->main_css_element} .tutor-social-share-wrap i",
+							'border_styles' => "%%order_class%% .tutor-social-share-wrap i",
 						),
-					),
-					'defaults' => array(
-						'border_radii' => 'on|3px|3px|3px|3px',
+						'important'		=> true
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'icons',
 				),
 			),	
-				
+
 			'text'				=> false,
 		);
 	}
@@ -208,15 +197,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'toggle_slug'		=> 'icons',		
 				'mobile_options'	=> true	
 			),
-			//box_padding
-			// 'icon_padding'	=> array(
-			// 	'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
-			// 	'type'			=> 'custom_padding',
-			// 	'default'		=> '10px|10px|10px|10px',
-			// 	'default_unit'	=> 'px',
-			// 	'tab_slug'		=> 'advanced',
-			// 	'toggle_slug'	=> 'icons'
-			// ),
+
 			'icon_padding'	=> array(
 				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
 				'type'			=> 'range',
@@ -244,6 +225,27 @@ class TutorCourseShare extends ET_Builder_Module {
 				'toggle_slug'		=> 'icons',	
 				'mobile_options'	=> true		
 			),
+
+			//icon hover advanced tab
+			'icon_hover_color'	=> array(
+				'label'				=> esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+				'type'				=> 'color-alpha',
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'icon_hover',
+				'show_if'			=> array(
+					'color'		=> 'custom'
+				)
+			),
+			'shape_hover_color'	=> array(
+				'label'				=> esc_html__( 'Shape Color', 'tutor-divi-modules' ),
+				'type'				=> 'color-alpha',
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'icon_hover',
+				'show_if'			=> array(
+					'color'		=> 'custom'
+				)				
+			),		
+			
 		);
 
 		return $fields;
@@ -301,7 +303,11 @@ class TutorCourseShare extends ET_Builder_Module {
 		$alignment_phone 		= isset($this->props['alignment_phone']) ? $this->props['alignment_phone'] : $alignment;
 		$color					= $this->props['color'];
 		$icon_color				= $this->props['icon_color'];
+		$shape					= $this->props['shape'];
 		$shape_color			= $this->props['shape_color'];
+
+		$icon_hover_color		= $this->props['icon_hover_color'];
+		$shape_hover_color		= $this->props['shape_hover_color'];
 
 		$icon_size				= $this->props['icon_size'];
 		$icon_size_tablet		= $this->props['icon_size_tablet'];
@@ -489,6 +495,70 @@ class TutorCourseShare extends ET_Builder_Module {
 				)
 			);			
 		}
+		//set space on tutor social icon wrapper
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' 		=> $icon_wrapper_selector,
+				'declaration'	=> 'padding:20px 0px 20px;'
+			)
+		);		
+		
+		//set icon shape style as shape dropdown
+		if( $shape === 'rounded' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector,
+					'declaration'	=> 'border-radius: 10%;'
+				)
+			);				
+		} else if( $shape === 'circle' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector,
+					'declaration'	=> 'border-radius: 100%;'
+				)
+			);
+		} else if( $shape === 'square' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector,
+					'declaration'	=> 'border-radius: none;'
+				)
+			);			
+		}
+
+		//icon & shape hover color
+		if( '' !== $icon_hover_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector.':hover',
+					'declaration'	=> sprintf(
+						'color: %1$s !important;',
+						esc_html( $icon_hover_color )	
+					)
+				)
+			);				
+		}
+
+		if( '' !== $shape_hover_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $icon_selector.':hover',
+					'declaration'	=> sprintf(
+						'background-color: %1$s !important;',
+						esc_html( $shape_hover_color )	
+					)
+				)
+			);				
+		}
+
 		//set styles end
 
 		$output = self::get_content($this->props);
