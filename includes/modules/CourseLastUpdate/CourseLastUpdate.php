@@ -51,7 +51,7 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 					'toggle_slug'  		=> 'update_label_value_style',
 					'sub_toggle'		=> 'label_subtoggle',
 					'hide_text_align'	=> true,
-					'hide_line_height'	=> true
+				
 				),
 
 				'value_style' => array(
@@ -62,7 +62,7 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 					'toggle_slug'  	=> 'update_label_value_style',
 					'sub_toggle'	=> 'value_subtoggle',
 					'hide_text_align'	=> true,
-					'hide_line_height'	=> true
+					
 				),
 			),
 
