@@ -229,6 +229,250 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render($attrs, $content = null, $render_slug) {
+		//selectors
+		$wrapper = '%%order_class%% .tutor-single-course-meta-last-update';
+		$label_selector = '%%order_class%% .tutor-course-level > label';
+		$value_selector = '%%order_class%% .tutor-course-level > span';
+
+		//props
+		$layout			= $this->props['layout'];
+		$layout_tablet	= isset( $this->props['layout_tablet'] ) && '' !== $this->props['layout_tablet'] ? $this->props['layout_tablet'] : $layout;
+		$layout_phone	= isset( $this->props['layout_phone'] ) && '' !== $this->props['layout_phone'] ? $this->props['layout_phone'] : $layout;
+
+		$alignment		= $this->props['alignment'];
+		if( $alignment === 'left' ) {
+			$alignment = 'flex-start';
+		} else if( $alignment === 'center') {
+			$alignment = 'center';
+		} else {
+			$alignment = 'flex-end';
+		}
+		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? $this->props['alignment_tablet'] : $alignment;
+		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;
+
+		$gap			= $this->props['gap'];
+		$gap_tablet		= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? $this->props['gap_tablet'] : $gap;
+		$gap_phone		= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? $this->props['gap_phone'] : $gap;
+
+		$display		= 'flex';
+
+		//set styles
+		if( '' !== $display ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'display: %1$s;',
+						esc_html($display)
+					)
+				)
+			);			
+		}
+		//gaping for desktop
+		if( '' !== $gap && $layout == 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						esc_html( $gap ) 
+					)
+				)				
+			);
+		} 
+		if ( '' !== $gap && $layout == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						esc_html( $gap ) 
+					)
+				)				
+			);
+		}
+
+		//gaping for tablet
+		if( '' !== $gap_tablet && $layout_tablet == 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						esc_html( $gap_tablet ) 
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)				
+			);
+		} 
+		if ( '' !== $gap_tablet && $layout_tablet == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						esc_html( $gap_tablet ) 
+					)
+				)				
+			);
+		}
+		//gaping for phone
+		if( '' !== $gap_phone && $layout_phone == 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						esc_html( $gap_phone ),
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		} 
+		if ( '' !== $gap_phone && $layout_phone == 'column' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						esc_html( $gap_phone ) 
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		}
+
+		//layout style
+		if( '' !== $layout ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'flex-direction: %1$s;',
+						esc_html( $layout )
+					)
+				)				
+			);
+		}
+		if( '' !== $layout_tablet ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'flex-direction: %1$s;',
+						esc_html( $layout_tablet )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)				
+			);
+		}
+		if( '' !== $layout_phone ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'flex-direction: %1$s;',
+						esc_html( $layout_phone )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		}
+
+		/**
+		 * if layout row set prop justify-content
+		 * if layout column set prop align-items
+		 */
+		if( '' !== $alignment && $layout === 'row' ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $wrapper,
+						'declaration'	=> sprintf(
+							'justify-content: %1$s;',
+							esc_html( $alignment )
+						)
+					)				
+				);
+		}
+		if( '' !== $alignment && $layout === 'column' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'align-items: %1$s;',
+						esc_html( $alignment )
+					)
+				)				
+			);
+		}	
+		
+		if( '' !== $alignment_tablet && $layout_tablet === 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s;',
+						esc_html( $alignment_tablet )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)				
+			);
+		}
+		if( '' !== $alignment_tablet && $layout_tablet === 'column' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'align-items: %1$s;',
+						esc_html( $alignment_tablet )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)				
+			);
+		}
+
+		if( '' !== $alignment_phone && $layout_phone === 'row' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s;',
+						esc_html( $alignment_phone )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		}
+		if( '' !== $alignment_phone && $layout_phone === 'column' ) { 
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'align-items: %1$s;',
+						esc_html( $alignment_phone )
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)				
+			);
+		}
+		
+		//set styles end
 
 		$output = self::get_content($this->props);
 
