@@ -177,7 +177,7 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 	/**
 	 * return dependent props for total enroll
 	 */
-	public function get_props( $args=[] ) {
+	public  static function get_props( $args=[] ) {
 		$course_id = $args['course'];
 		$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course( $course_id );
 		return $total_enrolled;

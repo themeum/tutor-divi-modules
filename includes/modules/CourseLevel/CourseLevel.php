@@ -186,7 +186,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 	 * computed value
 	 * @return string | array course level
 	 */
-	public function get_props( $args = [] ) {
+	public static function get_props( $args = [] ) {
 		$course_id = $args['course'];
 		$disable_course_level = get_tutor_option('disable_course_level');
 		$level = get_tutor_course_level( $course_id ) ? get_tutor_course_level( $course_id ) : __('All Level', 'tutor-divi-modules');
