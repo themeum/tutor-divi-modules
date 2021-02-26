@@ -107,7 +107,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `justify-content: ${alignment_tablet};` : `align-items: ${alignment_tablet};`,
+                    declaration: layout_tablet === 'row' ? `justify-content: ${alignment_tablet};` : `align-items: ${alignment_tablet};`,
                     device: 'tablet'
                 }
             ])
@@ -116,7 +116,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `justify-content: ${alignment_phone};` : `align-items: ${alignment_phone};`,
+                    declaration: layout_phone === 'row' ? `justify-content: ${alignment_phone};` : `align-items: ${alignment_phone};`,
                     device: 'phone'
                 }
             ])
@@ -134,7 +134,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `column-gap: ${gap_tablet};` : `row-gap: ${gap_tablet};`,
+                    declaration: layout_tablet === 'row' ? `column-gap: ${gap_tablet};` : `row-gap: ${gap_tablet};`,
                     device: 'tablet'
                 }
             ])            
@@ -143,7 +143,7 @@ class CourseTotalEnroll extends Component {
             additionalCss.push([
                 {
                     selector: wrapper,
-                    declaration: layout === 'row' ? `column-gap: ${gap_phone};` : `row-gap: ${gap_phone};`,
+                    declaration: layout_phone === 'row' ? `column-gap: ${gap_phone};` : `row-gap: ${gap_phone};`,
                     device: 'phone'
                 }
             ])            
