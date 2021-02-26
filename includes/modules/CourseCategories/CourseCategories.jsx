@@ -6,8 +6,12 @@ class CourseCategories extends Component {
     static slug = 'tutor_course_categories';
 
     categories(categories) {
+        let count = 1;
+       
         const cat = categories.map( (category) => {
-            return <a href={category.term_link}> { category.name } </a>
+            let comma = categories.length > count ? ',' : '' ;
+            count += 1;
+            return <a href={category.term_link}> { category.name }{comma} </a>
         });
         return cat;
     }
