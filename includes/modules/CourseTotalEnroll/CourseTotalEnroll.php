@@ -223,8 +223,9 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 
 		//props
 		$layout			= $this->props['layout'];
-		$layout_tablet	= isset( $this->props['layout_tablet'] ) ? $this->props['layout_tablet'] : $layout;
-		$layout_phone	= isset( $this->props['layout_phone'] ) ? $this->props['layout_phone'] : $layout;
+		$layout_tablet	= isset( $this->props['layout_tablet'] ) && '' !== $this->props['layout_tablet'] ? $this->props['layout_tablet'] : $layout;
+		$layout_phone	= isset( $this->props['layout_phone'] ) && '' !== $this->props['layout_phone'] ? $this->props['layout_phone'] : $layout;
+
 
 		$alignment		= $this->props['alignment'];
 		if( $alignment === 'left' ) {
@@ -235,12 +236,12 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 			$alignment = 'flex-end';
 		}
 
-		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) ? $this->props['alignment_tablet'] : $alignment;
-		$alignment_phone	= isset( $this->props['alignment_phone'] ) ? $this->props['alignment_phone'] : $alignment;
+		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? $this->props['alignment_tablet'] : $alignment;
+		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;
 
 		$gap			= $this->props['gap'];
-		$gap_tablet		= isset( $this->props['gap_tablet'] ) ? $this->props['gap_tablet'] : $gap;
-		$gap_phone		= isset( $this->props['gap_phone'] ) ? $this->props['gap_phone'] : $gap;
+		$gap_tablet		= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? $this->props['gap_tablet'] : $gap;
+		$gap_phone		= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? $this->props['gap_phone'] : $gap;
 
 		$display		= 'flex';
 
