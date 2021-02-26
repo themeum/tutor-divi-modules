@@ -31,25 +31,53 @@ class TutorCourseCategories extends ET_Builder_Module {
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
 		$this->settings_modal_toggles = array(
-			'general'  => array(
-				'toggles' => array(
+			'general'	=> array(
+				'toggles'	=> array(
 					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
 			),
+			// 'advanced'	=> array(
+			// 	'toggles'	=> array(
+			// 		'normal_style'	=> array(
+			// 			'title'			=> esc_html__( 'Normals', 'tutor-divi-modules' )
+			// 		),
+			// 		'hover_style'	=> array(
+			// 			'title'			=> esc_html__( 'Hovers', 'tutor-divi-modules' )
+			// 		),
+			// 	)
+			// )
 		);
 
 		$selector = '%%order_class%% .tutor-single-course-meta-categories a';
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'text' => array(
+				'normal_style' => array(
+					'css'          		=> array(
+						'main' => $selector,
+					),
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'normal_hover_style',
+					'sub_toggle'		=> 'normal_subtoggle',
+					'hide_text_align'	=> true,
+					'hide_line_height'	=> true
+				),
+
+				'hover_style' => array(
 					'css'          => array(
 						'main' => $selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'tab_slug'     	=> 'advanced',
+					'toggle_slug'  	=> 'normal_hover_style',
+					'sub_toggle'	=> 'hover_subtoggle',
+					'hide_text_align'	=> true,
+					'hide_line_height'	=> true
 				),
 			),
-			'button'         => false,
+			'button'			=> false,
+			'max_width'			=> false,
+			'margin_padding'	=> false,
+			'borders'			=> false,
+			'text'				=> false
 		);
 	}
 
@@ -83,9 +111,70 @@ class TutorCourseCategories extends ET_Builder_Module {
 					'course',
 				),
 			),
+			//general tab settings content toggle
+			'layout'		=> array(
+				'label'				=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+				'type'				=> 'select',
+				'option_category'	=> 'layout',
+				'options'			=> array(
+					'row'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
+					'column'	=> esc_html__( 'Up', 'tutor-divi-modules' )
+				),
+				'default'			=> 'row',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'alignment'		=> array(
+				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'type'				=> 'text_align',
+				'option_category'	=> 'configuration',
+				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'			=> 'left',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'gap'			=> array(
+				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'option_category'	=> 'layout',
+				'default_unit'		=> 'px',
+				'default'			=> '5px',
+				'range_settings'	=> array(
+					'min'		=> '1',
+					'max'		=> '100',
+					'step'		=> '1'
+				),
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),				
 		);
 
 		return $fields;
+	}
+
+		/**
+	 * custom tabs for label & value
+	 */
+	public function get_settings_modal_toggles () {
+		return array(
+			'advanced'	=> array(
+				'toggles'	=> array(
+					'normal_hover_style'		=> array(
+						'priority'		=> 24,
+						'sub_toggles'	=> array(
+							'normal_subtoggle'	=> array(
+								'name'	=> esc_html__('Normal', 'tutor-divi-modules')
+							),
+							'hover_subtoggle'	=> array(
+								'name'	=> esc_html__('Hover', 'tutor-divi-modules')
+							),
+						),
+						'tabbed_subtoggles' => true,
+						'title' => esc_html__('Style', 'tutor-divi-modules'),
+					),
+				)
+			)
+		);
 	}
 
 	/**
