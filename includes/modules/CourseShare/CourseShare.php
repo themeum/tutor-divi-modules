@@ -299,8 +299,41 @@ class TutorCourseShare extends ET_Builder_Module {
 		
 		//props
 		$alignment 				= $this->props['alignment'];
+
+		if( $alignment === 'left' ) {
+			$alignment = 'flex-start';
+		} else if( $alignment === 'center' ) {
+			$alignment = 'center';
+		} else if( $alignment === 'right' ) {
+			$alignment = 'flex-end';
+		} else {
+			$alignment = 'flex-start';
+		}
+
 		$alignment_tablet 		= isset($this->props['alignment_tablet']) ? $this->props['alignment_tablet'] : $alignment;
+
+		if( $alignment_tablet === 'left' ) {
+			$alignment_tablet = 'flex-start';
+		} else if( $alignment_tablet === 'center' ) {
+			$alignment_tablet = 'center';
+		} else if( $alignment_tablet === 'right' ) {
+			$alignment_tablet = 'flex-end';
+		} else {
+			$alignment_tablet = 'flex-start';
+		}
+
 		$alignment_phone 		= isset($this->props['alignment_phone']) ? $this->props['alignment_phone'] : $alignment;
+
+		if( $alignment_phone === 'left' ) {
+			$alignment_phone = 'flex-start';
+		} else if( $alignment_phone === 'center' ) {
+			$alignment_phone = 'center';
+		} else if( $alignment_phone === 'right' ) {
+			$alignment_phone = 'flex-end';
+		} else {
+			$alignment_phone = 'flex-start';
+		}
+		
 		$color					= $this->props['color'];
 		$icon_color				= $this->props['icon_color'];
 		$shape					= $this->props['shape'];
@@ -558,6 +591,46 @@ class TutorCourseShare extends ET_Builder_Module {
 				)
 			);				
 		}
+
+		//share alignment
+		if( '' !== $alignment ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $wrapper,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s !important;',
+						esc_html( $alignment )	
+					)
+				)
+			);				
+		}
+		if( '' !== $alignment_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $wrapper,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s !important;',
+						esc_html( $alignment_tablet )	
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);				
+		}
+		if( '' !== $alignment_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> $wrapper,
+					'declaration'	=> sprintf(
+						'justify-content: %1$s !important;',
+						esc_html( $alignment_phone )	
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);				
+		}		
 
 		//set styles end
 
