@@ -16,6 +16,7 @@ import CourseBenefits from './CourseBenefits/CourseBenefits';
 import CourseList from './CourseList/CourseList'
 import CourseCarousel from './CourseCarousel/CourseCarousel';
 import CourseStatus from './CourseStatus/CourseStatus';
+import CoursePrice from './CoursePrice/CoursePrice';
 
 export default [
     CourseTitle,
@@ -35,5 +36,6 @@ export default [
     CourseBenefits,
     CourseList,
     CourseCarousel,
-    CourseStatus
+    CourseStatus,
+    CoursePrice
 ];

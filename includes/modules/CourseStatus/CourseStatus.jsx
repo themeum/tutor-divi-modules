@@ -7,7 +7,7 @@ class CourseStatus extends Component {
     render() {
         return (
             <Fragment>
-                <h3>Hello</h3>
+                <h3>Course Status</h3>
             </Fragment>            
         );
     }
