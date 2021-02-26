@@ -36,16 +36,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
 			),
-			// 'advanced'	=> array(
-			// 	'toggles'	=> array(
-			// 		'normal_style'	=> array(
-			// 			'title'			=> esc_html__( 'Normals', 'tutor-divi-modules' )
-			// 		),
-			// 		'hover_style'	=> array(
-			// 			'title'			=> esc_html__( 'Hovers', 'tutor-divi-modules' )
-			// 		),
-			// 	)
-			// )
+
 		);
 
 		$selector = '%%order_class%% .tutor-single-course-meta-categories a';

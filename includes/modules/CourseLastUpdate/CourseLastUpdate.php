@@ -38,19 +38,41 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 			),
 		);
 		
-		$selector = '%%order_class%% .tutor-single-course-meta-last-update';
+		$label_selector = '%%order_class%% .tutor-single-course-meta-last-update > label';
+		$value_selector = '%%order_class%% .tutor-single-course-meta-last-update > span';
+
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'text' => array(
-					'css'          => array(
-						'main' => $selector,
+				'label_style' => array(
+					'css'          		=> array(
+						'main' => $label_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'update_label_value_style',
+					'sub_toggle'		=> 'label_subtoggle',
+					'hide_text_align'	=> true,
+					'hide_line_height'	=> true
+				),
+
+				'value_style' => array(
+					'css'          => array(
+						'main' => $value_selector,
+					),
+					'tab_slug'     	=> 'advanced',
+					'toggle_slug'  	=> 'update_label_value_style',
+					'sub_toggle'	=> 'value_subtoggle',
+					'hide_text_align'	=> true,
+					'hide_line_height'	=> true
 				),
 			),
-			'button'         => false,
+
+			'button'			=> false,
+			'max_width'			=> false,
+			'margin_padding'	=> false,
+			'borders'			=> false,
+			'text'				=> false
 		);
+
 	}
 
 	/**
@@ -83,9 +105,77 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 					'course',
 				),
 			),
+			//general tab settings content toggle
+			'update_label'	=> array(
+				'label'			=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'type'			=> 'text',
+				'default'		=> esc_html__( 'Last Updated:', 'tutor-divi-modules' ),
+				'toggle_slug'	=> 'main_content'
+			),
+			'layout'		=> array(
+				'label'				=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+				'type'				=> 'select',
+				'option_category'	=> 'layout',
+				'options'			=> array(
+					'row'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
+					'column'	=> esc_html__( 'Up', 'tutor-divi-modules' )
+				),
+				'default'			=> 'row',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'alignment'		=> array(
+				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'type'				=> 'text_align',
+				'option_category'	=> 'configuration',
+				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'			=> 'left',
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),
+			'gap'			=> array(
+				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'option_category'	=> 'layout',
+				'default_unit'		=> 'px',
+				'default'			=> '5px',
+				'range_settings'	=> array(
+					'min'		=> '1',
+					'max'		=> '100',
+					'step'		=> '1'
+				),
+				'toggle_slug'		=> 'main_content',
+				'mobile_options'	=> true
+			),	
+			
 		);
 
 		return $fields;
+	}
+
+	/**
+	 * custom tabs for label & value
+	 */
+	public function get_settings_modal_toggles () {
+		return array(
+			'advanced'	=> array(
+				'toggles'	=> array(
+					'update_label_value_style'		=> array(
+						'priority'		=> 24,
+						'sub_toggles'	=> array(
+							'label_subtoggle'	=> array(
+								'name'	=> esc_html__('Label', 'tutor-divi-modules')
+							),
+							'value_subtoggle'	=> array(
+								'name'	=> esc_html__('Value', 'tutor-divi-modules')
+							),
+						),
+						'tabbed_subtoggles' => true,
+						'title' => esc_html__('Style', 'tutor-divi-modules'),
+					),
+				)
+			)
+		);
 	}
 
 	/**
@@ -98,10 +188,12 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 		$markup = '';
 		if ($course) {
 			$last_update = esc_html(get_the_modified_date());
+			$update_label = esc_html( $args['update_label'] );
 			$disable_update_date = get_tutor_option('disable_course_update_date');
 			if (!$disable_update_date) {
 				$markup = '<div class="tutor-single-course-meta-last-update">';
-				$markup .= $last_update;
+				$markup .= '<label> '.$update_label.' </label>';
+				$markup .= '<span> '.$last_update.' </span>';
 				$markup .= '</div>';
 			}
 		}
