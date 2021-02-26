@@ -96,7 +96,7 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseLastUpdate',
-					'get_content',
+					'get_props',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -179,12 +179,29 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 	}
 
 	/**
+	 * get categories props
+	 * required args
+	 * @return string|array
+	 */
+	public static function get_props( $args = [] ) {
+		$course_id				= $args[ 'course' ];
+		$last_update 			= get_the_modified_date( $format = '', $post_id = $course_id);
+		$disable_update_date	= get_tutor_option('disable_course_update_date');	
+
+		return array(
+			'last_update'	=> $last_update,
+			'is_disable'	=> $disable_update_date
+		); 
+	}
+
+	/**
 	 * Get the tutor course author
 	 *
 	 * @return string
 	 */
 	public static function get_content($args = []) {
 		$course = Helper::get_course($args);
+		
 		$markup = '';
 		if ($course) {
 			$last_update = esc_html(get_the_modified_date());
