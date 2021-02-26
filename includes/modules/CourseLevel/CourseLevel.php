@@ -291,7 +291,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 		}
 
 		//gaping for tablet
-		if( '' !== $gap_tablet && $layout == 'row' ) { 
+		if( '' !== $gap_tablet && $layout_tablet == 'row' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -304,7 +304,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				)				
 			);
 		} 
-		if ( '' !== $gap_tablet && $layout == 'column' ) {
+		if ( '' !== $gap_tablet && $layout_tablet == 'column' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -317,7 +317,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 			);
 		}
 		//gaping for phone
-		if( '' !== $gap_phone && $layout == 'row' ) { 
+		if( '' !== $gap_phone && $layout_phone == 'row' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -330,7 +330,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				)				
 			);
 		} 
-		if ( '' !== $gap_phone && $layout == 'column' ) {
+		if ( '' !== $gap_phone && $layout_phone == 'column' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -413,7 +413,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 			);
 		}	
 		
-		if( '' !== $alignment_tablet && $layout === 'row' ) { 
+		if( '' !== $alignment_tablet && $layout_tablet === 'row' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -426,7 +426,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				)				
 			);
 		}
-		if( '' !== $alignment_tablet && $layout === 'column' ) { 
+		if( '' !== $alignment_tablet && $layout_tablet === 'column' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -440,7 +440,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 			);
 		}
 
-		if( '' !== $alignment_phone && $layout === 'row' ) { 
+		if( '' !== $alignment_phone && $layout_phone === 'row' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -453,7 +453,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				)				
 			);
 		}
-		if( '' !== $alignment_phone && $layout === 'column' ) { 
+		if( '' !== $alignment_phone && $layout_phone === 'column' ) { 
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
