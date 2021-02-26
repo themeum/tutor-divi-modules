@@ -102,7 +102,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseCategories',
-					'get_content',
+					'get_props',
 				),
 				'computed_depends_on' => array(
 					'course'
@@ -175,6 +175,25 @@ class TutorCourseCategories extends ET_Builder_Module {
 				)
 			)
 		);
+	}
+
+	/**
+	 * get categories props
+	 * required args
+	 * @return string|array
+	 */
+	public static function get_props( $args = [] ) {
+		$course_id		= $args[ 'course' ];
+		$categories 	= get_tutor_course_categories( $course_id );
+
+		/**
+		 * get term_link for each category
+		 * set link with term obj
+		 */
+		foreach($categories as $key => $category) {
+			$categories[$key]->term_link = get_term_link($category->term_id);
+		}	
+		return $categories; 
 	}
 
 	/**
