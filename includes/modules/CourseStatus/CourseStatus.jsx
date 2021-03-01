@@ -156,7 +156,6 @@ class CourseStatus extends Component {
         if(!this.props){
             return '';
         }
-        console.log(this.props)
         return (
             <Fragment>
             <div class="tutor-course-status">
