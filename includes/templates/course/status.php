@@ -1,3 +1,19 @@
-<div class="tutor-course-enrolled-info">
-    <?php tutor_course_completing_progress_bar(); ?>
+<?php
+$completed_count = tutor_utils()->get_course_completed_percent();
+
+do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
+?>
+
+<div class="tutor-course-status">
+    <h4 class="tutor-segment-title"><?php _e($args['status_label'], 'tutor-divi-modules'); ?></h4>
+    <div class="tutor-progress-bar-wrap">
+        <div class="tutor-progress-bar">
+            <div class="tutor-progress-filled" style="--tutor-progress-left: <?php echo $completed_count.'%;'; ?>"></div>
+        </div>
+        <span class="tutor-progress-percent"><?php echo $completed_count; ?>% <?php _e(' Complete', 'tutor-divi-modules')?></span>
+    </div>
 </div>
+
+<?php
+    do_action('tutor_course/single/enrolled/after/lead_info/progress_bar');
+?>
