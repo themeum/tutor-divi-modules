@@ -130,8 +130,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'label'				=> esc_html( 'Layout', 'tutor-divi-modules' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'list'		=> esc_html__( 'List', 'tutor-divi-modules' ), 
-					'inline'	=> esc_html__( 'Inline', 'tutor-divi-modules' ), 
+					'block'			=> esc_html__( 'List', 'tutor-divi-modules' ), 
+					'inline-block'	=> esc_html__( 'Inline', 'tutor-divi-modules' ), 
 				),
 				'default'			=> 'list',
 				'option_category'	=> 'layout',
@@ -228,7 +228,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 		$course_id	= $args['course'];
 		$materials	= tutor_course_material_includes( $course_id );
 		$props		= array(
-			'materials'	=> $materials
+			'materials'	=> count($materials) > 0 ? $materials : 0
 		);
 		return $materials;
 	}
