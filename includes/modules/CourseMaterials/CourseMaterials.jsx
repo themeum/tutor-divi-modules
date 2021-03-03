@@ -14,8 +14,12 @@ class CourseMaterials extends Component {
 
         //props
         const layout = props.layout;
+        const is_responsive_layout = props.layout_last_edited && props.layout_last_edited.startsWith("on");
+        const layout_tablet = is_responsive_layout && props.layout_tablet ? props.layout_tablet : layout;
+        const layout_phone = is_responsive_layout && props.layout_phone ? props.layout_phone : layout;
+
         const alignment = props.alignment;
-        const is_responsive_alignment = props.alignment_last_edit && props.alignment_last_edit.startsWith("on");
+        const is_responsive_alignment = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");
         const alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : alignment;
         const alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : alignment;
         const size = props.size;
@@ -116,6 +120,7 @@ class CourseMaterials extends Component {
             ]);     
         }
 
+        //layout
         if(layout) {
             additionalCss.push([
                 {
@@ -124,6 +129,25 @@ class CourseMaterials extends Component {
                 }
             ])
         }
+        if(layout_tablet) {
+            additionalCss.push([
+                {
+                    selector: li_selector,
+                    declaration: `display: ${layout_tablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
+        if(layout_phone) {
+            additionalCss.push([
+                {
+                    selector: li_selector,
+                    declaration: `display: ${layout_phone};`,
+                    device: 'phone'
+                }
+            ])
+        }
+
         if(alignment) {
             additionalCss.push([
                 {
@@ -212,7 +236,7 @@ class CourseMaterials extends Component {
         if(!this.props.__materials) {
             return '';
         }
-       
+       console.log(this.props)
         return (
             <Fragment>
             <div className="tutor-single-course-segment  tutor-course-material-includes-wrap">
