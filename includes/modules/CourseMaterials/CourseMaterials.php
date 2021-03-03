@@ -54,10 +54,10 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			),
 		);
 		
-		$selector = '%%order_class%% .tutor-course-material-includes-wrap';
-        $title_selector = $selector.' h4.tutor-segment-title';
-        $text_selector = $selector.' .tutor-course-target-audience-items';
-		$icon_selector = $text_selector.' li:before';
+		$wrapper 		= '%%order_class%% .tutor-course-material-includes-wrap';
+		$title_selector	= $wrapper." .tutor-segment-title";
+		$li_selector	= $wrapper." li";
+		$icon_selector	= $li_selector." .et-pb-icon";
 		
 		$this->advanced_fields = array(
 			'fonts'          => array(
@@ -70,20 +70,26 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				),
 				'text' => array(
 					'css'          => array(
-						'main' => $text_selector,
+						'main' => $li_selector,
 					),
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'text',
 				),
 			),
-			'borders'	=> array(
-				'list'			=> array(
-					'css'			=> '',
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'list'
-				)
+			'borders'    => array(
+				'default'            => array(),
+				'list'              => array(
+					'css'             	=> array(
+						'main' => array(
+							'border_radii'  => $li_selector,//"{$this->main_css_element} .tutor-social-share-wrap i",
+							'border_styles' => $li_selector,
+						),
+						'important'		=> true
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'list',
+				),
 			),
-
 		);
 	}
 
@@ -204,7 +210,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			'size'			=> array(
 				'label'				=> esc_html__( 'Size', 'tutor-divi-modules' ),
 				'type'				=> 'range',
-				'default'			=> '12',
+				'default'			=> '12px',
 				'default_unit'		=> 'px',
 				'range_settings'	=> array(
 					'min'	=> '1',
@@ -213,7 +219,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				),
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icon',
-				'mobile_option'		=> true
+				'mobile_options'	=> true
 			),
 
 		);
@@ -262,11 +268,24 @@ class TutorCourseMaterials extends ET_Builder_Module {
 	 */
 	public function render($attrs, $content = null, $render_slug) {
 		//selectors
-		$wrapper			= '%%order_class%% .tutor-course-material-includes-wrap';
-		$li_selector		= $wrapper." li";
+		$wrapper 		= '%%order_class%% .tutor-course-material-includes-wrap';
+		$title_selector	= $wrapper." .tutor-segment-title";
+		$li_selector	= $wrapper." li";
+		$icon_selector	= $li_selector." .et-pb-icon";
 
 		//props
+		$size 			= $this->props['size'];
+		$size_tablet	= isset( $this->props['size_tablet']) && $this->props['size_tablet'] !== '' ? $this->props['size_tablet'] : $size;
+		$size_phone		= isset( $this->props['size_phone']) && $this->props['size_phone'] !== '' ? $this->props['size_phone'] : $size;
 
+		$gap 			= $this->props['gap'];
+		$gap_tablet		= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? $this->props['gap_tablet'] : $gap;
+		$gap_phone		= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? $this->props['gap_phone'] : $gap;
+
+		$padding		= $this->props[ 'padding' ];
+
+		$color 			= $this->props[ 'color' ];
+		
 		//set styles
 		ET_Builder_Element::set_style(
 			$render_slug,
@@ -276,6 +295,116 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			)
 		);
 
+		//wrapper style
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $wrapper,
+				'declaration'	=> 'display: flex; flex-direction: column;'
+			)
+		);	
+		
+		if($gap) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						$gap
+					)
+				)
+			);	
+		}
+		if($gap_tablet) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						$gap_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);	
+		}
+		if($gap_phone) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						$gap_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_676')
+				)
+			);	
+		}
+
+		//icons tyle
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $icon_selector,
+				'declaration'	=> sprintf(
+					'font-size: %1$s !important;',
+					$size
+				)
+			)
+		);
+
+		if( $size_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s !important;',
+						$size_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_980' )
+				)
+			);
+		}
+
+		if( $size_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s !important;',
+						$size_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query( 'max_width_767' )
+				)
+			);
+		}
+
+		if( $color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $icon_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s !important;',
+						$color
+					)
+				)
+			);
+		}
+
+		//padding
+		if( $padding ) {
+			$this->apply_custom_margin_padding(
+				$render_slug,
+				'padding',
+				'padding',
+				$li_selector
+			);		
+		}
 		//set styles end
 
 		$output = self::get_content($this->props);
@@ -284,7 +413,6 @@ class TutorCourseMaterials extends ET_Builder_Module {
 		if ('' === $output) {
 			return '';
 		}
-
 		return $this->_render_module_wrapper($output, $render_slug);
 
 	}
