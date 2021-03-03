@@ -8,9 +8,17 @@ class CourseRequirements extends Component {
     render() {
         return (
             <Fragment>
-                <div
-                    dangerouslySetInnerHTML={{ __html: this.props.__requirements }} 
-                />
+              	<div className="tutor-single-course-segment  tutor-course-requirements-wrap">
+                    <div className="course-requirements-title">
+                        <h4 className="tutor-segment-title">{ this.props.label }</h4>
+                    </div>
+
+                    <div className="tutor-course-requirements-content">
+                        <ul className="tutor-course-requirements-items tutor-custom-list-style">
+                            <li>List</li>
+                        </ul>
+                    </div>
+                </div>
             </Fragment>
         );
     }

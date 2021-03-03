@@ -119,18 +119,29 @@ class TutorCourseRequirements extends ET_Builder_Module {
 	}
 
 	/**
+	 * get requirement props
+	 */
+	public static function get_props( $args = [] ) {
+		$course_id		= $args['course'];
+		$requirements	= tutor_course_requirements( $course_id );
+		$props			= array(
+			'requirements'	=> count($requirements) > 0 ? $requirements : 0
+		);
+		return $materials;
+	}
+
+	/**
 	 * Get content
 	 *
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
-		$output = '';
-		if ($course) {
-			$output = tutor_course_requirements_html(false); //echo false
+		$course_id = Helper::get_course($args);
+		ob_start();
+		if( $course_id ) {
+			include_once dtlms_get_template( 'course/requirements' );
 		}
-
-		return $output;
+		return ob_get_clean;
 	}
 
 	/**

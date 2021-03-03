@@ -236,7 +236,6 @@ class CourseMaterials extends Component {
         if(!this.props.__materials) {
             return '';
         }
-       console.log(this.props)
         return (
             <Fragment>
             <div className="tutor-single-course-segment  tutor-course-material-includes-wrap">
