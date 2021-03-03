@@ -13,8 +13,8 @@
 
 do_action('tutor_course/single/before/requirements');
 
-$course_requirements = tutor_course_requirements();
-
+$course_requirements = tutor_course_requirements( $args['course'] );
+$icon = et_pb_process_font_icon( $args[ 'icon' ] );
 if ( empty($course_requirements)){
 	return;
 }
@@ -25,14 +25,16 @@ if (is_array($course_requirements) && count($course_requirements)){
 	<div class="tutor-single-course-segment  tutor-course-requirements-wrap">
 
 		<div class="course-requirements-title">
-			<h4 class="tutor-segment-title"><?php _e('Requirements', 'tutor'); ?></h4>
+			<h4 class="tutor-segment-title">
+                <?php esc_html_e( $args['label'] );?>
+            </h4>
 		</div>
 
 		<div class="tutor-course-requirements-content">
 			<ul class="tutor-course-requirements-items tutor-custom-list-style">
 				<?php
 				foreach ($course_requirements as $requirement){
-					echo "<li>{$requirement}</li>";
+					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span>{$requirement}</li>";
 				}
 				?>
 			</ul>

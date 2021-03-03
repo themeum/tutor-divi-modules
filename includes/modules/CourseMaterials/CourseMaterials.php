@@ -410,12 +410,23 @@ class TutorCourseMaterials extends ET_Builder_Module {
 
 		//padding
 		if( $padding ) {
-			$this->apply_custom_margin_padding(
-				$render_slug,
-				'padding',
-				'padding',
-				$li_selector
-			);		
+			$paddings	= $this->props[ 'padding' ];
+			$paddings	= explode("|",$paddings);	
+			if( is_array($paddings) ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'		=> $li_selector,
+						'declaration'	=> sprintf(
+							'padding: %1$s %2$s %3$s %4$s;',
+							$paddings[0],
+							$paddings[1],
+							$paddings[2],
+							$paddings[3]
+						) 
+					)
+				);
+			}
 		}
 
 		//layout 
