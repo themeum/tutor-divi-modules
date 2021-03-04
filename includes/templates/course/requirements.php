@@ -23,13 +23,10 @@ if (is_array($course_requirements) && count($course_requirements)){
 	?>
 
 	<div class="tutor-single-course-segment  tutor-course-requirements-wrap">
-
-		<div class="course-requirements-title">
-			<h4 class="tutor-segment-title">
-                <?php esc_html_e( $args['label'] );?>
-            </h4>
-		</div>
-
+	
+		<h4 class="tutor-segment-title">
+			<?php esc_html_e( $args['label'] );?>
+		</h4>
 		<div class="tutor-course-requirements-content">
 			<ul class="tutor-course-requirements-items tutor-custom-list-style">
 				<?php
@@ -39,6 +36,7 @@ if (is_array($course_requirements) && count($course_requirements)){
 				?>
 			</ul>
 		</div>
+
 	</div>
 
 <?php } ?>

@@ -151,7 +151,7 @@ class CourseRequirements extends Component {
         if(alignment) {
             additionalCss.push([
                 {
-                    selector: wrapper,
+                    selector: `${wrapper} .tutor-segment-title, ${wrapper} .tutor-course-requirements-content`,
                     declaration: `text-align: ${alignment};`
                 }
             ])
@@ -159,7 +159,7 @@ class CourseRequirements extends Component {
         if(alignment_tablet) {
             additionalCss.push([
                 {
-                    selector: wrapper,
+                    selector: `${wrapper} .tutor-segment-title, ${wrapper} .tutor-course-requirements-content`,
                     declaration: `text-align: ${alignment_tablet};`,
                     device: 'tablet'
                 }
@@ -168,7 +168,7 @@ class CourseRequirements extends Component {
         if(alignment_phone) {
             additionalCss.push([
                 {
-                    selector: wrapper,
+                    selector: `${wrapper} .tutor-segment-title, ${wrapper} .tutor-course-requirements-content`,
                     declaration: `text-align: ${alignment_phone};`,
                     device: 'phone'
                 }
@@ -236,7 +236,6 @@ class CourseRequirements extends Component {
         if(!this.props.__requirements) {
             return '';
         }
-        console.log(this.props);
         return (
             <Fragment>
               	<div className="tutor-single-course-segment  tutor-course-requirements-wrap">

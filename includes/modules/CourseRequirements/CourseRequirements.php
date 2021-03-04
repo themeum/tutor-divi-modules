@@ -62,11 +62,12 @@ class TutorCourseRequirements extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'title' => array(
-					'css'          => array(
+					'css'          		=> array(
 						'main' => $title_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'title',
+					'hide_text_align'	=> true,
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'title',
 				),
 				'text' => array(
 					'css'          		=> array(
@@ -533,7 +534,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $wrapper,
+					'selector'		=> $wrapper." .tutor-segment-title , ". $wrapper. " .tutor-course-requirements-content",
 					'declaration'	=> sprintf(
 						'text-align: %1$s !important;',
 						$alignment
@@ -545,7 +546,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $wrapper,
+					'selector'		=> $wrapper." .tutor-segment-title , ". $wrapper. " .tutor-course-requirements-content",
 					'declaration'	=> sprintf(
 						'text-align: %1$s !important;',
 						$alignment_tablet
@@ -558,7 +559,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $wrapper,
+					'selector'		=> $wrapper." .tutor-segment-title , ". $wrapper. " .tutor-course-requirements-content",
 					'declaration'	=> sprintf(
 						'text-align: %1$s !important;',
 						$alignment_phone
