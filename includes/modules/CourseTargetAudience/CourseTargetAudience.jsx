@@ -271,7 +271,7 @@ class CourseTargetAudience extends Component {
         if(!this.props.__target_audience) {
             return '';
         }
-        console.log(this.props)
+       
         return (
             <Fragment>
             <div class="tutor-single-course-segment  tutor-course-target-audience-wrap">

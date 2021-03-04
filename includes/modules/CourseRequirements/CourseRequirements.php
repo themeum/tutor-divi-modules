@@ -262,7 +262,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 				'toggle_slug'     	=> 'list',
 				'allowed_units'   	=> array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
-			//advanced tab text toggle
+			//advanced tab icon toggle
 			'color'			=> array(
 				'label'				=> esc_html__( 'Color', 'tutor-divi-modules' ),
 				'type'				=> 'color-alpha',
@@ -283,7 +283,21 @@ class TutorCourseRequirements extends ET_Builder_Module {
 				'toggle_slug'		=> 'icon',
 				'mobile_options'	=> true
 			),
-			
+			//advanced tab text toggle
+			'indent'			=> array(
+				'label'				=> esc_html__( 'Text Indent', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'default'			=> '7px',
+				'default_unit'		=> 'px',
+				'range_settings'	=> array(
+					'min'	=> '0',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'text',
+				'mobile_options'	=> true
+			),			
 		);
 
 		return $fields;
@@ -357,6 +371,11 @@ class TutorCourseRequirements extends ET_Builder_Module {
 		$space_between	= $this->props[ 'space_between' ];
 		$space_tablet 	= isset( $this->props[ 'space_between_tablet' ]) && '' !== $this->props[ 'space_between_tablet' ] ? $this->props[ 'space_between_tablet' ] : $space_between;
 		$space_phone 	= isset( $this->props[ 'space_between_phone' ]) && '' !== $this->props[ 'space_between_phone' ] ? $this->props[ 'space_between_phone' ] : $space_between;
+
+		$indent			= $this->props[ 'indent' ];
+		$indent_tablet 	= isset( $this->props[ 'indent_tablet' ]) && '' !== $this->props[ 'indent_tablet' ] ? $this->props[ 'indent_tablet' ] : $indent;
+		$indent_phone 	= isset( $this->props[ 'indent_phone' ]) && '' !== $this->props[ 'indent_phone' ] ? $this->props[ 'indent_phone' ] : $indent;
+
 
 		//set styles
 		ET_Builder_Element::set_style(
@@ -609,6 +628,48 @@ class TutorCourseRequirements extends ET_Builder_Module {
 				)
 			);	
 		}	
+
+		//text indent
+		if( $indent ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $li_selector." .list-item",
+					'declaration'	=> sprintf(
+						'padding-left: %1$s !important;',
+						$indent
+					)
+				)
+			);	
+		}	
+
+		if( $indent_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $li_selector." .list-item",
+					'declaration'	=> sprintf(
+						'padding-left: %1$s !important;',
+						$indent_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);	
+		}			
+		if( $indent_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $li_selector." .list-item",
+					'declaration'	=> sprintf(
+						'padding-left: %1$s !important;',
+						$indent_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);	
+		}	
+
 		//set styles end
 
 		$output = self::get_content($this->props);

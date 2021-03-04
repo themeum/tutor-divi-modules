@@ -227,7 +227,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 			'indent'			=> array(
 				'label'				=> esc_html__( 'Text Indent', 'tutor-divi-modules' ),
 				'type'				=> 'range',
-				'default'			=> '12px',
+				'default'			=> '7px',
 				'default_unit'		=> 'px',
 				'range_settings'	=> array(
 					'min'	=> '0',
@@ -362,7 +362,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 				)
 			);	
 		}
-		
+
 		if($gap_phone) {
 			ET_Builder_Element::set_style(
 				$render_slug,

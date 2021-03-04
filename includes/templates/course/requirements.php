@@ -31,7 +31,7 @@ if (is_array($course_requirements) && count($course_requirements)){
 			<ul class="tutor-course-requirements-items tutor-custom-list-style">
 				<?php
 				foreach ($course_requirements as $requirement){
-					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span>{$requirement}</li>";
+					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> {$requirement} </span> </li>";
 				}
 				?>
 			</ul>
