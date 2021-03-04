@@ -40,6 +40,11 @@ class CourseTargetAudience extends Component {
         const space_between_tablet = is_responsive_space && props.space_between_tablet ? props.space_between_tablet : space_between;
         const space_between_phone = is_responsive_space && props.space_between_phone ? props.space_between_phone : space_between;
 
+        const indent = props.indent;
+        const is_responsive_indent = props.indent_last_edited && props.indent_last_edited.startsWith("on");
+        const indent_tablet = is_responsive_indent && props.indent_tablet ? props.indent_tablet : indent;
+        const indent_phone = is_responsive_indent && props.indent_phone ? props.indent_phone : indent;        
+
         //set styles
         additionalCss.push([
             {
@@ -214,6 +219,36 @@ class CourseTargetAudience extends Component {
             ])
         }
 
+        //text indent
+        if(indent) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-target-audience-wrap .list-item',
+                    declaration: `padding-left: ${indent} !important;`
+                }
+            ])
+        }
+
+        if(indent_tablet) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-target-audience-wrap .list-item',
+                    declaration: `padding-left: ${indent_tablet} !important;`,
+                    device: 'tablet'
+                }
+            ])
+        }
+
+        if(indent_phone) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-target-audience-wrap .list-item',
+                    declaration: `padding-left: ${indent_phone} !important;`,
+                    device: 'phone'
+                }
+            ])
+        }     
+
         //set styles end
 
         return additionalCss;
@@ -224,7 +259,7 @@ class CourseTargetAudience extends Component {
         const et_icon = utils.processFontIcon(icon);
         if(lists !== 0) {
             const list =  lists.map((list)=> {
-                return <li> <span className="et-pb-icon"> {et_icon}</span> {list}</li>
+                return <li> <span className="et-pb-icon"> {et_icon}</span> <span className="list-item">{list}</span></li>
             });
             return list;
         }
@@ -236,6 +271,7 @@ class CourseTargetAudience extends Component {
         if(!this.props.__target_audience) {
             return '';
         }
+        console.log(this.props)
         return (
             <Fragment>
             <div class="tutor-single-course-segment  tutor-course-target-audience-wrap">
