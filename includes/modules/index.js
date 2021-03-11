@@ -18,6 +18,7 @@ import CourseCarousel from './CourseCarousel/CourseCarousel';
 import CourseStatus from './CourseStatus/CourseStatus';
 import CoursePrice from './CoursePrice/CoursePrice';
 import CourseTags from './CourseTags/CourseTags';
+import CourseCurriculum from './CourseCurriculum/CourseCurriculum';
 
 export default [
     CourseTitle,
@@ -39,5 +40,6 @@ export default [
     CourseCarousel,
     CourseStatus,
     CoursePrice,
-    CourseTags
+    CourseTags,
+    CourseCurriculum
 ];
