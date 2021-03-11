@@ -46,34 +46,58 @@ class CourseTags extends ET_Builder_Module {
 		/**
 		 * advanced tabs settings
 		 */
+		$wrapper			= '%%order_class%% .tutor-divi-course-tags-wrapper';
+		$tag_title_selector	= $wrapper.' .tutor-segment-title';
+		$tags_selector		= $wrapper.' .tutor-course-tags a';
+
 		$this->advanced_fields = array(
 			'fonts'		=> array(
 				'title'		=> array(
 					'css'				=> array(
-						'main'	=> 'selector'
+						'main'	=> $tag_title_selector
 					),
+					'hide_text_align'	=> true,
 					'tab_slug'			=> 'advanced',
 					'toggle_slug'		=> 'title'
 				),
 				'tags'	=> array(
 					'css'				=> array(
-						'main'	=> ''
+						'main'	=> $tags_selector
 					),
+					'hide_text_align'	=> true,
 					'tab_slug'			=> 'advanced',
 					'toggle_slug'		=> 'tags',
 				),
 			),
+
 			'borders'    => array(
-				'default'		=> array(
-					'css'	=> array(
-						'main'	=> array(
-							'border_style'	=> '',
-							'border_radii'	=> ''
-						)
-					)
+				'default'            =>  false,
+				'tags'				 => array(
+					'css'             	=> array(
+						'main' => array(
+							'border_styles' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags > a',
+							'border_radii'  => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags > a',
+						),
+						'important'		=> true
+					),	
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'tags'					
+				)
+			),				
+			'margin_padding' => array(
+				'css'	=> array(
+					'margin'	=> '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
+					'padding'	=> '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
+					'important'	=> 'all'
 				),
 			),
-		
+			'box_shadow' => array(
+				'default' => array(
+					'css' => array(
+						'main' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
+					),
+				),
+			),			
 		);
     }
 
@@ -108,6 +132,15 @@ class CourseTags extends ET_Builder_Module {
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
 			),
+			//advanced settings tab tags toggle
+			'tags_background'	=> array(
+				'label'				=> esc_html__( 'Background Color', 'tutor-divi-modules'),
+				'type'				=> 'color-alpha',
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'tags',
+				'priority'			=> 67,
+				'hover'				=> 'tabs'
+			)
 		);
     }
 
@@ -136,6 +169,41 @@ class CourseTags extends ET_Builder_Module {
 	}	
 
     public function render( $attr, $content = null, $render_slug) {
+		//selectors 
+		$wrapper			= '%%order_class%% .tutor-divi-course-tags-wrapper';
+		$tag_title_selector	= $wrapper.' .tutor-segment-title';
+		$tags_selector		= $wrapper.' .tutor-course-tags a';
+		//props
+		$background			= $this->props['tags_background'];
+		$background_hover	= isset( $this->props['tags_background__hover'] ) ? $this->props['tags_background__hover'] : $background ;
+
+		//set styles
+		if( '' !== $background ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $tags_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						esc_html( $background )
+					) 
+				)
+			);
+		}
+
+		if( '' !== $background_hover ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $tags_selector.':hover',
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						esc_html( $background_hover )
+					) 
+				)
+			);
+		}
+		//set styles end
 
 		$output = self::get_content($this->props);
 
