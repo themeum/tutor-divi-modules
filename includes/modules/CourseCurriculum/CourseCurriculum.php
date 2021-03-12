@@ -36,21 +36,28 @@ class CourseCurriculum extends ET_Builder_Module {
 					'course'
 				)
 			),
-			'tutor_course_list_heading_new'     => array(
-				'label'           => esc_html__( 'Heading', 'tutor-divi-modules' ),
+			'label'     => array(
+				'label'           => esc_html__( 'Label', 'tutor-divi-modules' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Input your desired heading here.', 'tutor-divi-modules' ),
 				'toggle_slug'     => 'main_content',
 			),
-            'content'     => array(
-				'label'           => esc_html__( 'Content', 'tutor-divi-modules' ),
-				'type'            => 'tiny_mce',
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Content entered here will appear below the heading text.', 'tutor-divi-modules' ),
-				'toggle_slug'     => 'main_content',
+			'collaps_icon' => array(
+				'label'             => esc_html__( 'Collaps Icon', 'tutor-divi-modules' ),
+				'type'              => 'select_icon',
+				'default'			=> 'N',
+				'class'				=> array( 'et-pb-font-icon' ),
+				'option_category'   => 'basic_option',
+				'toggle_slug'     	=> 'main_content',		
 			),
-
+			'expand_icon' => array(
+				'label'             => esc_html__( 'Expand Icon', 'tutor-divi-modules' ),
+				'type'              => 'select_icon',
+				'default'			=> 'N',
+				'class'				=> array( 'et-pb-font-icon' ),
+				'option_category'   => 'basic_option',
+				'toggle_slug'     	=> 'main_content',		
+			),
 		);
 	}
 
@@ -64,8 +71,8 @@ class CourseCurriculum extends ET_Builder_Module {
 		$is_instructor 		= tutor_utils()->is_instructor_of_this_course( $instructor_id=0, $course_id );
 
 		if( $is_administrator || $is_instructor ) {
-			$curriculum		= [];
-			$topics			= tutor_utils()->get_topics( $course_id );
+			$curriculum;
+			$topics			= tutor_utils()->get_topics( $args['course'] );
 	
 			/**
 			 * for each topics get lesson & set curriculum
@@ -73,12 +80,19 @@ class CourseCurriculum extends ET_Builder_Module {
 			if(	!is_null( $topics ) ) {
 				foreach( $topics->posts as $topic ) {
 					$topic_curriculums	= tutor_utils()->get_course_contents_by_topic( $topic->ID );
-					$curriculum[] 		= [
+					$curriculum 		= [
 						'topic'			=> [
 							'topic_details'		=> $topic,
-							'curriculums'		=> is_null( $topic_curriculums ) ? '' : $topic_curriculums->posts
+							'curriculums'		=> []
 						]
-					   ];
+					];
+					if(!is_null( $topic_curriculums )) {
+						foreach( $topic_curriculums->posts as $tc ) {
+							$video_info = tutor_utils()->get_video_info( $tc->ID );
+							$tc->video_info = $video_info;
+							array_push($curriculum['topic']['curriculums'], $tc);
+						}
+					}
 				  }
 			}
 			return $curriculum;
@@ -98,6 +112,12 @@ class CourseCurriculum extends ET_Builder_Module {
 	}
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
+	
+		$ex_icon	= et_pb_process_font_icon( $args[ 'expand_icon' ] );
+		$col_icon	= et_pb_process_font_icon( $args[ 'collaps_icon' ] );
+		echo $ex_icon ."<br>";
+		echo $col_icon;
+		exit;
 		$output = self::get_content($this->props);
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {

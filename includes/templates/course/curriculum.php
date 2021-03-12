@@ -20,11 +20,41 @@ $is_enrolled    = tutor_utils()->is_enrolled($course_id);
 
 ?>
 
+<div class="tutor-wrap">
+<?php 
+
+	global $wp_query;
+	if (is_user_logged_in()) {
+
+		$is_administrator = current_user_can('administrator');
+		$is_instructor = tutor_utils()->is_instructor_of_this_course();
+		$course_content_access = (bool) get_tutor_option('course_content_access_for_ia');
+		if (tutils()->is_enrolled() || ($course_content_access && ($is_administrator || $is_instructor))) {
+			tutor_course_enrolled_nav();
+
+			if (!empty($wp_query->query_vars['course_subpage'])) {
+				$course_subpage = $wp_query->query_vars['course_subpage'];
+				if ($course_subpage == 'questions') {
+					tutor_course_question_and_answer();
+				} else if ($course_subpage == 'announcements') {
+					tutor_course_announcements();
+				}
+				do_action("tutor_course/single/enrolled/{$course_subpage}", get_the_ID());
+			}
+
+			do_action('tutor_course/single/enrolled/after/inner-wrap');
+		}
+	} 
+?>
+</div>
 
 <?php do_action('tutor_course/single/before/topics'); ?>
 
-<?php if($topics->have_posts()) { ?>
+<?php 
+if (empty($wp_query->query_vars['course_subpage'])) {
+if($topics->have_posts()) { ?>
     <div class="tutor-single-course-segment  tutor-course-topics-wrap">
+
         <div class="tutor-course-topics-header">
             <div class="tutor-course-topics-header-left">
                 <h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
@@ -89,7 +119,7 @@ $is_enrolled    = tutor_utils()->is_enrolled($course_id);
 									global $post;
 
 									$video = tutor_utils()->get_video_info();
-
+								
 									$play_time = false;
 									if ($video){
 										$play_time = $video->playtime;
@@ -166,7 +196,8 @@ $is_enrolled    = tutor_utils()->is_enrolled($course_id);
 			?>
         </div>
     </div>
-<?php } ?>
+<?php } } ?>
+
 
 
 <?php do_action('tutor_course/single/after/topics'); ?>
