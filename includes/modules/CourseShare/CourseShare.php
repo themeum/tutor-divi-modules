@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Share Module for Divi Builder
  * @since 1.0.0
  */
 
