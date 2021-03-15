@@ -18,6 +18,9 @@ $topics         = tutor_utils()->get_topics( $args['course'] );
 $course_id      = $args['course'];
 $is_enrolled    = tutor_utils()->is_enrolled($course_id);
 
+//icons props
+$collaps_icon 		= et_pb_process_font_icon($args['collaps_icon']); 
+$expand_icon 		= et_pb_process_font_icon($args['expand_icon']); 
 ?>
 
 <div class="tutor-wrap">
@@ -57,7 +60,7 @@ if($topics->have_posts()) { ?>
 
         <div class="tutor-course-topics-header">
             <div class="tutor-course-topics-header-left">
-                <h4 class="tutor-segment-title"><?php _e('Topics for this course', 'tutor'); ?></h4>
+                <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-divi-modules'); ?></h4>
             </div>
             <div class="tutor-course-topics-header-right">
 				<?php
@@ -86,10 +89,13 @@ if($topics->have_posts()) { ?>
 					$index++;
 					?>
 
-                    <div class="tutor-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
+                    <div class="tutor-divi-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
                         <div class="tutor-course-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
+							
+								<span class="et-pb-icon"><?php esc_html_e( $collaps_icon );?></span>
+							
                             <h4> 
-								<i class="tutor-icon-plus"></i> 
+							
 								<?php
 								the_title();
 								if($topic_summery) {
@@ -197,7 +203,5 @@ if($topics->have_posts()) { ?>
         </div>
     </div>
 <?php } } ?>
-
-
 
 <?php do_action('tutor_course/single/after/topics'); ?>
