@@ -40,6 +40,7 @@ class CourseCurriculum extends ET_Builder_Module {
 		$wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
         $topic_wrapper_selector 	= '%%order_class%% .tutor-divi-course-topic';
+		$topic_title_selector		= $wrapper." .tutor-course-title";
 		$header_title_selector   	= '%%order_class%% .tutor-course-topics-header-left h4';
 		$header_info_selector   	= '%%order_class%% .tutor-course-topics-header-right';
 		$lesson_title_selector		= '%%order_class%% .tutor-course-lesson h5 a';
@@ -106,6 +107,15 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'lesson',
 				),
+			),
+			'margin_padding'	=> array(
+				'use_margin'	=> false,
+				'padding'	=> array(
+					'css'	=> array(
+						'main'	=> $topic_title_selector
+					),
+					'label'	=> esc_html__('Topic Padding', 'tutor-divi-modules')
+				)
 			)
 		);
 	}
@@ -360,7 +370,11 @@ class CourseCurriculum extends ET_Builder_Module {
         $topic_wrapper_selector 	= $wrapper.' .tutor-course-title';
 		$title_selector				= $wrapper. '.tutor-course-title';
 		$header_wrapper_selector   	= '%%order_class%% .tutor-course-topics-header';
-		$lesson_icon_selector      	= '%%order_class%% .tutor-course-lesson i';
+		$header_wrapper_selector   = '%%order_class%% .tutor-course-topics-header';
+		
+		$lesson_icon_selector      = '%%order_class%% .tutor-course-lesson h5 i';
+		$lesson_wrapper_selector   = '%%order_class%% .tutor-course-lessons';
+		$lesson_info_selector      = '%%order_class%% .tutor-course-lesson .tutor-lesson-duration';
 	
 		//props
 		$icon_position		= $this->props['icon_position'];
@@ -390,7 +404,14 @@ class CourseCurriculum extends ET_Builder_Module {
 		$lesson_icon_size_tablet	= isset($this->props['lesson_icon_size_tablet']) && $this->props['lesson_icon_size_tablet'] !== '' ? $this->props['lesson_icon_size_tablet'] : $lesson_icon_size;
 		$lesson_icon_size_phone		= isset($this->props['lesson_icon_size_phone']) && $this->props['lesson_icon_size_phone'] !== '' ? $this->props['lesson_icon_size_phone'] : $lesson_icon_size;
 
+        $lesson_icon_color         = $this->props['lesson_icon_color'];
+        $lesson_icon_color_hover   = $this->props['lesson_icon_color__hover'];
 
+        $lesson_info_color         = $this->props['lesson_info_color'];
+        $lesson_info_color_hover   = $this->props['lesson_info_color__hover'];
+
+        $lesson_background_color           = $this->props['lesson_background_color'];
+        $lesson_background_color_hover     = $this->props['lesson_background_color__hover'];
 		//set styles
 		/**
 		 * default topic title display flex
@@ -658,6 +679,78 @@ class CourseCurriculum extends ET_Builder_Module {
 				)
 			);		
 		}		
+		if( '' !== $lesson_icon_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_icon_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$lesson_icon_color
+					)
+				)
+			);		
+		}		
+		if( '' !== $lesson_icon_color_hover ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_icon_selector.':hover',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$lesson_icon_color_hover
+					)
+				)
+			);		
+		}		
+		if( '' !== $lesson_info_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_info_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$lesson_info_color
+					)
+				)
+			);		
+		}		
+		if( '' !== $lesson_info_color_hover ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_info_selector.":hover",
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$lesson_info_color_hover
+					)
+				)
+			);		
+		}	
+		if( '' !== $lesson_background_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_wrapper_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$lesson_background_color
+					)
+				)
+			);		
+		}	
+		if( '' !== $lesson_background_color_hover ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_wrapper_selector.":hover",
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$lesson_background_color_hover
+					)
+				)
+			);		
+		}	
 		//set styles end
 		$output = self::get_content($this->props);
 		// Render empty string if no output is generated to avoid unwanted vertical space.
