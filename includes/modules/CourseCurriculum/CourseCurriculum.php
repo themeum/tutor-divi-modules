@@ -39,7 +39,7 @@ class CourseCurriculum extends ET_Builder_Module {
 		// advanced fields config
 		$wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
-        $topic_wrapper_selector 	= $wrapper.' .tutor-course-topics-contents';
+        $topic_wrapper_selector 	= '%%order_class%% .tutor-divi-course-topic';
 		$header_title_selector   	= '%%order_class%% .tutor-course-topics-header-left h4';
 		$header_info_selector   	= '%%order_class%% .tutor-course-topics-header-right';
 		$lesson_title_selector		= '%%order_class%% .tutor-course-lesson h5 a';
@@ -209,15 +209,15 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_1' => array(
 						'label'    => esc_html( 'Normal', 'tutor-divi-modules' ),
 						'controls' => array(
-							'icon' => array(
+							'topic_icon_color' => array(
 								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'text' => array(
+							'topic_text_color' => array(
 								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'background' => array(
+							'topic_background_color' => array(
 								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
@@ -226,15 +226,15 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_2' => array(
 						'label' => esc_html( 'Active', 'tutor-divi-modules' ),
 						'controls' => array(
-							'icon' => array(
+							'topic_icon_active_color' => array(
 								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'text' => array(
+							'topic_text_active_color' => array(
 								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'background' => array(
+							'topic_background_active_color' => array(
 								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
@@ -243,15 +243,15 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_3' => array(
 						'label' => esc_html( 'Hover', 'tutor-divi-modules' ),
 						'controls' => array(
-							'icon' => array(
+							'topic_icon_hover_color' => array(
 								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'text' => array(
+							'topic_text_hover_color' => array(
 								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
-							'background' => array(
+							'topic_background_hover_color' => array(
 								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
@@ -314,31 +314,28 @@ class CourseCurriculum extends ET_Builder_Module {
 
 		if( $is_administrator || $is_instructor ) {
 			$curriculum;
-			$topics			= tutor_utils()->get_topics( $args['course'] );
-	
+			$topics			= tutor_utils()->get_topics( $course_id );
+			/**
+			 * for each topics get lesson & set curriculum
+			 */
+			$topics			= tutor_utils()->get_topics( $course_id );
+			
+			$curriculum 		= [
+				'lesson_count'		=> 2,//$tutor_lesson_count,
+				'course_duration'	=> 2,//$tutor_course_duration,
+				'topics'			=> []
+			];
 			/**
 			 * for each topics get lesson & set curriculum
 			 */
 			if(	!is_null( $topics ) ) {
-				foreach( $topics->posts as $topic ) {
-					$topic_curriculums	= tutor_utils()->get_course_contents_by_topic( $topic->ID );
-					$curriculum 		= [
-						'lesson_count'		=> $tutor_lesson_count,
-						'course_duration'	=> $tutor_course_duration,
-						'topic'				=> [
-							'topic_details'		=> $topic,
-							'curriculums'		=> []
-						]
-					];
-					if(!is_null( $topic_curriculums )) {
-						foreach( $topic_curriculums->posts as $tc ) {
-							$video_info = tutor_utils()->get_video_info( $tc->ID );
-							$tc->video_info = $video_info;
-							array_push($curriculum['topic']['curriculums'], $tc);
-						}
-					}
+				foreach( $topics->posts as $key => $topic ) {
+					$topic_curriculums		= tutor_utils()->get_course_contents_by_topic( $topic->ID );
+					$topic->curriculums 	= is_null($topic_curriculums) ? [] : $topic_curriculums->posts;
+					$curriculum['topics'][] = $topic;
 				  }
 			}
+
 			return $curriculum;
 		}
 		return false;
@@ -359,11 +356,11 @@ class CourseCurriculum extends ET_Builder_Module {
 		//selectors
         $wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
-		$topic_wrapper				= '%%order_class%% .tutor-course-topics-contents';
+		$topic_wrapper				= '%%order_class%% .tutor-divi-course-topic';
         $topic_wrapper_selector 	= $wrapper.' .tutor-course-title';
 		$title_selector				= $wrapper. '.tutor-course-title';
 		$header_wrapper_selector   	= '%%order_class%% .tutor-course-topics-header';
-
+		$lesson_icon_selector      	= '%%order_class%% .tutor-course-lesson i';
 	
 		//props
 		$icon_position		= $this->props['icon_position'];
@@ -372,6 +369,27 @@ class CourseCurriculum extends ET_Builder_Module {
 		$gap 				= $this->props['gap'];
 		$gap_tablet			= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? $this->props['gap_tablet'] : $gap;
 		$gap_phone			= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? $this->props['gap_phone'] : $gap;	
+
+		$topic_icon_color          = $this->props['topic_icon_color'];
+		$topic_icon_active_color   = $this->props['topic_icon_active_color'];
+		$topic_icon_hover_color    = $this->props['topic_icon_hover_color'];
+
+		$topic_text_color          = $this->props['topic_text_color'];
+		$topic_text_active_color   = $this->props['topic_text_active_color'];
+		$topic_text_hover_color    = $this->props['topic_text_hover_color'];
+
+		$topic_background_color          = $this->props['topic_background_color'];
+		$topic_background_active_color   = $this->props['topic_background_active_color'];
+		$topic_background_hover_color    = $this->props['topic_background_hover_color'];
+
+		$topic_icon_size			= $this->props['topic_icon_size'];
+		$topic_icon_size_tablet		= isset($this->props['topic_icon_size_tablet']) && $this->props['topic_icon_size_tablet'] !== '' ? $this->props['topic_icon_size_tablet'] : $topic_icon_size;
+		$topic_icon_size_phone		= isset($this->props['topic_icon_size_phone']) && $this->props['topic_icon_size_phone'] !== '' ? $this->props['topic_icon_size_phone'] : $topic_icon_size;
+
+		$lesson_icon_size			= $this->props['lesson_icon_size'];
+		$lesson_icon_size_tablet	= isset($this->props['lesson_icon_size_tablet']) && $this->props['lesson_icon_size_tablet'] !== '' ? $this->props['lesson_icon_size_tablet'] : $lesson_icon_size;
+		$lesson_icon_size_phone		= isset($this->props['lesson_icon_size_phone']) && $this->props['lesson_icon_size_phone'] !== '' ? $this->props['lesson_icon_size_phone'] : $lesson_icon_size;
+
 
 		//set styles
 		/**
@@ -422,6 +440,146 @@ class CourseCurriculum extends ET_Builder_Module {
 				)
 			);		
 		}
+		if( '' !== $topic_icon_size_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $topic_icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$topic_icon_size_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);		
+		}
+		if( '' !== $topic_icon_size_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $topic_icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$topic_icon_size_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);		
+		}
+
+		//topic icon,text,background colors
+
+        //topic icon color
+        if('' !== $topic_icon_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $topic_icon_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_icon_color
+					)
+				)
+			);
+        }
+        if('' !== $topic_icon_active_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .et-pb-icon',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_icon_active_color
+					)
+				)
+			);			          
+        }
+        if('' !== $topic_icon_hover_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic .et-pb-icon:hover',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_icon_hover_color
+					)
+				)
+			);				        
+        }
+        //topic title text color styles
+        if('' !== $topic_text_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_text_color
+					)
+				)
+			);
+        }
+        if('' !== $topic_text_active_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title h4',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_text_active_color
+					)
+				)
+			);           
+        }
+        if('' !== $topic_text_hover_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4:hover',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$topic_text_hover_color
+					)
+				)
+			);           
+        }
+        //topic title background color styles
+        if('' !== $topic_background_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title',
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$topic_background_color
+					)
+				)
+			); 
+        }
+        if('' !== $topic_background_active_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title',
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$topic_background_active_color
+					)
+				)
+			);           
+        }
+        if('' !== $topic_background_hover_color) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title:hover',
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$topic_background_hover_color
+					)
+				)
+			);             
+        }
 		//header styles
 		if($gap) {
 			ET_Builder_Element::set_style(
@@ -460,6 +618,45 @@ class CourseCurriculum extends ET_Builder_Module {
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
 				)
 			);	
+		}		
+		//lesson style
+		if( '' !== $lesson_icon_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$lesson_icon_size
+					)
+				)
+			);		
+		}
+		if( '' !== $lesson_icon_size_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$lesson_icon_size_tablet
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);		
+		}
+		if( '' !== $lesson_icon_size_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $lesson_icon_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$lesson_icon_size_phone
+					),
+					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);		
 		}		
 		//set styles end
 		$output = self::get_content($this->props);
