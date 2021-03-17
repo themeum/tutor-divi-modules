@@ -196,9 +196,7 @@ class Helper {
         $post_id   = \ET_Builder_Element::get_current_post_id();
         $post_type = get_post_type($post_id);
         if ($post_type === tutor()->course_post_type) {
-            $course = 'current';
-        }
-
-        return $post_id;
+            return $post_id;
+        }        
     }
 }

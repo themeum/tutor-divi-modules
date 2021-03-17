@@ -34,7 +34,12 @@ class CourseThumbnail extends ET_Builder_Module {
                         'main'  => $wrapper
                     )
                 )
-            )    
+            ),
+            'max_width' => array(
+                'css'   => array(
+                    'module_alignment'  => $wrapper
+                )
+            )
         );
 	}
 
@@ -95,34 +100,11 @@ class CourseThumbnail extends ET_Builder_Module {
         return $props;
 	}
 
-
-	public function render( $unprocessed_props, $content = null, $render_slug ) {
-       
-        $course = $this->props['course'];
-        // $has_video          = get_post_meta( $course, '_video', true );
-        // var_dump($has_video);
-        // exit;
-        // $output = '';
-
-        // if ($course) {
-        //     $output .= "<div class='tutor-divi-course-thumbnail'>";
-        //     $has_video          = get_post_meta( $course, '_video', true );
-        //     if($has_video['source'] != '-1'){
-        //         if($has_video['source'] === 'youtube') {
-        //             $output .= "<iframe src='".$has_video['source_youtube']."'></iframe>";
-        //         } else if($has_video['source'] === 'vimeo') {
-        //             $output .= "<iframe src='".$has_video['source_vimeo']."'></iframe>";
-        //         }
-        //     } else{
-        //         $thumbnail = get_the_post_thumbnail_url( $course, $size = 'post-thumbnail');
-        //         $output .= "<img src='".$thumbnail."' alt='thumbnail'/>";
-        //     }
-        //     $output .= '</div>';
-        // }
+    public static function get_content( $args = []) {
         ob_start();
-        if ($course) {
+        if ($args['course']) {
     
-            echo "<div class='tutor-course-thumbnail'>";
+            echo "<div class='tutor-divi-course-thumbnail'>";
             if(tutils()->has_video_in_single()){
                 tutor_course_video();
             } else{
@@ -130,7 +112,12 @@ class CourseThumbnail extends ET_Builder_Module {
             }
             echo '</div>';
         }
-        return $this->_render_module_wrapper( ob_get_clean(), $render_slug );
+       return ob_get_clean();
+    }
+
+	public function render( $unprocessed_props, $content = null, $render_slug ) {
+        $output = self::get_content( $this->props );
+        return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
 new CourseThumbnail;

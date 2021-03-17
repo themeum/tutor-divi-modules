@@ -1,5 +1,6 @@
 
 import React, {Component, Fragment} from 'react';
+import ReactPlayer from "react-player"
 
 class CourseThumbnail extends Component {
 
@@ -8,7 +9,7 @@ class CourseThumbnail extends Component {
     thumbnailTemplate(thumbnail) {
         if(thumbnail.has_video) {
             return (
-                <source src={thumbnail.url} type="video/mp4"/>
+                <ReactPlayer url={thumbnail.url} controls='true' width='100%'/>
             );
         } else {
             return (<img  src={thumbnail.url} alt="thumbnail"/>);
