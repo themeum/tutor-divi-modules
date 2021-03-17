@@ -405,13 +405,13 @@ class CourseCurriculum extends ET_Builder_Module {
 		$lesson_icon_size_phone		= isset($this->props['lesson_icon_size_phone']) && $this->props['lesson_icon_size_phone'] !== '' ? $this->props['lesson_icon_size_phone'] : $lesson_icon_size;
 
         $lesson_icon_color         = $this->props['lesson_icon_color'];
-        $lesson_icon_color_hover   = $this->props['lesson_icon_color__hover'];
+        $lesson_icon_color_hover   = isset( $this->props['lesson_icon_color__hover'] ) ? $this->props['lesson_icon_color__hover'] : '';
 
         $lesson_info_color         = $this->props['lesson_info_color'];
-        $lesson_info_color_hover   = $this->props['lesson_info_color__hover'];
+        $lesson_info_color_hover   = isset( $this->props['lesson_info_color__hover'] ) ? $this->props['lesson_info_color__hover'] : '';
 
         $lesson_background_color           = $this->props['lesson_background_color'];
-        $lesson_background_color_hover     = $this->props['lesson_background_color__hover'];
+        $lesson_background_color_hover     = isset( $this->props['lesson_background_color__hover'] ) ? $this->props['lesson_background_color__hover'] : '';
 		//set styles
 		/**
 		 * default topic title display flex
