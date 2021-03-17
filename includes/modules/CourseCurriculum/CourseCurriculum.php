@@ -347,7 +347,19 @@ class CourseCurriculum extends ET_Builder_Module {
 			 */
 			if(	!is_null( $topics ) ) {
 				foreach( $topics->posts as $key => $topic ) {
+					//get topic curriculums lesson/assignment/quiz
 					$topic_curriculums		= tutor_utils()->get_course_contents_by_topic( $topic->ID );
+					//get video info for each lesson
+					if( !is_null($topic_curriculums)) {
+						foreach($topic_curriculums->posts as $tc) {
+							$tc->video_info = '';
+							$video_info = tutor_utils()->get_video_info($tc->ID);
+							if($video_info) {
+								$tc->video_info = $video_info;
+							}
+						}
+					}
+
 					$topic->curriculums 	= is_null($topic_curriculums) ? [] : $topic_curriculums->posts;
 					$curriculum['topics'][] = $topic;
 				  }
