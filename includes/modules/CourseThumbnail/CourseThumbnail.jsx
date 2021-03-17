@@ -9,7 +9,6 @@ class CourseThumbnail extends Component {
         if(thumbnail.has_video) {
             return (
                 <source src={thumbnail.url} type="video/mp4"/>
-
             );
         } else {
             return (<img  src={thumbnail.url} alt="thumbnail"/>);

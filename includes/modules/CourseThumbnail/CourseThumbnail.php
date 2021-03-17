@@ -9,6 +9,33 @@ class CourseThumbnail extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Thumbnail', 'tutor-divi-modules' );
+
+        $wrapper 				= '%%order_class%% .tutor-divi-course-thumbnail';
+        $this->advanced_fields = array(
+            'fonts'     => false,
+            'text'      => array(
+                'css'   => array(
+                    'main'  => $wrapper
+                )
+            ),
+            'borders'   => array(
+                'default'   => array(
+                    'css'       => array(
+                        'main'  => array(
+                            'border_radii'     => $wrapper,
+                            'border_styles'    => $wrapper
+                        )
+                    )
+                )
+            ),
+            'box_shadow'    => array(
+                'default'   => array(
+                    'css'   => array(
+                        'main'  => $wrapper
+                    )
+                )
+            )    
+        );
 	}
 
 	public function get_fields() {
@@ -71,14 +98,19 @@ class CourseThumbnail extends ET_Builder_Module {
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
        
-        return sprintf(
-            '
-            <h1>%s</h1>
-            <p>%s</p>
-            ', 
-            $this->props['tutor_course_list_heading_new'], 
-            $this->props['content']
-        );
+        $course = $this->props['course'];
+        $output = '';
+        ob_start();
+        if ($course) {
+            $output = "<div class='tutor-divi-course-thumbnail'>";
+            if(tutils()->has_video_in_single($course)){
+                $output .= tutor_course_video();
+            } else{
+                $output .= get_tutor_course_thumbnail();
+            }
+            $output .= '</div>';
+        }
+        return $this->_render_module_wrapper( ob_get_clean(), $render_slug );
 	}
 }
 new CourseThumbnail;
