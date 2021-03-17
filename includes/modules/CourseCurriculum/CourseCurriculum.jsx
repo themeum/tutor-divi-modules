@@ -14,6 +14,7 @@ class CourseCurriculum extends Component {
         const additionalCss = [];
         //selectors
         const wrapper                   = '%%order_class%% .tutor-course-topics-wrap';
+        const topics_wrapper            = '%%order_class%% .tutor-course-topics-contents';
         const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-course-title >span`;
@@ -61,11 +62,28 @@ class CourseCurriculum extends Component {
         const lesson_background_color           = props.lesson_background_color;
         const lesson_background_color_hover     = props.lesson_background_color__hover;
 
+        const space_between_topics  = props.space_between_topics;
 
         //set styles
         /**
          * topic default display flex
          */
+        additionalCss.push([
+            {
+                selector: topics_wrapper,
+                declaration: `display: flex; flex-direction: column;`
+            }
+        ]);
+
+        if('' !== space_between_topics) {
+            additionalCss.push([
+                {
+                    selector: topics_wrapper,
+                    declaration: `row-gap: ${space_between_topics};`
+                }
+            ]);       
+        }
+
         additionalCss.push([
             {
                 selector: topic_title_selector,
@@ -324,36 +342,38 @@ class CourseCurriculum extends Component {
         let topic = topics.map((topic)=>{
             return (
             <Fragment>
-                <div className="tutor-divi-course-topic tutor-topics-in-single-lesson" onClick={(e)=> {
-                    const utils = window.ET_Builder.API.Utils;
-                    const ex_icon = utils.processFontIcon(expand_icon);
-                    const col_icon = utils.processFontIcon(collaps_icon);
-                    e.currentTarget.classList.toggle('tutor-active');
-                    let div = e.currentTarget.querySelector(".tutor-course-lessons"); 
-                    let icondiv = e.currentTarget.querySelector(".et-pb-icon");
-                    if(div.style.display !== 'none') {
-                        div.style.display = 'none';
-                    } else {
-                        div.style.display = 'block';
-                    }  
-                
-                    if(icondiv.textContent === ex_icon) {
-                        icondiv.textContent = String(col_icon);
-                    } else {
-                        icondiv.textContent = String(ex_icon);
-                    }
-            }
+                <div className="tutor-course-topics-contents">
+                    <div className="tutor-divi-course-topic tutor-topics-in-single-lesson" onClick={(e)=> {
+                        const utils = window.ET_Builder.API.Utils;
+                        const ex_icon = utils.processFontIcon(expand_icon);
+                        const col_icon = utils.processFontIcon(collaps_icon);
+                        e.currentTarget.classList.toggle('tutor-active');
+                        let div = e.currentTarget.querySelector(".tutor-course-lessons"); 
+                        let icondiv = e.currentTarget.querySelector(".et-pb-icon");
+                        if(div.style.display !== 'none') {
+                            div.style.display = 'none';
+                        } else {
+                            div.style.display = 'block';
+                        }  
+                    
+                        if(icondiv.textContent === ex_icon) {
+                            icondiv.textContent = String(col_icon);
+                        } else {
+                            icondiv.textContent = String(ex_icon);
+                        }
                 }
-                    
-                    >
-                    <div className="tutor-course-title has-summery">
+                    }
                         
-                        { this.iconTemplate(collaps_icon, expand_icon) }
-                    
-                        <h4> { topic.post_title }</h4>
-                    </div>
-                    <div className="tutor-course-lessons">
-                        { this.curriculumTemplate(topic.curriculums) }
+                        >
+                        <div className="tutor-course-title has-summery">
+                            
+                            { this.iconTemplate(collaps_icon, expand_icon) }
+                        
+                            <h4> { topic.post_title }</h4>
+                        </div>
+                        <div className="tutor-course-lessons">
+                            { this.curriculumTemplate(topic.curriculums) }
+                        </div>
                     </div>
                  </div>
             </Fragment>

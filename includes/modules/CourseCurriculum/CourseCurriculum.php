@@ -40,6 +40,7 @@ class CourseCurriculum extends ET_Builder_Module {
 		$wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
         $topic_wrapper_selector 	= '%%order_class%% .tutor-divi-course-topic';
+	
 		$topic_title_selector		= $wrapper." .tutor-course-title";
 		$header_title_selector   	= '%%order_class%% .tutor-course-topics-header-left h4';
 		$header_info_selector   	= '%%order_class%% .tutor-course-topics-header-right';
@@ -108,15 +109,7 @@ class CourseCurriculum extends ET_Builder_Module {
 					'toggle_slug'     => 'lesson',
 				),
 			),
-			'margin_padding'	=> array(
-				'use_margin'	=> false,
-				'padding'	=> array(
-					'css'	=> array(
-						'main'	=> $topic_title_selector
-					),
-					'label'	=> esc_html__('Topic Padding', 'tutor-divi-modules')
-				)
-			)
+			'margin_padding'	=> array()
 		);
 	}
 
@@ -308,6 +301,20 @@ class CourseCurriculum extends ET_Builder_Module {
 				'toggle_slug'		=> 'lesson',
 				
 			),
+			//advanced tab spacing toggle
+			'space_between_topics'	=> array(
+				'label'				=> esc_html__( 'Space Between Topics', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'default'			=> '10px',
+				'default_unit'		=> 'px',
+				'range_settings'	=> array(
+					'min'		=> '0',
+					'max'		=> '100',
+					'step'		=> '1'
+				),
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'margin_padding'
+			)
 		);
 	}
 
@@ -367,6 +374,7 @@ class CourseCurriculum extends ET_Builder_Module {
         $wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
 		$topic_wrapper				= '%%order_class%% .tutor-divi-course-topic';
+		$topics_wrapper            	= '%%order_class%% .tutor-course-topics-contents';
         $topic_wrapper_selector 	= $wrapper.' .tutor-course-title';
 		$title_selector				= $wrapper. '.tutor-course-title';
 		$header_wrapper_selector   	= '%%order_class%% .tutor-course-topics-header';
@@ -412,10 +420,33 @@ class CourseCurriculum extends ET_Builder_Module {
 
         $lesson_background_color           = $this->props['lesson_background_color'];
         $lesson_background_color_hover     = isset( $this->props['lesson_background_color__hover'] ) ? $this->props['lesson_background_color__hover'] : '';
+
+		$space_between_topics	= $this->props['space_between_topics'];
 		//set styles
 		/**
 		 * default topic title display flex
 		 */
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $topics_wrapper,
+				'declaration'	=> 'display: flex; flex-direction: column;'
+			)
+		);
+
+		if( '' !== $space_between_topics ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $topics_wrapper,
+					'declaration'	=> sprintf(
+						'row-gap: %1$s;',
+						$space_between_topics
+					)
+				)
+			);		
+		}
+
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
