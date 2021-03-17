@@ -449,7 +449,7 @@ class CourseCurriculum extends Component {
                         </div>
                         <div className="tutor-course-topics-header-right">
                             <span>{ this.props.__curriculum.lesson_count } Lessons</span>
-                            <span>{ this.props.__curriculum.course_duration }</span>
+                            <span>{ this.props.__curriculum.course_duration }h</span>
                         </div>
                     </div>
 

@@ -72,7 +72,7 @@ class CourseThumbnail extends ET_Builder_Module {
 	public static function get_props( $args = [] ) {
 		$course_id 			= $args[ 'course' ];
         $thumbnail          = '' ;
-        $has_video          = get_post_meta( $course_id, '_video', true );;
+        $has_video          = get_post_meta( $course_id, '_video', true );
         $source             = '';
         if($has_video['source'] == '-1'){
             $thumbnail = get_the_post_thumbnail_url( $course_id, $size = 'post-thumbnail');
@@ -99,16 +99,36 @@ class CourseThumbnail extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
        
         $course = $this->props['course'];
-        $output = '';
+        // $has_video          = get_post_meta( $course, '_video', true );
+        // var_dump($has_video);
+        // exit;
+        // $output = '';
+
+        // if ($course) {
+        //     $output .= "<div class='tutor-divi-course-thumbnail'>";
+        //     $has_video          = get_post_meta( $course, '_video', true );
+        //     if($has_video['source'] != '-1'){
+        //         if($has_video['source'] === 'youtube') {
+        //             $output .= "<iframe src='".$has_video['source_youtube']."'></iframe>";
+        //         } else if($has_video['source'] === 'vimeo') {
+        //             $output .= "<iframe src='".$has_video['source_vimeo']."'></iframe>";
+        //         }
+        //     } else{
+        //         $thumbnail = get_the_post_thumbnail_url( $course, $size = 'post-thumbnail');
+        //         $output .= "<img src='".$thumbnail."' alt='thumbnail'/>";
+        //     }
+        //     $output .= '</div>';
+        // }
         ob_start();
         if ($course) {
-            $output = "<div class='tutor-divi-course-thumbnail'>";
-            if(tutils()->has_video_in_single($course)){
-                $output .= tutor_course_video();
+    
+            echo "<div class='tutor-course-thumbnail'>";
+            if(tutils()->has_video_in_single()){
+                tutor_course_video();
             } else{
-                $output .= get_tutor_course_thumbnail();
+                get_tutor_course_thumbnail();
             }
-            $output .= '</div>';
+            echo '</div>';
         }
         return $this->_render_module_wrapper( ob_get_clean(), $render_slug );
 	}

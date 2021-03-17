@@ -34,7 +34,9 @@ class Helper {
             'option_category'   => 'configuration',
             'description'       => esc_html__('Here you can select the Course.', 'tutor-divi-modules'),
             'toggle_slug'       => 'main_content',
-            'options'           => self::get_courses($default),
+            'options'           => array(
+                $default    => get_the_title($default)
+            ),
             'default'           => $default,
             'computed_affects'  => array(
                 '__course',
