@@ -64,7 +64,13 @@ class TutorDiviModules extends DiviExtension {
     }
 
     public function enqueue_divi_scripts(){
-
+		wp_enqueue_script(
+			'tutor-divi-scripts',
+			DTLMS_ASSETS.'/js/scripts.js',
+			array(),
+			time(),
+			true
+		);
     }	
 }
 

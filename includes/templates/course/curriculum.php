@@ -21,8 +21,10 @@ $is_enrolled    = tutor_utils()->is_enrolled($course_id);
 //icons props
 $collaps_icon 		= et_pb_process_font_icon($args['collaps_icon']); 
 $expand_icon 		= et_pb_process_font_icon($args['expand_icon']); 
-?>
 
+?>
+<input type="hidden" id="tutor_divi_col_icon"  value="<?php echo esc_html($collaps_icon);?>">
+<input type="hidden" id="tutor_divi_exp_icon"  value="<?php echo esc_html($expand_icon);?>">
 <div class="tutor-wrap">
 <?php 
 
@@ -92,7 +94,7 @@ if($topics->have_posts()) { ?>
                     <div class="tutor-divi-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
                         <div class="tutor-course-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
 							
-								<span class="et-pb-icon"><?php esc_html_e( $collaps_icon );?></span>
+								<span class="et-pb-icon" id="tutor_divi_topic_icon"><?php esc_html_e( $collaps_icon );?></span>
 							
                             <h4> 
 							
