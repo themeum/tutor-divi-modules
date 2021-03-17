@@ -19,6 +19,8 @@ import CourseStatus from './CourseStatus/CourseStatus';
 import CoursePrice from './CoursePrice/CoursePrice';
 import CourseTags from './CourseTags/CourseTags';
 import CourseCurriculum from './CourseCurriculum/CourseCurriculum';
+import CourseThumbnail from './CourseThumbnail/CourseThumbnail';
+
 
 export default [
     CourseTitle,
@@ -41,5 +43,6 @@ export default [
     CourseStatus,
     CoursePrice,
     CourseTags,
-    CourseCurriculum
+    CourseCurriculum,
+    CourseThumbnail
 ];
