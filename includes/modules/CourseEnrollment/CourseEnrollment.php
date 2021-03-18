@@ -44,7 +44,26 @@ class CourseEnrollment extends ET_Builder_Module {
 
         //advanced fiedls settings
         $this->advanced_fields = array(
-            'fonts'         => array(),
+            'fonts'         => array(
+
+                'label_font'    => array(
+                    'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
+                    'css'   => array(
+                        'main'      => 'selector',   
+                    ),
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'enrolled_info'
+                ),
+                'date_font'    => array(
+                    'label'         => esc_html__( 'Date', 'tutor-divi-modules' ),
+                    'css'   => array(
+                        'main'      => 'selector',   
+                    ),
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'enrolled_info'
+                ),
+            ),
+
             'button'        => array(
 
                 'enrollment_button' => array(
@@ -146,6 +165,39 @@ class CourseEnrollment extends ET_Builder_Module {
                 ),
                 'default'           => 'auto',
                 'toggle_slug'       => 'customize_btn'
+            ),
+            //advanced tab enrolled_info toggle
+			'icon_size'			=> array(
+				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'default'			=> '10px',
+				'default_unit'		=> 'px',
+				'range_settings'	=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'			=> 'advanced',
+				'toggle_slug'		=> 'enrolled_info',
+				'mobile_options'	=> true
+			),
+            'icon_color'    => array(
+                'label'         => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+                'type'          => 'color-alpha',
+                'tab_slug'      => 'advanced',
+                'toggle_slug'   => 'enrolled_info'
+            ),
+            'label_color'    => array(
+                'label'         => esc_html__( 'Label Color', 'tutor-divi-modules' ),
+                'type'          => 'color-alpha',
+                'tab_slug'      => 'advanced',
+                'toggle_slug'   => 'enrolled_info'
+            ),
+            'date_color'    => array(
+                'label'         => esc_html__( 'Date Color', 'tutor-divi-modules' ),
+                'type'          => 'color-alpha',
+                'tab_slug'      => 'advanced',
+                'toggle_slug'   => 'enrolled_info'
             ),
         );
     }
