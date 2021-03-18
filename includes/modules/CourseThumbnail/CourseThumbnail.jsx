@@ -19,7 +19,7 @@ class CourseThumbnail extends Component {
         if( !this.props.__thumbnail) {
             return '';
         }
-        console.log(this.props)
+ 
         return (
             <Fragment>
                 <div className="tutor-divi-course-thumbnail">

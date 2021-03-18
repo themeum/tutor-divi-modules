@@ -324,10 +324,6 @@ class CourseCurriculum extends Component {
         return additionalCss;
     }
 
-    handleCurriculumToggle(event) {
-        console.log(this.classList)
-    }
-
     iconTemplate(collaps_icon, expand_icon) {
         const utils = window.ET_Builder.API.Utils;
         const ex_icon = utils.processFontIcon(expand_icon);
@@ -410,7 +406,7 @@ class CourseCurriculum extends Component {
         if(!this.props.__curriculum) {
             return ''
         }
-        console.log(this.props)
+  
         return (
             <Fragment>
                 <div className="tutor-wrap">
