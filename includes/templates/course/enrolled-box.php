@@ -1,5 +1,6 @@
 <?php
 global $wp_query;
+$editor_mode = false;
 ?>
 <style>
 .tutor-course-enrollment-box {
