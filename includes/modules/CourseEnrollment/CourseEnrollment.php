@@ -34,12 +34,15 @@ class CourseEnrollment extends ET_Builder_Module {
 			),
 			'advanced' => array(
                 'toggles'   => array(
-                    'enrollment_button'     => esc_html__( 'Button', 'tutor-divi-modules' ),
+                    'enrollment_button'     => esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
+                    'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-divi-modules' ),
                     'start_continue_button' => esc_html__( 'Start/Continue Button', 'tutor-divi-modules' ),
                     'complete_button'       => esc_html__( 'Complete Button', 'tutor-divi-modules' ),
+                    'gradebook_button'      => esc_html__( 'Gradebook Button', 'tutor-divi-modules' ),
                     'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-divi-modules' ),
                 )
 			),
+   
 		);
 
         //advanced fiedls settings
@@ -49,16 +52,18 @@ class CourseEnrollment extends ET_Builder_Module {
                 'label_font'    => array(
                     'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
                     'css'   => array(
-                        'main'      => 'selector',   
+                        'main'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p',
                     ),
+                    'hide_text_align'    => true,
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'enrolled_info'
                 ),
                 'date_font'    => array(
                     'label'         => esc_html__( 'Date', 'tutor-divi-modules' ),
                     'css'   => array(
-                        'main'      => 'selector',   
+                        'main'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p span',
                     ),
+                    'hide_text_align'    => true,
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'enrolled_info'
                 ),
@@ -67,58 +72,91 @@ class CourseEnrollment extends ET_Builder_Module {
             'button'        => array(
 
                 'enrollment_button' => array(
-                    'label'         => esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Enrollment Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                        )
+                    ),
                     'css'           => array(
-                        'main'  => 'selctor'
+                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
                     ),
                     'use_alignment' => false,
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'enrollment_button' ,
                     'show_if'       => array(
                         'preview_mode'  => 'enrollment'
-                    )  
+                    ),  
+                    'important'     => true
                 ),
                 'add_to_cart_button' => array(
                     'label'         => esc_html__( 'Add to Cart Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button'
+                        )
+                    ),
                     'css'           => array(
-                        'main'  => 'selctor'
+                        'main'  => '%%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button'
                     ),
                     'use_alignment' => false,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'enrollment_button' ,
+                    'toggle_slug'   => 'add_to_cart_button' ,
                     'show_if'       => array(
                         'preview_mode'  => 'enrollment'
-                    )  
+                    ),
+                    'important'     => true  
                 ),
                 'start_continue_button' => array(
                     'label'         => esc_html__( 'Start/Continue Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success'
+                        )
+                    ),
+                    'use_borders'   => false,
                     'css'           => array(
-                        'main'  => 'selctor'
+                        'main'  => '%%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success'
                     ),
                     'use_alignment' => false,
+                    'use_icon'      => false,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'start_continue_button'   
+                    'toggle_slug'   => 'start_continue_button' ,
+                    'important'     => true
                 ),
                 'complete_button' => array(
                     'label'         => esc_html__( 'Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button'
+                        )
+                    ),
                     'css'           => array(
-                        'main'  => 'selctor'
+                        'main'  => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button'
                     ),
                     'use_alignment' => false,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'complete_button'   
+                    'toggle_slug'   => 'complete_button',
+                    'important'     => true
                 ),
                 'gradebook_button' => array(
                     'label'         => esc_html__( 'Gradebook Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap'
+                        )
+                    ),
                     'css'           => array(
-                        'main'  => 'selctor'
+                        'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap'
                     ),
                     'use_alignment' => false,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'complete_button'   
+                    'toggle_slug'   => 'gradebook_button',
+                    'important'     => true
                 ),
-            )
-
+            ),
+            'borders'   => false,
+            'text'      => false,
         );
     }
 
@@ -166,7 +204,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				'toggle_slug'		=> 'customize_btn',
 				'mobile_options'	=> true
 			),
-            'size'      => array(
+            'button_size'      => array(
                 'label'             => esc_html__( 'Size', 'tutor-divi-modules' ),
                 'type'              => 'select',
                 'option_category'   => 'basic_option',
@@ -190,6 +228,23 @@ class CourseEnrollment extends ET_Builder_Module {
                 'default'           => 'fill',
                 'toggle_slug'       => 'customize_btn'
             ),
+            'width_px'			=> array(
+				'label'				=> esc_html__( 'Button Width', 'tutor-divi-modules' ),
+				'type'				=> 'range',
+				'default'			=> '150px',
+				'default_unit'		=> 'px',
+				'range_settings'	=> array(
+					'min'	=> '1',
+					'max'	=> '500',
+					'step'	=> '1'
+				),
+				'tab_slug'			=> 'general',
+				'toggle_slug'		=> 'customize_btn',
+				
+                'show_if'           => array(
+                    'btn_width'     => 'fixed'
+                )
+			),
             //advanced tab enrolled_info toggle
 			'icon_size'			=> array(
 				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
@@ -211,18 +266,7 @@ class CourseEnrollment extends ET_Builder_Module {
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'enrolled_info'
             ),
-            'label_color'    => array(
-                'label'         => esc_html__( 'Label Color', 'tutor-divi-modules' ),
-                'type'          => 'color-alpha',
-                'tab_slug'      => 'advanced',
-                'toggle_slug'   => 'enrolled_info'
-            ),
-            'date_color'    => array(
-                'label'         => esc_html__( 'Date Color', 'tutor-divi-modules' ),
-                'type'          => 'color-alpha',
-                'tab_slug'      => 'advanced',
-                'toggle_slug'   => 'enrolled_info'
-            ),
+
         );
     }
 	/**
@@ -266,39 +310,70 @@ class CourseEnrollment extends ET_Builder_Module {
 	 */    
     public function render ( $attrs, $content = null, $render_slug ) {
         //selectors
-        $wrapper                = '%%order_class%% .tutor-divi-enroll-buttons-wrapper';
-        $three_buttons_wrapper  = '%%order_class%% .tutor-lead-info-btn-group';
-        $enroll_box_selector    = '%%order_class%% .tutor-single-add-to-cart-box';
+        $three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';
+        $enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
         //props
         $alignment              = $this->props['alignment'];
+      
         $alignment_tablet       = isset($this->props['alignment_tablet']) && $this->props['alignment_tablet'] !== '' ? $this->props['alignment_tablet'] : $alignment;
         $alignment_phone        = isset($this->props['alignment_phone']) && $this->props['alignment_phone'] !== '' ? $this->props['alignment_phone'] : $alignment;
 
-        $alignment              = ($alignment === 'left' ? 'flex-start' : ($alignment === 'right' ? 'flex-end' : ''));
-        $alignment_tablet       = ($alignment_tablet === 'left' ? 'flex-start' : ($alignment_tablet === 'right' ? 'flex-end' : ''));
-        $alignment_phone        = ($alignment_phone === 'left' ? 'flex-start' : ($alignment_phone === 'right' ? 'flex-end' : ''));
+        $alignment              = ($alignment === 'left' ? 'flex-start' : ($alignment === 'right' ? 'flex-end' : 'center'));
+        $alignment_tablet       = ($alignment_tablet === 'left' ? 'flex-start' : ($alignment_tablet === 'right' ? 'flex-end' : 'center'));
+        $alignment_phone        = ($alignment_phone === 'left' ? 'flex-start' : ($alignment_phone === 'right' ? 'flex-end' : 'center'));
 
-        //set styles 
+        $width                  = $this->props['btn_width'];
+        $width_px               = $this->props['width_px'];
+        $button_size            = $this->props['button_size'];
+
+        //btn width
+
+        if( $width === 'fill' ) {
+
+        } else if ( $width === 'auto') {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-course-enrollment-box .tutor-button, %%order_class%% .tutor-course-enrollment-box .course-complete-button, %%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll',
+                    'declaration'   => 'width: -moz-fit-content !important;'
+                )
+            );
+        } else {
+            if( $width !== '') {
+                ET_Builder_Element::set_style(
+                    $render_slug,
+                    array(
+                        'selector'      => '%%order_class%% .tutor-course-enrollment-box .tutor-button, %%order_class%% .tutor-course-enrollment-box .course-complete-button, %%order_class%% .tutor-course-enrollment-box, %%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll',
+                        'declaration'   => sprintf(
+                            'width: %1$s !important;',
+                            $width_px
+                        )
+                    )
+                );
+            }
+        }
+
+        //alignment styles 
+       
         if( $alignment !== '' ) {
             //enrolled_box style
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => $three_buttons_wrapper,
+                    'selector'      =>  '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; justify-content: %1$s;',
                         $alignment
                     )
                 )
             );
-
-            //enrollment_box style
+            //start course button
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => '%%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-purchase-box',
+                    'selector'      =>  '%%order_class%% .tutor-lead-info-btn-group',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; flex-direction: column; align-items: %1$s !important;',
                         $alignment
                     )
                 )
@@ -310,22 +385,21 @@ class CourseEnrollment extends ET_Builder_Module {
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => $three_buttons_wrapper,
+                    'selector'      =>  '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; justify-content: %1$s;',
                         $alignment_tablet
                     ),
                     'media_query'   => ET_Builder_Element::get_media_query('max_width_980')
                 )
             );
-
-            //enrollment_box style
+            //start course button
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => '%%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-purchase-box',
+                    'selector'      =>  '%%order_class%% .tutor-lead-info-btn-group',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; flex-direction: column; align-items: %1$s !important;',
                         $alignment_tablet
                     ),
                     'media_query'   => ET_Builder_Element::get_media_query('max_width_980')
@@ -337,28 +411,54 @@ class CourseEnrollment extends ET_Builder_Module {
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => $three_buttons_wrapper,
+                    'selector'      =>  '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; justify-content: %1$s;',
                         $alignment_phone
                     ),
                     'media_query'   => ET_Builder_Element::get_media_query('max_width_767')
                 )
             );
-
-            //enrollment_box style
+            //start course button
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => '%%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-purchase-box',
+                    'selector'      =>  '%%order_class%% .tutor-lead-info-btn-group',
                     'declaration'   => sprintf(
-                        'align-items: %1$s;',
+                        'display: flex; flex-direction: column; align-items: %1$s !important;',
                         $alignment_phone
                     ),
                     'media_query'   => ET_Builder_Element::get_media_query('max_width_767')
                 )
             );
         }
+        //button size style
+        if( $button_size === 'small' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => "%%order_class%% .single_add_to_cart_button, %%order_class%% .tutor-course-enroll-wrap .tutor-btn, %%order_class%% .tutor-lead-info-btn-group .tutor-button, %%order_class%% .course-complete-button, %%order_class%% .generate-course-gradebook-btn-wrap .tutor-button",
+                    'declaration'   => 'padding: 9px 14px !important;'
+                )
+            );
+        } else if( $button_size === 'large' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => "%%order_class%% .single_add_to_cart_button, %%order_class%% .tutor-course-enroll-wrap .tutor-btn, %%order_class%% .tutor-lead-info-btn-group .tutor-button, %%order_class%% .course-complete-button, %%order_class%% .generate-course-gradebook-btn-wrap .tutor-button",
+                    'declaration'   => 'padding: 18px !important;'
+                )
+            );
+        }
+
+        //boders default border style
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll,  %%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button, %%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success, %%order_class%% .tutor-course-compelte-form-wrap .course-complete-button, %%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap',
+                'declaration'   => 'border-style: solid;'
+            )
+        );
 
         //set styles end
 
