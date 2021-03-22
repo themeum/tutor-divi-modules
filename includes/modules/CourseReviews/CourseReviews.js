@@ -11,6 +11,10 @@ class CourseReviews extends Component {
     }
 
     render() {
+        if(!this.props.__reviews) {
+            return '';
+        }
+        console.log(this.props);
         return (
             <Fragment>
                 <h1>Course reviews</h1>

@@ -26,7 +26,27 @@ class CourseReviews extends ET_Builder_Module {
     //Module fields
     public function get_fields() {
         return array(
-            
+            'course'       	=> Helper::get_field(
+				array(
+					'default'          => Helper::get_course_default(),
+					'computed_affects' => array(
+						'__reviews',
+					),
+				)
+			),
+            '__reviews'     => array(
+                'type'                  => 'computed',
+                'computed_callback'     => array(
+                    'CourseReviews',
+                    'get_props'
+                ),
+                'computed_depends_on'   => array(
+                    'course'
+                ),
+                'computed_minimum'      => array(
+                    'course'
+                )
+            ),
             'label'         => array(
                 'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
                 'type'          => 'text',
@@ -36,6 +56,29 @@ class CourseReviews extends ET_Builder_Module {
         );
     }
 
+    /**
+     * get props
+     * @return arr
+     */
+    public static function get_props( $args = [] ) {
+        $course_id      = $args['course'];
+        $reviews        = tutils()->get_course_reviews( $course_id );
+        $rating_summary = tutils()->get_course_rating( $course_id );
+
+        foreach( $reviews as $review) {
+            if($review) {
+                $review->avatar_url = get_avatar_url( $review->user_id );
+            }
+        }
+        return array(
+            'rating_summary'    => $rating_summary,
+            'reviews'           => $reviews
+        );
+    }
+
+    public static function get_content() {
+
+    }
 	/**
 	 * Render module output
 	 *
@@ -48,7 +91,13 @@ class CourseReviews extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
     public function render( $attrs, $content = null, $render_slug ) {
-        echo "<h2>Course Reviews</h2>";
+
+        $output = self::get_content( $this->props );
+        if( $output == '' ) {
+            return '';
+        }
+
+        return $this->_render_module_wrapper( $render_slug, $output);
     }
 }
 new CourseReviews;
