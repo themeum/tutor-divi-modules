@@ -143,11 +143,11 @@ class CourseEnrollment extends ET_Builder_Module {
                     'label'         => esc_html__( 'Gradebook Button', 'tutor-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
-                            'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap'
+                            'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap .tutor-button'
                         )
                     ),
                     'css'           => array(
-                        'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap'
+                        'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap > .tutor-button'
                     ),
                     'use_alignment' => false,
                     'tab_slug'      => 'advanced',
@@ -326,9 +326,21 @@ class CourseEnrollment extends ET_Builder_Module {
         $width_px               = $this->props['width_px'];
         $button_size            = $this->props['button_size'];
 
+        $icon_color             = $this->props['icon_color'];
+        $icon_size              = $this->props['icon_size'];
+        $icon_size_tablet       = isset($this->props['icon_size_tablet']) && $this->props['icon_size_tablet'] !== '' ? $this->props['icon_size_tablet'] : $icon_size;
+        $icon_size_phone        = isset($this->props['icon_size_phone']) && $this->props['icon_size_phone'] !== '' ? $this->props['icon_size_phone'] : $icon_size;
+
         //btn width
 
         if( $width === 'fill' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% #tutor-gradebook-generate-for-course',
+                    'declaration'   => 'width: 100%;'
+                )
+            );
 
         } else if ( $width === 'auto') {
             ET_Builder_Element::set_style(
@@ -459,6 +471,61 @@ class CourseEnrollment extends ET_Builder_Module {
                 'declaration'   => 'border-style: solid;'
             )
         );
+
+        //purchase icon style
+        if( $icon_color !== '' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    'declaration'   => sprintf(
+                        'color: %1$s;',
+                        $icon_color
+                    )
+                )
+            );
+        }
+
+        if( $icon_size !== '' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    'declaration'   => sprintf(
+                        'font-size: %1$s',
+                        $icon_size
+                    )
+                )
+            );            
+        }
+
+        if( $icon_size_tablet !== '' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    'declaration'   => sprintf(
+                        'font-size: %1$s',
+                        $icon_size_tablet
+                    ),
+                    'media_query'   => ET_Builder_Element::get_media_query('max_width_980')
+                )
+            );            
+        }
+        
+        if( $icon_size_phone !== '' ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    'declaration'   => sprintf(
+                        'font-size: %1$s',
+                        $icon_size_phone
+                    ),
+                    'media_query'   => ET_Builder_Element::get_media_query('max_width_767')
+                )
+            );            
+        }
 
         //set styles end
 

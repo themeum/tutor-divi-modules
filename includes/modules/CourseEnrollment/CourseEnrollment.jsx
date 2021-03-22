@@ -143,8 +143,8 @@ class CourseEnrollment extends Component {
             //enroll & add to cart button
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-enrollment-box .tutor-single-add-to-cart-box .single_add_to_cart_button, %%order_class%% .tutor-course-enrollment-box .tutor-course-enroll-wrap .tutor-btn-enroll, %%order_class%% .generate-course-gradebook-btn-wrap',
-                    declaration: `width: 100%; display: flex; justify-content: center;`
+                    selector: '%%order_class%% .tutor-course-enrollment-box .tutor-single-add-to-cart-box .single_add_to_cart_button, %%order_class%% .tutor-course-enrollment-box .tutor-course-enroll-wrap .tutor-btn-enroll, %%order_class%% .generate-course-gradebook-btn-wrap, %%order_class%% #tutor-gradebook-generate-for-course',
+                    declaration: `width: 100% !important; display: flex; justify-content: center;`
                 }
             ]);
 
