@@ -1,101 +1,117 @@
-<div class="tutor-course-reviews">
-    <div class="tutor-single-course-segment">
-        <div class="course-student-rating-title">
-            <h4 class="tutor-segment-title"><?php _e('Student Feedback', 'tutor'); ?></h4>
-        </div>
-        <div class="tutor-course-reviews-wrap">
-            <div class="tutor-course-student-rating-wrap">
-                <div class="course-avg-rating-wrap">
-                    <div class="tutor-row tutor-align-items-center">
-                        <div class="tutor-col-auto">
-                            <p class="course-avg-rating">5</p>
-                            <p class="course-avg-rating-html"></p>
-                            <div class="tutor-star-rating-group"><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-line"></i>
-                                <div class="tutor-rating-gen-input"><input type="hidden" name="tutor_rating_gen_input" value="4.33"> </div>
-                            </div>
-                            <p class="tutor-course-avg-rating-total">Total <span>1</span> Ratings</p>
-                        </div>
-                        <div class="tutor-col">
-                            <div class="course-ratings-count-meter-wrap">
+<?php
+/**
+ * Template for displaying course reviews
+ *
+ * @since v.1.0.0
+ *
+ * @author Themeum
+ * @url https://themeum.com
+ *
+ * @package Tutor Divi Modules
+ * @version 1.0.0
+ */
+
+
+do_action('tutor_course/single/enrolled/before/reviews');
+
+$disable = get_tutor_option('disable_course_review');
+if ($disable){
+    return;
+}
+/**
+ * get props 
+ */
+$course_id  = $args['course'];
+$reviews    = tutor_utils()->get_course_reviews( $course_id );
+if ( ! is_array($reviews) || ! count($reviews)){
+	return;
+}
+?>
+
+<div class="tutor-single-course-segment">
+    <div class="course-student-rating-title">
+        <h4 class="tutor-segment-title"><?php _e('Student Feedback', 'tutor-divi-modules'); ?></h4>
+    </div>
+    <div class="tutor-course-reviews-wrap">
+        <div class="tutor-course-student-rating-wrap">
+            <div class="course-avg-rating-wrap">
+                <div class="tutor-row tutor-align-items-center">
+                    <div class="tutor-col-auto">
+                        <p class="course-avg-rating">
+							<?php
+							$rating = tutor_utils()->get_course_rating();
+							echo number_format($rating->rating_avg, 1);
+							?>
+                        </p>
+                        <p class="course-avg-rating-html">
+		                    <?php tutor_utils()->star_rating_generator($rating->rating_avg);?>
+                        </p>
+                        <p class="tutor-course-avg-rating-total">Total <span><?php echo $rating->rating_count;?></span> Ratings</p>
+
+                    </div>
+                    <div class="tutor-col">
+                        <div class="course-ratings-count-meter-wrap">
+							<?php
+							foreach ($rating->count_by_value as $key => $value){
+							    $rating_count_percent = ($value > 0) ? ($value  * 100 ) / $rating->rating_count : 0;
+							    ?>
                                 <div class="course-rating-meter">
                                     <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col">5</div>
+                                    <div class="rating-meter-col"><?php echo $key; ?></div>
                                     <div class="rating-meter-col rating-meter-bar-wrap">
                                         <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: 100%;"></div>
+                                            <div class="rating-meter-fill-bar" style="width: <?php echo $rating_count_percent; ?>%;"></div>
                                         </div>
                                     </div>
-                                    <div class="rating-meter-col rating-text-col">1 rating </div>
-                                </div>
-                                <div class="course-rating-meter">
-                                    <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col">4</div>
-                                    <div class="rating-meter-col rating-meter-bar-wrap">
-                                        <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: 0%;"></div>
-                                        </div>
+                                    <div class="rating-meter-col rating-text-col">
+                                        <?php
+                                        echo $value.' ';
+                                        echo $value > 1 ? __('ratings', 'tutor-divi-modules') : __('rating', 'tutor-divi-modules'); ?>
                                     </div>
-                                    <div class="rating-meter-col rating-text-col">0 rating </div>
                                 </div>
-                                <div class="course-rating-meter">
-                                    <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col">3</div>
-                                    <div class="rating-meter-col rating-meter-bar-wrap">
-                                        <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="rating-meter-col rating-text-col">0 rating </div>
-                                </div>
-                                <div class="course-rating-meter">
-                                    <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col">2</div>
-                                    <div class="rating-meter-col rating-meter-bar-wrap">
-                                        <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="rating-meter-col rating-text-col">0 rating </div>
-                                </div>
-                                <div class="course-rating-meter">
-                                    <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col">1</div>
-                                    <div class="rating-meter-col rating-meter-bar-wrap">
-                                        <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-                                    <div class="rating-meter-col rating-text-col">0 rating </div>
-                                </div>
-                            </div>
+							<?php } ?>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="tutor-course-reviews-list">
-                <div class="tutor-review-individual-item tutor-review-26">
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="tutor-course-reviews-list">
+			<?php
+			foreach ($reviews as $review){
+				$profile_url = tutor_utils()->profile_url($review->user_id);
+				?>
+                <div class="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
                     <div class="review-left">
-                        <div class="review-avatar"> 
-                            <a href="#"> <span class="tutor-text-avatar" style="background-color: #d5c442; color: #fff8e5">JD</span></a>
+                        <div class="review-avatar">
+                            <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($review->user_id); ?> </a>
                         </div>
                         <div class="tutor-review-user-info">
                             <div class="review-time-name">
-                                <p> <a href="#">John Doe </a> </p>
-                                <p class="review-meta">1 year ago </p>
+                                <p> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </p>
+                                <p class="review-meta">
+                                    <?php echo sprintf(__('%s ago', 'tutor-divi-modules'), human_time_diff(strtotime($review->comment_date))); ?>
+                                </p>
                             </div>
                             <div class="individual-review-rating-wrap">
-                                <div class="tutor-star-rating-group"><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-full"></i><i class="tutor-icon-star-line"></i><i class="tutor-icon-star-line"></i>
-                                    <div class="tutor-rating-gen-input"><input type="hidden" name="tutor_rating_gen_input" value="3"> </div>
-                                </div>
+								<?php tutor_utils()->star_rating_generator($review->rating); ?>
                             </div>
                         </div>
+
                     </div>
+
                     <div class="review-content review-right">
-                        <p>printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+						<?php echo wpautop(stripslashes($review->comment_content)); ?>
                     </div>
                 </div>
-            </div>
+				<?php
+			}
+			?>
         </div>
     </div>
 </div>
+
+<?php do_action('tutor_course/single/enrolled/after/reviews'); ?>
