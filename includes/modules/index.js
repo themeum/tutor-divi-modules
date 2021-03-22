@@ -21,6 +21,7 @@ import CourseTags from './CourseTags/CourseTags';
 import CourseCurriculum from './CourseCurriculum/CourseCurriculum';
 import CourseThumbnail from './CourseThumbnail/CourseThumbnail';
 import CourseEnrollment from './CourseEnrollment/CourseEnrollment';
+import CourseReviews from './CourseReviews/CourseReviews';
 
 
 export default [
@@ -46,5 +47,6 @@ export default [
     CourseTags,
     CourseCurriculum,
     CourseThumbnail,
-    CourseEnrollment
+    CourseEnrollment,
+    CourseReviews
 ];
