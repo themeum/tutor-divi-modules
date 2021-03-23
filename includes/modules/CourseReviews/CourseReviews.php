@@ -50,7 +50,7 @@ class CourseReviews extends ET_Builder_Module {
         );
 
         //advanced fields settings
-        $title_selector         = '%%order_class%% .tutor-single-course-segment .course-student-rating-title';
+        $title_selector         = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
         $avg_total_selector     = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
         $avg_text_selector      = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
         $avg_count_selector     = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
@@ -58,33 +58,39 @@ class CourseReviews extends ET_Builder_Module {
             'fonts'     => array(
                 'section_title' => array(
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => $title_selector,
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'section_title'
                     )
                 ),
                 'review_avg_total'    => array(
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => $avg_total_selector,
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_avg_total',
+                        
                     ),
+                    'hide_text_align'   => true
                 ), 
                 'review_avg_text'    => array(
                     'label' => 'Revie Avg Total',
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => $avg_text_selector,
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_avg_text',
+                        
                     ),
+                    'hide_text_align'   => true
                 ), 
                 'review_avg_count'    => array(
                    
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => $avg_count_selector,
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_avg_count',
+                        
                     ),
+                    'hide_text_align'   => true
                 ), 
                 'rating_bar'    => array(
                    
@@ -304,6 +310,40 @@ class CourseReviews extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
     public function render( $attrs, $content = null, $render_slug ) {
+        //selectors
+        $avg_star_selector = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
+
+        //props
+        $review_avg_star_color      = $this->props['review_avg_star_color'];
+        $review_avg_star_size      = $this->props['review_avg_star_size'];
+
+        //set style
+        if( '' !== $review_avg_star_color ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $avg_star_selector,
+                    'declaration'   => sprintf(
+                        'color: %1$s;',
+                        $review_avg_star_color
+                    )
+                )
+            );
+        }
+
+        if( '' !== $review_avg_star_size ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $avg_star_selector,
+                    'declaration'   => sprintf(
+                        'font-size: %1$s;',
+                        $review_avg_star_size
+                    )
+                )
+            );
+        }
+        //set style
 
         $output = self::get_content( $this->props );
         if( '' === $output ) {

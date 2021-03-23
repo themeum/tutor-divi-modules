@@ -30,7 +30,7 @@ if ( ! is_array($reviews) || ! count($reviews)){
 
 <div class="tutor-single-course-segment">
     <div class="course-student-rating-title">
-        <h4 class="tutor-segment-title"><?php _e('Student Feedback', 'tutor-divi-modules'); ?></h4>
+        <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-divi-modules'); ?></h4>
     </div>
     <div class="tutor-course-reviews-wrap">
         <div class="tutor-course-student-rating-wrap">

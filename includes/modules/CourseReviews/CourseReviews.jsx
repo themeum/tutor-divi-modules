@@ -6,7 +6,33 @@ class CourseReviews extends Component {
 
     static css(props) {
         const additionalCss = [];
+        //selectors
+        const avg_star_selector = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
 
+        //props
+        const review_avg_star_color     = props.review_avg_star_color;
+        const review_avg_star_size      = props.review_avg_star_size;
+
+        //set styles
+        if('' !== review_avg_star_color) {
+            additionalCss.push([
+                {
+                    selector: avg_star_selector,
+                    declaration: `color: ${review_avg_star_color};`
+                }
+            ]);
+        }
+
+        if('' !== review_avg_star_size) {
+            additionalCss.push([
+                {
+                    selector: avg_star_selector,
+                    declaration: `font-size: ${review_avg_star_size};`
+                }
+            ]);
+        }
+
+        //set styles end
         return additionalCss;
     }
 
