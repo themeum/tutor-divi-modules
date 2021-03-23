@@ -93,38 +93,47 @@ class CourseReviews extends ET_Builder_Module {
                     'hide_text_align'   => true
                 ), 
                 'rating_bar'    => array(
-                   
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => '%%order_class%% .course-rating-meter .rating-text-col, %%order_class%% .course-ratings-count-meter-wrap .rating-meter-col',
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'rating_abr',
                     ),
                 ), 
                 'review_list_author_name'    => array(
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => '%%order_class%% .tutor-review-user-info .review-time-name p a',
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_list_author_name',
                     ),
+                    'hide_text_align'   => true
                 ), 
                 'review_list_time'    => array(
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => '%%order_class%% .tutor-review-user-info .review-time-name .review-meta',
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_list_time',
                     ),
+                    'hide_text_align'   => true
                 ), 
                 'review_list_comment'    => array(
                     'css'   => array(
-                        'main'          => 'selector',
+                        'main'          => '%%order_class%% .review-content.review-right p',
                         'tab_slug'      => 'advanced',
                         'toggle_slug'   => 'review_list_comment',
                     ),
                 ), 
+                'review_list_star'    => array(
+                    'css'   => array(
+                        'main'          => '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i',
+                        'tab_slug'      => 'advanced',
+                        'toggle_slug'   => 'review_list_comment',
+                    ),
+                    'hide_text_align'   => true
+                ), 
             ),
             'background'    => array(
                 'css'   => array(
-                    'main'  => 'selector',
+                    'main'  => '%%order_class%% .tutor-review-individual-item .review-avatar a img',
                     'important' => true
                 ),
                 'settings'  => array(
@@ -137,8 +146,8 @@ class CourseReviews extends ET_Builder_Module {
                 'review_list_avatar' => array(
 					'css'             	=> array(
 						'main' => array(
-							'border_radii'  => '',
-							'border_styles' => '',
+							'border_radii'  => '%%order_class%% .review-avatar a img',
+							'border_styles' => '%%order_class%% .review-avatar a img',
 
 						),
 						'important'		=> true
@@ -245,7 +254,21 @@ class CourseReviews extends ET_Builder_Module {
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'rating_bar'
             ),     
-            //advanced tab review_avg_star toggle
+            //advanced tab review_list_avatar toggle
+            'review_list_avatar_size'   => array(
+                'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
+                'type'          => 'range',
+                'default'       => '48px',
+                'default_unit'  => 'px',
+                'range_settings'    => array(
+                    'min'   => '1',
+                    'max'   => '200',
+                    'step'  => '1'
+                ),
+                'tab_slug'      => 'advanced',
+                'toggle_slug'   => 'review_list_avatar'
+            ),  
+            //advanced tab review_list toggle
             'review_list_star_color'   => array(
                 'label'         => esc_html__( 'Star Color', 'tutor-divi-modules'),
                 'type'          => 'color-alpha',
@@ -311,11 +334,27 @@ class CourseReviews extends ET_Builder_Module {
 	 */
     public function render( $attrs, $content = null, $render_slug ) {
         //selectors
-        $avg_star_selector = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
+        $avg_star_selector         = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
+        $rating_bar_selector       = '%%order_class%% .course-rating-meter .rating-meter-bar';
+        $rating_bar_fill_selector  = '%%order_class%% .course-rating-meter .rating-meter-bar .rating-meter-fill-bar';
+        $rating_star_selector      = '%%order_class%% .course-rating-meter .rating-meter-col i';
+
+        $review_list_avatar_selector   = '%%order_class%% .review-avatar a img';
+        $review_list_star_selector     = '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i';
 
         //props
-        $review_avg_star_color      = $this->props['review_avg_star_color'];
+        $review_avg_star_color     = $this->props['review_avg_star_color'];
         $review_avg_star_size      = $this->props['review_avg_star_size'];
+
+        $rating_bar_color          = $this->props['rating_bar_color'];
+        $rating_bar_fill_color     = $this->props['rating_bar_fill_color'];
+        $rating_bar_height         = $this->props['rating_bar_height'];
+        $rating_bar_star_color     = $this->props['rating_bar_star_color'];
+        $rating_bar_star_size      = $this->props['rating_bar_star_size'];
+
+        $review_list_avatar_size   = $this->props['review_list_avatar_size'];
+        $review_list_star_color    = $this->props['review_list_star_color'];
+        $review_list_star_size     = $this->props['review_list_star_size'];
 
         //set style
         if( '' !== $review_avg_star_color ) {
@@ -343,7 +382,122 @@ class CourseReviews extends ET_Builder_Module {
                 )
             );
         }
-        //set style
+
+        //rating bar
+        if( '' !== $rating_bar_color ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $rating_bar_selector,
+                    'declaration'   => sprintf(
+                        'background-color: %1$s !important;',
+                        $rating_bar_color
+                    )
+                )
+            );  
+        }
+        
+        if( '' !== $rating_bar_fill_color ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $rating_bar_fill_selector,
+                    'declaration'   => sprintf(
+                        'background-color: %1$s !important;',
+                        $rating_bar_fill_color
+                    )
+                )
+            );              
+        }
+
+        if( '' !== $rating_bar_height ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $rating_bar_selector." , ".$rating_bar_fill_selector,
+                    'declaration'   => sprintf(
+                        'height: %1$s;',
+                        $rating_bar_height
+                    )
+                )
+            );              
+        }
+
+        if( '' !== $rating_bar_star_color ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $rating_star_selector,
+                    'declaration'   => sprintf(
+                        'color: %1$s;',
+                        $rating_bar_star_color
+                    )
+                )
+            );   
+        }
+
+        if( '' !== $rating_bar_star_size ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $rating_star_selector,
+                    'declaration'   => sprintf(
+                        'font-size: %1$s;',
+                        $rating_bar_star_size
+                    )
+                )
+            );             
+        }
+
+        if('' !== $review_list_avatar_size) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $review_list_avatar_selector,
+                    'declaration'   => sprintf(
+                        'width: %1$s;',
+                        $review_list_avatar_size
+                    )
+                )
+            );
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $review_list_avatar_selector,
+                    'declaration'   => sprintf(
+                        'height: %1$s;',
+                        $review_list_avatar_size
+                    )
+                )
+            );
+        }
+
+        if('' !== $review_list_star_color) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $review_list_star_selector,
+                    'declaration'   => sprintf(
+                        'color: %1$s;',
+                        $review_list_star_color
+                    )
+                )
+            );
+        }
+
+        if('' !== $review_list_star_size) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => $review_list_star_selector,
+                    'declaration'   => sprintf(
+                        'font-size: %1$s;',
+                        $review_list_star_size
+                    )
+                )
+            );             
+        }
+        //set style end
 
         $output = self::get_content( $this->props );
         if( '' === $output ) {

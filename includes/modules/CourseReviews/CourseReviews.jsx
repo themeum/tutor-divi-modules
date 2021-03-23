@@ -7,13 +7,30 @@ class CourseReviews extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const avg_star_selector = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
+        const avg_star_selector         = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
+        const rating_bar_selector       = '%%order_class%% .course-rating-meter .rating-meter-bar';
+        const rating_bar_fill_selector  = '%%order_class%% .course-rating-meter .rating-meter-bar .rating-meter-fill-bar';
+        const rating_star_selector      = '%%order_class%% .course-rating-meter .rating-meter-col i';
+
+        const review_list_avatar_selector   = '%%order_class%% .review-avatar a img';
+        const review_list_star_selector     = '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i';
 
         //props
         const review_avg_star_color     = props.review_avg_star_color;
         const review_avg_star_size      = props.review_avg_star_size;
 
+        const rating_bar_color          = props.rating_bar_color;
+        const rating_bar_fill_color     = props.rating_bar_fill_color;
+        const rating_bar_height         = props.rating_bar_height;
+        const rating_bar_star_color     = props.rating_bar_star_color;
+        const rating_bar_star_size      = props.rating_bar_star_size;
+
+        const review_list_avatar_size   = props.review_list_avatar_size;
+        const review_list_star_color    = props.review_list_star_color;
+        const review_list_star_size    = props.review_list_star_size;
+
         //set styles
+        //review avg star
         if('' !== review_avg_star_color) {
             additionalCss.push([
                 {
@@ -32,6 +49,78 @@ class CourseReviews extends Component {
             ]);
         }
 
+        //rating bar 
+        if('' !== rating_bar_color) {
+            additionalCss.push([
+                {
+                    selector: rating_bar_selector,
+                    declaration: `background-color: ${rating_bar_color};`
+                }
+            ]);        
+        }
+        
+        if('' !== rating_bar_fill_color) {
+            additionalCss.push([
+                {
+                    selector: rating_bar_fill_selector,
+                    declaration: `background-color: ${rating_bar_fill_color};`
+                }
+            ]);        
+        }
+
+        if('' !== rating_bar_star_color) {
+            additionalCss.push([
+                {
+                    selector: rating_star_selector,
+                    declaration: `color: ${rating_bar_star_color};`
+                }
+            ]);        
+        }
+
+        if('' !== rating_bar_star_size) {
+            additionalCss.push([
+                {
+                    selector: rating_star_selector,
+                    declaration: `font-size: ${rating_bar_star_size};`
+                }
+            ]);        
+        }
+
+        if('' !== rating_bar_height) {
+            additionalCss.push([
+                {
+                    selector: `${rating_bar_selector} , ${rating_bar_fill_selector}`,
+                    declaration: `height: ${rating_bar_height};`
+                }
+            ]);        
+        }
+
+        if('' !== review_list_avatar_size) {
+            additionalCss.push([
+                {
+                    selector: review_list_avatar_selector,
+                    declaration: `width: ${review_list_avatar_size}; height: ${review_list_avatar_size};`
+                }
+            ]);                
+        }
+
+        if('' !== review_list_star_color) {
+            additionalCss.push([
+                {
+                    selector: review_list_star_selector,
+                    declaration: `color: ${review_list_star_color};`
+                }
+            ]);              
+        }
+
+        if('' !== review_list_star_size) {
+            additionalCss.push([
+                {
+                    selector: review_list_star_selector,
+                    declaration: `font-size: ${review_list_star_size};`
+                }
+            ]);              
+        }
         //set styles end
         return additionalCss;
     }
@@ -61,7 +150,7 @@ class CourseReviews extends Component {
     ratingMeter(count_by_value) {
         
         const rating_meter = Object.entries(count_by_value).map((k,v)=> {
-            let width = count_by_value.k ? '100%' : '0%';
+            let width = k[1] ? '100%' : '0%';
             return (<div className="course-rating-meter">
                     <div className="rating-meter-col">{k[0]} <i className="tutor-icon-star-full"></i></div>
                     <div className="rating-meter-col"></div>
@@ -108,7 +197,9 @@ class CourseReviews extends Component {
             <div className={class_name}>
                 <div className="review-left">
                     <div className="review-avatar">
-                        <img src={review.avatar_url} alt="avatar"/>
+                        <a href="/">
+                            <img src={review.avatar_url} alt="avatar"/>
+                        </a>
                     </div>
                     <div className="tutor-review-user-info">
                         <div className="review-time-name">
@@ -128,7 +219,7 @@ class CourseReviews extends Component {
                 </div>
     
                 <div className="review-content review-right">
-                    { review.comment_content }
+                    <p>{ review.comment_content }</p>
                 </div>
             </div>
             );
