@@ -54,9 +54,20 @@ class CourseReviews extends Component {
     }
 
     timeAgo(comment_date) {
-        const now   = new Date();
-        const diff  = now - comment_date;
-        console.log(diff);
+        const date1 = new Date(comment_date);
+        const date2 = new Date();
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        
+        if(diffDays >= 30) {
+            let month = diffDays / 30;
+            console.log(`month ${month}`)
+                month = Math.ceil(month);
+                
+                return `${month} months ago`;
+        }
+        return `${diffDays} days ago` ;
+        
     }
 
     /**
@@ -66,8 +77,9 @@ class CourseReviews extends Component {
      */
     reviewList(reviews) {
         const review_template = reviews.map((review) => {
+            let class_name = `tutor-review-individual-item tutor-review-${review.comment_ID}`;
             return (
-            <div className="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
+            <div className={class_name}>
                 <div className="review-left">
                     <div className="review-avatar">
                         <img src={review.avatar_url} alt="avatar"/>

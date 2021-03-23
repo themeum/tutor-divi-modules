@@ -50,7 +50,7 @@ class CourseReviews extends ET_Builder_Module {
             'label'         => array(
                 'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
                 'type'          => 'text',
-                'default'       => esc_html__( 'Stuent Rating & Reviews ', 'tutor-divi-modules' ),
+                'default'       => esc_html__( 'Stuent Feedback ', 'tutor-divi-modules' ),
                 'toggle_slug'   => 'main_content'
             )
         );
