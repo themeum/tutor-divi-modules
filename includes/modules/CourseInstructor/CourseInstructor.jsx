@@ -4,7 +4,16 @@ class CourseInstructor extends Component {
 
     static slug = 'tutor_course_instructor';
 
+    static css(props) {
+        const additionalCss = [];
+        return additionalCss;
+    }
+
     render(){
+        if(!this.props.__instructor) {
+            return '';
+        }
+        console.log(this.props.__instructor)
         return (
             <Fragment>
                 <h4 class="tutor-segment-title"> LABEL </h4>
