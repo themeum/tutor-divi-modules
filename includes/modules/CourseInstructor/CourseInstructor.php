@@ -24,19 +24,19 @@ class CourseInstructor extends ET_Builder_Module {
 					),
 				)
 			),
-            '__instructor'  => array(
-                'type'          => 'computed',
-                'computed_callback' => array(
-                    'CourseInstructor',
-                    'get_props'
-                ),
-                'computed_depends_on'   => array(
-                    'course'
-                ),
-                'computed_minimum'      => array(
-                    'course'
-                )
-            ),
+			'__instructor'	=> array(
+				'type'					=> 'computed',
+				'computed_callback'		=> array(
+					'CourseInstructor',
+					'get_props'
+				),
+				'computed_depends_on'	=> array(
+					'course'
+				),
+				'computed_minimum'		=> array(
+					'course'
+				)
+			),
 			'label'     => array(
 				'label'           => esc_html__( 'Label', 'tutor-divi-modules' ),
 				'type'            => 'text',
@@ -49,23 +49,21 @@ class CourseInstructor extends ET_Builder_Module {
 
 	/**
 	 * @param array
-	 * @return array
+	 * @return array | string
 	 */
 	public static function get_props( $args = [] ) {
-		$course_id		= $args['course'];
-		$instructors	= tutils()->get_instructors_by_course( $course_id );
-
-		if($instructors && !is_null($instructors)) {
+		$course_id = $args['course'];
+		$instructors	= tutor_utils()->get_instructors_by_course( $course_id );
+		if( !is_null( $instructors ) ) {
 			foreach( $instructors as $instructor ) {
-				$instructor_id = $instructor->ID;
-				$instructor->avatar				= tutils()->get_tutor_avatar( $instructor_id );
-				$instructor->ratings 			= tutor_utils()->get_instructor_ratings( $instructor_id );
-				$instructor->rating_generate	= tutor_utils()->star_rating_generator($instructor->ratings ? $instructor->ratings->rating_avg : 0);
-				$instructor->course_count 		= tutor_utils()->get_course_count_by_instructor( $instructor_id );
-				$instructor->student_count 		= tutor_utils()->get_total_students_by_instructor( $instructor_id );
+				$instructor->avatar				= tutils()->get_tutor_avatar( $instructor->ID, $size = 'thumbnail' );
+				$instructor->ratings 			= tutils()->get_instructor_ratings( $instructor->ID );
+				//$instructor->rating_generate	= tutils()->star_rating_generator($instructor->ratings ? $instructor->ratings->rating_avg : 0);
+				$instructor->course_count 		= tutils()->get_course_count_by_instructor( $instructor->ID );
+				$instructor->student_count 		= tutils()->get_total_students_by_instructor( $instructor->ID );
 			}
 		}
-		return $instructors ? $instructors : [] ;
+		return $instructors;
 	}
 
 	/**
@@ -79,6 +77,7 @@ class CourseInstructor extends ET_Builder_Module {
 	}
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
+
 		//selectors
 
 		//props

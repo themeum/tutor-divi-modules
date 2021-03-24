@@ -271,7 +271,7 @@ class CourseReviews extends Component {
         if(!this.props.__reviews) {
             return '';
         }
-        console.log(this.props);
+       
         return (
             <Fragment>
                 { this.template( this.props )}

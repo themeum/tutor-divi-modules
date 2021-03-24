@@ -304,7 +304,7 @@ class CourseReviews extends ET_Builder_Module {
         foreach( $reviews as $review) {
             if($review) {
                 //$review->avatar_url = get_avatar_url( $review->user_id , array('force_default' => true));
-                $review->avatar_url = tutils()->get_tutor_avatar( $review->user_id , array('force_default' => true));
+                $review->avatar_url = tutor_utils()->get_tutor_avatar( $review->user_id , array('force_default' => true));
             }
         }
         return array(
