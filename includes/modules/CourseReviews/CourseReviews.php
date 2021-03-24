@@ -133,7 +133,7 @@ class CourseReviews extends ET_Builder_Module {
             ),
             'background'    => array(
                 'css'   => array(
-                    'main'  => '%%order_class%% .tutor-review-individual-item .review-avatar a img',
+                    'main'  => '%%order_class%% .tutor-review-individual-item .review-avatar a span',
                     'important' => true
                 ),
                 'settings'  => array(
@@ -146,8 +146,8 @@ class CourseReviews extends ET_Builder_Module {
                 'review_list_avatar' => array(
 					'css'             	=> array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .review-avatar a img',
-							'border_styles' => '%%order_class%% .review-avatar a img',
+							'border_radii'  => '%%order_class%% .review-avatar a img, %%order_class%% .review-avatar a span',
+							'border_styles' => '%%order_class%% .review-avatar a img, %%order_class%% .review-avatar a span',
 
 						),
 						'important'		=> true
@@ -339,7 +339,7 @@ class CourseReviews extends ET_Builder_Module {
         $rating_bar_fill_selector  = '%%order_class%% .course-rating-meter .rating-meter-bar .rating-meter-fill-bar';
         $rating_star_selector      = '%%order_class%% .course-rating-meter .rating-meter-col i';
 
-        $review_list_avatar_selector   = '%%order_class%% .review-avatar a img';
+        $review_list_avatar_selector   = '%%order_class%% .review-avatar a span, %%order_class%% .review-avatar a img';
         $review_list_star_selector     = '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i';
 
         //props

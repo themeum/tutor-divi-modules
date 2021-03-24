@@ -12,7 +12,7 @@ class CourseReviews extends Component {
         const rating_bar_fill_selector  = '%%order_class%% .course-rating-meter .rating-meter-bar .rating-meter-fill-bar';
         const rating_star_selector      = '%%order_class%% .course-rating-meter .rating-meter-col i';
 
-        const review_list_avatar_selector   = '%%order_class%% .review-avatar a img';
+        const review_list_avatar_selector   = '%%order_class%% .review-avatar a span, %%order_class%% .review-avatar a img, %%order_class%% .review-avatar a span, %%order_class%% .review-avatar a span';
         const review_list_star_selector     = '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i';
 
         //props
@@ -176,7 +176,6 @@ class CourseReviews extends Component {
         
         if(diffDays >= 30) {
             let month = diffDays / 30;
-            console.log(`month ${month}`)
                 month = Math.ceil(month);
                 
                 return `${month} months ago`;
