@@ -196,8 +196,8 @@ class CourseReviews extends Component {
             <div className={class_name}>
                 <div className="review-left">
                     <div className="review-avatar">
-                        <a href="/">
-                            <img src={review.avatar_url} alt="avatar"/>
+                        <a href="/" dangerouslySetInnerHTML={{__html: review.avatar_url}} >
+                            
                         </a>
                     </div>
                     <div className="tutor-review-user-info">
