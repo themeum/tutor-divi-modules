@@ -113,7 +113,7 @@ class CourseInstructor extends ET_Builder_Module {
                 ),
                 'use_background_video'  => false
             ),
-			
+			'text'		=> false
 		);
 	}
 
