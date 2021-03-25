@@ -6,6 +6,91 @@ class CourseInstructor extends Component {
 
     static css(props) {
         const additionalCss = [];
+
+        //selector
+        const wrapper                   = '%%order_class%% .single-instructor-wrap';
+        const tutor_instructor_right    = `${wrapper} .tutor-instructor-right`;
+        const avatar_selector           = '%%order_class%% .instructor-avatar a img, %%order_class%% .instructor-avatar a span';
+        const star_selector             = '%%order_class%% .rating-generated .tutor-star-rating-group i';
+
+        //props
+        const layout            = props.layout;
+        const image_size        = props.image_size;
+
+        const star_size         = props.star_size;
+        const star_color        = props.star_color;
+
+        const space_between     = props.space_between;
+        //set styles
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% #single-course-ratings',
+                declaration: 'display: flex; flex-direction: column;'
+            }
+        ]);
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .single-instructor-wrap',
+                declaration: 'margin-bottom: 0px;'
+            }
+        ]);
+
+        if('' !== space_between) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% #single-course-ratings',
+                    declaration: `row-gap: ${space_between};`
+                }
+            ]);            
+        }
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .single-instructor-wrap .instructor-name',
+                declaration: 'padding-left: 0px;'
+            }
+        ]);
+
+        additionalCss.push([
+            {
+                selector: tutor_instructor_right,
+                declaration: `display: flex; flex-direction: ${layout}; gap: 10px 10px;`
+            }
+        ]);
+
+        //avatar 
+        if('' !== image_size) {
+            additionalCss.push([
+                {
+                    selector: avatar_selector,
+                    declaration: `width: ${image_size}; height: ${image_size}; max-width: ${image_size}; line-height: ${image_size};`
+                }
+            ]);            
+        }
+
+        //star 
+        if('' !== star_color) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .rating-generated .tutor-star-rating-group i',
+                    declaration: `color: ${star_color} !important;`
+                }
+            ]);            
+        }
+
+        if('' !== star_size) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .rating-generated .tutor-star-rating-group i',
+                    declaration: `font-size: ${star_size} !important;`
+                }
+            ]);            
+        }
+
+        //set styles end
+
         return additionalCss;
     }
 
@@ -27,52 +112,92 @@ class CourseInstructor extends Component {
         }
         return generate_star;
     }
+    /**
+     * 
+     * @param {*} profile_picture 
+     * @param {*} avatar 
+     * @returns avatar template if display on
+     */
+    avatarTemplate(profile_picture,avatar) {
+        if(profile_picture === 'on') {
+            return (
+                <div className="instructor-avatar">
+                    <a href="/" dangerouslySetInnerHTML={{__html: avatar}}>
 
-    instructorTemplate(instructors) {
+                    </a>
+                </div>
+            )
+        }
+    }
+
+    /**
+     * 
+     * @param {*} display_name 
+     * @param {*} name 
+     * @returns name template if display on
+     */
+    nameTemplate(display_name, name) {
+        if(display_name === 'on') {
+            return <h3><a href="/"> { name } </a> </h3>;
+        }
+    }
+
+    /**
+     * 
+     * @param {*} show_designation 
+     * @param {*} designation 
+     * @returns designation template if display on
+     */
+    designationTemplate(show_designation, designation) {
+        if(show_designation === 'on') {
+            return <h4>{ designation }</h4>;
+        }
+    }
+
+    instructorTemplate(props, instructors) {
         const instructor = instructors.map((instructor) => {
             return (
-            <div class="single-instructor-wrap">
-                <div class="single-instructor-top">
-                    <div class="tutor-instructor-left">
-                        <div class="instructor-avatar">
-                            <a href="/" dangerouslySetInnerHTML={{__html: instructor.avatar}}>
-                            
-                            </a>
+            <div className="single-instructor-wrap">
+                <div className="single-instructor-top">
+
+                    <div className="tutor-instructor-left">
+                        { this.avatarTemplate(props.profile_picture, instructor.avatar) }
+                    </div>
+
+                    <div className="tutor-instructor-right">
+                        <div className="instructor-name">
+                            { this.nameTemplate(props.display_name, instructor.display_name) }
+                            { this.designationTemplate(props.designation, instructor.tutor_profile_job_title) }
                         </div>
-    
-                        <div class="instructor-name">
-                            <h3><a href="/"> { instructor.display_name } </a> </h3>
-                            <h4>{ instructor.tutor_profile_job_title }</h4>
+                        <div className="instructor-bio">
+                            { instructor.tutor_profile_bio }
                         </div>
                     </div>
-                    <div class="instructor-bio">
-                        { instructor.tutor_profile_bio }
-                    </div>
+
                 </div>
     
-                <div class="single-instructor-bottom">
-                    <div class="ratings">
-                        <span class="rating-generated">
+                <div className="single-instructor-bottom">
+                    <div className="ratings">
+                        <span className="rating-generated">
                             { this.starRatings(instructor.ratings.rating_avg) }
                         </span>
     
                 
-                        <span class='rating-digits'> { instructor.ratings.rating_avg } </span>
-                        <span class='rating-total-meta'> ({ instructor.ratings.rating_count } ratings) </span>
+                        <span className='rating-digits'> { instructor.ratings.rating_avg } </span>
+                        <span className='rating-total-meta'> ({ instructor.ratings.rating_count } ratings) </span>
                     </div>
     
-                    <div class="courses">
+                    <div className="courses">
                         <p>
-                            <i class='tutor-icon-mortarboard'></i>
-                            <span class="tutor-text-mute"> { instructor.course_count } courses </span>
+                            <i className='tutor-icon-mortarboard'></i>
+                            <span className="tutor-text-mute"> { instructor.course_count } courses </span>
                         </p>
                     </div>
     
-                    <div class="students">
+                    <div className="students">
                         <p>
-                            <i class='tutor-icon-user'></i>
-                            
-                            <span class="tutor-text-mute">  { instructor.student_count } students </span>
+                            <i className='tutor-icon-user'></i>
+                            <span className="tutor-text-mute">  { instructor.student_count } students </span>
                         </p>
                     </div>
                 </div>
@@ -89,10 +214,9 @@ class CourseInstructor extends Component {
         console.log(this.props)
         return (
             <Fragment>
-                <h4 class="tutor-segment-title"> LABEL </h4>
-
-                <div class="tutor-course-instructors-wrap tutor-single-course-segment" id="single-course-ratings">
-                    { this.instructorTemplate(this.props.__instructor) }
+                <h4 className="tutor-segment-title"> { this.props.label } </h4>
+                <div className="tutor-course-instructors-wrap tutor-single-course-segment" id="single-course-ratings">
+                    { this.instructorTemplate(this.props, this.props.__instructor) }
                 </div>
             </Fragment>
         );

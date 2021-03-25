@@ -15,14 +15,18 @@
 
 do_action('tutor_course/single/enrolled/before/instructors');
 //settings args
-$course_id = $args['course'];
+$course_id			= $args['course'];
+$label				= $args['label'];
+$profile_picture	= $args['profile_picture'];
+$display_name		= $args['display_name'];
+$designation		= $args['designation'];
+$link				= $args['link'];
 
 $instructors = tutor_utils()->get_instructors_by_course( $course_id );
 if ($instructors){
 	$count = is_array($instructors) ? count($instructors) : 0;
-	
-	?>
-	<h4 class="tutor-segment-title"><?php $count>1 ? _e('About the instructors', 'tutor') : _e('About the instructor', 'tutor'); ?></h4>
+?>
+	<h4 class="tutor-segment-title"><?php  _e( $label, 'tutor-divi-modules' ); ?></h4>
 
 	<div class="tutor-course-instructors-wrap tutor-single-course-segment" id="single-course-ratings">
 		<?php
@@ -31,25 +35,37 @@ if ($instructors){
 			?>
 			<div class="single-instructor-wrap">
 				<div class="single-instructor-top">
-                    <div class="tutor-instructor-left">
-                        <div class="instructor-avatar">
-                            <a href="<?php echo $profile_url; ?>">
-                                <?php echo tutor_utils()->get_tutor_avatar($instructor->ID); ?>
-                            </a>
-                        </div>
 
-                        <div class="instructor-name">
-                            <h3><a href="<?php echo $profile_url; ?>"><?php echo $instructor->display_name; ?></a> </h3>
-                            <?php
-                            if ( ! empty($instructor->tutor_profile_job_title)){
-                                echo "<h4>{$instructor->tutor_profile_job_title}</h4>";
-                            }
-                            ?>
-                        </div>
-                    </div>
-					<div class="instructor-bio">
-						<?php echo $instructor->tutor_profile_bio ?>
+					<?php if($profile_picture === 'on'): ?>
+					<div class="tutor-instructor-left">
+						<div class="instructor-avatar">
+							<a href="<?php echo $profile_url; ?>" target="<?php echo $link;?>">
+								<?php echo tutor_utils()->get_tutor_avatar($instructor->ID); ?>
+							</a>
+						</div>
 					</div>
+					<?php endif;?>
+
+                    <div class="tutor-instructor-right">
+						
+						<div class="instructor-name">
+							<?php if($display_name === 'on'): ?>
+								<h3><a href="<?php echo $profile_url; ?>" target="<?php echo $link;?>"><?php echo $instructor->display_name; ?></a> </h3>
+							<?php endif;?>
+							<?php
+								if( $designation === 'on' ) {
+									if ( ! empty($instructor->tutor_profile_job_title)){
+										echo "<h4>{$instructor->tutor_profile_job_title}</h4>";
+									}
+								}
+							?>
+						</div>
+						
+						<div class="instructor-bio">
+							<?php echo $instructor->tutor_profile_bio; ?>
+						</div>
+                    </div>
+
 				</div>
 
                 <?php
