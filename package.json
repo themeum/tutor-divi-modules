@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "autoprefixer": "^9.7.4",
     "divi-scripts": "1.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-player": "^2.9.0"
   },
   "scripts": {
     "start": "divi-scripts start",

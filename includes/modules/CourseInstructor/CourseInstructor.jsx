@@ -11,7 +11,6 @@ class CourseInstructor extends Component {
         const wrapper                   = '%%order_class%% .single-instructor-wrap';
         const tutor_instructor_right    = `${wrapper} .tutor-instructor-right`;
         const avatar_selector           = '%%order_class%% .instructor-avatar a img, %%order_class%% .instructor-avatar a span';
-        const star_selector             = '%%order_class%% .rating-generated .tutor-star-rating-group i';
 
         //props
         const layout            = props.layout;

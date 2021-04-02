@@ -8,8 +8,7 @@ class CourseCarousel extends Component {
     render(){
         return (
             <Fragment>
-                <h1> {this.props.tutor_course_carousel_heading} </h1>
-                <p> {this.props.content()} </p>
+                <h3>Course Carousel</h3>
             </Fragment>
         );
     }
