@@ -61,13 +61,33 @@ class TutorDiviModules extends DiviExtension {
             array(), 
             time(),
         );
+		wp_enqueue_style(
+            'tutor-divi-slick-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
+            null,
+            DTLMS_VERSION
+        );      
+
+        wp_enqueue_style(
+            'tutor-divi-slick-theme-css',
+            'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
+            null,
+            DTLMS_VERSION
+        );
     }
 
     public function enqueue_divi_scripts(){
 		wp_enqueue_script(
 			'tutor-divi-scripts',
 			DTLMS_ASSETS.'/js/scripts.js',
-			array(),
+			array('jquery'),
+			time(),
+			true
+		);
+		wp_enqueue_script(
+			'tutor-divi-slick',
+			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
+			array('jquery'),
 			time(),
 			true
 		);

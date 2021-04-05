@@ -285,7 +285,7 @@ $paush_on_hover     = $args['paush_on_hover'];
 
 
 ?>
-<div id="tutor-divi_carousel_settings" arrows="<?= $arrows ?>" dots="<?= $dots ?>" transition="<?= $transition ?>" center_slides="<?= $center_slides ?>" smooth_scrolling="<?= $smooth_scrolling ?>" autoplay="<?= $autoplay ?>" autoplay_speed="<?= $autoplay_speed ?>" infinite_loop="<?= $infinite_loop ?>" paush_on_hover="<?= $paush_on_hover ?>">
+<div id="tutor_divi_carousel_settings" slides_to_show="<?= $slides_to_show?>" arrows="<?= $arrows ?>" dots="<?= $dots ?>" transition="<?= $transition ?>" center_slides="<?= $center_slides ?>" smooth_scrolling="<?= $smooth_scrolling ?>" autoplay="<?= $autoplay ?>" autoplay_speed="<?= $autoplay_speed ?>" infinite_loop="<?= $infinite_loop ?>" paush_on_hover="<?= $paush_on_hover ?>">
 
 </div>
 

@@ -211,9 +211,9 @@ class CourseCarousel extends ET_Builder_Module {
 			'slides_to_show'	=> array(
 				'label'			=> esc_html__( 'Slides to Show', 'tutor-divi-modules' ),
 				'type'			=> 'select',
-				'description'	=> esc_html__( 'Select -1 for all', 'tutor-divi-modules' ),
+				'description'	=> esc_html__( 'No: of slides that will display on desktop view', 'tutor-divi-modules' ),
 				'options'		=> array(
-					'5'	=>		 esc_html__( 'Default', 'tutor-divi-modules' ),
+					'3'	=>		 esc_html__( 'Default', 'tutor-divi-modules' ),
 					'1'			=> '1',
 					'2'			=> '2',
 					'3'			=> '3',
@@ -224,11 +224,10 @@ class CourseCarousel extends ET_Builder_Module {
 					'8'			=> '8',
 					'9'			=> '9',
 					'10'		=> '10',
-					-1			=> '-1'
 				),
-				'default'		=> '5',
-				'tab_slug'		=> array(),
-				'toggle_slug'	=> array(),
+				'default'		=> '3',
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'layout',
 			),
 			'hover_animation'	=> array(
 				'label'			=> esc_html__( 'Show Animation', 'tutor-divi-modules' ),
@@ -412,7 +411,7 @@ class CourseCarousel extends ET_Builder_Module {
 					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
 					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
 				),
-				'default'		=> 'on',
+				'default'		=> 'off',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
