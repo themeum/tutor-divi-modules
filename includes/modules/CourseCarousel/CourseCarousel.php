@@ -34,7 +34,9 @@ class CourseCarousel extends ET_Builder_Module {
 					'title'		=> esc_html__( 'Title', 'tutor-divi-modules' ),
 					'meta'		=> esc_html__( 'Meta', 'tutor-divi-modules' ),
 					'category'	=> esc_html__( 'Category', 'tutor-divi-modules' ),
+					'rating'	=> esc_html__( 'Rating', 'tutor-divi-modules' ),
 					'footer'	=> esc_html__( 'Footer', 'tutor-divi-modules' ),
+					'cart_button'	=> esc_html__( 'Cart Button', 'tutor-divi-modules' ),
 					'arrows'	=> esc_html__( 'Arrows', 'tutor-divi-modules' ),
 					'dots'		=> esc_html__( 'Dots', 'tutor-divi-modules' ),
 				),
@@ -65,9 +67,63 @@ class CourseCarousel extends ET_Builder_Module {
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'category' 
 				),
+				'footer'	=> array(
+					'css'			=> array(
+						'main'	=> 'selector',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'footer' ,
+					'hide_text_align'	=> true
+				),
 			),
-			'text'			=> false,
-			'button'		=> false,
+			
+			'button'		=> array(
+                'cart_button' => array(
+                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                        )
+                    ),
+                    'css'           => array(
+                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                    ),
+                    //'use_alignment' => false,
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'cart_button' , 
+                    'important'     => true
+                ),
+                'arrows' => array(
+                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                        )
+                    ),
+                    'css'           => array(
+                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                    ),
+                    //'use_alignment' => false,
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'arrow' , 
+                    'important'     => true
+                ),
+                'dots' => array(
+                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                        )
+                    ),
+                    'css'           => array(
+                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                    ),
+                    //'use_alignment' => false,
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'dots' , 
+                    'important'     => true
+                ),
+			),
 			'borders'		=> array(
 				'card'	=> array(
 					'css'			=> array(
@@ -123,7 +179,12 @@ class CourseCarousel extends ET_Builder_Module {
 					'main' => '%%order_class%%',
 				),
 			),
+			'text'			=> false,
+			'max_width'		=> false,
+			'filters'		=> false
 		);
+		
+
 	}
 
 	/**
@@ -186,6 +247,17 @@ class CourseCarousel extends ET_Builder_Module {
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
+			),
+			'image-size'=> array(
+				'label'			=> esc_html__( 'Image Size', 'tutor-divi-modules' ),
+				'type'			=> 'select',
+				'options'		=> array(
+					'thumbnail'		=> esc_html__( 'Thumbnail', 'tutor-divi-modules'),
+					'medium'		=> esc_html__( 'Medium', 'tutor-divi-modules'),
+					'medium_large'	=> esc_html__( 'Medium Large', 'tutor-divi-modules'),
+					'large'			=> esc_html__( 'large', 'tutor-divi-modules'),
+					'full'			=> esc_html__( 'full', 'tutor-divi-modules'),
+				)
 			),
 			'meta_data'	=> array(
 				'label'			=> esc_html__( 'Meta Data', 'tutor-divi-modules' ),
@@ -435,8 +507,8 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			//advacned tab card toggle
-			'background_color'	=> array(
-				'label'			=> esc_html__( 'Label', 'tutor-divi-modules' ),
+			'card_background_color'	=> array(
+				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
@@ -457,6 +529,12 @@ class CourseCarousel extends ET_Builder_Module {
 				),
 				'default'		=> '1px',
 				'default_unit'	=> 'px',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'card'
+			),
+			'card_custom_padding'	=> array(
+				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules'),
+				'type'			=> 'custom_padding',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
 			),
@@ -520,18 +598,48 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'avatar'
 			),
+			//advanced tab rating toggle
+			'star_color'	=> array(
+				'label'			=> esc_html__( 'Star Color', 'tutor-divi-modules'),
+				'type'			=> 'color-alpha',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'rating',
+			),
+			'star_size'	=> array(
+				'label'			=> esc_html__( 'Star Size', 'tutor-divi-modules'),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'default'		=> '14px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'rating',
+			),
+			'star_gap'	=> array(
+				'label'			=> esc_html__( 'Gap', 'tutor-divi-modules'),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'default'		=> '14px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'rating',
+			),
+			//advanced tab arrows toggle
+
 		);
 
 	}
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
         return sprintf(
-            '
-            <h1>%s</h1>
-            <p>%s</p>
-            ', 
-            $this->props['tutor_course_carousel_heading'], 
-            $this->props['content']
+            'hello'
         );
         
 	}
