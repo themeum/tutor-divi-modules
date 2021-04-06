@@ -48,5 +48,6 @@ if ( ! function_exists( 'tudm_initialize_extension' ) ):
 function tudm_initialize_extension() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/TutorDiviModules.php';
 }
+
 add_action( 'divi_extensions_init', 'tudm_initialize_extension' );
 endif;

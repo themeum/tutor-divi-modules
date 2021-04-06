@@ -193,6 +193,7 @@ class CourseCarousel extends ET_Builder_Module {
 	 */
 	public function get_fields() {
 		return array(
+
 			//general tab layout toggle
 			'skin'	=> array(
 				'label'				=> esc_html__( 'Skin'),
@@ -368,6 +369,7 @@ class CourseCarousel extends ET_Builder_Module {
 			'limit'	=> array(
 				'label'			=> esc_html__( 'Limit', 'tutor-divi-modules' ),
 				'type'			=> 'text',
+				'description'	=> esc_html__( 'Input -1 for all courses', 'tutor-divi-modules'),
 				'default'		=> '5',
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
@@ -592,10 +594,91 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'rating',
 			),
-			//advanced tab arrows toggle
+			//computed
+			'__courses'	=> array(
+				'type'				=> 'computed',
+				'computed_callback'	=> array(
+					'CourseCarousel',
+					'get_props'
+				),
+				'computed_depends_on'	=> array(
+					'limit',
+					'order_by',
+					'order'
+				),
+				'computed_minimum'		=> array(
+					'limit'
+				)
+			),
+			
 
 		);
 
+	}
+
+	/**
+	 * @return array of courses
+	 * @return false if course not found
+	 */
+	public static function get_props() {
+		$post_type		= tutor()->course_post_type;
+		$post_status	= 'publish';
+		$limit			= -1;
+		$order_by		= 'date';
+		$order			= 'DESC';
+		$image_size		= 'medium_large'; 
+
+		$args	= array(
+			'post_type'         => $post_type,
+			'post_status'       => $post_status,
+			'posts_per_page'    => $limit,
+			'order_by'          => $order_by,
+			'order'             => $order
+		);
+
+		$courses = [];
+
+		$query	= new WP_Query( $args );
+
+		if($query->have_posts()) {
+		
+			//get all required post contents
+			foreach($query->posts as $post) {
+
+				$thumbnail = get_the_post_thumbnail_url( $post->ID, $image_size) ? get_the_post_thumbnail_url( $post->ID, $image_size) : get_tutor_course_thumbnail($image_size, $url = true);
+				
+				$category = wp_get_post_terms($post->ID,'course-category');
+	
+				$tag = wp_get_post_terms($post->ID,'course-tag');
+				
+				$post->course_category	= $category;
+				
+				$post->course_tag 		= $tag;
+			
+				$post->post_thumbnail	= $thumbnail ;
+				
+				$post->author_avatar	= tutor_utils()->get_tutor_avatar( $post->post_author , array('force_default' => true) );
+
+				$post->course_duration 	= get_tutor_course_duration_context( $post->ID );
+
+				$post->enroll_count 	= tutor_utils()->count_enrolled_users_by_course( $post->ID );
+
+				$post->author_name		= get_the_author_meta('display_name', $post->post_author);
+
+				$post->course_rating	= tutils()->get_course_rating( $post->ID );
+
+				$post->course_price 	= tutils()->get_course_price( $post->ID );
+
+				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
+
+				array_push($courses, $post);
+	
+			}
+			return $courses;
+		} else {
+			return false;
+		}
+		
 	}
 
 	/**
@@ -611,7 +694,7 @@ class CourseCarousel extends ET_Builder_Module {
 	
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
-		
+
 		$output = self::get_content($this->props);
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ('' === $output) {

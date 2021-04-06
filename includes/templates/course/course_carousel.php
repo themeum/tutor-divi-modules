@@ -66,7 +66,6 @@ $query_args = [
 // the query
 $the_query = new WP_Query($query_args);
 
-
 if ( $the_query->have_posts()) : ?>
 
     <!-- loop start -->

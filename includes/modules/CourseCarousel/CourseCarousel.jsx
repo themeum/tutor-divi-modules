@@ -1,15 +1,210 @@
 
 import React, {Component, Fragment} from 'react';
-
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 class CourseCarousel extends Component {
 
     static slug = 'tutor_course_carousel';
 
-    render(){
+    /**
+     * @return total ratings star
+     * @param avg_rating
+     */
+    ratingStars(avg_rating) {
+        const ratings = [];
+        for(let i=1; i < 6; i++) {
+            if(avg_rating >= i) {
+                ratings.push(<i className='tutor-icon-star-full'></i>)
+            } else {
+                ratings.push(<i className='tutor-icon-star-line'></i>)
+            }
+        }
+        return ratings;
+    }
+
+    categoryTemplate(course_cat) {
+        const categories = course_cat.map((category) => {
+            return (
+                <a href="/">{ category.name }</a>
+            );
+        })
+        return categories
+    }
+
+    footerTemplate(course) {
         return (
-            <Fragment>
-                <h3>Course Carousel</h3>
-            </Fragment>
+            <div className="tutor-course-loop-price">
+                <div className="price">
+                    { course.course_price === null ? 'Free' : course.course_price }
+                    <div className="tutor-loop-cart-btn-wrap">
+                        <a href="/">
+                            { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        );       
+    }
+
+    /**
+     * 
+     * @param {*} props 
+     * @returns course template
+     */
+    courseTemplate(props) {
+
+        const courses = props.__courses.map((course) => {
+            return (
+            <div className="tutor-course-col">
+                <div className="tutor-divi-card">
+
+                        <div className="tutor-course-header ">
+                            <a href="/">
+                                <img src={course.post_thumbnail} alt="thumbnail"/>
+                            </a> 
+                                                    
+                            <div className="tutor-course-loop-header-meta">
+
+                                    <span className="tutor-course-loop-level">Expert</span>
+                        
+                                    <span className="tutor-course-wishlist">
+                                        <span className="tutor-icon-fav-line tutor-course-wishlist-btn  "></span> 
+                                    </span>
+                            </div> 
+                        </div>
+                    
+                        <div className="tutor-divi-carousel-course-container">
+                            <div className="tutor-loop-course-container">
+
+                                <div className="tutor-loop-rating-wrap">
+                                    <div className="tutor-star-rating-group">
+                                        {this.ratingStars(course.course_rating.rating_avg)}
+                                    </div>
+                                </div>
+                            
+                                <div className="tutor-course-loop-title">
+                                    <h2>
+                                        <a href="/">
+                                            {course.post_title}
+                                        </a>
+                                    </h2>
+                                </div>
+                            
+                                <div className="tutor-course-loop-meta">
+
+                                    <div className="tutor-single-loop-meta">
+                                        <i className='tutor-icon-user'></i>
+                                        <span> {course.enroll_count} </span>
+                                    </div>
+                                        <div className="tutor-single-loop-meta">
+                                            <i className='tutor-icon-clock'></i> 
+                                            <span> {course.course_duration} </span>
+                                        </div>
+
+                                </div>
+
+                                <div className="tutor-loop-author">
+                                    <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: course.author_avatar}}>
+                                            
+                                    </div>
+                                    <div className="tutor-single-course-author-name">
+                                    
+                                        <a href="/">By {course.author_name}</a>
+                                    </div>
+
+                                    <div className="tutor-course-lising-category">
+                                        { course.course_category.length ? <span> In </span> : '' }
+                                        { this.categoryTemplate(course.course_category) }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="tutor-loop-course-footer tutor-divi-carousel-footer">
+                                { this.footerTemplate(course) }
+                            </div>
+                        
+                        </div> 
+
+                </div>
+            </div>    
+                             
+            );
+        })
+        return courses;
+    }
+
+    render(){
+        if(!this.props.__courses) {
+            return '';
+        }
+        console.log(this.props)
+        const carousel = this.props.__courses;
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 1
+            // dots: carousel.dots,
+            // arrows: carousel.arrows,
+            // infinite: carousel.infinite_loop,
+            // autoplay: carousel.autoplay,
+            // autoplaySpeed: carousel.autoplay_speed,				
+            // slidesToShow: carousel.slides_to_show,
+            // slidesToScroll: 1,
+            // speed: carousel.transition,
+            // centerMode: carousel.center_slides,
+            // pauseOnHover: carousel.pause_on_hover,
+    
+            // cssEase: carousel.smooth_scrolling === 'on' ? 'ease' : 'linear',
+    
+            // prevArrow: ('.tutor-divi-carousel-arrow-prev'),
+            // nextArrow: ('.tutor-divi-carousel-arrow-next'),
+    
+            // //rtl: elementorFrontend.config.is_rtl ? true : false,
+    
+            // responsive: [
+            //     {
+            //         breakpoint: 1024,
+            //         settings: {
+            //             slidesToShow: 2,
+            //             slidesToScroll: 1,
+            //             infinite: true,
+            //             dots: true
+            //         }
+            //     },
+            //     {
+            //         breakpoint: 576,
+            //         settings: {
+            //             slidesToShow: 1,
+            //             slidesToScroll: 1
+            //         }
+            //     }
+            // ]
+        };
+        return (
+        <Fragment>
+
+            <div className="tutor-divi-ctutor-wrap tutor-courses-wrap tutor-container tutor-divi-carousel-main-wraparousel-main-wrap">
+
+                <div className="tutor-divi-coursel-skin;?>" id="tutor-divi-slick-responsive">
+                    <Slider  {...settings}>
+                        { this.courseTemplate(this.props) }
+                    </Slider>
+                </div>
+           
+                <div className="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-prev">
+                    <i className="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
+                <div className="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-next">
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+                
+
+            </div>
+
+        </Fragment>
         );
     }
 }
