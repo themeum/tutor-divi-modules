@@ -47,6 +47,50 @@ class CourseCarousel extends Component {
         );       
     }
 
+    sliderTemplate(props) {
+        console.log(typeof(props.slides_to_show + '' + props.autoplay_speed))
+        const carousel = props.__courses;
+        const settings = {
+            appendDots: carousel.dots === 'on' ? true : false,
+            arrows: carousel.arrows === 'on' ? true : false,
+            infinite: carousel.infinite_loop === 'on' ? true : false,
+            autoplaySpeed: 3000,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            useCSS: carousel.transition === 'on' ? true : false,
+            centerMode: carousel.center_slides === 'on' ? true : false,
+            pauseOnHover: carousel.pause_on_hover === 'on' ? true : false,
+    
+            easing: carousel.smooth_scrolling === 'on' ? 'ease' : 'linear',
+    
+            //rtl: elementorFrontend.config.is_rtl ? true : false,
+    
+            // responsive: [
+            //     {
+            //         breakpoint: 1024,
+            //         settings: {
+            //             slidesToShow: 2,
+            //             slidesToScroll: 1,
+            //             infinite: true,
+            //             dots: true
+            //         }
+            //     },
+            //     {
+            //         breakpoint: 576,
+            //         settings: {
+            //             slidesToShow: 1,
+            //             slidesToScroll: 1
+            //         }
+            //     }
+            // ]
+        };
+        return (
+        <Slider  {...settings}>
+            { this.courseTemplate(props) }
+        </Slider>  
+        );
+    }
+ 
     /**
      * 
      * @param {*} props 
@@ -139,59 +183,14 @@ class CourseCarousel extends Component {
             return '';
         }
         console.log(this.props)
-        const carousel = this.props.__courses;
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 1
-            // dots: carousel.dots,
-            // arrows: carousel.arrows,
-            // infinite: carousel.infinite_loop,
-            // autoplay: carousel.autoplay,
-            // autoplaySpeed: carousel.autoplay_speed,				
-            // slidesToShow: carousel.slides_to_show,
-            // slidesToScroll: 1,
-            // speed: carousel.transition,
-            // centerMode: carousel.center_slides,
-            // pauseOnHover: carousel.pause_on_hover,
-    
-            // cssEase: carousel.smooth_scrolling === 'on' ? 'ease' : 'linear',
-    
-            // prevArrow: ('.tutor-divi-carousel-arrow-prev'),
-            // nextArrow: ('.tutor-divi-carousel-arrow-next'),
-    
-            // //rtl: elementorFrontend.config.is_rtl ? true : false,
-    
-            // responsive: [
-            //     {
-            //         breakpoint: 1024,
-            //         settings: {
-            //             slidesToShow: 2,
-            //             slidesToScroll: 1,
-            //             infinite: true,
-            //             dots: true
-            //         }
-            //     },
-            //     {
-            //         breakpoint: 576,
-            //         settings: {
-            //             slidesToShow: 1,
-            //             slidesToScroll: 1
-            //         }
-            //     }
-            // ]
-        };
+
         return (
         <Fragment>
 
             <div className="tutor-divi-ctutor-wrap tutor-courses-wrap tutor-container tutor-divi-carousel-main-wraparousel-main-wrap">
 
-                <div className="tutor-divi-coursel-skin;?>" id="tutor-divi-slick-responsive">
-                    <Slider  {...settings}>
-                        { this.courseTemplate(this.props) }
-                    </Slider>
+                <div className={`tutor-divi-coursel-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                    { this.sliderTemplate( this.props) }
                 </div>
            
                 <div className="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-prev">

@@ -604,10 +604,14 @@ class CourseCarousel extends ET_Builder_Module {
 				'computed_depends_on'	=> array(
 					'limit',
 					'order_by',
-					'order'
+					'order',
+					'image_size'
 				),
 				'computed_minimum'		=> array(
-					'limit'
+					'limit',
+					'order_by',
+					'order',
+					'image_size'
 				)
 			),
 			
@@ -620,20 +624,20 @@ class CourseCarousel extends ET_Builder_Module {
 	 * @return array of courses
 	 * @return false if course not found
 	 */
-	public static function get_props() {
+	public static function get_props( $args = [] ) {
 		$post_type		= tutor()->course_post_type;
 		$post_status	= 'publish';
-		$limit			= -1;
-		$order_by		= 'date';
-		$order			= 'DESC';
-		$image_size		= 'medium_large'; 
+		$limit			= isset($args['limit']) ? $args['limit'] : -1;
+		$order_by		= isset($args['order_by']) ? $args['order_by'] : 'date';
+		$order			= isset($args['order']) ? $args['order'] : 'DESC';
+		$image_size		= isset($args['image_size']) ? $args['image_size'] : 'medium_large';
 
 		$args	= array(
 			'post_type'         => $post_type,
 			'post_status'       => $post_status,
-			'posts_per_page'    => $limit,
-			'order_by'          => $order_by,
-			'order'             => $order
+			'posts_per_page'    => sanitize_text_field( $limit ),
+			'order_by'          => sanitize_text_field( $order_by ),
+			'order'             => sanitize_text_field( $order )
 		);
 
 		$courses = [];

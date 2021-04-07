@@ -72,8 +72,8 @@ jQuery(document).ready(function($){
 
         cssEase: smooth_scroll,
 
-        prevArrow: ('.tutor-divi-carousel-arrow-prev'),
-        nextArrow: ('.tutor-divi-carousel-arrow-next'),
+        //prevArrow: ('.tutor-divi-carousel-arrow-prev'),
+        //nextArrow: ('.tutor-divi-carousel-arrow-next'),
 
         //rtl: elementorFrontend.config.is_rtl ? true : false,
 
