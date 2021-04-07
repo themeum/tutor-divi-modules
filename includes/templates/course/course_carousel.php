@@ -34,36 +34,6 @@ $query_args = [
     'order'             => $order
 ];
 
-// if (!empty($include_by_categories)) {
-//     $tax_query =array(
-//         'taxonomy' => 'course-category',
-//         'field' => 'term_id',
-//         'terms' => $include_by_categories,
-//         'operator' => 'IN'
-//     );
-//     array_push($args['tax_query'], $tax_query);
-// }
-
-// if (!empty($exclude_by_categories)) {
-//     $tax_query =array(
-//         'taxonomy' => 'course-category',
-//         'field' => 'term_id',
-//         'terms' => $exclude_by_categories,
-//         'operator' => 'NOT IN'
-//     );
-//     array_push($args['tax_query'], $tax_query);
-// }
-
-// if (!empty($include_by_authors)) {
-//     $args['author__in'] = $include_by_authors;
-// }
-
-// if (!empty($exclude_by_authors)) {
-//     $args['author__not_in'] = $exclude_by_authors;
-// }
-
-
-// the query
 $the_query = new WP_Query($query_args);
 
 if ( $the_query->have_posts()) : ?>
@@ -87,7 +57,7 @@ if ( $the_query->have_posts()) : ?>
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                 
             ?>
-            <div class="tutor-divi-card">
+            <div class="tutor-divi-card <?= $hover_animation == 'on' ? 'hover-animation' : '';?>">
 
                     <!-- header -->
                     

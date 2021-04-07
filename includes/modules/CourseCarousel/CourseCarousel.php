@@ -1,5 +1,7 @@
 <?php
 
+use TutorLMS\Divi\Helper;
+
 class CourseCarousel extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_carousel';
@@ -698,6 +700,33 @@ class CourseCarousel extends ET_Builder_Module {
 	
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
+		//selectors
+		$wrapper		= "%%order_class%% .tutor-divi-carousel-main-wrap";
+		$card_selector	= $wrapper." .tutor-divi-card";
+
+		//props
+		$hover_animation	= $this->props['hover_animation'];
+
+		//set styles
+		//card hover animation
+		if( 'on' == $hover_animation ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $card_selector,
+					'declaration'	=> 'background: red !important;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-card.hover-animation:hover',
+					'declaration'	=> 'top: -5px; background-color:red;'
+				)
+			);
+		}
+		//set styles end
 
 		$output = self::get_content($this->props);
 		// Render empty string if no output is generated to avoid unwanted vertical space.

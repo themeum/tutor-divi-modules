@@ -35,29 +35,30 @@ jQuery(document).ready(function($){
     var carousel_transition         = selector.attr('transition');
     var carousel_center             = selector.attr('center_slides');
     var smooth_scroll               = selector.attr('smooth_scrolling');
-    var carousel_autoplay           = selector.attr('autoplay');
+    var carousel_autoplay           = $("#tutor_divi_carousel_settings").attr('autoplay');
     var carousel_autoplay_speed     = selector.attr('autoplay_speed');
     var carousel_infinite_loop      = selector.attr('infinite_loop');
     var carousel_pause_on_hover     = selector.attr('pause_on_hover');
 
 
-    carousel_arrows     == 'on' ? carousel_arrows = true : carousel_arrows = false;
-    carousel_dots       == 'on' ? carousel_dots = true : carousel_dots = false;
+    carousel_arrows     == 'off' ? carousel_arrows = false : carousel_arrows = true;
+    carousel_dots       == 'off' ? carousel_dots = false : carousel_dots = true;
     carousel_transition = Number(carousel_transition);
-    carousel_center     == 'on' ? carousel_center = true : carousel_center = false;
-    carousel_autoplay   == 'on' ? carousel_autoplay = true : carousel_autoplay = false;
+    carousel_center     == 'off' ? carousel_center = false : carousel_center = true;
+    carousel_autoplay   == 'off' ? carousel_autoplay = false : carousel_autoplay = true;
 
     Number(carousel_autoplay_speed);
     Number(slides_to_show);
 
-    if(smooth_scroll === 'on') {
-        smooth_scroll = 'ease';
-    } else {
+    if(smooth_scroll === 'off') {
         smooth_scroll = 'linear';
+    } else {
+        smooth_scroll = 'ease';
     }
-    carousel_infinite_loop  == 'on' ? carousel_infinite_loop = true : carousel_infinite_loop = false;
-    carousel_pause_on_hover == 'on' ? carousel_pause_on_hover = true : carousel_pause_on_hover = false;
+    carousel_infinite_loop  == 'off' ? carousel_infinite_loop = false : carousel_infinite_loop = true;
+    carousel_pause_on_hover == 'off' ? carousel_pause_on_hover = false : carousel_pause_on_hover = true;
 
+  
     $("#tutor-divi-slick-responsive").slick({
         dots: carousel_dots,
         arrows: carousel_arrows,
