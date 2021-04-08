@@ -4,6 +4,7 @@
 <!--loading course init-->
 <?php
 //sanitizing fields befor push into query
+
 $order_by           = sanitize_text_field( $args['order_by'] );
 $order              = sanitize_text_field( $args['order'] );
 $limit              = sanitize_text_field( $args['limit'] );
@@ -45,7 +46,7 @@ if ( $the_query->have_posts()) : ?>
     ?>
     <!-- loop start -->
 
-    <div class="tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> tutor-divi-coursel-<?= $skin;?>" id="tutor-divi-slick-responsive">
+    <div class="tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> tutor-divi-carousel-<?= $skin;?>" id="tutor-divi-slick-responsive">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>

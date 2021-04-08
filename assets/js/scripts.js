@@ -28,18 +28,17 @@ if( document.querySelector("#tutor_divi_col_icon")) {
  * @since 1.0.0
  */
 jQuery(document).ready(function($){
-    var selector                    = $("#tutor_divi_carousel_settings");
-    var slides_to_show               = selector.attr('slides_to_show');
-    var carousel_arrows             = selector.attr('arrows');
-    var carousel_dots               = selector.attr('dots');
-    var carousel_transition         = selector.attr('transition');
-    var carousel_center             = selector.attr('center_slides');
-    var smooth_scroll               = selector.attr('smooth_scrolling');
-    var carousel_autoplay           = $("#tutor_divi_carousel_settings").attr('autoplay');
-    var carousel_autoplay_speed     = selector.attr('autoplay_speed');
-    var carousel_infinite_loop      = selector.attr('infinite_loop');
-    var carousel_pause_on_hover     = selector.attr('pause_on_hover');
-
+    const selector                  = document.querySelector("#tutor_divi_carousel_settings");
+    var slides_to_show              = selector.getAttribute('slides_to_show');
+    var carousel_arrows             = selector.getAttribute('arrows');
+    var carousel_dots               = selector.getAttribute('dots');
+    var carousel_transition         = selector.getAttribute('transition');
+    var carousel_center             = selector.getAttribute('center_slides');
+    var smooth_scroll               = selector.getAttribute('smooth_scrolling');
+    var carousel_autoplay           = selector.getAttribute('autoplay');
+    var carousel_autoplay_speed     = selector.getAttribute('autoplay_speed');
+    var carousel_infinite_loop      = selector.getAttribute('infinite_loop');
+    var carousel_pause_on_hover     = selector.getAttribute('pause_on_hover');
 
     carousel_arrows     == 'off' ? carousel_arrows = false : carousel_arrows = true;
     carousel_dots       == 'off' ? carousel_dots = false : carousel_dots = true;
@@ -49,7 +48,7 @@ jQuery(document).ready(function($){
 
     Number(carousel_autoplay_speed);
     Number(slides_to_show);
-
+   
     if(smooth_scroll === 'off') {
         smooth_scroll = 'linear';
     } else {

@@ -3,15 +3,237 @@ import React, {Component, Fragment} from 'react';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+
 class CourseCarousel extends Component {
 
     static slug = 'tutor_course_carousel';
 
+    static css(props) {
+        const additionalCss = [];
+
+        //selectors
+        // const wrapper               = "%%order_class%% .tutor-divi-carousel-main-wrap";
+        // const card_selector         = `${wrapper} .tutor-divi-card`;
+        // const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
+
+        //props
+        const skin          = props.skin;
+
+        //set styles
+        //make carousel item equal height
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .tutor-divi-carousel-main-wrap
+                    .slick-track`,
+                declaration: `display: -webkit-box !important;
+                    display: -ms-flexbox !important;
+                    display: flex !important;
+                    /*5px for hover animation*/
+                    position: relative !important;
+                    top: 5px !important;`
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .tutor-divi-carousel-main-wrap
+                    .slick-slide`,
+                declaration: `height: inherit !important;`
+            }
+        ]);
+
+        //card layout styles
+        //classic style
+        if(skin === 'classic') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card`,
+                    declaration: `border-radius: 8px;
+                        border: 1px solid #EBEBEB;
+                        overflow: hidden;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow: 0px 5px 2px #ebebeb;
+                        box-shadow: 0px 5px 2px #ebebeb;`
+                }
+            ]);
+        }
+
+        //card style
+        if(skin === 'card') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-card .tutor-divi-card`,
+                    declaration: `display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        -webkit-box-pack: justify;
+                            -ms-flex-pack: justify;
+                                justify-content: space-between;
+                        height: 100%;
+                        -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+                                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+                        border-radius: 8px;
+                        overflow: hidden;`
+                }  
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-card .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
+                        box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);`
+                }
+            ]);
+
+        }
+
+        //stacked style
+        if(skin === 'stacked') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header`,
+                    declaration: `border-radius: 10px;
+                        overflow: hidden; z-index: 1;`                    
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-card`,
+                    declaration: `overflow: visible !important;`  
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked 
+                                        .tutor-divi-carousel-course-container`,
+                    declaration: `z-index: 99;
+                        margin-top: -80px;
+                        background: white;
+                        width: 80%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        position: relative;
+                        border-radius: 10px;
+                        -webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+                                box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);`                    
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked 
+                                        .tutor-divi-carousel-course-container:hover`,
+                    declaration: `-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);`
+                }
+            ]);
+        }   
+        //overlayed style
+        if(skin === 'overlayed') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed
+                        .tutor-divi-card`,
+                    declaration: `margin-top: 7px;`
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card`,
+                    declaration: `background-size: cover;
+                        background-repeat: no-repeat;
+                        border-radius: 20px;
+                        position: relative;
+                        height: 300px;
+                        overflow: hidden;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:before`,
+                    declaration: `background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+                        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
+                        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+                        
+                        position: absolute;
+                        content: "";
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        z-index: 3;
+                        -webkit-transition: .4s;
+                        -o-transition: .4s;
+                        transition: .4s;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-header`,
+                    declaration: `z-index: 2;
+                        height: 100%;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed
+                        .tutor-divi-carousel-course-container`,
+                    declaration: `position: absolute;
+                        z-index: 99;
+                        width: 100%;
+                        bottom:0 !important;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-rating-count,
+                        .%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-title h2 a,
+                        .%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-meta,
+                        .%%order_class%% .tutor-divi-carousel-overlayed .tutor-loop-author>div a,
+                        .%%order_class%% .tutor-divi-carousel-overlayed .etlms-loop-cart-btn-wrap a,
+                        .%%order_class%% .tutor-divi-carousel-overlayed .price`,
+                    declaration: `color: #fff;` 
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow: 0px 8px 28px 0px #d0d0d0;
+                        box-shadow: 0px 8px 28px 0px #d0d0d0;` 
+                }
+            ]);            
+
+        } 
+        //card layouts style end
+
+        //set styles end
+        return additionalCss;
+    }
     /**
      * @return total ratings star
      * @param avg_rating
      */
-    ratingStars(avg_rating) {
+    ratingStars(show,avg_rating) {
+        if(show === 'off') {
+            return '';
+        }
         const ratings = [];
         for(let i=1; i < 6; i++) {
             if(avg_rating >= i) {
@@ -23,7 +245,70 @@ class CourseCarousel extends Component {
         return ratings;
     }
 
-    categoryTemplate(course_cat) {
+    thumbnailTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+        <a href="/">
+            <img src={course.post_thumbnail} alt="thumbnail"/>
+        </a> 
+        );
+    }
+
+    levelTemplate(show,level) {
+        if(show === 'off') {
+            return ''
+        }
+        return (
+            <span className="tutor-course-loop-level">Expert</span>
+        );
+    }
+    metaTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+            <Fragment>
+                <div className="tutor-single-loop-meta">
+                    <i className='tutor-icon-user'></i>
+                    <span> {course.enroll_count} </span>
+                </div>
+                <div className="tutor-single-loop-meta">
+                    <i className='tutor-icon-clock'></i> 
+                    <span> {course.course_duration} </span>
+                </div>
+            </Fragment>
+            
+        );
+    }
+    
+    avatarTemplate(show,avatar) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+            <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
+                                            
+            </div>
+        );
+    }
+
+    wishlistTemplate(show) {
+        if(show === 'off') {
+            return ''
+        }
+        return(
+        <span className="tutor-course-wishlist">
+            <span className="tutor-icon-fav-line tutor-course-wishlist-btn  "></span> 
+        </span>
+        );
+    }
+
+    categoryTemplate(show,course_cat) {
+        if(show === 'off') {
+            return '';
+        }
         const categories = course_cat.map((category) => {
             return (
                 <a href="/">{ category.name }</a>
@@ -32,7 +317,10 @@ class CourseCarousel extends Component {
         return categories
     }
 
-    footerTemplate(course) {
+    footerTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
         return (
             <div className="tutor-course-loop-price">
                 <div className="price">
@@ -48,20 +336,19 @@ class CourseCarousel extends Component {
     }
 
     sliderTemplate(props) {
-        console.log(typeof(props.slides_to_show + '' + props.autoplay_speed))
-        const carousel = props.__courses;
+        console.log(props.dots + typeof(props.dots))
         const settings = {
-            appendDots: carousel.dots === 'on' ? true : false,
-            arrows: carousel.arrows === 'on' ? true : false,
-            infinite: carousel.infinite_loop === 'on' ? true : false,
+            appendDots: props.dots === 'off' ? false : true,
+            arrows: props.arrows === 'off' ? false : true,
+            infinite: props.infinite_loop === 'off' ? false : true,
             autoplaySpeed: 3000,
             slidesToShow: 3,
             slidesToScroll: 1,
-            useCSS: carousel.transition === 'on' ? true : false,
-            centerMode: carousel.center_slides === 'on' ? true : false,
-            pauseOnHover: carousel.pause_on_hover === 'on' ? true : false,
+            useCSS: props.transition === 'off' ? false : true,
+            centerMode: props.center_slides === 'off' ? false : true,
+            pauseOnHover: props.pause_on_hover === 'off' ? false : true,
     
-            easing: carousel.smooth_scrolling === 'on' ? 'ease' : 'linear',
+            easing: props.smooth_scrolling === 'off' ? 'linear' : 'ease',
     
             //rtl: elementorFrontend.config.is_rtl ? true : false,
     
@@ -84,6 +371,7 @@ class CourseCarousel extends Component {
             //     }
             // ]
         };
+        console.log(settings);
         return (
         <Slider  {...settings}>
             { this.courseTemplate(props) }
@@ -104,17 +392,10 @@ class CourseCarousel extends Component {
                 <div className="tutor-divi-card">
 
                         <div className="tutor-course-header ">
-                            <a href="/">
-                                <img src={course.post_thumbnail} alt="thumbnail"/>
-                            </a> 
-                                                    
+                             { this.thumbnailTemplate(props.show_image,course) }                       
                             <div className="tutor-course-loop-header-meta">
-
-                                    <span className="tutor-course-loop-level">Expert</span>
-                        
-                                    <span className="tutor-course-wishlist">
-                                        <span className="tutor-icon-fav-line tutor-course-wishlist-btn  "></span> 
-                                    </span>
+                                    { this.levelTemplate(props.difficulty_label, 'Beginner') }
+                                    { this.wishlistTemplate(props.wish_list)}
                             </div> 
                         </div>
                     
@@ -123,7 +404,7 @@ class CourseCarousel extends Component {
 
                                 <div className="tutor-loop-rating-wrap">
                                     <div className="tutor-star-rating-group">
-                                        {this.ratingStars(course.course_rating.rating_avg)}
+                                        {this.ratingStars(props.rating, course.course_rating.rating_avg)}
                                     </div>
                                 </div>
                             
@@ -136,22 +417,11 @@ class CourseCarousel extends Component {
                                 </div>
                             
                                 <div className="tutor-course-loop-meta">
-
-                                    <div className="tutor-single-loop-meta">
-                                        <i className='tutor-icon-user'></i>
-                                        <span> {course.enroll_count} </span>
-                                    </div>
-                                        <div className="tutor-single-loop-meta">
-                                            <i className='tutor-icon-clock'></i> 
-                                            <span> {course.course_duration} </span>
-                                        </div>
-
+                                    { this.metaTemplate(props.meta_data,course) }
                                 </div>
 
                                 <div className="tutor-loop-author">
-                                    <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: course.author_avatar}}>
-                                            
-                                    </div>
+                                    { this.avatarTemplate(props.avatar,course.author_avatar) }
                                     <div className="tutor-single-course-author-name">
                                     
                                         <a href="/">By {course.author_name}</a>
@@ -159,13 +429,13 @@ class CourseCarousel extends Component {
 
                                     <div className="tutor-course-lising-category">
                                         { course.course_category.length ? <span> In </span> : '' }
-                                        { this.categoryTemplate(course.course_category) }
+                                        { this.categoryTemplate(props.category,course.course_category) }
                                     </div>
                                 </div>
                             </div>
 
                             <div className="tutor-loop-course-footer tutor-divi-carousel-footer">
-                                { this.footerTemplate(course) }
+                                { this.footerTemplate(props.footer, course) }
                             </div>
                         
                         </div> 
@@ -187,9 +457,9 @@ class CourseCarousel extends Component {
         return (
         <Fragment>
 
-            <div className="tutor-divi-ctutor-wrap tutor-courses-wrap tutor-container tutor-divi-carousel-main-wraparousel-main-wrap">
+            <div className="tutor-courses-wrap tutor-container tutor-divi-carousel-main-wrap">
 
-                <div className={`tutor-divi-coursel-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                <div className={`tutor-divi-carousel-${this.props.skin}`} id="tutor-divi-slick-responsive">
                     { this.sliderTemplate( this.props) }
                 </div>
            

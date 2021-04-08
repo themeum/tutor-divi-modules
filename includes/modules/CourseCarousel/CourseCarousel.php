@@ -1,4 +1,8 @@
 <?php
+/*
+ * Course Carousel Module | Tutor Divi Modules
+ * @since 1.0.0
+*/
 
 use TutorLMS\Divi\Helper;
 
@@ -50,28 +54,30 @@ class CourseCarousel extends ET_Builder_Module {
 			'fonts'	=> array(
 				'title'	=> array(
 					'css'			=> array(
-						'main'	=> 'selector',
+						'main'	=> '%%order_class%% .tutor-course-loop-title h2 a',
 					),
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'title' 
 				),
 				'meta'	=> array(
-					'css'			=> array(
-						'main'	=> 'selector',
+					'css'				=> array(
+						'main'	=> '%%order_class%% .tutor-single-loop-meta i,%%order_class%% .tutor-single-loop-meta span',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'meta' 
+					'hide_text_align'	=> true,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'meta' 
 				),
 				'category'	=> array(
-					'css'			=> array(
-						'main'	=> 'selector',
+					'css'				=> array(
+						'main'	=> '%%order_class%% .tutor-course-lising-category a',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'category' 
+					'hide_text_align'	=> true,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'category' 
 				),
 				'footer'	=> array(
 					'css'			=> array(
-						'main'	=> 'selector',
+						'main'	=> '%%order_class%% .tutor-course-loop-price>.price',
 					),
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'footer' ,
@@ -701,20 +707,282 @@ class CourseCarousel extends ET_Builder_Module {
 
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
 		//selectors
-		$wrapper		= "%%order_class%% .tutor-divi-carousel-main-wrap";
-		$card_selector	= $wrapper." .tutor-divi-card";
+		$wrapper			= "%%order_class%% .tutor-divi-carousel-main-wrap";
+		$card_selector		= $wrapper." .tutor-divi-card";
+		$footer_selector	= $wrapper." .tutor-loop-course-footer";
 
 		//props
-		$hover_animation	= $this->props['hover_animation'];
+		$skin 						= $this->props['skin'];
+		$hover_animation			= $this->props['hover_animation'];
+		$card_background_color		= $this->props['card_background_color'];
+		$footer_seperator_width		= $this->props['footer_seperator_width'];
+		$footer_seperator_color		= $this->props['footer_seperator_color'];
 
 		//set styles
+		//make carousel item equal height
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .slick-track',
+				'declaration'	=> 'display: -webkit-box !important;
+					display: -ms-flexbox !important;
+					display: flex !important;'
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .slick-slide',
+				'declaration'	=> 'height: inherit !important;'
+			)
+		);
+
+		//skin layout styles
+		//classic
+		if( $skin === 'classic') {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card',
+					'declaration'	=> 'border-radius: 8px;
+						border: 1px solid #EBEBEB;
+						overflow: hidden;'
+				)
+			);			
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card:hover',
+					'declaration'	=> '-webkit-box-shadow: 0px 5px 2px #ebebeb;
+	        			box-shadow: 0px 5px 2px #ebebeb;'
+				)
+			);
+		}
+		//card style
+		if( $skin === 'card' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
+					'declaration'	=> 'display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-orient: vertical;
+						-webkit-box-direction: normal;
+						    -ms-flex-direction: column;
+						        flex-direction: column;
+						-webkit-box-pack: justify;
+						    -ms-flex-pack: justify;
+						        justify-content: space-between;
+						height: 100%;
+						-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+						        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+						border-radius: 8px;
+						overflow: hidden;'
+				)
+			);
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-card .tutor-divi-card:hover',
+					'declaration'	=> '-webkit-box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
+	      				box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);'
+				)
+			);
+		}		
+
+		if( $skin === 'stacked' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header',
+					'declaration'	=> 'border-radius: 10px;
+						overflow: hidden; z-index: 1;'
+				)
+			);			
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-card',
+					'declaration'	=> 'overflow: visible !important;'
+				)
+			);			
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked 
+										.tutor-divi-carousel-course-container',
+					'declaration'	=> 'z-index: 99;
+						margin-top: -80px;
+						background: white;
+						width: 80%;
+						margin-left: auto;
+						margin-right: auto;
+						position: relative;
+						border-radius: 10px;
+						-webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+						        box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);'
+				)
+			);
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked 
+										.tutor-divi-carousel-course-container:hover',
+					'declaration'	=> '-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
+	        			box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);'
+				)
+			);
+		}		
+
+
+		if( $skin === 'overlayed' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed
+						.tutor-divi-card',
+						'declaration'	=> 'margin-top: 7px;'
+				)
+			);
+
+			//style container
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card',
+					'declaration'	=> 'background-size: cover;
+						background-repeat: no-repeat;
+						border-radius: 20px;
+						position: relative;
+						height: 300px;
+						overflow: hidden;
+						'
+				)
+			);			
+
+			//set befault overlay
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:before',
+					'declaration'	=> '	background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+						background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
+						background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+						
+						position: absolute;
+					    content: "";
+					    left: 0;
+					    top: 0;
+					    bottom: 0;
+					    right: 0;
+					    z-index: 3;
+					    -webkit-transition: .4s;
+					    -o-transition: .4s;
+					    transition: .4s;	'
+				)
+			);	
+
+			//card header style
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-header',
+					'declaration'	=> 'z-index: 2;
+						height: 100%;'
+				)
+			);				
+
+			//container style
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed
+						.tutor-divi-carousel-course-container',
+					'declaration'	=> 'position: absolute;
+						z-index: 99;
+						width: 100%;
+						bottom:0 !important;'
+				)
+			);	
+
+			//all text style for overlayed 	
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-rating-count,
+						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-title h2 a,
+						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-meta,
+						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-loop-author>div a,
+						.%%order_class%% .tutor-divi-carousel-overlayed .etlms-loop-cart-btn-wrap a,
+						.%%order_class%% .tutor-divi-carousel-overlayed .price',
+					'declaration'	=> 'color: #fff;'
+				)
+			);
+			//hover overlayed
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:hover',
+					'declaration'	=> '-webkit-box-shadow: 0px 8px 28px 0px #d0d0d0;
+	        			box-shadow: 0px 8px 28px 0px #d0d0d0;'
+				)
+			);
+		}
+		//skin layout styles end
+
+		//card style
+		if( '' !== $card_background_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $card_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$card_background_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $footer_seperator_width ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $footer_selector,
+					'declaration'	=> sprintf(
+						'border-top: %1$s; border-style: solid;',
+						$footer_seperator_width
+					)
+				)
+			);
+		}		
+
+		if( '' !== $footer_seperator_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $card_selector,
+					'declaration'	=> sprintf(
+						'border-color: %1$s;',
+						$footer_seperator_color
+					)
+				)
+			);
+		}
 		//card hover animation
 		if( 'on' == $hover_animation ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $card_selector,
-					'declaration'	=> 'background: red !important;'
+					'selector'		=> '%%order_class%% .tutor-divi-card.hover-animation',
+					'declaration'	=> 'position: relative; top: 0; z-index: 99; transition: top .5s'
 				)
 			);		
 
@@ -722,10 +990,17 @@ class CourseCarousel extends ET_Builder_Module {
 				$render_slug,
 				array(
 					'selector'		=> '%%order_class%% .tutor-divi-card.hover-animation:hover',
-					'declaration'	=> 'top: -5px; background-color:red;'
+					'declaration'	=> 'top: -5px;'
 				)
 			);
 		}
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '#test h3',
+				'declaration'	=> 'color: red;'
+			)
+		);
 		//set styles end
 
 		$output = self::get_content($this->props);
