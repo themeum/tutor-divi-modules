@@ -8,8 +8,8 @@ use TutorLMS\Divi\Helper;
 
 class CourseCarousel extends ET_Builder_Module {
 
-	public $slug       = 'tutor_course_carousel';
-	public $vb_support = 'on';
+	public $slug       	= 'tutor_course_carousel';
+	public $vb_support 	= 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
@@ -50,6 +50,7 @@ class CourseCarousel extends ET_Builder_Module {
 		);
 
 		//advanced fields configuration
+
 		$this->advanced_fields = array(
 			'fonts'	=> array(
 				'title'	=> array(
@@ -133,21 +134,24 @@ class CourseCarousel extends ET_Builder_Module {
                 ),
 			),
 			'borders'		=> array(
+				'default'	=> array(),
 				'card'	=> array(
 					'css'			=> array(
 						'main'	=> array(
-							'border_radii'	=> 'selector',
-							'border_styles'	=> 'selecotr'
-						)
+							'border_radii'	=> "%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container",
+							'border_styles'	=> "%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container"
+						),
+						'important'	=> true
 					),
 					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'card'
+					'toggle_slug'	=> 'card',
+					
 				),
 				'badge'	=> array(
 					'css'			=> array(
 						'main'	=> array(
-							'border_radii'	=> 'selector',
-							'border_styles'	=> 'selecotr'
+							'border_radii'	=> '%%order_class%% .tutor-divi-carousel-main-wrap .tutor-course-loop-level',
+							'border_styles'	=> '%%order_class%% .tutor-divi-carousel-main-wrap .tutor-course-loop-level',
 						)
 					),
 					'tab_slug'		=> 'advanced',
@@ -169,7 +173,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			'background'    => array(
                 'css'   => array(
-                    'main'  => '%%order_class%%',
+                    'main'  => '%%order_class%% .tutor-divi-carousel-classic .tutor-course-header:before,%%order_class%% .tutor-divi-carousel-card .tutor-course-header:before,%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header:before,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:before',
                     'important' => true
                 ),
                 'settings'  => array(
@@ -184,12 +188,12 @@ class CourseCarousel extends ET_Builder_Module {
 					'toggle_slug' => 'image',
 				),
 				'css'                  => array(
-					'main' => '%%order_class%%',
+					'main' => '%%order_class%% .tutor-divi-carousel-classic .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-card .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card',
 				),
 			),
 			'text'			=> false,
 			'max_width'		=> false,
-			'filters'		=> false
+			
 		);
 		
 
@@ -505,7 +509,14 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			'card_custom_padding'	=> array(
 				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules'),
-				'type'			=> 'custom_padding',
+				'type'			=> 'range',
+				'defaunt_unit'	=> 'px',
+				'default'		=> '0px',
+				'range_settings'=> array(
+					'min'	=> '0',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
 			),
@@ -519,6 +530,7 @@ class CourseCarousel extends ET_Builder_Module {
 					'step'	=> '1'
 				), 
 				'default_unit'	=> 'px',
+				'default'		=> '0px',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'image'
 			),
@@ -686,6 +698,7 @@ class CourseCarousel extends ET_Builder_Module {
 				array_push($courses, $post);
 	
 			}
+			
 			return $courses;
 		} else {
 			return false;
@@ -717,7 +730,8 @@ class CourseCarousel extends ET_Builder_Module {
 		$card_background_color		= $this->props['card_background_color'];
 		$footer_seperator_width		= $this->props['footer_seperator_width'];
 		$footer_seperator_color		= $this->props['footer_seperator_color'];
-
+		$card_custom_padding		= $this->props['card_custom_padding'];
+		$image_spacing				= $this->props['image_spacing'];
 		//set styles
 		//make carousel item equal height
 		ET_Builder_Element::set_style(
@@ -739,6 +753,24 @@ class CourseCarousel extends ET_Builder_Module {
 		);
 
 		//skin layout styles
+		//prepare header for background overlay & css filters
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-divi-carousel-classic
+					.tutor-course-header:before,
+					%%order_class%% .tutor-divi-carousel-card
+					.tutor-course-header:before,
+					%%order_class%% .tutor-divi-carousel-stacked
+					.tutor-course-header:before,%%order_class%% .tutor-divi-carousel-overlayed
+					.tutor-divi-card:before',
+				'declaration'	=> 'width: 100%;
+					height: 100%;
+					position: absolute;
+					content: "";
+					z-index: 2;'
+			)
+		);
 		//classic
 		if( $skin === 'classic') {
 			ET_Builder_Element::set_style(
@@ -976,6 +1008,20 @@ class CourseCarousel extends ET_Builder_Module {
 				)
 			);
 		}
+
+		if( '' !== $card_custom_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $card_selector,
+					'declaration'	=> sprintf(
+						'padding: %1$s;',
+						$card_custom_padding
+					)
+				)
+			);
+		}
+
 		//card hover animation
 		if( 'on' == $hover_animation ) {
 			ET_Builder_Element::set_style(
@@ -1001,6 +1047,20 @@ class CourseCarousel extends ET_Builder_Module {
 				'declaration'	=> 'color: red;'
 			)
 		);
+
+		//image toggles
+		if( '' !== $image_spacing ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-course-header a img',
+					'declaration'	=> sprintf(
+						'padding: %1$s;',
+						$image_spacing
+					)
+				)
+			);
+		}
 		//set styles end
 
 		$output = self::get_content($this->props);

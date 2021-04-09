@@ -12,14 +12,78 @@ class CourseCarousel extends Component {
         const additionalCss = [];
 
         //selectors
-        // const wrapper               = "%%order_class%% .tutor-divi-carousel-main-wrap";
-        // const card_selector         = `${wrapper} .tutor-divi-card`;
-        // const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
+        const wrapper               = "%%order_class%% .tutor-divi-carousel-main-wrap";
+        const card_selector         = `${wrapper} .tutor-divi-card`;
+        const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
 
         //props
-        const skin          = props.skin;
-
+        const skin                      = props.skin;
+        const hover_animation           = props.hover_animation;
+        const card_background_color     = props.card_background_color;
+        const footer_seperator_width    = props.footer_seperator_width
+        const footer_seperator_color    = props.footer_seperator_color
+        const card_custom_padding       = props.card_custom_padding;
+        const image_spacing             = props.image_spacing;
         //set styles
+        //card hover animation
+        if(hover_animation === 'on') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-card.hover-animation`,
+					declaration: `position: relative; top: 0; z-index: 99; transition: top .5s;`
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-card.hover-animation:hover`,
+					declaration: `top: -5px;`
+                }
+            ]);
+        }
+
+        //card toogle style
+        //prepare header for background overlay & css filters
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-divi-carousel-classic .tutor-course-header:before,%%order_class%% .tutor-divi-carousel-card .tutor-course-header:before, %%order_class%% .tutor-divi-carousel-stacked .tutor-course-header:before',
+                declaration: 'width: 100%;height: 100%; position: absolute;content: "";z-index: 2;'  
+            }
+        ]);
+        if('' !== card_background_color) {
+            additionalCss.push([
+                {
+                    selector: card_selector,
+                    declaration: `background-color: ${card_background_color};`
+                }
+            ]);
+        }
+
+        if('' !== footer_seperator_width) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `border-top: ${footer_seperator_width} solid;`
+                }
+            ]);
+        }
+
+        if('' !== footer_seperator_color) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `color: ${footer_seperator_color};`
+                }
+            ]);
+        }
+
+        if('' !== card_custom_padding) {
+            additionalCss.push([
+                {
+                    selector: card_selector,
+                    declaration: `padding: ${card_custom_padding};`
+                }
+            ]);
+        }
         //make carousel item equal height
         additionalCss.push([
             {
@@ -222,6 +286,16 @@ class CourseCarousel extends Component {
 
         } 
         //card layouts style end
+
+        //image toggle
+        if('' !== image_spacing) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-course-header a img`,
+                    declaration: `padding: ${image_spacing};`
+                }
+            ]);
+        }
 
         //set styles end
         return additionalCss;
