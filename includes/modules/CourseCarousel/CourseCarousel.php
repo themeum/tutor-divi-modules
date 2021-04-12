@@ -79,7 +79,15 @@ class CourseCarousel extends ET_Builder_Module {
 				),
 				'footer'	=> array(
 					'css'				=> array(
-						'main'	=> '%%order_class%% .tutor-course-loop-price>.price',
+						'main'	=> '%%order_class%% .tutor-divi-carousel-main-wrap .price',
+					),
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'footer' ,
+					'hide_text_align'	=> true
+				),
+				'dots'	=> array(
+					'css'				=> array(
+						'main'	=> '%%order_class%% .slick-dots li button:before',
 					),
 					'tab_slug'			=> 'advanced',
 					'toggle_slug'		=> 'footer' ,
@@ -92,12 +100,17 @@ class CourseCarousel extends ET_Builder_Module {
                     'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
-                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                            'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
                         )
                     ),
                     'css'           => array(
-                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
+                        'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
                     ),
+					'margin_padding' => array(
+						'css' => array(
+							'important' => 'all',
+						),
+					),
                     //'use_alignment' => false,
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'cart_button' , 
@@ -118,21 +131,7 @@ class CourseCarousel extends ET_Builder_Module {
                     'toggle_slug'   => 'arrow' , 
                     'important'     => true
                 ),
-                'dots' => array(
-                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
-                    'box_shadow'    => array(
-                        'css'   => array(
-                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
-                        )
-                    ),
-                    'css'           => array(
-                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
-                    ),
-                    //'use_alignment' => false,
-                    'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'dots' , 
-                    'important'     => true
-                ),
+
 			),
 			'borders'		=> array(
 				'default'	=> array(),
@@ -639,7 +638,25 @@ class CourseCarousel extends ET_Builder_Module {
 					'image_size'
 				)
 			),
-			
+			//advanced tab footer toggle
+			'footer_background'	=> array(
+				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'type'			=> 'color-alpha',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'footer'
+			),
+			'footer_padding'	=> array(
+				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'footer'
+			),
 
 		);
 
@@ -731,8 +748,9 @@ class CourseCarousel extends ET_Builder_Module {
 		$badge_selector		= $wrapper." .tutor-course-loop-level";
 		$avatar_selector    = $wrapper." .tutor-single-course-avatar a img," .$wrapper." .tutor-single-course-avatar a span";
 
-		$star_selector         = $wrapper.' .tutor-star-rating-group i';
-        $star_wrapper_selector = $wrapper.' .tutor-star-rating-group';
+		$star_selector         	= $wrapper.' .tutor-star-rating-group i';
+        $star_wrapper_selector 	= $wrapper.' .tutor-star-rating-group';
+		$cart_button_selector	= $wrapper.' .tutor-loop-cart-btn-wrap a';
 
 		//props
 		$skin 						= $this->props['skin'];
@@ -756,6 +774,9 @@ class CourseCarousel extends ET_Builder_Module {
 		$star_color					= $this->props['star_color'];
 		$star_size					= $this->props['star_size'];
 		$star_gap					= $this->props['star_gap'];
+
+		$footer_background			= $this->props['footer_background'];
+		$footer_padding				= $this->props['footer_padding'];
 
 		//set styles
 		//make carousel item equal height
@@ -1200,7 +1221,56 @@ class CourseCarousel extends ET_Builder_Module {
 					)
 				)
 			);
-		}	
+		}
+		
+		//footer toggle
+		if( '' !== $footer_background ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $footer_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$footer_background
+					)
+				)
+			);
+		}
+
+		if( '' !== $footer_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $footer_selector,
+					'declaration'	=> sprintf(
+						'padding: %1$s;',
+						$footer_padding
+					)
+				)
+			);
+		}
+
+		if( '' !== $footer_background ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $footer_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$footer_background
+					)
+				)
+			);
+		}
+
+		//cart button toggle
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $cart_button_selector,
+				'declaration'	=> 'border-style: solid;'
+			)
+		);
 
 		//set styles end
 

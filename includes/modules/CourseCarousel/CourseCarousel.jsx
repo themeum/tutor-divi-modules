@@ -19,6 +19,7 @@ class CourseCarousel extends Component {
         const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span`;
         const star_selector         = `${wrapper} .tutor-star-rating-group i`;
         const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
+        const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
 
         //props
         const skin                      = props.skin;
@@ -42,6 +43,9 @@ class CourseCarousel extends Component {
         const star_color                = props.star_color;
         const star_size                 = props.star_size;
         const star_gap                  = props.star_gap;
+
+        const footer_background         = props.footer_background;
+        const footer_padding            = props.footer_padding;
 
         //set styles
         //card hover animation
@@ -397,6 +401,32 @@ class CourseCarousel extends Component {
             ]);
         }
 
+        //footer toggle
+        if('' !== footer_background) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `background-color: ${footer_background};`
+                }
+            ]);
+        }
+
+        if('' !== footer_padding) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `padding: ${footer_padding};`
+                }
+            ]);
+        }
+        //cart button toggle
+        additionalCss.push([
+            {
+                selector: cart_button_selector,
+                declaration: 'border-style: solid;'
+            }
+        ]);
+
         //set styles end
         return additionalCss;
     }
@@ -491,16 +521,18 @@ class CourseCarousel extends Component {
         return categories
     }
 
-    footerTemplate(show,course) {
+    footerTemplate(show,course,icon) {
         if(show === 'off') {
             return '';
         }
+        const utils     = window.ET_Builder.API.Utils;
+        const cart_icon = utils.processFontIcon(icon);
         return (
             <div className="tutor-course-loop-price">
                 <div className="price">
                     { course.course_price === null ? 'Free' : course.course_price }
                     <div className="tutor-loop-cart-btn-wrap">
-                        <a href="/">
+                        <a href="/" data-icon={cart_icon}>
                             { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
                         </a>
                     </div>    
@@ -610,7 +642,7 @@ class CourseCarousel extends Component {
                             </div>
 
                             <div className="tutor-loop-course-footer tutor-divi-carousel-footer">
-                                { this.footerTemplate(props.footer, course) }
+                                { this.footerTemplate(props.footer, course, props.cart_button_icon) }
                             </div>
                         
                         </div> 

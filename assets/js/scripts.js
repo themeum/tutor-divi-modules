@@ -5,7 +5,6 @@
 const params = new URLSearchParams(window.location.search);
 //check if not front end builder
 if(params.has('et_fb')) {
-    console.log('from scripts '+params.get('et_fb'))
 
 } else {
         /**
@@ -60,7 +59,7 @@ if(params.has('et_fb')) {
             carousel_autoplay   == 'off' ? carousel_autoplay = false : carousel_autoplay = true;
 
             Number(carousel_autoplay_speed);
-            Number(slides_to_show);
+            slides_to_show = Number(slides_to_show);
            
             if(smooth_scroll === 'off') {
                 smooth_scroll = 'linear';
@@ -69,8 +68,7 @@ if(params.has('et_fb')) {
             }
             carousel_infinite_loop  == 'off' ? carousel_infinite_loop = false : carousel_infinite_loop = true;
             carousel_pause_on_hover == 'off' ? carousel_pause_on_hover = false : carousel_pause_on_hover = true;
-
-          
+            
             $("#tutor-divi-slick-responsive").slick({
                 dots: carousel_dots,
                 arrows: carousel_arrows,
