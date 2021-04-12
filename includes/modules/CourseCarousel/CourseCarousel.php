@@ -54,11 +54,12 @@ class CourseCarousel extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'	=> array(
 				'title'	=> array(
-					'css'			=> array(
+					'css'				=> array(
 						'main'	=> '%%order_class%% .tutor-course-loop-title h2 a',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'title' 
+					'hide_text_align'	=> true,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'title' 
 				),
 				'meta'	=> array(
 					'css'				=> array(
@@ -77,11 +78,11 @@ class CourseCarousel extends ET_Builder_Module {
 					'toggle_slug'		=> 'category' 
 				),
 				'footer'	=> array(
-					'css'			=> array(
+					'css'				=> array(
 						'main'	=> '%%order_class%% .tutor-course-loop-price>.price',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'footer' ,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'footer' ,
 					'hide_text_align'	=> true
 				),
 			),
@@ -160,8 +161,8 @@ class CourseCarousel extends ET_Builder_Module {
 				'avatar'	=> array(
 					'css'			=> array(
 						'main'	=> array(
-							'border_radii'	=> 'selector',
-							'border_styles'	=> 'selecotr'
+							'border_radii'	=> '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span',
+							'border_styles'	=> '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span'
 						)
 					),
 					'tab_slug'		=> 'advanced',
@@ -550,9 +551,10 @@ class CourseCarousel extends ET_Builder_Module {
 			'badge_size'	=> array(
 				'label'			=> esc_html__( 'Size', 'tutor-divi-modules' ),
 				'type'			=> 'range',
+				'default_unit'	=> 'px',
 				'range_settings'=> array(
 					'min'	=> '1',
-					'max'	=> '100',
+					'max'	=> '300',
 					'step'	=> '1'
 				),
 				'tab_slug'		=> 'advanced',
@@ -561,6 +563,8 @@ class CourseCarousel extends ET_Builder_Module {
 			'badge_margin'	=> array(
 				'label'			=> esc_html__( 'Margin', 'tutor-divi-modules' ),
 				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'default'		=> '0px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '100',
@@ -573,9 +577,10 @@ class CourseCarousel extends ET_Builder_Module {
 			'avatar_size'	=> array(
 				'label'			=> esc_html__( 'Avatar Size', 'tutor-divi-modules' ),
 				'type'			=> 'range',
+				'default_unit'	=> 'px',
 				'range_settings'=> array(
 					'min'	=> '1',
-					'max'	=> '100',
+					'max'	=> '200',
 					'step'	=> '1'
 				),
 				'tab_slug'		=> 'advanced',
@@ -723,15 +728,35 @@ class CourseCarousel extends ET_Builder_Module {
 		$wrapper			= "%%order_class%% .tutor-divi-carousel-main-wrap";
 		$card_selector		= $wrapper." .tutor-divi-card";
 		$footer_selector	= $wrapper." .tutor-loop-course-footer";
+		$badge_selector		= $wrapper." .tutor-course-loop-level";
+		$avatar_selector    = $wrapper." .tutor-single-course-avatar a img," .$wrapper." .tutor-single-course-avatar a span";
+
+		$star_selector         = $wrapper.' .tutor-star-rating-group i';
+        $star_wrapper_selector = $wrapper.' .tutor-star-rating-group';
 
 		//props
 		$skin 						= $this->props['skin'];
 		$hover_animation			= $this->props['hover_animation'];
 		$card_background_color		= $this->props['card_background_color'];
+
 		$footer_seperator_width		= $this->props['footer_seperator_width'];
 		$footer_seperator_color		= $this->props['footer_seperator_color'];
+
 		$card_custom_padding		= $this->props['card_custom_padding'];
+
 		$image_spacing				= $this->props['image_spacing'];
+
+		$badge_background_color		= $this->props['badge_background_color'];
+		$badge_text_color			= $this->props['badge_text_color'];
+		$badge_size					= $this->props['badge_size'];
+		$badge_margin				= $this->props['badge_margin'];
+
+		$avatar_size				= $this->props['avatar_size'];
+
+		$star_color					= $this->props['star_color'];
+		$star_size					= $this->props['star_size'];
+		$star_gap					= $this->props['star_gap'];
+
 		//set styles
 		//make carousel item equal height
 		ET_Builder_Element::set_style(
@@ -1061,6 +1086,122 @@ class CourseCarousel extends ET_Builder_Module {
 				)
 			);
 		}
+
+		//badge toggle
+		if( '' !== $badge_background_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $badge_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$badge_background_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $badge_text_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $badge_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$badge_text_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $badge_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $badge_selector,
+					'declaration'	=> sprintf(
+						'margin: %1$s;',
+						$badge_margin
+					)
+				)
+			);
+		}		
+
+		if( '' !== $badge_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $badge_selector,
+					'declaration'	=> sprintf(
+						'width: %1$s;',
+						$badge_size
+					)
+				)
+			);
+		}
+
+		//avatar toggle
+		if( '' !== $avatar_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $avatar_selector,
+					'declaration'	=> sprintf(
+						'width: %1$s;height: %1$s;',
+						$badge_size
+					)
+				)
+			);
+		}	
+
+		//rating toggle
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $star_wrapper_selector,
+				'declaration'	=> 'display: flex;'
+			)
+		);
+
+		if( '' !== $star_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $star_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$star_color
+					)
+				)
+			);
+		}			
+
+		if( '' !== $star_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $star_selector,
+					'declaration'	=> sprintf(
+						'font-size: %1$s;',
+						$star_size
+					)
+				)
+			);
+		}			
+
+		if( '' !== $star_gap ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $star_wrapper_selector,
+					'declaration'	=> sprintf(
+						'column-gap: %1$s;',
+						$star_gap
+					)
+				)
+			);
+		}	
+
 		//set styles end
 
 		$output = self::get_content($this->props);

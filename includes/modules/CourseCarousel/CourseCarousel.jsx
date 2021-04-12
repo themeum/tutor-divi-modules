@@ -15,15 +15,34 @@ class CourseCarousel extends Component {
         const wrapper               = "%%order_class%% .tutor-divi-carousel-main-wrap";
         const card_selector         = `${wrapper} .tutor-divi-card`;
         const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
+        const badge_selector        = `${wrapper} .tutor-course-loop-level`;
+        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span`;
+        const star_selector         = `${wrapper} .tutor-star-rating-group i`;
+        const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
 
         //props
         const skin                      = props.skin;
         const hover_animation           = props.hover_animation;
         const card_background_color     = props.card_background_color;
+
         const footer_seperator_width    = props.footer_seperator_width
         const footer_seperator_color    = props.footer_seperator_color
+
         const card_custom_padding       = props.card_custom_padding;
+
         const image_spacing             = props.image_spacing;
+
+        const badge_background_color    = props.badge_background_color;
+        const badge_text_color          = props.badge_text_color;
+        const badge_margin              = props.badge_margin;
+        const badge_size                = props.badge_size;
+
+        const avatar_size               = props.avatar_size;
+
+        const star_color                = props.star_color;
+        const star_size                 = props.star_size;
+        const star_gap                  = props.star_gap;
+
         //set styles
         //card hover animation
         if(hover_animation === 'on') {
@@ -297,6 +316,87 @@ class CourseCarousel extends Component {
             ]);
         }
 
+        //badge toggle
+        if('' !== badge_background_color) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `background-color: ${badge_background_color};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_text_color) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `color: ${badge_text_color};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_margin) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `margin: ${badge_margin};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_size) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `width: ${badge_size};`
+                }
+            ]);
+        }
+        if('' !== avatar_size) {
+            additionalCss.push([
+                {
+                    selector: avatar_selector,
+                    declaration: `width: ${avatar_size};height: ${avatar_size};`
+                }
+            ]);
+        }
+        //avatar toggle
+
+        //rating toggle
+        additionalCss.push([
+            {
+                selector: star_wrapper_selector,
+                declaration: `display: flex;`
+            }
+        ]);
+
+        if('' !== star_color) {
+            additionalCss.push([
+                {
+                    selector: star_selector,
+                    declaration: `color: ${star_color};`
+                }
+            ]);
+        }        
+
+        if('' !== star_size) {
+            additionalCss.push([
+                {
+                    selector: star_selector,
+                    declaration: `font-size: ${star_size};`
+                }
+            ]);
+        }        
+
+        if('' !== star_gap) {
+            additionalCss.push([
+                {
+                    selector: star_wrapper_selector,
+                    declaration: `column-gap: ${star_gap};`
+                }
+            ]);
+        }
+
         //set styles end
         return additionalCss;
     }
@@ -412,11 +512,12 @@ class CourseCarousel extends Component {
     sliderTemplate(props) {
         console.log(props.dots + typeof(props.dots))
         const settings = {
-            appendDots: props.dots === 'off' ? false : true,
+            dots: props.dots === 'off' ? false : true,
             arrows: props.arrows === 'off' ? false : true,
             infinite: props.infinite_loop === 'off' ? false : true,
-            autoplaySpeed: 3000,
-            slidesToShow: 3,
+            autoplay: props.autoplay === 'off' ? false : true,
+            autoplaySpeed: Number(props.autoplay_speed),
+            slidesToShow: Number(props.slides_to_show),
             slidesToScroll: 1,
             useCSS: props.transition === 'off' ? false : true,
             centerMode: props.center_slides === 'off' ? false : true,
