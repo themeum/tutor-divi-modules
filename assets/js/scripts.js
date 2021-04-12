@@ -7,30 +7,42 @@ const params = new URLSearchParams(window.location.search);
 if(params.has('et_fb')) {
 
 } else {
-        /**
-         * Tutor Divi Modules
-         * course curricle on click toggle icon
-         * @since 1.0.0
-         */
-         if(document.querySelector("#tutor_divi_col_icon")){
-            
-            const collaps_icon    = document.querySelector("#tutor_divi_col_icon").value;
-            const expand_icon     = document.querySelector("#tutor_divi_exp_icon").value;
-            
-            let divs = document.querySelectorAll(".tutor-divi-course-topic").forEach((div)=> {
-                    div.onclick = (e) => {
-                    let icon =  e.currentTarget.querySelector("#tutor_divi_topic_icon");
-                    let icon_type = icon.textContent;
-                        if( icon_type == collaps_icon) {
-                            icon.textContent = expand_icon;
-                        
-                        } else if (icon_type == expand_icon) {
-                            icon.textContent = collaps_icon;
-                        }
+    /**
+     * Tutor Divi Modules
+     * course curricle on click toggle icon
+     * @since 1.0.0
+     */
+     if(document.querySelector("#tutor_divi_col_icon")){
+        
+        const collaps_icon    = document.querySelector("#tutor_divi_col_icon").value;
+        const expand_icon     = document.querySelector("#tutor_divi_exp_icon").value;
+        
+        let divs = document.querySelectorAll(".tutor-divi-course-topic").forEach((div)=> {
+                div.onclick = (e) => {
+                let icon =  e.currentTarget.querySelector("#tutor_divi_topic_icon");
+                let icon_type = icon.textContent;
+                    if( icon_type == collaps_icon) {
+                        icon.textContent = expand_icon;
+                    
+                    } else if (icon_type == expand_icon) {
+                        icon.textContent = collaps_icon;
                     }
-            });
-         }
+                }
+        });
+     }
 
+    /**
+     * Carousel cart button icon
+     * set data-icon attr to show et font icon
+     * @since 1.0.0
+    */ 
+    const cart_selector = document.querySelectorAll('.tutor-loop-cart-btn-wrap a');
+    const icon          = document.querySelector("#cart_button_font_icon").value;
+    if(cart_selector) {
+        for(let cs of cart_selector) {
+            cs.setAttribute('data-icon', icon)   
+        }
+    }
 
     /**
      * Tutor Course Carousel Modules
