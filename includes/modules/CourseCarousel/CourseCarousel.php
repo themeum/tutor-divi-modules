@@ -616,7 +616,6 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Gap', 'tutor-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
-				'default'		=> '14px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '100',
@@ -782,7 +781,7 @@ class CourseCarousel extends ET_Builder_Module {
 	 */
 	public static function get_content( $args = [] ) {
 		ob_start();
-		include_once dtlms_get_template('course/course_carousel');
+		include dtlms_get_template('course/course_carousel');
 		return ob_get_clean();
 	}
 	

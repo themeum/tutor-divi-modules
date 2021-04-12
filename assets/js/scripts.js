@@ -81,7 +81,7 @@ if(params.has('et_fb')) {
             carousel_infinite_loop  == 'off' ? carousel_infinite_loop = false : carousel_infinite_loop = true;
             carousel_pause_on_hover == 'off' ? carousel_pause_on_hover = false : carousel_pause_on_hover = true;
             
-            $("#tutor-divi-slick-responsive").slick({
+            $(".tutor-divi-slick-responsive").slick({
                 dots: carousel_dots,
                 arrows: carousel_arrows,
                 infinite: carousel_infinite_loop,
