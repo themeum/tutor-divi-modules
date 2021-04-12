@@ -20,6 +20,8 @@ class CourseCarousel extends Component {
         const star_selector         = `${wrapper} .tutor-star-rating-group i`;
         const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
+        const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
+        const dots_wrapper_selector = '%%order_class%% .slick-dots';
 
         //props
         const skin                      = props.skin;
@@ -46,6 +48,11 @@ class CourseCarousel extends Component {
 
         const footer_background         = props.footer_background;
         const footer_padding            = props.footer_padding;
+
+        let dots_alignment              = props.dots_alignment;
+        const dots_space                = props.dots_space;
+
+        const arrows_padding            = props.arrows_padding;
 
         //set styles
         //card hover animation
@@ -110,21 +117,16 @@ class CourseCarousel extends Component {
         //make carousel item equal height
         additionalCss.push([
             {
-                selector: `%%order_class%% .tutor-divi-carousel-main-wrap
-                    .slick-track`,
+                selector: `%%order_class%% .slick-track`,
                 declaration: `display: -webkit-box !important;
                     display: -ms-flexbox !important;
-                    display: flex !important;
-                    /*5px for hover animation*/
-                    position: relative !important;
-                    top: 5px !important;`
+                    display: flex !important;`
             }
         ]);        
 
         additionalCss.push([
             {
-                selector: `%%order_class%% .tutor-divi-carousel-main-wrap
-                    .slick-slide`,
+                selector: `%%order_class%% .slick-slide`,
                 declaration: `height: inherit !important;`
             }
         ]);
@@ -427,6 +429,37 @@ class CourseCarousel extends Component {
             }
         ]);
 
+        //arrows toggle
+        //arrows default color #000
+        additionalCss.push([
+            {
+                selector: arrows_selector,
+                declaration: 'color: #000;'
+            }
+        ]);
+
+        if('' !== arrows_padding) {
+            additionalCss.push([
+                {
+                    selector: arrows_selector,
+                    declaration: `padding: ${arrows_padding};`
+                }
+            ])
+        }
+
+        //dots toggle
+        if(dots_alignment === 'left') {
+            dots_alignment = 'flex-start';
+        } else if( dots_alignment === 'right') {
+            dots_alignment = 'flex-end';
+        }
+        additionalCss.push([
+            {
+                selector: dots_wrapper_selector,
+                declaration: `display:flex !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
+            }
+        ]);
+
         //set styles end
         return additionalCss;
     }
@@ -465,7 +498,7 @@ class CourseCarousel extends Component {
             return ''
         }
         return (
-            <span className="tutor-course-loop-level">Expert</span>
+            <span className="tutor-course-loop-level">{level}</span>
         );
     }
     metaTemplate(show,course) {
@@ -542,7 +575,7 @@ class CourseCarousel extends Component {
     }
 
     sliderTemplate(props) {
-        console.log(props.dots + typeof(props.dots))
+        
         const settings = {
             dots: props.dots === 'off' ? false : true,
             arrows: props.arrows === 'off' ? false : true,
@@ -578,7 +611,7 @@ class CourseCarousel extends Component {
             //     }
             // ]
         };
-        console.log(settings);
+        
         return (
         <Slider  {...settings}>
             { this.courseTemplate(props) }
@@ -601,7 +634,7 @@ class CourseCarousel extends Component {
                         <div className="tutor-course-header ">
                              { this.thumbnailTemplate(props.show_image,course) }                       
                             <div className="tutor-course-loop-header-meta">
-                                    { this.levelTemplate(props.difficulty_label, 'Beginner') }
+                                    { this.levelTemplate(props.difficulty_label, course.course_level) }
                                     { this.wishlistTemplate(props.wish_list)}
                             </div> 
                         </div>

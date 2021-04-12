@@ -81,17 +81,28 @@ class CourseCarousel extends ET_Builder_Module {
 					'css'				=> array(
 						'main'	=> '%%order_class%% .tutor-divi-carousel-main-wrap .price',
 					),
-					'tab_slug'			=> 'advanced',
-					'toggle_slug'		=> 'footer' ,
-					'hide_text_align'	=> true
+					'tab_slug'				=> 'advanced',
+					'toggle_slug'			=> 'footer' ,
+					'hide_text_align'		=> true,
+					
 				),
+				'arrows'	=> array(
+					'css'				=> array(
+						'main'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before',
+					),
+					'tab_slug'				=> 'advanced',
+					'toggle_slug'			=> 'arrows' ,
+					'hide_text_align'		=> true,
+					'hide_letter_spacing'	=> true,
+				),				
 				'dots'	=> array(
 					'css'				=> array(
 						'main'	=> '%%order_class%% .slick-dots li button:before',
 					),
-					'tab_slug'			=> 'advanced',
-					'toggle_slug'		=> 'footer' ,
-					'hide_text_align'	=> true
+					'tab_slug'				=> 'advanced',
+					'toggle_slug'			=> 'dots' ,
+					'hide_text_align'		=> true,
+					'hide_letter_spacing'	=> true,
 				),
 			),
 			
@@ -114,21 +125,6 @@ class CourseCarousel extends ET_Builder_Module {
                     //'use_alignment' => false,
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'cart_button' , 
-                    'important'     => true
-                ),
-                'arrows' => array(
-                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
-                    'box_shadow'    => array(
-                        'css'   => array(
-                            'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
-                        )
-                    ),
-                    'css'           => array(
-                        'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
-                    ),
-                    //'use_alignment' => false,
-                    'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'arrow' , 
                     'important'     => true
                 ),
 
@@ -167,6 +163,17 @@ class CourseCarousel extends ET_Builder_Module {
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'avatar'
 				),
+				'arrows'	=> array(
+					'css'	=> array(
+						'main'	=> array(
+							'border_radii'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before',
+							'border_styles'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before'
+						),
+						'important'	=> true
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'arrows'
+				)
 			),
 			'margin_padding'=> array(
 
@@ -657,6 +664,44 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'footer'
 			),
+			//arrows toggle
+			'arrows_padding'	=> array(
+				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'arrows',
+				'priority' => 100,
+			),
+
+			//dots toggle
+			'dots_alignment'	=> array(
+				'label'			=> esc_html__( 'Alignment', 'tutor-divi-modules' ),
+				'type'			=> 'text_align',
+				'options'		=> et_builder_get_text_orientation_options( array('justified') ),
+				'default'		=> 'center',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'dots'	
+			),				
+
+			'dots_space'	=> array(
+				'label'			=> esc_html__( 'Space Between', 'tutor-divi-modules' ),
+				'type'			=> 'range',
+				'default'		=> '5px',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '0',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'dots'	
+			),	
 
 		);
 
@@ -696,6 +741,8 @@ class CourseCarousel extends ET_Builder_Module {
 				$category = wp_get_post_terms($post->ID,'course-category');
 	
 				$tag = wp_get_post_terms($post->ID,'course-tag');
+					
+				$post->course_level		= get_tutor_course_level( $post->ID );
 				
 				$post->course_category	= $category;
 				
@@ -751,6 +798,8 @@ class CourseCarousel extends ET_Builder_Module {
 		$star_selector         	= $wrapper.' .tutor-star-rating-group i';
         $star_wrapper_selector 	= $wrapper.' .tutor-star-rating-group';
 		$cart_button_selector	= $wrapper.' .tutor-loop-cart-btn-wrap a';
+		$arrows_selector		= '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
+		$dots_wrapper_selector	= '%%order_class%% .slick-dots';
 
 		//props
 		$skin 						= $this->props['skin'];
@@ -777,6 +826,11 @@ class CourseCarousel extends ET_Builder_Module {
 
 		$footer_background			= $this->props['footer_background'];
 		$footer_padding				= $this->props['footer_padding'];
+
+		$dots_alignment				= $this->props['dots_alignment'];
+		$dots_space					= $this->props['dots_space'];
+
+		$arrows_padding				= $this->props['arrows_padding'];
 
 		//set styles
 		//make carousel item equal height
@@ -1272,6 +1326,46 @@ class CourseCarousel extends ET_Builder_Module {
 			)
 		);
 
+		//arrows toggle
+		//default arrow color #000
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $arrows_selector,
+				'declaration'	=> 'color: #000;'
+			)
+		);
+
+		if( '' !== $arrows_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $arrows_selector,
+					'declaration'	=> sprintf(
+						'padding: %1$s;',
+						$arrows_padding
+					)	
+				)
+			);			
+		}
+
+		//dots toggle
+		if( 'left' === $dots_alignment ) {
+			$dots_alignment = 'flex-start';
+		} else if( 'right' === $dots_alignment ) {
+			$dots_alignment = 'flex-end';
+		}
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $dots_wrapper_selector,
+				'declaration'	=> sprintf(
+					'display: flex !important; justify-content: %1$s; column-gap: %2$s;',
+					$dots_alignment,
+					$dots_space
+				) 
+			)
+		);
 		//set styles end
 
 		$output = self::get_content($this->props);
