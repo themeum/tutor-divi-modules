@@ -11,7 +11,7 @@ $limit              = sanitize_text_field( $args['limit'] );
 
 //carousel visibility settings
 $skin               = $args['skin'];
-$slide_to_show      = $args['slides_to_show'];
+$columns            = $args['columns'];
 $hover_animation    = $args['hover_animation'];
 $show_image         = $args['show_image'];    
 $image_size         = $args['image_size'];    
@@ -23,6 +23,11 @@ $wish_list          = $args['wish_list'];
 $category           = $args['category'];    
 $footer             = $args['footer']; 
 $cart_icon          = et_pb_process_font_icon($args['cart_button_icon']); 
+$pagination         = $args['pagination'];
+$pagination_type    = $args['pagination_type'];
+$prev_text          = isset($args['prev_text']) ? $args['prev_text'] : __('Previous', 'tutor-divi-modules');
+$next_text          = isset($args['next_text']) ? $args['next_text'] : __('Next', 'tutor-divi-modules');
+
 ?>
 <input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
 <?php
@@ -42,19 +47,14 @@ $the_query = new WP_Query($query_args);
 if ( $the_query->have_posts()) : ?>
 
     <!-- loop start -->
-    <?php
-    $shortcode_arg = isset($GLOBALS['tutor_shortcode_arg']) ? $GLOBALS['tutor_shortcode_arg']['column_per_row'] : null;
-    $courseCols = $shortcode_arg === null ? tutor_utils()->get_option('courses_col_per_row', 4) : $shortcode_arg;
-    ?>
-    <!-- loop start -->
 
-    <div class=" tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> tutor-divi-courselist-<?= $skin;?>">
+    <div class=" tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php esc_html_e( $columns ); ?> tutor-divi-courselist-<?= $skin;?>">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>
             <!-- slick-slider-main-wrapper -->
 
-            <div class="<?php tutor_course_loop_col_classes(); ?>">
+            <div class="tutor-course-col-<?php esc_html_e( $columns ); ?>">
             <?php
                 $image_size = $image_size;
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
@@ -209,14 +209,35 @@ if ( $the_query->have_posts()) : ?>
 
         <?php
         endwhile;
-        wp_reset_postdata();
+        
         ?>
     </div>
 
-
     <!-- loop end -->
-<?php
 
+    <!--pagniation start-->
+    <!--check if pagniation on-->
+    <?php if( $pagination === 'on'): ?>
+        <?php
+            $big    = 999999999;//unline int
+            $pagniation_args = array(
+                'base'      => str_replace($big,'%#%', esc_url(site_url('courses/page/'.$big))),
+                'format'    => '?paged=%#%',
+                'total'     => $the_query->max_num_pages,
+                'current'   => max(1, get_query_var('paged')),
+                'end_size'  => $limit,
+                'prev_next' => $pagination_type === 'numbers' ? false : true,
+                'prev_text' => esc_html( $prev_text ),
+                'next_text' => esc_html( $next_text ),
+            );
+        ?>
+        <div class="tutor-divi-courselist-pagniation">
+            <?php echo paginate_links( $pagniation_args );?>
+        </div>
+    <?php endif; ?>
+    <!--pagniation start end-->
+<?php
+wp_reset_postdata();
 else :
 
     /**

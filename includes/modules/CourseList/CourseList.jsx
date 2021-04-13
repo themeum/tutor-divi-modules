@@ -1,15 +1,673 @@
 
 import React, {Component, Fragment} from 'react';
 
+
 class CourseList extends Component {
 
     static slug = 'tutor_course_list';
 
-    render(){
+    static css(props) {
+        const additionalCss = [];
+
+        //selectors
+        const wrapper               = "%%order_class%% .tutor-divi-courselist-main-wrap";
+        const card_selector         = `${wrapper} .tutor-divi-card`;
+        const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
+        const badge_selector        = `${wrapper} .tutor-course-loop-level`;
+        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span`;
+        const star_selector         = `${wrapper} .tutor-star-rating-group i`;
+        const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
+        const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
+        const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
+        const dots_wrapper_selector = '%%order_class%% .slick-dots';
+
+        //props
+        const skin                      = props.skin;
+        const hover_animation           = props.hover_animation;
+        const card_background_color     = props.card_background_color;
+
+        const footer_seperator_width    = props.footer_seperator_width
+        const footer_seperator_color    = props.footer_seperator_color
+
+        const card_custom_padding       = props.card_custom_padding;
+
+        const image_spacing             = props.image_spacing;
+
+        const badge_background_color    = props.badge_background_color;
+        const badge_text_color          = props.badge_text_color;
+        const badge_margin              = props.badge_margin;
+        const badge_size                = props.badge_size;
+
+        const avatar_size               = props.avatar_size;
+
+        const star_color                = props.star_color;
+        const star_size                 = props.star_size;
+        const star_gap                  = props.star_gap;
+
+        const footer_background         = props.footer_background;
+        const footer_padding            = props.footer_padding;
+
+        let dots_alignment              = props.dots_alignment;
+        const dots_space                = props.dots_space;
+
+        const arrows_padding            = props.arrows_padding;
+
+        //set styles
+        //card hover animation
+        if(hover_animation === 'on') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-card.hover-animation`,
+					declaration: `position: relative; top: 0; z-index: 99; transition: top .5s;`
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-card.hover-animation:hover`,
+					declaration: `top: -5px;`
+                }
+            ]);
+        }
+
+        //card toogle style
+        //prepare header for background overlay & css filters
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-divi-courselist-classic .tutor-course-header:before,%%order_class%% .tutor-divi-courselist-card .tutor-course-header:before, %%order_class%% .tutor-divi-courselist-stacked .tutor-course-header:before',
+                declaration: 'width: 100%;height: 100%; position: absolute;content: "";z-index: 2;'  
+            }
+        ]);
+        if('' !== card_background_color) {
+            additionalCss.push([
+                {
+                    selector: card_selector,
+                    declaration: `background-color: ${card_background_color};`
+                }
+            ]);
+        }
+
+        if('' !== footer_seperator_width) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `border-top: ${footer_seperator_width} solid;`
+                }
+            ]);
+        }
+
+        if('' !== footer_seperator_color) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `color: ${footer_seperator_color};`
+                }
+            ]);
+        }
+
+        if('' !== card_custom_padding) {
+            additionalCss.push([
+                {
+                    selector: card_selector,
+                    declaration: `padding: ${card_custom_padding};`
+                }
+            ]);
+        }
+        //make carousel item equal height
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .slick-track`,
+                declaration: `display: -webkit-box !important;
+                    display: -ms-flexbox !important;
+                    display: flex !important;`
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .slick-slide`,
+                declaration: `height: inherit !important;`
+            }
+        ]);
+
+        //card layout styles
+        //classic style
+        if(skin === 'classic') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card`,
+                    declaration: `border-radius: 8px;
+                        border: 1px solid #EBEBEB;
+                        overflow: hidden;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow: 0px 5px 2px #ebebeb;
+                        box-shadow: 0px 5px 2px #ebebeb;`
+                }
+            ]);
+        }
+
+        //card style
+        if(skin === 'card') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-card .tutor-divi-card`,
+                    declaration: `display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        -webkit-box-pack: justify;
+                            -ms-flex-pack: justify;
+                                justify-content: space-between;
+                        height: 100%;
+                        -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+                                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+                        border-radius: 8px;
+                        overflow: hidden;`
+                }  
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-card .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
+                        box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);`
+                }
+            ]);
+
+        }
+
+        //stacked style
+        if(skin === 'stacked') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked .tutor-course-header`,
+                    declaration: `border-radius: 10px;
+                        overflow: hidden; z-index: 1;`                    
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-card`,
+                    declaration: `overflow: visible !important;`  
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked 
+                                        .tutor-divi-courselist-course-container`,
+                    declaration: `z-index: 99;
+                        margin-top: -80px;
+                        background: white;
+                        width: 80%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        position: relative;
+                        border-radius: 10px;
+                        -webkit-box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+                                box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);`                    
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked 
+                                        .tutor-divi-courselist-course-container:hover`,
+                    declaration: `-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);`
+                }
+            ]);
+        }   
+        //overlayed style
+        if(skin === 'overlayed') {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed
+                        .tutor-divi-card`,
+                    declaration: `margin-top: 7px;`
+                }
+            ]);
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card`,
+                    declaration: `background-size: cover;
+                        background-repeat: no-repeat;
+                        border-radius: 20px;
+                        position: relative;
+                        height: 300px;
+                        overflow: hidden;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card:before`,
+                    declaration: `background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+                        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
+                        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+                        
+                        position: absolute;
+                        content: "";
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        z-index: 3;
+                        -webkit-transition: .4s;
+                        -o-transition: .4s;
+                        transition: .4s;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-header`,
+                    declaration: `z-index: 2;
+                        height: 100%;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed
+                        .tutor-divi-courselist-course-container`,
+                    declaration: `position: absolute;
+                        z-index: 99;
+                        width: 100%;
+                        bottom:0 !important;`
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-rating-count,
+                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-title h2 a,
+                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-meta,
+                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-loop-author>div a,
+                        .%%order_class%% .tutor-divi-courselist-overlayed .etlms-loop-cart-btn-wrap a,
+                        .%%order_class%% .tutor-divi-courselist-overlayed .price`,
+                    declaration: `color: #fff;` 
+                }
+            ]);            
+
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card:hover`,
+                    declaration: `-webkit-box-shadow: 0px 8px 28px 0px #d0d0d0;
+                        box-shadow: 0px 8px 28px 0px #d0d0d0;` 
+                }
+            ]);            
+
+        } 
+        //card layouts style end
+
+        //image toggle
+        if('' !== image_spacing) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-course-header a img`,
+                    declaration: `padding: ${image_spacing};`
+                }
+            ]);
+        }
+
+        //badge toggle
+        if('' !== badge_background_color) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `background-color: ${badge_background_color};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_text_color) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `color: ${badge_text_color};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_margin) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `margin: ${badge_margin};`
+                }
+            ]);
+        }        
+
+        if('' !== badge_size) {
+            additionalCss.push([
+                {
+                    selector: badge_selector,
+                    declaration: `width: ${badge_size};`
+                }
+            ]);
+        }
+        if('' !== avatar_size) {
+            additionalCss.push([
+                {
+                    selector: avatar_selector,
+                    declaration: `width: ${avatar_size};height: ${avatar_size};`
+                }
+            ]);
+        }
+        //avatar toggle
+
+        //rating toggle
+        additionalCss.push([
+            {
+                selector: star_wrapper_selector,
+                declaration: `display: flex;`
+            }
+        ]);
+
+        if('' !== star_color) {
+            additionalCss.push([
+                {
+                    selector: star_selector,
+                    declaration: `color: ${star_color};`
+                }
+            ]);
+        }        
+
+        if('' !== star_size) {
+            additionalCss.push([
+                {
+                    selector: star_selector,
+                    declaration: `font-size: ${star_size};`
+                }
+            ]);
+        }        
+
+        if('' !== star_gap) {
+            additionalCss.push([
+                {
+                    selector: star_wrapper_selector,
+                    declaration: `column-gap: ${star_gap};`
+                }
+            ]);
+        }
+
+        //footer toggle
+        if('' !== footer_background) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `background-color: ${footer_background};`
+                }
+            ]);
+        }
+
+        if('' !== footer_padding) {
+            additionalCss.push([
+                {
+                    selector: footer_selector,
+                    declaration: `padding: ${footer_padding};`
+                }
+            ]);
+        }
+        //cart button toggle
+        additionalCss.push([
+            {
+                selector: cart_button_selector,
+                declaration: 'border-style: solid;'
+            }
+        ]);
+
+        //arrows toggle
+        //arrows default color #000
+        additionalCss.push([
+            {
+                selector: arrows_selector,
+                declaration: 'color: #000;'
+            }
+        ]);
+
+        if('' !== arrows_padding) {
+            additionalCss.push([
+                {
+                    selector: arrows_selector,
+                    declaration: `padding: ${arrows_padding};`
+                }
+            ])
+        }
+
+        //dots toggle
+        if(dots_alignment === 'left') {
+            dots_alignment = 'flex-start';
+        } else if( dots_alignment === 'right') {
+            dots_alignment = 'flex-end';
+        }
+        additionalCss.push([
+            {
+                selector: dots_wrapper_selector,
+                declaration: `display:flex !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
+            }
+        ]);
+
+        //set styles end
+        return additionalCss;
+    }
+    /**
+     * @return total ratings star
+     * @param avg_rating
+     */
+    ratingStars(show,avg_rating) {
+        if(show === 'off') {
+            return '';
+        }
+        const ratings = [];
+        for(let i=1; i < 6; i++) {
+            if(avg_rating >= i) {
+                ratings.push(<i className='tutor-icon-star-full'></i>)
+            } else {
+                ratings.push(<i className='tutor-icon-star-line'></i>)
+            }
+        }
+        return ratings;
+    }
+
+    thumbnailTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+        <a href="/">
+            <img src={course.post_thumbnail} alt="thumbnail"/>
+        </a> 
+        );
+    }
+
+    levelTemplate(show,level) {
+        if(show === 'off') {
+            return ''
+        }
+        return (
+            <span className="tutor-course-loop-level">{level}</span>
+        );
+    }
+    metaTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
         return (
             <Fragment>
-           		<h3>Course List</h3>
+                <div className="tutor-single-loop-meta">
+                    <i className='tutor-icon-user'></i>
+                    <span> {course.enroll_count} </span>
+                </div>
+                <div className="tutor-single-loop-meta">
+                    <i className='tutor-icon-clock'></i> 
+                    <span> {course.course_duration} </span>
+                </div>
             </Fragment>
+            
+        );
+    }
+    
+    avatarTemplate(show,avatar) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+            <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
+                                            
+            </div>
+        );
+    }
+
+    wishlistTemplate(show) {
+        if(show === 'off') {
+            return ''
+        }
+        return(
+        <span className="tutor-course-wishlist">
+            <span className="tutor-icon-fav-line tutor-course-wishlist-btn  "></span> 
+        </span>
+        );
+    }
+
+    categoryTemplate(show,course_cat) {
+        if(show === 'off') {
+            return '';
+        }
+        const categories = course_cat.map((category) => {
+            return (
+                <a href="/">{ category.name }</a>
+            );
+        })
+        return categories
+    }
+
+    footerTemplate(show,course,icon) {
+        if(show === 'off') {
+            return '';
+        }
+        const utils     = window.ET_Builder.API.Utils;
+        const cart_icon = utils.processFontIcon(icon);
+        return (
+            <div className="tutor-course-loop-price">
+                <div className="price">
+                    { course.course_price === null ? 'Free' : course.course_price }
+                    <div className="tutor-loop-cart-btn-wrap">
+                        <a href="/" data-icon={cart_icon}>
+                            { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        );       
+    }
+
+
+    /**
+     * 
+     * @param {*} props 
+     * @returns course template
+     */
+    courseTemplate(props) {
+
+        const courses = props.__courses.map((course) => {
+            return (
+            <div className={`tutor-course-col-${this.props.columns}`}>
+                <div className="tutor-divi-card">
+
+                        <div className="tutor-course-header ">
+                             { this.thumbnailTemplate(props.show_image,course) }                       
+                            <div className="tutor-course-loop-header-meta">
+                                    { this.levelTemplate(props.difficulty_label, course.course_level) }
+                                    { this.wishlistTemplate(props.wish_list)}
+                            </div> 
+                        </div>
+                    
+                        <div className="tutor-divi-courselist-course-container">
+                            <div className="tutor-loop-course-container">
+
+                                <div className="tutor-loop-rating-wrap">
+                                    <div className="tutor-star-rating-group">
+                                        {this.ratingStars(props.rating, course.course_rating.rating_avg)}
+                                    </div>
+                                </div>
+                            
+                                <div className="tutor-course-loop-title">
+                                    <h2>
+                                        <a href="/">
+                                            {course.post_title}
+                                        </a>
+                                    </h2>
+                                </div>
+                            
+                                <div className="tutor-course-loop-meta">
+                                    { this.metaTemplate(props.meta_data,course) }
+                                </div>
+
+                                <div className="tutor-loop-author">
+                                    { this.avatarTemplate(props.avatar,course.author_avatar) }
+                                    <div className="tutor-single-course-author-name">
+                                    
+                                        <a href="/">By {course.author_name}</a>
+                                    </div>
+
+                                    <div className="tutor-course-lising-category">
+                                        { course.course_category.length ? <span> In </span> : '' }
+                                        { this.categoryTemplate(props.category,course.course_category) }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="tutor-loop-course-footer tutor-divi-courselist-footer">
+                                { this.footerTemplate(props.footer, course, props.cart_button_icon) }
+                            </div>
+                        
+                        </div> 
+
+                </div>
+            </div>    
+                             
+            );
+        })
+        return courses;
+    }
+
+    render(){
+        if(!this.props.__courses) {
+            return '';
+        }
+        console.log(this.props)
+
+        return (
+        <Fragment>
+
+            <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
+
+                <div className={`tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                    { this.courseTemplate( this.props) }
+                </div>
+           
+                <div className="tutor-divi-courselist-arrow tutor-divi-courselist-arrow-prev">
+                    <i className="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
+                <div className="tutor-divi-courselist-arrow tutor-divi-courselist-arrow-next">
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+                
+
+            </div>
+
+        </Fragment>
         );
     }
 }

@@ -25,10 +25,10 @@ class CourseList extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'	=> array(
 				'toggles'	=> array(
-					'layout'		=> esc_html__( 'Layout', 'tutor-divi-modules' ),
-					'query'			=> esc_html__( 'Query', 'tutor-divi-modules' ),
-					'enroll_button'	=> esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
-					'carousel_settings'	=> esc_html__( 'Carousel Settings', 'tutor-divi-modules' )
+					'layout'				=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+					'query'					=> esc_html__( 'Query', 'tutor-divi-modules' ),
+					'enroll_button'			=> esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
+					'pagination_settings'	=> esc_html__( 'Pagination', 'tutor-divi-modules' )
 				)
 			),
 			'advanced'	=> array(
@@ -228,8 +228,8 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'			=> 'general',
 				'toggle_slug'		=> 'layout'
 			),
-			'slides_to_show'	=> array(
-				'label'			=> esc_html__( 'Slides to Show', 'tutor-divi-modules' ),
+			'columns'	=> array(
+				'label'			=> esc_html__( 'Columns', 'tutor-divi-modules' ),
 				'type'			=> 'select',
 				'description'	=> esc_html__( 'No: of slides that will display on desktop view', 'tutor-divi-modules' ),
 				'options'		=> array(
@@ -267,6 +267,17 @@ class CourseList extends ET_Builder_Module {
 				'options'		=> array(
 					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
 					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+				),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'layout'
+			),			
+			'masonry'	=> array(
+				'label'			=> esc_html__( 'Masonry', 'tutor-divi-modules' ),
+				'type'			=> 'yes_no_button',
+				'default'		=> 'off',
+				'options'		=> array(
+					'on'	=> esc_html__( 'Yes', 'tutor-divi-modules' ),
+					'off'	=> esc_html__( 'No', 'tutor-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
@@ -361,6 +372,17 @@ class CourseList extends ET_Builder_Module {
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
+			),			
+			'pagination'	=> array(
+				'label'			=> esc_html__( 'Pagination', 'tutor-divi-modules' ),
+				'type'			=> 'yes_no_button',
+				'default'		=> 'on',
+				'options'		=> array(
+					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+				),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'layout'
 			),
 			//general tab query toggle
 			'order_by'	=> array(
@@ -393,6 +415,49 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
+			//general tab pagination toggle
+			'pagination_type'	=> array(
+				'label'			=> esc_html__( 'Pagination Type', 'tutor-divi-modules' ),
+				'type'			=> 'select',
+				'default'		=> 'prev_next',
+				'options'		=> array(
+					'prev_next'		=> esc_html__( 'Prev/Next', 'tutor-divi-modules' ),
+					'numbers'		=> esc_html__( 'Numbers', 'tutor-divi-modules' ),
+				),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=>	'pagination_settings' 
+			),				
+			'prev_level'	=> array(
+				'label'			=> esc_html__( 'Prev Level', 'tutor-divi-modules' ),
+				'type'			=> 'text',
+				'default'		=> esc_html__( 'Previous' , 'tutor-divi-modules' ),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=>	'pagination_settings',
+				'show_if'		=> array(
+					'pagination_type'	=> 'prev_next'
+				)
+			),				
+			'next_level'	=> array(
+				'label'			=> esc_html__( 'Next Level', 'tutor-divi-modules' ),
+				'type'			=> 'text',
+				'default'		=> esc_html__( 'Next' , 'tutor-divi-modules' ),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=>	'pagination_settings',
+				'show_if'		=> array(
+					'pagination_type'	=> 'prev_next'
+				)
+			),				
+			'pagination_aligment'	=> array(
+				'label'			=> esc_html__( 'Alignment', 'tutor-divi-modules' ),
+				'type'			=> 'text_align',
+				'option'		=> et_builder_get_text_orientation_options( array('justified') ),
+				'default'		=> 'center',
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=>	'pagination_settings',
+				'show_if'		=> array(
+					'pagination_type'	=> 'prev_next'
+				)
+			),			
 
 			//advacned tab card toggle
 			'card_background_color'	=> array(
