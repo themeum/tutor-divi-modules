@@ -115,22 +115,25 @@ class CourseCarousel extends Component {
             ]);
         }
         //make carousel item equal height
-        additionalCss.push([
+        if(skin === 'classic' || skin === 'card') {
+            additionalCss.push([
             {
-                selector: `%%order_class%% .slick-track`,
-                declaration: `display: -webkit-box !important;
-                    display: -ms-flexbox !important;
-                    display: flex !important;`
+                 selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card`,
+                    declaration: `display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: vertical;
+                        -webkit-box-direction: normal;
+                            -ms-flex-direction: column;
+                                flex-direction: column;
+                        -webkit-box-pack: justify;
+                            -ms-flex-pack: justify;
+                                justify-content: space-between;
+                        height: 100%;`
             }
-        ]);        
 
-        additionalCss.push([
-            {
-                selector: `%%order_class%% .slick-slide`,
-                declaration: `height: inherit !important;`
-            }
-        ]);
-
+            ]);
+        }
         //card layout styles
         //classic style
         if(skin === 'classic') {
@@ -157,17 +160,7 @@ class CourseCarousel extends Component {
             additionalCss.push([
                 {
                     selector: `%%order_class%% .tutor-divi-carousel-card .tutor-divi-card`,
-                    declaration: `display: -webkit-box;
-                        display: -ms-flexbox;
-                        display: flex;
-                        -webkit-box-orient: vertical;
-                        -webkit-box-direction: normal;
-                            -ms-flex-direction: column;
-                                flex-direction: column;
-                        -webkit-box-pack: justify;
-                            -ms-flex-pack: justify;
-                                justify-content: space-between;
-                        height: 100%;
+                    declaration: `
                         -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
                                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
                         border-radius: 8px;
@@ -625,11 +618,11 @@ class CourseCarousel extends Component {
      * @returns course template
      */
     courseTemplate(props) {
-
+        const hover_animation = props.hover_animation === 'on' ? 'hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return (
             <div className="tutor-course-col">
-                <div className="tutor-divi-card">
+                <div className={`tutor-divi-card ${hover_animation}`}>
 
                         <div className="tutor-course-header ">
                              { this.thumbnailTemplate(props.show_image,course) }                       

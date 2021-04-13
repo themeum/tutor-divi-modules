@@ -60,7 +60,7 @@ if ( $the_query->have_posts()) : ?>
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                 
             ?>
-            <div class="tutor-divi-card <?= $hover_animation == 'on' ? 'hover-animation' : '';?>">
+            <div class="tutor-divi-card <?= $hover_animation == 'on' ? 'hover-animation' : ''; if($columns == 1 && $skin != 'overlayed') {echo ' tutor-divi-courselist-style';}?>">
 
                     <!-- header -->
                     

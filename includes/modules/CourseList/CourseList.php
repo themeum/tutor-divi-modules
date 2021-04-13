@@ -820,24 +820,26 @@ class CourseList extends ET_Builder_Module {
 		$arrows_padding				= $this->props['arrows_padding'];
 
 		//set styles
-		//make carousel item equal height
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .slick-track',
-				'declaration'	=> 'display: -webkit-box !important;
-					display: -ms-flexbox !important;
-					display: flex !important;'
-			)
-		);		
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .slick-slide',
-				'declaration'	=> 'height: inherit !important;'
-			)
-		);
+		//make list item equal height
+		if( 'classic' === $skin || 'card' === $skin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card,%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
+					'declaration'	=> 'display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-orient: vertical;
+						-webkit-box-direction: normal;
+						    -ms-flex-direction: column;
+						        flex-direction: column;
+						-webkit-box-pack: justify;
+						    -ms-flex-pack: justify;
+						        justify-content: space-between;
+						height: 100%;'
+				)
+			);			
+		}
 
 		//skin layout styles
 		//prepare header for background overlay & css filters
@@ -884,19 +886,8 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card,%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
-					'declaration'	=> 'display: -webkit-box;
-						display: -ms-flexbox;
-						display: flex;
-						-webkit-box-orient: vertical;
-						-webkit-box-direction: normal;
-						    -ms-flex-direction: column;
-						        flex-direction: column;
-						-webkit-box-pack: justify;
-						    -ms-flex-pack: justify;
-						        justify-content: space-between;
-						height: 100%;
-						-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+					'selector'		=> '%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
+					'declaration'	=> '-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 						        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 						border-radius: 8px;
 						overflow: hidden;'
@@ -1353,6 +1344,53 @@ class CourseList extends ET_Builder_Module {
 				) 
 			)
 		);
+
+		//single column style
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-divi-courselist-style',
+				'declaration'	=> 'display: -webkit-box !important;display: -ms-flexbox !important;display: flex !important;-webkit-box-orient: horizontal !important;-webkit-box-direction: normal !important;-ms-flex-direction: row !important;flex-direction: row !important;-ms-flex-wrap: nowrap !important;flex-wrap: nowrap !important;height: 255px;',
+				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+	      		'selector'		=> '%%order_class%% .tutor-divi-courselist-style .tutor-course-header',
+	      		'declaration'	=>  'max-width: 40%;-webkit-box-flex: 0 !important;-ms-flex: 0 0 40% !important;flex: 0 0 40% !important;height: 255px;',
+				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+	      		'selector'		=> '%%order_class%% .tutor-divi-courselist-style .tutor-divi-courselist-course-container',
+	      		'declaration'	=> 'max-width: 60%;-webkit-box-flex: 0 !important;-ms-flex: 0 0 60% !important;flex: 0 0 60% !important;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;',
+				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+	      		'selector' 		=> '%%order_class%% .tutor-divi-courselist-style .tutor-divi-courselist-footer',
+	      		'declaration'	=> 'margin-top: auto;',
+				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+	      		'selector'		=> '%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-style .tutor-divi-courselist-course-container',
+	      		'declaration'	=> 'margin: auto 0 auto -42px;',
+				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
+			)
+		);
+
 		//set styles end
 
 		$output = self::get_content($this->props);

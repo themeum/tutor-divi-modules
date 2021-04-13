@@ -112,22 +112,15 @@ class CourseList extends Component {
                 }
             ]);
         }
-        //make carousel item equal height
-        additionalCss.push([
-            {
-                selector: `%%order_class%% .slick-track`,
-                declaration: `display: -webkit-box !important;
-                    display: -ms-flexbox !important;
-                    display: flex !important;`
-            }
-        ]);        
-
-        additionalCss.push([
-            {
-                selector: `%%order_class%% .slick-slide`,
-                declaration: `height: inherit !important;`
-            }
-        ]);
+        //make list item equal height
+        if('classic' === skin || 'card' === skin) {
+        	additionalCss.push([
+        		{
+        			selector: `%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card, %%order_class%% .tutor-divi-courselist-card .tutor-divi-card`,
+        			declaration: 'display: -webkit-box;display: -ms-flexbox; display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;height: 100%;'
+        		}
+        	]);
+        }
 
         //card layout styles
         //classic style
@@ -155,17 +148,7 @@ class CourseList extends Component {
             additionalCss.push([
                 {
                     selector: `%%order_class%% .tutor-divi-courselist-card .tutor-divi-card`,
-                    declaration: `display: -webkit-box;
-                        display: -ms-flexbox;
-                        display: flex;
-                        -webkit-box-orient: vertical;
-                        -webkit-box-direction: normal;
-                            -ms-flex-direction: column;
-                                flex-direction: column;
-                        -webkit-box-pack: justify;
-                            -ms-flex-pack: justify;
-                                justify-content: space-between;
-                        height: 100%;
+                    declaration: `
                         -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
                                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
                         border-radius: 8px;
@@ -458,6 +441,42 @@ class CourseList extends Component {
             }
         ]);
 
+      	//single column style
+      	additionalCss.push([
+	      	{
+	      		selector: '%%order_class%% .tutor-divi-courselist-style',
+	      		declaration: 'display: -webkit-box !important;display: -ms-flexbox !important;display: flex !important;-webkit-box-orient: horizontal !important;-webkit-box-direction: normal !important;-ms-flex-direction: row !important;flex-direction: row !important;-ms-flex-wrap: nowrap !important;flex-wrap: nowrap !important;height: 255px;'
+	      	}
+      	]);      	
+
+      	additionalCss.push([
+	      	{
+	      		selector: '%%order_class%% .tutor-divi-courselist-style .tutor-course-header',
+	      		declaration: 'max-width: 40%;-webkit-box-flex: 0 !important;-ms-flex: 0 0 40% !important;flex: 0 0 40% !important;height: 255px;'
+	      	}
+      	]);      	
+
+      	additionalCss.push([
+	      	{
+	      		selector: '%%order_class%% .tutor-divi-courselist-style .tutor-divi-courselist-course-container',
+	      		declaration: 'max-width: 60%;-webkit-box-flex: 0 !important;-ms-flex: 0 0 60% !important;flex: 0 0 60% !important;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;'
+	      	}
+      	]);      	
+
+      	additionalCss.push([
+	      	{
+	      		selector: '%%order_class%% .tutor-divi-courselist-style .tutor-divi-courselist-footer',
+	      		declaration: 'margin-top: auto;'
+	      	}
+      	]);      	
+
+      	additionalCss.push([
+	      	{
+	      		selector: '%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-style .tutor-divi-courselist-course-container',
+	      		declaration: 'margin: auto 0 auto -42px;'
+	      	}
+      	]);
+
         //set styles end
         return additionalCss;
     }
@@ -579,11 +598,13 @@ class CourseList extends Component {
      * @returns course template
      */
     courseTemplate(props) {
+    	const hover_animation 	= props.hover_animation === 'on' ? 'hover-animation' : '';
+    	const single_style		= props.columns === '1' ? 'tutor-divi-courselist-style' : '';
 
-        const courses = props.__courses.courses.map((course) => {
+        const courses 			= props.__courses.courses.map((course) => {
             return (
             <div className={`tutor-course-col-${this.props.columns}`}>
-                <div className="tutor-divi-card">
+                <div className={`tutor-divi-card ${hover_animation} ${single_style}`}>
 
                         <div className="tutor-course-header ">
                              { this.thumbnailTemplate(props.show_image,course) }                       

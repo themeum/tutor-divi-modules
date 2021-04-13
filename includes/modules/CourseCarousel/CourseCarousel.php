@@ -833,23 +833,26 @@ class CourseCarousel extends ET_Builder_Module {
 
 		//set styles
 		//make carousel item equal height
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .slick-track',
-				'declaration'	=> 'display: -webkit-box !important;
-					display: -ms-flexbox !important;
-					display: flex !important;'
-			)
-		);		
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .slick-slide',
-				'declaration'	=> 'height: inherit !important;'
-			)
-		);
+		if( $skin === 'classic' || $skin === 'card' ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
+					'declaration'	=> 'display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						-webkit-box-orient: vertical;
+						-webkit-box-direction: normal;
+						    -ms-flex-direction: column;
+						        flex-direction: column;
+						-webkit-box-pack: justify;
+						    -ms-flex-pack: justify;
+						        justify-content: space-between;
+						height: 100%;
+						'
+				)
+			);
+		}
 
 		//skin layout styles
 		//prepare header for background overlay & css filters
@@ -896,7 +899,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
 					'declaration'	=> 'display: -webkit-box;
 						display: -ms-flexbox;
 						display: flex;
