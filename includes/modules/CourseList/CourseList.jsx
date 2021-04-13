@@ -8,8 +8,7 @@ class CourseList extends Component {
     render(){
         return (
             <Fragment>
-                <h1> {this.props.tutor_course_list_heading_new} </h1>
-                <p> {this.props.content()} </p>
+           		<h3>Course List</h3>
             </Fragment>
         );
     }
