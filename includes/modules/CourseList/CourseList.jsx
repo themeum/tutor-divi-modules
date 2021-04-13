@@ -580,7 +580,7 @@ class CourseList extends Component {
      */
     courseTemplate(props) {
 
-        const courses = props.__courses.map((course) => {
+        const courses = props.__courses.courses.map((course) => {
             return (
             <div className={`tutor-course-col-${this.props.columns}`}>
                 <div className="tutor-divi-card">
@@ -642,6 +642,17 @@ class CourseList extends Component {
         return courses;
     }
 
+    paginationTemplate(show, pagination_links) {
+    	if(show === 'on') {
+    		return (
+		        <div className="tutor-divi-courselist-pagniation" dangerouslySetInnerHTML={{__html:pagination_links}}>
+
+		        </div> 
+    		);
+    	}
+   		return '';
+    }
+
     render(){
         if(!this.props.__courses) {
             return '';
@@ -655,15 +666,10 @@ class CourseList extends Component {
 
                 <div className={`tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
                     { this.courseTemplate( this.props) }
-                </div>
-           
-                <div className="tutor-divi-courselist-arrow tutor-divi-courselist-arrow-prev">
-                    <i className="fa fa-angle-left" aria-hidden="true"></i>
-                </div>
-                <div className="tutor-divi-courselist-arrow tutor-divi-courselist-arrow-next">
-                    <i className="fa fa-angle-right" aria-hidden="true"></i>
-                </div>
-                
+
+                </div>  
+
+                { this.paginationTemplate(this.props.pagination, this.props.__courses.pagination) }    
 
             </div>
 

@@ -599,14 +599,17 @@ class CourseList extends ET_Builder_Module {
 			'__courses'	=> array(
 				'type'				=> 'computed',
 				'computed_callback'	=> array(
-					'CourseCarousel',
+					'CourseList',
 					'get_props'
 				),
 				'computed_depends_on'	=> array(
 					'limit',
 					'order_by',
 					'order',
-					'image_size'
+					'image_size',
+					'pagination_type',
+					'prev_level',
+					'next_level'
 				),
 				'computed_minimum'		=> array(
 					'limit',
@@ -737,8 +740,22 @@ class CourseList extends ET_Builder_Module {
 				array_push($courses, $post);
 	
 			}
-			
-			return $courses;
+
+            $big    = 999999999;//unline int
+            $pagination_args = array(
+                'base'      => str_replace($big,'%#%', esc_url(site_url('courses/page/'.$big))),
+                'format'    => '?paged=%#%',
+                'total'     => $query->max_num_pages,
+                'current'   => max(1, get_query_var('paged')),
+                'end_size'  => $args['limit'],
+                'prev_next' => $pagination_type === 'numbers' ? false : true,
+                'prev_text' => esc_html( $args['prev_level'] ),
+                'next_text' => esc_html( $args['next_level']),
+            );			
+			return array(
+				'courses'		=> $courses,
+				'pagination'	=> paginate_links( $pagination_args )
+			);
 		} else {
 			return false;
 		}
@@ -867,7 +884,7 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
+					'selector'		=> '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card,%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
 					'declaration'	=> 'display: -webkit-box;
 						display: -ms-flexbox;
 						display: flex;

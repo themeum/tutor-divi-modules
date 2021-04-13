@@ -692,7 +692,7 @@ class CourseCarousel extends Component {
         if(!this.props.__courses) {
             return '';
         }
-        console.log(this.props)
+       
 
         return (
         <Fragment>

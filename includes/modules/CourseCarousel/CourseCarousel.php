@@ -896,7 +896,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
 					'declaration'	=> 'display: -webkit-box;
 						display: -ms-flexbox;
 						display: flex;

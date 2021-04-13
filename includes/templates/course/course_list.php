@@ -25,8 +25,8 @@ $footer             = $args['footer'];
 $cart_icon          = et_pb_process_font_icon($args['cart_button_icon']); 
 $pagination         = $args['pagination'];
 $pagination_type    = $args['pagination_type'];
-$prev_text          = isset($args['prev_text']) ? $args['prev_text'] : __('Previous', 'tutor-divi-modules');
-$next_text          = isset($args['next_text']) ? $args['next_text'] : __('Next', 'tutor-divi-modules');
+$prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Previous', 'tutor-divi-modules');
+$next_text          = isset($args['next_level']) ? $args['next_level'] : __('Next', 'tutor-divi-modules');
 
 ?>
 <input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
