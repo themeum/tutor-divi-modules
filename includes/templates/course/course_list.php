@@ -27,7 +27,7 @@ $pagination         = $args['pagination'];
 $pagination_type    = $args['pagination_type'];
 $prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Previous', 'tutor-divi-modules');
 $next_text          = isset($args['next_level']) ? $args['next_level'] : __('Next', 'tutor-divi-modules');
-
+$masonry            = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses'; 
 ?>
 <input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
 <?php
@@ -48,13 +48,13 @@ if ( $the_query->have_posts()) : ?>
 
     <!-- loop start -->
 
-    <div class=" tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php esc_html_e( $columns ); ?> tutor-divi-courselist-<?= $skin;?>">
+    <div class=" tutor-divi-courselist-loop-wrap <?php echo $masonry; ?> tutor-courses-loop-wrap tutor-courses-layout-<?php esc_html_e( $columns ); ?> tutor-divi-courselist-<?php echo $skin;?>">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>
             <!-- slick-slider-main-wrapper -->
 
-            <div class="tutor-course-col-<?php esc_html_e( $columns ); ?>">
+            <div class="tutor-divi-courselist-col tutor-course-col-<?php esc_html_e( $columns ); ?>">
             <?php
                 $image_size = $image_size;
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
@@ -225,13 +225,13 @@ if ( $the_query->have_posts()) : ?>
                 'format'    => '?paged=%#%',
                 'total'     => $the_query->max_num_pages,
                 'current'   => max(1, get_query_var('paged')),
-                'end_size'  => $limit,
+                'end_size'  => sanitize_text_field( $limit ),
                 'prev_next' => $pagination_type === 'numbers' ? false : true,
-                'prev_text' => esc_html( $prev_text ),
-                'next_text' => esc_html( $next_text ),
+                'prev_text' => __( sanitize_text_field($prev_text), 'tutor-divi-modules' ),
+                'next_text' => __( sanitize_text_field($next_text), 'tutor-divi-modules' ),
             );
         ?>
-        <div class="tutor-divi-courselist-pagniation">
+        <div class="tutor-divi-courselist-pagination">
             <?php echo paginate_links( $pagniation_args );?>
         </div>
     <?php endif; ?>

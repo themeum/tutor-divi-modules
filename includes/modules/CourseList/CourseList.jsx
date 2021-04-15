@@ -21,6 +21,9 @@ class CourseList extends Component {
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
         const dots_wrapper_selector = '%%order_class%% .slick-dots';
 
+        const pagination_selector   = '%%order_class%% .tutor-divi-courselist-pagination span,%%order_class%% .tutor-divi-courselist-pagination a'
+        const pagination_active_selector   = '%%order_class%% .tutor-divi-courselist-pagination .current';
+
         //props
         const skin                      = props.skin;
         const hover_animation           = props.hover_animation;
@@ -51,6 +54,17 @@ class CourseList extends Component {
         const dots_space                = props.dots_space;
 
         const arrows_padding            = props.arrows_padding;
+
+        const pagination_normal_color   = props.pagination_normal_color;
+        const pagination_normal_back    = props.pagination_normal_back;        
+        const pagination_hover_color    = props.pagination_hover_color;
+        const pagination_hover_back     = props.pagination_hover_back;       
+        const pagination_active_color   = props.pagination_active_color;
+        const pagination_active_back    = props.pagination_active_back;
+        const pagination_padding        = props.pagination_padding;
+
+        const columns_gap               = props.columns_gap;
+        const rows_gap                  = props.rows_gap;
 
         //set styles
         //card hover animation
@@ -477,6 +491,133 @@ class CourseList extends Component {
 	      	}
       	]);
 
+        //pagination_styles toggle
+        if('' !== pagination_padding) {
+            additionalCss.push([
+                {
+                    selector: pagination_selector,
+                    declaration: `padding: ${pagination_padding};`
+                }
+            ]);
+        }
+
+        if('' !== pagination_normal_color) {
+            additionalCss.push([
+                {
+                    selector: pagination_selector,
+                    declaration: `color: ${pagination_normal_color};`
+                }
+            ]);
+        }        
+
+        if('' !== pagination_normal_back) {
+            additionalCss.push([
+                {
+                    selector: pagination_selector,
+                    declaration: `background-color: ${pagination_normal_back};`
+                }
+            ]);
+        }        
+
+        if('' !== pagination_hover_color) {
+            additionalCss.push([
+                {
+                    selector: `${pagination_selector}:hover`,
+                    declaration: `color: ${pagination_hover_color};`
+                }
+            ]);
+        }        
+
+        if('' !== pagination_hover_back) {
+            additionalCss.push([
+                {
+                    selector: `${pagination_selector}:hover`,
+                    declaration: `background-color: ${pagination_hover_back};`
+                }
+            ]);
+        }
+
+        if('' !== pagination_active_color) {
+            additionalCss.push([
+                {
+                    selector: pagination_active_selector,
+                    declaration: `color: ${pagination_active_color} !important;`
+                }
+            ]);
+        }        
+
+        if('' !== pagination_active_back) {
+            additionalCss.push([
+                {
+                    selector: pagination_active_selector,
+                    declaration: `background-color: ${pagination_active_back} !important;`
+                }
+            ]);
+        } 
+
+        //masonry styles 
+        if(props.masonry === 'on') {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
+                    declaration: '-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+                }
+            ]);          
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
+                    declaration: '-webkit-column-count: 3 ;-moz-column-count: 3 ;column-count: 3 ;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+                }
+            ]);        
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
+                    declaration: '-webkit-column-count: 4;-moz-column-count: 4;column-count: 4;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+                }
+            ]);         
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
+                    declaration: '-webkit-column-count: 5;-moz-column-count: 5;column-count: 5;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+                }
+            ]);         
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
+                    declaration: 'display: inline-block;width: auto;position: relative;top: 5px;'
+                }
+            ]);        
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
+                    declaration: 'height: auto !important;min-height: 180px;'
+                }
+            ]);             
+        }
+
+        //layout_styles toggle
+        if('' !== columns_gap) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-courselist-col',
+                    declaration: `padding: 0 ${columns_gap};`
+                }
+            ]);
+        }        
+
+        if('' !== rows_gap) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-courselist-col',
+                    declaration: `margin-bottom: ${rows_gap};`
+                }
+            ]);
+        }
         //set styles end
         return additionalCss;
     }
@@ -603,7 +744,7 @@ class CourseList extends Component {
 
         const courses 			= props.__courses.courses.map((course) => {
             return (
-            <div className={`tutor-course-col-${this.props.columns}`}>
+            <div className={`tutor-course-col-${this.props.columns} tutor-divi-courselist-col`}>
                 <div className={`tutor-divi-card ${hover_animation} ${single_style}`}>
 
                         <div className="tutor-course-header ">
@@ -666,7 +807,7 @@ class CourseList extends Component {
     paginationTemplate(show, pagination_links) {
     	if(show === 'on') {
     		return (
-		        <div className="tutor-divi-courselist-pagniation" dangerouslySetInnerHTML={{__html:pagination_links}}>
+		        <div className="tutor-divi-courselist-pagination" dangerouslySetInnerHTML={{__html:pagination_links}}>
 
 		        </div> 
     		);
@@ -679,13 +820,13 @@ class CourseList extends Component {
             return '';
         }
         console.log(this.props)
-
+        const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>
 
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
 
-                <div className={`tutor-divi-courselist-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                <div className={`tutor-divi-courselist-loop-wrap ${masonry} tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
                     { this.courseTemplate( this.props) }
 
                 </div>  

@@ -29,22 +29,23 @@ class CourseList extends ET_Builder_Module {
 					'query'					=> esc_html__( 'Query', 'tutor-divi-modules' ),
 					'enroll_button'			=> esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
 					'pagination_settings'	=> esc_html__( 'Pagination', 'tutor-divi-modules' )
+					
 				)
 			),
 			'advanced'	=> array(
 				'toggles'	=> array(
-					'card'		=> esc_html__( 'Card', 'tutor-divi-modules' ),
-					'image'		=> esc_html__( 'Image', 'tutor-divi-modules' ),
-					'badge'		=> esc_html__( 'Badge', 'tutor-divi-modules' ),
-					'avatar'	=> esc_html__( 'Avatar', 'tutor-divi-modules' ),
-					'title'		=> esc_html__( 'Title', 'tutor-divi-modules' ),
-					'meta'		=> esc_html__( 'Meta', 'tutor-divi-modules' ),
-					'category'	=> esc_html__( 'Category', 'tutor-divi-modules' ),
-					'rating'	=> esc_html__( 'Rating', 'tutor-divi-modules' ),
-					'footer'	=> esc_html__( 'Footer', 'tutor-divi-modules' ),
-					'cart_button'	=> esc_html__( 'Cart Button', 'tutor-divi-modules' ),
-					'arrows'	=> esc_html__( 'Arrows', 'tutor-divi-modules' ),
-					'dots'		=> esc_html__( 'Dots', 'tutor-divi-modules' ),
+					'layout_styles'		=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+					'card'				=> esc_html__( 'Card', 'tutor-divi-modules' ),
+					'image'				=> esc_html__( 'Image', 'tutor-divi-modules' ),
+					'badge'				=> esc_html__( 'Badge', 'tutor-divi-modules' ),
+					'avatar'			=> esc_html__( 'Avatar', 'tutor-divi-modules' ),
+					'title'				=> esc_html__( 'Title', 'tutor-divi-modules' ),
+					'meta'				=> esc_html__( 'Meta', 'tutor-divi-modules' ),
+					'category'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
+					'rating'			=> esc_html__( 'Rating', 'tutor-divi-modules' ),
+					'footer'			=> esc_html__( 'Footer', 'tutor-divi-modules' ),
+					'cart_button'		=> esc_html__( 'Cart Button', 'tutor-divi-modules' ),
+					'pagination_styles'	=> esc_html__( 'Pagination', 'tutor-divi-modules' )
 				),
 			)
 		);
@@ -86,24 +87,15 @@ class CourseList extends ET_Builder_Module {
 					'hide_text_align'		=> true,
 					
 				),
-				'arrows'	=> array(
+				'pagination'	=> array(
 					'css'				=> array(
-						'main'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before',
+						'main'	=> '%%order_class%% .tutor-divi-courselist-pagination',
 					),
 					'tab_slug'				=> 'advanced',
-					'toggle_slug'			=> 'arrows' ,
-					'hide_text_align'		=> true,
-					'hide_letter_spacing'	=> true,
+					'toggle_slug'			=> 'pagination_styles' ,
+					'hide_text_color'		=> true
 				),				
-				'dots'	=> array(
-					'css'				=> array(
-						'main'	=> '%%order_class%% .slick-dots li button:before',
-					),
-					'tab_slug'				=> 'advanced',
-					'toggle_slug'			=> 'dots' ,
-					'hide_text_align'		=> true,
-					'hide_letter_spacing'	=> true,
-				),
+
 			),
 			
 			'button'		=> array(
@@ -163,16 +155,16 @@ class CourseList extends ET_Builder_Module {
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'avatar'
 				),
-				'arrows'	=> array(
+				'pagination'	=> array(
 					'css'	=> array(
 						'main'	=> array(
-							'border_radii'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before',
-							'border_styles'	=> '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before'
+							'border_radii'	=> '%%order_class%% .tutor-divi-courselist-pagination span,%%order_class%% .tutor-divi-courselist-pagination a',
+							'border_styles'	=> '%%order_class%% .tutor-divi-courselist-pagination span,%%order_class%% .tutor-divi-courselist-pagination a'
 						),
 						'important'	=> true
 					),
 					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'arrows'
+					'toggle_slug'	=> 'pagination_styles'
 				)
 			),
 			'margin_padding'=> array(
@@ -239,11 +231,6 @@ class CourseList extends ET_Builder_Module {
 					'3'			=> '3',
 					'4'			=> '4',
 					'5'			=> '5',
-					'6'			=> '6',
-					'7'			=> '7',
-					'8'			=> '8',
-					'9'			=> '9',
-					'10'		=> '10',
 				),
 				'default'		=> '3',
 				'tab_slug'		=> 'general',
@@ -421,8 +408,8 @@ class CourseList extends ET_Builder_Module {
 				'type'			=> 'select',
 				'default'		=> 'prev_next',
 				'options'		=> array(
-					'prev_next'		=> esc_html__( 'Prev/Next', 'tutor-divi-modules' ),
-					'numbers'		=> esc_html__( 'Numbers', 'tutor-divi-modules' ),
+					'prev_next'		=> esc_html__( 'Prev/Next with Numbers', 'tutor-divi-modules' ),
+					'numbers'		=> esc_html__( 'Only Numbers', 'tutor-divi-modules' ),
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=>	'pagination_settings' 
@@ -447,18 +434,33 @@ class CourseList extends ET_Builder_Module {
 					'pagination_type'	=> 'prev_next'
 				)
 			),				
-			'pagination_aligment'	=> array(
-				'label'			=> esc_html__( 'Alignment', 'tutor-divi-modules' ),
-				'type'			=> 'text_align',
-				'option'		=> et_builder_get_text_orientation_options( array('justified') ),
-				'default'		=> 'center',
-				'tab_slug'		=> 'general',
-				'toggle_slug'	=>	'pagination_settings',
-				'show_if'		=> array(
-					'pagination_type'	=> 'prev_next'
-				)
+			
+			//advanced tab layout_styles toggle
+			'columns_gap'	=> array(
+				'label'			=> esc_html__( 'Columns Gap', 'tutor-divi-modules' ),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'layout_styles'
 			),			
 
+			'rows_gap'	=> array(
+				'label'			=> esc_html__( 'Rows Gap', 'tutor-divi-modules' ),
+				'type'			=> 'range',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'layout_styles'
+			),
 			//advacned tab card toggle
 			'card_background_color'	=> array(
 				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
@@ -615,7 +617,10 @@ class CourseList extends ET_Builder_Module {
 					'limit',
 					'order_by',
 					'order',
-					'image_size'
+					'image_size',
+					'pagination_type',
+					'prev_level',
+					'next_level'
 				)
 			),
 			//advanced tab footer toggle
@@ -637,8 +642,56 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'footer'
 			),
-			//arrows toggle
-			'arrows_padding'	=> array(
+			//pagination_styles toggle
+			'pagination_composite'	=> array(
+				'label'			=> esc_html__( 'Text Color', 'tutor-divi-modules'),
+				'type'			=> 'composite',
+				'composite_type'	=> 'default',
+				'composite_structure'	=> array(
+					'tab1'	=> array(
+						'label'		=> esc_html__( 'Normal', 'tutor-divi-modules' ),
+						'controls'	=> array(
+							'pagination_normal_color'	=> array(
+								'label'		=> esc_html__( 'Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),							
+							'pagination_normal_back'	=> array(
+								'label'		=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),
+						) 
+					),					
+					'tab2'	=> array(
+						'label'		=> esc_html__( 'Hover', 'tutor-divi-modules' ),
+						'controls'	=> array(
+							'pagination_hover_color'	=> array(
+								'label'		=> esc_html__( 'Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),							
+							'pagination_hover_back'	=> array(
+								'label'		=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),
+						)
+					),					
+					'tab3'	=> array(
+						'label'		=> esc_html__( 'Active', 'tutor-divi-modules' ),
+						'controls'	=> array(
+							'pagination_active_color'	=> array(
+								'label'		=> esc_html__( 'Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),							
+							'pagination_active_back'	=> array(
+								'label'		=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'type'		=> 'color-alpha'
+							),
+						)
+					),
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'pagination_styles',
+			),
+			'pagination_padding'	=> array(
 				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
@@ -648,33 +701,8 @@ class CourseList extends ET_Builder_Module {
 					'step'	=> '1'
 				),
 				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'arrows',
-				'priority' => 100,
-			),
-
-			//dots toggle
-			'dots_alignment'	=> array(
-				'label'			=> esc_html__( 'Alignment', 'tutor-divi-modules' ),
-				'type'			=> 'text_align',
-				'options'		=> et_builder_get_text_orientation_options( array('justified') ),
-				'default'		=> 'center',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'dots'	
-			),				
-
-			'dots_space'	=> array(
-				'label'			=> esc_html__( 'Space Between', 'tutor-divi-modules' ),
-				'type'			=> 'range',
-				'default'		=> '5px',
-				'default_unit'	=> 'px',
-				'range_settings'=> array(
-					'min'	=> '0',
-					'max'	=> '100',
-					'step'	=> '1'
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'dots'	
-			),	
+				'toggle_slug'	=> 'pagination_styles' 
+			)
 
 		);
 
@@ -747,10 +775,10 @@ class CourseList extends ET_Builder_Module {
                 'format'    => '?paged=%#%',
                 'total'     => $query->max_num_pages,
                 'current'   => max(1, get_query_var('paged')),
-                'end_size'  => $args['limit'],
+                'end_size'  => sanitize_text_field($args['limit']),
                 'prev_next' => $pagination_type === 'numbers' ? false : true,
-                'prev_text' => esc_html( $args['prev_level'] ),
-                'next_text' => esc_html( $args['next_level']),
+                'prev_text' => __( sanitize_text_field($args['prev_level']) , 'tutor-divi-modules' ),
+                'next_text' => __( sanitize_text_field($args['next_level']), 'tutor-divi-modules' ),
             );			
 			return array(
 				'courses'		=> $courses,
@@ -785,8 +813,9 @@ class CourseList extends ET_Builder_Module {
 		$star_selector         	= $wrapper.' .tutor-star-rating-group i';
         $star_wrapper_selector 	= $wrapper.' .tutor-star-rating-group';
 		$cart_button_selector	= $wrapper.' .tutor-loop-cart-btn-wrap a';
-		$arrows_selector		= '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
-		$dots_wrapper_selector	= '%%order_class%% .slick-dots';
+
+		$pagination_selector   = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers';
+        $pagination_active_selector   = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers.current';
 
 		//props
 		$skin 						= $this->props['skin'];
@@ -814,10 +843,17 @@ class CourseList extends ET_Builder_Module {
 		$footer_background			= $this->props['footer_background'];
 		$footer_padding				= $this->props['footer_padding'];
 
-		$dots_alignment				= $this->props['dots_alignment'];
-		$dots_space					= $this->props['dots_space'];
 
-		$arrows_padding				= $this->props['arrows_padding'];
+		$pagination_normal_color    = $this->props['pagination_normal_color'];
+        $pagination_normal_back     = $this->props['pagination_normal_back'];        
+        $pagination_hover_color     = $this->props['pagination_hover_color'];
+        $pagination_hover_back      = $this->props['pagination_hover_back'];       
+        $pagination_active_color    = $this->props['pagination_active_color'];
+        $pagination_active_back     = $this->props['pagination_active_back'];
+        $pagination_padding			= $this->props['pagination_padding'];
+
+        $columns_gap				= $this->props['columns_gap'];
+        $rows_gap					= $this->props['rows_gap'];
 
 		//set styles
 		//make list item equal height
@@ -1304,46 +1340,6 @@ class CourseList extends ET_Builder_Module {
 			)
 		);
 
-		//arrows toggle
-		//default arrow color #000
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $arrows_selector,
-				'declaration'	=> 'color: #000;'
-			)
-		);
-
-		if( '' !== $arrows_padding ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $arrows_selector,
-					'declaration'	=> sprintf(
-						'padding: %1$s;',
-						$arrows_padding
-					)	
-				)
-			);			
-		}
-
-		//dots toggle
-		if( 'left' === $dots_alignment ) {
-			$dots_alignment = 'flex-start';
-		} else if( 'right' === $dots_alignment ) {
-			$dots_alignment = 'flex-end';
-		}
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $dots_wrapper_selector,
-				'declaration'	=> sprintf(
-					'display: flex !important; justify-content: %1$s; column-gap: %2$s;',
-					$dots_alignment,
-					$dots_space
-				) 
-			)
-		);
 
 		//single column style
 		ET_Builder_Element::set_style(
@@ -1390,6 +1386,196 @@ class CourseList extends ET_Builder_Module {
 				'media_query'	=> ET_Builder_Element::get_media_query( 'min_width_768' )
 			)
 		);
+
+		//pagination_styles toggle
+		if( '' !== $pagination_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_selector,
+					'declaration'	=> sprintf(
+						'padding: %1$s;',
+						$pagination_padding
+					)
+				)
+			);
+		}
+
+		if( '' !== $pagination_normal_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$pagination_normal_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $pagination_normal_back ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$pagination_normal_back
+					)
+				)
+			);
+		}		
+
+		if( '' !== $pagination_hover_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_selector.':hover',
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$pagination_hover_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $pagination_hover_back ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_selector.':hover',
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$pagination_hover_back
+					)
+				)
+			);
+		}
+
+		if( '' !== $pagination_active_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_active_selector,
+					'declaration'	=> sprintf(
+						'color: %1$s;',
+						$pagination_active_color
+					)
+				)
+			);
+		}		
+
+		if( '' !== $pagination_active_back ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> $pagination_active_selector,
+					'declaration'	=> sprintf(
+						'background-color: %1$s;',
+						$pagination_active_back
+					)
+				)
+			);
+		}	
+
+		//masonry styles
+		if( $this->props['masonry'] === 'on') {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
+					'declaration'	=> '-webkit-column-count: 2;
+						-moz-column-count: 2;
+						column-count: 2;
+						-webkit-column-gap: 10px;
+						-moz-column-gap: 10px;
+						column-gap: 10px;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
+					'declaration'	=> '-webkit-column-count: 3;
+						-moz-column-count: 3;
+						column-count: 3;
+						-webkit-column-gap: 10px;
+						-moz-column-gap: 10px;
+						column-gap: 10px;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
+					'declaration'	=> '-webkit-column-count: 4;
+						-moz-column-count: 4;
+						column-count: 4;
+						-webkit-column-gap: 10px;
+						-moz-column-gap: 10px;
+						column-gap: 10px;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
+					'declaration'	=> '-webkit-column-count: 5;
+						-moz-column-count: 5;
+						column-count: 5;
+						-webkit-column-gap: 10px;
+						-moz-column-gap: 10px;
+						column-gap: 10px;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
+					'declaration'	=> 'display: inline-block;width: auto;position: relative;top: 5px;'
+				)
+			);		
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
+					'declaration'	=> 'height: auto !important;min-height: 180px;'
+				)
+			);
+		}
+
+		//layout_styles 
+		if( '' !== $columns_gap ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-courselist-col',
+					'declaration'	=> sprintf(
+						'padding: 0 %1$s;',
+						$columns_gap
+					)
+				)
+			);
+		}		
+
+		if( '' !== $rows_gap ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-courselist-col',
+					'declaration'	=> sprintf(
+						'margin-bottom: %1$s;',
+						$rows_gap
+					)
+				)
+			);
+		}
 
 		//set styles end
 
