@@ -11,6 +11,7 @@ class CourseCurriculum extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Curriculum', 'tutor-divi-modules' );
+		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
 		$this->settings_modal_toggles = array(

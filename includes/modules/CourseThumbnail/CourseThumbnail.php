@@ -9,7 +9,7 @@ class CourseThumbnail extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Thumbnail', 'tutor-divi-modules' );
-
+        $this->icon_path    = plugin_dir_path( __FILE__ ) . 'icon.svg';
         $wrapper 				= '%%order_class%% .tutor-divi-course-thumbnail';
         $this->advanced_fields = array(
             'fonts'     => false,
