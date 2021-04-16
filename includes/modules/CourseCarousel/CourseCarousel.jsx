@@ -115,25 +115,49 @@ class CourseCarousel extends Component {
             ]);
         }
         //make carousel item equal height
+      
         if(skin === 'classic' || skin === 'card') {
             additionalCss.push([
-            {
-                 selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card`,
-                    declaration: `display: -webkit-box;
-                        display: -ms-flexbox;
+                {
+                     selector: `%%order_class%% .slick-track`,
+                        declaration: `display: -ms-flexbox;
+                        display: -webkit-flex;
                         display: flex;
-                        -webkit-box-orient: vertical;
-                        -webkit-box-direction: normal;
-                            -ms-flex-direction: column;
-                                flex-direction: column;
-                        -webkit-box-pack: justify;
-                            -ms-flex-pack: justify;
-                                justify-content: space-between;
-                        height: 100%;`
-            }
+                        -webkit-flex-direction: row;
+                        -ms-flex-direction: row;
+                        flex-direction: row;
+                        -webkit-flex-wrap: nowrap;
+                        -ms-flex-wrap: nowrap;
+                        flex-wrap: nowrap;
+                        -webkit-justify-content: space-between;
+                        -ms-flex-pack: justify;
+                        justify-content: space-between;
+                        -webkit-align-content: stretch;
+                        -ms-flex-line-pack: stretch;
+                        align-content: stretch;
+                        -webkit-align-items: stretch;
+                        -ms-flex-align: stretch;
+                        align-items: stretch;`
+                            
+                }
 
             ]);
+
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .slick-slide',
+                    declaration: 'height: inherit !important;'   
+                }
+            ]);             
+             
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-card',
+                    declaration: 'display: flex; flex-direction: column; justify-content: space-between; height: 100%;'   
+                }
+            ]);            
         }
+ 
         //card layout styles
         //classic style
         if(skin === 'classic') {

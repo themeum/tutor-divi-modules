@@ -837,19 +837,42 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card',
-					'declaration'	=> 'display: -webkit-box;
-						display: -ms-flexbox;
-						display: flex;
-						-webkit-box-orient: vertical;
-						-webkit-box-direction: normal;
-						    -ms-flex-direction: column;
-						        flex-direction: column;
-						-webkit-box-pack: justify;
-						    -ms-flex-pack: justify;
-						        justify-content: space-between;
-						height: 100%;
+					'selector'		=> '%%order_class%% .slick-track',
+					'declaration'	=> 'display: -ms-flexbox;
+					    display: -webkit-flex;
+					    display: flex;
+					    -webkit-flex-direction: row;
+					    -ms-flex-direction: row;
+					    flex-direction: row;
+					    -webkit-flex-wrap: nowrap;
+					    -ms-flex-wrap: nowrap;
+					    flex-wrap: nowrap;
+					    -webkit-justify-content: space-between;
+					    -ms-flex-pack: justify;
+					    justify-content: space-between;
+					    -webkit-align-content: stretch;
+					    -ms-flex-line-pack: stretch;
+					    align-content: stretch;
+					    -webkit-align-items: stretch;
+					    -ms-flex-align: stretch;
+					    align-items: stretch;
 						'
+				)
+			);
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .slick-slide',
+					'declaration'	=> 'height: inherit !important;'
+				)
+			);			
+
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-divi-card',
+					'declaration'	=> 'display: flex; flex-direction: column; justify-content: space-between; height: 100%;'
 				)
 			);
 		}
