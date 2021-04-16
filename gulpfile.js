@@ -40,6 +40,65 @@ for(let task in tasks) {
     });
 }
 
+
+/*
+ * series for doing multiple task in order 1->2->3
+ * src is for getting files from the computer
+ * dest is for transfer file to destination 
+*/
+const { series, src, dest } = require('gulp');
+//install plugins
+const uglify	= require('gulp-uglify');
+
+const zip = require('gulp-zip');
+
+const babel		= require('gulp-babel');
+
+
+// minify all js
+function minifyJs(cb) {
+	return src('assets/js/*.js')
+	.pipe(babel())
+	.pipe(uglify())
+	.pipe(rename('scripts.min.js'))
+	.pipe(dest('assets/js/'));
+
+	cb();
+}
+
+// bundle all files export to destination directory
+function bundleFiles(cb){
+	return src([
+		"./**/*.*",
+		"!./build/**",
+		"!./assets/scss/**",
+		"!./media/**",
+		"!./node_modules/**",
+		"!./**/*.zip",
+		"!.github",
+		"!./gulpfile.js",
+		"!./readme.md",
+		"!./README.md",
+		"!.DS_Store",
+		"!./**/.DS_Store",
+		"!./LICENSE.txt",
+		"!./package.json",
+		"!./package-lock.json",
+		"!./includes/modules/**/*.jsx",
+	])
+	.pipe(dest("build/tutor-divi-builds/"));
+	cb();
+}
+
+// from destination directory take all files make zip
+function exportZip(cb) {
+	return src("./build/**/*.*").pipe(zip("tutor-divi-modules.zip")).pipe(dest("./"));
+	cb();
+}
+
+
 gulp.task("watch", function () {
 	gulp.watch("assets/scss/**/*.scss", gulp.series(...task_keys));
 });
+
+exports.default = series(bundleFiles, exportZip);

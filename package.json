@@ -7,7 +7,6 @@
     "divi-scripts": "1.0.1",
     "gulp": "^4.0.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "react": "^16.14.0",
@@ -38,5 +37,13 @@
   "cde": {
     "gettext": "tutor-divi-modules",
     "prefix": "tutor"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.1.0"
   }
 }

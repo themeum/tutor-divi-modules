@@ -2,7 +2,8 @@
 
 # dependencies
 /node_modules
-
+/build
+*.zip
 # testing
 /coverage
 
