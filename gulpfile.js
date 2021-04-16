@@ -83,10 +83,11 @@ function bundleFiles(cb){
 		"!./**/.DS_Store",
 		"!./LICENSE.txt",
 		"!./package.json",
+		"!./**/*.json",
 		"!./package-lock.json",
 		"!./includes/modules/**/*.jsx",
 	])
-	.pipe(dest("build/tutor-divi-builds/"));
+	.pipe(dest("build/"));
 	cb();
 }
 
