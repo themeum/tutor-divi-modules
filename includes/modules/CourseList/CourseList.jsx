@@ -492,6 +492,13 @@ class CourseList extends Component {
       	]);
 
         //pagination_styles toggle
+        //pagination default style center
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-divi-courselist-pagination',
+                declaration: 'text-align:center;'
+            }
+        ]);
         if('' !== pagination_padding) {
             additionalCss.push([
                 {

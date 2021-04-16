@@ -90,6 +90,7 @@ class CourseList extends ET_Builder_Module {
 				'pagination'	=> array(
 					'css'				=> array(
 						'main'	=> '%%order_class%% .tutor-divi-courselist-pagination',
+						'important'	=> 'all'
 					),
 					'tab_slug'				=> 'advanced',
 					'toggle_slug'			=> 'pagination_styles' ,
@@ -187,7 +188,7 @@ class CourseList extends ET_Builder_Module {
 					'toggle_slug' => 'image',
 				),
 				'css'                  => array(
-					'main' => '%%order_class%% .tutor-divi-courselist-classic .tutor-course-header a img,%%order_class%% .tutor-divi-courselist-card .tutor-course-header a img,%%order_class%% .tutor-divi-courselist-stacked .tutor-course-header a img,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
+					'main' => '%%order_class%% .tutor-course-header ,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
 				),
 			),
 			'text'			=> false,
@@ -778,7 +779,7 @@ class CourseList extends ET_Builder_Module {
                 'end_size'  => sanitize_text_field($args['limit']),
                 'prev_next' => $pagination_type === 'numbers' ? false : true,
                 'prev_text' => __( sanitize_text_field($args['prev_level']) , 'tutor-divi-modules' ),
-                'next_text' => __( sanitize_text_field($args['next_level']), 'tutor-divi-modules' ),
+                'next_text' => __( 'Next', 'tutor-divi-modules' ),
             );			
 			return array(
 				'courses'		=> $courses,
@@ -1388,6 +1389,15 @@ class CourseList extends ET_Builder_Module {
 		);
 
 		//pagination_styles toggle
+		//pagination default align center
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-divi-courselist-pagination',
+				'declaration'	=> 'text-align: center;'
+			)
+		);
+
 		if( '' !== $pagination_padding ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
