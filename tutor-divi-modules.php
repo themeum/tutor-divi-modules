@@ -51,3 +51,4 @@ function tudm_initialize_extension() {
 
 add_action( 'divi_extensions_init', 'tudm_initialize_extension' );
 endif;
+

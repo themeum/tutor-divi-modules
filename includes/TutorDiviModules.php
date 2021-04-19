@@ -27,11 +27,13 @@ class TutorDiviModules extends DiviExtension {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = DTLMS_VERSION;
 
 	/**
 	 * TUDM_TutorDiviModules constructor.
-	 *
+	 * load dependecny
+	 * load scripts 
+	 * load text-domain
 	 * @param string $name
 	 * @param array  $args
 	 */
@@ -45,6 +47,8 @@ class TutorDiviModules extends DiviExtension {
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_scripts'], 99);
+
+		add_action('init', [$this, 'load_textdomain']);
 	}
 
 	public function load_dependencies() {
@@ -95,6 +99,16 @@ class TutorDiviModules extends DiviExtension {
 		);
 
     }	
+
+    /**
+	 * load plugin text domain
+	 * @since 1.0.0
+	 * @return void
+    */
+    public function load_textdomain() {
+    	load_plugin_textdomain('tutor-divi-modules', false, DTLMS_DIR_URL.'languages' );
+    }
 }
 
 new TutorDiviModules;
+
