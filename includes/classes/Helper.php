@@ -195,8 +195,10 @@ class Helper {
     public static function get_course_default() {
         $post_id   = \ET_Builder_Element::get_current_post_id();
         $post_type = get_post_type($post_id);
-        if ($post_type === tutor()->course_post_type) {
+           
+        if (function_exists('tutor') && $post_type === tutor()->course_post_type) {
             return $post_id;
-        }        
+        }   
+      
     }
 }

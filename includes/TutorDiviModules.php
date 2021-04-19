@@ -55,6 +55,7 @@ class TutorDiviModules extends DiviExtension {
 		require_once $this->plugin_dir . 'functions.php';
 		require_once $this->plugin_dir . 'classes/Helper.php';
 		require_once $this->plugin_dir . 'classes/Template.php';
+		require_once $this->plugin_dir . 'classes/Requirements.php';
 	}
 
     public function enqueue_divi_styles(){

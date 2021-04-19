@@ -1,3 +1,5 @@
+# Copyright (C) 2021 Tutor Divi Modules
+# This file is distributed under the same license as the Tutor Divi Modules package.
 #, fuzzy
 msgid ""
 msgstr ""
