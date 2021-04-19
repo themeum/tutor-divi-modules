@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tutor LMS Divi Modules\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-19 06:04+0000\n"
+"POT-Creation-Date: 2021-04-19 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -17,30 +17,24 @@ msgstr ""
 "X-Domain: tutor-divi-modules"
 
 #: includes/templates/course/status.php:13
-#: build/includes/templates/course/status.php:13
 msgid " Complete"
 msgstr ""
 
 #: includes/templates/course/reviews.php:96
-#: build/includes/templates/course/reviews.php:96
 #, php-format
 msgid "%s ago"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:147
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:147
 msgid "About the Instructors"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:679
-#: build/includes/modules/CourseList/CourseList.php:679
 msgid "Active"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:38
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:93
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:38
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:93
 msgid "Add to Cart Button"
 msgstr ""
 
@@ -58,69 +52,44 @@ msgstr ""
 #: includes/modules/CourseShare/CourseShare.php:147
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:158
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:124
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:160
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:157
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:683
-#: build/includes/modules/CourseCategories/CourseCategories.php:120
-#: build/includes/modules/CourseDuration/CourseDuration.php:118
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:199
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:125
-#: build/includes/modules/CourseLevel/CourseLevel.php:133
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:156
-#: build/includes/modules/CoursePrice/CoursePrice.php:87
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:158
-#: build/includes/modules/CourseShare/CourseShare.php:147
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:158
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:124
 msgid "Alignment"
 msgstr ""
 
 #: includes/modules/CourseLevel/CourseLevel.php:192
-#: build/includes/modules/CourseLevel/CourseLevel.php:192
 msgid "All Level"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:46
 #: includes/modules/CourseCarousel/CourseCarousel.php:399
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:46
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:399
 msgid "Arrows"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:382
 #: includes/modules/CourseList/CourseList.php:392
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:382
-#: build/includes/modules/CourseList/CourseList.php:392
 msgid "ASC"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:42
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:42
 msgid "Author Image"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:45
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:45
 msgid "Author Label"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:48
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:48
 msgid "Author Name"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:224
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:224
 msgid "Auto"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:451
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:451
 msgid "Auto Play"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:462
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:462
 msgid "Auto Play Speed"
 msgstr ""
 
@@ -128,17 +97,11 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:311
 #: includes/modules/CourseList/CourseList.php:41
 #: includes/modules/CourseList/CourseList.php:310
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:39
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:311
-#: build/includes/modules/CourseList/CourseList.php:41
-#: build/includes/modules/CourseList/CourseList.php:310
 msgid "Avatar"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:584
 #: includes/modules/CourseList/CourseList.php:558
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:584
-#: build/includes/modules/CourseList/CourseList.php:558
 msgid "Avatar Size"
 msgstr ""
 
@@ -157,60 +120,36 @@ msgstr ""
 #: includes/modules/CourseList/CourseList.php:686
 #: includes/modules/CourseStatus/CourseStatus.php:116
 #: includes/modules/CourseTags/CourseTags.php:137
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:493
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:546
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:649
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:225
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:242
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:259
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:298
-#: build/includes/modules/CourseList/CourseList.php:467
-#: build/includes/modules/CourseList/CourseList.php:520
-#: build/includes/modules/CourseList/CourseList.php:629
-#: build/includes/modules/CourseList/CourseList.php:660
-#: build/includes/modules/CourseList/CourseList.php:673
-#: build/includes/modules/CourseList/CourseList.php:686
-#: build/includes/modules/CourseStatus/CourseStatus.php:116
-#: build/includes/modules/CourseTags/CourseTags.php:137
 msgid "Background Color"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:38
 #: includes/modules/CourseList/CourseList.php:40
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:38
-#: build/includes/modules/CourseList/CourseList.php:40
 msgid "Badge"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:135
-#: build/includes/modules/CourseStatus/CourseStatus.php:135
 msgid "Border Radius"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:32
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:32
 msgid "Bottom Info Icon"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:31
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:31
 msgid "Bottom Info Star"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:33
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:33
 msgid "Bottom Info Text"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:32
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:128
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:32
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:128
 msgid "Button"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:232
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:232
 msgid "Button Width"
 msgstr ""
 
@@ -218,15 +157,10 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:222
 #: includes/modules/CourseList/CourseList.php:38
 #: includes/modules/CourseList/CourseList.php:215
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:36
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:222
-#: build/includes/modules/CourseList/CourseList.php:38
-#: build/includes/modules/CourseList/CourseList.php:215
 msgid "Card"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:31
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:31
 msgid "Carousel Settings"
 msgstr ""
 
@@ -234,10 +168,6 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:111
 #: includes/modules/CourseList/CourseList.php:47
 #: includes/modules/CourseList/CourseList.php:104
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:45
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:111
-#: build/includes/modules/CourseList/CourseList.php:47
-#: build/includes/modules/CourseList/CourseList.php:104
 msgid "Cart Button"
 msgstr ""
 
@@ -245,32 +175,23 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:344
 #: includes/modules/CourseList/CourseList.php:44
 #: includes/modules/CourseList/CourseList.php:343
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:42
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:344
-#: build/includes/modules/CourseList/CourseList.php:44
-#: build/includes/modules/CourseList/CourseList.php:343
 msgid "Category"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:429
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:429
 msgid "Center Slides"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:139
-#: build/includes/modules/CourseShare/CourseShare.php:139
 msgid "Circle"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:221
 #: includes/modules/CourseList/CourseList.php:214
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:221
-#: build/includes/modules/CourseList/CourseList.php:214
 msgid "Classic"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:149
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:149
 msgid "Collaps Icon"
 msgstr ""
 
@@ -285,37 +206,22 @@ msgstr ""
 #: includes/modules/CourseShare/CourseShare.php:158
 #: includes/modules/CourseStatus/CourseStatus.php:110
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:207
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:206
-#: build/includes/modules/CourseList/CourseList.php:656
-#: build/includes/modules/CourseList/CourseList.php:669
-#: build/includes/modules/CourseList/CourseList.php:682
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:205
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:207
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:267
-#: build/includes/modules/CourseReviews/CourseReviews.php:214
-#: build/includes/modules/CourseShare/CourseShare.php:158
-#: build/includes/modules/CourseStatus/CourseStatus.php:110
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:207
 msgid "Color"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:207
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:207
 msgid "Color Settings"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:225
-#: build/includes/modules/CourseList/CourseList.php:225
 msgid "Columns"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:441
-#: build/includes/modules/CourseList/CourseList.php:441
 msgid "Columns Gap"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:40
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:40
 msgid "Complete Button"
 msgstr ""
 
@@ -339,107 +245,68 @@ msgstr ""
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:36
 #: includes/modules/CourseTitle/CourseTitle.php:42
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:36
-#: build/includes/modules/CourseAbout/CourseAbout.php:36
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:36
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:36
-#: build/includes/modules/CourseCategories/CourseCategories.php:36
-#: build/includes/modules/CourseDescription/CourseDescription.php:36
-#: build/includes/modules/CourseDuration/CourseDuration.php:36
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:31
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:21
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:36
-#: build/includes/modules/CourseLevel/CourseLevel.php:36
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:36
-#: build/includes/modules/CoursePrice/CoursePrice.php:30
-#: build/includes/modules/CourseRating/CourseRating.php:36
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:36
-#: build/includes/modules/CourseReviews/CourseReviews.php:31
-#: build/includes/modules/CourseShare/CourseShare.php:36
-#: build/includes/modules/CourseStatus/CourseStatus.php:30
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:36
-#: build/includes/modules/CourseTitle/CourseTitle.php:42
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:36
 msgid "Content"
 msgstr ""
 
-#: includes/classes/Helper.php:32 build/includes/classes/Helper.php:32
+#: includes/classes/Helper.php:32
 msgid "Course"
 msgstr ""
 
 #: includes/modules/CourseBenefits/CourseBenefits.php:131
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:131
 msgid "Course Benefits"
 msgstr ""
 
 #: includes/modules/CourseDuration/CourseDuration.php:104
-#: build/includes/modules/CourseDuration/CourseDuration.php:104
 msgid "Course Duration"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:81
-#: build/includes/modules/CourseStatus/CourseStatus.php:81
 msgid "Course Status"
 msgstr ""
 
 #: includes/modules/CourseTags/CourseTags.php:131
-#: build/includes/modules/CourseTags/CourseTags.php:131
 msgid "Course Tags"
 msgstr ""
 
 #: includes/modules/CourseTitle/CourseTitle.php:132
-#: build/includes/modules/CourseTitle/CourseTitle.php:132
 msgid "Course Title"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:162
-#: build/includes/modules/CourseShare/CourseShare.php:162
 msgid "Custom"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:370
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:62
 #: includes/modules/CourseList/CourseList.php:380
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:370
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:62
-#: build/includes/modules/CourseList/CourseList.php:380
 msgid "Date"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:236
 #: includes/modules/CourseList/CourseList.php:229
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:236
-#: build/includes/modules/CourseList/CourseList.php:229
 msgid "Default"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:381
 #: includes/modules/CourseList/CourseList.php:391
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:381
-#: build/includes/modules/CourseList/CourseList.php:391
 msgid "DESC"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:172
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:172
 msgid "Designation"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:322
 #: includes/modules/CourseList/CourseList.php:321
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:322
-#: build/includes/modules/CourseList/CourseList.php:321
 msgid "Difficulty Label"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:86
-#: build/includes/modules/CourseStatus/CourseStatus.php:86
 msgid "Dispaly Percent"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:127
 #: includes/modules/CourseInstructor/CourseInstructor.php:162
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:127
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:162
 msgid "Display Name"
 msgstr ""
 
@@ -451,57 +318,44 @@ msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:47
 #: includes/modules/CourseCarousel/CourseCarousel.php:410
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:47
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:410
 msgid "Dots"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:30
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:37
 #: includes/modules/CourseList/CourseList.php:30
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:30
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:37
-#: build/includes/modules/CourseList/CourseList.php:30
 msgid "Enroll Button"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:192
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:192
 msgid "Enrolled"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:42
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:42
 msgid "Enrolled Info"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:191
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:191
 msgid "Enrollment"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:75
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:75
 msgid "Enrollment Button"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:157
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:157
 msgid "Expand Icon"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:225
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:225
 msgid "Fill"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:220
-#: build/includes/modules/CourseReviews/CourseReviews.php:220
 msgid "Fill Color"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:226
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:226
 msgid "Fixed"
 msgstr ""
 
@@ -509,31 +363,21 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:355
 #: includes/modules/CourseList/CourseList.php:46
 #: includes/modules/CourseList/CourseList.php:354
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:44
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:355
-#: build/includes/modules/CourseList/CourseList.php:46
-#: build/includes/modules/CourseList/CourseList.php:354
 msgid "Footer"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:499
 #: includes/modules/CourseList/CourseList.php:473
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:499
-#: build/includes/modules/CourseList/CourseList.php:473
 msgid "Footer Seperator Color"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:505
 #: includes/modules/CourseList/CourseList.php:479
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:505
-#: build/includes/modules/CourseList/CourseList.php:479
 msgid "Footer Seperator Width"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:282
 #: includes/modules/CourseList/CourseList.php:281
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:282
-#: build/includes/modules/CourseList/CourseList.php:281
 msgid "full"
 msgstr ""
 
@@ -552,33 +396,15 @@ msgstr ""
 #: includes/modules/CourseStatus/CourseStatus.php:148
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:168
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:133
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:189
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:167
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:616
-#: build/includes/modules/CourseCategories/CourseCategories.php:129
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:177
-#: build/includes/modules/CourseDuration/CourseDuration.php:125
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:134
-#: build/includes/modules/CourseLevel/CourseLevel.php:142
-#: build/includes/modules/CourseList/CourseList.php:590
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:166
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:168
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:228
-#: build/includes/modules/CourseStatus/CourseStatus.php:148
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:168
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:133
 msgid "Gap"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:41
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:143
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:41
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:143
 msgid "Gradebook Button"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:24
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:24
 msgid "Header"
 msgstr ""
 
@@ -586,21 +412,15 @@ msgstr ""
 #: includes/modules/CourseAbout/CourseAbout.php:56
 #: includes/modules/CourseDescription/CourseDescription.php:42
 #: includes/modules/CourseDescription/CourseDescription.php:56
-#: build/includes/modules/CourseAbout/CourseAbout.php:42
-#: build/includes/modules/CourseAbout/CourseAbout.php:56
-#: build/includes/modules/CourseDescription/CourseDescription.php:42
-#: build/includes/modules/CourseDescription/CourseDescription.php:56
 msgid "Heading"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:226
 #: includes/modules/CourseStatus/CourseStatus.php:122
-#: build/includes/modules/CourseReviews/CourseReviews.php:226
-#: build/includes/modules/CourseStatus/CourseStatus.php:122
 msgid "Height"
 msgstr ""
 
-#: includes/classes/Helper.php:35 build/includes/classes/Helper.php:35
+#: includes/classes/Helper.php:35
 msgid "Here you can select the Course."
 msgstr ""
 
@@ -632,43 +452,12 @@ msgstr ""
 #: includes/modules/CourseList/CourseList.php:370
 #: includes/modules/CourseShare/CourseShare.php:128
 #: includes/modules/CourseStatus/CourseStatus.php:90
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:120
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:131
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:258
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:269
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:294
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:305
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:316
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:327
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:338
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:349
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:360
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:403
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:414
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:156
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:166
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:176
-#: build/includes/modules/CourseList/CourseList.php:246
-#: build/includes/modules/CourseList/CourseList.php:257
-#: build/includes/modules/CourseList/CourseList.php:293
-#: build/includes/modules/CourseList/CourseList.php:304
-#: build/includes/modules/CourseList/CourseList.php:315
-#: build/includes/modules/CourseList/CourseList.php:326
-#: build/includes/modules/CourseList/CourseList.php:337
-#: build/includes/modules/CourseList/CourseList.php:348
-#: build/includes/modules/CourseList/CourseList.php:359
-#: build/includes/modules/CourseList/CourseList.php:370
-#: build/includes/modules/CourseShare/CourseShare.php:128
-#: build/includes/modules/CourseStatus/CourseStatus.php:90
 msgid "Hide"
 msgstr ""
 
 #: includes/modules/CourseCategories/CourseCategories.php:161
 #: includes/modules/CourseList/CourseList.php:666
 #: includes/modules/CoursePrice/CoursePrice.php:113
-#: build/includes/modules/CourseCategories/CourseCategories.php:161
-#: build/includes/modules/CourseList/CourseList.php:666
-#: build/includes/modules/CoursePrice/CoursePrice.php:113
 msgid "Hover"
 msgstr ""
 
@@ -688,14 +477,6 @@ msgstr ""
 #: includes/modules/CourseRequirements/CourseRequirements.php:150
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:48
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:150
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:48
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:149
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:48
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:148
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:48
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:150
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:48
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:150
 msgid "Icon"
 msgstr ""
 
@@ -706,18 +487,10 @@ msgstr ""
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:264
 #: includes/modules/CourseShare/CourseShare.php:169
 #: includes/modules/CourseShare/CourseShare.php:231
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:217
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:234
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:251
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:282
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:264
-#: build/includes/modules/CourseShare/CourseShare.php:169
-#: build/includes/modules/CourseShare/CourseShare.php:231
 msgid "Icon Color"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:165
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:165
 msgid "Icon Position"
 msgstr ""
 
@@ -725,46 +498,33 @@ msgstr ""
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:268
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:250
 #: includes/modules/CourseShare/CourseShare.php:187
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:193
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:268
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:250
-#: build/includes/modules/CourseShare/CourseShare.php:187
 msgid "Icon Size"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:45
-#: build/includes/modules/CourseShare/CourseShare.php:45
 msgid "Icons"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:37
 #: includes/modules/CourseList/CourseList.php:39
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:37
-#: build/includes/modules/CourseList/CourseList.php:39
 msgid "Image"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:275
 #: includes/modules/CourseInstructor/CourseInstructor.php:206
 #: includes/modules/CourseList/CourseList.php:274
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:275
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:206
-#: build/includes/modules/CourseList/CourseList.php:274
 msgid "Image Size"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:470
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:470
 msgid "Infinite Loop"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:27
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:27
 msgid "Info"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:290
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:290
 msgid "Info Color"
 msgstr ""
 
@@ -772,42 +532,31 @@ msgstr ""
 #: includes/modules/CourseMaterials/CourseMaterials.php:140
 #: includes/modules/CourseRequirements/CourseRequirements.php:142
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:142
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:141
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:140
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:142
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:142
 msgid "Inline"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:391
 #: includes/modules/CourseList/CourseList.php:401
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:391
-#: build/includes/modules/CourseList/CourseList.php:401
 msgid "Input -1 for all courses"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:100
-#: build/includes/modules/CourseStatus/CourseStatus.php:100
 msgid "Inside"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:27
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:27
 msgid "Instructor Avatar"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:30
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:30
 msgid "Instructor Bio"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:29
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:29
 msgid "Instructor Designation"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:28
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:28
 msgid "Instructor Name"
 msgstr ""
 
@@ -834,50 +583,23 @@ msgstr ""
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:130
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:106
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:163
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:58
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:129
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:142
-#: build/includes/modules/CourseDuration/CourseDuration.php:101
-#: build/includes/modules/CourseDuration/CourseDuration.php:186
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:53
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:145
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:107
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:164
-#: build/includes/modules/CourseLevel/CourseLevel.php:42
-#: build/includes/modules/CourseLevel/CourseLevel.php:58
-#: build/includes/modules/CourseLevel/CourseLevel.php:115
-#: build/includes/modules/CourseLevel/CourseLevel.php:171
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:130
-#: build/includes/modules/CourseReviews/CourseReviews.php:187
-#: build/includes/modules/CourseShare/CourseShare.php:42
-#: build/includes/modules/CourseShare/CourseShare.php:63
-#: build/includes/modules/CourseShare/CourseShare.php:124
-#: build/includes/modules/CourseStatus/CourseStatus.php:79
-#: build/includes/modules/CourseTags/CourseTags.php:129
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:130
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:106
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:163
 msgid "Label"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:214
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:214
 msgid "Large"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:281
 #: includes/modules/CourseList/CourseList.php:280
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:281
-#: build/includes/modules/CourseList/CourseList.php:280
 msgid "large"
 msgstr ""
 
 #: includes/modules/CourseLastUpdate/CourseLastUpdate.php:109
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:109
 msgid "Last Updated:"
 msgstr ""
 
-#: includes/classes/Helper.php:176 build/includes/classes/Helper.php:176
+#: includes/classes/Helper.php:176
 msgid "Latest Course"
 msgstr ""
 
@@ -889,14 +611,6 @@ msgstr ""
 #: includes/modules/CourseList/CourseList.php:28
 #: includes/modules/CourseList/CourseList.php:37
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:112
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:28
-#: build/includes/modules/CourseCategories/CourseCategories.php:108
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:194
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:113
-#: build/includes/modules/CourseLevel/CourseLevel.php:121
-#: build/includes/modules/CourseList/CourseList.php:28
-#: build/includes/modules/CourseList/CourseList.php:37
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:112
 msgid "Layout"
 msgstr ""
 
@@ -908,38 +622,24 @@ msgstr ""
 #: includes/modules/CourseLastUpdate/CourseLastUpdate.php:117
 #: includes/modules/CourseLevel/CourseLevel.php:125
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:116
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:153
-#: build/includes/modules/CourseCategories/CourseCategories.php:112
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:168
-#: build/includes/modules/CourseDuration/CourseDuration.php:111
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:197
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:117
-#: build/includes/modules/CourseLevel/CourseLevel.php:125
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:116
 msgid "Left"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:33
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:33
 msgid "Lesson"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:389
 #: includes/modules/CourseList/CourseList.php:399
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:389
-#: build/includes/modules/CourseList/CourseList.php:399
 msgid "Limit"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:182
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:182
 msgid "Link"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:189
 #: includes/modules/CourseInstructor/CourseInstructor.php:200
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:189
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:200
 msgid "Link for the Author Name and Image"
 msgstr ""
 
@@ -951,94 +651,64 @@ msgstr ""
 #: includes/modules/CourseRequirements/CourseRequirements.php:141
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:45
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:141
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:45
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:140
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:45
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:139
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:45
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:141
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:45
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:141
 msgid "List"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:570
 #: includes/modules/CourseList/CourseList.php:544
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:570
-#: build/includes/modules/CourseList/CourseList.php:544
 msgid "Margin"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:263
-#: build/includes/modules/CourseList/CourseList.php:263
 msgid "Masonry"
 msgstr ""
 
 #: includes/modules/CourseMaterials/CourseMaterials.php:130
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:130
 msgid "Material Includes"
 msgstr ""
 
 #: includes/modules/CourseMaterials/CourseMaterials.php:128
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:128
 msgid "Material Label"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:279
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:213
 #: includes/modules/CourseList/CourseList.php:278
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:279
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:213
-#: build/includes/modules/CourseList/CourseList.php:278
 msgid "Medium"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:280
 #: includes/modules/CourseList/CourseList.php:279
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:280
-#: build/includes/modules/CourseList/CourseList.php:279
 msgid "Medium Large"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:41
 #: includes/modules/CourseList/CourseList.php:43
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:41
-#: build/includes/modules/CourseList/CourseList.php:43
 msgid "Meta"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:289
 #: includes/modules/CourseList/CourseList.php:288
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:289
-#: build/includes/modules/CourseList/CourseList.php:288
 msgid "Meta Data"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:69
 #: includes/modules/CourseLevel/CourseLevel.php:68
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:69
-#: build/includes/modules/CourseLevel/CourseLevel.php:68
 msgid "Name"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:142
 #: includes/modules/CourseInstructor/CourseInstructor.php:185
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:142
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:185
 msgid "New Window"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:431
 #: includes/modules/CourseList/CourseList.php:782
 #: includes/templates/course/course_list.php:29
-#: build/includes/modules/CourseList/CourseList.php:431
-#: build/includes/modules/CourseList/CourseList.php:782
-#: build/includes/templates/course/course_list.php:29
 msgid "Next"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:429
-#: build/includes/modules/CourseList/CourseList.php:429
 msgid "Next Level"
 msgstr ""
 
@@ -1048,69 +718,48 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:474
 #: includes/modules/CourseCarousel/CourseCarousel.php:485
 #: includes/modules/CourseList/CourseList.php:268
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:433
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:444
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:455
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:474
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:485
-#: build/includes/modules/CourseList/CourseList.php:268
 msgid "No"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:234
 #: includes/modules/CourseList/CourseList.php:227
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:234
-#: build/includes/modules/CourseList/CourseList.php:227
 msgid "No: of slides that will display on desktop view"
 msgstr ""
 
 #: includes/modules/CourseCategories/CourseCategories.php:158
 #: includes/modules/CourseList/CourseList.php:653
 #: includes/modules/CoursePrice/CoursePrice.php:110
-#: build/includes/modules/CourseCategories/CourseCategories.php:158
-#: build/includes/modules/CourseList/CourseList.php:653
-#: build/includes/modules/CoursePrice/CoursePrice.php:110
 msgid "Normal"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:161
-#: build/includes/modules/CourseShare/CourseShare.php:161
 msgid "Official Color"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:102
-#: build/includes/modules/CourseStatus/CourseStatus.php:102
 msgid "On Top"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:413
-#: build/includes/modules/CourseList/CourseList.php:413
 msgid "Only Numbers"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:378
 #: includes/modules/CourseList/CourseList.php:388
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:378
-#: build/includes/modules/CourseList/CourseList.php:388
 msgid "Order"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:367
 #: includes/modules/CourseList/CourseList.php:377
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:367
-#: build/includes/modules/CourseList/CourseList.php:377
 msgid "Order by"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:101
-#: build/includes/modules/CourseStatus/CourseStatus.php:101
 msgid "Outside"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:224
 #: includes/modules/CourseList/CourseList.php:217
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:224
-#: build/includes/modules/CourseList/CourseList.php:217
 msgid "Overlayed"
 msgstr ""
 
@@ -1126,95 +775,64 @@ msgstr ""
 #: includes/modules/CourseRequirements/CourseRequirements.php:257
 #: includes/modules/CourseShare/CourseShare.php:202
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:197
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:196
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:518
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:655
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:668
-#: build/includes/modules/CourseList/CourseList.php:492
-#: build/includes/modules/CourseList/CourseList.php:635
-#: build/includes/modules/CourseList/CourseList.php:696
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:195
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:197
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:257
-#: build/includes/modules/CourseShare/CourseShare.php:202
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:197
 msgid "Padding"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:31
 #: includes/modules/CourseList/CourseList.php:48
 #: includes/modules/CourseList/CourseList.php:365
-#: build/includes/modules/CourseList/CourseList.php:31
-#: build/includes/modules/CourseList/CourseList.php:48
-#: build/includes/modules/CourseList/CourseList.php:365
 msgid "Pagination"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:408
-#: build/includes/modules/CourseList/CourseList.php:408
 msgid "Pagination Type"
 msgstr ""
 
 #: includes/modules/CourseAbout/CourseAbout.php:45
-#: build/includes/modules/CourseAbout/CourseAbout.php:45
 msgid "Paragraph"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:481
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:481
 msgid "Paush on Hover"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:97
-#: build/includes/modules/CourseStatus/CourseStatus.php:97
 msgid "Position"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:419
-#: build/includes/modules/CourseList/CourseList.php:419
 msgid "Prev Level"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:412
-#: build/includes/modules/CourseList/CourseList.php:412
 msgid "Prev/Next with Numbers"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:188
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:188
 msgid "Preview Mode"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:421
 #: includes/templates/course/course_list.php:28
-#: build/includes/modules/CourseList/CourseList.php:421
-#: build/includes/templates/course/course_list.php:28
 msgid "Previous"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:116
 #: includes/modules/CourseInstructor/CourseInstructor.php:152
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:116
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:152
 msgid "Profile Picture"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:39
-#: build/includes/modules/CourseStatus/CourseStatus.php:39
 msgid "Progress Bar"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:42
 #: includes/modules/CourseStatus/CourseStatus.php:63
-#: build/includes/modules/CourseStatus/CourseStatus.php:42
-#: build/includes/modules/CourseStatus/CourseStatus.php:63
 msgid "Progress Text"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:29
 #: includes/modules/CourseList/CourseList.php:29
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:29
-#: build/includes/modules/CourseList/CourseList.php:29
 msgid "Query"
 msgstr ""
 
@@ -1222,102 +840,79 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:300
 #: includes/modules/CourseList/CourseList.php:45
 #: includes/modules/CourseList/CourseList.php:299
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:43
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:300
-#: build/includes/modules/CourseList/CourseList.php:45
-#: build/includes/modules/CourseList/CourseList.php:299
 msgid "Rating"
 msgstr ""
 
 #: includes/templates/course/reviews.php:69
-#: build/includes/templates/course/reviews.php:69
 msgid "rating"
 msgstr ""
 
 #: includes/modules/CourseRating/CourseRating.php:42
-#: build/includes/modules/CourseRating/CourseRating.php:42
 msgid "Rating Stars"
 msgstr ""
 
 #: includes/templates/course/reviews.php:69
-#: build/includes/templates/course/reviews.php:69
 msgid "ratings"
 msgstr ""
 
 #: includes/modules/CourseRequirements/CourseRequirements.php:132
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:132
 msgid "Requirements"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:40
-#: build/includes/modules/CourseReviews/CourseReviews.php:40
 msgid "Review Average Count"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:41
-#: build/includes/modules/CourseReviews/CourseReviews.php:41
 msgid "Review Average Star"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:39
-#: build/includes/modules/CourseReviews/CourseReviews.php:39
 msgid "Review Average Text"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:38
-#: build/includes/modules/CourseReviews/CourseReviews.php:38
 msgid "Review Average Total"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:44
-#: build/includes/modules/CourseReviews/CourseReviews.php:44
 msgid "Review List Author Name"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:43
-#: build/includes/modules/CourseReviews/CourseReviews.php:43
 msgid "Review List Avatar"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:46
-#: build/includes/modules/CourseReviews/CourseReviews.php:46
 msgid "Review List Comment"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:47
-#: build/includes/modules/CourseReviews/CourseReviews.php:47
 msgid "Review List Star"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:45
-#: build/includes/modules/CourseReviews/CourseReviews.php:45
 msgid "Review List Time"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:169
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:169
 msgid "Right"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:42
-#: build/includes/modules/CourseReviews/CourseReviews.php:42
 msgid "Right Rating Bar"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:138
-#: build/includes/modules/CourseShare/CourseShare.php:138
 msgid "Rounded"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:454
-#: build/includes/modules/CourseList/CourseList.php:454
 msgid "Rows Gap"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:143
 #: includes/modules/CourseInstructor/CourseInstructor.php:186
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:143
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:186
 msgid "Same Window"
 msgstr ""
 
@@ -1330,27 +925,15 @@ msgstr ""
 #: includes/modules/CourseStatus/CourseStatus.php:55
 #: includes/modules/CourseTags/CourseTags.php:37
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:42
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:42
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:26
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:42
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:42
-#: build/includes/modules/CourseReviews/CourseReviews.php:36
-#: build/includes/modules/CourseStatus/CourseStatus.php:36
-#: build/includes/modules/CourseStatus/CourseStatus.php:55
-#: build/includes/modules/CourseTags/CourseTags.php:37
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:42
 msgid "Section Title"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:135
-#: build/includes/modules/CourseShare/CourseShare.php:135
 msgid "Shape"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:178
 #: includes/modules/CourseShare/CourseShare.php:240
-#: build/includes/modules/CourseShare/CourseShare.php:178
-#: build/includes/modules/CourseShare/CourseShare.php:240
 msgid "Shape Color"
 msgstr ""
 
@@ -1382,48 +965,16 @@ msgstr ""
 #: includes/modules/CourseList/CourseList.php:369
 #: includes/modules/CourseShare/CourseShare.php:129
 #: includes/modules/CourseStatus/CourseStatus.php:89
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:121
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:132
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:257
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:268
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:293
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:304
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:315
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:326
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:337
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:348
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:359
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:402
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:413
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:155
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:165
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:175
-#: build/includes/modules/CourseList/CourseList.php:245
-#: build/includes/modules/CourseList/CourseList.php:256
-#: build/includes/modules/CourseList/CourseList.php:292
-#: build/includes/modules/CourseList/CourseList.php:303
-#: build/includes/modules/CourseList/CourseList.php:314
-#: build/includes/modules/CourseList/CourseList.php:325
-#: build/includes/modules/CourseList/CourseList.php:336
-#: build/includes/modules/CourseList/CourseList.php:347
-#: build/includes/modules/CourseList/CourseList.php:358
-#: build/includes/modules/CourseList/CourseList.php:369
-#: build/includes/modules/CourseShare/CourseShare.php:129
-#: build/includes/modules/CourseStatus/CourseStatus.php:89
 msgid "Show"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:253
 #: includes/modules/CourseList/CourseList.php:241
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:253
-#: build/includes/modules/CourseList/CourseList.php:241
 msgid "Show Animation"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:264
 #: includes/modules/CourseList/CourseList.php:252
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:264
-#: build/includes/modules/CourseList/CourseList.php:252
 msgid "Show Image"
 msgstr ""
 
@@ -1436,35 +987,22 @@ msgstr ""
 #: includes/modules/CourseRequirements/CourseRequirements.php:213
 #: includes/modules/CourseRequirements/CourseRequirements.php:273
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:213
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:171
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:212
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:558
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:208
-#: build/includes/modules/CourseList/CourseList.php:532
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:211
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:213
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:273
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:213
 msgid "Size"
 msgstr ""
 
 #: includes/modules/CourseTitle/CourseTitle.php:52
-#: build/includes/modules/CourseTitle/CourseTitle.php:52
 msgid "Sizing"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:232
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:232
 msgid "Slides to Show"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:212
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:212
 msgid "Small"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:440
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:440
 msgid "Smooth Scrolling"
 msgstr ""
 
@@ -1475,39 +1013,25 @@ msgstr ""
 #: includes/modules/CourseRequirements/CourseRequirements.php:183
 #: includes/modules/CourseRequirements/CourseRequirements.php:243
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:183
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:182
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:692
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:240
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:181
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:183
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:243
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:183
 msgid "Space Between"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:307
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:307
 msgid "Space Between Topics"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:532
 #: includes/modules/CourseList/CourseList.php:506
 #: includes/modules/CourseShare/CourseShare.php:215
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:532
-#: build/includes/modules/CourseList/CourseList.php:506
-#: build/includes/modules/CourseShare/CourseShare.php:215
 msgid "Spacing"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:140
-#: build/includes/modules/CourseShare/CourseShare.php:140
 msgid "Square"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:223
 #: includes/modules/CourseList/CourseList.php:216
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:223
-#: build/includes/modules/CourseList/CourseList.php:216
 msgid "Stacked"
 msgstr ""
 
@@ -1518,18 +1042,10 @@ msgstr ""
 #: includes/modules/CourseReviews/CourseReviews.php:194
 #: includes/modules/CourseReviews/CourseReviews.php:239
 #: includes/modules/CourseReviews/CourseReviews.php:273
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:597
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:233
-#: build/includes/modules/CourseList/CourseList.php:571
-#: build/includes/modules/CourseRating/CourseRating.php:143
-#: build/includes/modules/CourseReviews/CourseReviews.php:194
-#: build/includes/modules/CourseReviews/CourseReviews.php:239
-#: build/includes/modules/CourseReviews/CourseReviews.php:273
 msgid "Star Color"
 msgstr ""
 
 #: includes/modules/CourseRating/CourseRating.php:125
-#: build/includes/modules/CourseRating/CourseRating.php:125
 msgid "Star Gap"
 msgstr ""
 
@@ -1541,26 +1057,15 @@ msgstr ""
 #: includes/modules/CourseReviews/CourseReviews.php:245
 #: includes/modules/CourseReviews/CourseReviews.php:259
 #: includes/modules/CourseReviews/CourseReviews.php:279
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:603
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:220
-#: build/includes/modules/CourseList/CourseList.php:577
-#: build/includes/modules/CourseRating/CourseRating.php:108
-#: build/includes/modules/CourseReviews/CourseReviews.php:200
-#: build/includes/modules/CourseReviews/CourseReviews.php:245
-#: build/includes/modules/CourseReviews/CourseReviews.php:259
-#: build/includes/modules/CourseReviews/CourseReviews.php:279
 msgid "Star Size"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:39
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:111
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:39
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:111
 msgid "Start/Continue Button"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:189
-#: build/includes/modules/CourseReviews/CourseReviews.php:189
 msgid "Stuent Feedback "
 msgstr ""
 
@@ -1570,22 +1075,14 @@ msgstr ""
 #: includes/modules/CourseLevel/CourseLevel.php:178
 #: includes/modules/CoursePrice/CoursePrice.php:117
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:170
-#: build/includes/modules/CourseCategories/CourseCategories.php:165
-#: build/includes/modules/CourseDuration/CourseDuration.php:193
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:171
-#: build/includes/modules/CourseLevel/CourseLevel.php:178
-#: build/includes/modules/CoursePrice/CoursePrice.php:117
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:170
 msgid "Style"
 msgstr ""
 
 #: includes/modules/CourseTags/CourseTags.php:40
-#: build/includes/modules/CourseTags/CourseTags.php:40
 msgid "Tags"
 msgstr ""
 
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:132
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:132
 msgid "Target Audience"
 msgstr ""
 
@@ -1594,11 +1091,6 @@ msgstr ""
 #: includes/modules/CourseMaterials/CourseMaterials.php:51
 #: includes/modules/CourseRequirements/CourseRequirements.php:51
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:51
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:51
-#: build/includes/modules/CourseDescription/CourseDescription.php:45
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:51
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:51
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:51
 msgid "Text"
 msgstr ""
 
@@ -1608,12 +1100,6 @@ msgstr ""
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:255
 #: includes/modules/CourseList/CourseList.php:526
 #: includes/modules/CourseList/CourseList.php:648
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:552
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:221
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:238
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:255
-#: build/includes/modules/CourseList/CourseList.php:526
-#: build/includes/modules/CourseList/CourseList.php:648
 msgid "Text Color"
 msgstr ""
 
@@ -1621,10 +1107,6 @@ msgstr ""
 #: includes/modules/CourseMaterials/CourseMaterials.php:226
 #: includes/modules/CourseRequirements/CourseRequirements.php:288
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:228
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:227
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:226
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:288
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:228
 msgid "Text Indent"
 msgstr ""
 
@@ -1632,14 +1114,12 @@ msgstr ""
 msgid "Themeum"
 msgstr ""
 
-#: includes/classes/Helper.php:173 build/includes/classes/Helper.php:173
+#: includes/classes/Helper.php:173
 msgid "This Course"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:278
 #: includes/modules/CourseList/CourseList.php:277
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:278
-#: build/includes/modules/CourseList/CourseList.php:277
 msgid "Thumbnail"
 msgstr ""
 
@@ -1648,156 +1128,122 @@ msgstr ""
 #: includes/modules/CourseList/CourseList.php:42
 #: includes/modules/CourseList/CourseList.php:381
 #: includes/modules/CourseTitle/CourseTitle.php:62
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:40
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:371
-#: build/includes/modules/CourseList/CourseList.php:42
-#: build/includes/modules/CourseList/CourseList.php:381
-#: build/includes/modules/CourseTitle/CourseTitle.php:62
 msgid "Title"
 msgstr ""
 
 #: includes/modules/CourseTitle/CourseTitle.php:48
-#: build/includes/modules/CourseTitle/CourseTitle.php:48
 msgid "Title Text"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:198
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:198
 msgid "Top"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:30
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:30
 msgid "Topics"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:144
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:144
 msgid "Topics for this course"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:421
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:421
 msgid "Transition Duration"
 msgstr ""
 
 #: includes/modules/CourseAbout/CourseAbout.php:28
-#: build/includes/modules/CourseAbout/CourseAbout.php:28
 msgid "Tutor Course About"
 msgstr ""
 
 #: includes/modules/CourseAuthor/CourseAuthor.php:28
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:28
 msgid "Tutor Course Author"
 msgstr ""
 
 #: includes/modules/CourseBenefits/CourseBenefits.php:28
-#: build/includes/modules/CourseBenefits/CourseBenefits.php:28
 msgid "Tutor Course Benefits"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:21
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:21
 msgid "Tutor Course Carousel"
 msgstr ""
 
 #: includes/modules/CourseCategories/CourseCategories.php:28
-#: build/includes/modules/CourseCategories/CourseCategories.php:28
 msgid "Tutor Course Categories"
 msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:13
-#: build/includes/modules/CourseCurriculum/CourseCurriculum.php:13
 msgid "Tutor Course Curriculum"
 msgstr ""
 
 #: includes/modules/CourseDescription/CourseDescription.php:28
-#: build/includes/modules/CourseDescription/CourseDescription.php:28
 msgid "Tutor Course Description"
 msgstr ""
 
 #: includes/modules/CourseDuration/CourseDuration.php:28
-#: build/includes/modules/CourseDuration/CourseDuration.php:28
 msgid "Tutor Course Duration"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:23
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:23
 msgid "Tutor Course Enrollment"
 msgstr ""
 
 #: includes/modules/CourseInstructor/CourseInstructor.php:14
-#: build/includes/modules/CourseInstructor/CourseInstructor.php:14
 msgid "Tutor Course Instructor"
 msgstr ""
 
 #: includes/modules/CourseLastUpdate/CourseLastUpdate.php:28
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:28
 msgid "Tutor Course Last Update"
 msgstr ""
 
 #: includes/modules/CourseLevel/CourseLevel.php:28
-#: build/includes/modules/CourseLevel/CourseLevel.php:28
 msgid "Tutor Course Level"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:21
-#: build/includes/modules/CourseList/CourseList.php:21
 msgid "Tutor Course List"
 msgstr ""
 
 #: includes/modules/CourseMaterials/CourseMaterials.php:28
-#: build/includes/modules/CourseMaterials/CourseMaterials.php:28
 msgid "Tutor Course Materials"
 msgstr ""
 
 #: includes/modules/CoursePrice/CoursePrice.php:23
-#: build/includes/modules/CoursePrice/CoursePrice.php:23
 msgid "Tutor Course Price"
 msgstr ""
 
 #: includes/modules/CourseRating/CourseRating.php:28
-#: build/includes/modules/CourseRating/CourseRating.php:28
 msgid "Tutor Course Rating"
 msgstr ""
 
 #: includes/modules/CourseRequirements/CourseRequirements.php:28
-#: build/includes/modules/CourseRequirements/CourseRequirements.php:28
 msgid "Tutor Course Requirements"
 msgstr ""
 
 #: includes/modules/CourseShare/CourseShare.php:28
-#: build/includes/modules/CourseShare/CourseShare.php:28
 msgid "Tutor Course Share"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:23
-#: build/includes/modules/CourseStatus/CourseStatus.php:23
 msgid "Tutor Course Status"
 msgstr ""
 
 #: includes/modules/CourseTags/CourseTags.php:23
-#: build/includes/modules/CourseTags/CourseTags.php:23
 msgid "Tutor Course Tags"
 msgstr ""
 
 #: includes/modules/CourseTargetAudience/CourseTargetAudience.php:28
-#: build/includes/modules/CourseTargetAudience/CourseTargetAudience.php:28
 msgid "Tutor Course Target Audience"
 msgstr ""
 
 #: includes/modules/CourseThumbnail/CourseThumbnail.php:11
-#: build/includes/modules/CourseThumbnail/CourseThumbnail.php:11
 msgid "Tutor Course Thumbnail"
 msgstr ""
 
 #: includes/modules/CourseTitle/CourseTitle.php:34
-#: build/includes/modules/CourseTitle/CourseTitle.php:34
 msgid "Tutor Course Title"
 msgstr ""
 
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:28
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:28
 msgid "Tutor Course Total Enroll"
 msgstr ""
 
@@ -1811,17 +1257,10 @@ msgstr ""
 #: includes/modules/CourseLastUpdate/CourseLastUpdate.php:118
 #: includes/modules/CourseLevel/CourseLevel.php:126
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:117
-#: build/includes/modules/CourseAuthor/CourseAuthor.php:154
-#: build/includes/modules/CourseCategories/CourseCategories.php:113
-#: build/includes/modules/CourseDuration/CourseDuration.php:112
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:118
-#: build/includes/modules/CourseLevel/CourseLevel.php:126
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:117
 msgid "Up"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:424
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:424
 msgid "Use only numbers for transition"
 msgstr ""
 
@@ -1830,23 +1269,15 @@ msgstr ""
 #: includes/modules/CourseLevel/CourseLevel.php:45
 #: includes/modules/CourseLevel/CourseLevel.php:174
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:166
-#: build/includes/modules/CourseDuration/CourseDuration.php:189
-#: build/includes/modules/CourseLastUpdate/CourseLastUpdate.php:167
-#: build/includes/modules/CourseLevel/CourseLevel.php:45
-#: build/includes/modules/CourseLevel/CourseLevel.php:174
-#: build/includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:166
 msgid "Value"
 msgstr ""
 
 #: includes/modules/CourseEnrollment/CourseEnrollment.php:220
-#: build/includes/modules/CourseEnrollment/CourseEnrollment.php:220
 msgid "Width"
 msgstr ""
 
 #: includes/modules/CourseCarousel/CourseCarousel.php:333
 #: includes/modules/CourseList/CourseList.php:332
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:333
-#: build/includes/modules/CourseList/CourseList.php:332
 msgid "Wish List"
 msgstr ""
 
@@ -1856,11 +1287,5 @@ msgstr ""
 #: includes/modules/CourseCarousel/CourseCarousel.php:473
 #: includes/modules/CourseCarousel/CourseCarousel.php:484
 #: includes/modules/CourseList/CourseList.php:267
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:432
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:443
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:454
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:473
-#: build/includes/modules/CourseCarousel/CourseCarousel.php:484
-#: build/includes/modules/CourseList/CourseList.php:267
 msgid "Yes"
 msgstr ""
