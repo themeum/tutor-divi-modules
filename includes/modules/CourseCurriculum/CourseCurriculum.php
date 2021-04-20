@@ -2,13 +2,21 @@
 /**
  * Tutor Course Curriculum Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
+
 use TutorLMS\Divi\Helper;
+
 class CourseCurriculum extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_curriculum';
 	public $vb_support = 'on';
 
+	/**
+	 * Module properties initialization
+	 *
+	 * @since 1.0.0
+	 */
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Curriculum', 'tutor-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
@@ -321,6 +329,7 @@ class CourseCurriculum extends ET_Builder_Module {
 
 	/**
 	 * computed value
+	 * @since 1.0.0
 	 * @return string | array course level
 	 */
 	public static  function get_props( $args = [] ) {
@@ -373,7 +382,7 @@ class CourseCurriculum extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course author
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content( $args = [] ) {
@@ -382,6 +391,17 @@ class CourseCurriculum extends ET_Builder_Module {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Render module output
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $attrs       List of unprocessed attributes
+	 * @param string $content     Content being processed
+	 * @param string $render_slug Slug of module that is used for rendering output
+	 *
+	 * @return string module's rendered output
+	 */
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
 		//selectors
         $wrapper               		= '%%order_class%% .tutor-course-topics-wrap';

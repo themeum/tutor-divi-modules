@@ -3,6 +3,7 @@
 /**
  * Tutor Course Target Audience Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -244,7 +245,9 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 	}
 
 	/**
-	 * get material props
+	 * get require props
+	 * @since 1.0.0
+	 * @return string|Number
 	 */
 	public static function get_props( $args = [] ) {
 		$course_id	= $args['course'];
@@ -255,7 +258,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 
 	/**
 	 * Get content
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Duration Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -144,6 +145,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 
 	/**
 	 * get computed value
+	 * @since 1.0.0
 	 */
 	public static function get_duration( $args=[] ) {
 		$course 			= Helper::get_course($args);
@@ -153,7 +155,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course duration
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {
@@ -174,6 +176,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 
 	/**
 	 * custom tabs for label & value
+	 * @since 1.0.0
 	 */
 	public function get_settings_modal_toggles () {
 		return array(

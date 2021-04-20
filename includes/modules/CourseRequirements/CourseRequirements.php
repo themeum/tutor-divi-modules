@@ -3,6 +3,7 @@
 /**
  * Tutor Course Requirements Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -305,6 +306,8 @@ class TutorCourseRequirements extends ET_Builder_Module {
 
 	/**
 	 * get requirement props
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public static function get_props( $args = [] ) {
 		$course_id		= $args['course'];
@@ -317,7 +320,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 
 	/**
 	 * Get content
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

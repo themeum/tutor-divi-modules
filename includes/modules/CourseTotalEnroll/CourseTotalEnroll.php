@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Total Enrollment Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -151,6 +152,8 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 
 	/**
 	 * custom tabs for label & value
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public function get_settings_modal_toggles () {
 		return array(
@@ -176,6 +179,8 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 
 	/**
 	 * return dependent props for total enroll
+	 * @since 1.0.0
+	 * @return int
 	 */
 	public  static function get_props( $args=[] ) {
 		$course_id = $args['course'];
@@ -185,7 +190,7 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course author
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

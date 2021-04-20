@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Tutor Course Reviews Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -18,6 +20,11 @@ class CourseReviews extends ET_Builder_Module {
 		'author_uri' => 'https://themeum.com',
 	);
 
+    /**
+     * Module properties initialization
+     *
+     * @since 1.0.0
+     */
     public function init() {
         //Module name & icon
         $this->name         = esc_html__( 'Tutor Course Reviews' );
@@ -158,7 +165,15 @@ class CourseReviews extends ET_Builder_Module {
             )
         );
     }
-    //Module fields
+
+
+    /**
+     * Module's specific fields
+     *
+     * @since 1.0.0
+     *
+     * @return array
+     */
     public function get_fields() {
         return array(
             'course'       	=> Helper::get_field(
@@ -293,8 +308,9 @@ class CourseReviews extends ET_Builder_Module {
     }
 
     /**
-     * get props
-     * @return arr
+     * get require props
+     * @since 1.0.0
+     * @return array
      */
     public static function get_props( $args = [] ) {
         $course_id      = $args['course'];
@@ -313,6 +329,11 @@ class CourseReviews extends ET_Builder_Module {
         );
     }
 
+    /**
+     * Get the tutor course content
+     * @since 1.0.0
+     * @return string
+     */
     public static function get_content( $args = [] ) {
         $course_id = Helper::get_course($args);
         ob_start();

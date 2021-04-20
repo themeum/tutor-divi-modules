@@ -3,6 +3,7 @@
 /**
  * Tutor Course Categories Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -144,8 +145,10 @@ class TutorCourseCategories extends ET_Builder_Module {
 		return $fields;
 	}
 
-		/**
+	/**
 	 * custom tabs for label & value
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public function get_settings_modal_toggles () {
 		return array(

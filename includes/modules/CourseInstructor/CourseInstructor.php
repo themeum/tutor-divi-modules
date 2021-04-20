@@ -3,13 +3,21 @@
 /**
 * Tutor Course Instructor Module for Divi Builder
 * @since 1.0.0
+* @author Themeum<www.themeum.com>
 */
+
 use TutorLMS\Divi\Helper;
+
 class CourseInstructor extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_instructor';
 	public $vb_support = 'on';
 
+	/**
+	 * Module properties initialization
+	 *
+	 * @since 1.0.0
+	 */
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Instructor', 'tutor-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
@@ -253,8 +261,10 @@ class CourseInstructor extends ET_Builder_Module {
 	}
 
 	/**
+	 * get require props	
 	 * @param array
 	 * @return array | string
+	 * @since 1.0.0
 	 */
 	public static function get_props( $args = [] ) {
 		$course_id = $args['course'];
@@ -274,6 +284,7 @@ class CourseInstructor extends ET_Builder_Module {
 	/**
 	 * @param array
 	 * @return template
+	 * @since 1.0.0
 	 */
 	public  static function get_content( $args = [] ) {
 		ob_start();
@@ -281,6 +292,17 @@ class CourseInstructor extends ET_Builder_Module {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Render module output
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $attrs       List of unprocessed attributes
+	 * @param string $content     Content being processed
+	 * @param string $render_slug Slug of module that is used for rendering output
+	 *
+	 * @return string module's rendered output
+	 */
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
 
 		//selectors

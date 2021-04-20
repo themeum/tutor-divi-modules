@@ -1,7 +1,8 @@
 <?php
-/*
+/**
  * Course Carousel Module | Tutor Divi Modules
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
 */
 
 use TutorLMS\Divi\Helper;
@@ -17,6 +18,12 @@ class CourseCarousel extends ET_Builder_Module {
 		'author_uri' => 'https://themeum.com',
 	);
 
+
+	/**
+	 * Module properties initialization
+	 *
+	 * @since 1.0.0
+	 */
 	public function init() {
 		$this->name         = esc_html__( 'Tutor Course Carousel', 'tutor-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Tutor Course Thumbnail Module for Divi Builder
+ * @since 1.0.0
+ * @author Themeum<www.themeum.com>
+ */
+
 use TutorLMS\Divi\Helper;
 
 class CourseThumbnail extends ET_Builder_Module {
@@ -7,6 +13,11 @@ class CourseThumbnail extends ET_Builder_Module {
 	public $slug       = 'tutor_course_thumbnail';
 	public $vb_support = 'on';
 
+    /**
+     * Module properties initialization
+     *
+     * @since 1.0.0
+     */
 	public function init() {
 		$this->name = esc_html__( 'Tutor Course Thumbnail', 'tutor-divi-modules' );
         $this->icon_path    = plugin_dir_path( __FILE__ ) . 'icon.svg';
@@ -43,6 +54,13 @@ class CourseThumbnail extends ET_Builder_Module {
         );
 	}
 
+    /**
+     * Module's specific fields
+     *
+     * @since 1.0.0
+     *
+     * @return array
+     */
 	public function get_fields() {
 		return array(
 			'course'       	=> Helper::get_field(
@@ -71,8 +89,9 @@ class CourseThumbnail extends ET_Builder_Module {
 	}
 
 	/**
-	 * computed value
-	 * @return string | array course level
+     * get require props
+	 * @since 1.0.0
+	 * @return string | array
 	 */
 	public static function get_props( $args = [] ) {
 		$course_id 			= $args[ 'course' ];
@@ -100,6 +119,11 @@ class CourseThumbnail extends ET_Builder_Module {
         return $props;
 	}
 
+    /**
+     * Get the tutor course content
+     * @since 1.0.0
+     * @return string
+     */
     public static function get_content( $args = []) {
         ob_start();
         if ($args['course']) {
@@ -115,9 +139,21 @@ class CourseThumbnail extends ET_Builder_Module {
        return ob_get_clean();
     }
 
+    /**
+     * Render module output
+     *
+     * @since 1.0.0
+     *
+     * @param array  $attrs       List of unprocessed attributes
+     * @param string $content     Content being processed
+     * @param string $render_slug Slug of module that is used for rendering output
+     *
+     * @return string module's rendered output
+     */
 	public function render( $unprocessed_props, $content = null, $render_slug ) {
         $output = self::get_content( $this->props );
         return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
+
 new CourseThumbnail;

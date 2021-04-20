@@ -3,6 +3,7 @@
 /**
  * Tutor Course Author Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;

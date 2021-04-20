@@ -3,6 +3,7 @@
 /**
  * Tutor Course Author Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -209,6 +210,11 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		return $fields;
 	}
 
+	/**
+	 * get require props
+	 * @since 1.0.0
+	 * @return array
+	*/
 	public static function get_props( $args = [] ) {
 		$post_id 		= $args[ 'course' ];
 		$post 			= get_post( $post_id );
@@ -224,8 +230,8 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	}
 
 	/**
-	 * Get the tutor course author
-	 *
+	 * Get the tutor course content
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

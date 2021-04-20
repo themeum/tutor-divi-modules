@@ -3,6 +3,7 @@
 /**
  * Tutor Course Materials Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -243,6 +244,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 	
 	/**
 	 * get material props
+	 * @since .0.0
+	 * @return array
 	 */
 	public static function get_props( $args = [] ) {
 		$course_id	= $args['course'];
@@ -255,7 +258,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 
 	/**
 	 * Get content
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

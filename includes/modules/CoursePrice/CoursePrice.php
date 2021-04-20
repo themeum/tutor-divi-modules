@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Price Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -19,6 +20,11 @@ class CoursePrice extends ET_Builder_Module {
 		'author_uri' => 'https://themeum.com',
 	);
 
+	/**
+	 * Module properties initialization
+	 *
+	 * @since 1.0.0
+	 */
     public function init() {
         $this->name         = esc_html__( 'Tutor Course Price', 'tutor-divi-modules' ); 
         $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
@@ -64,6 +70,13 @@ class CoursePrice extends ET_Builder_Module {
 		);
 	}
 
+	/**
+	 * Module's specific fields
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
     public function get_fields() {
 		return array(
 			'course'       	=> Helper::get_field(
@@ -98,6 +111,8 @@ class CoursePrice extends ET_Builder_Module {
 
 	/**
 	 * custom tabs for label & value
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public function get_settings_modal_toggles () {
 		return array(
@@ -123,6 +138,7 @@ class CoursePrice extends ET_Builder_Module {
 
 	/**
 	 * computed value
+	 * @since 1.0.0
 	 * @return string | array course level
 	 */
 	public static function get_props( $args = [] ) {
@@ -136,6 +152,17 @@ class CoursePrice extends ET_Builder_Module {
 		return $props;
 	}	
 
+	/**
+	 * Render module output
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $attrs       List of unprocessed attributes
+	 * @param string $content     Content being processed
+	 * @param string $render_slug Slug of module that is used for rendering output
+	 *
+	 * @return string module's rendered output
+	 */
     public function render( $attr, $content = null, $render_slug) {
 		//selectors
 		$selector 		= '%%order_class%% .price';

@@ -3,6 +3,7 @@
 /**
 * Tutor Course Enrollment Module for Divi Builder
 * @since 1.0.0
+* @author Themeum<www.themeum.com>
 */
 use TutorLMS\Divi\Helper;
 
@@ -18,6 +19,11 @@ class CourseEnrollment extends ET_Builder_Module {
 		'author_uri' => 'https://themeum.com',
 	);
 
+    /**
+     * Module properties initialization
+     *
+     * @since 1.0.0
+     */
     public function init() {
 		// Module name & icon
 		$this->name			= esc_html__('Tutor Course Enrollment', 'tutor-divi-modules');
@@ -160,6 +166,13 @@ class CourseEnrollment extends ET_Builder_Module {
         );
     }
 
+    /**
+     * Module's specific fields
+     *
+     * @since 1.0.0
+     *
+     * @return array
+     */
     public function get_fields() {
         return array(
             'course'       	=> Helper::get_field(
@@ -271,6 +284,7 @@ class CourseEnrollment extends ET_Builder_Module {
     }
 	/**
 	 * Get props
+     * @since 1.0.0
 	 */
     public static function get_props( $args = [] ) {
 
@@ -278,7 +292,7 @@ class CourseEnrollment extends ET_Builder_Module {
 
 	/**
 	 * Get content
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
     public function get_content( $args = [] ) {

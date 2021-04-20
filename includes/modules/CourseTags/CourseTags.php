@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Tags Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -19,6 +20,11 @@ class CourseTags extends ET_Builder_Module {
 		'author_uri' => 'https://themeum.com',
 	);
 
+	/**
+	 * Module properties initialization
+	 *
+	 * @since 1.0.0
+	 */
     public function init() {
         $this->name         = esc_html__( 'Tutor Course Tags', 'tutor-divi-modules' ); 
         $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
@@ -101,6 +107,13 @@ class CourseTags extends ET_Builder_Module {
 		);
     }
 
+	/**
+	 * Module's specific fields
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
     public function get_fields() {
 		return array(
 			'course'       	=> Helper::get_field(
@@ -145,9 +158,10 @@ class CourseTags extends ET_Builder_Module {
     }
 
 	/**
-	 * computed value
-	 * @return string | array course level
-	 */
+	 * get require props
+	 * @since 1.0.0
+	 * @return array
+	*/
 	public static function get_props( $args = [] ) {
 		$course_id 	= $args[ 'course' ];
 		$tags 		= get_tutor_course_tags( $course_id );
@@ -159,7 +173,7 @@ class CourseTags extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course author
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {
@@ -168,6 +182,17 @@ class CourseTags extends ET_Builder_Module {
 		return ob_get_clean();
 	}	
 
+	/**
+	 * Render module output
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $attrs       List of unprocessed attributes
+	 * @param string $content     Content being processed
+	 * @param string $render_slug Slug of module that is used for rendering output
+	 *
+	 * @return string module's rendered output
+	 */
     public function render( $attr, $content = null, $render_slug) {
 		//selectors 
 		$wrapper			= '%%order_class%% .tutor-divi-course-tags-wrapper';

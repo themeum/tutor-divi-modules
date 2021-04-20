@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Tutor Course Author Module for Divi Builder
+ * Tutor Course Last Update Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -152,6 +153,8 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 
 	/**
 	 * custom tabs for label & value
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public function get_settings_modal_toggles () {
 		return array(
@@ -178,6 +181,7 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 	/**
 	 * get categories props
 	 * required args
+	 * @since 1.0.0
 	 * @return string|array
 	 */
 	public static function get_props( $args = [] ) {
@@ -193,7 +197,7 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course author
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_content($args = []) {

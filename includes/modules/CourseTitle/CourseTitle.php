@@ -3,6 +3,7 @@
 /**
  * Tutor Course Title Module for Divi Builder
  * @since 1.0.0
+ * @author Themeum<www.themeum.com>
  */
 
 use TutorLMS\Divi\Helper;
@@ -11,11 +12,6 @@ class TutorCourseTitle extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_title';
 
-	// Visual Builder support (off|partial|on)
-	// - on:      you need to provide JS component for visual builder to render your content
-	//            dynamically in visual builder
-	// - partial: you don't need to provide JS component for visual builder to render your content
-	//            divi will generate blank placeholder for your module instead
 	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
@@ -77,18 +73,6 @@ class TutorCourseTitle extends ET_Builder_Module {
 	/**
 	 * Module's specific fields
 	 *
-	 *
-	 * The following modules are automatically added regardless being defined or not:
-	 *   Tabs     | Toggles          | Fields
-	 *   --------- ------------------ -------------
-	 *   Content  | Admin Label      | Admin Label
-	 *   Advanced | CSS ID & Classes | CSS ID
-	 *   Advanced | CSS ID & Classes | CSS Class
-	 *   Advanced | Custom CSS       | Before
-	 *   Advanced | Custom CSS       | Main Element
-	 *   Advanced | Custom CSS       | After
-	 *   Advanced | Visibility       | Disable On
-	 *
 	 * @since 1.0.0
 	 *
 	 * @return array
@@ -123,9 +107,8 @@ class TutorCourseTitle extends ET_Builder_Module {
 
 	/**
 	 * Get the Title.
-	 *
+	 * @since 1.0.0
 	 * @param array $args Additional arguments.
-	 *
 	 * @return string
 	 */
 	public static function get_title($args = array()) {
@@ -139,7 +122,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course Title markup.
-	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	protected function get_title_markup() {
