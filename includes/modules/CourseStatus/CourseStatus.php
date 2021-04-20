@@ -101,7 +101,7 @@ class CourseStatus extends ET_Builder_Module {
 					'outside'	=> esc_html__( 'Outside', 'tutor-divi-modules' ),
 					'on_top'	=> esc_html__( 'On Top', 'tutor-divi-modules' ),
 				),
-				'default'			=> 'inside',
+				'default'			=> 'outside',
 				'toggle_slug'		=> 'main_content'
 			),
 
