@@ -44,8 +44,8 @@ class Requirements {
      */
     public function admin_enqueue_scripts() {
         wp_enqueue_style(
-            'tutor-divi-admin-notice-css',
-            DTLMS_ASSETS . 'css/admin_notice.css',
+            'tutor-divi-admin-notice-min-css',
+            DTLMS_ASSETS . 'css/admin_notice.min.css',
             null,
             DTLMS_VERSION
         );
