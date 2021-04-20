@@ -609,24 +609,22 @@ class CourseCarousel extends Component {
     
             //rtl: elementorFrontend.config.is_rtl ? true : false,
     
-            // responsive: [
-            //     {
-            //         breakpoint: 1024,
-            //         settings: {
-            //             slidesToShow: 2,
-            //             slidesToScroll: 1,
-            //             infinite: true,
-            //             dots: true
-            //         }
-            //     },
-            //     {
-            //         breakpoint: 576,
-            //         settings: {
-            //             slidesToShow: 1,
-            //             slidesToScroll: 1
-            //         }
-            //     }
-            // ]
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         };
         
         return (
