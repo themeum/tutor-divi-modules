@@ -83,7 +83,7 @@ class TutorDiviModules extends DiviExtension {
 
     public function enqueue_divi_scripts(){
  		$version = DTLMS_ENV == 'DEV' ? time() : $this->version;
- 		$scripts_file = DTLMS_ENV == 'DEV' ? 'js/scripts.js' : 'js/scripts.min.js';
+ 		$scripts_file = 'js/scripts.js';
 		wp_enqueue_script(
 			'tutor-divi-scripts',
 			DTLMS_ASSETS . $scripts_file,
