@@ -12,7 +12,7 @@ if(params.has('et_fb')) {
      * course curricle on click toggle icon
      * @since 1.0.0
      */
-     if(document.querySelector("#tutor_divi_col_icon")){
+     if(document.querySelector("#tutor_divi_col_icon") !== null){
         
         const collaps_icon    = document.querySelector("#tutor_divi_col_icon").value;
         const expand_icon     = document.querySelector("#tutor_divi_exp_icon").value;
@@ -36,13 +36,16 @@ if(params.has('et_fb')) {
      * set data-icon attr to show et font icon
      * @since 1.0.0
     */ 
-    const cart_selector = document.querySelectorAll('.tutor-loop-cart-btn-wrap a');
-    const icon          = document.querySelector("#cart_button_font_icon").value;
-    if(cart_selector) {
-        for(let cs of cart_selector) {
-            cs.setAttribute('data-icon', icon)   
-        }
+    if(document.querySelector("#cart_button_font_icon") !== null) {
+        const cart_selector = document.querySelectorAll('.tutor-loop-cart-btn-wrap a');
+        const icon          = document.querySelector("#cart_button_font_icon").value;
+        if(cart_selector) {
+            for(let cs of cart_selector) {
+                cs.setAttribute('data-icon', icon)   
+            }
+        }        
     }
+
 
     /**
      * Tutor Course Carousel Modules
