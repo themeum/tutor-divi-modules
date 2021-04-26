@@ -20,6 +20,9 @@ class CourseInstructor extends Component {
         const star_color        = props.star_color;
 
         const space_between     = props.space_between;
+
+        const section_background    = props.section_background;
+
         //set styles
 
         additionalCss.push([
@@ -88,6 +91,14 @@ class CourseInstructor extends Component {
             ]);            
         }
 
+        if('' !== section_background) {
+            additionalCss.push([
+                {
+                    section: '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+                    declaration: `background-color: ${section_background};`
+                }
+            ]);
+        }
         //set styles end
 
         return additionalCss;

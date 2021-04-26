@@ -31,6 +31,7 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			'advanced'	=> array(
 				'toggles'	=> array(
+					'section_content'		=> esc_html__( 'Content', 'tutor-divi-modules' ),
 					'section_title'			=> esc_html__( 'Section Title', 'tutor-divi-modules' ),
 					'instructor_avatar'		=> esc_html__( 'Instructor Avatar', 'tutor-divi-modules' ),
 					'instructor_name'		=> esc_html__( 'Instructor Name', 'tutor-divi-modules' ),
@@ -108,6 +109,17 @@ class CourseInstructor extends ET_Builder_Module {
 					),
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'instructor_avatar' 
+				),
+				'section_content'	=> array(
+					'css'	=> array(
+						'main'	=> array(
+							'border_styles'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+							'border_radii'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+						),
+						'important'	=> 'all'
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'section_content' 
 				)
 			),
 			'background'    => array(
@@ -209,6 +221,13 @@ class CourseInstructor extends ET_Builder_Module {
 				'default'		=> 'row',
 				'toggle_slug'	=> 'main_content'
 			),
+			//advanced tab section_content toggle
+			'section_background'=> array(
+				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'type'			=> 'color-alpha',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'section_content' 
+			), 
 			//advanced tab instructor_avatar toggle
 			'image_size'		=> array(
 				'label'				=> esc_html__( 'Image Size', 'tutor-divi-modules' ),
@@ -320,6 +339,8 @@ class CourseInstructor extends ET_Builder_Module {
 
 		$space_between		= $this->props['space_between'];
 
+		$section_background = $this->props['section_background'];
+
 		//set styles
 		ET_Builder_Element::set_style(
 			$render_slug,
@@ -405,6 +426,19 @@ class CourseInstructor extends ET_Builder_Module {
 					'declaration' 	=> sprintf(
 						'font-size: %1$s;',
 						$star_size
+					)
+				)
+			);
+		}		
+
+		if( '' !== $section_background ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+					'declaration' 	=> sprintf(
+						'background-color: %1$s;',
+						$section_background
 					)
 				)
 			);
