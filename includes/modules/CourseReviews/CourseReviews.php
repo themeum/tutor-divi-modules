@@ -40,6 +40,7 @@ class CourseReviews extends ET_Builder_Module {
             ),
             'advanced'        => array(
                 'toggles'   => array(
+                    'section_content'   => esc_html__( 'Content', 'tutor-divi-modules' ),
                     'section_title'     => esc_html__( 'Section Title', 'tutor-divi-modules' ),
                     
                     'review_avg_total'  => esc_html__( 'Review Average Total', 'tutor-divi-modules' ),
@@ -161,8 +162,30 @@ class CourseReviews extends ET_Builder_Module {
 					),
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'review_list_avatar'
+                ),                
+                'section_content' => array(
+                    'css'               => array(
+                        'main' => array(
+                            'border_radii'  => '%%order_class%% .tutor-course-reviews-wrap',
+                            'border_styles' => '%%order_class%% .tutor-course-reviews-wrap',
+
+                        ),
+                        'important'     => true
+                    ),
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'section_content'
                 )
-            )
+            ),
+            'box_shadow' => array(
+                'section_background'    => array(
+                    'css' => array(
+                        'main' => '%%order_class%% .tutor-course-reviews-wrap',
+                        ),
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'section_content'
+                ),
+
+            ),
         );
     }
 
@@ -204,6 +227,13 @@ class CourseReviews extends ET_Builder_Module {
                 'default'       => esc_html__( 'Stuent Feedback ', 'tutor-divi-modules' ),
                 'toggle_slug'   => 'main_content'
             ),
+            //advanced tab section_content toggle
+            'section_content_back'=> array(
+                'label'         => esc_html__( 'Background Color', 'tutor-divi-modules' ),
+                'type'          => 'color-alpha',
+                'tab_slug'      => 'advanced',
+                'toggle_slug'   => 'section_content' 
+            ), 
             //advanced tab review_avg_star toggle
             'review_avg_star_color'   => array(
                 'label'         => esc_html__( 'Star Color', 'tutor-divi-modules'),
@@ -378,6 +408,8 @@ class CourseReviews extends ET_Builder_Module {
         $review_list_star_color    = $this->props['review_list_star_color'];
         $review_list_star_size     = $this->props['review_list_star_size'];
 
+        $section_background         = $this->props['section_content_back'];
+
         //set style
         if( '' !== $review_avg_star_color ) {
             ET_Builder_Element::set_style(
@@ -519,6 +551,20 @@ class CourseReviews extends ET_Builder_Module {
                 )
             );             
         }
+
+        //section content background
+        if('' !== $section_background) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-course-student-rating-wrap',
+                    'declaration'   => sprintf(
+                        'background-color: %1$s;',
+                        $section_background
+                    )
+                )
+            );             
+        }        
         //set style end
 
         $output = self::get_content( $this->props );

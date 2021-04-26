@@ -21,7 +21,7 @@ class CourseInstructor extends Component {
 
         const space_between     = props.space_between;
 
-        const section_background    = props.section_background;
+        const section_background    = props.section_content_back;
 
         //set styles
 

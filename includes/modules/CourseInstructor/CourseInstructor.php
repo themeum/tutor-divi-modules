@@ -122,6 +122,15 @@ class CourseInstructor extends ET_Builder_Module {
 					'toggle_slug'	=> 'section_content' 
 				)
 			),
+            'box_shadow' => array(
+                'section_background'    => array(
+                    'css' => array(
+                        'main' => '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap'
+                        ),
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'section_content'
+                ),
+            ),
 			'background'    => array(
                 'css'   => array(
                     'main'  => '%%order_class%% .instructor-avatar a span',
@@ -222,7 +231,7 @@ class CourseInstructor extends ET_Builder_Module {
 				'toggle_slug'	=> 'main_content'
 			),
 			//advanced tab section_content toggle
-			'section_background'=> array(
+			'section_content_back'=> array(
 				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
@@ -339,7 +348,7 @@ class CourseInstructor extends ET_Builder_Module {
 
 		$space_between		= $this->props['space_between'];
 
-		$section_background = $this->props['section_background'];
+		$section_background = $this->props['section_content_back'];
 
 		//set styles
 		ET_Builder_Element::set_style(

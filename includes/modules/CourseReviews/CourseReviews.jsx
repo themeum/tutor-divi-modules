@@ -27,7 +27,9 @@ class CourseReviews extends Component {
 
         const review_list_avatar_size   = props.review_list_avatar_size;
         const review_list_star_color    = props.review_list_star_color;
-        const review_list_star_size    = props.review_list_star_size;
+        const review_list_star_size     = props.review_list_star_size;
+
+        const section_background        = props.section_content_back; 
 
         //set styles
         //review avg star
@@ -118,6 +120,15 @@ class CourseReviews extends Component {
                 {
                     selector: review_list_star_selector,
                     declaration: `font-size: ${review_list_star_size};`
+                }
+            ]);              
+        }
+
+        if('' !== section_background) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-student-rating-wrap',
+                    declaration: `background-color: ${section_background};`
                 }
             ]);              
         }
