@@ -38,7 +38,7 @@ class CoursePrice extends ET_Builder_Module {
 			),
 		);
 
-		$selector 		= '%%order_class%% .price';
+		$selector 		= '%%order_class%% .price >ins';
 		$hover_selector = '%%order_class%% .price:hover';
 
 		$this->advanced_fields = array(
@@ -50,19 +50,8 @@ class CoursePrice extends ET_Builder_Module {
 					),
 					'hide_text_align'	=> true,
 					'tab_slug'     		=> 'advanced',
-					'toggle_slug'  		=> 'normal_hover_style',
-					'sub_toggle'		=> 'normal_subtoggle'
+					
 				),
-
-				'hover_style'	=> array(
-					'css'			=> array(
-						'main'	=> $hover_selector
-					),
-					'hide_text_align'	=> true,
-					'tab_slug'			=> 'advanced',
-					'toggle_slug'		=> 'normal_hover_style',
-					'sub_toggle'		=> 'hover_subtoggle'
-				)
 
 			),
 			'button'		=> false,
@@ -114,27 +103,27 @@ class CoursePrice extends ET_Builder_Module {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public function get_settings_modal_toggles () {
-		return array(
-			'advanced'	=> array(
-				'toggles'	=> array(
-					'normal_hover_style'		=> array(
-						'priority'		=> 24,
-						'sub_toggles'	=> array(
-							'normal_subtoggle'	=> array(
-								'name'	=> esc_html__('Normal', 'tutor-divi-modules')
-							),
-							'hover_subtoggle'	=> array(
-								'name'	=> esc_html__('Hover', 'tutor-divi-modules')
-							),
-						),
-						'tabbed_subtoggles' => true,
-						'title' => esc_html__('Style', 'tutor-divi-modules'),
-					),
-				)
-			)
-		);
-	}
+	// public function get_settings_modal_toggles () {
+	// 	return array(
+	// 		'advanced'	=> array(
+	// 			'toggles'	=> array(
+	// 				'normal_hover_style'		=> array(
+	// 					'priority'		=> 24,
+	// 					'sub_toggles'	=> array(
+	// 						'normal_subtoggle'	=> array(
+	// 							'name'	=> esc_html__('Normal', 'tutor-divi-modules')
+	// 						),
+	// 						'hover_subtoggle'	=> array(
+	// 							'name'	=> esc_html__('Hover', 'tutor-divi-modules')
+	// 						),
+	// 					),
+	// 					'tabbed_subtoggles' => true,
+	// 					'title' => esc_html__('Style', 'tutor-divi-modules'),
+	// 				),
+	// 			)
+	// 		)
+	// 	);
+	// }
 
 	/**
 	 * computed value
@@ -173,21 +162,48 @@ class CoursePrice extends ET_Builder_Module {
 	 */
     public function render( $attr, $content = null, $render_slug) {
 		//selectors
-		$selector 		= '%%order_class%% .price';
+		$selector 		= '%%order_class%% .price .price';
 
 		//props
 		$alignment		= $this->props['alignment'];
 		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? $this->props['alignment_tablet'] : $alignment;
 		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;	
 
+		if( 'left' === $alignment) {
+			$alignment = 'flext-end';
+		} else if ( 'right' === $alignment ) {
+			$alignment = 'flext-start';
+		}		
+
+		if( 'left' === $alignment_tablet) {
+			$alignment_tablet = 'flext-end';
+		} else if ( 'right' === $alignment_tablet ) {
+			$alignment_tablet = 'flext-start';
+		}		
+
+		if( 'left' === $alignment_phone) {
+			$alignment_phone = 'flext-end';
+		} else if ( 'right' === $alignment_phone ) {
+			$alignment_phone = 'flext-start';
+		}
+
 		//set styles
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $selector,
+				'declaration'	=> 'display: flex; flex-direction: row-reverse;'
+			)
+		);		
+
 		if( '' !== $alignment ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'		=> $selector,
 					'declaration'	=> sprintf(
-						'text-align: %1$s;',
+						'justify-content: %1$s;',
 						$alignment
 					) 
 				)
@@ -199,7 +215,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'		=> $selector,
 					'declaration'	=> sprintf(
-						'text-align: %1$s;',
+						'justify-content: %1$s;',
 						$alignment_tablet
 					),
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
@@ -212,7 +228,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'		=> $selector,
 					'declaration'	=> sprintf(
-						'text-align: %1$s;',
+						'justify-content: %1$s;',
 						$alignment_phone
 					), 
 					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')

@@ -7,13 +7,38 @@ class CoursePrice extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const selector = '%%order_class%% .price';
+        const selector = '%%order_class%% .price .price';
 
         //props
-        const alignment = props.alignment;
+        let alignment = props.alignment;
         const is_responsive_alignment = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");
-        const alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : alignment;
-        const alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : alignment;
+        let alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : alignment;
+        let alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : alignment;
+
+        if('left' === alignment) {
+            alignment = 'flex-end';
+        } else if('right' === alignment) {
+            alignment = 'flex-start';
+        }        
+
+        if('left' === alignment_tablet) {
+            alignment_tablet = 'flex-end';
+        } else if('right' === alignment_tablet) {
+            alignment_tablet = 'flex-start';
+        }        
+
+        if('left' === alignment_phone) {
+            alignment_phone = 'flex-end';
+        } else if('right' === alignment_phone) {
+            alignment_phone = 'flex-start';
+        }
+
+        additionalCss.push([
+            {
+                selector: selector,
+                declaration: `display: flex; flex-direction: row-reverse;`
+            }
+        ]);
 
         if(alignment) {
             additionalCss.push([
