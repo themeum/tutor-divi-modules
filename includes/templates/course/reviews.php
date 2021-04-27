@@ -23,9 +23,10 @@ if ($disable){
  */
 $course_id  = $args['course'];
 $reviews    = tutor_utils()->get_course_reviews( $course_id );
-if ( ! is_array($reviews) || ! count($reviews)){
-	return;
-}
+
+// if ( ! is_array($reviews) || ! count($reviews)){
+// 	return;
+// }
 ?>
 
 <div class="tutor-single-course-segment">

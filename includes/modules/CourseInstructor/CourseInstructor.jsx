@@ -94,7 +94,7 @@ class CourseInstructor extends Component {
         if('' !== section_background) {
             additionalCss.push([
                 {
-                    section: '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+                    selector: '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
                     declaration: `background-color: ${section_background};`
                 }
             ]);

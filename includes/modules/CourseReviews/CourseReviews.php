@@ -289,7 +289,7 @@ class CourseReviews extends ET_Builder_Module {
             'rating_bar_star_size'       => array(
                 'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
                 'type'          => 'range',
-                'default'       => '8px',
+                'default'       => '15px',
                 'default_unit'  => 'px',
                 'range_settings'    => array(
                     'min'   => '1',
