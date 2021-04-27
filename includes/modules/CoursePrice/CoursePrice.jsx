@@ -44,7 +44,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment};`
+                    declaration: `justify-content: ${alignment};`
                 }
             ]);
         }
@@ -53,7 +53,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment_tablet};`,
+                    declaration: `justify-content: ${alignment_tablet};`,
                     device: 'tablet'
                 }
             ]);
@@ -63,7 +63,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment_phone};`,
+                    declaration: `justify-content: ${alignment_phone};`,
                     device: 'phone'
                 }
             ]);
@@ -80,26 +80,28 @@ class CoursePrice extends Component {
             <Fragment>
                <div className="tutor-divi-course-price">
                     <div className="price">
-                        <del>
-                            <span className="woocommerce-Price-amount amount">
-                                <bdi>
-                                    <span className="woocommerce-Price-currencySymbol">
-                                    $
-                                    </span>
-                                    { this.props.__price.sale_price }
-                                </bdi>
-                            </span>
-                        </del>                        
-                        <ins>
-                            <span className="woocommerce-Price-amount amount">
-                                <bdi>
-                                    <span className="woocommerce-Price-currencySymbol">
-                                    $
-                                    </span>
-                                    { this.props.__price.regular_price }
-                                </bdi>
-                            </span>
-                        </ins>
+                        <div className="price">
+                            <del>
+                                <span className="woocommerce-Price-amount amount">
+                                    <bdi>
+                                        <span className="woocommerce-Price-currencySymbol">
+                                        $
+                                        </span>
+                                        { this.props.__price.sale_price }
+                                    </bdi>
+                                </span>
+                            </del>                        
+                            <ins>
+                                <span className="woocommerce-Price-amount amount">
+                                    <bdi>
+                                        <span className="woocommerce-Price-currencySymbol">
+                                        $
+                                        </span>
+                                        { this.props.__price.regular_price }
+                                    </bdi>
+                                </span>
+                            </ins>
+                        </div>
                     </div>
                </div>
             </Fragment>            

@@ -28,7 +28,7 @@ if (is_array($course_requirements) && count($course_requirements)){
 			<?php esc_html_e( $args['label'] );?>
 		</h4>
 		<div class="tutor-course-requirements-content">
-			<ul class="tutor-course-requirements-items tutor-custom-list-style">
+			<ul class="tutor-course-requirements-items">
 				<?php
 				foreach ($course_requirements as $requirement){
 					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> {$requirement} </span> </li>";

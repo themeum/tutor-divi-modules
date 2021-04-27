@@ -27,7 +27,7 @@ if (is_array($target_audience) && count($target_audience)){
         <h4 class="tutor-segment-title"><?php esc_html_e( $args[ 'label' ]); ?></h4>
 
 		<div class="tutor-course-target-audience-content">
-			<ul class="tutor-course-target-audience-items tutor-custom-list-style">
+			<ul class="tutor-course-target-audience-items">
 				<?php
 				foreach ($target_audience as $audience){
 					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'>{$audience}</span></li>";

@@ -48,8 +48,15 @@ class CourseMaterials extends Component {
         //set styles
         additionalCss.push([
             {
-                selector: `${li_selector}::before`,
-                declaration: 'content: none;'
+                selector: `${wrapper} ul`,
+                declaration: 'padding: 0;'
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: li_selector,
+                declaration: 'list-style: none; padding: 0;'
             }
         ]);
         //wrapper style
@@ -274,7 +281,7 @@ class CourseMaterials extends Component {
             <div className="tutor-single-course-segment  tutor-course-material-includes-wrap">
                 <h4 className="tutor-segment-title"> { this.props.label } </h4>
                 <div className="tutor-course-target-audience-content">
-                    <ul className="tutor-course-target-audience-items tutor-custom-list-style">
+                    <ul className="tutor-course-target-audience-items">
                         { this.materialsList(this.props.__materials, this.props.icon) }
                     </ul>
                 </div>

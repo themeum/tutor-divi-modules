@@ -48,10 +48,18 @@ class CourseRequirements extends Component {
         //set styles
         additionalCss.push([
             {
-                selector: `${li_selector}::before`,
-                declaration: 'content: none;'
+                selector: `${wrapper} ul`,
+                declaration: 'padding: 0;'
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: li_selector,
+                declaration: 'list-style: none; padding: 0;'
             }
         ]);
+
         //wrapper style
         additionalCss.push([
             {
@@ -278,7 +286,7 @@ class CourseRequirements extends Component {
                     </div>
 
                     <div className="tutor-course-requirements-content">
-                        <ul className="tutor-course-requirements-items tutor-custom-list-style">
+                        <ul className="tutor-course-requirements-items">
                             { this.requirementsList(this.props.__requirements, this.props.icon) }
                         </ul>
                     </div>

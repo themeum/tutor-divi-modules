@@ -384,8 +384,8 @@ class TutorCourseRequirements extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'		=> $li_selector."::before",
-				'declaration'	=> 'content: none;'
+				'selector'		=> $li_selector,
+				'declaration'	=> 'padding: 0; list-style:none;'
 			)
 		);
 

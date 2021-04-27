@@ -48,10 +48,18 @@ class CourseBenefits extends Component {
         //set styles
         additionalCss.push([
             {
-                selector: `${li_selector}::before`,
-                declaration: 'content: none;'
+                selector: `${wrapper} ul`,
+                declaration: 'padding: 0;'
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: li_selector,
+                declaration: 'list-style: none; padding: 0;'
             }
         ]);
+        
         //wrapper style
         additionalCss.push([
             {
@@ -281,7 +289,7 @@ class CourseBenefits extends Component {
                 </div>
 
                 <div class="tutor-course-benefits-content">
-                    <ul class="tutor-course-benefits-items tutor-custom-list-style">
+                    <ul class="tutor-course-benefits-items">
                         { this.benefitsList(this.props.__benefits, this.props.icon)}
                     </ul>
                 </div>
