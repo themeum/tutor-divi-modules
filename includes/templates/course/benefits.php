@@ -31,7 +31,7 @@ if (is_array($course_benefits) && count($course_benefits)){
 
 		<h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
 		<div class="tutor-course-benefits-content">
-			<ul class="tutor-course-benefits-items tutor-custom-list-style">
+			<ul class="tutor-course-benefits-items">
 				<?php
 				foreach ($course_benefits as $benefit){
 					echo "<li> <span class='et-pb-icon'>".esc_html( $icon )."</span> <span class='list-item'>{$benefit}</span> </li>";

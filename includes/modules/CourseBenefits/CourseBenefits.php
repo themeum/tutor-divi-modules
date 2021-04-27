@@ -321,8 +321,16 @@ class TutorCourseBenefits extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'		=> $li_selector."::before",
-				'declaration'	=> 'content: none;'
+				'selector'		=> $wrapper." ul",
+				'declaration'	=> 'list-style:none; padding: 0px;'
+			)
+		);		
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> $li_selector,
+				'declaration'	=> 'list-style:none; padding: 0px;'
 			)
 		);
 
