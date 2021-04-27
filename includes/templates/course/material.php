@@ -27,7 +27,7 @@ if (is_array($materials) && count($materials)){
 	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
         <h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
 		<div class="tutor-course-target-audience-content">
-			<ul class="tutor-course-target-audience-items tutor-custom-list-style">
+			<ul class="tutor-course-target-audience-items">
 				<?php
 				foreach ($materials as $material){
 					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> {$material} </span> </li>";
