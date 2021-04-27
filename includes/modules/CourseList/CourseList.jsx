@@ -826,7 +826,7 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
-        console.log(this.props)
+       
         const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>

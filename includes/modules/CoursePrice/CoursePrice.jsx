@@ -50,10 +50,32 @@ class CoursePrice extends Component {
         if(!this.props.__price) {
             return '';
         }
+        console.log(this.props.__price);
         return (
             <Fragment>
-               <div className="price">
-                   { this.props.__price.price }
+               <div className="tutor-divi-course-price">
+                    <div className="price">
+                        <del>
+                            <span className="woocommerce-Price-amount amount">
+                                <bdi>
+                                    <span className="woocommerce-Price-currencySymbol">
+                                    $
+                                    </span>
+                                    { this.props.__price.sale_price }
+                                </bdi>
+                            </span>
+                        </del>                        
+                        <ins>
+                            <span className="woocommerce-Price-amount amount">
+                                <bdi>
+                                    <span className="woocommerce-Price-currencySymbol">
+                                    $
+                                    </span>
+                                    { this.props.__price.regular_price }
+                                </bdi>
+                            </span>
+                        </ins>
+                    </div>
                </div>
             </Fragment>            
         );

@@ -102,6 +102,13 @@ class TutorCourseDescription extends ET_Builder_Module {
 					'course',
 				),
 			),
+			'label'			=> array(
+				'label'			=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'type'			=> 'text',
+				'default'		=> esc_html__( 'Description', 'tutor-divi-modules' ),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'main_content'
+			)
 		);
 
 		return $fields;
@@ -115,10 +122,9 @@ class TutorCourseDescription extends ET_Builder_Module {
 	public static function get_content($args = []) {
 		$course = Helper::get_course($args);
 		$output = '';
-		if ($course) {
-			$output = tutor_course_content(false); //echo false
-		}
-
+		ob_start();
+		include_once dtlms_get_template('course/description');
+		$output = ob_get_clean();
 		return $output;
 	}
 

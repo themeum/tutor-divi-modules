@@ -142,14 +142,22 @@ class CoursePrice extends ET_Builder_Module {
 	 * @return string | array course level
 	 */
 	public static function get_props( $args = [] ) {
-		$course_id 		= $args[ 'course' ];
-		$price		= tutor_utils()->get_course_price( $course_id );
-		$price 		= is_null($price) ? "Free" : $price ;
-		$props = [
-			'price'	=> $price,
-		];
+		$course_id 	= $args[ 'course' ];
+		$price		= tutor_utils()->get_raw_course_price( $course_id );
+		return $price;
+	}	
 
-		return $props;
+	/**
+	 * computed value
+	 * @since 1.0.0
+	 * @return string
+	 */
+	public static function get_content() {
+		ob_start();
+		tutor_course_price() ;
+		$price 		= ob_get_clean(); 	
+		$content = '<div class="tutor-divi-course-price">'.$price.'</div>';
+		return $content;	
 	}	
 
 	/**
@@ -213,11 +221,7 @@ class CoursePrice extends ET_Builder_Module {
 		}
 
 		//set styles end
-
-		$price		= tutor_utils()->get_course_price( $this->props['course']);
-		$price 		= is_null($price) ? "Free" : $price ;
-		
-        $output		= '<div class="price"> '.$price.' </div>';
+		$output 	= self::get_content();
 		return $this->_render_module_wrapper($output, $render_slug);
     }
 

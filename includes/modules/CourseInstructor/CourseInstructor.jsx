@@ -221,7 +221,7 @@ class CourseInstructor extends Component {
         if(!this.props.__instructor){
             return '';
         }
-        console.log(this.props)
+       
         return (
             <Fragment>
                 <h4 className="tutor-segment-title"> { this.props.label } </h4>
