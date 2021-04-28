@@ -39,6 +39,9 @@ class CourseCurriculum extends ET_Builder_Module {
 					),
 					'lesson'	=> array(
 						'title'		=> esc_html__( 'Lesson', 'tutor-divi-modules' )
+					),					
+					'lesson_info'	=> array(
+						'title'		=> esc_html__( 'Lesson Info', 'tutor-divi-modules' )
 					),
 				)
 			)
@@ -90,6 +93,14 @@ class CourseCurriculum extends ET_Builder_Module {
 					'hide_text_align'	=> true,
 					'tab_slug'			=> 'advanced',
 					'toggle_slug'		=> 'lesson'
+				),				
+				'lesson_info'		=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .tutor-lesson-duration'
+					),
+					'hide_text_align'	=> true,
+					'tab_slug'			=> 'advanced',
+					'toggle_slug'		=> 'lesson_info'
 				)
 			),
 			'borders'		=> array(
