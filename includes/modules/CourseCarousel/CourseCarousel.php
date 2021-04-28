@@ -839,6 +839,15 @@ class CourseCarousel extends ET_Builder_Module {
 		$arrows_padding				= $this->props['arrows_padding'];
 
 		//set styles
+		//margin for hover animation
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%%
+					.tutor-divi-card.hover-animation',
+					'declaration'	=> 'margin-top: 7px;'
+			)
+		);		
 		//make carousel item equal height
 		if( $skin === 'classic' || $skin === 'card' ) {
 			ET_Builder_Element::set_style(
@@ -1007,14 +1016,6 @@ class CourseCarousel extends ET_Builder_Module {
 
 
 		if( $skin === 'overlayed' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed
-						.tutor-divi-card',
-						'declaration'	=> 'margin-top: 7px;'
-				)
-			);
 
 			//style container
 			ET_Builder_Element::set_style(
@@ -1038,7 +1039,7 @@ class CourseCarousel extends ET_Builder_Module {
 					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:before',
 					'declaration'	=> '	background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
 						background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
-						background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+						background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%) ;
 						
 						position: absolute;
 					    content: "";
@@ -1080,13 +1081,13 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-rating-count,
-						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-title h2 a,
-						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-loop-meta,
-						.%%order_class%% .tutor-divi-carousel-overlayed .tutor-loop-author>div a,
-						.%%order_class%% .tutor-divi-carousel-overlayed .etlms-loop-cart-btn-wrap a,
-						.%%order_class%% .tutor-divi-carousel-overlayed .price',
-					'declaration'	=> 'color: #fff;'
+					'selector'		=> '%%order_class%% .tutor-divi-card .tutor-rating-count,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-title h2 a,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-meta,
+                        %%order_class%% .tutor-divi-card .tutor-loop-author>div a,
+                        %%order_class%% .tutor-divi-card .etlms-loop-cart-btn-wrap a,
+                        %%order_class%% .tutor-divi-card .price, %%order_class%% .tutor-loop-cart-btn-wrap a, %%order_class%% .tutor-loop-cart-btn-wrap a:before ',
+					'declaration'	=> 'color: #fff !important;'
 				)
 			);
 			//hover overlayed

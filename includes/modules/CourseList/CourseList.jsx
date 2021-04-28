@@ -67,6 +67,15 @@ class CourseList extends Component {
         const rows_gap                  = props.rows_gap;
 
         //set styles
+        //default margin for hover animation
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% 
+                        .tutor-divi-card.hover-animation`,
+                    declaration: `margin-top: 7px;`
+                }
+            ]);
+
         //card hover animation
         if(hover_animation === 'on') {
             additionalCss.push([
@@ -227,14 +236,6 @@ class CourseList extends Component {
         if(skin === 'overlayed') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-courselist-overlayed
-                        .tutor-divi-card`,
-                    declaration: `margin-top: 7px;`
-                }
-            ]);
-
-            additionalCss.push([
-                {
                     selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card`,
                     declaration: `background-size: cover;
                         background-repeat: no-repeat;
@@ -250,7 +251,7 @@ class CourseList extends Component {
                     selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card:before`,
                     declaration: `background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
                         background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
-                        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);;
+                        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%) !important;
                         
                         position: absolute;
                         content: "";
@@ -286,13 +287,13 @@ class CourseList extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-rating-count,
-                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-title h2 a,
-                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-meta,
-                        .%%order_class%% .tutor-divi-courselist-overlayed .tutor-loop-author>div a,
-                        .%%order_class%% .tutor-divi-courselist-overlayed .etlms-loop-cart-btn-wrap a,
-                        .%%order_class%% .tutor-divi-courselist-overlayed .price`,
-                    declaration: `color: #fff;` 
+                    selector: `%%order_class%% .tutor-divi-card .tutor-rating-count,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-title h2 a,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-meta,
+                        %%order_class%% .tutor-divi-card .tutor-loop-author>div a,
+                        %%order_class%% .tutor-divi-card .etlms-loop-cart-btn-wrap a,
+                        %%order_class%% .tutor-divi-card .price, %%order_class%% .tutor-loop-cart-btn-wrap a, %%order_class%% .tutor-loop-cart-btn-wrap a:before`,
+                    declaration: `color: #fff !important;` 
                 }
             ]);            
 

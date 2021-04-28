@@ -875,6 +875,15 @@ class CourseList extends ET_Builder_Module {
         $rows_gap					= $this->props['rows_gap'];
 
 		//set styles
+		//default margin for hover animation
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% 
+					.tutor-divi-card.hover-animation',
+					'declaration'	=> 'margin-top: 7px;'
+			)
+		);		
 		//make list item equal height
 		if( 'classic' === $skin || 'card' === $skin ) {
 			ET_Builder_Element::set_style(
@@ -1008,14 +1017,6 @@ class CourseList extends ET_Builder_Module {
 
 
 		if( $skin === 'overlayed' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> '%%order_class%% .tutor-divi-courselist-overlayed
-						.tutor-divi-card',
-						'declaration'	=> 'margin-top: 7px;'
-				)
-			);
 
 			//style container
 			ET_Builder_Element::set_style(
@@ -1081,13 +1082,13 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-courselist-overlayed .tutor-rating-count,
-						.%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-title h2 a,
-						.%%order_class%% .tutor-divi-courselist-overlayed .tutor-course-loop-meta,
-						.%%order_class%% .tutor-divi-courselist-overlayed .tutor-loop-author>div a,
-						.%%order_class%% .tutor-divi-courselist-overlayed .etlms-loop-cart-btn-wrap a,
-						.%%order_class%% .tutor-divi-courselist-overlayed .price',
-					'declaration'	=> 'color: #fff;'
+					'selector'		=> '%%order_class%% .tutor-divi-card .tutor-rating-count,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-title h2 a,
+                        %%order_class%% .tutor-divi-card .tutor-course-loop-meta,
+                        %%order_class%% .tutor-divi-card .tutor-loop-author>div a,
+                        %%order_class%% .tutor-divi-card .etlms-loop-cart-btn-wrap a,
+                        %%order_class%% .tutor-divi-card .price, %%order_class%% .tutor-loop-cart-btn-wrap a, %%order_class%% .tutor-loop-cart-btn-wrap a:before',
+					'declaration'	=> 'color: #fff !important;'
 				)
 			);
 			//hover overlayed
