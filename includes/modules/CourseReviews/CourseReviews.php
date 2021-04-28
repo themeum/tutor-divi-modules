@@ -557,7 +557,7 @@ class CourseReviews extends ET_Builder_Module {
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => '%%order_class%% .tutor-course-student-rating-wrap',
+                    'selector'      => '%%order_class%% .tutor-course-reviews-wrap',
                     'declaration'   => sprintf(
                         'background-color: %1$s;',
                         $section_background

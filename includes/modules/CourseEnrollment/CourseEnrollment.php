@@ -354,6 +354,22 @@ class CourseEnrollment extends ET_Builder_Module {
                     'selector'      => '%%order_class%% #tutor-gradebook-generate-for-course',
                     'declaration'   => 'width: 100%;'
                 )
+            );            
+            //for add to cart button
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .tutor-course-purchase-box form',
+                    'declaration'   => 'width: 100%;'
+                )
+            );            
+
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% .single_add_to_cart_button.tutor-button',
+                    'declaration'   => 'display: flex; justify-content: center; width:100%;'
+                )
             );
 
         } else if ( $width === 'auto') {

@@ -127,7 +127,7 @@ class CourseReviews extends Component {
         if('' !== section_background) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-student-rating-wrap',
+                    selector: '%%order_class%% .tutor-course-reviews-wrap',
                     declaration: `background-color: ${section_background};`
                 }
             ]);              
