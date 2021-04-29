@@ -75,7 +75,7 @@ class CoursePrice extends Component {
         if(!this.props.__price) {
             return '';
         }
-        console.log(this.props.__price);
+        
         return (
             <Fragment>
                <div className="tutor-divi-course-price">

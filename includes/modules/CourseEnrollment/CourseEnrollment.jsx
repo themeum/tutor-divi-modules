@@ -236,10 +236,9 @@ class CourseEnrollment extends Component {
         return additionalCss;
     }
 
-    switchTemplate(props) {
-        if('enrollment' === props.preview_mode) {
+    addToCartOrEnrollNow(is_purchaseable) {
+        if(is_purchaseable) {
             return (
-                <Fragment>
                     <div className="tutor-course-enrollment-box">
                         <div className="tutor-single-add-to-cart-box">
                             <div className="tutor-course-purchase-box">
@@ -250,16 +249,26 @@ class CourseEnrollment extends Component {
                             </div>
                         </div>
                     </div>
-            
-                    <div className="tutor-course-enrollment-box">
-                        <div className="tutor-single-add-to-cart-box">
-                            <div className="tutor-course-enroll-wrap">
-                                <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn">
-                                    <span>Enroll Now</span>  
-                                </button>
-                            </div>
-                        </div>
-                    </div>  
+            );
+        }
+        return (
+            <div className="tutor-course-enrollment-box">
+                <div className="tutor-single-add-to-cart-box">
+                    <div className="tutor-course-enroll-wrap">
+                        <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn">
+                            <span>Enroll Now</span>  
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );     
+    }
+   
+    switchTemplate(props) {
+        if('enrollment' === props.preview_mode) {
+            return (
+                <Fragment>
+                    { this.addToCartOrEnrollNow(props.__enrollment) } 
                 </Fragment>
             );
         } else {
@@ -302,6 +311,9 @@ class CourseEnrollment extends Component {
     }
 
     render() {
+        if(!this.props.__enrollment) {
+            return '';
+        }
        
         return (
            <Fragment>

@@ -403,7 +403,8 @@ class CourseCarousel extends ET_Builder_Module {
 			'category_includes'	=> array(
 				'label'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
 				'type'			=> 'multiple_checkboxes',
-				'options'		=> tutor_div_course_categories(),
+				'options'		=> tutor_divi_course_categories(),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'query'
 			),			
@@ -411,6 +412,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Author', 'tutor-divi-modules' ),
 				'type'			=> 'multiple_checkboxes',
 				'options'		=> tutor_divi_course_authors(),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'query'
 			),

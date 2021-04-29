@@ -285,9 +285,10 @@ class CourseEnrollment extends ET_Builder_Module {
 	/**
 	 * Get props
      * @since 1.0.0
+     * @return bool
 	 */
     public static function get_props( $args = [] ) {
-
+        return tutils()->is_course_purchasable($args['course']) ? true : false;
     }
 
 	/**
@@ -323,6 +324,7 @@ class CourseEnrollment extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */    
     public function render ( $attrs, $content = null, $render_slug ) {
+
         //selectors
         $three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';
         $enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
