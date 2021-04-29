@@ -3,6 +3,18 @@
 
 <!--loading course init-->
 <?php
+$available_cat  = tutor_div_course_categories();
+ksort($available_cat);
+$category_includes = $args['category_includes'];
+$category_includes = explode('|', $category_includes);
+
+$includes = array_filter($category_includes, function($cat){
+        if($cat === 'on') {
+            return $cat;
+        }
+});
+$arr_val = array_values($available_cat);
+
 //sanitizing fields befor push into query
 
 $order_by           = sanitize_text_field( $args['order_by'] );

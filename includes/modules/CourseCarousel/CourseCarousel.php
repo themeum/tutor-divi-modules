@@ -400,6 +400,20 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
+			'category_includes'	=> array(
+				'label'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
+				'type'			=> 'multiple_checkboxes',
+				'options'		=> tutor_div_course_categories(),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'query'
+			),			
+			'author_includes'	=> array(
+				'label'			=> esc_html__( 'Author', 'tutor-divi-modules' ),
+				'type'			=> 'multiple_checkboxes',
+				'options'		=> tutor_divi_course_authors(),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'query'
+			),
 
 			//general tab carosuel_settings toggle
 			'arrows'	=> array(
