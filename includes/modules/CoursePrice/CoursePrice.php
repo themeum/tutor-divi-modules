@@ -98,32 +98,6 @@ class CoursePrice extends ET_Builder_Module {
 		);
     }
 
-	/**
-	 * custom tabs for label & value
-	 * @since 1.0.0
-	 * @return array
-	 */
-	// public function get_settings_modal_toggles () {
-	// 	return array(
-	// 		'advanced'	=> array(
-	// 			'toggles'	=> array(
-	// 				'normal_hover_style'		=> array(
-	// 					'priority'		=> 24,
-	// 					'sub_toggles'	=> array(
-	// 						'normal_subtoggle'	=> array(
-	// 							'name'	=> esc_html__('Normal', 'tutor-divi-modules')
-	// 						),
-	// 						'hover_subtoggle'	=> array(
-	// 							'name'	=> esc_html__('Hover', 'tutor-divi-modules')
-	// 						),
-	// 					),
-	// 					'tabbed_subtoggles' => true,
-	// 					'title' => esc_html__('Style', 'tutor-divi-modules'),
-	// 				),
-	// 			)
-	// 		)
-	// 	);
-	// }
 
 	/**
 	 * computed value
