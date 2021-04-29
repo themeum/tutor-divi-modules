@@ -717,13 +717,13 @@ class CourseCurriculum extends ET_Builder_Module {
 		}		
 		//lesson style
 
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .tutor-course-lesson h5',
-				'declaration'	=> 'display: block !important;'
-			)
-		);
+		// ET_Builder_Element::set_style(
+		// 	$render_slug,
+		// 	array(
+		// 		'selector'		=> '%%order_class%% .tutor-course-lesson h5',
+		// 		'declaration'	=> 'display: block !important;'
+		// 	)
+		// );
 		if( '' !== $lesson_icon_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
