@@ -763,7 +763,7 @@ class CourseCarousel extends ET_Builder_Module {
 		$author_includes        = explode('|', $author_includes);
 		$selected_author_ids    = tutor_divi_get_user_selected_authors($available_author, $author_includes);
 
-		$args	= array(
+		$query_args	= array(
 			'post_type'         => $post_type,
 			'post_status'       => $post_status,
 			'posts_per_page'    => sanitize_text_field( $limit ),
@@ -789,7 +789,7 @@ class CourseCarousel extends ET_Builder_Module {
 
 		$courses = [];
 
-		$query	= new WP_Query( $args );
+		$query	= new WP_Query( $query_args );
 
 		if($query->have_posts()) {
 		
@@ -827,7 +827,7 @@ class CourseCarousel extends ET_Builder_Module {
 				array_push($courses, $post);
 	
 			}
-			
+			wp_reset_postdata();
 			return $courses;
 		} else {
 			return false;

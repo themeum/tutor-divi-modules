@@ -405,10 +405,26 @@ class CourseList extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Limit', 'tutor-divi-modules' ),
 				'type'			=> 'text',
 				'description'	=> esc_html__( 'Input -1 for all courses', 'tutor-divi-modules'),
-				'default'		=> '5',
+				'default'		=> '6',
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
+			'category_includes'	=> array(
+				'label'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
+				'type'			=> 'multiple_checkboxes',
+				'options'		=> tutor_divi_course_categories(),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'query'
+			),			
+			'author_includes'	=> array(
+				'label'			=> esc_html__( 'Author', 'tutor-divi-modules' ),
+				'type'			=> 'multiple_checkboxes',
+				'options'		=> tutor_divi_course_authors(),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'query'
+			),			
 			//general tab pagination toggle
 			'pagination_type'	=> array(
 				'label'			=> esc_html__( 'Pagination Type', 'tutor-divi-modules' ),
@@ -615,6 +631,8 @@ class CourseList extends ET_Builder_Module {
 					'limit',
 					'order_by',
 					'order',
+					'category_includes',
+					'author_includes',
 					'image_size',
 					'pagination_type',
 					'prev_level',
@@ -624,6 +642,8 @@ class CourseList extends ET_Builder_Module {
 					'limit',
 					'order_by',
 					'order',
+					'category_includes',
+					'author_includes',					
 					'image_size',
 					'pagination_type',
 					'prev_level',
@@ -729,7 +749,24 @@ class CourseList extends ET_Builder_Module {
 		$order			= isset($args['order']) ? $args['order'] : 'DESC';
 		$image_size		= isset($args['image_size']) ? $args['image_size'] : 'medium_large';
 
-		$args	= array(
+		//available categories
+		$available_cat      = tutor_divi_course_categories();
+		//sort be key asc order
+		ksort($available_cat);
+
+		//user's selected category
+		$category_includes  = $args['category_includes'];
+		$category_includes  = explode('|', $category_includes);
+
+		$category_terms     = tutor_divi_get_user_selected_terms( $available_cat, $category_includes );
+
+		$available_author   = tutor_divi_course_authors();
+		ksort($available_author);
+
+		$author_includes        = $args['author_includes'];
+		$author_includes        = explode('|', $author_includes);
+		$selected_author_ids    = tutor_divi_get_user_selected_authors($available_author, $author_includes);
+		$query_args	= array(
 			'post_type'         => $post_type,
 			'post_status'       => $post_status,
 			'posts_per_page'    => sanitize_text_field( $limit ),
@@ -737,9 +774,25 @@ class CourseList extends ET_Builder_Module {
 			'order'             => sanitize_text_field( $order )
 		);
 
+		if( count($selected_author_ids) > 0) {
+		    $query_args['author__in']    = $selected_author_ids;
+		}
+
+		if( count($category_terms) > 0 ) {
+		       $query_args['tax_query'] = array(
+		        'relation' => 'AND',
+		        array(
+		            'taxonomy' => 'course-category',
+		            'field'    => 'term_id',
+		            'terms'    => $category_terms,
+		            'operator' => 'IN',
+		        ),
+		    );    
+		}
+
 		$courses = [];
 
-		$query	= new WP_Query( $args );
+		$query	= new WP_Query( $query_args );
 
 		if($query->have_posts()) {
 		
@@ -793,6 +846,7 @@ class CourseList extends ET_Builder_Module {
 				'courses'		=> $courses,
 				'pagination'	=> paginate_links( $pagination_args )
 			);
+			wp_reset_postdata();
 		} else {
 			return false;
 		}

@@ -3,6 +3,24 @@
 
 <!--loading course init-->
 <?php
+
+//available categories
+$available_cat      = tutor_divi_course_categories();
+//sort be key asc order
+ksort($available_cat);
+
+//user's selected category
+$category_includes  = $args['category_includes'];
+$category_includes  = explode('|', $category_includes);
+
+$category_terms     = tutor_divi_get_user_selected_terms( $available_cat, $category_includes );
+
+$available_author   = tutor_divi_course_authors();
+ksort($available_author);
+
+$author_includes        = $args['author_includes'];
+$author_includes        = explode('|', $author_includes);
+$selected_author_ids    = tutor_divi_get_user_selected_authors($available_author, $author_includes);
 //sanitizing fields befor push into query
 
 $order_by           = sanitize_text_field( $args['order_by'] );
@@ -41,6 +59,22 @@ $query_args = [
     'order_by'          => $order_by,
     'order'             => $order
 ];
+
+if( count($selected_author_ids) > 0) {
+    $query_args['author__in']    = $selected_author_ids;
+}
+
+if( count($category_terms) > 0 ) {
+       $query_args['tax_query'] = array(
+        'relation' => 'AND',
+        array(
+            'taxonomy' => 'course-category',
+            'field'    => 'term_id',
+            'terms'    => $category_terms,
+            'operator' => 'IN',
+        ),
+    );    
+}
 
 $the_query = new WP_Query($query_args);
 
