@@ -66,7 +66,7 @@ class CourseCarousel extends ET_Builder_Module {
 					),
 					'hide_text_align'	=> true,
 					'tab_slug'			=> 'advanced',
-					'toggle_slug'		=> 'title' 
+					'toggle_slug'		=> 'title'
 				),
 				'meta'	=> array(
 					'css'				=> array(
@@ -655,16 +655,20 @@ class CourseCarousel extends ET_Builder_Module {
 					'get_props'
 				),
 				'computed_depends_on'	=> array(
+					'category_includes',
+					'author_includes',
 					'limit',
 					'order_by',
 					'order',
 					'image_size'
 				),
 				'computed_minimum'		=> array(
+					'category_includes',
+					'author_includes',
 					'limit',
 					'order_by',
 					'order',
-					'image_size'
+					'image_size'					
 				)
 			),
 			//advanced tab footer toggle
@@ -741,6 +745,24 @@ class CourseCarousel extends ET_Builder_Module {
 		$order			= isset($args['order']) ? $args['order'] : 'DESC';
 		$image_size		= isset($args['image_size']) ? $args['image_size'] : 'medium_large';
 
+		//available categories
+		$available_cat      = tutor_divi_course_categories();
+		//sort be key asc order
+		ksort($available_cat);
+
+		//user's selected category
+		$category_includes  = $args['category_includes'];
+		$category_includes  = explode('|', $category_includes);
+
+		$category_terms     = tutor_divi_get_user_selected_terms( $available_cat, $category_includes );
+
+		$available_author   = tutor_divi_course_authors();
+		ksort($available_author);
+
+		$author_includes        = $args['author_includes'];
+		$author_includes        = explode('|', $author_includes);
+		$selected_author_ids    = tutor_divi_get_user_selected_authors($available_author, $author_includes);
+
 		$args	= array(
 			'post_type'         => $post_type,
 			'post_status'       => $post_status,
@@ -748,6 +770,22 @@ class CourseCarousel extends ET_Builder_Module {
 			'order_by'          => sanitize_text_field( $order_by ),
 			'order'             => sanitize_text_field( $order )
 		);
+
+		if( count($selected_author_ids) > 0) {
+		    $query_args['author__in']    = $selected_author_ids;
+		}
+
+		if( count($category_terms) > 0 ) {
+		       $query_args['tax_query'] = array(
+		        'relation' => 'AND',
+		        array(
+		            'taxonomy' => 'course-category',
+		            'field'    => 'term_id',
+		            'terms'    => $category_terms,
+		            'operator' => 'IN',
+		        ),
+		    );    
+		}
 
 		$courses = [];
 
