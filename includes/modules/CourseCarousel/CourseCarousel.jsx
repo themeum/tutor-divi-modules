@@ -709,7 +709,6 @@ class CourseCarousel extends Component {
             return '';
         }
        
-
         return (
         <Fragment>
 
