@@ -53,26 +53,26 @@ if(params.has('et_fb')) {
      * @since 1.0.0
      */
     jQuery(document).ready(function($){
-        const selector                  = document.querySelector("#tutor_divi_carousel_settings");
+        $('.tutor-divi-carousel-main-wrap').each(function(i,obj){
+            var settings                    = $(this).find("#tutor_divi_carousel_settings");
+            var slides_to_show              = settings.attr('slides_to_show');
 
-        if(selector) {
-            var slides_to_show              = selector.getAttribute('slides_to_show');
-            var carousel_arrows             = selector.getAttribute('arrows');
-            var carousel_dots               = selector.getAttribute('dots');
-            var carousel_transition         = selector.getAttribute('transition');
-            var carousel_center             = selector.getAttribute('center_slides');
-            var smooth_scroll               = selector.getAttribute('smooth_scrolling');
-            var carousel_autoplay           = selector.getAttribute('autoplay');
-            var carousel_autoplay_speed     = selector.getAttribute('autoplay_speed');
-            var carousel_infinite_loop      = selector.getAttribute('infinite_loop');
-            var carousel_pause_on_hover     = selector.getAttribute('pause_on_hover');
+            var carousel_arrows             = settings.attr('arrows');
+            var carousel_dots               = settings.attr('dots');
+            var carousel_transition         = settings.attr('transition');
+            var carousel_center             = settings.attr('center_slides');
+            var smooth_scroll               = settings.attr('smooth_scrolling');
+            var carousel_autoplay           = settings.attr('carousel_autoplay');
+            var carousel_autoplay_speed     = settings.attr('autoplay_speed');
+            var carousel_infinite_loop      = settings.attr('infinite_loop');
+            var carousel_pause_on_hover     = settings.attr('pause_on_hover');
 
             carousel_arrows     == 'off' ? carousel_arrows = false : carousel_arrows = true;
             carousel_dots       == 'off' ? carousel_dots = false : carousel_dots = true;
             carousel_transition = Number(carousel_transition);
             carousel_center     == 'off' ? carousel_center = false : carousel_center = true;
             carousel_autoplay   == 'off' ? carousel_autoplay = false : carousel_autoplay = true;
-
+            
             Number(carousel_autoplay_speed);
             slides_to_show = Number(slides_to_show);
            
@@ -83,8 +83,7 @@ if(params.has('et_fb')) {
             }
             carousel_infinite_loop  == 'off' ? carousel_infinite_loop = false : carousel_infinite_loop = true;
             carousel_pause_on_hover == 'off' ? carousel_pause_on_hover = false : carousel_pause_on_hover = true;
-            
-            $(".tutor-divi-slick-responsive").slick({
+            $(this).find('.tutor-divi-slick-responsive').slick({
                 dots: carousel_dots,
                 arrows: carousel_arrows,
                 infinite: carousel_infinite_loop,
@@ -95,14 +94,7 @@ if(params.has('et_fb')) {
                 speed: carousel_transition,
                 centerMode: carousel_center,
                 pauseOnHover: carousel_pause_on_hover,
-
                 cssEase: smooth_scroll,
-
-                //prevArrow: ('.tutor-divi-carousel-arrow-prev'),
-                //nextArrow: ('.tutor-divi-carousel-arrow-next'),
-
-                //rtl: elementorFrontend.config.is_rtl ? true : false,
-
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -121,9 +113,8 @@ if(params.has('et_fb')) {
                         }
                     }
                 ]
-            });
-        }
-
+            })
+        });
     });
 
 }
