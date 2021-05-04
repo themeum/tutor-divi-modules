@@ -14,6 +14,16 @@ $editor_mode = false;
     margin: 0 !important;
 }
 </style>
+<?php
+    $start_continue_icon    = et_pb_process_font_icon($args['start_continue_button_icon']);
+    $complete_icon          = et_pb_process_font_icon($args['complete_button_icon']);
+    $gradebook_icon         = et_pb_process_font_icon($args['gradebook_button_icon']);
+?>
+<div hidden="">
+    <input type="" id="start_continue_button_icon" value="<?php esc_html_e($start_continue_icon);?>">
+    <input type="" id="complete_button_icon" value="<?php esc_html_e($complete_icon);?>">
+    <input type="" id="gradebook_button_icon" value="<?php esc_html_e($gradebook_icon);?>">
+</div>
 <div class="tutor-course-enrollment-box">
     <div class="tutor-lead-info-btn-group">
 	    <?php do_action('tutor_course/single/actions_btn_group/before'); ?>

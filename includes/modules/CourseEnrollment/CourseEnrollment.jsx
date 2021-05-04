@@ -32,7 +32,7 @@ class CourseEnrollment extends Component {
         const icon_size_phone           = is_responsive_icon_size && '' !== props.icon_size_phone ? props.icon_size_phone : icon_size;
         const icon_color                = props.icon_color;
 
-
+        const add_to_cart_font_icon     = props.add_to_cart_button_icon;
         //set styles
         /**
          * default template styling
@@ -232,17 +232,30 @@ class CourseEnrollment extends Component {
                 }
             ]);
         }
+        //if add_to_cart_icon has custom icon then remove default icon
+        if('' !== add_to_cart_font_icon) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% i.tutor-icon-shopping-cart:before',
+                    declaration: `content: '';`,
+                }
+            ]);            
+        }
         //set styles end
         return additionalCss;
     }
 
-    addToCartOrEnrollNow(is_purchaseable) {
-        if(is_purchaseable) {
+    addToCartOrEnrollNow(props) {
+        const utils         = window.ET_Builder.API.Utils;
+        const enroll_now    = utils.processFontIcon(props.enrollment_button_icon);
+        const add_to_cart   = utils.processFontIcon(props.add_to_cart_button_icon);
+
+        if(props.__enrollment) {
             return (
                     <div className="tutor-course-enrollment-box">
                         <div className="tutor-single-add-to-cart-box">
                             <div className="tutor-course-purchase-box">
-                                <button className="single_add_to_cart_button tutor-button alt">
+                                <button className="single_add_to_cart_button tutor-button alt" data-icon={add_to_cart}>
                                     <i className="tutor-icon-shopping-cart"></i>  
                                     <span>Add to Cart</span>  
                                 </button>
@@ -255,7 +268,7 @@ class CourseEnrollment extends Component {
             <div className="tutor-course-enrollment-box">
                 <div className="tutor-single-add-to-cart-box">
                     <div className="tutor-course-enroll-wrap">
-                        <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn">
+                        <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn" data-icon={enroll_now}>
                             <span>Enroll Now</span>  
                         </button>
                     </div>
@@ -265,10 +278,15 @@ class CourseEnrollment extends Component {
     }
    
     switchTemplate(props) {
+        const utils     = window.ET_Builder.API.Utils;
+        const start_continue_button = utils.processFontIcon(props.start_continue_button_icon);
+        const complete_button       = utils.processFontIcon(props.complete_button);
+        const gradebook_button      = utils.processFontIcon(props.gradebook_button);
+
         if('enrollment' === props.preview_mode) {
             return (
                 <Fragment>
-                    { this.addToCartOrEnrollNow(props.__enrollment) } 
+                    { this.addToCartOrEnrollNow(props) } 
                 </Fragment>
             );
         } else {
@@ -277,18 +295,18 @@ class CourseEnrollment extends Component {
                     <div className="tutor-course-enrollment-box">
 
                         <div className="tutor-lead-info-btn-group">
-                            <a href="/" className="tutor-button tutor-success">
+                            <a href="/" className="tutor-button tutor-success" data-icon={start_continue_button}>
                                 Start Course
                             </a>
 
                             <div className="tutor-course-compelte-form-wrap">
-                                <button className="course-complete-button">
+                                <button className="course-complete-button" data-icon={complete_button}>
                                     Complete Course
                                 </button>
                             </div>
                             
                             <a href="/" className="generate-course-gradebook-btn-wrap">
-                                <button className="tutor-button tutor-button-block button-primary">
+                                <button className="tutor-button tutor-button-block button-primary" data-icon={gradebook_button}>
                                     Generate Gradebook
                                 </button>
                             </a>

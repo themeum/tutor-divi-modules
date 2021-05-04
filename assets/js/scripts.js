@@ -47,12 +47,51 @@ if(params.has('et_fb')) {
     }
 
 
+    jQuery(document).ready(function($){
+
+        /**
+         * enrollment/enrolled cart button icon
+         * set data-icon attr to show et font icon
+         * @since 1.0.0
+        */ 
+        const __enroll_button_icon     = $('#enroll_button_font_icon').val();
+        if(__enroll_button_icon != undefined) {
+            initialize_font_icon('.tutor-btn-enroll.tutor-btn', __enroll_button_icon)
+        } 
+
+        const __add_to_cart_button_icon     = $('#add_to_cart_button_font_icon').val();
+        if(__add_to_cart_button_icon != undefined) {
+            initialize_font_icon('.single_add_to_cart_button', __add_to_cart_button_icon)
+        }
+        const __start_continue_button_icon  = $('#start_continue_button_icon').val();
+        if(__start_continue_button_icon != undefined) {
+            initialize_font_icon('.tutor-button.tutor-success', __start_continue_button_icon)
+        }    
+
+        const __complete_button_icon     = $('#complete_button_icon').val();
+        if(__complete_button_icon != '') {
+           
+            initialize_font_icon('.course-complete-button', __complete_button_icon)
+        }    
+
+        const __gradebook_icon     = $('#gradebook_button_icon').val();
+        if(__gradebook_icon != '') {
+           
+            initialize_font_icon('.generate-course-gradebook-btn-wrap > .tutor-button', __gradebook_icon)
+        }
+
+        function initialize_font_icon(elem, icon) {
+            if(document.querySelector(elem) != null) {
+                document.querySelector(elem).setAttribute('data-icon', icon)
+            }
+        } 
+
+
     /**
      * Tutor Course Carousel Modules
      * course carousel settings
      * @since 1.0.0
-     */
-    jQuery(document).ready(function($){
+     */        
         $('.tutor-divi-carousel-main-wrap').each(function(i,obj){
             var settings                    = $(this).find("#tutor_divi_carousel_settings");
             var slides_to_show              = settings.attr('slides_to_show');

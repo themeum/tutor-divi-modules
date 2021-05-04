@@ -347,6 +347,7 @@ class CourseEnrollment extends ET_Builder_Module {
         $icon_size_tablet       = isset($this->props['icon_size_tablet']) && $this->props['icon_size_tablet'] !== '' ? $this->props['icon_size_tablet'] : $icon_size;
         $icon_size_phone        = isset($this->props['icon_size_phone']) && $this->props['icon_size_phone'] !== '' ? $this->props['icon_size_phone'] : $icon_size;
 
+        $add_to_cart_button_icon    = $this->props['add_to_cart_button_icon'];
         //btn width
 
         if( $width === 'fill' ) {
@@ -558,7 +559,15 @@ class CourseEnrollment extends ET_Builder_Module {
                 )
             );            
         }
-
+        if( '' !== $add_to_cart_button_icon ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'      => '%%order_class%% i.tutor-icon-shopping-cart:before',
+                    'declaration'   => 'content:"" !important ;'
+                )
+            );
+        }
         //set styles end
 
         $output = self::get_content( $this->props );
