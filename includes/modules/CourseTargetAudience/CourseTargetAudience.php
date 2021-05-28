@@ -93,6 +93,14 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 					'toggle_slug'     => 'list',
 				),
 			),
+			'button'        => false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false			
 		);
 	}
 

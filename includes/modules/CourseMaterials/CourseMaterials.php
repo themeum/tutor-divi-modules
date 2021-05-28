@@ -78,7 +78,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				),
 			),
 			'borders'    => array(
-				'default'            => array(),
+				'default'            => false,
 				'list'              => array(
 					'css'             	=> array(
 						'main' => array(
@@ -91,6 +91,13 @@ class TutorCourseMaterials extends ET_Builder_Module {
 					'toggle_slug'     => 'list',
 				),
 			),
+			'text'				=> false,
+			'max_width'			=> false,
+			'animation'			=> false,
+			'transform'			=> false,
+			'background'		=> false,
+			'filters'			=> false,
+			'box_shadow'		=> false				
 		);
 	}
 

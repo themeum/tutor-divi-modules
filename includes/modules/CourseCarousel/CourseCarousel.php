@@ -207,6 +207,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			'text'			=> false,
 			'max_width'		=> false,
+			'transform'		=> false
 			
 		);
 		

@@ -12,6 +12,11 @@ class CourseCurriculum extends ET_Builder_Module {
 	public $slug       = 'tutor_course_curriculum';
 	public $vb_support = 'on';
 
+	// Module Credits (Appears at the bottom of the module settings modal)
+	protected $module_credits = array(
+		'author'     => 'Themeum',
+		'author_uri' => 'https://themeum.com',
+	);
 	/**
 	 * Module properties initialization
 	 *
@@ -104,7 +109,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				)
 			),
 			'borders'		=> array(
-				'default'            => array(),
+				'default'            => false,
 				'topics'              => array(
 					'css'             	=> array(
 						'main' => array(
@@ -129,7 +134,14 @@ class CourseCurriculum extends ET_Builder_Module {
 					'toggle_slug'     => 'lesson',
 				),
 			),
-			'margin_padding'	=> array()
+			'margin_padding'	=> array(),
+			'text'				=> false,
+			'max_width'			=> false,
+			'animation'			=> false,
+			'transform'			=> false,
+			'background'		=> false,
+			'filters'			=> false,
+			'box_shadow'		=> false			
 		);
 	}
 

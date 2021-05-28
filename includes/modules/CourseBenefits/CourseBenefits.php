@@ -91,6 +91,13 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'toggle_slug'     => 'list',
 				),
 			),
+			'max_width'			=> false,
+			//'margin_padding'	=> false,
+			'background'		=> false,
+			'box_shadow'		=> false,
+			'filters'			=> false,
+			'animation'			=> false,
+			'transform'			=> false			
 		);
 
 	}

@@ -75,7 +75,15 @@ class CourseStatus extends ET_Builder_Module {
 					'toggle_slug'	=> 'progress_text'
 				),
 			),
-			'button'	=> false
+			'button'        => false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'borders'		=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false			
 		);
     }
 

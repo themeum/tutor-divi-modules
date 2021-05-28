@@ -50,7 +50,11 @@ class CourseThumbnail extends ET_Builder_Module {
                 'css'   => array(
                     'module_alignment'  => $wrapper
                 )
-            )
+            ),
+            'button'        => false,
+            'background'    => false,
+            'filters'       => false,
+            'animation'     => false,
         );
 	}
 

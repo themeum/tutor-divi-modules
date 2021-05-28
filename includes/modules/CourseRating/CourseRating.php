@@ -70,8 +70,15 @@ class TutorCourseRating extends ET_Builder_Module {
 			'text_shadow'    => array(
 				'default' => false,
 			),
-			'button'         => false,
-			'text'			 => false
+			'button'        => false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'borders'		=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false
 		);
 	}
 

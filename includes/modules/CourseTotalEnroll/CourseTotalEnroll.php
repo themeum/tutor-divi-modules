@@ -67,8 +67,15 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 				)
 
 			),
-			'button'		=> false,
-			'text'			=> false	 
+			'borders'       => false,
+			'button'        => false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false	 
 		);
 	}
 

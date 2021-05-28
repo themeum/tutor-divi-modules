@@ -129,7 +129,7 @@ class CourseList extends ET_Builder_Module {
 
 			),
 			'borders'		=> array(
-				'default'	=> array(),
+				'default'	=> false,
 				'card'	=> array(
 					'css'			=> array(
 						'main'	=> array(
@@ -192,13 +192,16 @@ class CourseList extends ET_Builder_Module {
 				'child_filters_target' => array(
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'image',
+					'css'                  => array(
+						'main' => '%%order_class%% .tutor-course-header ,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
+					),					
 				),
-				'css'                  => array(
-					'main' => '%%order_class%% .tutor-course-header ,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
-				),
+
 			),
 			'text'			=> false,
 			'max_width'		=> false,
+			'transform'		=> false,
+			'box_shadow'	=> false,
 			
 		);
 		

@@ -103,7 +103,13 @@ class CourseTags extends ET_Builder_Module {
 						'main' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
 					),
 				),
-			),			
+			),	
+			'background'	=> false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'transform'		=> false,
+			'animation'		=> false,
+			'filters'		=> false		
 		);
     }
 

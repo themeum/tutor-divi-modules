@@ -80,7 +80,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 				),
 			),
 			'borders'    => array(
-				'default'            => array(),
+				'default'            => false,
 				'list'              => array(
 					'css'             	=> array(
 						'main' => array(
@@ -93,6 +93,14 @@ class TutorCourseRequirements extends ET_Builder_Module {
 					'toggle_slug'     => 'list',
 				),
 			),
+			'button'        => false,
+			'max_width'		=> false,
+			'text'			=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false			
 		);
 	}
 

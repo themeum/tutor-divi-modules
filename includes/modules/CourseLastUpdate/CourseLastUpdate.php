@@ -67,8 +67,15 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 				),
 			),
 
-			'button'			=> false,
-			'text'				=> false
+            'borders'           => false,
+            'box_shadow'        => false,
+            'text'              => false,
+            'max_width'         => false,
+            //'margin_padding'  => false,           
+            'background'        => false,
+            'filters'           => false,
+            'animation'         => false,
+            'transform'         => false
 		);
 
 	}

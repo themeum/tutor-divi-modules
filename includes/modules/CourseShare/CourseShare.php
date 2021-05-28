@@ -71,8 +71,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				),
 			),
 			'borders'    => array(
-			
-				'default'            => array(),
+				'default'            => false,
 				'icons'              => array(
 					'css'             	=> array(
 						'main' => array(
@@ -86,7 +85,14 @@ class TutorCourseShare extends ET_Builder_Module {
 				),
 			),	
 
-			'text'				=> false,
+			'button'        => false,
+			'text'			=> false,
+			'max_width'		=> false,
+			'background'	=> false,
+			'filters'		=> false,
+			'animation'		=> false,
+			'box_shadow'	=> false,
+			'transform'		=> false			
 		);
 	}
 

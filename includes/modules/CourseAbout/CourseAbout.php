@@ -69,6 +69,14 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'toggle_slug'  => 'text',
 				),
 			),
+			'max_width'			=> false,
+			//'margin_padding'	=> false,
+			'background'		=> false,
+			'borders'			=> false,
+			'box_shadow'		=> false,
+			'filters'			=> false,
+			'animation'			=> false,
+			'transform'			=> false
 		);
 	}
 

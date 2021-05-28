@@ -54,8 +54,15 @@ class CoursePrice extends ET_Builder_Module {
 				),
 
 			),
-			'button'		=> false,
-			'text'			=> false	 
+			'button'			=> false,
+			'text'				=> false,
+			'borders'			=> false,
+			'max_width'			=> false,
+			'animation'			=> false,
+			'transform'			=> false,
+			'background'		=> false,
+			'filters'			=> false,
+			'box_shadow'		=> false					 
 		);
 	}
 

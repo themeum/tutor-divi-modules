@@ -66,10 +66,15 @@ class TutorCourseCategories extends ET_Builder_Module {
 				),
 			),
 			'button'			=> false,
+			//'margin_padding'	=> false,
 			'max_width'			=> false,
-			'margin_padding'	=> false,
 			'borders'			=> false,
-			'text'				=> false
+			'text'				=> false,
+			'animation'			=> false,
+			'transform'			=> false,
+			'background'		=> false,
+			'filters'			=> false,
+			'box_shadow'		=> false
 		);
 	}
 

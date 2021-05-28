@@ -142,7 +142,12 @@ class CourseInstructor extends ET_Builder_Module {
                 ),
                 'use_background_video'  => false
             ),
-			'text'		=> false
+            'text'              => false,
+            'max_width'         => false,
+            //'margin_padding'  => false,           
+            'filters'           => false,
+            'animation'         => false,
+            'transform'         => false
 		);
 	}
 

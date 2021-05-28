@@ -76,8 +76,31 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					'toggle_slug'  		=> 'author_name_text',
 				),
 			),
-
-			'text'			=> false,
+			'borders'			=> array(
+				'default'		=> array(),
+				'image_border'	=> array(
+					'css'		=> array(
+						'main'	=> array(
+							'border_radii'	=> "%order_class% .tutor-single-course-avatar a img,%order_class% .tutor-single-course-avatar a span",
+							'border_style'	=> "%order_class% .tutor-single-course-avatar a img,%order_class% .tutor-single-course-avatar a span",
+						)
+					)
+				)
+			),
+            'box_shadow'    => array(
+                'default'   => array(
+                    'css'   => array(
+                        'main'  => "%order_class% .tutor-single-course-avatar a img,%order_class% .tutor-single-course-avatar a span",
+                    )
+                )
+            ),
+			'max_width'			=> false,
+			//'margin_padding'	=> false,			
+			'text'				=> false,
+			'background'		=> false,
+			'filters'			=> false,
+			'animation'			=> false,
+			'transform'			=> false			
 		);
 	}
 
