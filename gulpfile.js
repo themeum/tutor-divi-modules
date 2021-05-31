@@ -2,6 +2,9 @@ var gulp = require("gulp"),
 	sass = require("gulp-sass"),
     rename = require("gulp-rename"),
     sourcemaps = require("gulp-sourcemaps"),
+    notify = require("gulp-notify"),
+	wpPot = require('gulp-wp-pot'),
+	clean = require("gulp-clean"),
     plumber = require("gulp-plumber");
 
 var tasks = {
@@ -66,6 +69,41 @@ function minifyJs(cb) {
 	cb();
 }
 
+
+//clean existing build zip file
+function cleanZip(cb) {
+	return gulp.src("./tutor-divi-modules.zip", {
+		read: false,
+		allowEmpty: true
+	}).pipe(clean());
+	cb();
+}
+
+
+//clean file & folders from build
+
+function cleanBuild(cb) {
+	return gulp.src("./build", {
+		read: false,
+		allowEmpty: true
+	}).pipe(clean());
+	cb();
+};
+
+//create pot file
+function makePot(cb) {
+	return gulp
+		.src('**/*.php')
+		.pipe(plumber({
+			errorHandler: onError
+		}))
+		.pipe(wpPot({
+			domain: 'tutor-divi-modules',
+			package: 'Tutor Divi Modules'
+		}))
+		.pipe(gulp.dest('languages/tutor-divi-modules.pot'));
+		cb();
+};
 // bundle all files export to destination directory
 function bundleFiles(cb){
 	return src([
@@ -91,6 +129,7 @@ function bundleFiles(cb){
 	cb();
 }
 
+
 // from destination directory take all files make zip
 function exportZip(cb) {
 	return src("./build/**/*.*").pipe(zip("tutor-divi-modules.zip")).pipe(dest("./"));
@@ -102,4 +141,5 @@ gulp.task("watch", function () {
 	gulp.watch("assets/scss/**/*.scss", gulp.series(...task_keys));
 });
 
-exports.default = series(bundleFiles, exportZip);
+exports.default 	= series(...task_keys, "watch");
+exports.build 		= series(cleanZip,cleanBuild,makePot,bundleFiles, exportZip);
