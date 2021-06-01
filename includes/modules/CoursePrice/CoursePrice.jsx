@@ -85,7 +85,7 @@ class CoursePrice extends Component {
                                 <span className="woocommerce-Price-amount amount">
                                     <bdi>
                                         <span className="woocommerce-Price-currencySymbol">
-                                        $
+                                        { this.props.__price.sale_price !== '' ? '$' : '' }
                                         </span>
                                         { this.props.__price.sale_price }
                                     </bdi>
