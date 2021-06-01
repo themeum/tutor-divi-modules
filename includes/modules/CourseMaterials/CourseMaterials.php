@@ -48,7 +48,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 					'icon' => array(
 						'title'		=> esc_html__('Icon', 'tutor-divi-modules'),
 					),
-					'text' => array(
+					'material_text' => array(
 						'title'		=> esc_html__('Text', 'tutor-divi-modules'),
 					),
 				),
@@ -69,12 +69,12 @@ class TutorCourseMaterials extends ET_Builder_Module {
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'title',
 				),
-				'text' => array(
+				'material_text' => array(
 					'css'          => array(
 						'main' => $li_selector,
 					),
 					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'toggle_slug'  => 'material_text',
 				),
 			),
 			'borders'    => array(

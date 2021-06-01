@@ -48,7 +48,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 					'icon' => array(
 						'title'		=> esc_html__('Icon', 'tutor-divi-modules'),
 					),
-					'text' => array(
+					'target_aud_text' => array(
 						'title'		=> esc_html__('Text', 'tutor-divi-modules'),
 					),
 				),
@@ -70,13 +70,13 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 					'tab_slug'     		=> 'advanced',
 					'toggle_slug'  		=> 'title',
 				),
-				'text' => array(
+				'target_aud_text' => array(
 					'css'          		=> array(
 						'main' => $li_selector,
 					),
 					'hide_text_align'	=> true,
 					'tab_slug'     		=> 'advanced',
-					'toggle_slug'  		=> 'text',
+					'toggle_slug'  		=> 'target_aud_text',
 				),
 			),
 			'borders'    => array(
@@ -244,7 +244,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 					'step'	=> '1'
 				),
 				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'text',
+				'toggle_slug'		=> 'target_aud_text',
 				'mobile_options'	=> true
 			),
 		);
