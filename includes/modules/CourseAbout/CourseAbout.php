@@ -42,7 +42,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'heading' => array(
 						'title'    => esc_html__('Heading', 'tutor-divi-modules'),
 					),
-					'text' => array(
+					'about_text' => array(
 						'title'    => esc_html__('Paragraph', 'tutor-divi-modules'),
 					),
 				),
@@ -61,18 +61,17 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'heading',
 				),
-				'text' => array(
+				'about_text' => array(
 					'css'          		=> array(
 						'main' => $paragraph_selector,
 					),
 					'tab_slug'     		=> 'advanced',
-					'toggle_slug'  		=> 'text',
-					'hide_text_align'	=> true,
-					'hide_text_shadow'	=> true
+					'toggle_slug'  		=> 'about_text',
 				),
 				
 			),
 			'max_width'			=> false,
+			'text'				=> false,
 			//'margin_padding'	=> false,
 			'background'		=> false,
 			'borders'			=> false,

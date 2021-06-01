@@ -48,7 +48,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'icon' => array(
 						'title'		=> esc_html__('Icon', 'tutor-divi-modules'),
 					),
-					'text' => array(
+					'benefit_text' => array(
 						'title'		=> esc_html__('Text', 'tutor-divi-modules'),
 					),
 				),
@@ -69,12 +69,12 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'tab_slug'     => 'advanced',
 					'toggle_slug'  => 'title',
 				),
-				'text' => array(
-					'css'          => array(
+				'benefit_text' => array(
+					'css'          		=> array(
 						'main' => $li_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'benefit_text',
 				),
 			),
 			'borders'    => array(
@@ -92,6 +92,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				),
 			),
 			'max_width'			=> false,
+			'text'				=> false,
 			//'margin_padding'	=> false,
 			'background'		=> false,
 			'box_shadow'		=> false,
