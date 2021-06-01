@@ -62,12 +62,15 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'toggle_slug'  => 'heading',
 				),
 				'text' => array(
-					'css'          => array(
+					'css'          		=> array(
 						'main' => $paragraph_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'text',
+					'tab_slug'     		=> 'advanced',
+					'toggle_slug'  		=> 'text',
+					'hide_text_align'	=> true,
+					'hide_text_shadow'	=> true
 				),
+				
 			),
 			'max_width'			=> false,
 			//'margin_padding'	=> false,

@@ -1454,6 +1454,14 @@ class CourseCarousel extends ET_Builder_Module {
 				) 
 			)
 		);
+		//add padding if thumbnail hide
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .hide-thumbnail .tutor-divi-carousel-course-container',
+				'declaration'	=> 'padding-top: 30px;'
+			)
+		);
 		//set styles end
 
 		$output = self::get_content($this->props);

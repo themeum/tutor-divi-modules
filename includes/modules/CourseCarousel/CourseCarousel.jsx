@@ -477,7 +477,13 @@ class CourseCarousel extends Component {
                 declaration: `display:flex !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
             }
         ]);
-
+		//add padding if thumbnail hide
+		additionalCss.push([
+            {
+                selector: '%%order_class%% .hide-thumbnail .tutor-divi-carousel-course-container',
+                declaration: 'padding-top: 30px;'
+            }
+        ]);
         //set styles end
         return additionalCss;
     }
@@ -708,13 +714,13 @@ class CourseCarousel extends Component {
         if(!this.props.__courses) {
             return '';
         }
-       
+        const thumbnail_hide    = this.props.show_image === 'off' ? 'hide-thumbnail': '';
         return (
         <Fragment>
 
             <div className="tutor-courses-wrap tutor-container tutor-divi-carousel-main-wrap">
 
-                <div className={`tutor-divi-carousel-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                <div className={`tutor-divi-carousel-${this.props.skin} ${thumbnail_hide}`} id="tutor-divi-slick-responsive">
                     { this.sliderTemplate( this.props) }
                 </div>
            
