@@ -246,7 +246,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		$profile_url 	= tutils()->profile_url( $author_id );
 
 		return array(
-			'avatar_url'	=> get_avatar_url( $author_id ),
+			'avatar_url'	=> tutils()->get_tutor_avatar($author_id),
 			'author_name'	=> $author_name,
 			'profile_url'	=> $profile_url
 		);

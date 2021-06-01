@@ -139,8 +139,8 @@ class CourseAuthor extends Component {
         if( props.profile_picture === 'on' ) {
             return (
             <div className="tutor-single-course-avatar">
-                <a href={ this.props.__author.profile_url }> 
-                    <img src= { this.props.__author.avatar_url } alt="avatar"/>
+                <a href={ this.props.__author.profile_url } dangerouslySetInnerHTML={{__html: props.__author.avatar_url}}> 
+                    
                 </a>
             </div>
             );
