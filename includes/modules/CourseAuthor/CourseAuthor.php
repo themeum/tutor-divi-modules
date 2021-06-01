@@ -428,7 +428,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			ET_Builder_Element::set_style( $render_slug, array(
 				'selector'		=> $wrapper,
 				'declaration'	=> sprintf(
-					'display-direction: %1$s;',
+					'flex-direction: %1$s;',
 					esc_html( $layout ) 
 				)
 			) );
