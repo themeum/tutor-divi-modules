@@ -144,7 +144,7 @@ class CourseCarousel extends ET_Builder_Module {
 							'border_radii'	=> "%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container",
 							'border_styles'	=> "%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card,%%order_class%% .tutor-divi-carousel-card .tutor-divi-card,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container"
 						),
-						'important'	=> true
+						'important'	=> 'all'
 					),
 					'tab_slug'		=> 'advanced',
 					'toggle_slug'	=> 'card',
@@ -968,16 +968,7 @@ class CourseCarousel extends ET_Builder_Module {
 			)
 		);
 		//classic
-		if( $skin === 'classic') {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card',
-					'declaration'	=> 'border-radius: 8px;
-						border: 1px solid #EBEBEB;
-						overflow: hidden;'
-				)
-			);			
+		if( $skin === 'classic') {		
 
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1007,7 +998,6 @@ class CourseCarousel extends ET_Builder_Module {
 						height: 100%;
 						-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 						        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-						border-radius: 8px;
 						overflow: hidden;'
 				)
 			);
@@ -1027,8 +1017,7 @@ class CourseCarousel extends ET_Builder_Module {
 				$render_slug,
 				array(
 					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header',
-					'declaration'	=> 'border-radius: 10px;
-						overflow: hidden; z-index: 1;'
+					'declaration'	=> 'overflow: hidden; z-index: 1;'
 				)
 			);			
 
@@ -1079,7 +1068,6 @@ class CourseCarousel extends ET_Builder_Module {
 					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card',
 					'declaration'	=> 'background-size: cover;
 						background-repeat: no-repeat;
-						border-radius: 20px;
 						position: relative;
 						height: 300px;
 						overflow: hidden;
