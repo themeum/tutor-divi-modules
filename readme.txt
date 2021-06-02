@@ -4,7 +4,7 @@ Donate link: https://www.themeum.com
 Tags: LMS, e-learning, Learning management system, Courses, Education, Divi integration for LMS, Divi LMS Modules, tutor LMS, Online courses
 Requires at least: 5.3
 Tested up to: 5.7
-Requires PHP: 7.0
+Requires PHP: 7.3
 Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -90,7 +90,7 @@ Tutor LMS Divi Page builder Addons currently offers the following Divi Page buil
 
 = Minimum Requirements =
 
-* PHP version 5.6.0 or greater (PHP 7.2 or greater is recommended)
+* PHP version 7.3 or greater is recommended
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 = Automatic installation =
