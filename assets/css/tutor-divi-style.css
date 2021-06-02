@@ -74,3 +74,20 @@
 }
 
 /* list styles */
+.tutor-divi-courselist-classic .tutor-divi-card {
+  border-radius: 8px;
+  border: 1px solid #EBEBEB;
+  overflow: hidden;
+}
+
+.tutor-divi-courselist-card .tutor-divi-card {
+  border-radius: 8px;
+}
+
+.tutor-divi-courselist-stacked .tutor-divi-card {
+  border-radius: 10px;
+}
+
+.tutor-divi-courselist-overlayed .tutor-divi-card {
+  border-radius: 20px;
+}

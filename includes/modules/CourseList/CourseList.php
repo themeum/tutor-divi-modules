@@ -983,15 +983,6 @@ class CourseList extends ET_Builder_Module {
 		);
 		//classic
 		if( $skin === 'classic') {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card',
-					'declaration'	=> 'border-radius: 8px;
-						border: 1px solid #EBEBEB;
-						overflow: hidden;'
-				)
-			);			
 
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1009,9 +1000,7 @@ class CourseList extends ET_Builder_Module {
 				array(
 					'selector'		=> '%%order_class%% .tutor-divi-courselist-card .tutor-divi-card',
 					'declaration'	=> '-webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-						        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-						border-radius: 8px;
-						overflow: hidden;'
+						        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);overflow: hidden;'
 				)
 			);
 
@@ -1030,8 +1019,7 @@ class CourseList extends ET_Builder_Module {
 				$render_slug,
 				array(
 					'selector'		=> '%%order_class%% .tutor-divi-courselist-stacked .tutor-course-header',
-					'declaration'	=> 'border-radius: 10px;
-						overflow: hidden; z-index: 1;'
+					'declaration'	=> 'overflow: hidden; z-index: 1;'
 				)
 			);			
 
@@ -1082,7 +1070,6 @@ class CourseList extends ET_Builder_Module {
 					'selector'		=> '%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
 					'declaration'	=> 'background-size: cover;
 						background-repeat: no-repeat;
-						border-radius: 20px;
 						position: relative;
 						height: 300px;
 						overflow: hidden;
