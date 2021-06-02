@@ -1665,7 +1665,7 @@ class CourseList extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'		=> '.tutor_course_list_0',
+				'selector'		=> '.tutor_course_list_0,.tutor_course_list_1,.tutor_course_list_2,.tutor_course_list_3,.tutor_course_list_4,.tutor_course_list_5,.tutor_course_list_6',
 				'declaration'	=> 'filter: none !important;'
 			)
 		);

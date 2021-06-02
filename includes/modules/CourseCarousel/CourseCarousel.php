@@ -1467,7 +1467,7 @@ class CourseCarousel extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'		=> '.tutor_course_carousel_0',
+				'selector'		=> '.tutor_course_carousel_0,.tutor_course_carousel_1,.tutor_course_carousel_2,.tutor_course_carousel_3,.tutor_course_carousel_4,.tutor_course_carousel_5,.tutor_course_carousel_6',
 				'declaration'	=> 'filter: none !important;'
 			)
 		);		
