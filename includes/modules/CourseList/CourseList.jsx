@@ -626,6 +626,13 @@ class CourseList extends Component {
                 }
             ]);
         }
+        //filter
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-header a img',
+                declaration: `filter: hue-rotate(${props.child_filter_hue_rotate}) saturate(${props.child_filter_saturate}) brightness(${props.child_filter_brightness}) invert(${props.child_filter_invert}) sepia(${props.child_filter_sepia}) opacity(${props.child_filter_opacity}) blur(${props.child_filter_blur}) contrast(${props.child_filter_contrast});`
+            }
+        ]);
         //set styles end
         return additionalCss;
     }
@@ -827,7 +834,6 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
-       
         const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>

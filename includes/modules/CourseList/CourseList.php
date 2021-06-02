@@ -199,6 +199,7 @@ class CourseList extends ET_Builder_Module {
 
 			),
 			'text'			=> false,
+			'filters'		=> false,
 			'max_width'		=> false,
 			'transform'		=> false,
 			'box_shadow'	=> false,
@@ -1649,7 +1650,24 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 		}
-
+		//filter
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-course-header a img',
+				'declaration'	=> sprintf(
+					'filter: hue-rotate(%1$s) saturate(%2$s) brightness(%3$s) invert(%4$s) sepia(%5$s) opacity(%6$s) blur(%7$s) contrast(%8$s);',
+					$this->props['child_filter_hue_rotate'],
+					$this->props['child_filter_saturate'],
+					$this->props['child_filter_brightness'],
+					$this->props['child_filter_invert'],
+					$this->props['child_filter_sepia'],
+					$this->props['child_filter_opacity'],
+					$this->props['child_filter_blur'],
+					$this->props['child_filter_contrast']
+				)
+			)
+		);
 		//set styles end
 
 		$output = self::get_content($this->props);
