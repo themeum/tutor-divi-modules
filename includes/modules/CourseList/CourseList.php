@@ -189,17 +189,11 @@ class CourseList extends ET_Builder_Module {
                 'use_background_video'  => false
             ),
 			'filters' => array(
-				'child_filters_target' => array(
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'image',
-					'css'                  => array(
-						'main' => '%%order_class%% .tutor-course-header ,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card',
-					),					
-				),
-
+				'css'      => array(
+					'main' => '%%order_class%% .tutor-course-header a img',
+				),					
 			),
 			'text'			=> false,
-			'filters'		=> false,
 			'max_width'		=> false,
 			'transform'		=> false,
 			'box_shadow'	=> false,
@@ -1657,15 +1651,22 @@ class CourseList extends ET_Builder_Module {
 				'selector'		=> '%%order_class%% .tutor-course-header a img',
 				'declaration'	=> sprintf(
 					'filter: hue-rotate(%1$s) saturate(%2$s) brightness(%3$s) invert(%4$s) sepia(%5$s) opacity(%6$s) blur(%7$s) contrast(%8$s);',
-					$this->props['child_filter_hue_rotate'],
-					$this->props['child_filter_saturate'],
-					$this->props['child_filter_brightness'],
-					$this->props['child_filter_invert'],
-					$this->props['child_filter_sepia'],
-					$this->props['child_filter_opacity'],
-					$this->props['child_filter_blur'],
-					$this->props['child_filter_contrast']
+					$this->props['filter_hue_rotate'],
+					$this->props['filter_saturate'],
+					$this->props['filter_brightness'],
+					$this->props['filter_invert'],
+					$this->props['filter_sepia'],
+					$this->props['filter_opacity'],
+					$this->props['filter_blur'],
+					$this->props['filter_contrast']
 				)
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '.tutor_course_list_0',
+				'declaration'	=> 'filter: none !important;'
 			)
 		);
 		//set styles end

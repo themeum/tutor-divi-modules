@@ -197,12 +197,8 @@ class CourseCarousel extends ET_Builder_Module {
                 'use_background_video'  => false
             ),
 			'filters' => array(
-				'child_filters_target' => array(
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'image',
-				),
 				'css'                  => array(
-					'main' => '%%order_class%% .tutor-divi-carousel-classic .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-card .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header a img,%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card',
+					'main' => '%%order_class%% .tutor-course-header a img',
 				),
 			),
 			'text'			=> false,
@@ -1450,6 +1446,31 @@ class CourseCarousel extends ET_Builder_Module {
 				'declaration'	=> 'padding-top: 30px;'
 			)
 		);
+		//filter
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-course-header a img',
+				'declaration'	=> sprintf(
+					'filter: hue-rotate(%1$s) saturate(%2$s) brightness(%3$s) invert(%4$s) sepia(%5$s) opacity(%6$s) blur(%7$s) contrast(%8$s);',
+					$this->props['filter_hue_rotate'],
+					$this->props['filter_saturate'],
+					$this->props['filter_brightness'],
+					$this->props['filter_invert'],
+					$this->props['filter_sepia'],
+					$this->props['filter_opacity'],
+					$this->props['filter_blur'],
+					$this->props['filter_contrast']
+				)
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '.tutor_course_carousel_0',
+				'declaration'	=> 'filter: none !important;'
+			)
+		);		
 		//set styles end
 
 		$output = self::get_content($this->props);
