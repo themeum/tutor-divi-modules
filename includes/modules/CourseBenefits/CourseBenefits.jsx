@@ -9,7 +9,7 @@ class CourseBenefits extends Component {
         const additionalCss = [];
         //selectors
         const wrapper = '%%order_class%% .tutor-course-benefits-wrap';
-        const li_selector = '%%order_class%% .tutor-course-benefits-wrap li';
+        const li_selector = '%%order_class%% .tutor-course-benefits-wrap ul li';
 		const icon_selector	= "%%order_class%% .tutor-course-benefits-wrap li .et-pb-icon";
 
         //props

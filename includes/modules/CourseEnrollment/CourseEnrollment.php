@@ -166,7 +166,7 @@ class CourseEnrollment extends ET_Builder_Module {
             'text'              => false,
             'max_width'         => false,
             //'margin_padding'  => false,           
-            'background'        => false,
+            //'background'        => false,
             'filters'           => false,
             'animation'         => false,
             'transform'         => false

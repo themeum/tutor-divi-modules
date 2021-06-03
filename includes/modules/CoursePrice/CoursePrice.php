@@ -60,7 +60,7 @@ class CoursePrice extends ET_Builder_Module {
 			'max_width'			=> false,
 			'animation'			=> false,
 			'transform'			=> false,
-			'background'		=> false,
+			//'background'		=> false,
 			'filters'			=> false,
 			'box_shadow'		=> false					 
 		);
@@ -151,21 +151,21 @@ class CoursePrice extends ET_Builder_Module {
 		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;	
 
 		if( 'left' === $alignment) {
-			$alignment = 'flext-end';
+			$alignment = 'flex-end';
 		} else if ( 'right' === $alignment ) {
-			$alignment = 'flext-start';
+			$alignment = 'flex-start';
 		}		
 
 		if( 'left' === $alignment_tablet) {
-			$alignment_tablet = 'flext-end';
+			$alignment_tablet = 'flex-end';
 		} else if ( 'right' === $alignment_tablet ) {
-			$alignment_tablet = 'flext-start';
+			$alignment_tablet = 'flex-start';
 		}		
 
 		if( 'left' === $alignment_phone) {
-			$alignment_phone = 'flext-end';
+			$alignment_phone = 'flex-end';
 		} else if ( 'right' === $alignment_phone ) {
-			$alignment_phone = 'flext-start';
+			$alignment_phone = 'flex-start';
 		}
 
 		//set styles

@@ -19,7 +19,6 @@ do_action('tutor_course/single/before/benefits');
 
 $icon = et_pb_process_font_icon( $args[ 'icon' ] );
 $course_benefits = tutor_course_benefits( $args['course'] );
-
 if ( empty($course_benefits)){
 	return;
 }

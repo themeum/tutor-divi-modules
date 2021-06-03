@@ -95,7 +95,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			'max_width'			=> false,
 			'animation'			=> false,
 			'transform'			=> false,
-			'background'		=> false,
+			//'background'		=> false,
 			'filters'			=> false,
 			'box_shadow'		=> false				
 		);

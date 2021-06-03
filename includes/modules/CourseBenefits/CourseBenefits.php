@@ -149,7 +149,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'block'			=> esc_html__( 'List', 'tutor-divi-modules' ), 
 					'inline-block'	=> esc_html__( 'Inline', 'tutor-divi-modules' ), 
 				),
-				'default'			=> 'list',
+				'default'			=> 'block',
 				'option_category'	=> 'layout',
 				'toggle_slug'		=> 'main_content',
 				'mobile_options'	=> true
