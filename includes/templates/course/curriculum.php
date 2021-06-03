@@ -100,9 +100,6 @@ if($topics->have_posts()) { ?>
 							
 								<?php
 								the_title();
-								if($topic_summery) {
-									echo "<span class='toogle-informaiton-icon'>&quest;</span>";
-								}
 								?>
 							</h4>
                         </div>

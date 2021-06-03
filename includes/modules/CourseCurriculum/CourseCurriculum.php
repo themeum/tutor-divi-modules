@@ -371,8 +371,8 @@ class CourseCurriculum extends ET_Builder_Module {
 			$topics			= tutor_utils()->get_topics( $course_id );
 			
 			$curriculum 		= [
-				'lesson_count'		=> 2,//$tutor_lesson_count,
-				'course_duration'	=> 2,//$tutor_course_duration,
+				'lesson_count'		=> $tutor_lesson_count,
+				'course_duration'	=> $tutor_course_duration,
 				'topics'			=> []
 			];
 			/**

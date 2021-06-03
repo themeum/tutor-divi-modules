@@ -66,7 +66,7 @@ class CourseStatus extends ET_Builder_Module {
 					'toggle_slug'	=> 'section_title'
 				),
 				'progress_text'		=> array(
-					'label'			=> esc_html__( 'Progress Text', 'tutor-divi-modules'),
+					'label'			=> esc_html__( 'Progress', 'tutor-divi-modules'),
 					'css'			=> array(
 						'main'	=> $text_selector
 					),
