@@ -245,16 +245,7 @@ if ( $the_query->have_posts()) : ?>
         wp_reset_postdata();
         ?>
     </div>
-    <!--arrow start-->
-    <?php if("on" == $args['arrows']):?>
-    <div class="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-prev">
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-    </div>
-    <div class="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-next">
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-    </div>
-    <?php endif;?>
-    <!--arrow end-->
+
 
     <!-- loop end -->
 <?php
