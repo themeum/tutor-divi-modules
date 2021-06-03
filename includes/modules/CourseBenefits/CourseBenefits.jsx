@@ -288,7 +288,7 @@ class CourseBenefits extends Component {
                     </h4>
                 </div>
 
-                <div class="tutor-course-benefits-content">
+                <div class="tutor-divi-course-benefits-content">
                     <ul class="tutor-course-benefits-items">
                         { this.benefitsList(this.props.__benefits, this.props.icon)}
                     </ul>

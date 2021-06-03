@@ -853,8 +853,12 @@ msgstr ""
 msgid "Progress Bar"
 msgstr ""
 
-#: includes/modules/CourseStatus/CourseStatus.php:48, includes/modules/CourseStatus/CourseStatus.php:69
+#: includes/modules/CourseStatus/CourseStatus.php:48
 msgid "Progress Text"
+msgstr ""
+
+#: includes/modules/CourseStatus/CourseStatus.php:69
+msgid "Progress"
 msgstr ""
 
 #: includes/modules/CourseStatus/CourseStatus.php:102

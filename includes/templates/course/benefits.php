@@ -29,7 +29,7 @@ if (is_array($course_benefits) && count($course_benefits)){
 	<div class="tutor-single-course-segment tutor-course-benefits-wrap">
 
 		<h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
-		<div class="tutor-course-benefits-content">
+		<div class="tutor-divi-course-benefits-content">
 			<ul class="tutor-course-benefits-items">
 				<?php
 				foreach ($course_benefits as $benefit){
