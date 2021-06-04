@@ -944,25 +944,6 @@ class CourseCarousel extends ET_Builder_Module {
 			);
 		}
 
-		//skin layout styles
-		//prepare header for background overlay & css filters
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .tutor-divi-carousel-classic
-					.tutor-course-header:before,
-					%%order_class%% .tutor-divi-carousel-card
-					.tutor-course-header:before,
-					%%order_class%% .tutor-divi-carousel-stacked
-					.tutor-course-header:before,%%order_class%% .tutor-divi-carousel-overlayed
-					.tutor-divi-card:before',
-				'declaration'	=> 'width: 100%;
-					height: 100%;
-					position: absolute;
-					content: "";
-					z-index: 2;'
-			)
-		);
 		//classic
 		if( $skin === 'classic') {		
 
@@ -1028,8 +1009,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked 
-										.tutor-divi-carousel-course-container',
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container',
 					'declaration'	=> 'z-index: 99;
 						margin-top: -80px;
 						background: white;
@@ -1046,8 +1026,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked 
-										.tutor-divi-carousel-course-container:hover',
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container:hover',
 					'declaration'	=> '-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
 	        			box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);'
 				)
@@ -1107,8 +1086,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed
-						.tutor-divi-carousel-course-container',
+					'selector'		=> '%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-carousel-course-container',
 					'declaration'	=> 'position: absolute;
 						z-index: 99;
 						width: 100%;

@@ -208,8 +208,7 @@ class CourseList extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-courselist-stacked 
-                                        .tutor-divi-courselist-course-container`,
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container`,
                     declaration: `z-index: 99;
                         margin-top: -80px;
                         background: white;
@@ -225,8 +224,7 @@ class CourseList extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-courselist-stacked 
-                                        .tutor-divi-courselist-course-container:hover`,
+                    selector: `%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container:hover`,
                     declaration: `-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
                         box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);`
                 }
@@ -276,8 +274,7 @@ class CourseList extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-courselist-overlayed
-                        .tutor-divi-courselist-course-container`,
+                    selector: `%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-courselist-course-container`,
                     declaration: `position: absolute;
                         z-index: 99;
                         width: 100%;

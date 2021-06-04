@@ -230,8 +230,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked 
-                                        .tutor-divi-carousel-course-container`,
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container`,
                     declaration: `z-index: 99;
                         margin-top: -80px;
                         background: white;
@@ -247,8 +246,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked 
-                                        .tutor-divi-carousel-course-container:hover`,
+                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container:hover`,
                     declaration: `-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
                         box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);`
                 }
@@ -298,8 +296,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed
-                        .tutor-divi-carousel-course-container`,
+                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-carousel-course-container`,
                     declaration: `position: absolute;
                         z-index: 99;
                         width: 100%;
