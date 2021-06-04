@@ -179,8 +179,8 @@ class CourseInstructor extends Component {
                             { this.nameTemplate(props.display_name, instructor.display_name) }
                             { this.designationTemplate(props.designation, instructor.tutor_profile_job_title) }
                         </div>
-                        <div className="instructor-bio">
-                            { instructor.tutor_profile_bio }
+                        <div className="instructor-bio" dangerouslySetInnerHTML={{__html: instructor.tutor_profile_bio }}>
+                            
                         </div>
                     </div>
 
