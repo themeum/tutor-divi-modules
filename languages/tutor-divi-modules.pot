@@ -53,11 +53,11 @@ msgstr ""
 msgid "Tutor Course About"
 msgstr ""
 
-#: includes/modules/CourseAbout/CourseAbout.php:37, includes/modules/CourseAuthor/CourseAuthor.php:37, includes/modules/CourseBenefits/CourseBenefits.php:37, includes/modules/CourseCategories/CourseCategories.php:37, includes/modules/CourseDescription/CourseDescription.php:37, includes/modules/CourseDuration/CourseDuration.php:37, includes/modules/CourseEnrollment/CourseEnrollment.php:37, includes/modules/CourseInstructor/CourseInstructor.php:29, includes/modules/CourseInstructor/CourseInstructor.php:34, includes/modules/CourseLastUpdate/CourseLastUpdate.php:37, includes/modules/CourseLevel/CourseLevel.php:37, includes/modules/CourseMaterials/CourseMaterials.php:37, includes/modules/CoursePrice/CoursePrice.php:36, includes/modules/CourseRating/CourseRating.php:37, includes/modules/CourseRequirements/CourseRequirements.php:37, includes/modules/CourseReviews/CourseReviews.php:38, includes/modules/CourseReviews/CourseReviews.php:43, includes/modules/CourseShare/CourseShare.php:37, includes/modules/CourseStatus/CourseStatus.php:36, includes/modules/CourseTargetAudience/CourseTargetAudience.php:37, includes/modules/CourseTitle/CourseTitle.php:38, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:37
+#: includes/modules/CourseAbout/CourseAbout.php:37, includes/modules/CourseAuthor/CourseAuthor.php:37, includes/modules/CourseBenefits/CourseBenefits.php:37, includes/modules/CourseCategories/CourseCategories.php:37, includes/modules/CourseDuration/CourseDuration.php:37, includes/modules/CourseEnrollment/CourseEnrollment.php:37, includes/modules/CourseInstructor/CourseInstructor.php:29, includes/modules/CourseInstructor/CourseInstructor.php:34, includes/modules/CourseLastUpdate/CourseLastUpdate.php:37, includes/modules/CourseLevel/CourseLevel.php:37, includes/modules/CourseMaterials/CourseMaterials.php:37, includes/modules/CoursePrice/CoursePrice.php:36, includes/modules/CourseRating/CourseRating.php:37, includes/modules/CourseRequirements/CourseRequirements.php:37, includes/modules/CourseReviews/CourseReviews.php:38, includes/modules/CourseReviews/CourseReviews.php:43, includes/modules/CourseShare/CourseShare.php:37, includes/modules/CourseStatus/CourseStatus.php:36, includes/modules/CourseTargetAudience/CourseTargetAudience.php:37, includes/modules/CourseTitle/CourseTitle.php:38, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:37
 msgid "Content"
 msgstr ""
 
-#: includes/modules/CourseAbout/CourseAbout.php:43, includes/modules/CourseAbout/CourseAbout.php:57, includes/modules/CourseDescription/CourseDescription.php:43, includes/modules/CourseDescription/CourseDescription.php:57
+#: includes/modules/CourseAbout/CourseAbout.php:43, includes/modules/CourseAbout/CourseAbout.php:57
 msgid "Heading"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Author Name"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:59, includes/modules/CourseBenefits/CourseBenefits.php:138, includes/modules/CourseCurriculum/CourseCurriculum.php:173, includes/modules/CourseDescription/CourseDescription.php:106, includes/modules/CourseDuration/CourseDuration.php:110, includes/modules/CourseDuration/CourseDuration.php:197, includes/modules/CourseEnrollment/CourseEnrollment.php:59, includes/modules/CourseInstructor/CourseInstructor.php:179, includes/modules/CourseLastUpdate/CourseLastUpdate.php:115, includes/modules/CourseLastUpdate/CourseLastUpdate.php:174, includes/modules/CourseLevel/CourseLevel.php:43, includes/modules/CourseLevel/CourseLevel.php:59, includes/modules/CourseLevel/CourseLevel.php:124, includes/modules/CourseLevel/CourseLevel.php:182, includes/modules/CourseRequirements/CourseRequirements.php:139, includes/modules/CourseReviews/CourseReviews.php:231, includes/modules/CourseShare/CourseShare.php:43, includes/modules/CourseShare/CourseShare.php:64, includes/modules/CourseShare/CourseShare.php:131, includes/modules/CourseStatus/CourseStatus.php:100, includes/modules/CourseTags/CourseTags.php:148, includes/modules/CourseTargetAudience/CourseTargetAudience.php:139, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:114, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:173
+#: includes/modules/CourseAuthor/CourseAuthor.php:59, includes/modules/CourseBenefits/CourseBenefits.php:138, includes/modules/CourseCurriculum/CourseCurriculum.php:173, includes/modules/CourseDuration/CourseDuration.php:110, includes/modules/CourseDuration/CourseDuration.php:197, includes/modules/CourseEnrollment/CourseEnrollment.php:59, includes/modules/CourseInstructor/CourseInstructor.php:179, includes/modules/CourseLastUpdate/CourseLastUpdate.php:115, includes/modules/CourseLastUpdate/CourseLastUpdate.php:174, includes/modules/CourseLevel/CourseLevel.php:43, includes/modules/CourseLevel/CourseLevel.php:59, includes/modules/CourseLevel/CourseLevel.php:124, includes/modules/CourseLevel/CourseLevel.php:182, includes/modules/CourseRequirements/CourseRequirements.php:139, includes/modules/CourseReviews/CourseReviews.php:231, includes/modules/CourseShare/CourseShare.php:43, includes/modules/CourseShare/CourseShare.php:64, includes/modules/CourseShare/CourseShare.php:131, includes/modules/CourseStatus/CourseStatus.php:100, includes/modules/CourseTags/CourseTags.php:148, includes/modules/CourseTargetAudience/CourseTargetAudience.php:139, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:114, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:173
 msgid "Label"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: includes/modules/CourseBenefits/CourseBenefits.php:52, includes/modules/CourseDescription/CourseDescription.php:46, includes/modules/CourseMaterials/CourseMaterials.php:52, includes/modules/CourseRequirements/CourseRequirements.php:52, includes/modules/CourseTargetAudience/CourseTargetAudience.php:52
+#: includes/modules/CourseBenefits/CourseBenefits.php:52, includes/modules/CourseMaterials/CourseMaterials.php:52, includes/modules/CourseRequirements/CourseRequirements.php:52, includes/modules/CourseTargetAudience/CourseTargetAudience.php:52
 msgid "Text"
 msgstr ""
 
@@ -503,14 +503,6 @@ msgstr ""
 
 #: includes/modules/CourseCurriculum/CourseCurriculum.php:338
 msgid "Space Between Topics"
-msgstr ""
-
-#: includes/modules/CourseDescription/CourseDescription.php:29
-msgid "Tutor Course Description"
-msgstr ""
-
-#: includes/modules/CourseDescription/CourseDescription.php:108
-msgid "Description"
 msgstr ""
 
 #: includes/modules/CourseDuration/CourseDuration.php:29
