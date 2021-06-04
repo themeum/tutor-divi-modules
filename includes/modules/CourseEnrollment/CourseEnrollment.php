@@ -295,7 +295,7 @@ class CourseEnrollment extends ET_Builder_Module {
      * @return bool
 	 */
     public static function get_props( $args = [] ) {
-        return tutils()->is_course_purchasable($args['course']) ? true : false;
+        return tutils()->is_course_purchasable($args['course']) ? 'yes' : 'no';
     }
 
 	/**

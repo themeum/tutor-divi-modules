@@ -250,7 +250,7 @@ class CourseEnrollment extends Component {
         const enroll_now    = utils.processFontIcon(props.enrollment_button_icon);
         const add_to_cart   = utils.processFontIcon(props.add_to_cart_button_icon);
 
-        if(props.__enrollment) {
+        if(props.__enrollment === 'yes') {
             return (
                     <div className="tutor-course-enrollment-box">
                         <div className="tutor-single-add-to-cart-box">
@@ -332,7 +332,7 @@ class CourseEnrollment extends Component {
         if(!this.props.__enrollment) {
             return '';
         }
-       
+        console.log(this.props);
         return (
            <Fragment>
 
