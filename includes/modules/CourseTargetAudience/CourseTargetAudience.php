@@ -80,7 +80,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 				),
 			),
 			'borders'    => array(
-				'default'            => array(),
+				'default'            => false,
 				'list'              => array(
 					'css'             	=> array(
 						'main' => array(
