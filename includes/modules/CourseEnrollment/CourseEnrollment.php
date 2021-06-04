@@ -369,7 +369,7 @@ class CourseEnrollment extends ET_Builder_Module {
             ET_Builder_Element::set_style(
                 $render_slug,
                 array(
-                    'selector'      => '%%order_class%% .tutor-course-purchase-box form',
+                    'selector'      => '%%order_class%% .tutor-course-purchase-box form, %%order_class%% .tutor-course-compelte-form-wrap form',
                     'declaration'   => 'width: 100%;'
                 )
             );            

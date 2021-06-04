@@ -258,7 +258,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
+		$course = $args['course'];
 		ob_start();
 		if ($course) {
 			include_once dtlms_get_template('course/author');

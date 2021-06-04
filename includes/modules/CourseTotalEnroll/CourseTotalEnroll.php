@@ -201,7 +201,7 @@ class TutorCourseTotalEnroll extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
+		$course = $args['course'];
 		$markup = '';
 		if ($course) {
 			$total_enrolled = (int) tutor_utils()->count_enrolled_users_by_course( );

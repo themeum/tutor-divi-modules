@@ -156,8 +156,8 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public static function get_duration( $args=[] ) {
-		$course 			= Helper::get_course($args);
-		$course_duration	= get_tutor_course_duration_context();
+		$course 			= $args['course'];
+		$course_duration	= get_tutor_course_duration_context( $course );
 		return $course_duration;
 	}
 
@@ -167,7 +167,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
+		$course = $args['course'];
 		$markup = '';
 		if ($course) {
 			$course_duration = get_tutor_course_duration_context();

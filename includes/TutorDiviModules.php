@@ -108,7 +108,7 @@ class TutorDiviModules extends DiviExtension {
 	 * @return void
     */
     public function load_textdomain() {
-    	load_plugin_textdomain('tutor-divi-modules', false, DTLMS_DIR_URL.'languages' );
+    	load_plugin_textdomain('tutor-divi-modules', false, DTLMS_DIR_PATH.'languages/' );
     }
 }
 
