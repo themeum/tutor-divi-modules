@@ -10,9 +10,9 @@ class CourseShare extends Component {
             return '';
         }
         return (
-            <label>
+            <span>
                 Share:
-            </label>
+            </span>
         );
     }
 
@@ -122,7 +122,7 @@ class CourseShare extends Component {
         additionalCss.push([
             {
                 selector: wrapper,
-                declaration: `display: ${display};`
+                declaration: `display: ${display}; width: 100%;`
             }
         ]);
         

@@ -56,7 +56,7 @@ class TutorCourseShare extends ET_Builder_Module {
         $icon_wrapper_selector	= '%%order_class%% .tutor-social-share-wrap';
 		$icon_selector   		= '%%order_class%% .tutor-social-share-wrap button i';
 		$button_selector		= '%%order_class%% .tutor-social-share-wrap button';
-        $label_selector			= '%%order_class%% .tutor-social-share > label';
+        $label_selector			= '%%order_class%% .tutor-social-share > span';
 
 		$this->advanced_fields = array(
 			'fonts'				=> array(
@@ -364,7 +364,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'		=> $wrapper,
-				'declaration'	=> 'display:flex;column-gap: 10px;'
+				'declaration'	=> 'display:flex;width:100%;column-gap: 10px;'
 			)
 		);
 		/**
