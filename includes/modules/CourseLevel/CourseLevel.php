@@ -262,7 +262,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 		$gap_phone		= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? $this->props['gap_phone'] : $gap;
 
 		$display		= 'flex';
-
+		$width			= '100%';
 		//set styles
 		if( '' !== $display ) {
 			ET_Builder_Element::set_style(
@@ -270,8 +270,9 @@ class TutorCourseLevel extends ET_Builder_Module {
 				array(
 					'selector'		=> $wrapper,
 					'declaration'	=> sprintf(
-						'display: %1$s;',
-						esc_html($display)
+						'display: %1$s; width: %2$s;',
+						esc_html($display),
+						esc_html($width)
 					)
 				)
 			);			

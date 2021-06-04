@@ -79,7 +79,7 @@ class CourseLevel extends Component {
         additionalCss.push([
             {
                 selector: wrapper,
-                declaration: `display: ${display};`
+                declaration: `display: ${display}; width: 100%;`
             }
         ]);
 
