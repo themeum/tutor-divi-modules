@@ -115,4 +115,9 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
     </div>
 </div>
 
-<?php do_action('tutor_course/single/enrolled/after/reviews'); ?>
+<?php 
+do_action('tutor_course/single/enrolled/after/reviews'); 
+if (is_user_logged_in() && tutils()->is_enrolled()) {
+    tutor_course_target_review_form_html();
+}
+?>
