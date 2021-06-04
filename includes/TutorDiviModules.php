@@ -59,25 +59,26 @@ class TutorDiviModules extends DiviExtension {
 	}
 
     public function enqueue_divi_styles(){
-		$css_file = DTLMS_ENV == 'DEV' ? "css/tutor-divi-style.css" : "css/tutor-divi-style.min.css"; 
+		$css_file 	= DTLMS_ENV == 'DEV' ? "css/tutor-divi-style.css" : "css/tutor-divi-style.min.css"; 
+		$version	= DTLMS_ENV == 'DEV' ? time() : $this->version;
         wp_enqueue_style(
             'tutor-divi-styles',
             DTLMS_ASSETS . $css_file,
             array(), 
-            time(),
+            $version
         );
 		wp_enqueue_style(
             'tutor-divi-slick-css',
             'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
             null,
-            DTLMS_VERSION
+            $this->version
         );      
 
         wp_enqueue_style(
             'tutor-divi-slick-theme-css',
             'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css',
             null,
-            DTLMS_VERSION
+            $this->version
         );
     }
 
@@ -95,7 +96,7 @@ class TutorDiviModules extends DiviExtension {
 			'tutor-divi-slick',
 			'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
 			array('jquery'),
-			time(),
+			$this->version,
 			true
 		);
 
