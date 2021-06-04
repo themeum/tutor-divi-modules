@@ -189,7 +189,9 @@ class CourseInstructor extends Component {
                 <div className="single-instructor-bottom">
                     <div className="ratings">
                         <span className="rating-generated">
+                            <div className="tutor-star-rating-group">
                             { this.starRatings(instructor.ratings.rating_avg) }
+                            </div> 
                         </span>
     
                 
