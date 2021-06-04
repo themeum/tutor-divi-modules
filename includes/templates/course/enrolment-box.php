@@ -1,8 +1,4 @@
-<style>
-.tutor-course-enrollment-box {
-    margin-bottom: 20px;
-}
-</style>
+
 <?php
     $enroll_icon        = et_pb_process_font_icon($args['enrollment_button_icon']);
     $add_to_cart_icon   = et_pb_process_font_icon($args['add_to_cart_button_icon']);
