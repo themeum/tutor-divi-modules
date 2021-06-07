@@ -585,14 +585,48 @@ class CourseCarousel extends Component {
         return (
             <div className="tutor-course-loop-price">
                 <div className="price">
-                    { course.course_price === null ? 'Free' : course.course_price }
+                    {
+                        course.loop_price.sale_price ?                     
+                        <del>
+                            <span className="woocommerce-Price-amount amount">
+                                <bdi>
+                                    <span className="woocommerce-Price-currencySymbol">
+                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                    </span>
+                                    { course.loop_price.regular_price }
+                                </bdi>
+                            </span>
+                        </del>  
+                        :
+
+                        <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                                <span className="woocommerce-Price-currencySymbol">
+                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                </span>
+                                { course.loop_price.regular_price }
+                            </bdi>
+                        </span>
+
+                    }                      
+                    <ins>
+                        <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                            <span className="woocommerce-Price-currencySymbol">
+                                { course.loop_price.sale_price !== '' ? '$' : '' }
+                                </span>
+                                { course.loop_price.sale_price }
+                            </bdi>
+                        </span>
+                    </ins> 
                     <div className="tutor-loop-cart-btn-wrap">
                         <a href="/" data-icon={cart_icon}>
                             { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
                         </a>
                     </div>    
                 </div>
-            </div>
+            </div>            
+
         );       
     }
 

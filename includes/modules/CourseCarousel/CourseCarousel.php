@@ -817,7 +817,11 @@ class CourseCarousel extends ET_Builder_Module {
 
 				$post->course_rating	= tutils()->get_course_rating( $post->ID );
 
-				$post->course_price 	= tutils()->get_course_price( $post->ID );
+				$post->loop_price		= self::get_course_price( $post->ID );
+
+				$post->woo_price_html	= self::get_price_html( $post->ID );
+
+				$post->woo_currency		= get_woocommerce_currency_symbol();
 
 				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
 
@@ -831,6 +835,24 @@ class CourseCarousel extends ET_Builder_Module {
 		}
 		
 	}
+
+	static function get_course_price( $course_id ) {
+		$product_id = tutor_utils()->get_course_product_id( $course_id );
+		$product    = wc_get_product( $product_id );
+		$price 		= $product ? $product->get_regular_price() : __( 'Free', 'tutor-divi-modules' ) ;	
+		$sale_price = $product ? $product->get_sale_price() : '' ;
+		return array(
+			'regular_price'		=> $price, 
+			'sale_price'		=> $sale_price
+		);
+	} 
+
+	static function get_price_html( $course_id ) {
+		$product_id = tutor_utils()->get_course_product_id( $course_id );
+		$product    = wc_get_product( $product_id );
+		$price 		= $product ? $product->get_price_html() : __( 'Free', 'tutor-divi-modules' ) ;	
+		return $price;
+	} 
 
 	/**
 	 * Get the tutor course author
