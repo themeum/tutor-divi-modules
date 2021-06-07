@@ -49,6 +49,15 @@ function tudm_initialize_extension() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/TutorDiviModules.php';
 }
 
+/**
+ * Load plugin text domain
+ * @since 1.0.0
+ */
+add_action( 'init', 'tutor_divi_textdomain' );
+if( !function_exists( 'tutor_divi_textdomain' )) {
+	load_plugin_textdomain( 'tutor-divi-modules' , false, dirname( plugin_basename( __FILE__) .'/languages' ) );
+}
+
 add_action( 'divi_extensions_init', 'tudm_initialize_extension' );
 endif;
 

@@ -47,8 +47,6 @@ class TutorDiviModules extends DiviExtension {
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_scripts'], 99);
-
-		add_action('init', [$this, 'load_textdomain']);
 	}
 
 	public function load_dependencies() {
@@ -102,14 +100,6 @@ class TutorDiviModules extends DiviExtension {
 
     }	
 
-    /**
-	 * load plugin text domain
-	 * @since 1.0.0
-	 * @return void
-    */
-    public function load_textdomain() {
-    	load_plugin_textdomain('tutor-divi-modules', false, DTLMS_DIR_PATH.'languages/' );
-    }
 }
 
 new TutorDiviModules;
