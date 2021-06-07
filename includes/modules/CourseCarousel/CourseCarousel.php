@@ -836,6 +836,11 @@ class CourseCarousel extends ET_Builder_Module {
 		
 	}
 
+	/**
+	 * Get tutor course product price
+	 * @return array
+	 * @since 1.0.0
+	 */
 	static function get_course_price( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
 		$product    = wc_get_product( $product_id );

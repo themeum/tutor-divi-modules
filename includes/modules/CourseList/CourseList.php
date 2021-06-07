@@ -823,6 +823,8 @@ class CourseList extends ET_Builder_Module {
 
 				$post->course_price 	= tutils()->get_course_price( $post->ID );
 
+				$post->loop_price		= self::get_course_price( $post->ID );
+
 				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
 
 				array_push($courses, $post);
@@ -851,6 +853,21 @@ class CourseList extends ET_Builder_Module {
 		
 	}
 
+	/**
+	 * Get tutor course product price
+	 * @return array
+	 * @since 1.0.0
+	 */
+	static function get_course_price( $course_id ) {
+		$product_id = tutor_utils()->get_course_product_id( $course_id );
+		$product    = wc_get_product( $product_id );
+		$price 		= $product ? $product->get_regular_price() : __( 'Free', 'tutor-divi-modules' ) ;	
+		$sale_price = $product ? $product->get_sale_price() : '' ;
+		return array(
+			'regular_price'		=> $price, 
+			'sale_price'		=> $sale_price
+		);
+	} 
 	/**
 	 * Get the tutor course author
 	 * @since 1.0.0
@@ -1274,7 +1291,7 @@ class CourseList extends ET_Builder_Module {
 					'selector'		=> $avatar_selector,
 					'declaration'	=> sprintf(
 						'width: %1$s;height: %1$s;',
-						$badge_size
+						$avatar_size
 					)
 				)
 			);

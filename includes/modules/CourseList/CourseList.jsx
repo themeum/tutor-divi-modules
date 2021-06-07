@@ -14,7 +14,7 @@ class CourseList extends Component {
         const card_selector         = `${wrapper} .tutor-divi-card`;
         const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
         const badge_selector        = `${wrapper} .tutor-course-loop-level`;
-        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span`;
+        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar span, %%order_class%% .tutor-single-course-avatar img`;
         const star_selector         = `${wrapper} .tutor-star-rating-group i`;
         const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
@@ -733,7 +733,40 @@ class CourseList extends Component {
         return (
             <div className="tutor-course-loop-price">
                 <div className="price">
-                    { course.course_price === null ? 'Free' : course.course_price }
+                    {
+                        course.loop_price.sale_price ?                     
+                        <del>
+                            <span className="woocommerce-Price-amount amount">
+                                <bdi>
+                                    <span className="woocommerce-Price-currencySymbol">
+                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                    </span>
+                                    { course.loop_price.regular_price }
+                                </bdi>
+                            </span>
+                        </del>  
+                        :
+
+                        <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                                <span className="woocommerce-Price-currencySymbol">
+                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                </span>
+                                { course.loop_price.regular_price }
+                            </bdi>
+                        </span>
+
+                    }                      
+                    <ins>
+                        <span className="woocommerce-Price-amount amount">
+                            <bdi>
+                            <span className="woocommerce-Price-currencySymbol">
+                                { course.loop_price.sale_price !== '' ? '$' : '' }
+                                </span>
+                                { course.loop_price.sale_price }
+                            </bdi>
+                        </span>
+                    </ins> 
                     <div className="tutor-loop-cart-btn-wrap">
                         <a href="/" data-icon={cart_icon}>
                             { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
