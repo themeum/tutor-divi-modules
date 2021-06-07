@@ -55,7 +55,9 @@ function tudm_initialize_extension() {
  */
 add_action( 'init', 'tutor_divi_textdomain' );
 if( !function_exists( 'tutor_divi_textdomain' )) {
-	load_plugin_textdomain( 'tutor-divi-modules' , false, dirname( plugin_basename( __FILE__) .'/languages' ) );
+	function tutor_divi_textdomain() {
+		load_plugin_textdomain( 'tutor-divi-modules' , false, dirname( plugin_basename( __FILE__) .'/languages' ) );		
+	}
 }
 
 add_action( 'divi_extensions_init', 'tudm_initialize_extension' );
