@@ -83,7 +83,7 @@ class CoursePrice extends Component {
                         <div className="price">
                         {
                             this.props.__price.regular_price === 0 ?
-                            <span>'Free'</span>
+                            <span>Free</span>
                             :
                             <Fragment>
                                 {
