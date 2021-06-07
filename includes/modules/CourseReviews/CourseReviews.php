@@ -81,7 +81,7 @@ class CourseReviews extends ET_Builder_Module {
                     'hide_text_align'   => true
                 ), 
                 'review_avg_text'    => array(
-                    'label' => 'Revie Avg Total',
+                    'label' => 'Review Avg Total',
                     'css'   => array(
                         'main'          => $avg_text_selector,
                         'tab_slug'      => 'advanced',
@@ -230,7 +230,7 @@ class CourseReviews extends ET_Builder_Module {
             'label'         => array(
                 'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
                 'type'          => 'text',
-                'default'       => esc_html__( 'Stuent Feedback ', 'tutor-divi-modules' ),
+                'default'       => esc_html__( 'Student Feedback ', 'tutor-divi-modules' ),
                 'toggle_slug'   => 'main_content'
             ),
             //advanced tab section_content toggle
