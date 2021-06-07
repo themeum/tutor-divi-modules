@@ -75,32 +75,56 @@ class CoursePrice extends Component {
         if(!this.props.__price) {
             return '';
         }
-        
+        console.log(this.props.__price)
         return (
             <Fragment>
                <div className="tutor-divi-course-price">
                     <div className="price">
                         <div className="price">
-                            <del>
-                                <span className="woocommerce-Price-amount amount">
-                                    <bdi>
-                                        <span className="woocommerce-Price-currencySymbol">
-                                        { this.props.__price.sale_price !== '' ? '$' : '' }
+                        {
+                            this.props.__price.regular_price === 0 ?
+                            <span>'Free'</span>
+                            :
+                            <Fragment>
+                                {
+                                    this.props.__price.sale_price ?
+                                    <del>
+                                        <span className="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span className="woocommerce-Price-currencySymbol">
+                                                $
+                                                </span>
+                                                { this.props.__price.regular_price }
+                                            </bdi>
                                         </span>
-                                        { this.props.__price.sale_price }
-                                    </bdi>
-                                </span>
-                            </del>                        
-                            <ins>
-                                <span className="woocommerce-Price-amount amount">
-                                    <bdi>
-                                        <span className="woocommerce-Price-currencySymbol">
-                                        $
+                                    </del>
+                                    :
+                                    <span className="woocommerce-Price-amount amount">
+                                        <bdi>
+                                            <span className="woocommerce-Price-currencySymbol">
+                                            $
+                                            </span>
+                                            { this.props.__price.regular_price }
+                                        </bdi>
+                                    </span>                                    
+                                }
+                                {
+                                    this.props.__price.sale_price ?
+                                    <ins>
+                                        <span className="woocommerce-Price-amount amount">
+                                            <bdi>
+                                                <span className="woocommerce-Price-currencySymbol">
+                                                $
+                                                </span>
+                                                { this.props.__price.sale_price }
+                                            </bdi>
                                         </span>
-                                        { this.props.__price.regular_price }
-                                    </bdi>
-                                </span>
-                            </ins>
+                                    </ins>
+                                    : ''
+                                }
+                                   
+                            </Fragment>
+                        }
                         </div>
                     </div>
                </div>

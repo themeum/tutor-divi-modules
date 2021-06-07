@@ -35,10 +35,10 @@ class CoursePrice extends ET_Builder_Module {
 				'toggles' => array(
 					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
 				),
-			),
+			)
 		);
 
-		$selector 		= '%%order_class%% .price >ins';
+		$selector 		= '%%order_class%% .price >ins, %%order_class%% .price > span' ;
 		$hover_selector = '%%order_class%% .price:hover';
 
 		$this->advanced_fields = array(
@@ -114,7 +114,7 @@ class CoursePrice extends ET_Builder_Module {
 	public static function get_props( $args = [] ) {
 		$course_id 	= $args[ 'course' ];
 		$price		= tutor_utils()->get_raw_course_price( $course_id );
-		return $price;
+		return $price ? $price : 'Free' ;
 	}	
 
 	/**
@@ -126,7 +126,7 @@ class CoursePrice extends ET_Builder_Module {
 		ob_start();
 		tutor_course_price() ;
 		$price 		= ob_get_clean(); 	
-		$content = '<div class="tutor-divi-course-price">'.$price.'</div>';
+		$content = '<div class="tutor-divi-course-price"><span>'.$price.'</span></div>';
 		return $content;	
 	}	
 
