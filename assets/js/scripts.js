@@ -65,7 +65,7 @@ if(params.has('et_fb')) {
         }
         const __start_continue_button_icon  = $('#start_continue_button_icon').val();
         if(__start_continue_button_icon != undefined) {
-            initialize_font_icon('.tutor-button.tutor-success', __start_continue_button_icon)
+            initialize_font_icon('.tutor-lead-info-btn-group .tutor-button.tutor-success', __start_continue_button_icon)
         }    
 
         const __complete_button_icon     = $('#complete_button_icon').val();

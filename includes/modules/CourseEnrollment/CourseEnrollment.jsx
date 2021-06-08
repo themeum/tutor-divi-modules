@@ -280,8 +280,8 @@ class CourseEnrollment extends Component {
     switchTemplate(props) {
         const utils     = window.ET_Builder.API.Utils;
         const start_continue_button = utils.processFontIcon(props.start_continue_button_icon);
-        const complete_button       = utils.processFontIcon(props.complete_button);
-        const gradebook_button      = utils.processFontIcon(props.gradebook_button);
+        const complete_button       = utils.processFontIcon(props.complete_button_icon);
+        const gradebook_button      = utils.processFontIcon(props.gradebook_button_icon);
 
         if('enrollment' === props.preview_mode) {
             return (

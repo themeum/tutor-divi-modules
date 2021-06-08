@@ -575,6 +575,54 @@ class CourseEnrollment extends ET_Builder_Module {
                 )
             );
         }
+
+        //button icon
+        //add to cart button icon
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button:after',
+                'declaration'   => 'content: attr(data-icon);
+                font-family: "ETmodules" !important;'
+            )
+        );
+        //enroll now button icon
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll:after',
+                'declaration'   => 'content: attr(data-icon);
+                font-family: "ETmodules" !important;'
+            )
+        );
+        //start continue butto icon
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success:after',
+                'declaration'   => 'content: attr(data-icon);
+                font-family: "ETmodules" !important;'
+            )
+        );
+        //complete button icon
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button:after',
+                'declaration'   => 'content: attr(data-icon);
+                font-family: "ETmodules" !important;'
+            )
+        );
+        //grade book button
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap > .tutor-button:after',
+                'declaration'   => 'content: attr(data-icon);
+                font-family: "ETmodules" !important;'
+            )
+        );
+
         //set styles end
 
         $output = self::get_content( $this->props );
