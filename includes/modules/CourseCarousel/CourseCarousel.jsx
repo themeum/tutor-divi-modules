@@ -576,6 +576,17 @@ class CourseCarousel extends Component {
         return categories
     }
 
+    footerButtonText(is_enrolled, course) {
+        if(is_enrolled) {
+            return 'Continue Course';
+        } 
+        if(course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ) {
+            return 'Add to Cart';
+        } else {
+            return 'Get Enrolled';
+        }
+    }
+
     footerTemplate(show,course,icon) {
         if(show === 'off') {
             return '';
@@ -621,7 +632,7 @@ class CourseCarousel extends Component {
                     </ins> 
                     <div className="tutor-loop-cart-btn-wrap">
                         <a href="/" data-icon={cart_icon}>
-                            { course.is_enrolled ? 'Continue Course' : 'Get Enrolled' }
+                            { this.footerButtonText(course.is_enrolled, course) }
                         </a>
                     </div>    
                 </div>
