@@ -55,39 +55,39 @@ If you want to edit each course’s layout separately, navigate to **Tutor LMS >
 
 Then, click on “Edit With Divi Page builder” to start the Divi Page builder interface from the default editing panel. You will find all the necessary modules to create a single course page from the left sidebar’s Tutor LMS section.
 
-== Widgets Inside Tutor LMS Divi Page builder Addons Plugin ==
+== Modules list for Tutor LMS Divi Modules Plugin ==
 Tutor LMS Divi Modules currently offers the following Divi Page builder modules to take control over your eLearning site designs. Design your course page with the Tutor LMS Modules available in the Tutor LMS Divi Modules plugin.
 
-Course About
-Course Author
-Course Benefits
-Course Carousel
-Course Categories
-Course Curriculum
-Course Categories
-Course Enrollment
-Course Instructor
-Course Last Update
-Course Level
-Course List
-Course Materials
-Course Price
-Course Ratings
-Course Requirement
-Course Reviews
-Course Share
-Course Status
-Course Tags
-Course Target Audience
-Course Thumbnail
-Course Title
-Course Total Enrollment
+1.  Course About
+2.  Course Author
+3.  Course Benefits
+4.  Course Carousel
+5.  Course Categories
+6.  Course Curriculum
+7.  Course Categories
+8.  Course Enrollment
+9.  Course Instructor
+10. Course Last Update
+11. Course Level
+12. Course List
+13. Course Materials
+14. Course Price
+15. Course Ratings
+16. Course Requirement
+17. Course Reviews
+18. Course Share
+19. Course Status
+20. Course Tags
+21. Course Target Audience
+22. Course Thumbnail
+23. Course Title
+24. Course Total Enrollment
 
 == Installation ==
 
 = Minimum Requirements =
 
-* PHP version 5.6.0 or greater (PHP 7.2 or greater is recommended)
+* PHP version 7.3 or greater
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 = Automatic installation =
@@ -131,20 +131,17 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Screenshots ==
 1. Create Astonishing Course List
-2. 23+ Tutor LMS Divi Page builder widgets
-3. Vertical Style For Course Cards
-4. Horizontal Style For Course Cards
+2. 23+ Tutor LMS Divi Moduels
+3. Advance customization options
 5. Default Single Course Layout
 6. Classic Style For Course Curriculum
 7. Stylish Course Topic Display
 8. Display Ratings Stylishly
 9. Different Card Designs For Instructors
-10. Intelligent Preview Modes
+10. Preview Modes for Implemented design
 
 
-= 1.0.0 - Date =
+= 1.0.0 - Date=
 * Initial Release
 
 == Upgrade Notice ==
-
-
