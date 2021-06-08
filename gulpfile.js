@@ -121,7 +121,7 @@ function bundleFiles(cb){
 		"!./**/.DS_Store",
 		"!./LICENSE.txt",
 		"!./package.json",
-		"!./**/*.json",
+		"!./asset-manifest.json",
 		"!./package-lock.json",
 		"!./includes/modules/**/*.jsx",
 	])
