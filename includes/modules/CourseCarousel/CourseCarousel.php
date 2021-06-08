@@ -1299,7 +1299,7 @@ class CourseCarousel extends ET_Builder_Module {
 				array(
 					'selector'		=> $avatar_selector,
 					'declaration'	=> sprintf(
-						'width: %1$s;height: %1$s;',
+						'width: %1$s;height: %1$s; line-height: %1$s;',
 						$avatar_size
 					)
 				)

@@ -16,7 +16,7 @@ class CourseCarousel extends Component {
         const card_selector         = `${wrapper} .tutor-divi-card`;
         const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
         const badge_selector        = `${wrapper} .tutor-course-loop-level`;
-        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar span, %%order_class%% .tutor-single-course-avatar img`;
+        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar, %%order_class%% .tutor-single-course-avatar img`;
         const star_selector         = `${wrapper} .tutor-star-rating-group i`;
         const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
@@ -377,7 +377,7 @@ class CourseCarousel extends Component {
             additionalCss.push([
                 {
                     selector: avatar_selector,
-                    declaration: `width: ${avatar_size};height: ${avatar_size};`
+                    declaration: `width: ${avatar_size} !important; height: ${avatar_size} !important; line-height: ${avatar_size};`
                 }
             ]);
         }
