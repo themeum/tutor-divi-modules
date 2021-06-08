@@ -425,6 +425,10 @@ msgstr ""
 msgid "Star Size"
 msgstr ""
 
+#: includes/modules/CourseCarousel/CourseCarousel.php:847, includes/modules/CourseCarousel/CourseCarousel.php:858, includes/modules/CourseList/CourseList.php:864
+msgid "Free"
+msgstr ""
+
 #: includes/modules/CourseCategories/CourseCategories.php:29
 msgid "Tutor Course Categories"
 msgstr ""
@@ -697,7 +701,7 @@ msgstr ""
 msgid "Next Level"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:451, includes/modules/CourseList/CourseList.php:841, includes/templates/course/course_list.php:47
+#: includes/modules/CourseList/CourseList.php:451, includes/modules/CourseList/CourseList.php:843, includes/templates/course/course_list.php:47
 msgid "Next"
 msgstr ""
 
@@ -790,7 +794,7 @@ msgid "Review List Star"
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:233
-msgid "Stuent Feedback "
+msgid "Student Feedback "
 msgstr ""
 
 #: includes/modules/CourseReviews/CourseReviews.php:271

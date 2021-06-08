@@ -126,7 +126,7 @@ class CoursePrice extends ET_Builder_Module {
 		ob_start();
 		tutor_course_price() ;
 		$price 		= ob_get_clean(); 	
-		$content = '<div class="tutor-divi-course-price"><span>'.$price.'</span></div>';
+		$content = '<div class="tutor-divi-course-price"><div class="price"><span>'.$price.'</span></div></div>';
 		return $content;	
 	}	
 
