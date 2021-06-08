@@ -1,6 +1,6 @@
 <?php
-$completed_count = tutor_utils()->get_course_completed_percent();
-
+$completed_count    = tutor_utils()->get_course_completed_percent();
+$display_percent    = $args['display_percent'];
 do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
 ?>
 
@@ -10,7 +10,9 @@ do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
         <div class="tutor-progress-bar">
             <div class="tutor-progress-filled" style="--tutor-progress-left: <?php echo $completed_count.'%;'; ?>"></div>
         </div>
-        <span class="tutor-progress-percent"><?php echo $completed_count; ?>% <?php _e(' Complete', 'tutor-divi-modules')?></span>
+        <?php if( $display_percent == 'on' ) : ;?>
+            <span class="tutor-progress-percent"><?php echo $completed_count; ?>% <?php _e(' Complete', 'tutor-divi-modules')?></span>
+        <?php endif; ?>
     </div>
 </div>
 
