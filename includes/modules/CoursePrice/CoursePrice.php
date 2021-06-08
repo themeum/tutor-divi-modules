@@ -216,6 +216,14 @@ class CoursePrice extends ET_Builder_Module {
 				)
 			);
 		}
+		
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .price del span bdi span, %%order_class%% .price del span bdi',
+				'declaration'	=> 'font-size: 14px !important;'
+			)			
+		);
 
 		//set styles end
 		$output 	= self::get_content();

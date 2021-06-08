@@ -387,7 +387,7 @@ class CourseEnrollment extends ET_Builder_Module {
                 $render_slug,
                 array(
                     'selector'      => '%%order_class%% .tutor-course-enrollment-box .tutor-button, %%order_class%% .tutor-course-enrollment-box .course-complete-button, %%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll',
-                    'declaration'   => 'width: -moz-fit-content !important;'
+                    'declaration'   => 'width: auto !important;'
                 )
             );
         } else {
