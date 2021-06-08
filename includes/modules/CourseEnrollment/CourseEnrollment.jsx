@@ -332,7 +332,6 @@ class CourseEnrollment extends Component {
         if(!this.props.__enrollment) {
             return '';
         }
-        console.log(this.props);
         return (
            <Fragment>
 

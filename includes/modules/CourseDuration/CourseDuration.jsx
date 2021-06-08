@@ -93,11 +93,14 @@ class CourseDuration extends Component {
     }
 
     render() {
+        if(!this.props.__duration) {
+            return '';
+        }
         return (
             <Fragment>
                 <div className="tutor-single-course-meta-duration tutor-divi-course-duration">
                     <label> {this.props.duration_label} </label>
-                    <span> {this.props.__duration} </span>
+                    <span> {this.props.__duration.duration} </span>
                 </div>
             </Fragment>
         );

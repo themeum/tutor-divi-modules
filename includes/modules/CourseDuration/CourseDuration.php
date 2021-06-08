@@ -89,7 +89,10 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$fields = array(
 			'course'       	=> Helper::get_field(
 				array(
-					'default'          => Helper::get_course_default()
+					'default'          => Helper::get_course_default(),
+					'computed_affects' => array(
+						'__duration',
+					),
 				)
 			),
 			'__duration'	=> array(
@@ -158,7 +161,9 @@ class TutorCourseDuration extends ET_Builder_Module {
 	public static function get_duration( $args=[] ) {
 		$course 			= $args['course'];
 		$course_duration	= get_tutor_course_duration_context( $course );
-		return $course_duration;
+		return array(
+			'duration'	=> $course_duration
+		);
 	}
 
 	/**

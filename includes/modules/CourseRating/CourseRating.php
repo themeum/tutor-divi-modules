@@ -194,7 +194,7 @@ class TutorCourseRating extends ET_Builder_Module {
 
 		if ( '' !== $this->props['star_size'] ) {
 			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => $star_icon,
+				'selector'    => "%%order_class%% .tutor-star-rating-group i",
 				'declaration' => sprintf(
 					'font-size: %1$s;',
 					esc_html( $this->props['star_size'] )

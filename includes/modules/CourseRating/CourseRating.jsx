@@ -15,11 +15,10 @@ class CourseRating extends Component {
         const additionalCss = [];
         const star_selector = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
         const star_icon_group = '%%order_class%% .tutor-star-rating-group';
-        const star_icon = '%%order_class%% .tutor-icon-star-line';
-
+        
         if (props.star_size) {
             additionalCss.push([{
-                selector:    star_icon,
+                selector:    '%%order_class%% .tutor-star-rating-group i',
                 declaration: `font-size: ${props.star_size};`,
             }]);
         }
