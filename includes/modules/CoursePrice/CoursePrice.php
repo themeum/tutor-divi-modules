@@ -26,14 +26,14 @@ class CoursePrice extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
     public function init() {
-        $this->name         = esc_html__( 'Tutor Course Price', 'tutor-divi-modules' ); 
+        $this->name         = esc_html__( 'Tutor Course Price', 'tutor-lms-divi-modules' ); 
         $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		//settings toggles
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			)
 		);
@@ -93,7 +93,7 @@ class CoursePrice extends ET_Builder_Module {
 				'computed_minimum'		=> array( 'course' ),
 			),
 			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),

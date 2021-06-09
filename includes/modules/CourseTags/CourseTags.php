@@ -26,7 +26,7 @@ class CourseTags extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
     public function init() {
-        $this->name         = esc_html__( 'Tutor Course Tags', 'tutor-divi-modules' ); 
+        $this->name         = esc_html__( 'Tutor Course Tags', 'tutor-lms-divi-modules' ); 
         $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		/**
@@ -40,10 +40,10 @@ class CourseTags extends ET_Builder_Module {
 			'advanced'	=> array(
 				'toggles'		=> array(
 					'title'		=> array(
-						'title'		=> esc_html__( 'Section Title', 'tutor-divi-modules' ),
+						'title'		=> esc_html__( 'Section Title', 'tutor-lms-divi-modules' ),
 					),
 					'tags'		=> array(
-						'title'		=> esc_html__( 'Tags', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Tags', 'tutor-lms-divi-modules' )
 					)
 				)
 			)
@@ -145,15 +145,15 @@ class CourseTags extends ET_Builder_Module {
 			),
 			//general settings tab main_content toggle			
 			'label'     => array(
-				'label'           	=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'label'           	=> esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            	=> 'text',
-				'default'			=> esc_html__( 'Course Tags', 'tutor-divi-modules'),
+				'default'			=> esc_html__( 'Course Tags', 'tutor-lms-divi-modules'),
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
 			),
 			//advanced settings tab tags toggle
 			'tags_background'	=> array(
-				'label'				=> esc_html__( 'Background Color', 'tutor-divi-modules'),
+				'label'				=> esc_html__( 'Background Color', 'tutor-lms-divi-modules'),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'tags',

@@ -26,7 +26,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Author', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Author', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,19 +34,19 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'author_image' => array(
-						'title'    	=> esc_html__('Author Image', 'tutor-divi-modules'),
+						'title'    	=> esc_html__('Author Image', 'tutor-lms-divi-modules'),
 					),
 					'author_label_text' => array(
-						'title'    => esc_html__('Author Label', 'tutor-divi-modules'),
+						'title'    => esc_html__('Author Label', 'tutor-lms-divi-modules'),
 					),
 					'author_name_text' => array(
-						'title'    => esc_html__('Author Name', 'tutor-divi-modules'),
+						'title'    => esc_html__('Author Name', 'tutor-lms-divi-modules'),
 					),
 				),
 			),
@@ -56,7 +56,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'author_label_text' => array(
-					'label'        		=> esc_html__('Label', 'tutor-divi-modules'),
+					'label'        		=> esc_html__('Label', 'tutor-lms-divi-modules'),
 					'css'          		=> array(
 						'main' => $author_selector.' span',
 					),
@@ -67,7 +67,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				),
 
 				'author_name_text' => array(
-					'label'        		=> esc_html__('Name', 'tutor-divi-modules'),
+					'label'        		=> esc_html__('Name', 'tutor-lms-divi-modules'),
 					'css'          		=> array(
 						'main' => $author_selector.' a',
 					),
@@ -128,23 +128,23 @@ class TutorCourseAuthor extends ET_Builder_Module {
 
 			//general settings fields
 			'profile_picture'	=> array(
-				'label'				=> esc_html__('Profile Picture', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Profile Picture', 'tutor-lms-divi-modules'),
 				'type'				=> 'yes_no_button',
 				'option_category'	=> 'configuration',
 				'options'			=> array(
-					'off'	=> esc_html__('Hide', 'tutor-divi-modules'),
-					'on'	=> esc_html__('Show', 'tutor-divi-modules')
+					'off'	=> esc_html__('Hide', 'tutor-lms-divi-modules'),
+					'on'	=> esc_html__('Show', 'tutor-lms-divi-modules')
 				),
 				'default_on_front'	=> "on",
 				'toggle_slug'		=> 'main_content',	
 			),
 			'display_name'		=> array(
-				'label'				=> esc_html__('Display Name', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Display Name', 'tutor-lms-divi-modules'),
 				'type'				=> 'yes_no_button',
 				'option_category'	=> 'configuration',
 				'options'			=> array(
-					'off'	=> esc_html__('Hide', 'tutor-divi-modules'),
-					'on'	=> esc_html__('Show', 'tutor-divi-modules')
+					'off'	=> esc_html__('Hide', 'tutor-lms-divi-modules'),
+					'on'	=> esc_html__('Show', 'tutor-lms-divi-modules')
 				),
 				'default_on_front'	=> "on",
 				'toggle_slug'		=> 'main_content',
@@ -154,8 +154,8 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'				=> 'select',
 				'option_category'	=> 'layout',
 				'options'			=> array(
-					'new'			=> esc_html__('New Window', 'tutor-divi-modules'),
-					'same' 			=> esc_html__('Same Window', 'tutor-divi-modules')
+					'new'			=> esc_html__('New Window', 'tutor-lms-divi-modules'),
+					'same' 			=> esc_html__('Same Window', 'tutor-lms-divi-modules')
 				),
 				'default'			=> 'new',
 				'toggle_slug'		=> 'main_content'
@@ -165,14 +165,14 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'type'				=> 'select',
 				'option_category'	=> 'layout',
 				'options'			=> array(
-					'row'			=> esc_html__('Left', 'tutor-divi-modules'),
-					'column' 		=> esc_html__('Up', 'tutor-divi-modules')
+					'row'			=> esc_html__('Left', 'tutor-lms-divi-modules'),
+					'column' 		=> esc_html__('Up', 'tutor-lms-divi-modules')
 				),
 				'default'			=> 'row',
 				'toggle_slug'		=> 'main_content'
 			),
 			'author_alignment'	=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
@@ -183,7 +183,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 
 			//author avatar settings in advanced tab
 			'avatar_size'	=> array(
-				'label'				=> esc_html__( 'Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'option_category'	=> 'layout',
 				'default_unit'		=> 'px',
@@ -201,7 +201,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),	
 			'avatar_gap'	=> array(
-				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'option_category'	=> 'layout',
 				'default_unit'		=> 'px',

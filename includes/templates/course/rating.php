@@ -10,7 +10,7 @@
             ?>
             <span class="tutor-single-rating-count">
                 <?php
-                $text = __( 'Ratings', 'tutor-divi-modules' );
+                $text = __( 'Ratings', 'tutor-lms-divi-modules' );
                 echo $course_rating->rating_avg;
                 $count = $course_rating->rating_count." ".$text;
                 echo "<i>($count)</i>";

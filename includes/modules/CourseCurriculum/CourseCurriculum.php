@@ -23,7 +23,7 @@ class CourseCurriculum extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->name = esc_html__( 'Tutor Course Curriculum', 'tutor-divi-modules' );
+		$this->name = esc_html__( 'Tutor Course Curriculum', 'tutor-lms-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
@@ -34,19 +34,19 @@ class CourseCurriculum extends ET_Builder_Module {
 			'advanced'		=> array(
 				'toggles'		=> array(
 					'header'		=> array(
-						'title'		=> esc_html__( 'Header', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Header', 'tutor-lms-divi-modules' )
 					),
 					'topic_info'	=> array(
-						'title'		=> esc_html__( 'Info', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Info', 'tutor-lms-divi-modules' )
 					),
 					'topics'	=> array(
-						'title'		=> esc_html__( 'Topics', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Topics', 'tutor-lms-divi-modules' )
 					),
 					'lesson'	=> array(
-						'title'		=> esc_html__( 'Lesson', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Lesson', 'tutor-lms-divi-modules' )
 					),					
 					'lesson_info'	=> array(
-						'title'		=> esc_html__( 'Lesson Info', 'tutor-divi-modules' )
+						'title'		=> esc_html__( 'Lesson Info', 'tutor-lms-divi-modules' )
 					),
 				)
 			)
@@ -170,14 +170,14 @@ class CourseCurriculum extends ET_Builder_Module {
 			),
 			//general tab content toggle
 			'label'     => array(
-				'label'           	=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'label'           	=> esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            	=> 'text',
-				'default'			=> esc_html__( 'Topics for this course', 'tutor-divi-modules' ),
+				'default'			=> esc_html__( 'Topics for this course', 'tutor-lms-divi-modules' ),
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
 			),
 			'collaps_icon' => array(
-				'label'             => esc_html__( 'Collaps Icon', 'tutor-divi-modules' ),
+				'label'             => esc_html__( 'Collaps Icon', 'tutor-lms-divi-modules' ),
 				'type'              => 'select_icon',
 				'default'			=> ';',
 				'class'				=> array( 'et-pb-font-icon' ),
@@ -185,7 +185,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				'toggle_slug'     	=> 'main_content',		
 			),
 			'expand_icon' => array(
-				'label'             => esc_html__( 'Expand Icon', 'tutor-divi-modules' ),
+				'label'             => esc_html__( 'Expand Icon', 'tutor-lms-divi-modules' ),
 				'type'              => 'select_icon',
 				'default'			=> ':',
 				'class'				=> array( 'et-pb-font-icon' ),
@@ -193,11 +193,11 @@ class CourseCurriculum extends ET_Builder_Module {
 				'toggle_slug'     	=> 'main_content',		
 			),
 			'icon_position'	=> array(
-				'label'				=> esc_html__( 'Icon Position', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Position', 'tutor-lms-divi-modules' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'left'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
-					'right'		=> esc_html__( 'Right', 'tutor-divi-modules' ),
+					'left'		=> esc_html__( 'Left', 'tutor-lms-divi-modules' ),
+					'right'		=> esc_html__( 'Right', 'tutor-lms-divi-modules' ),
 				),
 				'default'			=> 'left',
 				'toggle_slug'     	=> 'main_content',
@@ -205,7 +205,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			),
 			//advanced tab header toggle
 			'gap'			=> array(
-				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '5px',
 				'default_unit'		=> 'px',
@@ -221,7 +221,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			
 			//advanced tab topics toggle
 			'topic_icon_size'			=> array(
-				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '18px',
 				'default_unit'		=> 'px',
@@ -235,59 +235,59 @@ class CourseCurriculum extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
 			'composite_tabbed' => array(
-				'label'               => esc_html__( 'Color Settings', 'tutor-divi-modules' ),
+				'label'               => esc_html__( 'Color Settings', 'tutor-lms-divi-modules' ),
 				'tab_slug'            => 'advanced',
 				'toggle_slug'         => 'topics',
 				'type'                => 'composite',
 				'composite_type'      => 'default',
 				'composite_structure' => array(
 					'tab_1' => array(
-						'label'    => esc_html( 'Normal', 'tutor-divi-modules' ),
+						'label'    => esc_html( 'Normal', 'tutor-lms-divi-modules' ),
 						'controls' => array(
 							'topic_icon_color' => array(
-								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_text_color' => array(
-								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_background_color' => array(
-								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 						),
 					),
 					'tab_2' => array(
-						'label' => esc_html( 'Active', 'tutor-divi-modules' ),
+						'label' => esc_html( 'Active', 'tutor-lms-divi-modules' ),
 						'controls' => array(
 							'topic_icon_active_color' => array(
-								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_text_active_color' => array(
-								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_background_active_color' => array(
-								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 						),
 					),
 					'tab_3' => array(
-						'label' => esc_html( 'Hover', 'tutor-divi-modules' ),
+						'label' => esc_html( 'Hover', 'tutor-lms-divi-modules' ),
 						'controls' => array(
 							'topic_icon_hover_color' => array(
-								'label' => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_text_hover_color' => array(
-								'label' => esc_html__( 'Text Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 							'topic_background_hover_color' => array(
-								'label' => esc_html__( 'Background Color', 'tutor-divi-modules' ),
+								'label' => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 								'type'  => 'color-alpha',
 							),
 						),
@@ -296,7 +296,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			),
 			//advanced tab lesson toggles
 			'lesson_icon_size'			=> array(
-				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '18px',
 				'default_unit'		=> 'px',
@@ -310,7 +310,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
 			'lesson_icon_color'			=> array(
-				'label'				=> esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'hover'				=> 'tabs',
 				'tab_slug'			=> 'advanced',
@@ -318,7 +318,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				
 			),
 			'lesson_info_color'			=> array(
-				'label'				=> esc_html__( 'Info Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Info Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'hover'				=> 'tabs',
 				'tab_slug'			=> 'advanced',
@@ -326,7 +326,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				
 			),
 			'lesson_background_color'			=> array(
-				'label'				=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'hover'				=> 'tabs',
 				'tab_slug'			=> 'advanced',
@@ -335,7 +335,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			),
 			//advanced tab spacing toggle
 			'space_between_topics'	=> array(
-				'label'				=> esc_html__( 'Space Between Topics', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Space Between Topics', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '10px',
 				'default_unit'		=> 'px',

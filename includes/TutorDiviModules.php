@@ -9,7 +9,7 @@ class TutorDiviModules extends DiviExtension {
 	 *
 	 * @var string
 	 */
-	public $gettext_domain = 'tutor-divi-modules';
+	public $gettext_domain = 'tutor-lms-divi-modules';
 
 	/**
 	 * The extension's WP Plugin name.
@@ -18,7 +18,7 @@ class TutorDiviModules extends DiviExtension {
 	 *
 	 * @var string
 	 */
-	public $name = 'tutor-divi-modules';
+	public $name = 'tutor-lms-divi-modules';
 
 	/**
 	 * The extension's version
@@ -37,7 +37,7 @@ class TutorDiviModules extends DiviExtension {
 	 * @param string $name
 	 * @param array  $args
 	 */
-	public function __construct( $name = 'tutor-divi-modules', $args = array() ) {
+	public function __construct( $name = 'tutor-lms-divi-modules', $args = array() ) {
 		$this->plugin_dir     = plugin_dir_path( __FILE__ );
 		$this->plugin_dir_url = plugin_dir_url( $this->plugin_dir );
 

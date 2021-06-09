@@ -43,8 +43,8 @@ $footer             = $args['footer'];
 $cart_icon          = et_pb_process_font_icon($args['cart_button_icon']); 
 $pagination         = $args['pagination'];
 $pagination_type    = $args['pagination_type'];
-$prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Previous', 'tutor-divi-modules');
-$next_text          = isset($args['next_level']) ? $args['next_level'] : __('Next', 'tutor-divi-modules');
+$prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Previous', 'tutor-lms-divi-modules');
+$next_text          = isset($args['next_level']) ? $args['next_level'] : __('Next', 'tutor-lms-divi-modules');
 $masonry            = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses'; 
 ?>
 <input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
@@ -261,8 +261,8 @@ if ( $the_query->have_posts()) : ?>
                 'current'   => max(1, get_query_var('paged')),
                 'end_size'  => sanitize_text_field( $limit ),
                 'prev_next' => $pagination_type === 'numbers' ? false : true,
-                'prev_text' => __( sanitize_text_field($prev_text), 'tutor-divi-modules' ),
-                'next_text' => __( sanitize_text_field($next_text), 'tutor-divi-modules' ),
+                'prev_text' => __( sanitize_text_field($prev_text), 'tutor-lms-divi-modules' ),
+                'next_text' => __( sanitize_text_field($next_text), 'tutor-lms-divi-modules' ),
             );
         ?>
         <div class="tutor-divi-courselist-pagination">

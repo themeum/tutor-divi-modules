@@ -25,33 +25,33 @@ class CourseCarousel extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->name         = esc_html__( 'Tutor Course Carousel', 'tutor-divi-modules' );
+		$this->name         = esc_html__( 'Tutor Course Carousel', 'tutor-lms-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		//settings modal toggles
 		$this->settings_modal_toggles = array(
 			'general'	=> array(
 				'toggles'	=> array(
-					'layout'		=> esc_html__( 'Layout', 'tutor-divi-modules' ),
-					'query'			=> esc_html__( 'Query', 'tutor-divi-modules' ),
-					'enroll_button'	=> esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
-					'carousel_settings'	=> esc_html__( 'Carousel Settings', 'tutor-divi-modules' )
+					'layout'		=> esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
+					'query'			=> esc_html__( 'Query', 'tutor-lms-divi-modules' ),
+					'enroll_button'	=> esc_html__( 'Enroll Button', 'tutor-lms-divi-modules' ),
+					'carousel_settings'	=> esc_html__( 'Carousel Settings', 'tutor-lms-divi-modules' )
 				)
 			),
 			'advanced'	=> array(
 				'toggles'	=> array(
-					'card'		=> esc_html__( 'Card', 'tutor-divi-modules' ),
-					'image'		=> esc_html__( 'Image', 'tutor-divi-modules' ),
-					'badge'		=> esc_html__( 'Badge', 'tutor-divi-modules' ),
-					'avatar'	=> esc_html__( 'Avatar', 'tutor-divi-modules' ),
-					'title'		=> esc_html__( 'Title', 'tutor-divi-modules' ),
-					'meta'		=> esc_html__( 'Meta', 'tutor-divi-modules' ),
-					'category'	=> esc_html__( 'Category', 'tutor-divi-modules' ),
-					'rating'	=> esc_html__( 'Rating', 'tutor-divi-modules' ),
-					'footer'	=> esc_html__( 'Footer', 'tutor-divi-modules' ),
-					'cart_button'	=> esc_html__( 'Cart Button', 'tutor-divi-modules' ),
-					'arrows'	=> esc_html__( 'Arrows', 'tutor-divi-modules' ),
-					'dots'		=> esc_html__( 'Dots', 'tutor-divi-modules' ),
+					'card'		=> esc_html__( 'Card', 'tutor-lms-divi-modules' ),
+					'image'		=> esc_html__( 'Image', 'tutor-lms-divi-modules' ),
+					'badge'		=> esc_html__( 'Badge', 'tutor-lms-divi-modules' ),
+					'avatar'	=> esc_html__( 'Avatar', 'tutor-lms-divi-modules' ),
+					'title'		=> esc_html__( 'Title', 'tutor-lms-divi-modules' ),
+					'meta'		=> esc_html__( 'Meta', 'tutor-lms-divi-modules' ),
+					'category'	=> esc_html__( 'Category', 'tutor-lms-divi-modules' ),
+					'rating'	=> esc_html__( 'Rating', 'tutor-lms-divi-modules' ),
+					'footer'	=> esc_html__( 'Footer', 'tutor-lms-divi-modules' ),
+					'cart_button'	=> esc_html__( 'Cart Button', 'tutor-lms-divi-modules' ),
+					'arrows'	=> esc_html__( 'Arrows', 'tutor-lms-divi-modules' ),
+					'dots'		=> esc_html__( 'Dots', 'tutor-lms-divi-modules' ),
 				),
 			)
 		);
@@ -115,7 +115,7 @@ class CourseCarousel extends ET_Builder_Module {
 			
 			'button'		=> array(
                 'cart_button' => array(
-                    'label'         => esc_html__( 'Cart Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Cart Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
@@ -222,10 +222,10 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'				=> esc_html__( 'Skin'),
 				'type'				=> 'select',
 				'options'			=> array(
-					'classic'	=> esc_html__( 'Classic', 'tutor-divi-modules' ),
-					'card'		=> esc_html__( 'Card', 'tutor-divi-modules' ),
-					'stacked'	=> esc_html__( 'Stacked', 'tutor-divi-modules' ),
-					'overlayed'	=> esc_html__( 'Overlayed', 'tutor-divi-modules' ),
+					'classic'	=> esc_html__( 'Classic', 'tutor-lms-divi-modules' ),
+					'card'		=> esc_html__( 'Card', 'tutor-lms-divi-modules' ),
+					'stacked'	=> esc_html__( 'Stacked', 'tutor-lms-divi-modules' ),
+					'overlayed'	=> esc_html__( 'Overlayed', 'tutor-lms-divi-modules' ),
 				),
 				'default'			=> 'classic',
 				'option_category'	=> 'basic_option',
@@ -233,11 +233,11 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'		=> 'layout'
 			),
 			'slides_to_show'	=> array(
-				'label'			=> esc_html__( 'Slides to Show', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Slides to Show', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
-				'description'	=> esc_html__( 'No: of slides that will display on desktop view', 'tutor-divi-modules' ),
+				'description'	=> esc_html__( 'No: of slides that will display on desktop view', 'tutor-lms-divi-modules' ),
 				'options'		=> array(
-					'3'	=>		 esc_html__( 'Default', 'tutor-divi-modules' ),
+					'3'	=>		 esc_html__( 'Default', 'tutor-lms-divi-modules' ),
 					'1'			=> '1',
 					'2'			=> '2',
 					'3'			=> '3',
@@ -254,255 +254,255 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'	=> 'layout',
 			),
 			'hover_animation'	=> array(
-				'label'			=> esc_html__( 'Show Animation', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Show Animation', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout',
 			),
 			'show_image'	=> array(
-				'label'			=> esc_html__( 'Show Image', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Show Image', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'image_size'=> array(
-				'label'			=> esc_html__( 'Image Size', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
 				'options'		=> array(
-					'thumbnail'		=> esc_html__( 'Thumbnail', 'tutor-divi-modules'),
-					'medium'		=> esc_html__( 'Medium', 'tutor-divi-modules'),
-					'medium_large'	=> esc_html__( 'Medium Large', 'tutor-divi-modules'),
-					'large'			=> esc_html__( 'large', 'tutor-divi-modules'),
-					'full'			=> esc_html__( 'full', 'tutor-divi-modules'),
+					'thumbnail'		=> esc_html__( 'Thumbnail', 'tutor-lms-divi-modules'),
+					'medium'		=> esc_html__( 'Medium', 'tutor-lms-divi-modules'),
+					'medium_large'	=> esc_html__( 'Medium Large', 'tutor-lms-divi-modules'),
+					'large'			=> esc_html__( 'large', 'tutor-lms-divi-modules'),
+					'full'			=> esc_html__( 'full', 'tutor-lms-divi-modules'),
 				),
 				'default'			=> 'medium_large',
 				'tab_slug'			=> 'general',
 				'toggle_slug'		=> 'layout'
 			),
 			'meta_data'	=> array(
-				'label'			=> esc_html__( 'Meta Data', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Meta Data', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'off',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'rating'	=> array(
-				'label'			=> esc_html__( 'Rating', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Rating', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'avatar'	=> array(
-				'label'			=> esc_html__( 'Avatar', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Avatar', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'difficulty_label'	=> array(
-				'label'			=> esc_html__( 'Difficulty Label', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Difficulty Label', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'wish_list'	=> array(
-				'label'			=> esc_html__( 'Wish List', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Wish List', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'category'	=> array(
-				'label'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			'footer'	=> array(
-				'label'			=> esc_html__( 'Footer', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Footer', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'default'		=> 'on',
 				'options'		=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
 			//general tab query toggle
 			'order_by'	=> array(
-				'label'			=> esc_html__( 'Order by', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Order by', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
 				'options'		=> array(
-					'date'		=> esc_html__( 'Date', 'tutor-divi-modules' ),
-					'title'		=> esc_html__( 'Title', 'tutor-divi-modules' )
+					'date'		=> esc_html__( 'Date', 'tutor-lms-divi-modules' ),
+					'title'		=> esc_html__( 'Title', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'date',
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
 			'order'	=> array(
-				'label'			=> esc_html__( 'Order', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Order', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
 				'options'		=> array(
-					'DESC'		=> esc_html__( 'DESC', 'tutor-divi-modules' ),
-					'ASC'		=> esc_html__( 'ASC', 'tutor-divi-modules' )
+					'DESC'		=> esc_html__( 'DESC', 'tutor-lms-divi-modules' ),
+					'ASC'		=> esc_html__( 'ASC', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'DESC',
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
 			'limit'	=> array(
-				'label'			=> esc_html__( 'Limit', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Limit', 'tutor-lms-divi-modules' ),
 				'type'			=> 'text',
-				'description'	=> esc_html__( 'Input -1 for all courses', 'tutor-divi-modules'),
+				'description'	=> esc_html__( 'Input -1 for all courses', 'tutor-lms-divi-modules'),
 				'default'		=> '5',
 				'tab_slug'		=> 'general', 
 				'toggle_slug'	=> 'query',
 			),
 			'category_includes'	=> array(
-				'label'			=> esc_html__( 'Category', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'			=> 'multiple_checkboxes',
 				'options'		=> tutor_divi_course_categories(),
-				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-lms-divi-modules'),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'query'
 			),			
 			'author_includes'	=> array(
-				'label'			=> esc_html__( 'Author', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Author', 'tutor-lms-divi-modules' ),
 				'type'			=> 'multiple_checkboxes',
 				'options'		=> tutor_divi_course_authors(),
-				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-divi-modules'),
+				'description'	=> esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-lms-divi-modules'),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'query'
 			),
 
 			//general tab carosuel_settings toggle
 			'arrows'	=> array(
-				'label'			=> esc_html__( 'Arrows', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Arrows', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'dots'	=> array(
-				'label'			=> esc_html__( 'Dots', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Dots', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'transition'	=> array(
-				'label'			=> esc_html__( 'Transition Duration', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Transition Duration', 'tutor-lms-divi-modules' ),
 				'type'			=> 'text',
 				'default'		=> '600',
-				'description'	=> esc_html__( 'Use only numbers for transition', 'tutor-divi-modules'),
+				'description'	=> esc_html__( 'Use only numbers for transition', 'tutor-lms-divi-modules'),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'center_slides'	=> array(
-				'label'			=> esc_html__( 'Center Slides', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Center Slides', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'No', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'off',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'smooth_scrolling'	=> array(
-				'label'			=> esc_html__( 'Smooth Scrolling', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Smooth Scrolling', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'No', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'autoplay'	=> array(
-				'label'			=> esc_html__( 'Auto Play', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Auto Play', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'No', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'autoplay_speed'	=> array(
-				'label'			=> esc_html__( 'Auto Play Speed', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Auto Play Speed', 'tutor-lms-divi-modules' ),
 				'type'			=> 'text',
 				'default'		=> '5000',
-				'description'	=> esc_html( 'Use only numbers for auto play speed', 'tutor-divi-modules' ),
+				'description'	=> esc_html( 'Use only numbers for auto play speed', 'tutor-lms-divi-modules' ),
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'infinite_loop'	=> array(
-				'label'			=> esc_html__( 'Infinite Loop', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Infinite Loop', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'No', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'carousel_settings'
 			),
 			'paush_on_hover'	=> array(
-				'label'			=> esc_html__( 'Paush on Hover', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Paush on Hover', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Yes', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'No', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'No', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'tab_slug'		=> 'general',
@@ -510,19 +510,19 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advacned tab card toggle
 			'card_background_color'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
 			),
 			'footer_seperator_color'	=> array(
-				'label'			=> esc_html__( 'Footer Seperator Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Footer Seperator Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
 			),
 			'footer_seperator_width'	=> array(
-				'label'			=> esc_html__( 'Footer Seperator Width', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Footer Seperator Width', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'range_settings'=> array(
 					'min'	=> '1',
@@ -535,7 +535,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'	=> 'card'
 			),
 			'card_custom_padding'	=> array(
-				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Padding', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'defaunt_unit'	=> 'px',
 				'default'		=> '0px',
@@ -549,7 +549,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advanced tab image toggle
 			'image_spacing'	=> array(
-				'label'			=> esc_html__( 'Spacing', 'tutor-divi-modules' ), 
+				'label'			=> esc_html__( 'Spacing', 'tutor-lms-divi-modules' ), 
 				'type'			=> 'range',
 				'range_settings'=> array(
 					'min'	=> '1',
@@ -563,19 +563,19 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advanced tab badge toggle
 			'badge_background_color'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'badge'
 			),
 			'badge_text_color'	=> array(
-				'label'			=> esc_html__( 'Text Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'badge'
 			),
 			'badge_size'	=> array(
-				'label'			=> esc_html__( 'Size', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'range_settings'=> array(
@@ -587,7 +587,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'	=> 'badge'
 			),
 			'badge_margin'	=> array(
-				'label'			=> esc_html__( 'Margin', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'default'		=> '0px',
@@ -601,7 +601,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advanced tab avatar toggle
 			'avatar_size'	=> array(
-				'label'			=> esc_html__( 'Avatar Size', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Avatar Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'range_settings'=> array(
@@ -614,13 +614,13 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advanced tab rating toggle
 			'star_color'	=> array(
-				'label'			=> esc_html__( 'Star Color', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Star Color', 'tutor-lms-divi-modules'),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'rating',
 			),
 			'star_size'	=> array(
-				'label'			=> esc_html__( 'Star Size', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'default'		=> '14px',
@@ -633,7 +633,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'toggle_slug'	=> 'rating',
 			),
 			'star_gap'	=> array(
-				'label'			=> esc_html__( 'Gap', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Gap', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'range_settings'=> array(
@@ -670,13 +670,13 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//advanced tab footer toggle
 			'footer_background'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'footer'
 			),
 			'footer_padding'	=> array(
-				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'range_settings'=> array(
@@ -689,7 +689,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			//arrows toggle
 			'arrows_padding'	=> array(
-				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'range_settings'=> array(
@@ -704,7 +704,7 @@ class CourseCarousel extends ET_Builder_Module {
 
 			//dots toggle
 			'dots_alignment'	=> array(
-				'label'			=> esc_html__( 'Alignment', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
 				'type'			=> 'text_align',
 				'options'		=> et_builder_get_text_orientation_options( array('justified') ),
 				'default'		=> 'center',
@@ -713,7 +713,7 @@ class CourseCarousel extends ET_Builder_Module {
 			),				
 
 			'dots_space'	=> array(
-				'label'			=> esc_html__( 'Space Between', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default'		=> '5px',
 				'default_unit'	=> 'px',
@@ -844,7 +844,7 @@ class CourseCarousel extends ET_Builder_Module {
 	static function get_course_price( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
 		$product    = wc_get_product( $product_id );
-		$price 		= $product ? $product->get_regular_price() : __( 'Free', 'tutor-divi-modules' ) ;	
+		$price 		= $product ? $product->get_regular_price() : __( 'Free', 'tutor-lms-divi-modules' ) ;	
 		$sale_price = $product ? $product->get_sale_price() : '' ;
 		return array(
 			'regular_price'		=> $price, 
@@ -855,7 +855,7 @@ class CourseCarousel extends ET_Builder_Module {
 	static function get_price_html( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
 		$product    = wc_get_product( $product_id );
-		$price 		= $product ? $product->get_price_html() : __( 'Free', 'tutor-divi-modules' ) ;	
+		$price 		= $product ? $product->get_price_html() : __( 'Free', 'tutor-lms-divi-modules' ) ;	
 		return $price;
 	} 
 

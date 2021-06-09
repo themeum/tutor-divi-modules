@@ -26,7 +26,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Benefits', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Benefits', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,22 +34,22 @@ class TutorCourseBenefits extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'title' => array(
-						'title'		=> esc_html__('Section Title', 'tutor-divi-modules'),
+						'title'		=> esc_html__('Section Title', 'tutor-lms-divi-modules'),
 					),
 					'list'	=> array(
-						'title'		=> esc_html__( 'List', 'tutor-divi-modules' ),
+						'title'		=> esc_html__( 'List', 'tutor-lms-divi-modules' ),
 					),
 					'icon' => array(
-						'title'		=> esc_html__('Icon', 'tutor-divi-modules'),
+						'title'		=> esc_html__('Icon', 'tutor-lms-divi-modules'),
 					),
 					'benefit_text' => array(
-						'title'		=> esc_html__('Text', 'tutor-divi-modules'),
+						'title'		=> esc_html__('Text', 'tutor-lms-divi-modules'),
 					),
 				),
 			),
@@ -135,19 +135,19 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 			//general settings content tab
 			'label'		=> array(
-				'label'				=> esc_html__( 'Label', 'tutor-divi-modules'),
+				'label'				=> esc_html__( 'Label', 'tutor-lms-divi-modules'),
 				'type'				=> 'text',
-				'default'			=> esc_html__( 'Course Benefits', 'tutor-divi-modules' ),
+				'default'			=> esc_html__( 'Course Benefits', 'tutor-lms-divi-modules' ),
 				'option_category'	=> 'basic',
 				'toggle_slug'		=> 'main_content'
 	
 			),
 			'layout'	=> array(
-				'label'				=> esc_html( 'Layout', 'tutor-divi-modules' ),
+				'label'				=> esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'block'			=> esc_html__( 'List', 'tutor-divi-modules' ), 
-					'inline-block'	=> esc_html__( 'Inline', 'tutor-divi-modules' ), 
+					'block'			=> esc_html__( 'List', 'tutor-lms-divi-modules' ), 
+					'inline-block'	=> esc_html__( 'Inline', 'tutor-lms-divi-modules' ), 
 				),
 				'default'			=> 'block',
 				'option_category'	=> 'layout',
@@ -155,7 +155,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
 			'icon' => array(
-				'label'             => esc_html__( 'Icon', 'tutor-divi-modules' ),
+				'label'             => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'              => 'select_icon',
 				'default'			=> 'N',
 				'class'				=> array( 'et-pb-font-icon' ),
@@ -163,7 +163,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'toggle_slug'     	=> 'main_content',		
 			),
 			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
@@ -173,7 +173,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 			//advanced tab section title toggles
 			'gap'			=> array(
-				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '10',
 				'default_unit'		=> 'px',
@@ -188,7 +188,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 			//advanced tab section list toggles
 			'space_between'	=> array(
-				'label'				=> esc_html__( 'Space Between', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '10',
 				'default_unit'		=> 'px',
@@ -202,7 +202,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'mobile_options'	=> true				
 			),
 			'padding'		=> array(
-				'label'           	=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'label'           	=> esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
 				'type'            	=> 'custom_padding',
 				'hover'           	=> 'tabs',
 				'option_category' 	=> 'layout',
@@ -212,13 +212,13 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 			//advanced tab text toggle
 			'color'			=> array(
-				'label'				=> esc_html__( 'Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icon'
 			),
 			'size'			=> array(
-				'label'				=> esc_html__( 'Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '12px',
 				'default_unit'		=> 'px',
@@ -233,7 +233,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 			//advanced tab text toggle
 			'indent'			=> array(
-				'label'				=> esc_html__( 'Text Indent', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Text Indent', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '7px',
 				'default_unit'		=> 'px',

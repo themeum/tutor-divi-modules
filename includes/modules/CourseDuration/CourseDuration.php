@@ -26,7 +26,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Duration', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Duration', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 		$this->fb_support   = true;
 		// Toggle settings
@@ -34,7 +34,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 		);
@@ -110,31 +110,31 @@ class TutorCourseDuration extends ET_Builder_Module {
 			),
 			//general settings
 			'duration_label'			=> array(
-				'label'						=> esc_html__('Label', 'tutor-divi-modules'),
+				'label'						=> esc_html__('Label', 'tutor-lms-divi-modules'),
 				'type'						=> 'text',
 				'toggle_slug'				=> 'main_content',
-				'default'					=> esc_html__('Course Duration', 'tutor-divi-modules')
+				'default'					=> esc_html__('Course Duration', 'tutor-lms-divi-modules')
 			),
 			'duration_layout'			=> array(
 				'label'						=> esc_html__('Layout', 'tutor-divi-moduels'),
 				'type'						=> 'select',
 				'option_category'			=> 'layout',
 				'options'					=> array(
-					'row'						=> esc_html__('Left', 'tutor-divi-modules'),
-					'column' 					=> esc_html__('Up', 'tutor-divi-modules')
+					'row'						=> esc_html__('Left', 'tutor-lms-divi-modules'),
+					'column' 					=> esc_html__('Up', 'tutor-lms-divi-modules')
 				),
 				'default'					=> 'row',
 				'toggle_slug'				=> 'main_content'
 			),
 			'duration_alignment'		=> array(
-				'label'						=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'						=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'						=> 'text_align',
 				'option_category'			=> 'configuration',
 				'options'					=> et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'toggle_slug'				=> 'main_content'
 			),
 			'gap'						=> array(
-				'label'						=> esc_html__('Gap', 'tutor-divi-modules'),
+				'label'						=> esc_html__('Gap', 'tutor-lms-divi-modules'),
 				'type'						=> 'range',
 				'option_category'			=> 'layout',
 				'default_unit'				=> 'px',
@@ -199,14 +199,14 @@ class TutorCourseDuration extends ET_Builder_Module {
 						'priority'		=> 24,
 						'sub_toggles'	=> array(
 							'label_subtoggle'	=> array(
-								'name'	=> esc_html__('Label', 'tutor-divi-modules')
+								'name'	=> esc_html__('Label', 'tutor-lms-divi-modules')
 							),
 							'value_subtoggle'	=> array(
-								'name'	=> esc_html__('Value', 'tutor-divi-modules')
+								'name'	=> esc_html__('Value', 'tutor-lms-divi-modules')
 							),
 						),
 						'tabbed_subtoggles' => true,
-						'title' => esc_html__('Style', 'tutor-divi-modules'),
+						'title' => esc_html__('Style', 'tutor-lms-divi-modules'),
 					),
 				)
 			)

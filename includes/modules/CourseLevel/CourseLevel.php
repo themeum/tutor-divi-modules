@@ -26,7 +26,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Level', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Level', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,16 +34,16 @@ class TutorCourseLevel extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'label_text' => array(
-						'title'    => esc_html__('Label', 'tutor-divi-modules'),
+						'title'    => esc_html__('Label', 'tutor-lms-divi-modules'),
 					),
 					'value_text' => array(
-						'title'    => esc_html__('Value', 'tutor-divi-modules'),
+						'title'    => esc_html__('Value', 'tutor-lms-divi-modules'),
 					),
 				),
 			),
@@ -56,7 +56,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'label_text' => array(
-					'label'        => esc_html__('Label', 'tutor-divi-modules'),
+					'label'        => esc_html__('Label', 'tutor-lms-divi-modules'),
 					'css'          => array(
 						'main' => $label_selector,
 					),
@@ -66,7 +66,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 					'sub_toggle'		=> 'label_subtoggle'
 				),
 				'value_text' => array(
-					'label'        		=> esc_html__('Name', 'tutor-divi-modules'),
+					'label'        		=> esc_html__('Name', 'tutor-lms-divi-modules'),
 					'css'          		=> array(
 						'main' => $value_selector,
 					),
@@ -121,25 +121,25 @@ class TutorCourseLevel extends ET_Builder_Module {
 			),
 			//general tab settings content toggle
 			'course_level_label'	=> array(
-				'label'			=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'			=> 'text',
 				'default'		=> 'Course Level:',
 				'toggle_slug'	=> 'main_content'
 			),
 			'layout'		=> array(
-				'label'				=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'				=> 'select',
 				'option_category'	=> 'layout',
 				'options'			=> array(
-					'row'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
-					'column'	=> esc_html__( 'Up', 'tutor-divi-modules' )
+					'row'		=> esc_html__( 'Left', 'tutor-lms-divi-modules' ),
+					'column'	=> esc_html__( 'Up', 'tutor-lms-divi-modules' )
 				),
 				'default'			=> 'row',
 				'toggle_slug'		=> 'main_content',
 				'mobile_options'	=> true
 			),
 			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
@@ -148,7 +148,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
 			'gap'			=> array(
-				'label'				=> esc_html__( 'Gap', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'option_category'	=> 'layout',
 				'default_unit'		=> 'px',
@@ -179,14 +179,14 @@ class TutorCourseLevel extends ET_Builder_Module {
 						'priority'		=> 24,
 						'sub_toggles'	=> array(
 							'label_subtoggle'	=> array(
-								'name'	=> esc_html__('Label', 'tutor-divi-modules')
+								'name'	=> esc_html__('Label', 'tutor-lms-divi-modules')
 							),
 							'value_subtoggle'	=> array(
-								'name'	=> esc_html__('Value', 'tutor-divi-modules')
+								'name'	=> esc_html__('Value', 'tutor-lms-divi-modules')
 							),
 						),
 						'tabbed_subtoggles' => true,
-						'title' => esc_html__('Style', 'tutor-divi-modules'),
+						'title' => esc_html__('Style', 'tutor-lms-divi-modules'),
 					),
 				)
 			)
@@ -200,7 +200,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 	public static function get_props( $args = [] ) {
 		$course_id = $args['course'];
 		$disable_course_level = get_tutor_option('disable_course_level');
-		$level = get_tutor_course_level( $course_id ) ? get_tutor_course_level( $course_id ) : __('All Level', 'tutor-divi-modules');
+		$level = get_tutor_course_level( $course_id ) ? get_tutor_course_level( $course_id ) : __('All Level', 'tutor-lms-divi-modules');
 		$props = array(
 			'is_disable_level'	=> $disable_course_level,
 			'level'				=> $level

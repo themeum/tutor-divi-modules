@@ -19,27 +19,27 @@ class CourseInstructor extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->name = esc_html__( 'Tutor Course Instructor', 'tutor-divi-modules' );
+		$this->name = esc_html__( 'Tutor Course Instructor', 'tutor-lms-divi-modules' );
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 		//settings modal toggles 
 		//define toggles & titles
 		$this->settings_modal_toggles = array(
 			'general'	=> array(
 				'toggles'	=> array(
-					'main_content'	=> esc_html__( 'Content', 'tutor-divi-modules' ),
+					'main_content'	=> esc_html__( 'Content', 'tutor-lms-divi-modules' ),
 				)
 			),
 			'advanced'	=> array(
 				'toggles'	=> array(
-					'section_content'		=> esc_html__( 'Content', 'tutor-divi-modules' ),
-					'section_title'			=> esc_html__( 'Section Title', 'tutor-divi-modules' ),
-					'instructor_avatar'		=> esc_html__( 'Instructor Avatar', 'tutor-divi-modules' ),
-					'instructor_name'		=> esc_html__( 'Instructor Name', 'tutor-divi-modules' ),
-					'instructor_designation'=> esc_html__( 'Instructor Designation', 'tutor-divi-modules' ),
-					'instructor_bio'		=> esc_html__( 'Instructor Bio', 'tutor-divi-modules' ),
-					'bottom_info_star'		=> esc_html__( 'Bottom Info Star', 'tutor-divi-modules' ),
-					'bottom_info_label'		=> esc_html__( 'Bottom Info Icon', 'tutor-divi-modules' ),
-					'bottom_info_value'		=> esc_html__( 'Bottom Info Text', 'tutor-divi-modules' ),
+					'section_content'		=> esc_html__( 'Content', 'tutor-lms-divi-modules' ),
+					'section_title'			=> esc_html__( 'Section Title', 'tutor-lms-divi-modules' ),
+					'instructor_avatar'		=> esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
+					'instructor_name'		=> esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
+					'instructor_designation'=> esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
+					'instructor_bio'		=> esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
+					'bottom_info_star'		=> esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
+					'bottom_info_label'		=> esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
+					'bottom_info_value'		=> esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
 				),
 			)
 		);
@@ -176,75 +176,75 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			//general tab main_content toggle
 			'label'     => array(
-				'label'           => esc_html__( 'Label', 'tutor-divi-modules' ),
+				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'		  => esc_html__( 'About the Instructors', 'tutor-divi-modules' ),	
+				'default'		  => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),	
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
 			'profile_picture'	=> array(
-				'label'			=> esc_html__( 'Profile Picture', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'toggle_slug'	=> 'main_content'
 			),
 			'display_name'	=> array(
-				'label'			=> esc_html__( 'Display Name', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'toggle_slug'	=> 'main_content'
 			),
 			'designation'	=> array(
-				'label'			=> esc_html__( 'Designation', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
 				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-divi-modules' )
+					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
 				),
 				'default'		=> 'on',
 				'toggle_slug'	=> 'main_content'
 			),
 			'link'	=> array(
-				'label'			=> esc_html__( 'Link', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Link', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
 				'options'		=> array(
-					'_blank'		=> esc_html__( 'New Window', 'tutor-divi-modules' ),
-					''		=> esc_html__( 'Same Window', 'tutor-divi-modules' )
+					'_blank'		=> esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
+					''		=> esc_html__( 'Same Window', 'tutor-lms-divi-modules' )
 				),
 				'option_category'	=> 'basic_option',
-				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-divi-modules' ),
+				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
 				'default'		=> 'new',
 				'toggle_slug'	=> 'main_content'
 			),
 			'layout'	=> array(
-				'label'			=> esc_html__( 'Layout', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'			=> 'select',
 				'options'		=> array(
-					'row'		=> esc_html__( 'Left', 'tutor-divi-modules' ),
-					'column'	=> esc_html__( 'Top', 'tutor-divi-modules' )
+					'row'		=> esc_html__( 'Left', 'tutor-lms-divi-modules' ),
+					'column'	=> esc_html__( 'Top', 'tutor-lms-divi-modules' )
 				),
-				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-divi-modules' ),
+				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
 				'default'		=> 'row',
 				'toggle_slug'	=> 'main_content'
 			),
 			//advanced tab section_content toggle
 			'section_content_back'=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'section_content' 
 			), 
 			//advanced tab instructor_avatar toggle
 			'image_size'		=> array(
-				'label'				=> esc_html__( 'Image Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '48px',
 				'default_unit'		=> 'px',
@@ -258,7 +258,7 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			//advanced tab bottom_info_star toggle
 			'star_size'		=> array(
-				'label'			=> esc_html__( 'Star Size', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default'		=> '14px',
 				'default_unit'	=> 'px',
@@ -271,14 +271,14 @@ class CourseInstructor extends ET_Builder_Module {
 				'toggle_slug'	=> 'bottom_info_star'
 			),
 			'star_color'	=> array(
-				'label'			=> esc_html__( 'Star Color', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'bottom_info_star'
 			),
 			//advanced tab margin_padding toggle
 			'space_between'		=> array(
-				'label'			=> esc_html__( 'Space Between', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default'		=> '10px',
 				'default_unit'	=> 'px',

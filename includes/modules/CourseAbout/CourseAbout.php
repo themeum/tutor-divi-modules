@@ -26,7 +26,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course About', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course About', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,16 +34,16 @@ class TutorCourseAbout extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'heading' => array(
-						'title'    => esc_html__('Heading', 'tutor-divi-modules'),
+						'title'    => esc_html__('Heading', 'tutor-lms-divi-modules'),
 					),
 					'about_text' => array(
-						'title'    => esc_html__('Paragraph', 'tutor-divi-modules'),
+						'title'    => esc_html__('Paragraph', 'tutor-lms-divi-modules'),
 					),
 				),
 			),
@@ -54,7 +54,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'heading' => array(
-					'label'        => esc_html__('Heading', 'tutor-divi-modules'),
+					'label'        => esc_html__('Heading', 'tutor-lms-divi-modules'),
 					'css'          => array(
 						'main' => $heading_selector,
 					),

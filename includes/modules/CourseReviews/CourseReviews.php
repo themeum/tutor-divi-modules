@@ -35,24 +35,24 @@ class CourseReviews extends ET_Builder_Module {
         $this->settings_modal_toggles = array(
             'general'         => array(
                 'toggles'   => array(
-                    'main_content'  => esc_html__( 'Content', 'tutor-divi-modules' )
+                    'main_content'  => esc_html__( 'Content', 'tutor-lms-divi-modules' )
                 )
             ),
             'advanced'        => array(
                 'toggles'   => array(
-                    'section_content'   => esc_html__( 'Content', 'tutor-divi-modules' ),
-                    'section_title'     => esc_html__( 'Section Title', 'tutor-divi-modules' ),
+                    'section_content'   => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
+                    'section_title'     => esc_html__( 'Section Title', 'tutor-lms-divi-modules' ),
                     
-                    'review_avg_total'  => esc_html__( 'Review Average Total', 'tutor-divi-modules' ),
-                    'review_avg_text'   => esc_html__( 'Review Average Text', 'tutor-divi-modules' ),
-                    'review_avg_count'  => esc_html__( 'Review Average Count', 'tutor-divi-modules' ),
-                    'review_avg_star'   => esc_html__( 'Review Average Star', 'tutor-divi-modules' ),
-                    'rating_bar'        => esc_html__( 'Right Rating Bar', 'tutor-divi-modules' ),
-                    'review_list_avatar'       => esc_html__( 'Review List Avatar', 'tutor-divi-modules' ),
-                    'review_list_author_name'  => esc_html__( 'Review List Author Name', 'tutor-divi-modules' ),
-                    'review_list_time'       => esc_html__( 'Review List Time', 'tutor-divi-modules' ),
-                    'review_list_comment'    => esc_html__( 'Review List Comment', 'tutor-divi-modules' ),
-                    'review_list_star'    => esc_html__( 'Review List Star', 'tutor-divi-modules' ),
+                    'review_avg_total'  => esc_html__( 'Review Average Total', 'tutor-lms-divi-modules' ),
+                    'review_avg_text'   => esc_html__( 'Review Average Text', 'tutor-lms-divi-modules' ),
+                    'review_avg_count'  => esc_html__( 'Review Average Count', 'tutor-lms-divi-modules' ),
+                    'review_avg_star'   => esc_html__( 'Review Average Star', 'tutor-lms-divi-modules' ),
+                    'rating_bar'        => esc_html__( 'Right Rating Bar', 'tutor-lms-divi-modules' ),
+                    'review_list_avatar'       => esc_html__( 'Review List Avatar', 'tutor-lms-divi-modules' ),
+                    'review_list_author_name'  => esc_html__( 'Review List Author Name', 'tutor-lms-divi-modules' ),
+                    'review_list_time'       => esc_html__( 'Review List Time', 'tutor-lms-divi-modules' ),
+                    'review_list_comment'    => esc_html__( 'Review List Comment', 'tutor-lms-divi-modules' ),
+                    'review_list_star'    => esc_html__( 'Review List Star', 'tutor-lms-divi-modules' ),
                 ),
             )
         );
@@ -228,27 +228,27 @@ class CourseReviews extends ET_Builder_Module {
             ),
             //general tab main_content toggle
             'label'         => array(
-                'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
+                'label'         => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
                 'type'          => 'text',
-                'default'       => esc_html__( 'Student Feedback ', 'tutor-divi-modules' ),
+                'default'       => esc_html__( 'Student Feedback ', 'tutor-lms-divi-modules' ),
                 'toggle_slug'   => 'main_content'
             ),
             //advanced tab section_content toggle
             'section_content_back'=> array(
-                'label'         => esc_html__( 'Background Color', 'tutor-divi-modules' ),
+                'label'         => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'section_content' 
             ), 
             //advanced tab review_avg_star toggle
             'review_avg_star_color'   => array(
-                'label'         => esc_html__( 'Star Color', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Color', 'tutor-lms-divi-modules'),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'review_avg_star'
             ),
             'review_avg_star_size'   => array(
-                'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
                 'type'          => 'range',
                 'default'       => '14px',
                 'default_unit'  => 'px',
@@ -262,19 +262,19 @@ class CourseReviews extends ET_Builder_Module {
             ),
             //advanced tab rating_bar toggle
             'rating_bar_color'          => array(
-                'label'         => esc_html__( 'Color', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Color', 'tutor-lms-divi-modules'),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'rating_bar'
             ),            
             'rating_bar_fill_color'     => array(
-                'label'         => esc_html__( 'Fill Color', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Fill Color', 'tutor-lms-divi-modules'),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'rating_bar'
             ),            
             'rating_bar_height'         => array(
-                'label'         => esc_html__( 'Height', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Height', 'tutor-lms-divi-modules'),
                 'type'          => 'range',
                 'default'       => '8px',
                 'default_unit'  => 'px',
@@ -287,13 +287,13 @@ class CourseReviews extends ET_Builder_Module {
                 'toggle_slug'   => 'rating_bar'
             ),            
             'rating_bar_star_color'     => array(
-                'label'         => esc_html__( 'Star Color', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Color', 'tutor-lms-divi-modules'),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'rating_bar'
             ),            
             'rating_bar_star_size'       => array(
-                'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
                 'type'          => 'range',
                 'default'       => '15px',
                 'default_unit'  => 'px',
@@ -307,7 +307,7 @@ class CourseReviews extends ET_Builder_Module {
             ),     
             //advanced tab review_list_avatar toggle
             'review_list_avatar_size'   => array(
-                'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
                 'type'          => 'range',
                 'default'       => '48px',
                 'default_unit'  => 'px',
@@ -321,13 +321,13 @@ class CourseReviews extends ET_Builder_Module {
             ),  
             //advanced tab review_list toggle
             'review_list_star_color'   => array(
-                'label'         => esc_html__( 'Star Color', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Color', 'tutor-lms-divi-modules'),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'review_list_star'
             ),
             'review_list_star_size'   => array(
-                'label'         => esc_html__( 'Star Size', 'tutor-divi-modules'),
+                'label'         => esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
                 'type'          => 'range',
                 'default'       => '14px',
                 'default_unit'  => 'px',

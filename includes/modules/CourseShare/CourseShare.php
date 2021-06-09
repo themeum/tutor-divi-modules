@@ -26,7 +26,7 @@ class TutorCourseShare extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Share', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Share', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,19 +34,19 @@ class TutorCourseShare extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'label'			=> array(
-						'title'	=> esc_html__('Label', 'tutor-divi-modules'),
+						'title'	=> esc_html__('Label', 'tutor-lms-divi-modules'),
 					),
 					'icons' 		=> array(
-						'title' => esc_html__('Icons', 'tutor-divi-modules'),
+						'title' => esc_html__('Icons', 'tutor-lms-divi-modules'),
 					),
 					'icon_hover'	=> array(
-						'title'	=> esc_html('Icon Hover', 'tutor-divi-modules' )	
+						'title'	=> esc_html('Icon Hover', 'tutor-lms-divi-modules' )	
 					)
 				),
 			),
@@ -61,7 +61,7 @@ class TutorCourseShare extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'				=> array(
 				'label' => array(
-					'label'        		=> esc_html__('Label', 'tutor-divi-modules'),
+					'label'        		=> esc_html__('Label', 'tutor-lms-divi-modules'),
 					'css'          		=> array(
 						'main'	=> $label_selector,
 					),
@@ -128,30 +128,30 @@ class TutorCourseShare extends ET_Builder_Module {
 			),
 			//general settings tab main_content toggle
 			'share_label'	=> array(
-				'label'				=> esc_html__('Label', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Label', 'tutor-lms-divi-modules'),
 				'type'				=> 'yes_no_button',
 				'option_category'	=> 'configuration',
 				'options'			=> array(
-					'off'	=> esc_html__('Hide', 'tutor-divi-modules'),
-					'on'	=> esc_html__('Show', 'tutor-divi-modules')
+					'off'	=> esc_html__('Hide', 'tutor-lms-divi-modules'),
+					'on'	=> esc_html__('Show', 'tutor-lms-divi-modules')
 				),
 				'default_on_front'	=> "on",
 				'toggle_slug'		=> 'main_content',	
 			),
 			'shape'			=> array(
-				'label'				=> esc_html__( 'Shape', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Shape', 'tutor-lms-divi-modules' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'rounded'	=> esc_html__( 'Rounded', 'tutor-divi-modules' ),
-					'circle'	=> esc_html__( 'Circle', 'tutor-divi-modules' ),
-					'square'	=> esc_html__( 'Square', 'tutor-divi-modules' ),
+					'rounded'	=> esc_html__( 'Rounded', 'tutor-lms-divi-modules' ),
+					'circle'	=> esc_html__( 'Circle', 'tutor-lms-divi-modules' ),
+					'square'	=> esc_html__( 'Square', 'tutor-lms-divi-modules' ),
 				),
 				'default'			=> 'rounded',
 				'option_category'	=> 'layout',
 				'toggle_slug'		=> 'main_content'
 			),
 			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
@@ -162,18 +162,18 @@ class TutorCourseShare extends ET_Builder_Module {
 
 			//advanced tab icon settings
 			'color'			=> array(
-				'label'				=> esc_html__( 'Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'select',
 				'options'			=> array(
-					'official'	=> esc_html__( 'Official Color', 'tutor-divi-modules' ),
-					'custom'	=> esc_html__( 'Custom', 'tutor-divi-modules' )
+					'official'	=> esc_html__( 'Official Color', 'tutor-lms-divi-modules' ),
+					'custom'	=> esc_html__( 'Custom', 'tutor-lms-divi-modules' )
 				),
 				'default'			=> 'official',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icons'
 			),
 			'icon_color'	=> array(
-				'label'				=> esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icons',
@@ -182,7 +182,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				)
 			),
 			'shape_color'	=> array(
-				'label'				=> esc_html__( 'Shape Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Shape Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icons',
@@ -191,7 +191,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				)				
 			),
 			'icon_size'		=> array(
-				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default_unit'		=> 'px',
 				'default'			=> '14',
@@ -206,7 +206,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			),
 
 			'icon_padding'	=> array(
-				'label'			=> esc_html__( 'Padding', 'tutor-divi-modules' ),
+				'label'			=> esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default'		=> '10px',
 				'default_unit'	=> 'px',
@@ -219,7 +219,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'toggle_slug'	=> 'icons'
 			),
 			'icon_spacing'		=> array(
-				'label'				=> esc_html__( 'Spacing', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Spacing', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default_unit'		=> 'px',
 				'default'			=> '14',
@@ -235,7 +235,7 @@ class TutorCourseShare extends ET_Builder_Module {
 
 			//icon hover advanced tab
 			'icon_hover_color'	=> array(
-				'label'				=> esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icon_hover',
@@ -244,7 +244,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				)
 			),
 			'shape_hover_color'	=> array(
-				'label'				=> esc_html__( 'Shape Color', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Shape Color', 'tutor-lms-divi-modules' ),
 				'type'				=> 'color-alpha',
 				'tab_slug'			=> 'advanced',
 				'toggle_slug'		=> 'icon_hover',

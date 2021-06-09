@@ -26,7 +26,7 @@ class CourseEnrollment extends ET_Builder_Module {
      */
     public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Enrollment', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Enrollment', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -34,18 +34,18 @@ class CourseEnrollment extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content'  => esc_html__( 'Content', 'tutor-divi-modules' ),
-					'customize_btn' => esc_html__( 'Button', 'tutor-divi-modules' ),
+					'main_content'  => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
+					'customize_btn' => esc_html__( 'Button', 'tutor-lms-divi-modules' ),
 				),
 			),
 			'advanced' => array(
                 'toggles'   => array(
-                    'enrollment_button'     => esc_html__( 'Enroll Button', 'tutor-divi-modules' ),
-                    'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-divi-modules' ),
-                    'start_continue_button' => esc_html__( 'Start/Continue Button', 'tutor-divi-modules' ),
-                    'complete_button'       => esc_html__( 'Complete Button', 'tutor-divi-modules' ),
-                    'gradebook_button'      => esc_html__( 'Gradebook Button', 'tutor-divi-modules' ),
-                    'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-divi-modules' ),
+                    'enrollment_button'     => esc_html__( 'Enroll Button', 'tutor-lms-divi-modules' ),
+                    'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
+                    'start_continue_button' => esc_html__( 'Start/Continue Button', 'tutor-lms-divi-modules' ),
+                    'complete_button'       => esc_html__( 'Complete Button', 'tutor-lms-divi-modules' ),
+                    'gradebook_button'      => esc_html__( 'Gradebook Button', 'tutor-lms-divi-modules' ),
+                    'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
                 )
 			),
    
@@ -56,7 +56,7 @@ class CourseEnrollment extends ET_Builder_Module {
             'fonts'         => array(
 
                 'label_font'    => array(
-                    'label'         => esc_html__( 'Label', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
                     'css'   => array(
                         'main'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p',
                     ),
@@ -65,7 +65,7 @@ class CourseEnrollment extends ET_Builder_Module {
                     'toggle_slug'   => 'enrolled_info'
                 ),
                 'date_font'    => array(
-                    'label'         => esc_html__( 'Date', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Date', 'tutor-lms-divi-modules' ),
                     'css'   => array(
                         'main'      => '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p span',
                     ),
@@ -78,7 +78,7 @@ class CourseEnrollment extends ET_Builder_Module {
             'button'        => array(
 
                 'enrollment_button' => array(
-                    'label'         => esc_html__( 'Enrollment Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Enrollment Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll'
@@ -96,7 +96,7 @@ class CourseEnrollment extends ET_Builder_Module {
                     'important'     => true
                 ),
                 'add_to_cart_button' => array(
-                    'label'         => esc_html__( 'Add to Cart Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button'
@@ -114,7 +114,7 @@ class CourseEnrollment extends ET_Builder_Module {
                     'important'     => true  
                 ),
                 'start_continue_button' => array(
-                    'label'         => esc_html__( 'Start/Continue Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Start/Continue Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success'
@@ -131,7 +131,7 @@ class CourseEnrollment extends ET_Builder_Module {
                     'important'     => true
                 ),
                 'complete_button' => array(
-                    'label'         => esc_html__( 'Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button'
@@ -146,7 +146,7 @@ class CourseEnrollment extends ET_Builder_Module {
                     'important'     => true
                 ),
                 'gradebook_button' => array(
-                    'label'         => esc_html__( 'Gradebook Button', 'tutor-divi-modules' ),
+                    'label'         => esc_html__( 'Gradebook Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
                             'main'  => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap .tutor-button'
@@ -205,18 +205,18 @@ class CourseEnrollment extends ET_Builder_Module {
             ),
             //general tab main_content toggle
             'preview_mode'      => array(
-                'label'             => esc_html__( 'Preview Mode', 'tutor-divi-modules' ),
+                'label'             => esc_html__( 'Preview Mode', 'tutor-lms-divi-modules' ),
                 'type'              => 'select',
                 'options'           => array(
-                    'enrollment'  => esc_html__( 'Enrollment', 'tutor-divi-modules' ),
-                    'enrolled'    => esc_html__( 'Enrolled', 'tutor-divi-modules' ),
+                    'enrollment'  => esc_html__( 'Enrollment', 'tutor-lms-divi-modules' ),
+                    'enrolled'    => esc_html__( 'Enrolled', 'tutor-lms-divi-modules' ),
                 ),
                 'default'           => 'enrollment',
                 'toggle_slug'       => 'main_content'
             ),
             //general tab customize_btn toggle
 			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-divi-modules'),
+				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
 				'type'				=> 'text_align',
 				'option_category'	=> 'configuration',
 				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
@@ -225,31 +225,31 @@ class CourseEnrollment extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
             'button_size'      => array(
-                'label'             => esc_html__( 'Size', 'tutor-divi-modules' ),
+                'label'             => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
                 'type'              => 'select',
                 'option_category'   => 'basic_option',
                 'options'           => array(
-                    'small'     => esc_html__( 'Small', 'tutor-divi-modules' ),
-                    'medium'    => esc_html__( 'Medium', 'tutor-divi-modules' ),
-                    'large'     => esc_html__( 'Large', 'tutor-divi-modules' ),
+                    'small'     => esc_html__( 'Small', 'tutor-lms-divi-modules' ),
+                    'medium'    => esc_html__( 'Medium', 'tutor-lms-divi-modules' ),
+                    'large'     => esc_html__( 'Large', 'tutor-lms-divi-modules' ),
                 ),
                 'default'           => 'medium',
                 'toggle_slug'       => 'customize_btn'
             ),
             'btn_width'      => array(
-                'label'             => esc_html__( 'Width', 'tutor-divi-modules' ),
+                'label'             => esc_html__( 'Width', 'tutor-lms-divi-modules' ),
                 'type'              => 'select',
                 'option_category'   => 'configuration',
                 'options'           => array(
-                    'auto'      => esc_html__( 'Auto', 'tutor-divi-modules' ),
-                    'fill'      => esc_html__( 'Fill', 'tutor-divi-modules' ),
-                    'fixed'     => esc_html__( 'Fixed', 'tutor-divi-modules' ),
+                    'auto'      => esc_html__( 'Auto', 'tutor-lms-divi-modules' ),
+                    'fill'      => esc_html__( 'Fill', 'tutor-lms-divi-modules' ),
+                    'fixed'     => esc_html__( 'Fixed', 'tutor-lms-divi-modules' ),
                 ),
                 'default'           => 'fill',
                 'toggle_slug'       => 'customize_btn'
             ),
             'width_px'			=> array(
-				'label'				=> esc_html__( 'Button Width', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Button Width', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '150px',
 				'default_unit'		=> 'px',
@@ -267,7 +267,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			),
             //advanced tab enrolled_info toggle
 			'icon_size'			=> array(
-				'label'				=> esc_html__( 'Icon Size', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
 				'default'			=> '10px',
 				'default_unit'		=> 'px',
@@ -281,7 +281,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				'mobile_options'	=> true
 			),
             'icon_color'    => array(
-                'label'         => esc_html__( 'Icon Color', 'tutor-divi-modules' ),
+                'label'         => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
                 'type'          => 'color-alpha',
                 'tab_slug'      => 'advanced',
                 'toggle_slug'   => 'enrolled_info'

@@ -26,7 +26,7 @@ $instructors = tutor_utils()->get_instructors_by_course( $course_id );
 if ($instructors){
 	$count = is_array($instructors) ? count($instructors) : 0;
 ?>
-	<h4 class="tutor-segment-title"><?php  _e( $label, 'tutor-divi-modules' ); ?></h4>
+	<h4 class="tutor-segment-title"><?php  _e( $label, 'tutor-lms-divi-modules' ); ?></h4>
 
 	<div class="tutor-course-instructors-wrap tutor-single-course-segment" id="single-course-ratings">
 		<?php

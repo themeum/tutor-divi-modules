@@ -72,7 +72,7 @@ function minifyJs(cb) {
 
 //clean existing build zip file
 function cleanZip(cb) {
-	return gulp.src("./tutor-divi-modules.zip", {
+	return gulp.src("./tutor-lms-divi-modules.zip", {
 		read: false,
 		allowEmpty: true
 	}).pipe(clean());
@@ -98,10 +98,10 @@ function makePot(cb) {
 			errorHandler: onError
 		}))
 		.pipe(wpPot({
-			domain: 'tutor-divi-modules',
+			domain: 'tutor-lms-divi-modules',
 			package: 'Tutor Divi Modules'
 		}))
-		.pipe(gulp.dest('languages/tutor-divi-modules.pot'));
+		.pipe(gulp.dest('languages/tutor-lms-divi-modules.pot'));
 		cb();
 };
 // bundle all files export to destination directory
@@ -132,7 +132,7 @@ function bundleFiles(cb){
 
 // from destination directory take all files make zip
 function exportZip(cb) {
-	return src("./build/**/*.*").pipe(zip("tutor-divi-modules.zip")).pipe(dest("./"));
+	return src("./build/**/*.*").pipe(zip("tutor-lms-divi-modules.zip")).pipe(dest("./"));
 	cb();
 }
 

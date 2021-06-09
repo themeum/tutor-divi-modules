@@ -62,7 +62,7 @@ if($topics->have_posts()) { ?>
 
         <div class="tutor-course-topics-header">
             <div class="tutor-course-topics-header-left">
-                <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-divi-modules'); ?></h4>
+                <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-lms-divi-modules'); ?></h4>
             </div>
             <div class="tutor-course-topics-header-right">
 				<?php

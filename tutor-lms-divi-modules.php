@@ -8,7 +8,7 @@ Author:      Themeum
 Author URI:  https://themeum.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: tutor-divi-modules
+Text Domain: tutor-lms-divi-modules
 Domain Path: /languages
 
 Tutor LMS Divi Modules is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ function tudm_initialize_extension() {
 add_action( 'init', 'tutor_divi_textdomain' );
 if( !function_exists( 'tutor_divi_textdomain' )) {
 	function tutor_divi_textdomain() {
-		load_plugin_textdomain( 'tutor-divi-modules' , false, dirname( plugin_basename( __FILE__) .'/languages' ) );		
+		load_plugin_textdomain( 'tutor-lms-divi-modules' , false, dirname( plugin_basename( __FILE__) .'/languages' ) );		
 	}
 }
 

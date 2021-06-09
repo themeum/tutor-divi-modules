@@ -31,7 +31,7 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
 
 <div class="tutor-single-course-segment">
     <div class="course-student-rating-title">
-        <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-divi-modules'); ?></h4>
+        <h4 class="tutor-segment-title"><?php _e( $args['label'], 'tutor-lms-divi-modules'); ?></h4>
     </div>
     <div class="tutor-course-reviews-wrap">
         <div class="tutor-course-student-rating-wrap">
@@ -67,7 +67,7 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
                                     <div class="rating-meter-col rating-text-col">
                                         <?php
                                         echo $value.' ';
-                                        echo $value > 1 ? __('ratings', 'tutor-divi-modules') : __('rating', 'tutor-divi-modules'); ?>
+                                        echo $value > 1 ? __('ratings', 'tutor-lms-divi-modules') : __('rating', 'tutor-lms-divi-modules'); ?>
                                     </div>
                                 </div>
 							<?php } ?>
@@ -94,7 +94,7 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
                             <div class="review-time-name">
                                 <p> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </p>
                                 <p class="review-meta">
-                                    <?php echo sprintf(__('%s ago', 'tutor-divi-modules'), human_time_diff(strtotime($review->comment_date))); ?>
+                                    <?php echo sprintf(__('%s ago', 'tutor-lms-divi-modules'), human_time_diff(strtotime($review->comment_date))); ?>
                                 </p>
                             </div>
                             <div class="individual-review-rating-wrap">

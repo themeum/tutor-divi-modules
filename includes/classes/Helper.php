@@ -29,10 +29,10 @@ class Helper {
         $default = self::get_course_default();
 
         $field = array(
-            'label'             => esc_html__('Course', 'tutor-divi-modules'),
+            'label'             => esc_html__('Course', 'tutor-lms-divi-modules'),
             'type'              => 'select',
             'option_category'   => 'configuration',
-            'description'       => esc_html__('Here you can select the Course.', 'tutor-divi-modules'),
+            'description'       => esc_html__('Here you can select the Course.', 'tutor-lms-divi-modules'),
             'toggle_slug'       => 'main_content',
             'options'           => array(
                 $default    => get_the_title($default)
@@ -170,10 +170,10 @@ class Helper {
         $current = self::format_course_id('current');
 
         if ($default && $default === $current) {
-            $courses[$current] = esc_html__('This Course', 'tutor-divi-modules');
+            $courses[$current] = esc_html__('This Course', 'tutor-lms-divi-modules');
         }
         $latest = self::format_course_id('latest');
-        $courses[$latest] = esc_html__('Latest Course', 'tutor-divi-modules');
+        $courses[$latest] = esc_html__('Latest Course', 'tutor-lms-divi-modules');
         $course_list = get_posts(array(
             'post_type'         => tutor()->course_post_type,
             'post_status'       => 'publish',

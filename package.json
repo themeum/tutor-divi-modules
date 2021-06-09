@@ -1,5 +1,5 @@
 {
-  "name": "tutor-divi-modules",
+  "name": "tutor-lms-divi-modules",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,7 +38,7 @@
     ]
   },
   "cde": {
-    "gettext": "tutor-divi-modules",
+    "gettext": "tutor-lms-divi-modules",
     "prefix": "tutor"
   },
   "devDependencies": {

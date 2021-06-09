@@ -26,26 +26,26 @@ class CourseStatus extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
     public function init() {
-        $this->name         = esc_html__( 'Tutor Course Status', 'tutor-divi-modules' ); 
+        $this->name         = esc_html__( 'Tutor Course Status', 'tutor-lms-divi-modules' ); 
         $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		//toggles settings (content tab)
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced'	=> array(
 				'toggles'	=> array(
 					'section_title'	=> array(
-						'title'	=> esc_html__( 'Section Title', 'tutor-divi-modules')
+						'title'	=> esc_html__( 'Section Title', 'tutor-lms-divi-modules')
 					),
 					'progress_bar'	=> array(
-						'title'	=> esc_html__( 'Progress Bar', 'tutor-divi-modules')
+						'title'	=> esc_html__( 'Progress Bar', 'tutor-lms-divi-modules')
 					),
 					'progress_text'	=> array(
-						'title'	=> esc_html__( 'Progress Text', 'tutor-divi-modules')
+						'title'	=> esc_html__( 'Progress Text', 'tutor-lms-divi-modules')
 					),
 				)
 			)
@@ -58,7 +58,7 @@ class CourseStatus extends ET_Builder_Module {
 		$this->advanced_fields = array (
 			'fonts'		=> array(
 				'label'				=> array(
-					'label'			=> esc_html__( 'Section Title', 'tutor-divi-modules'),
+					'label'			=> esc_html__( 'Section Title', 'tutor-lms-divi-modules'),
 					'css'			=> array(
 						'main'	=> $label_selector
 					),
@@ -66,7 +66,7 @@ class CourseStatus extends ET_Builder_Module {
 					'toggle_slug'	=> 'section_title'
 				),
 				'progress_text'		=> array(
-					'label'			=> esc_html__( 'Progress', 'tutor-divi-modules'),
+					'label'			=> esc_html__( 'Progress', 'tutor-lms-divi-modules'),
 					'css'			=> array(
 						'main'	=> $text_selector
 					),
@@ -97,30 +97,30 @@ class CourseStatus extends ET_Builder_Module {
     public function get_fields() {
 		return array(
 			'status_label'    	=> array(
-				'label'				=> esc_html__( 'Label', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            	=> 'text',
-				'default'			=> esc_html__( 'Course Status', 'tutor-divi-modules' ),
+				'default'			=> esc_html__( 'Course Status', 'tutor-lms-divi-modules' ),
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
 			),
             'display_percent'	=> array(
-				'label'				=> esc_html__( 'Dispaly Percent', 'tutor-divi-modules' ),
+				'label'				=> esc_html__( 'Dispaly Percent', 'tutor-lms-divi-modules' ),
 				'type'            	=> 'yes_no_button',
 				'options'			=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-divi-modules' ),
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
 				),
 				'default'			=> 'on',
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
 			),
 			'position'			=> array(
-				'label'				=> esc_html__( 'Position', 'tutor-divi-modules'),
+				'label'				=> esc_html__( 'Position', 'tutor-lms-divi-modules'),
 				'type'				=> 'select',
 				'options'			=> array(
-					'inside'	=> esc_html__( 'Inside', 'tutor-divi-modules' ),
-					'outside'	=> esc_html__( 'Outside', 'tutor-divi-modules' ),
-					'on_top'	=> esc_html__( 'On Top', 'tutor-divi-modules' ),
+					'inside'	=> esc_html__( 'Inside', 'tutor-lms-divi-modules' ),
+					'outside'	=> esc_html__( 'Outside', 'tutor-lms-divi-modules' ),
+					'on_top'	=> esc_html__( 'On Top', 'tutor-lms-divi-modules' ),
 				),
 				'default'			=> 'outside',
 				'toggle_slug'		=> 'main_content'
@@ -128,19 +128,19 @@ class CourseStatus extends ET_Builder_Module {
 
 			//progress bar advanced tab
 			'bar_color'			=> array(
-				'label'			=> esc_html__( 'Color', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Color', 'tutor-lms-divi-modules'),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'progress_bar'
 			),
 			'bar_background'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules'),
 				'type'			=> 'color-alpha',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'progress_bar'
 			),
 			'bar_height'		=> array(
-				'label'			=> esc_html__( 'Height', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Height', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'default'		=> '15',
@@ -153,7 +153,7 @@ class CourseStatus extends ET_Builder_Module {
 				'toggle_slug'	=> 'progress_bar'				
 			),
 			'bar_radius'		=> array(
-				'label'			=> esc_html__( 'Border Radius', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Border Radius', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'default'		=> '30',
@@ -166,7 +166,7 @@ class CourseStatus extends ET_Builder_Module {
 				'toggle_slug'	=> 'progress_bar'				
 			),
 			'gap'		=> array(
-				'label'			=> esc_html__( 'Gap', 'tutor-divi-modules'),
+				'label'			=> esc_html__( 'Gap', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
 				'default'		=> '10',

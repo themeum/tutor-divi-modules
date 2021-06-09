@@ -27,7 +27,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Title', 'tutor-divi-modules');
+		$this->name			= esc_html__('Tutor Course Title', 'tutor-lms-divi-modules');
 		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
@@ -35,17 +35,17 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-divi-modules'),
+					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'header' => array(
-						'title'    => esc_html__('Title Text', 'tutor-divi-modules'),
+						'title'    => esc_html__('Title Text', 'tutor-lms-divi-modules'),
 						'priority' => 49,
 					),
 					'width'  => array(
-						'title'    => esc_html__('Sizing', 'tutor-divi-modules'),
+						'title'    => esc_html__('Sizing', 'tutor-lms-divi-modules'),
 						'priority' => 65,
 					),
 				),
@@ -55,7 +55,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'header' => array(
-					'label'        => esc_html__('Title', 'tutor-divi-modules'),
+					'label'        => esc_html__('Title', 'tutor-lms-divi-modules'),
 					'css'          => array(
 						'main' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 					),
@@ -120,7 +120,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_title($args = array()) {
-		$title = __('Course Title', 'tutor-divi-modules');
+		$title = __('Course Title', 'tutor-lms-divi-modules');
 		$course = Helper::get_course($args);
 		if ($course) {
 			$title = get_the_title();
