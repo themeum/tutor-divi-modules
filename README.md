@@ -1,6 +1,6 @@
 # Tutor Divi Modules
 
-This plugin adds 24+ addons to Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses. To make use of the Divi builder to build a custom course template, you need to create your own course template first.
+This plugin adds 23+ addons to Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses. To make use of the Divi builder to build a custom course template, you need to create your own course template first.
 
 You can do that by heading to your WordPress admin page, and then from the dashboard panel head to Templates > Saved Templates > Add New and from the “Choose Template Type” dropdown, select page. Give the template a name and also make sure to enable ”Tutor LMS Single Course Template”. Then, from the default editing panel, click on “Edit With Divi” to start up the Divi Page builder interface. You will find all the necessary addons to create a single course page from the left sidebar’s Tutor LMS section.
 
