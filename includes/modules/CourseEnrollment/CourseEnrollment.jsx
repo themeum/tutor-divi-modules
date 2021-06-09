@@ -257,7 +257,7 @@ class CourseEnrollment extends Component {
                             <div className="tutor-course-purchase-box">
                                 <button className="single_add_to_cart_button tutor-button alt" data-icon={add_to_cart}>
                                     <i className="tutor-icon-shopping-cart"></i>  
-                                    <span>Add to Cart</span>  
+                                    Add to Cart
                                 </button>
                             </div>
                         </div>
