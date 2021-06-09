@@ -197,6 +197,7 @@ class CourseList extends ET_Builder_Module {
 			'max_width'		=> false,
 			'transform'		=> false,
 			'box_shadow'	=> false,
+			'button'		=> false
 			
 		);
 		

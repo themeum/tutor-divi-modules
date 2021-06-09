@@ -570,7 +570,16 @@ class CourseReviews extends ET_Builder_Module {
                     )
                 )
             );             
-        }        
+        }  
+        
+        //remove extra space 
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'      => '%%order_class%% .tutor-col-auto > p',
+                'declaration'   => 'padding-bottom: 0px;'
+            )
+        );
         //set style end
 
         $output = self::get_content( $this->props );

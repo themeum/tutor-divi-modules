@@ -132,6 +132,15 @@ class CourseReviews extends Component {
                 }
             ]);              
         }
+
+        //remove extra space 
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-col-auto > p',
+                declaration: `padding-bottom: 0px !important;`
+            }            
+        ]);
+
         //set styles end
         return additionalCss;
     }
