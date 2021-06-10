@@ -3,26 +3,15 @@
 Plugin Name: Tutor LMS Divi Modules
 Plugin URI:  https://www.themeum.com/product/tutor-lms/
 Description: Divi Modules Integration - Tutor LMS plugin let's you to design your courses, lesson page by Divi Builder.
-Version:     1.0.0
-Author:      Themeum
-Author URI:  https://themeum.com
-License:     GPL2
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Version: 1.0.0
+Author: Themeum
+Author URI: https://themeum.com
+Requires at least: 4.5
+Tested up to: 5.7
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: tutor-lms-divi-modules
 Domain Path: /languages
-
-Tutor LMS Divi Modules is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-any later version.
-
-Tutor LMS Divi Modules is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Tutor LMS Divi Modules. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
 defined('ABSPATH') || die();
