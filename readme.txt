@@ -36,7 +36,7 @@ Tutor LMS Divi Modules will ask you to install the following plugins to make sur
 
 After installing and activating all of these plugins, you will be able to build single course pages with Divi Page builder using all of its unique features. For a more in-depth look at the integration and all details, please visit our documentation on Tutor LMS Divi Modules.
 
-Link: https://docs.themeum.com/tutor-lms/integrations/tutor-lms-divi-modules
+Link: https://docs.themeum.com/tutor-lms/divi-integration/
 
 Note: Please make sure you are using the latest version of all these plugins.
 
