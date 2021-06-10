@@ -40,7 +40,6 @@ $difficulty_label   = $args['difficulty_label'];
 $wish_list          = $args['wish_list'];    
 $category           = $args['category'];    
 $footer             = $args['footer']; 
-$cart_icon          = et_pb_process_font_icon($args['cart_button_icon']); 
 $pagination         = $args['pagination'];
 $pagination_type    = $args['pagination_type'];
 $prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Previous', 'tutor-lms-divi-modules');

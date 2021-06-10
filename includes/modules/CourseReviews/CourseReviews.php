@@ -352,7 +352,7 @@ class CourseReviews extends ET_Builder_Module {
         $course_id      = $args['course'];
         $reviews        = tutils()->get_course_reviews( $course_id );
         $rating_summary = tutils()->get_course_rating( $course_id );
-
+        $count_by_value = $rating_summary->count_by_value;
         foreach( $reviews as $review) {
             if($review) {
                 //$review->avatar_url = get_avatar_url( $review->user_id , array('force_default' => true));
@@ -361,7 +361,8 @@ class CourseReviews extends ET_Builder_Module {
         }
         return array(
             'rating_summary'    => $rating_summary,
-            'reviews'           => $reviews
+            'reviews'           => $reviews,
+            'count_by_value'    => $count_by_value
         );
     }
 

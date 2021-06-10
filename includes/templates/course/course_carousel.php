@@ -39,7 +39,7 @@ $difficulty_label   = $args['difficulty_label'];
 $wish_list          = $args['wish_list'];    
 $category           = $args['category'];    
 $footer             = $args['footer']; 
-$cart_icon          = et_pb_process_font_icon($args['cart_button_icon']); 
+
 ?>
 <input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
 <?php

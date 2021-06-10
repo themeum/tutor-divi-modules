@@ -99,6 +99,13 @@ class CourseInstructor extends Component {
                 }
             ]);
         }
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .single-instructor-wrap .instructor-name > h3',
+				declaration: 'margin-bottom: 3px;'               
+            }
+        ]);
         //set styles end
 
         return additionalCss;

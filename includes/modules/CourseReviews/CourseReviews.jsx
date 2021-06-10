@@ -168,11 +168,14 @@ class CourseReviews extends Component {
      * @return rating meters 
      */
     ratingMeter(count_by_value) {
-        
-        const rating_meter = Object.entries(count_by_value).map((k,v)=> {
-            let width = k[1] ? '100%' : '0%';
+        let num = 5;
+
+        const rating_meter = Object.entries(count_by_value).map((value)=> {
+           
+            
+            let width = count_by_value[num] ? '50%' : '0%';
             return (<div className="course-rating-meter">
-                    <div className="rating-meter-col">{k[0]} <i className="tutor-icon-star-full"></i></div>
+                    <div className="rating-meter-col">{ num -- } <i className="tutor-icon-star-full"></i></div>
                     <div className="rating-meter-col"></div>
                     <div className="rating-meter-col rating-meter-bar-wrap">
                         <div className="rating-meter-bar">
@@ -180,13 +183,14 @@ class CourseReviews extends Component {
                         </div>
                     </div>
                     <div className="rating-meter-col rating-text-col">
-                        {k[1]} rating
+                        {count_by_value[num] ? count_by_value[num] : 0} rating
                     </div>
                 </div>
             )
         })
         return rating_meter;
     }
+
 
     timeAgo(comment_date) {
         const date1 = new Date(comment_date);
@@ -268,7 +272,7 @@ class CourseReviews extends Component {
                                 </div>
                                 <div className="tutor-col">
                                     <div className="course-ratings-count-meter-wrap">
-                                        { this.ratingMeter(props.__reviews.rating_summary.count_by_value) }
+                                        { this.ratingMeter(props.__reviews.count_by_value) }
                                     </div>
                                 </div>
 
