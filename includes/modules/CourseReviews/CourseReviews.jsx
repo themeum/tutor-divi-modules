@@ -183,7 +183,7 @@ class CourseReviews extends Component {
                         </div>
                     </div>
                     <div className="rating-meter-col rating-text-col">
-                        {count_by_value[num] ? count_by_value[num] : 0} rating
+                        {num ? count_by_value[num] : count_by_value[1]} rating
                     </div>
                 </div>
             )
