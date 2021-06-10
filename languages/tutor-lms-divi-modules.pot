@@ -93,11 +93,11 @@ msgstr ""
 msgid "Profile Picture"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:135, includes/modules/CourseAuthor/CourseAuthor.php:146, includes/modules/CourseCarousel/CourseCarousel.php:262, includes/modules/CourseCarousel/CourseCarousel.php:273, includes/modules/CourseCarousel/CourseCarousel.php:298, includes/modules/CourseCarousel/CourseCarousel.php:309, includes/modules/CourseCarousel/CourseCarousel.php:320, includes/modules/CourseCarousel/CourseCarousel.php:331, includes/modules/CourseCarousel/CourseCarousel.php:342, includes/modules/CourseCarousel/CourseCarousel.php:353, includes/modules/CourseCarousel/CourseCarousel.php:364, includes/modules/CourseCarousel/CourseCarousel.php:423, includes/modules/CourseCarousel/CourseCarousel.php:434, includes/modules/CourseInstructor/CourseInstructor.php:190, includes/modules/CourseInstructor/CourseInstructor.php:200, includes/modules/CourseInstructor/CourseInstructor.php:210, includes/modules/CourseList/CourseList.php:250, includes/modules/CourseList/CourseList.php:261, includes/modules/CourseList/CourseList.php:297, includes/modules/CourseList/CourseList.php:308, includes/modules/CourseList/CourseList.php:319, includes/modules/CourseList/CourseList.php:330, includes/modules/CourseList/CourseList.php:341, includes/modules/CourseList/CourseList.php:352, includes/modules/CourseList/CourseList.php:363, includes/modules/CourseList/CourseList.php:374, includes/modules/CourseShare/CourseShare.php:135, includes/modules/CourseStatus/CourseStatus.php:111
+#: includes/modules/CourseAuthor/CourseAuthor.php:135, includes/modules/CourseAuthor/CourseAuthor.php:146, includes/modules/CourseCarousel/CourseCarousel.php:263, includes/modules/CourseCarousel/CourseCarousel.php:274, includes/modules/CourseCarousel/CourseCarousel.php:299, includes/modules/CourseCarousel/CourseCarousel.php:310, includes/modules/CourseCarousel/CourseCarousel.php:321, includes/modules/CourseCarousel/CourseCarousel.php:332, includes/modules/CourseCarousel/CourseCarousel.php:343, includes/modules/CourseCarousel/CourseCarousel.php:354, includes/modules/CourseCarousel/CourseCarousel.php:365, includes/modules/CourseCarousel/CourseCarousel.php:424, includes/modules/CourseCarousel/CourseCarousel.php:435, includes/modules/CourseInstructor/CourseInstructor.php:190, includes/modules/CourseInstructor/CourseInstructor.php:200, includes/modules/CourseInstructor/CourseInstructor.php:210, includes/modules/CourseList/CourseList.php:251, includes/modules/CourseList/CourseList.php:262, includes/modules/CourseList/CourseList.php:298, includes/modules/CourseList/CourseList.php:309, includes/modules/CourseList/CourseList.php:320, includes/modules/CourseList/CourseList.php:331, includes/modules/CourseList/CourseList.php:342, includes/modules/CourseList/CourseList.php:353, includes/modules/CourseList/CourseList.php:364, includes/modules/CourseList/CourseList.php:375, includes/modules/CourseShare/CourseShare.php:135, includes/modules/CourseStatus/CourseStatus.php:111
 msgid "Hide"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:136, includes/modules/CourseAuthor/CourseAuthor.php:147, includes/modules/CourseCarousel/CourseCarousel.php:261, includes/modules/CourseCarousel/CourseCarousel.php:272, includes/modules/CourseCarousel/CourseCarousel.php:297, includes/modules/CourseCarousel/CourseCarousel.php:308, includes/modules/CourseCarousel/CourseCarousel.php:319, includes/modules/CourseCarousel/CourseCarousel.php:330, includes/modules/CourseCarousel/CourseCarousel.php:341, includes/modules/CourseCarousel/CourseCarousel.php:352, includes/modules/CourseCarousel/CourseCarousel.php:363, includes/modules/CourseCarousel/CourseCarousel.php:422, includes/modules/CourseCarousel/CourseCarousel.php:433, includes/modules/CourseInstructor/CourseInstructor.php:189, includes/modules/CourseInstructor/CourseInstructor.php:199, includes/modules/CourseInstructor/CourseInstructor.php:209, includes/modules/CourseList/CourseList.php:249, includes/modules/CourseList/CourseList.php:260, includes/modules/CourseList/CourseList.php:296, includes/modules/CourseList/CourseList.php:307, includes/modules/CourseList/CourseList.php:318, includes/modules/CourseList/CourseList.php:329, includes/modules/CourseList/CourseList.php:340, includes/modules/CourseList/CourseList.php:351, includes/modules/CourseList/CourseList.php:362, includes/modules/CourseList/CourseList.php:373, includes/modules/CourseShare/CourseShare.php:136, includes/modules/CourseStatus/CourseStatus.php:110
+#: includes/modules/CourseAuthor/CourseAuthor.php:136, includes/modules/CourseAuthor/CourseAuthor.php:147, includes/modules/CourseCarousel/CourseCarousel.php:262, includes/modules/CourseCarousel/CourseCarousel.php:273, includes/modules/CourseCarousel/CourseCarousel.php:298, includes/modules/CourseCarousel/CourseCarousel.php:309, includes/modules/CourseCarousel/CourseCarousel.php:320, includes/modules/CourseCarousel/CourseCarousel.php:331, includes/modules/CourseCarousel/CourseCarousel.php:342, includes/modules/CourseCarousel/CourseCarousel.php:353, includes/modules/CourseCarousel/CourseCarousel.php:364, includes/modules/CourseCarousel/CourseCarousel.php:423, includes/modules/CourseCarousel/CourseCarousel.php:434, includes/modules/CourseInstructor/CourseInstructor.php:189, includes/modules/CourseInstructor/CourseInstructor.php:199, includes/modules/CourseInstructor/CourseInstructor.php:209, includes/modules/CourseList/CourseList.php:250, includes/modules/CourseList/CourseList.php:261, includes/modules/CourseList/CourseList.php:297, includes/modules/CourseList/CourseList.php:308, includes/modules/CourseList/CourseList.php:319, includes/modules/CourseList/CourseList.php:330, includes/modules/CourseList/CourseList.php:341, includes/modules/CourseList/CourseList.php:352, includes/modules/CourseList/CourseList.php:363, includes/modules/CourseList/CourseList.php:374, includes/modules/CourseShare/CourseShare.php:136, includes/modules/CourseStatus/CourseStatus.php:110
 msgid "Show"
 msgstr ""
 
@@ -121,15 +121,15 @@ msgstr ""
 msgid "Up"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:175, includes/modules/CourseBenefits/CourseBenefits.php:166, includes/modules/CourseCarousel/CourseCarousel.php:707, includes/modules/CourseCategories/CourseCategories.php:126, includes/modules/CourseDuration/CourseDuration.php:130, includes/modules/CourseEnrollment/CourseEnrollment.php:219, includes/modules/CourseLastUpdate/CourseLastUpdate.php:133, includes/modules/CourseLevel/CourseLevel.php:142, includes/modules/CourseMaterials/CourseMaterials.php:164, includes/modules/CoursePrice/CoursePrice.php:96, includes/modules/CourseRequirements/CourseRequirements.php:167, includes/modules/CourseShare/CourseShare.php:154, includes/modules/CourseTargetAudience/CourseTargetAudience.php:167, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:132
+#: includes/modules/CourseAuthor/CourseAuthor.php:175, includes/modules/CourseBenefits/CourseBenefits.php:166, includes/modules/CourseCarousel/CourseCarousel.php:708, includes/modules/CourseCategories/CourseCategories.php:126, includes/modules/CourseDuration/CourseDuration.php:130, includes/modules/CourseEnrollment/CourseEnrollment.php:219, includes/modules/CourseLastUpdate/CourseLastUpdate.php:133, includes/modules/CourseLevel/CourseLevel.php:142, includes/modules/CourseMaterials/CourseMaterials.php:164, includes/modules/CoursePrice/CoursePrice.php:96, includes/modules/CourseRequirements/CourseRequirements.php:167, includes/modules/CourseShare/CourseShare.php:154, includes/modules/CourseTargetAudience/CourseTargetAudience.php:167, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:132
 msgid "Alignment"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:186, includes/modules/CourseBenefits/CourseBenefits.php:221, includes/modules/CourseCarousel/CourseCarousel.php:578, includes/modules/CourseEnrollment/CourseEnrollment.php:228, includes/modules/CourseList/CourseList.php:552, includes/modules/CourseMaterials/CourseMaterials.php:219, includes/modules/CourseRequirements/CourseRequirements.php:222, includes/modules/CourseRequirements/CourseRequirements.php:282, includes/modules/CourseTargetAudience/CourseTargetAudience.php:222
+#: includes/modules/CourseAuthor/CourseAuthor.php:186, includes/modules/CourseBenefits/CourseBenefits.php:221, includes/modules/CourseCarousel/CourseCarousel.php:579, includes/modules/CourseEnrollment/CourseEnrollment.php:228, includes/modules/CourseList/CourseList.php:553, includes/modules/CourseMaterials/CourseMaterials.php:219, includes/modules/CourseRequirements/CourseRequirements.php:222, includes/modules/CourseRequirements/CourseRequirements.php:282, includes/modules/CourseTargetAudience/CourseTargetAudience.php:222
 msgid "Size"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:204, includes/modules/CourseBenefits/CourseBenefits.php:176, includes/modules/CourseCarousel/CourseCarousel.php:636, includes/modules/CourseCategories/CourseCategories.php:135, includes/modules/CourseCurriculum/CourseCurriculum.php:208, includes/modules/CourseDuration/CourseDuration.php:137, includes/modules/CourseLastUpdate/CourseLastUpdate.php:142, includes/modules/CourseLevel/CourseLevel.php:151, includes/modules/CourseList/CourseList.php:610, includes/modules/CourseMaterials/CourseMaterials.php:174, includes/modules/CourseRequirements/CourseRequirements.php:177, includes/modules/CourseRequirements/CourseRequirements.php:237, includes/modules/CourseStatus/CourseStatus.php:169, includes/modules/CourseTargetAudience/CourseTargetAudience.php:177, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:141
+#: includes/modules/CourseAuthor/CourseAuthor.php:204, includes/modules/CourseBenefits/CourseBenefits.php:176, includes/modules/CourseCarousel/CourseCarousel.php:637, includes/modules/CourseCategories/CourseCategories.php:135, includes/modules/CourseCurriculum/CourseCurriculum.php:208, includes/modules/CourseDuration/CourseDuration.php:137, includes/modules/CourseLastUpdate/CourseLastUpdate.php:142, includes/modules/CourseLevel/CourseLevel.php:151, includes/modules/CourseList/CourseList.php:611, includes/modules/CourseMaterials/CourseMaterials.php:174, includes/modules/CourseRequirements/CourseRequirements.php:177, includes/modules/CourseRequirements/CourseRequirements.php:237, includes/modules/CourseStatus/CourseStatus.php:169, includes/modules/CourseTargetAudience/CourseTargetAudience.php:177, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:141
 msgid "Gap"
 msgstr ""
 
@@ -161,15 +161,15 @@ msgstr ""
 msgid "Inline"
 msgstr ""
 
-#: includes/modules/CourseBenefits/CourseBenefits.php:191, includes/modules/CourseCarousel/CourseCarousel.php:716, includes/modules/CourseInstructor/CourseInstructor.php:281, includes/modules/CourseMaterials/CourseMaterials.php:189, includes/modules/CourseRequirements/CourseRequirements.php:192, includes/modules/CourseRequirements/CourseRequirements.php:252, includes/modules/CourseTargetAudience/CourseTargetAudience.php:192
+#: includes/modules/CourseBenefits/CourseBenefits.php:191, includes/modules/CourseCarousel/CourseCarousel.php:717, includes/modules/CourseInstructor/CourseInstructor.php:281, includes/modules/CourseMaterials/CourseMaterials.php:189, includes/modules/CourseRequirements/CourseRequirements.php:192, includes/modules/CourseRequirements/CourseRequirements.php:252, includes/modules/CourseTargetAudience/CourseTargetAudience.php:192
 msgid "Space Between"
 msgstr ""
 
-#: includes/modules/CourseBenefits/CourseBenefits.php:205, includes/modules/CourseCarousel/CourseCarousel.php:538, includes/modules/CourseCarousel/CourseCarousel.php:679, includes/modules/CourseCarousel/CourseCarousel.php:692, includes/modules/CourseList/CourseList.php:512, includes/modules/CourseList/CourseList.php:659, includes/modules/CourseList/CourseList.php:720, includes/modules/CourseMaterials/CourseMaterials.php:203, includes/modules/CourseRequirements/CourseRequirements.php:206, includes/modules/CourseRequirements/CourseRequirements.php:266, includes/modules/CourseShare/CourseShare.php:209, includes/modules/CourseTargetAudience/CourseTargetAudience.php:206
+#: includes/modules/CourseBenefits/CourseBenefits.php:205, includes/modules/CourseCarousel/CourseCarousel.php:539, includes/modules/CourseCarousel/CourseCarousel.php:680, includes/modules/CourseCarousel/CourseCarousel.php:693, includes/modules/CourseList/CourseList.php:513, includes/modules/CourseList/CourseList.php:660, includes/modules/CourseList/CourseList.php:721, includes/modules/CourseMaterials/CourseMaterials.php:203, includes/modules/CourseRequirements/CourseRequirements.php:206, includes/modules/CourseRequirements/CourseRequirements.php:266, includes/modules/CourseShare/CourseShare.php:209, includes/modules/CourseTargetAudience/CourseTargetAudience.php:206
 msgid "Padding"
 msgstr ""
 
-#: includes/modules/CourseBenefits/CourseBenefits.php:215, includes/modules/CourseList/CourseList.php:680, includes/modules/CourseList/CourseList.php:693, includes/modules/CourseList/CourseList.php:706, includes/modules/CourseMaterials/CourseMaterials.php:213, includes/modules/CourseRequirements/CourseRequirements.php:216, includes/modules/CourseRequirements/CourseRequirements.php:276, includes/modules/CourseReviews/CourseReviews.php:265, includes/modules/CourseShare/CourseShare.php:165, includes/modules/CourseStatus/CourseStatus.php:131, includes/modules/CourseTargetAudience/CourseTargetAudience.php:216
+#: includes/modules/CourseBenefits/CourseBenefits.php:215, includes/modules/CourseList/CourseList.php:681, includes/modules/CourseList/CourseList.php:694, includes/modules/CourseList/CourseList.php:707, includes/modules/CourseMaterials/CourseMaterials.php:213, includes/modules/CourseRequirements/CourseRequirements.php:216, includes/modules/CourseRequirements/CourseRequirements.php:276, includes/modules/CourseReviews/CourseReviews.php:265, includes/modules/CourseShare/CourseShare.php:165, includes/modules/CourseStatus/CourseStatus.php:131, includes/modules/CourseTargetAudience/CourseTargetAudience.php:216
 msgid "Color"
 msgstr ""
 
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Carousel Settings"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:43, includes/modules/CourseCarousel/CourseCarousel.php:226, includes/modules/CourseList/CourseList.php:44, includes/modules/CourseList/CourseList.php:219
+#: includes/modules/CourseCarousel/CourseCarousel.php:43, includes/modules/CourseCarousel/CourseCarousel.php:227, includes/modules/CourseList/CourseList.php:44, includes/modules/CourseList/CourseList.php:220
 msgid "Card"
 msgstr ""
 
@@ -209,11 +209,11 @@ msgstr ""
 msgid "Badge"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:46, includes/modules/CourseCarousel/CourseCarousel.php:315, includes/modules/CourseList/CourseList.php:47, includes/modules/CourseList/CourseList.php:314
+#: includes/modules/CourseCarousel/CourseCarousel.php:46, includes/modules/CourseCarousel/CourseCarousel.php:316, includes/modules/CourseList/CourseList.php:47, includes/modules/CourseList/CourseList.php:315
 msgid "Avatar"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:47, includes/modules/CourseCarousel/CourseCarousel.php:375, includes/modules/CourseList/CourseList.php:48, includes/modules/CourseList/CourseList.php:385, includes/modules/CourseTitle/CourseTitle.php:58
+#: includes/modules/CourseCarousel/CourseCarousel.php:47, includes/modules/CourseCarousel/CourseCarousel.php:376, includes/modules/CourseList/CourseList.php:48, includes/modules/CourseList/CourseList.php:386, includes/modules/CourseTitle/CourseTitle.php:58
 msgid "Title"
 msgstr ""
 
@@ -221,15 +221,15 @@ msgstr ""
 msgid "Meta"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:49, includes/modules/CourseCarousel/CourseCarousel.php:348, includes/modules/CourseCarousel/CourseCarousel.php:401, includes/modules/CourseList/CourseList.php:50, includes/modules/CourseList/CourseList.php:347, includes/modules/CourseList/CourseList.php:411
+#: includes/modules/CourseCarousel/CourseCarousel.php:49, includes/modules/CourseCarousel/CourseCarousel.php:349, includes/modules/CourseCarousel/CourseCarousel.php:402, includes/modules/CourseList/CourseList.php:50, includes/modules/CourseList/CourseList.php:348, includes/modules/CourseList/CourseList.php:412
 msgid "Category"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:50, includes/modules/CourseCarousel/CourseCarousel.php:304, includes/modules/CourseList/CourseList.php:51, includes/modules/CourseList/CourseList.php:303
+#: includes/modules/CourseCarousel/CourseCarousel.php:50, includes/modules/CourseCarousel/CourseCarousel.php:305, includes/modules/CourseList/CourseList.php:51, includes/modules/CourseList/CourseList.php:304
 msgid "Rating"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:51, includes/modules/CourseCarousel/CourseCarousel.php:359, includes/modules/CourseList/CourseList.php:52, includes/modules/CourseList/CourseList.php:358
+#: includes/modules/CourseCarousel/CourseCarousel.php:51, includes/modules/CourseCarousel/CourseCarousel.php:360, includes/modules/CourseList/CourseList.php:52, includes/modules/CourseList/CourseList.php:359
 msgid "Footer"
 msgstr ""
 
@@ -237,195 +237,195 @@ msgstr ""
 msgid "Cart Button"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:53, includes/modules/CourseCarousel/CourseCarousel.php:419
+#: includes/modules/CourseCarousel/CourseCarousel.php:53, includes/modules/CourseCarousel/CourseCarousel.php:420
 msgid "Arrows"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:54, includes/modules/CourseCarousel/CourseCarousel.php:430
+#: includes/modules/CourseCarousel/CourseCarousel.php:54, includes/modules/CourseCarousel/CourseCarousel.php:431
 msgid "Dots"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:225, includes/modules/CourseList/CourseList.php:218
+#: includes/modules/CourseCarousel/CourseCarousel.php:226, includes/modules/CourseList/CourseList.php:219
 msgid "Classic"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:227, includes/modules/CourseList/CourseList.php:220
+#: includes/modules/CourseCarousel/CourseCarousel.php:228, includes/modules/CourseList/CourseList.php:221
 msgid "Stacked"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:228, includes/modules/CourseList/CourseList.php:221
+#: includes/modules/CourseCarousel/CourseCarousel.php:229, includes/modules/CourseList/CourseList.php:222
 msgid "Overlayed"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:236
+#: includes/modules/CourseCarousel/CourseCarousel.php:237
 msgid "Slides to Show"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:238, includes/modules/CourseList/CourseList.php:231
+#: includes/modules/CourseCarousel/CourseCarousel.php:239, includes/modules/CourseList/CourseList.php:232
 msgid "No: of slides that will display on desktop view"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:240, includes/modules/CourseList/CourseList.php:233
+#: includes/modules/CourseCarousel/CourseCarousel.php:241, includes/modules/CourseList/CourseList.php:234
 msgid "Default"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:257, includes/modules/CourseList/CourseList.php:245
+#: includes/modules/CourseCarousel/CourseCarousel.php:258, includes/modules/CourseList/CourseList.php:246
 msgid "Show Animation"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:268, includes/modules/CourseList/CourseList.php:256
+#: includes/modules/CourseCarousel/CourseCarousel.php:269, includes/modules/CourseList/CourseList.php:257
 msgid "Show Image"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:279, includes/modules/CourseInstructor/CourseInstructor.php:247, includes/modules/CourseList/CourseList.php:278
+#: includes/modules/CourseCarousel/CourseCarousel.php:280, includes/modules/CourseInstructor/CourseInstructor.php:247, includes/modules/CourseList/CourseList.php:279
 msgid "Image Size"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:282, includes/modules/CourseList/CourseList.php:281
+#: includes/modules/CourseCarousel/CourseCarousel.php:283, includes/modules/CourseList/CourseList.php:282
 msgid "Thumbnail"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:283, includes/modules/CourseEnrollment/CourseEnrollment.php:233, includes/modules/CourseList/CourseList.php:282
+#: includes/modules/CourseCarousel/CourseCarousel.php:284, includes/modules/CourseEnrollment/CourseEnrollment.php:233, includes/modules/CourseList/CourseList.php:283
 msgid "Medium"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:284, includes/modules/CourseList/CourseList.php:283
+#: includes/modules/CourseCarousel/CourseCarousel.php:285, includes/modules/CourseList/CourseList.php:284
 msgid "Medium Large"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:285, includes/modules/CourseList/CourseList.php:284
+#: includes/modules/CourseCarousel/CourseCarousel.php:286, includes/modules/CourseList/CourseList.php:285
 msgid "large"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:286, includes/modules/CourseList/CourseList.php:285
+#: includes/modules/CourseCarousel/CourseCarousel.php:287, includes/modules/CourseList/CourseList.php:286
 msgid "full"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:293, includes/modules/CourseList/CourseList.php:292
+#: includes/modules/CourseCarousel/CourseCarousel.php:294, includes/modules/CourseList/CourseList.php:293
 msgid "Meta Data"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:326, includes/modules/CourseList/CourseList.php:325
+#: includes/modules/CourseCarousel/CourseCarousel.php:327, includes/modules/CourseList/CourseList.php:326
 msgid "Difficulty Label"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:337, includes/modules/CourseList/CourseList.php:336
+#: includes/modules/CourseCarousel/CourseCarousel.php:338, includes/modules/CourseList/CourseList.php:337
 msgid "Wish List"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:371, includes/modules/CourseList/CourseList.php:381
+#: includes/modules/CourseCarousel/CourseCarousel.php:372, includes/modules/CourseList/CourseList.php:382
 msgid "Order by"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:374, includes/modules/CourseEnrollment/CourseEnrollment.php:68, includes/modules/CourseList/CourseList.php:384
+#: includes/modules/CourseCarousel/CourseCarousel.php:375, includes/modules/CourseEnrollment/CourseEnrollment.php:68, includes/modules/CourseList/CourseList.php:385
 msgid "Date"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:382, includes/modules/CourseList/CourseList.php:392
+#: includes/modules/CourseCarousel/CourseCarousel.php:383, includes/modules/CourseList/CourseList.php:393
 msgid "Order"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:385, includes/modules/CourseList/CourseList.php:395
+#: includes/modules/CourseCarousel/CourseCarousel.php:386, includes/modules/CourseList/CourseList.php:396
 msgid "DESC"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:386, includes/modules/CourseList/CourseList.php:396
+#: includes/modules/CourseCarousel/CourseCarousel.php:387, includes/modules/CourseList/CourseList.php:397
 msgid "ASC"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:393, includes/modules/CourseList/CourseList.php:403
+#: includes/modules/CourseCarousel/CourseCarousel.php:394, includes/modules/CourseList/CourseList.php:404
 msgid "Limit"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:395, includes/modules/CourseList/CourseList.php:405
+#: includes/modules/CourseCarousel/CourseCarousel.php:396, includes/modules/CourseList/CourseList.php:406
 msgid "Input -1 for all courses"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:404, includes/modules/CourseCarousel/CourseCarousel.php:412, includes/modules/CourseList/CourseList.php:414, includes/modules/CourseList/CourseList.php:422
+#: includes/modules/CourseCarousel/CourseCarousel.php:405, includes/modules/CourseCarousel/CourseCarousel.php:413, includes/modules/CourseList/CourseList.php:415, includes/modules/CourseList/CourseList.php:423
 msgid "Leave checkboxes unchecked to select all"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:409, includes/modules/CourseList/CourseList.php:419
+#: includes/modules/CourseCarousel/CourseCarousel.php:410, includes/modules/CourseList/CourseList.php:420
 msgid "Author"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:441
+#: includes/modules/CourseCarousel/CourseCarousel.php:442
 msgid "Transition Duration"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:444
+#: includes/modules/CourseCarousel/CourseCarousel.php:445
 msgid "Use only numbers for transition"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:449
+#: includes/modules/CourseCarousel/CourseCarousel.php:450
 msgid "Center Slides"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:452, includes/modules/CourseCarousel/CourseCarousel.php:463, includes/modules/CourseCarousel/CourseCarousel.php:474, includes/modules/CourseCarousel/CourseCarousel.php:493, includes/modules/CourseCarousel/CourseCarousel.php:504, includes/modules/CourseList/CourseList.php:271
+#: includes/modules/CourseCarousel/CourseCarousel.php:453, includes/modules/CourseCarousel/CourseCarousel.php:464, includes/modules/CourseCarousel/CourseCarousel.php:475, includes/modules/CourseCarousel/CourseCarousel.php:494, includes/modules/CourseCarousel/CourseCarousel.php:505, includes/modules/CourseList/CourseList.php:272
 msgid "Yes"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:453, includes/modules/CourseCarousel/CourseCarousel.php:464, includes/modules/CourseCarousel/CourseCarousel.php:475, includes/modules/CourseCarousel/CourseCarousel.php:494, includes/modules/CourseCarousel/CourseCarousel.php:505, includes/modules/CourseList/CourseList.php:272
+#: includes/modules/CourseCarousel/CourseCarousel.php:454, includes/modules/CourseCarousel/CourseCarousel.php:465, includes/modules/CourseCarousel/CourseCarousel.php:476, includes/modules/CourseCarousel/CourseCarousel.php:495, includes/modules/CourseCarousel/CourseCarousel.php:506, includes/modules/CourseList/CourseList.php:273
 msgid "No"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:460
+#: includes/modules/CourseCarousel/CourseCarousel.php:461
 msgid "Smooth Scrolling"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:471
+#: includes/modules/CourseCarousel/CourseCarousel.php:472
 msgid "Auto Play"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:482
+#: includes/modules/CourseCarousel/CourseCarousel.php:483
 msgid "Auto Play Speed"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:490
+#: includes/modules/CourseCarousel/CourseCarousel.php:491
 msgid "Infinite Loop"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:501
+#: includes/modules/CourseCarousel/CourseCarousel.php:502
 msgid "Paush on Hover"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:513, includes/modules/CourseCarousel/CourseCarousel.php:566, includes/modules/CourseCarousel/CourseCarousel.php:673, includes/modules/CourseCurriculum/CourseCurriculum.php:256, includes/modules/CourseCurriculum/CourseCurriculum.php:273, includes/modules/CourseCurriculum/CourseCurriculum.php:290, includes/modules/CourseCurriculum/CourseCurriculum.php:329, includes/modules/CourseInstructor/CourseInstructor.php:240, includes/modules/CourseList/CourseList.php:487, includes/modules/CourseList/CourseList.php:540, includes/modules/CourseList/CourseList.php:653, includes/modules/CourseList/CourseList.php:684, includes/modules/CourseList/CourseList.php:697, includes/modules/CourseList/CourseList.php:710, includes/modules/CourseReviews/CourseReviews.php:238, includes/modules/CourseStatus/CourseStatus.php:137, includes/modules/CourseTags/CourseTags.php:156
+#: includes/modules/CourseCarousel/CourseCarousel.php:514, includes/modules/CourseCarousel/CourseCarousel.php:567, includes/modules/CourseCarousel/CourseCarousel.php:674, includes/modules/CourseCurriculum/CourseCurriculum.php:256, includes/modules/CourseCurriculum/CourseCurriculum.php:273, includes/modules/CourseCurriculum/CourseCurriculum.php:290, includes/modules/CourseCurriculum/CourseCurriculum.php:329, includes/modules/CourseInstructor/CourseInstructor.php:240, includes/modules/CourseList/CourseList.php:488, includes/modules/CourseList/CourseList.php:541, includes/modules/CourseList/CourseList.php:654, includes/modules/CourseList/CourseList.php:685, includes/modules/CourseList/CourseList.php:698, includes/modules/CourseList/CourseList.php:711, includes/modules/CourseReviews/CourseReviews.php:238, includes/modules/CourseStatus/CourseStatus.php:137, includes/modules/CourseTags/CourseTags.php:156
 msgid "Background Color"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:519, includes/modules/CourseList/CourseList.php:493
+#: includes/modules/CourseCarousel/CourseCarousel.php:520, includes/modules/CourseList/CourseList.php:494
 msgid "Footer Seperator Color"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:525, includes/modules/CourseList/CourseList.php:499
+#: includes/modules/CourseCarousel/CourseCarousel.php:526, includes/modules/CourseList/CourseList.php:500
 msgid "Footer Seperator Width"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:552, includes/modules/CourseList/CourseList.php:526, includes/modules/CourseShare/CourseShare.php:222
+#: includes/modules/CourseCarousel/CourseCarousel.php:553, includes/modules/CourseList/CourseList.php:527, includes/modules/CourseShare/CourseShare.php:222
 msgid "Spacing"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:572, includes/modules/CourseCurriculum/CourseCurriculum.php:252, includes/modules/CourseCurriculum/CourseCurriculum.php:269, includes/modules/CourseCurriculum/CourseCurriculum.php:286, includes/modules/CourseList/CourseList.php:546, includes/modules/CourseList/CourseList.php:672
+#: includes/modules/CourseCarousel/CourseCarousel.php:573, includes/modules/CourseCurriculum/CourseCurriculum.php:252, includes/modules/CourseCurriculum/CourseCurriculum.php:269, includes/modules/CourseCurriculum/CourseCurriculum.php:286, includes/modules/CourseList/CourseList.php:547, includes/modules/CourseList/CourseList.php:673
 msgid "Text Color"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:590, includes/modules/CourseList/CourseList.php:564
+#: includes/modules/CourseCarousel/CourseCarousel.php:591, includes/modules/CourseList/CourseList.php:565
 msgid "Margin"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:604, includes/modules/CourseList/CourseList.php:578
+#: includes/modules/CourseCarousel/CourseCarousel.php:605, includes/modules/CourseList/CourseList.php:579
 msgid "Avatar Size"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:617, includes/modules/CourseInstructor/CourseInstructor.php:274, includes/modules/CourseList/CourseList.php:591, includes/modules/CourseRating/CourseRating.php:151, includes/modules/CourseReviews/CourseReviews.php:245, includes/modules/CourseReviews/CourseReviews.php:290, includes/modules/CourseReviews/CourseReviews.php:324
+#: includes/modules/CourseCarousel/CourseCarousel.php:618, includes/modules/CourseInstructor/CourseInstructor.php:274, includes/modules/CourseList/CourseList.php:592, includes/modules/CourseRating/CourseRating.php:151, includes/modules/CourseReviews/CourseReviews.php:245, includes/modules/CourseReviews/CourseReviews.php:290, includes/modules/CourseReviews/CourseReviews.php:324
 msgid "Star Color"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:623, includes/modules/CourseInstructor/CourseInstructor.php:261, includes/modules/CourseList/CourseList.php:597, includes/modules/CourseRating/CourseRating.php:116, includes/modules/CourseReviews/CourseReviews.php:251, includes/modules/CourseReviews/CourseReviews.php:296, includes/modules/CourseReviews/CourseReviews.php:310, includes/modules/CourseReviews/CourseReviews.php:330
+#: includes/modules/CourseCarousel/CourseCarousel.php:624, includes/modules/CourseInstructor/CourseInstructor.php:261, includes/modules/CourseList/CourseList.php:598, includes/modules/CourseRating/CourseRating.php:116, includes/modules/CourseReviews/CourseReviews.php:251, includes/modules/CourseReviews/CourseReviews.php:296, includes/modules/CourseReviews/CourseReviews.php:310, includes/modules/CourseReviews/CourseReviews.php:330
 msgid "Star Size"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:847, includes/modules/CourseCarousel/CourseCarousel.php:858, includes/modules/CourseList/CourseList.php:864
+#: includes/modules/CourseCarousel/CourseCarousel.php:848, includes/modules/CourseCarousel/CourseCarousel.php:859, includes/modules/CourseList/CourseList.php:865
 msgid "Free"
 msgstr ""
 
@@ -433,11 +433,11 @@ msgstr ""
 msgid "Tutor Course Categories"
 msgstr ""
 
-#: includes/modules/CourseCategories/CourseCategories.php:166, includes/modules/CourseList/CourseList.php:677
+#: includes/modules/CourseCategories/CourseCategories.php:166, includes/modules/CourseList/CourseList.php:678
 msgid "Normal"
 msgstr ""
 
-#: includes/modules/CourseCategories/CourseCategories.php:169, includes/modules/CourseList/CourseList.php:690
+#: includes/modules/CourseCategories/CourseCategories.php:169, includes/modules/CourseList/CourseList.php:691
 msgid "Hover"
 msgstr ""
 
@@ -665,55 +665,55 @@ msgstr ""
 msgid "Tutor Course List"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:37, includes/modules/CourseList/CourseList.php:54, includes/modules/CourseList/CourseList.php:369
+#: includes/modules/CourseList/CourseList.php:37, includes/modules/CourseList/CourseList.php:54, includes/modules/CourseList/CourseList.php:370
 msgid "Pagination"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:229
+#: includes/modules/CourseList/CourseList.php:230
 msgid "Columns"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:267
+#: includes/modules/CourseList/CourseList.php:268
 msgid "Masonry"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:428
+#: includes/modules/CourseList/CourseList.php:429
 msgid "Pagination Type"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:432
+#: includes/modules/CourseList/CourseList.php:433
 msgid "Prev/Next with Numbers"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:433
+#: includes/modules/CourseList/CourseList.php:434
 msgid "Only Numbers"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:439
+#: includes/modules/CourseList/CourseList.php:440
 msgid "Prev Level"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:441, includes/templates/course/course_list.php:46
+#: includes/modules/CourseList/CourseList.php:442, includes/templates/course/course_list.php:45
 msgid "Previous"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:449
+#: includes/modules/CourseList/CourseList.php:450
 msgid "Next Level"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:451, includes/modules/CourseList/CourseList.php:843, includes/templates/course/course_list.php:47
+#: includes/modules/CourseList/CourseList.php:452, includes/modules/CourseList/CourseList.php:844, includes/templates/course/course_list.php:46
 msgid "Next"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:461
+#: includes/modules/CourseList/CourseList.php:462
 msgid "Columns Gap"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:474
+#: includes/modules/CourseList/CourseList.php:475
 msgid "Rows Gap"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:703
+#: includes/modules/CourseList/CourseList.php:704
 msgid "Active"
 msgstr ""
 

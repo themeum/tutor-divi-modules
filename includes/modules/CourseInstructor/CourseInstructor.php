@@ -360,7 +360,12 @@ class CourseInstructor extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'		=> '%%order_class%% #single-course-ratings',
-				'declaration'	=> 'display: flex; display: -webkit-flex; flex-direction: column;'
+				'declaration'	=> 'display:-webkit-flex;
+				display:-webkit-box;
+				display:-moz-flex;
+				display:-moz-box;
+				display:-ms-flexbox;
+				display:flex; -webkit-flex-direction: column; flex-direction: column;'
 			)
 		);
 
@@ -376,9 +381,9 @@ class CourseInstructor extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% #single-course-ratings',
+					'selector'		=> '%%order_class%% .single-instructor-wrap:not(last-child)',
 					'declaration'	=> sprintf(
-						'row-gap: %1$s; -webkit-row-gap: %1$s;',
+						'margin-bottom: %1$s;',
 						$space_between
 					)
 				)
