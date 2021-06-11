@@ -822,7 +822,7 @@ class CourseCarousel extends ET_Builder_Module {
 
 				$post->woo_price_html	= self::get_price_html( $post->ID );
 
-				$post->woo_currency		= get_woocommerce_currency_symbol();
+				$post->woo_currency		= function_exists( 'get_woocommerce_currency_symbol' ) ? get_woocommerce_currency_symbol() : '' ;
 
 				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
 
@@ -844,7 +844,7 @@ class CourseCarousel extends ET_Builder_Module {
 	 */
 	static function get_course_price( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
-		$product    = wc_get_product( $product_id );
+		$product    = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : false;
 		$price 		= $product ? $product->get_regular_price() : __( 'Free', 'tutor-lms-divi-modules' ) ;	
 		$sale_price = $product ? $product->get_sale_price() : '' ;
 		return array(
@@ -855,7 +855,7 @@ class CourseCarousel extends ET_Builder_Module {
 
 	static function get_price_html( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
-		$product    = wc_get_product( $product_id );
+		$product    = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : false;
 		$price 		= $product ? $product->get_price_html() : __( 'Free', 'tutor-lms-divi-modules' ) ;	
 		return $price;
 	} 
