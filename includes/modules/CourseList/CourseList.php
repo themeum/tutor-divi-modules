@@ -839,7 +839,7 @@ class CourseList extends ET_Builder_Module {
                 'total'     => $query->max_num_pages,
                 'current'   => max(1, get_query_var('paged')),
                 'end_size'  => sanitize_text_field($args['limit']),
-                'prev_next' => $pagination_type === 'numbers' ? false : true,
+                'prev_next' => $args['pagination_type'] === 'numbers' ? false : true,
                 'prev_text' => __( sanitize_text_field($args['prev_level']) , 'tutor-lms-divi-modules' ),
                 'next_text' => __( 'Next', 'tutor-lms-divi-modules' ),
             );			
