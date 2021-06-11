@@ -46,7 +46,7 @@ $prev_text          = isset($args['prev_level']) ? $args['prev_level'] : __('Pre
 $next_text          = isset($args['next_level']) ? $args['next_level'] : __('Next', 'tutor-lms-divi-modules');
 $masonry            = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses'; 
 ?>
-<input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
+<input type="hidden" id="cart_button_font_icon" value="">
 <?php
 /*
 * query arguements

@@ -41,7 +41,7 @@ $category           = $args['category'];
 $footer             = $args['footer']; 
 
 ?>
-<input type="hidden" id="cart_button_font_icon" value="<?php esc_html_e($cart_icon);?>">
+<input type="hidden" id="cart_button_font_icon" value="">
 <?php
 /*
 * query arguements
