@@ -1,8 +1,6 @@
 # Tutor Divi Modules
 
-This plugin adds 23+ addons to Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses. To make use of the Divi builder to build a custom course template, you need to create your own course template first.
-
-You can do that by heading to your WordPress admin page, and then from the dashboard panel head to Templates > Saved Templates > Add New and from the “Choose Template Type” dropdown, select page. Give the template a name and also make sure to enable ”Tutor LMS Single Course Template”. Then, from the default editing panel, click on “Edit With Divi” to start up the Divi Page builder interface. You will find all the necessary addons to create a single course page from the left sidebar’s Tutor LMS section.
+This plugin adds 23+ addons to the Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses using the powerful Divi page builder.
 
 ## Prerequisite
 
@@ -10,25 +8,32 @@ _To make sure everything works perfectly, here are a list of plugins you will ne
 
 1. [Tutor LMS](https://wordpress.org/plugins/tutor "Tutor LMS")
 
-2. [Divi Page Builder]
+2. Divi Page Builder
 
-3. Tutor Divi Modules
+3. Tutor LMS Divi Modules
 
-_Please make sure you are using the latest version of all these plugins._
+_Please make sure you have installed and activated the latest version of all these plugins._
 
-After installing and activating all of these plugins, you will be able to build single course pages with Divi using all of its amazing features. For a more in-depth look at the integration and all it’s nitty gritty details, please visit our [documentation](https://docs.themeum.com/tutor-lms/integrations/Divi-page-builder/ "Documentation | Divi Page Builder") on Tutor LMS - Divi integration.
+## Instructions
+
+Before using the Divi builder for your courses, you must give edit privileges to it which will allow you to create custom single pages for Divi. To do so, you must first head to the Dashboard > Divi Page builder > Theme Options > Builder and make sure Courses are toggled on. 
+
+If you want to edit each course’s layout separately, navigate from your WP Admin panel to Tutor LMS > Courses and then open any course in editing mode.
+
+Then, click on “Edit With Divi Page builder” to start the Divi Page builder interface from the default editing panel. You will find all the necessary modules to create a single course page from the left sidebar’s Tutor LMS section.
+
+For more in-depth details, please visit our [documentation](https://docs.themeum.com/tutor-lms/divi-integration) on Tutor LMS Divi Modules.
 
 ## FAQ
 
 - Can I use the Divi builder with my existing Tutor LMS courses?
 
-  Yes! You can use this builder to create a different look and feel for
-  your existing courses.
+  Yes! You can use this builder to create a different look and feel for your existing courses.
 
 - Can I Use This plugin without Tutor LMS Pro?
 
-  Yes, you can use this plugin without both Divi pro and Tutor LMS
-  Pro.
+  Can I Use This plugin without Tutor LMS Pro?
+
 
 - Where can I get support?
 
@@ -39,5 +44,4 @@ After installing and activating all of these plugins, you will be able to build 
 
 - Is this plugin free?
 
-  Yes! This plugin is absolutely free. However, the plugin requires
-  Tutor LMS and Divi to function. Without Tutor LMS and Divi, this plugin is useless.
+  Yes! This plugin is absolutely free. However, the plugin requires Tutor LMS and Divi to function. Without Tutor LMS and Divi installed, this plugin is useless.
