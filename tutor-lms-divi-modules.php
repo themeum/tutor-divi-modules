@@ -1,7 +1,6 @@
 <?php
 /*
 Plugin Name: Tutor LMS Divi Modules
-Plugin URI:  https://www.themeum.com/product/tutor-lms/
 Description: Easily design your courses and lessons on Divi builder with Tutor LMS
 Version:     1.0.0
 Author:      Themeum

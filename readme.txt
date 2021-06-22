@@ -1,9 +1,9 @@
-=== Tutor LMS Divi Integration ===
+=== Tutor LMS Divi Modules ===
 Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, e-learning, Learning management system, Courses, Education, Divi integration for LMS, Divi LMS Modules, tutor LMS, Online courses
 Requires at least: 5.3
-Tested up to: 5.7
+Tested up to: 5.7.2
 Requires PHP: 7.3
 Stable tag: 1.0.0
 License: GPLv3
@@ -113,12 +113,12 @@ As of today, Divi only has a paid version of its page builder plugin.
 = Do I need the Pro version of Tutor LMS to use this plugin? =
 No, the free version is enough to use this integration.
 
-=Where can I get support?=
+= Where can I get support? =
 You can get support by posting your issues on the support section of this plugin or use the [contact form on our website]
 
 Link: https://www.themeum.com/contact-us
 
-=Is this plugin free?=
+= Is this plugin free? =
 Yes! Our plugin is free. However, the plugin requires Tutor LMS and Divi Page builder to function. Without Tutor LMS and Divi Page builder, this plugin will not work as intended.
 
 = Can I use this with my theme? =
@@ -133,15 +133,15 @@ You can post on the support section of this plugin or use the contact form at th
 1. Create Astonishing Course List
 2. 23+ Tutor LMS Divi Moduels
 3. Advance customization options
-5. Default Single Course Layout
-6. Classic Style For Course Curriculum
-7. Stylish Course Topic Display
-8. Display Ratings Stylishly
-9. Different Card Designs For Instructors
-10. Preview Modes for Implemented design
+4. Default Single Course Layout
+5. Classic Style For Course Curriculum
+6. Stylish Course Topic Display
+7. Display Ratings Stylishly
+8. Different Card Designs For Instructors
+9. Preview Modes for Implemented design
 
 
-= 1.0.0 - Date=
+= 1.0.0 =
 * Initial Release
 
 == Upgrade Notice ==

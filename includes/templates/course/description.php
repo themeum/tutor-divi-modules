@@ -1,4 +1,9 @@
 <?php
+/**
+ * Course description
+ */
+
+defined( 'ABSPATH' ) || exit;
 
 do_action('tutor_course/single/before/content');
 global $post;

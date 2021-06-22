@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseAuthor extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_author';
@@ -277,16 +279,16 @@ class TutorCourseAuthor extends ET_Builder_Module {
 
 		//props
 		$display			= 'flex';
-		$layout 			= $this->props[ 'layout' ];
-		$alignment			= $this->props[ 'author_alignment' ];
+		$layout 			= sanitize_text_field( $this->props[ 'layout' ] );
+		$alignment			= sanitize_text_field( $this->props[ 'author_alignment' ] );
 
-		$avatar_size		= $this->props[ 'avatar_size' ];
-		$avatar_size_tablet = isset( $this->props[ 'avatar_size_tablet' ] ) ? $this->props[ 'avatar_size_tablet' ] : '' ;
-		$avatar_size_phone 	= isset( $this->props[ 'avatar_size_phone' ] ) ? $this->props[ 'avatar_size_phone' ] : '' ;
+		$avatar_size		= sanitize_text_field( $this->props[ 'avatar_size' ] );
+		$avatar_size_tablet = isset( $this->props[ 'avatar_size_tablet' ] ) ? sanitize_text_field( $this->props[ 'avatar_size_tablet' ] ) : '' ;
+		$avatar_size_phone 	= isset( $this->props[ 'avatar_size_phone' ] ) ? sanitize_text_field( $this->props[ 'avatar_size_phone' ] ) : '' ;
 
-		$gap				= $this->props[ 'avatar_gap' ];
-		$gap_tablet 		= isset( $this->props[ 'avatar_gap_tablet' ] ) ? $this->props[ 'avatar_gap_tablet' ] : '' ;
-		$gap_phone 			= isset( $this->props[ 'avatar_gap_phone' ] ) ? $this->props[ 'avatar_gap_phone' ] : '' ;
+		$gap				= sanitize_text_field( $this->props[ 'avatar_gap' ] );
+		$gap_tablet 		= isset( $this->props[ 'avatar_gap_tablet' ] ) ? sanitize_text_field( $this->props[ 'avatar_gap_tablet' ] ) : '' ;
+		$gap_phone 			= isset( $this->props[ 'avatar_gap_phone' ] ) ? sanitize_text_field( $this->props[ 'avatar_gap_phone' ] ) : '' ;
 
 		$alignment			= ($alignment == 'left' ? 'flex-start ' : ( $alignment == 'center' ? 'center' : 'flex-end' )); 
 

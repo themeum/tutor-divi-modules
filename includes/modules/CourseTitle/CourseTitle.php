@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseTitle extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_title';
@@ -134,7 +136,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * @return string
 	 */
 	protected function get_title_markup() {
-		$header_level  = $this->props['header_level'];
+		$header_level  = sanitize_text_field( $this->props['header_level'] );
 		$course_title = self::get_title($this->props);
 
 		return sprintf(

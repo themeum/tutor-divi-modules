@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseDuration extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_duration';
@@ -229,11 +231,11 @@ class TutorCourseDuration extends ET_Builder_Module {
 		//settings attrs
 		$wrapper_selector	= '%%order_class%% .tutor-divi-course-duration';
 		$display			= "flex"; //default display:flex
-		$layout 			= $this->props['duration_layout'];
-		$alignment  		= $this->props['duration_alignment'];
-		$gap 				= $this->props['gap'];
-		$gap_tablet			= isset($this->props['gap_tablet']) ? $this->props['gap_tablet'] : '';
-		$gap_phone			= isset($this->props['gap_phone']) ? $this->props['gap_phone'] : '';
+		$layout 			= sanitize_text_field( $this->props['duration_layout'] );
+		$alignment  		= sanitize_text_field( $this->props['duration_alignment'] );
+		$gap 				= sanitize_text_field( $this->props['gap'] );
+		$gap_tablet			= isset($this->props['gap_tablet']) ? sanitize_text_field( $this->props['gap_tablet'] ) : '';
+		$gap_phone			= isset($this->props['gap_phone']) ? sanitize_text_field( $this->props['gap_phone'] ) : '';
 
 		//set flext alignemnt as per alignment
 		if( $alignment === 'left' ) {

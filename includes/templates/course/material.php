@@ -8,6 +8,7 @@
  * @url https://themeum.com
  */
 
+defined( 'ABSPATH' ) || exit;
 
 do_action('tutor_course/single/before/material_includes');
 

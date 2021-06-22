@@ -1,3 +1,10 @@
+<?php
+/**
+ * Course list template
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 
 <div class="<?php tutor_container_classes(); ?> tutor-divi-courselist-main-wrap">
 

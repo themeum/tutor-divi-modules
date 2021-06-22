@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseThumbnail extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_thumbnail';

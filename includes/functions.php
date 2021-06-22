@@ -7,6 +7,9 @@
  *
  * @since v.1.0.0
  */
+
+defined( 'ABSPATH' ) || exit;
+
 if (!function_exists( 'dtlms_get_template' )) {
 	function dtlms_get_template( $template = null ) {
 		$template = str_replace( '.', DIRECTORY_SEPARATOR, $template );

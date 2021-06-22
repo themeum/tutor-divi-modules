@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseStatus extends ET_Builder_Module {
 
     // Module slug (also used as shortcode tag)
@@ -213,15 +215,15 @@ class CourseStatus extends ET_Builder_Module {
         $text_selector			= '%%order_class%% .tutor-progress-percent';
 
         //props
-        $position				= $this->props[ 'position' ];
-        $bar_color				= $this->props[ 'bar_color' ];
-        $bar_background			= $this->props[ 'bar_background' ];
-        $bar_height				= $this->props[ 'bar_height' ];
-        $bar_radius				= $this->props[ 'bar_radius' ];
+        $position				= sanitize_text_field( $this->props[ 'position' ] );
+        $bar_color				= sanitize_text_field( $this->props[ 'bar_color' ] );
+        $bar_background			= sanitize_text_field( $this->props[ 'bar_background' ] );
+        $bar_height				= sanitize_text_field( $this->props[ 'bar_height' ] );
+        $bar_radius				= sanitize_text_field( $this->props[ 'bar_radius' ] );
 
-		$gap					= $this->props['gap'];
-		$gap_tablet				= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? $this->props['gap_tablet'] : $gap;
-		$gap_phone				= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? $this->props['gap_phone'] : $gap;
+		$gap					= sanitize_text_field( $this->props['gap'] );
+		$gap_tablet				= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
+		$gap_phone				= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
 
 		//set style
 		ET_Builder_Element::set_style(

@@ -1,7 +1,12 @@
-
 <?php
-    $enroll_icon        = et_pb_process_font_icon($args['enrollment_button_icon']);
-    $add_to_cart_icon   = et_pb_process_font_icon($args['add_to_cart_button_icon']);
+/**
+ * Course enrollment template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$enroll_icon        = et_pb_process_font_icon($args['enrollment_button_icon']);
+$add_to_cart_icon   = et_pb_process_font_icon($args['add_to_cart_button_icon']);
 ?>
 <div hidden="">
     <input type="" id="enroll_button_font_icon" value="<?php esc_html_e($enroll_icon);?>">

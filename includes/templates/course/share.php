@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course share template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 global $post;
 $disable_course_share   = get_tutor_option('disable_course_share');
 $label                  = $args['share_label'];

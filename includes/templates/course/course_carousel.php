@@ -1,3 +1,10 @@
+<?php
+/**
+ * Course carousel template
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 
 <div class="<?php tutor_container_classes(); ?> tutor-divi-carousel-main-wrap">
 

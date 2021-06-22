@@ -7,6 +7,8 @@
 */
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseEnrollment extends ET_Builder_Module {
 
 	// Module slug (also used as shortcode tag)
@@ -336,25 +338,25 @@ class CourseEnrollment extends ET_Builder_Module {
         $three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';
         $enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
         //props
-        $alignment              = $this->props['alignment'];
+        $alignment              = sanitize_text_field( $this->props['alignment'] );
       
-        $alignment_tablet       = isset($this->props['alignment_tablet']) && $this->props['alignment_tablet'] !== '' ? $this->props['alignment_tablet'] : $alignment;
-        $alignment_phone        = isset($this->props['alignment_phone']) && $this->props['alignment_phone'] !== '' ? $this->props['alignment_phone'] : $alignment;
+        $alignment_tablet       = isset($this->props['alignment_tablet']) && $this->props['alignment_tablet'] !== '' ? sanitize_text_field( $this->props['alignment_tablet'] ) : $alignment;
+        $alignment_phone        = isset($this->props['alignment_phone']) && $this->props['alignment_phone'] !== '' ? sanitize_text_field( $this->props['alignment_phone'] ) : $alignment;
 
         $alignment              = ($alignment === 'left' ? 'flex-start' : ($alignment === 'right' ? 'flex-end' : 'center'));
         $alignment_tablet       = ($alignment_tablet === 'left' ? 'flex-start' : ($alignment_tablet === 'right' ? 'flex-end' : 'center'));
         $alignment_phone        = ($alignment_phone === 'left' ? 'flex-start' : ($alignment_phone === 'right' ? 'flex-end' : 'center'));
 
-        $width                  = $this->props['btn_width'];
-        $width_px               = $this->props['width_px'];
-        $button_size            = $this->props['button_size'];
+        $width                  = sanitize_text_field( $this->props['btn_width'] );
+        $width_px               = sanitize_text_field( $this->props['width_px'] );
+        $button_size            = sanitize_text_field( $this->props['button_size'] );
 
-        $icon_color             = $this->props['icon_color'];
-        $icon_size              = $this->props['icon_size'];
-        $icon_size_tablet       = isset($this->props['icon_size_tablet']) && $this->props['icon_size_tablet'] !== '' ? $this->props['icon_size_tablet'] : $icon_size;
-        $icon_size_phone        = isset($this->props['icon_size_phone']) && $this->props['icon_size_phone'] !== '' ? $this->props['icon_size_phone'] : $icon_size;
+        $icon_color             = sanitize_text_field( $this->props['icon_color'] );
+        $icon_size              = sanitize_text_field( $this->props['icon_size'] );
+        $icon_size_tablet       = isset($this->props['icon_size_tablet']) && $this->props['icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['icon_size_tablet'] ) : $icon_size;
+        $icon_size_phone        = isset($this->props['icon_size_phone']) && $this->props['icon_size_phone'] !== '' ? sanitize_text_field( $this->props['icon_size_phone'] ) : $icon_size;
 
-        $add_to_cart_button_icon    = $this->props['add_to_cart_button_icon'];
+        $add_to_cart_button_icon    = sanitize_text_field( $this->props['add_to_cart_button_icon'] );
         //btn width
 
         if( $width === 'fill' ) {

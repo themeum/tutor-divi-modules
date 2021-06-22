@@ -1,8 +1,13 @@
 <?php
-	$disable = get_tutor_option('disable_course_review');
-	if ( ! $disable){
-		?>
-        <div class="tutor-leadinfo-top-meta tutor-divi-rating-wrapper">
+/**
+ * Course rating template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$disable = get_tutor_option('disable_course_review');
+if ( ! $disable) { ?>
+    <div class="tutor-leadinfo-top-meta tutor-divi-rating-wrapper">
         <span class="tutor-single-course-rating">
             <?php
             $course_rating = tutor_utils()->get_course_rating();

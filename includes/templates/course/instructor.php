@@ -11,7 +11,7 @@
  * @version 1.0.0
  */
 
-
+defined( 'ABSPATH' ) || exit;
 
 do_action('tutor_course/single/enrolled/before/instructors');
 //settings args

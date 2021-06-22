@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseReviews extends ET_Builder_Module {
 
     //module meta info
@@ -402,20 +404,20 @@ class CourseReviews extends ET_Builder_Module {
         $review_list_star_selector     = '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i';
 
         //props
-        $review_avg_star_color     = $this->props['review_avg_star_color'];
-        $review_avg_star_size      = $this->props['review_avg_star_size'];
+        $review_avg_star_color     = sanitize_text_field( $this->props['review_avg_star_color'] );
+        $review_avg_star_size      = sanitize_text_field( $this->props['review_avg_star_size'] );
 
-        $rating_bar_color          = $this->props['rating_bar_color'];
-        $rating_bar_fill_color     = $this->props['rating_bar_fill_color'];
-        $rating_bar_height         = $this->props['rating_bar_height'];
-        $rating_bar_star_color     = $this->props['rating_bar_star_color'];
-        $rating_bar_star_size      = $this->props['rating_bar_star_size'];
+        $rating_bar_color          = sanitize_text_field( $this->props['rating_bar_color'] );
+        $rating_bar_fill_color     = sanitize_text_field( $this->props['rating_bar_fill_color'] );
+        $rating_bar_height         = sanitize_text_field( $this->props['rating_bar_height'] );
+        $rating_bar_star_color     = sanitize_text_field( $this->props['rating_bar_star_color'] );
+        $rating_bar_star_size      = sanitize_text_field( $this->props['rating_bar_star_size'] );
 
-        $review_list_avatar_size   = $this->props['review_list_avatar_size'];
-        $review_list_star_color    = $this->props['review_list_star_color'];
-        $review_list_star_size     = $this->props['review_list_star_size'];
+        $review_list_avatar_size   = sanitize_text_field( $this->props['review_list_avatar_size'] );
+        $review_list_star_color    = sanitize_text_field( $this->props['review_list_star_color'] );
+        $review_list_star_size     = sanitize_text_field( $this->props['review_list_star_size'] );
 
-        $section_background         = $this->props['section_content_back'];
+        $section_background         = sanitize_text_field( $this->props['section_content_back'] );
 
         //set style
         if( '' !== $review_avg_star_color ) {

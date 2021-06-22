@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseTargetAudience extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_target_audience';
@@ -301,33 +303,33 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 		$icon_selector	= $li_selector." .et-pb-icon";
 
 		//props
-		$size 			= $this->props['size'];
-		$size_tablet	= isset( $this->props['size_tablet']) && $this->props['size_tablet'] !== '' ? $this->props['size_tablet'] : $size;
-		$size_phone		= isset( $this->props['size_phone']) && $this->props['size_phone'] !== '' ? $this->props['size_phone'] : $size;
+		$size 			= sanitize_text_field( $this->props['size'] );
+		$size_tablet	= isset( $this->props['size_tablet']) && $this->props['size_tablet'] !== '' ? sanitize_text_field( $this->props['size_tablet'] ) : $size;
+		$size_phone		= isset( $this->props['size_phone']) && $this->props['size_phone'] !== '' ? sanitize_text_field( $this->props['size_phone'] ) : $size;
 
-		$gap 			= $this->props['gap'];
-		$gap_tablet		= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? $this->props['gap_tablet'] : $gap;
-		$gap_phone		= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? $this->props['gap_phone'] : $gap;
+		$gap 			= sanitize_text_field( $this->props['gap'] );
+		$gap_tablet		= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
+		$gap_phone		= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
 
-		$padding		= $this->props[ 'padding' ];
+		$padding		= sanitize_text_field( $this->props[ 'padding' ] );
 
-		$color 			= $this->props[ 'color' ];
+		$color 			= sanitize_text_field( $this->props[ 'color' ] );
 
-		$layout			= $this->props[ 'layout' ];
-		$layout_tablet 	= isset( $this->props[ 'layout_tablet' ]) && '' !== $this->props[ 'layout_tablet' ] ? $this->props[ 'layout_tablet' ] : $layout;
-		$layout_phone 	= isset( $this->props[ 'layout_phone' ]) && '' !== $this->props[ 'layout_phone' ] ? $this->props[ 'layout_phone' ] : $layout;
+		$layout			= sanitize_text_field( $this->props[ 'layout' ] );
+		$layout_tablet 	= isset( $this->props[ 'layout_tablet' ]) && '' !== $this->props[ 'layout_tablet' ] ? sanitize_text_field( $this->props[ 'layout_tablet' ] ) : $layout;
+		$layout_phone 	= isset( $this->props[ 'layout_phone' ]) && '' !== $this->props[ 'layout_phone' ] ? sanitize_text_field( $this->props[ 'layout_phone' ] ) : $layout;
 
-		$alignment			= $this->props[ 'alignment' ];
-		$alignment_tablet 	= isset( $this->props[ 'alignment_tablet' ]) && '' !== $this->props[ 'alignment_tablet' ] ? $this->props[ 'alignment_tablet' ] : $alignment;
-		$alignment_phone 	= isset( $this->props[ 'alignment_phone' ]) && '' !== $this->props[ 'alignment_phone' ] ? $this->props[ 'alignment_phone' ] : $alignment;
+		$alignment			= sanitize_text_field( $this->props[ 'alignment' ] );
+		$alignment_tablet 	= isset( $this->props[ 'alignment_tablet' ]) && '' !== $this->props[ 'alignment_tablet' ] ? sanitize_text_field( $this->props[ 'alignment_tablet' ] ) : $alignment;
+		$alignment_phone 	= isset( $this->props[ 'alignment_phone' ]) && '' !== $this->props[ 'alignment_phone' ] ? sanitize_text_field( $this->props[ 'alignment_phone' ] ) : $alignment;
 
-		$space_between	= $this->props[ 'space_between' ];
-		$space_tablet 	= isset( $this->props[ 'space_between_tablet' ]) && '' !== $this->props[ 'space_between_tablet' ] ? $this->props[ 'space_between_tablet' ] : $space_between;
-		$space_phone 	= isset( $this->props[ 'space_between_phone' ]) && '' !== $this->props[ 'space_between_phone' ] ? $this->props[ 'space_between_phone' ] : $space_between;
+		$space_between	= sanitize_text_field( $this->props[ 'space_between' ] );
+		$space_tablet 	= isset( $this->props[ 'space_between_tablet' ]) && '' !== $this->props[ 'space_between_tablet' ] ? sanitize_text_field( $this->props[ 'space_between_tablet' ] ) : $space_between;
+		$space_phone 	= isset( $this->props[ 'space_between_phone' ]) && '' !== $this->props[ 'space_between_phone' ] ? sanitize_text_field( $this->props[ 'space_between_phone' ] ) : $space_between;
 
-		$indent			= $this->props[ 'indent' ];
-		$indent_tablet 	= isset( $this->props[ 'indent_tablet' ]) && '' !== $this->props[ 'indent_tablet' ] ? $this->props[ 'indent_tablet' ] : $indent;
-		$indent_phone 	= isset( $this->props[ 'indent_phone' ]) && '' !== $this->props[ 'indent_phone' ] ? $this->props[ 'indent_phone' ] : $indent;
+		$indent			= sanitize_text_field( $this->props[ 'indent' ] );
+		$indent_tablet 	= isset( $this->props[ 'indent_tablet' ]) && '' !== $this->props[ 'indent_tablet' ] ? sanitize_text_field( $this->props[ 'indent_tablet' ] ) : $indent;
+		$indent_phone 	= isset( $this->props[ 'indent_phone' ]) && '' !== $this->props[ 'indent_phone' ] ? sanitize_text_field( $this->props[ 'indent_phone' ] ) : $indent;
 
 
 		//set styles
@@ -451,7 +453,7 @@ class TutorCourseTargetAudience extends ET_Builder_Module {
 
 		//padding
 		if( $padding ) {
-			$paddings	= $this->props[ 'padding' ];
+			$paddings	= sanitize_text_field( $this->props[ 'padding' ] );
 			$paddings	= explode("|",$paddings);	
 			if( is_array($paddings) ) {
 				ET_Builder_Element::set_style(

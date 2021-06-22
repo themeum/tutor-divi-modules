@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course about template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 $excerpt = tutor_get_the_excerpt();
 $disable_about = get_tutor_option('disable_course_about');
 if (!empty($excerpt) && ! $disable_about) {

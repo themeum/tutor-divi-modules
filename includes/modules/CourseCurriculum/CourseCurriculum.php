@@ -7,6 +7,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseCurriculum extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_curriculum';
@@ -441,43 +443,43 @@ class CourseCurriculum extends ET_Builder_Module {
 		$lesson_info_selector      = '%%order_class%% .tutor-course-lesson .tutor-lesson-duration';
 	
 		//props
-		$icon_position		= $this->props['icon_position'];
-		$topic_icon_size	= $this->props['topic_icon_size'];
+		$icon_position		= sanitize_text_field( $this->props['icon_position'] );
+		$topic_icon_size	= sanitize_text_field( $this->props['topic_icon_size'] );
 
-		$gap 				= $this->props['gap'];
-		$gap_tablet			= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? $this->props['gap_tablet'] : $gap;
-		$gap_phone			= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? $this->props['gap_phone'] : $gap;	
+		$gap 				= sanitize_text_field( $this->props['gap'] );
+		$gap_tablet			= isset( $this->props['gap_tablet']) && $this->props['gap_tablet'] !== '' ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
+		$gap_phone			= isset( $this->props['gap_phone']) && $this->props['gap_phone'] !== '' ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;	
 
-		$topic_icon_color          = $this->props['topic_icon_color'];
-		$topic_icon_active_color   = $this->props['topic_icon_active_color'];
-		$topic_icon_hover_color    = $this->props['topic_icon_hover_color'];
+		$topic_icon_color          = sanitize_text_field( $this->props['topic_icon_color'] );
+		$topic_icon_active_color   = sanitize_text_field( $this->props['topic_icon_active_color'] );
+		$topic_icon_hover_color    = sanitize_text_field( $this->props['topic_icon_hover_color'] );
 
-		$topic_text_color          = $this->props['topic_text_color'];
-		$topic_text_active_color   = $this->props['topic_text_active_color'];
-		$topic_text_hover_color    = $this->props['topic_text_hover_color'];
+		$topic_text_color          = sanitize_text_field( $this->props['topic_text_color'] );
+		$topic_text_active_color   = sanitize_text_field( $this->props['topic_text_active_color'] );
+		$topic_text_hover_color    = sanitize_text_field( $this->props['topic_text_hover_color'] );
 
-		$topic_background_color          = $this->props['topic_background_color'];
-		$topic_background_active_color   = $this->props['topic_background_active_color'];
-		$topic_background_hover_color    = $this->props['topic_background_hover_color'];
+		$topic_background_color          = sanitize_text_field( $this->props['topic_background_color'] );
+		$topic_background_active_color   = sanitize_text_field( $this->props['topic_background_active_color'] );
+		$topic_background_hover_color    = sanitize_text_field( $this->props['topic_background_hover_color'] );
 
-		$topic_icon_size			= $this->props['topic_icon_size'];
-		$topic_icon_size_tablet		= isset($this->props['topic_icon_size_tablet']) && $this->props['topic_icon_size_tablet'] !== '' ? $this->props['topic_icon_size_tablet'] : $topic_icon_size;
-		$topic_icon_size_phone		= isset($this->props['topic_icon_size_phone']) && $this->props['topic_icon_size_phone'] !== '' ? $this->props['topic_icon_size_phone'] : $topic_icon_size;
+		$topic_icon_size			= sanitize_text_field( $this->props['topic_icon_size'] );
+		$topic_icon_size_tablet		= isset($this->props['topic_icon_size_tablet']) && $this->props['topic_icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['topic_icon_size_tablet'] ) : $topic_icon_size;
+		$topic_icon_size_phone		= isset($this->props['topic_icon_size_phone']) && $this->props['topic_icon_size_phone'] !== '' ? sanitize_text_field( $this->props['topic_icon_size_phone'] ) : $topic_icon_size;
 
-		$lesson_icon_size			= $this->props['lesson_icon_size'];
-		$lesson_icon_size_tablet	= isset($this->props['lesson_icon_size_tablet']) && $this->props['lesson_icon_size_tablet'] !== '' ? $this->props['lesson_icon_size_tablet'] : $lesson_icon_size;
-		$lesson_icon_size_phone		= isset($this->props['lesson_icon_size_phone']) && $this->props['lesson_icon_size_phone'] !== '' ? $this->props['lesson_icon_size_phone'] : $lesson_icon_size;
+		$lesson_icon_size			= sanitize_text_field( $this->props['lesson_icon_size'] );
+		$lesson_icon_size_tablet	= isset($this->props['lesson_icon_size_tablet']) && $this->props['lesson_icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['lesson_icon_size_tablet'] ) : $lesson_icon_size;
+		$lesson_icon_size_phone		= isset($this->props['lesson_icon_size_phone']) && $this->props['lesson_icon_size_phone'] !== '' ? sanitize_text_field( $this->props['lesson_icon_size_phone'] ) : $lesson_icon_size;
 
-        $lesson_icon_color         = $this->props['lesson_icon_color'];
-        $lesson_icon_color_hover   = isset( $this->props['lesson_icon_color__hover'] ) ? $this->props['lesson_icon_color__hover'] : '';
+        $lesson_icon_color         = sanitize_text_field( $this->props['lesson_icon_color'] );
+        $lesson_icon_color_hover   = isset( $this->props['lesson_icon_color__hover'] ) ? sanitize_text_field( $this->props['lesson_icon_color__hover'] ) : '';
 
-        $lesson_info_color         = $this->props['lesson_info_color'];
-        $lesson_info_color_hover   = isset( $this->props['lesson_info_color__hover'] ) ? $this->props['lesson_info_color__hover'] : '';
+        $lesson_info_color         = sanitize_text_field( $this->props['lesson_info_color'] );
+        $lesson_info_color_hover   = isset( $this->props['lesson_info_color__hover'] ) ? sanitize_text_field( $this->props['lesson_info_color__hover'] ) : '';
 
-        $lesson_background_color           = $this->props['lesson_background_color'];
-        $lesson_background_color_hover     = isset( $this->props['lesson_background_color__hover'] ) ? $this->props['lesson_background_color__hover'] : '';
+        $lesson_background_color           = sanitize_text_field( $this->props['lesson_background_color'] );
+        $lesson_background_color_hover     = isset( $this->props['lesson_background_color__hover'] ) ? sanitize_text_field( $this->props['lesson_background_color__hover'] ) : '';
 
-		$space_between_topics	= $this->props['space_between_topics'];
+		$space_between_topics	= sanitize_text_field( $this->props['space_between_topics'] );
 		//set styles
 		/**
 		 * default topic title display flex

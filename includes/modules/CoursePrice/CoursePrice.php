@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CoursePrice extends ET_Builder_Module {
 
     // Module slug (also used as shortcode tag)
@@ -146,9 +148,9 @@ class CoursePrice extends ET_Builder_Module {
 		$selector 		= '%%order_class%% .price .price';
 
 		//props
-		$alignment		= $this->props['alignment'];
-		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? $this->props['alignment_tablet'] : $alignment;
-		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;	
+		$alignment		= sanitize_text_field( $this->props['alignment'] );
+		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? sanitize_text_field( $this->props['alignment_tablet'] ) : $alignment;
+		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? sanitize_text_field( $this->props['alignment_phone'] ) : $alignment;	
 
 		if( 'left' === $alignment) {
 			$alignment = 'flex-end';

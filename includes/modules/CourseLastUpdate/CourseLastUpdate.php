@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseLastUpdate extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_last_update';
@@ -243,11 +245,11 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 		$value_selector = '%%order_class%% .tutor-course-level > span';
 
 		//props
-		$layout			= $this->props['layout'];
-		$layout_tablet	= isset( $this->props['layout_tablet'] ) && '' !== $this->props['layout_tablet'] ? $this->props['layout_tablet'] : $layout;
-		$layout_phone	= isset( $this->props['layout_phone'] ) && '' !== $this->props['layout_phone'] ? $this->props['layout_phone'] : $layout;
+		$layout			= sanitize_text_field( $this->props['layout'] );
+		$layout_tablet	= isset( $this->props['layout_tablet'] ) && '' !== $this->props['layout_tablet'] ? sanitize_text_field( $this->props['layout_tablet'] ) : $layout;
+		$layout_phone	= isset( $this->props['layout_phone'] ) && '' !== $this->props['layout_phone'] ? sanitize_text_field( $this->props['layout_phone'] ) : $layout;
 
-		$alignment		= $this->props['alignment'];
+		$alignment		= sanitize_text_field( $this->props['alignment'] );
 		if( $alignment === 'left' ) {
 			$alignment = 'flex-start';
 		} else if( $alignment === 'center') {
@@ -255,12 +257,12 @@ class TutorCourseLastUpdate extends ET_Builder_Module {
 		} else {
 			$alignment = 'flex-end';
 		}
-		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? $this->props['alignment_tablet'] : $alignment;
-		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? $this->props['alignment_phone'] : $alignment;
+		$alignment_tablet	= isset( $this->props['alignment_tablet'] ) && '' !== $this->props['alignment_tablet'] ? sanitize_text_field( $this->props['alignment_tablet'] ) : $alignment;
+		$alignment_phone	= isset( $this->props['alignment_phone'] ) && '' !== $this->props['alignment_phone'] ? sanitize_text_field( $this->props['alignment_phone'] ) : $alignment;
 
-		$gap			= $this->props['gap'];
-		$gap_tablet		= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? $this->props['gap_tablet'] : $gap;
-		$gap_phone		= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? $this->props['gap_phone'] : $gap;
+		$gap			= sanitize_text_field( $this->props['gap'] );
+		$gap_tablet		= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
+		$gap_phone		= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
 
 		$display		= 'flex';
 

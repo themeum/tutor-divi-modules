@@ -1,11 +1,14 @@
-<?php 
-
+<?php
 /**
  * Tutor Divi Modules package
  * check plugin requirements/dependency
  * @since 1.0.0
  * @author Themeum <www.themeum.com>
 */
+
+namespace TutorLMS\Divi;
+
+defined( 'ABSPATH' ) || exit;
 
 class Requirements {
 

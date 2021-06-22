@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course status template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 $completed_count    = tutor_utils()->get_course_completed_percent();
 $display_percent    = $args['display_percent'];
 do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');

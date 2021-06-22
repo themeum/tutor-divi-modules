@@ -1,4 +1,9 @@
 <?php
+/**
+ * TutorDiviModules class
+ */
+
+defined( 'ABSPATH' ) || exit;
 
 class TutorDiviModules extends DiviExtension {
 

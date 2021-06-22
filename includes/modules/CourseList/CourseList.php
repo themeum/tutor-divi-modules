@@ -7,6 +7,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseList extends ET_Builder_Module {
 
 	public $slug       	= 'tutor_course_list';
@@ -743,10 +745,10 @@ class CourseList extends ET_Builder_Module {
 	public static function get_props( $args = [] ) {
 		$post_type		= tutor()->course_post_type;
 		$post_status	= 'publish';
-		$limit			= isset($args['limit']) ? $args['limit'] : -1;
-		$order_by		= isset($args['order_by']) ? $args['order_by'] : 'date';
-		$order			= isset($args['order']) ? $args['order'] : 'DESC';
-		$image_size		= isset($args['image_size']) ? $args['image_size'] : 'medium_large';
+		$limit			= isset($args['limit']) ? sanitize_text_field( $args['limit'] ) : -1;
+		$order_by		= isset($args['order_by']) ? sanitize_text_field( $args['order_by'] ) : 'date';
+		$order			= isset($args['order']) ? sanitize_text_field( $args['order'] ) : 'DESC';
+		$image_size		= isset($args['image_size']) ? sanitize_text_field( $args['image_size'] ) : 'medium_large';
 
 		//available categories
 		$available_cat      = tutor_divi_course_categories();
@@ -907,42 +909,42 @@ class CourseList extends ET_Builder_Module {
         $pagination_active_selector   = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers.current';
 
 		//props
-		$skin 						= $this->props['skin'];
-		$hover_animation			= $this->props['hover_animation'];
-		$card_background_color		= $this->props['card_background_color'];
+		$skin 						= sanitize_text_field( $this->props['skin'] );
+		$hover_animation			= sanitize_text_field( $this->props['hover_animation'] );
+		$card_background_color		= sanitize_text_field( $this->props['card_background_color'] );
 
-		$footer_seperator_width		= $this->props['footer_seperator_width'];
-		$footer_seperator_color		= $this->props['footer_seperator_color'];
+		$footer_seperator_width		= sanitize_text_field( $this->props['footer_seperator_width'] );
+		$footer_seperator_color		= sanitize_text_field( $this->props['footer_seperator_color'] );
 
-		$card_custom_padding		= $this->props['card_custom_padding'];
+		$card_custom_padding		= sanitize_text_field( $this->props['card_custom_padding'] );
 
-		$image_spacing				= $this->props['image_spacing'];
+		$image_spacing				= sanitize_text_field( $this->props['image_spacing'] );
 
-		$badge_background_color		= $this->props['badge_background_color'];
-		$badge_text_color			= $this->props['badge_text_color'];
-		$badge_size					= $this->props['badge_size'];
-		$badge_margin				= $this->props['badge_margin'];
+		$badge_background_color		= sanitize_text_field( $this->props['badge_background_color'] );
+		$badge_text_color			= sanitize_text_field( $this->props['badge_text_color'] );
+		$badge_size					= sanitize_text_field( $this->props['badge_size'] );
+		$badge_margin				= sanitize_text_field( $this->props['badge_margin'] );
 
-		$avatar_size				= $this->props['avatar_size'];
+		$avatar_size				= sanitize_text_field( $this->props['avatar_size'] );
 
-		$star_color					= $this->props['star_color'];
-		$star_size					= $this->props['star_size'];
-		$star_gap					= $this->props['star_gap'];
+		$star_color					= sanitize_text_field( $this->props['star_color'] );
+		$star_size					= sanitize_text_field( $this->props['star_size'] );
+		$star_gap					= sanitize_text_field( $this->props['star_gap'] );
 
-		$footer_background			= $this->props['footer_background'];
-		$footer_padding				= $this->props['footer_padding'];
+		$footer_background			= sanitize_text_field( $this->props['footer_background'] );
+		$footer_padding				= sanitize_text_field( $this->props['footer_padding'] );
 
 
-		$pagination_normal_color    = $this->props['pagination_normal_color'];
-        $pagination_normal_back     = $this->props['pagination_normal_back'];        
-        $pagination_hover_color     = $this->props['pagination_hover_color'];
-        $pagination_hover_back      = $this->props['pagination_hover_back'];       
-        $pagination_active_color    = $this->props['pagination_active_color'];
-        $pagination_active_back     = $this->props['pagination_active_back'];
-        $pagination_padding			= $this->props['pagination_padding'];
+		$pagination_normal_color    = sanitize_text_field( $this->props['pagination_normal_color'] );
+        $pagination_normal_back     = sanitize_text_field( $this->props['pagination_normal_back'] );        
+        $pagination_hover_color     = sanitize_text_field( $this->props['pagination_hover_color'] );
+        $pagination_hover_back      = sanitize_text_field( $this->props['pagination_hover_back'] );       
+        $pagination_active_color    = sanitize_text_field( $this->props['pagination_active_color'] );
+        $pagination_active_back     = sanitize_text_field( $this->props['pagination_active_back'] );
+        $pagination_padding			= sanitize_text_field( $this->props['pagination_padding'] );
 
-        $columns_gap				= $this->props['columns_gap'];
-        $rows_gap					= $this->props['rows_gap'];
+        $columns_gap				= sanitize_text_field( $this->props['columns_gap'] );
+        $rows_gap					= sanitize_text_field( $this->props['rows_gap'] );
 
 		//set styles
 		//default margin for hover animation
@@ -1647,14 +1649,14 @@ class CourseList extends ET_Builder_Module {
 				'selector'		=> '%%order_class%% .tutor-course-header a img',
 				'declaration'	=> sprintf(
 					'filter: hue-rotate(%1$s) saturate(%2$s) brightness(%3$s) invert(%4$s) sepia(%5$s) opacity(%6$s) blur(%7$s) contrast(%8$s);',
-					$this->props['filter_hue_rotate'],
-					$this->props['filter_saturate'],
-					$this->props['filter_brightness'],
-					$this->props['filter_invert'],
-					$this->props['filter_sepia'],
-					$this->props['filter_opacity'],
-					$this->props['filter_blur'],
-					$this->props['filter_contrast']
+					sanitize_text_field( $this->props['filter_hue_rotate'] ),
+					sanitize_text_field( $this->props['filter_saturate'] ),
+					sanitize_text_field( $this->props['filter_brightness'] ),
+					sanitize_text_field( $this->props['filter_invert'] ),
+					sanitize_text_field( $this->props['filter_sepia'] ),
+					sanitize_text_field( $this->props['filter_opacity'] ),
+					sanitize_text_field( $this->props['filter_blur'] ),
+					sanitize_text_field( $this->props['filter_contrast'] )
 				)
 			)
 		);

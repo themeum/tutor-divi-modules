@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseTags extends ET_Builder_Module {
 
     // Module slug (also used as shortcode tag)
@@ -205,8 +207,8 @@ class CourseTags extends ET_Builder_Module {
 		$tag_title_selector	= $wrapper.' .tutor-segment-title';
 		$tags_selector		= $wrapper.' .tutor-course-tags a';
 		//props
-		$background			= $this->props['tags_background'];
-		$background_hover	= isset( $this->props['tags_background__hover'] ) ? $this->props['tags_background__hover'] : $background ;
+		$background			= sanitize_text_field( $this->props['tags_background'] );
+		$background_hover	= isset( $this->props['tags_background__hover'] ) ? sanitize_text_field( $this->props['tags_background__hover'] ) : $background ;
 
 		//set styles
 		if( '' !== $background ) {

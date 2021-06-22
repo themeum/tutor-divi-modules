@@ -10,6 +10,8 @@
  * @package Tutor Divi Moduels
  */
 
+defined( 'ABSPATH' ) || exit;
+
 do_action('tutor_course/single/before/tags');
 
 /**

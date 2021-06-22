@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course enrolled box template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 global $wp_query;
 $editor_mode = false;
 ?>

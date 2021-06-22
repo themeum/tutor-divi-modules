@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course author template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 global $post;
 $disable_course_author  = get_tutor_option('disable_course_author');
 $profile_url            = tutils()->profile_url($post->post_author);

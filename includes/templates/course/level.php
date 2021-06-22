@@ -1,4 +1,10 @@
 <?php
+/**
+ * Course level template
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 global $post;
 $disable_course_level = get_tutor_option('disable_course_level');
 

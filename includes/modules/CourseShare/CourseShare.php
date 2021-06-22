@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class TutorCourseShare extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_share';
@@ -305,7 +307,7 @@ class TutorCourseShare extends ET_Builder_Module {
         $label_selector			= '%%order_class%% .tutor-social-share > label';
 		
 		//props
-		$alignment 				= $this->props['alignment'];
+		$alignment 				= sanitize_text_field( $this->props['alignment'] );
 
 		if( $alignment === 'left' ) {
 			$alignment = 'flex-start';
@@ -317,7 +319,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			$alignment = 'flex-start';
 		}
 
-		$alignment_tablet 		= isset($this->props['alignment_tablet']) ? $this->props['alignment_tablet'] : $alignment;
+		$alignment_tablet 		= isset($this->props['alignment_tablet']) ? sanitize_text_field( $this->props['alignment_tablet'] ) : $alignment;
 
 		if( $alignment_tablet === 'left' ) {
 			$alignment_tablet = 'flex-start';
@@ -329,7 +331,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			$alignment_tablet = 'flex-start';
 		}
 
-		$alignment_phone 		= isset($this->props['alignment_phone']) ? $this->props['alignment_phone'] : $alignment;
+		$alignment_phone 		= isset($this->props['alignment_phone']) ? sanitize_text_field( $this->props['alignment_phone'] ) : $alignment;
 
 		if( $alignment_phone === 'left' ) {
 			$alignment_phone = 'flex-start';
@@ -341,23 +343,23 @@ class TutorCourseShare extends ET_Builder_Module {
 			$alignment_phone = 'flex-start';
 		}
 		
-		$color					= $this->props['color'];
-		$icon_color				= $this->props['icon_color'];
-		$shape					= $this->props['shape'];
-		$shape_color			= $this->props['shape_color'];
+		$color					= sanitize_text_field( $this->props['color'] );
+		$icon_color				= sanitize_text_field( $this->props['icon_color'] );
+		$shape					= sanitize_text_field( $this->props['shape'] );
+		$shape_color			= sanitize_text_field( $this->props['shape_color'] );
 
-		$icon_hover_color		= $this->props['icon_hover_color'];
-		$shape_hover_color		= $this->props['shape_hover_color'];
+		$icon_hover_color		= sanitize_text_field( $this->props['icon_hover_color'] );
+		$shape_hover_color		= sanitize_text_field( $this->props['shape_hover_color'] );
 
-		$icon_size				= $this->props['icon_size'];
-		$icon_size_tablet		= $this->props['icon_size_tablet'];
-		$icon_size_phone		= $this->props['icon_size_phone'];
+		$icon_size				= sanitize_text_field( $this->props['icon_size'] );
+		$icon_size_tablet		= sanitize_text_field( $this->props['icon_size_tablet'] );
+		$icon_size_phone		= sanitize_text_field( $this->props['icon_size_phone'] );
 
-		$icon_padding			= $this->props['icon_padding'];
+		$icon_padding			= sanitize_text_field( $this->props['icon_padding'] );
 
-		$icon_spacing			= $this->props['icon_spacing'];
-		$icon_spacing_tablet	= $this->props['icon_spacing_tablet'];
-		$icon_spacing_phone		= $this->props['icon_spacing_phone'];
+		$icon_spacing			= sanitize_text_field( $this->props['icon_spacing'] );
+		$icon_spacing_tablet	= sanitize_text_field( $this->props['icon_spacing_tablet'] );
+		$icon_spacing_phone		= sanitize_text_field( $this->props['icon_spacing_phone'] );
 
 		//set styles
 		ET_Builder_Element::set_style(

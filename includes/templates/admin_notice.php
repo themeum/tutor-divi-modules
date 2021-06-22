@@ -1,4 +1,10 @@
 <?php
+/**
+ * Admin notice
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 $tutor_basename = 'tutor/tutor.php';
 $source_file = WP_PLUGIN_DIR . '/' . $tutor_basename;
 

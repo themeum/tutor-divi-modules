@@ -8,6 +8,8 @@
 
 use TutorLMS\Divi\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 class CourseInstructor extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_instructor';
@@ -345,15 +347,15 @@ class CourseInstructor extends ET_Builder_Module {
 		$star_selector 			   = '%%order_class%% .tutor-star-rating-group i';
 
 		//props
-		$layout 			= $this->props['layout'];
-		$image_size			= $this->props['image_size'];
+		$layout 			= sanitize_text_field( $this->props['layout'] );
+		$image_size			= sanitize_text_field( $this->props['image_size'] );
 
-		$star_color  		= $this->props['star_color'];
-		$star_size 			= $this->props['star_size'];
+		$star_color  		= sanitize_text_field( $this->props['star_color'] );
+		$star_size 			= sanitize_text_field( $this->props['star_size'] );
 
-		$space_between		= $this->props['space_between'];
+		$space_between		= sanitize_text_field( $this->props['space_between'] );
 
-		$section_background = $this->props['section_content_back'];
+		$section_background = sanitize_text_field( $this->props['section_content_back'] );
 
 		//set styles
 		ET_Builder_Element::set_style(
