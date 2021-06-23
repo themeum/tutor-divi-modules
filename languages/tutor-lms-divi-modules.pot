@@ -929,12 +929,56 @@ msgstr ""
 msgid "Tutor Course Total Enroll"
 msgstr ""
 
-#: includes/templates/course/rating.php:18
-msgid "Ratings"
+#: includes/templates/course/about.php:13
+msgid "About Course"
 msgstr ""
 
-#: includes/templates/course/reviews.php:71
+#: includes/templates/course/author.php:26, includes/templates/course/course_carousel.php:209, includes/templates/course/course_list.php:210
+msgid "by"
+msgstr ""
+
+#: includes/templates/course/course_carousel.php:222, includes/templates/course/course_list.php:223
+msgid "In"
+msgstr ""
+
+#: includes/templates/course/curriculum.php:74
+msgid " Lessons"
+msgstr ""
+
+#: includes/templates/course/curriculum.php:174
+msgid "Live"
+msgstr ""
+
+#: includes/templates/course/curriculum.php:172
+msgid "Expired"
+msgstr ""
+
+#: includes/templates/course/enrolled-box.php:65
+msgid "You have been enrolled on %s."
+msgstr ""
+
+#: includes/templates/course/instructor.php:87, includes/templates/course/reviews.php:71
 msgid "ratings"
+msgstr ""
+
+#: includes/templates/course/instructor.php:94
+msgid "Courses"
+msgstr ""
+
+#: includes/templates/course/instructor.php:106
+msgid "students"
+msgstr ""
+
+#: includes/templates/course/level.php:15
+msgid "Course level:"
+msgstr ""
+
+#: includes/templates/course/level.php:17
+msgid "All Levels"
+msgstr ""
+
+#: includes/templates/course/rating.php:18
+msgid "Ratings"
 msgstr ""
 
 #: includes/templates/course/reviews.php:71

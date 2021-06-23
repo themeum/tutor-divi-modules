@@ -23,7 +23,7 @@ define('DTLMS_ASSETS', trailingslashit(DTLMS_DIR_URL . 'assets'));
  * PROD 
  * DEV
  */
-define('DTLMS_ENV', 'DEV');
+define('DTLMS_ENV', 'PROD');
 
 if ( ! function_exists( 'tudm_initialize_extension' ) ):
 /**
