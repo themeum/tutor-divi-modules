@@ -88,7 +88,7 @@ if ( $the_query->have_posts()) : ?>
     ?>
     <!-- loop start -->
 
-    <div class="tutor-divi-slick-responsive tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $courseCols; ?> tutor-divi-carousel-<?php echo $skin;?> <?php echo $show_image === 'off' ? 'hide-thumbnail' : ''  ;?>" id="tutor-divi-slick-responsive">
+    <div class="tutor-divi-slick-responsive tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php esc_attr_e( $courseCols ); ?> tutor-divi-carousel-<?php esc_attr_e( $skin );?> <?php echo $show_image === 'off' ? 'hide-thumbnail' : ''  ;?>" id="tutor-divi-slick-responsive">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>
@@ -100,14 +100,14 @@ if ( $the_query->have_posts()) : ?>
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                 
             ?>
-            <div class="tutor-divi-card <?= $hover_animation == 'on' ? 'hover-animation' : '';?>">
+            <div class="tutor-divi-card <?php echo $hover_animation == 'on' ? 'hover-animation' : '';?>">
 
                     <!-- header -->
                     
                     <div class="tutor-course-header ">
                         <?php if("on" == $show_image):?>
                         <a href="<?php the_permalink();?>">
-                            <img src="<?= $image_url?>" alt="">
+                            <img src="<?php echo $image_url;?>" alt="">
                         </a> 
                         <?php endif;?>                              
                         <div class="tutor-course-loop-header-meta">
@@ -126,10 +126,10 @@ if ( $the_query->have_posts()) : ?>
                                 $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
                             }
                             if ("on" === $difficulty_label) {
-                                echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+                                echo '<span class="tutor-course-loop-level">' . esc_html( get_tutor_course_level() ) . '</span>';
                             }
                             if ("on" === $wish_list) {
-                                echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+                                echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . esc_attr( $action_class ) . ' ' . esc_attr( $has_wish_list ) . ' " data-course-id="' . esc_attr( $course_id ) . '"></a> </span>';
                             }
 
 
@@ -153,10 +153,11 @@ if ( $the_query->have_posts()) : ?>
                                     <span class="tutor-rating-count">
                                         <?php
                                         if ($course_rating->rating_avg > 0) {
-                                            echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
-                                            echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
+                                            echo  apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
                                         }
                                         ?>
+                                        <i> (<?php echo apply_filters('tutor_course_rating_count', $course_rating->rating_count);?>)</i>
+    
                                     </span>
                                 </div>
                             <?php endif; ?>
@@ -185,12 +186,12 @@ if ( $the_query->have_posts()) : ?>
                                     $course_students = tutor_utils()->count_enrolled_users_by_course();
                                     ?>
                                     <div class="tutor-single-loop-meta">
-                                        <i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
+                                        <i class='tutor-icon-user'></i><span><?php esc_html_e( $course_students ); ?></span>
                                     </div>
                                     <?php
                                     if (!empty($course_duration)) { ?>
                                         <div class="tutor-single-loop-meta">
-                                            <i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
+                                            <i class='tutor-icon-clock'></i> <span><?php esc_html_e( $course_duration ); ?></span>
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -204,7 +205,7 @@ if ( $the_query->have_posts()) : ?>
                                 </div>
                                 <div class="tutor-single-course-author-name">
                                     <span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
-                                    <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
+                                    <a href="<?php echo $profile_url;?>"><?php echo get_the_author(); ?></a>
                                 </div>
 
                                 <div class="tutor-course-lising-category">
@@ -219,7 +220,7 @@ if ( $the_query->have_posts()) : ?>
                                             foreach ($course_categories as $course_category) {
                                                 $category_name = $course_category->name;
                                                 $category_link = get_term_link($course_category->term_id);
-                                                echo "<a href='$category_link'>$category_name </a>";
+                                                echo "<a href='".esc_url( $category_link )."'> ".$category_name." </a>";
                                             }
                                         }
                                     }
@@ -288,7 +289,7 @@ $pause_on_hover     = $args['paush_on_hover'];
 
 
 ?>
-<div id="tutor_divi_carousel_settings" slides_to_show="<?= $slides_to_show?>" arrows="<?= $arrows ?>" dots="<?= $dots ?>" transition="<?= $transition ?>" center_slides="<?= $center_slides ?>" smooth_scrolling="<?= $smooth_scrolling ?>" carousel_autoplay="<?= $autoplay ?>" autoplay_speed="<?= $autoplay_speed ?>" infinite_loop="<?= $infinite_loop ?>" pause_on_hover="<?= $pause_on_hover ?>">
+<div id="tutor_divi_carousel_settings" slides_to_show="<?php esc_attr_e( $slides_to_show);?>" arrows="<?php esc_attr_e( $arrows );?>" dots="<?php esc_attr_e( $dots );?>" transition="<?php esc_attr_e( $transition );?>" center_slides="<?php esc_attr_e( $center_slides );?>" smooth_scrolling="<?php esc_attr_e( $smooth_scrolling );?>" carousel_autoplay="<?php esc_attr_e( $autoplay ) ?>" autoplay_speed="<?php esc_attr_e( $autoplay_speed );?>" infinite_loop="<?php esc_attr_e( $infinite_loop );?>" pause_on_hover="<?php esc_attr_e( $pause_on_hover );?>">
 
 </div>
 
