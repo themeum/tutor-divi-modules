@@ -75,7 +75,7 @@ if($topics->have_posts()) { ?>
 					echo "</span>";
 				}
 				if($tutor_course_duration){
-					echo "<span>$tutor_course_duration</span>";
+					echo "<span>".esc_html( $tutor_course_duration )."</span>";
 				}
 				?>
             </div>
@@ -108,7 +108,7 @@ if($topics->have_posts()) { ?>
 						if ($topic_summery){
 							?>
 							<div class="tutor-topics-summery">
-								<?php echo $topic_summery; ?>
+								<?php esc_html_e( $topic_summery ) ; ?>
 							</div>
 							<?php
 						}
