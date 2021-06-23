@@ -5,11 +5,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-global $post;
 $disable_course_author  = get_tutor_option('disable_course_author');
+$post                   = get_post( $course );
 $profile_url            = tutils()->profile_url($post->post_author);
 $link                   = $args['link'];
+$course                 = $args['course'];
+
 if (!$disable_course_author) : ?>
+
 <div class="tutor-single-course-meta tutor-meta-top ">
     <ul>
         <li class="tutor-single-course-author-meta">
