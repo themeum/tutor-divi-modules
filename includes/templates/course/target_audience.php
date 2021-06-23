@@ -31,7 +31,7 @@ if (is_array($target_audience) && count($target_audience)){
 			<ul class="tutor-course-target-audience-items">
 				<?php
 				foreach ($target_audience as $audience){
-					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'>{$audience}</span></li>";
+					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'>".esc_html( $audience )."</span></li>";
 				}
 				?>
 			</ul>

@@ -79,7 +79,7 @@ if ($instructors){
 				<div class="single-instructor-bottom">
 					<div class="ratings">
 						<span class="rating-generated">
-							<?php tutor_utils()->star_rating_generator($instructor_rating->rating_avg); ?>
+							<?php wp_kses_post( tutor_utils()->star_rating_generator($instructor_rating->rating_avg ) ); ?>
 						</span>
 
 						<?php

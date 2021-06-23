@@ -71,7 +71,7 @@ if($topics->have_posts()) { ?>
 
 				if($tutor_lesson_count) {
 					echo "<span> ".esc_html( $tutor_lesson_count )." ";
-					_e(' Lessons', 'tutor');
+					_e(' Lessons', 'tutor-lms-divi-modules');
 					echo "</span>";
 				}
 				if($tutor_course_duration){
@@ -169,9 +169,9 @@ if($topics->have_posts()) { ?>
 
 												if ($countdown) {
 													if ($zoom_meeting->is_expired) {
-														$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor').'</span>';
+														$lesson_title .= '<span class="tutor-zoom-label">'.__('Expired', 'tutor-lms-divi-modules').'</span>';
 													} else if ($zoom_meeting->is_started) {
-														$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor').'</span>';
+														$lesson_title .= '<span class="tutor-zoom-label tutor-zoom-live-label">'.__('Live', 'tutor-lms-divi-modules').'</span>';
 													}
 													$lesson_title .= $countdown;
 												}

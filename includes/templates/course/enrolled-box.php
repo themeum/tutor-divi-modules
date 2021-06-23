@@ -62,7 +62,7 @@ $editor_mode = false;
             <?php
                 $enrolled = tutor_utils()->is_enrolled();
                 $enrolled_date = ($editor_mode) ? date('Y-m-d') : $enrolled->post_date;
-                echo sprintf(__('You have been enrolled on %s.', 'tutor'),  "<span>". date_i18n(get_option('date_format'), strtotime($enrolled_date)
+                echo sprintf(__('You have been enrolled on %s.', 'tutor-lms-divi-modules'),  "<span>". date_i18n(get_option('date_format'), strtotime($enrolled_date)
                     )."</span>"  );
                 ?>
         </p>
