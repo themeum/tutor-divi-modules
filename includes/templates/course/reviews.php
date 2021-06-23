@@ -48,7 +48,7 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
                         <p class="course-avg-rating-html">
 		                    <?php tutor_utils()->star_rating_generator($rating->rating_avg);?>
                         </p>
-                        <p class="tutor-course-avg-rating-total">Total <span><?php echo $rating->rating_count;?></span> Ratings</p>
+                        <p class="tutor-course-avg-rating-total">Total <span><?php esc_html_e( $rating->rating_count );?></span> Ratings</p>
 
                     </div>
                     <div class="tutor-col">
@@ -59,10 +59,10 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
 							    ?>
                                 <div class="course-rating-meter">
                                     <div class="rating-meter-col"><i class="tutor-icon-star-full"></i></div>
-                                    <div class="rating-meter-col"><?php echo $key; ?></div>
+                                    <div class="rating-meter-col"><?php esc_html_e( $key ); ?></div>
                                     <div class="rating-meter-col rating-meter-bar-wrap">
                                         <div class="rating-meter-bar">
-                                            <div class="rating-meter-fill-bar" style="width: <?php echo $rating_count_percent; ?>%;"></div>
+                                            <div class="rating-meter-fill-bar" style="width: <?php esc_html_e( $rating_count_percent ); ?>%;"></div>
                                         </div>
                                     </div>
                                     <div class="rating-meter-col rating-text-col">
