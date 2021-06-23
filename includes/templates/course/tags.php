@@ -29,7 +29,7 @@ if(is_array($course_tags) && count($course_tags)){ ?>
             <?php
                 foreach ($course_tags as $course_tag){
                     $tag_link = get_term_link($course_tag->term_id);
-                    echo "<a href='$tag_link'> $course_tag->name </a>";
+                    echo "<a href='".esc_attr( $tag_link )."'> ".esc_html( $course_tag->name )." </a>";
                 }
             ?>
         </div>

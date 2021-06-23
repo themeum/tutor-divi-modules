@@ -22,7 +22,7 @@ if( $action ):
 <div class="notice notice-error dtlms-install-notice">
     <div class="dtlms-install-notice-inner">
         <div class="dtlms-install-notice-icon">
-            <img src="<?php echo DTLMS_ASSETS . 'images/tutor-divi-logo.png'; ?>" alt="Tutor Divi Modules Logo">
+            <img src="<?php esc_attr_e( DTLMS_ASSETS . 'images/tutor-divi-logo.png' ); ?>" alt="Tutor Divi Modules Logo">
         </div>
         <div class="dtlms-install-notice-content">
             <h2><?php _e('Thanks for using Tutor Divi Modules', 'tutor-lms-divi-modules'); ?></h2>
@@ -30,7 +30,7 @@ if( $action ):
             <a href="https://www.themeum.com/product/tutor-lms/" target="_blank"><?php _e('Learn more about Tutor LMS', 'tutor-lms-divi-modules'); ?></a>
         </div>
         <div class="dtlms-install-notice-button">
-            <a  class="button button-primary <?php echo $button_class; ?>" data-slug="tutor" href="<?php echo add_query_arg(array('action' => $action), admin_url()); ?>"><?php echo $button_txt; ?></a>
+            <a  class="button button-primary <?php esc_attr_e( $button_class ); ?>" data-slug="tutor" href="<?php esc_attr_e( add_query_arg(array('action' => $action), admin_url()) ); ?>"><?php  echo esc_html( $button_txt ); ?></a>
         </div>
     </div>
    

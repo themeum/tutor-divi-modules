@@ -91,7 +91,7 @@ if($topics->have_posts()) { ?>
 					$index++;
 					?>
 
-                    <div class="tutor-divi-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
+                    <div class="tutor-divi-course-topic tutor-topics-in-single-lesson <?php if($index == 1) esc_attr_e( "tutor-active" ); ?>">
                         <div class="tutor-course-title <?php echo $topic_summery ? esc_attr( 'has-summery' ) : ''; ?>">
 							
 								<span class="et-pb-icon" id="tutor_divi_topic_icon"><?php esc_html_e( $collaps_icon );?></span>
@@ -113,8 +113,8 @@ if($topics->have_posts()) { ?>
 							<?php
 						}
 						?>
-
-                        <div class="tutor-course-lessons" style="<?php echo $index > 1 ? 'display: none' : ''; ?>">
+			
+                        <div class="tutor-course-lessons" style="<?php echo $index > 1 ? esc_attr( 'display: none' ) : ''; ?>">
 
 							<?php
 							$lessons = tutor_utils()->get_course_contents_by_topic(get_the_ID(), -1);

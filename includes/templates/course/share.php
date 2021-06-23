@@ -15,7 +15,7 @@ if ( !$disable_course_share){ ?>
             <?php if( $label == 'on'): ?>
             <span><?php _e('Share:', 'tutor'); ?></span>
             <?php endif; ?>
-            <?php echo tutor_social_share( $echo = false ); ?>
+            <?php echo wp_kses_post( tutor_social_share( $echo = false ) ); ?>
         </li>
     </ul>
 </div>

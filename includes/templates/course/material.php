@@ -31,7 +31,7 @@ if (is_array($materials) && count($materials)){
 			<ul class="tutor-course-target-audience-items">
 				<?php
 				foreach ($materials as $material){
-					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> {$material} </span> </li>";
+					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> ".esc_html( $material )." </span> </li>";
 				}
 				?>
 			</ul>

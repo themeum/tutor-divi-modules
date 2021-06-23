@@ -88,7 +88,7 @@ if ( $the_query->have_posts()) : ?>
 
     <!-- loop start -->
 
-    <div class=" tutor-divi-courselist-loop-wrap <?php echo $masonry; ?> tutor-courses-loop-wrap tutor-courses-layout-<?php esc_html_e( $columns ); ?> tutor-divi-courselist-<?php echo $skin;?>">
+    <div class=" tutor-divi-courselist-loop-wrap <?php esc_attr_e( $masonry ); ?> tutor-courses-loop-wrap tutor-courses-layout-<?php esc_html_e( $columns ); ?> tutor-divi-courselist-<?php esc_html_e( $skin ) ;?>">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>
@@ -100,14 +100,14 @@ if ( $the_query->have_posts()) : ?>
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                 
             ?>
-            <div class="tutor-divi-card <?= $hover_animation == 'on' ? 'hover-animation' : ''; if($columns == 1 && $skin != 'overlayed') {echo ' tutor-divi-courselist-style';}?>">
+            <div class="tutor-divi-card <?php echo $hover_animation == 'on' ? esc_attr( 'hover-animation' ) : ''; if($columns == 1 && $skin != 'overlayed') { esc_attr_e( ' tutor-divi-courselist-style' );}?>">
 
                     <!-- header -->
                     
                     <div class="tutor-course-header ">
                         <?php if("on" == $show_image):?>
                         <a href="<?php the_permalink();?>">
-                            <img src="<?= $image_url?>" alt="">
+                            <img src="<?php echo esc_url( $image_url );?>" alt="">
                         </a> 
                         <?php endif;?>                              
                         <div class="tutor-course-loop-header-meta">
@@ -126,10 +126,12 @@ if ( $the_query->have_posts()) : ?>
                                 $action_class = apply_filters('tutor_popup_login_class', 'cart-required-login');
                             }
                             if ("on" === $difficulty_label) {
-                                echo '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+                                $level = '<span class="tutor-course-loop-level">' . get_tutor_course_level() . '</span>';
+                                echo wp_kses_post( $level );
                             }
                             if ("on" === $wish_list) {
-                                echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+                                $wish_list_html =  '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+                                echo wp_kses_post( $wish_list_html );
                             }
 
 
@@ -153,8 +155,8 @@ if ( $the_query->have_posts()) : ?>
                                     <span class="tutor-rating-count">
                                         <?php
                                         if ($course_rating->rating_avg > 0) {
-                                            echo apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
-                                            echo '<i>(' . apply_filters('tutor_course_rating_count', $course_rating->rating_count) . ')</i>';
+                                            echo apply_filters('tutor_course_rating_average', esc_html( $course_rating->rating_avg ));
+                                            echo '<i>(' . apply_filters('tutor_course_rating_count', esc_html( $course_rating->rating_count )) . ')</i>';
                                         }
                                         ?>
                                     </span>
@@ -162,7 +164,7 @@ if ( $the_query->have_posts()) : ?>
                             <?php endif; ?>
                             <!-- loop title -->
                             <div class="tutor-course-loop-title">
-                                <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                <h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() );?></a></h2>
                             </div>
 
                             <!-- loop meta -->
@@ -185,12 +187,12 @@ if ( $the_query->have_posts()) : ?>
                                     $course_students = tutor_utils()->count_enrolled_users_by_course();
                                     ?>
                                     <div class="tutor-single-loop-meta">
-                                        <i class='tutor-icon-user'></i><span><?php echo $course_students; ?></span>
+                                        <i class='tutor-icon-user'></i><span><?php esc_html_e( $course_students ); ?></span>
                                     </div>
                                     <?php
                                     if (!empty($course_duration)) { ?>
                                         <div class="tutor-single-loop-meta">
-                                            <i class='tutor-icon-clock'></i> <span><?php echo $course_duration; ?></span>
+                                            <i class='tutor-icon-clock'></i> <span><?php esc_html_e( $course_duration ); ?></span>
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -199,12 +201,16 @@ if ( $the_query->have_posts()) : ?>
                             <div class="tutor-loop-author">
                                 <div class="tutor-single-course-avatar">
                                     <?php if ("on" === $avatar) : ?>
-                                        <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
+                                        <a href="<?php echo esc_url( $profile_url ); ?>"> 
+                                            <?php echo wp_kses_post( tutor_utils()->get_tutor_avatar($post->post_author) ); ?>
+                                        </a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="tutor-single-course-author-name">
                                     <span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
-                                    <a href="<?php echo $profile_url; ?>"><?php echo get_the_author(); ?></a>
+                                    <a href="<?php echo esc_url( $profile_url ); ?>">
+                                        <?php echo wp_kses_post( get_the_author() ); ?>
+                                    </a>
                                 </div>
 
                                 <div class="tutor-course-lising-category">
@@ -219,7 +225,7 @@ if ( $the_query->have_posts()) : ?>
                                             foreach ($course_categories as $course_category) {
                                                 $category_name = $course_category->name;
                                                 $category_link = get_term_link($course_category->term_id);
-                                                echo "<a href='$category_link'>$category_name </a>";
+                                                echo "<a href='".esc_url( $category_link )."'> ".esc_html( $category_name )." </a>";
                                             }
                                         }
                                     }

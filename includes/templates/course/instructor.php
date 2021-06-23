@@ -39,8 +39,8 @@ if ($instructors){
 					<?php if($profile_picture === 'on'): ?>
 					<div class="tutor-instructor-left">
 						<div class="instructor-avatar">
-							<a href="<?php echo $profile_url; ?>" target="<?php echo $link;?>">
-								<?php echo tutor_utils()->get_tutor_avatar($instructor->ID); ?>
+							<a href="<?php echo esc_url( $profile_url ) ; ?>" target="<?php esc_attr_e( $link ) ;?>">
+								<?php echo wp_kses_post( tutor_utils()->get_tutor_avatar($instructor->ID) ); ?>
 							</a>
 						</div>
 					</div>
@@ -50,19 +50,23 @@ if ($instructors){
 						
 						<div class="instructor-name">
 							<?php if($display_name === 'on'): ?>
-								<h3><a href="<?php echo $profile_url; ?>" target="<?php echo $link;?>"><?php echo $instructor->display_name; ?></a> </h3>
+								<h3>
+									<a href="<?php echo esc_url( $profile_url ); ?>" target="<?php esc_attr_e( $link );?>">
+										<?php esc_html_e( $instructor->display_name ) ; ?>
+									</a> 
+								</h3>
 							<?php endif;?>
 							<?php
 								if( $designation === 'on' ) {
 									if ( ! empty($instructor->tutor_profile_job_title)){
-										echo "<h4>{$instructor->tutor_profile_job_title}</h4>";
+										echo "<h4>".esc_html( $instructor->tutor_profile_job_title )."</h4>";
 									}
 								}
 							?>
 						</div>
 						
 						<div class="instructor-bio">
-							<?php echo $instructor->tutor_profile_bio; ?>
+							<?php echo wp_kses_post( $instructor->tutor_profile_bio ); ?>
 						</div>
                     </div>
 
@@ -79,15 +83,15 @@ if ($instructors){
 						</span>
 
 						<?php
-						echo " <span class='rating-digits'>{$instructor_rating->rating_avg}</span> ";
-						echo " <span class='rating-total-meta'>({$instructor_rating->rating_count} ".__('ratings', 'tutor').")</span> ";
+						echo " <span class='rating-digits'>".esc_html( $instructor_rating->rating_avg )."</span> ";
+						echo " <span class='rating-total-meta'>(".esc_html( $instructor_rating->rating_count )." ".esc_html__('ratings', 'tutor-lms-divi-modules').")</span> ";
 						?>
 					</div>
 
 					<div class="courses">
 						<p>
 							<i class='tutor-icon-mortarboard'></i>
-							<?php echo tutor_utils()->get_course_count_by_instructor($instructor->ID); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor'); ?></span>
+							<?php esc_html_e( tutor_utils()->get_course_count_by_instructor($instructor->ID) ); ?> <span class="tutor-text-mute"> <?php _e('Courses', 'tutor-lms-divi-modules'); ?></span>
 						</p>
 					</div>
 
@@ -98,8 +102,8 @@ if ($instructors){
 
 						<p>
 							<i class='tutor-icon-user'></i>
-							<?php echo $total_students; ?>
-							<span class="tutor-text-mute">  <?php _e('students', 'tutor'); ?></span>
+							<?php esc_html_e( $total_students ); ?>
+							<span class="tutor-text-mute">  <?php _e('students', 'tutor-lms-divi-modules'); ?></span>
 						</p>
 					</div>
 				</div>

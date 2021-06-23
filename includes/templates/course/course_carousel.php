@@ -88,7 +88,7 @@ if ( $the_query->have_posts()) : ?>
     ?>
     <!-- loop start -->
 
-    <div class="tutor-divi-slick-responsive tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php esc_attr_e( $courseCols ); ?> tutor-divi-carousel-<?php esc_attr_e( $skin );?> <?php echo $show_image === 'off' ? 'hide-thumbnail' : ''  ;?>" id="tutor-divi-slick-responsive">
+    <div class="tutor-divi-slick-responsive tutor-divi-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php esc_attr_e( $courseCols ); ?> tutor-divi-carousel-<?php esc_attr_e( $skin );?> <?php echo $show_image === 'off' ? esc_attr( 'hide-thumbnail' ) : ''  ;?>" id="tutor-divi-slick-responsive">
 
         <?php while ($the_query->have_posts()) : $the_query->the_post();
         ?>
@@ -100,14 +100,14 @@ if ( $the_query->have_posts()) : ?>
                 $image_url = get_tutor_course_thumbnail($image_size, $url = true);
                 
             ?>
-            <div class="tutor-divi-card <?php echo $hover_animation == 'on' ? 'hover-animation' : '';?>">
+            <div class="tutor-divi-card <?php echo $hover_animation == 'on' ? esc_attr( 'hover-animation' ) : '';?>">
 
                     <!-- header -->
                     
                     <div class="tutor-course-header ">
                         <?php if("on" == $show_image):?>
-                        <a href="<?php the_permalink();?>">
-                            <img src="<?php echo $image_url;?>" alt="">
+                        <a href="<?php echo esc_url( the_permalink() );?>">
+                            <img src="<?php echo esc_url( $image_url );?>" alt="">
                         </a> 
                         <?php endif;?>                              
                         <div class="tutor-course-loop-header-meta">
@@ -153,17 +153,17 @@ if ( $the_query->have_posts()) : ?>
                                     <span class="tutor-rating-count">
                                         <?php
                                         if ($course_rating->rating_avg > 0) {
-                                            echo  apply_filters('tutor_course_rating_average', $course_rating->rating_avg);
+                                            echo  apply_filters('tutor_course_rating_average', esc_html( $course_rating->rating_avg ));
                                         }
                                         ?>
-                                        <i> (<?php echo apply_filters('tutor_course_rating_count', $course_rating->rating_count);?>)</i>
+                                        <i> (<?php echo apply_filters('tutor_course_rating_count', esc_html( $course_rating->rating_count ));?>)</i>
     
                                     </span>
                                 </div>
                             <?php endif; ?>
                             <!-- loop title -->
                             <div class="tutor-course-loop-title">
-                                <h2><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                                <h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() ); ?></a></h2>
                             </div>
 
                             <!-- loop meta -->
@@ -200,12 +200,16 @@ if ( $the_query->have_posts()) : ?>
                             <div class="tutor-loop-author">
                                 <div class="tutor-single-course-avatar">
                                     <?php if ("on" === $avatar) : ?>
-                                        <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($post->post_author); ?></a>
+                                        <a href="<?php echo esc_url( $profile_url ); ?>"> 
+                                            <?php echo wp_kses_post( tutor_utils()->get_tutor_avatar($post->post_author) ); ?>
+                                        </a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="tutor-single-course-author-name">
                                     <span><?php _e('by', 'tutor-lms-elementor-addons'); ?></span>
-                                    <a href="<?php echo $profile_url;?>"><?php echo get_the_author(); ?></a>
+                                    <a href="<?php echo esc_url( $profile_url );?>">
+                                        <?php esc_html_e( get_the_author() ); ?>
+                                    </a>
                                 </div>
 
                                 <div class="tutor-course-lising-category">
@@ -220,7 +224,7 @@ if ( $the_query->have_posts()) : ?>
                                             foreach ($course_categories as $course_category) {
                                                 $category_name = $course_category->name;
                                                 $category_link = get_term_link($course_category->term_id);
-                                                echo "<a href='".esc_url( $category_link )."'> ".$category_name." </a>";
+                                                echo "<a href='".esc_url( $category_link )."'> ".esc_html( $category_name )." </a>";
                                             }
                                         }
                                     }

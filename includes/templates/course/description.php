@@ -14,7 +14,7 @@ global $post;
         <h4 class="tutor-segment-title"><?php esc_html_e($args['label'], 'tutor-lms-elementor-addons'); ?></h4>
     </div>
     <div class="tutor-course-content-content">
-        <?php the_content(); ?>
+        <?php wp_kses_post( the_content() ); ?>
     </div>
 </div>
 

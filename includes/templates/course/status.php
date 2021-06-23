@@ -14,7 +14,7 @@ do_action('tutor_course/single/enrolled/before/lead_info/progress_bar');
     <h4 class="tutor-segment-title"><?php _e($args['status_label'], 'tutor-lms-divi-modules'); ?></h4>
     <div class="tutor-progress-bar-wrap">
         <div class="tutor-progress-bar">
-            <div class="tutor-progress-filled" style="--tutor-progress-left: <?php echo $completed_count.'%;'; ?>"></div>
+            <div class="tutor-progress-filled" style="--tutor-progress-left: <?php esc_html_e( $completed_count.'%;' ); ?>"></div>
         </div>
         <?php if( $display_percent == 'on' ) : ;?>
             <span class="tutor-progress-percent"><?php echo $completed_count; ?>% <?php _e(' Complete', 'tutor-lms-divi-modules')?></span>

@@ -16,9 +16,9 @@ if ( ! $disable) { ?>
             <span class="tutor-single-rating-count">
                 <?php
                 $text = __( 'Ratings', 'tutor-lms-divi-modules' );
-                echo $course_rating->rating_avg;
+                esc_html_e( $course_rating->rating_avg );
                 $count = $course_rating->rating_count." ".$text;
-                echo "<i>($count)</i>";
+                echo "<i>(".esc_html( $count ).")</i>";
 
                 ?>
             </span>

@@ -39,7 +39,7 @@ $editor_mode = false;
             $lesson_url = tutor_utils()->get_course_first_lesson();
             $completed_lessons = tutor_utils()->get_completed_lesson_count_by_course();
             if ( $editor_mode || $lesson_url ) { ?>
-                <a href="<?php echo $lesson_url; ?>" class="tutor-button tutor-success">
+                <a href="<?php echo esc_url( $lesson_url ); ?>" class="tutor-button tutor-success">
                     <?php
                         if($completed_lessons){
                             _e( 'Continue to lesson', 'tutor' );

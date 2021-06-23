@@ -68,7 +68,7 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
                                     <div class="rating-meter-col rating-text-col">
                                         <?php
                                         echo $value.' ';
-                                        echo $value > 1 ? __('ratings', 'tutor-lms-divi-modules') : __('rating', 'tutor-lms-divi-modules'); ?>
+                                        echo $value > 1 ? esc_html__('ratings', 'tutor-lms-divi-modules') : esc_html__('rating', 'tutor-lms-divi-modules'); ?>
                                     </div>
                                 </div>
 							<?php } ?>
@@ -89,17 +89,17 @@ $reviews    = tutor_utils()->get_course_reviews( $course_id );
                 <div class="tutor-review-individual-item tutor-review-<?php echo $review->comment_ID; ?>">
                     <div class="review-left">
                         <div class="review-avatar">
-                            <a href="<?php echo $profile_url; ?>"> <?php echo tutor_utils()->get_tutor_avatar($review->user_id); ?> </a>
+                            <a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo wp_kses_post( tutor_utils()->get_tutor_avatar($review->user_id) ); ?> </a>
                         </div>
                         <div class="tutor-review-user-info">
                             <div class="review-time-name">
-                                <p> <a href="<?php echo $profile_url; ?>">  <?php echo $review->display_name; ?> </a> </p>
+                                <p> <a href="<?php echo esc_url( $profile_url ); ?>">  <?php esc_html_e($review->display_name); ?> </a> </p>
                                 <p class="review-meta">
                                     <?php echo sprintf(__('%s ago', 'tutor-lms-divi-modules'), human_time_diff(strtotime($review->comment_date))); ?>
                                 </p>
                             </div>
                             <div class="individual-review-rating-wrap">
-								<?php tutor_utils()->star_rating_generator($review->rating); ?>
+								<?php echo wp_kses_post( tutor_utils()->star_rating_generator($review->rating) ); ?>
                             </div>
                         </div>
 
