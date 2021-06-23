@@ -70,7 +70,7 @@ if($topics->have_posts()) { ?>
 				$tutor_course_duration = get_tutor_course_duration_context($course_id);
 
 				if($tutor_lesson_count) {
-					echo "<span> $tutor_lesson_count";
+					echo "<span> ".esc_html( $tutor_lesson_count )." ";
 					_e(' Lessons', 'tutor');
 					echo "</span>";
 				}
@@ -92,7 +92,7 @@ if($topics->have_posts()) { ?>
 					?>
 
                     <div class="tutor-divi-course-topic tutor-topics-in-single-lesson <?php if($index == 1) echo "tutor-active"; ?>">
-                        <div class="tutor-course-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
+                        <div class="tutor-course-title <?php echo $topic_summery ? esc_attr( 'has-summery' ) : ''; ?>">
 							
 								<span class="et-pb-icon" id="tutor_divi_topic_icon"><?php esc_html_e( $collaps_icon );?></span>
 							
@@ -176,11 +176,11 @@ if($topics->have_posts()) { ?>
 													$lesson_title .= $countdown;
 												}
 
-												echo $lesson_title;
+												echo wp_kses_post( $lesson_title );
 											}else{
 												$lesson_title .= get_the_title();
 												$lesson_title .= $play_time ? "<span class='tutor-lesson-duration'>".tutor_utils()->get_optimized_duration($play_time)."</span>" : '';
-												echo apply_filters('tutor_course/contents/lesson/title', $lesson_title, get_the_ID());
+												echo apply_filters('tutor_course/contents/lesson/title', wp_kses_post($lesson_title), get_the_ID());
 											}
 
 											?>
