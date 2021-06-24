@@ -102,6 +102,19 @@ To install Tutor LMS Divi Page builder Addons manually, you need to download the
 
 The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
+== Screenshots ==
+1. Create Astonishing Course List
+2. Course List Horizontal Style
+3. 23+ Tutor LMS Divi Moduels
+4. Advance customization options
+5. Default Single Course Layout
+6. Classic Style For Course Curriculum
+7. Stylish Course Topic Display
+8. Display Ratings Stylishly
+9. Different Card Designs For Instructors
+10. Preview Modes for Implemented design
+
+
 == Frequently Asked Questions ==
 
 = Can I use the Divi Page builder with my existing Tutor LMS courses?
@@ -129,17 +142,7 @@ If you find a conflict or problem in your theme, please post on the support sect
 = How can I request more features? =
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
-== Screenshots ==
-1. Create Astonishing Course List
-2. 23+ Tutor LMS Divi Moduels
-3. Advance customization options
-4. Default Single Course Layout
-5. Classic Style For Course Curriculum
-6. Stylish Course Topic Display
-7. Display Ratings Stylishly
-8. Different Card Designs For Instructors
-9. Preview Modes for Implemented design
-
+== Changelog ==
 
 = 1.0.0 =
 * Initial Release
