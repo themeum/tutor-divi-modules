@@ -17,7 +17,7 @@ Tutor LMS Divi Page builder Addons is a WordPress plugin that integrates Tutor L
 
 https://www.youtube.com/watch?v=WKi6Nngn6q4
 
-=What you can do with Tutor LMS Divi Page builder Addons:=
+= What you can do with Tutor LMS Divi Page builder Addons: =
 
 Tutor LMS Divi Page builder Addons helps you create gorgeous looking eLearning sites Tutor LMS and then style it with Divi Page builder. You can do a lot of things, including the following: 
 
@@ -32,7 +32,6 @@ Tutor LMS Divi Modules will ask you to install the following plugins to make sur
 
 1) [Tutor LMS](https://wordpress.org/plugins/tutor)
 2) [Divi Page Builder](https://www.elegantthemes.com/gallery/divi/)
-3) [Tutor LMS Divi Modules] ()
 
 After installing and activating all of these plugins, you will be able to build single course pages with Divi Page builder using all of its unique features. For a more in-depth look at the integration and all details, please visit our documentation on Tutor LMS Divi Modules.
 
