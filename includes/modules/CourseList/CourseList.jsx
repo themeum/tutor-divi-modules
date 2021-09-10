@@ -750,7 +750,7 @@ class CourseList extends Component {
                             <span className="woocommerce-Price-amount amount">
                                 <bdi>
                                     <span className="woocommerce-Price-currencySymbol">
-                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                     </span>
                                     { course.loop_price.regular_price }
                                 </bdi>
@@ -761,7 +761,7 @@ class CourseList extends Component {
                         <span className="woocommerce-Price-amount amount">
                             <bdi>
                                 <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                 </span>
                                 { course.loop_price.regular_price }
                             </bdi>
@@ -772,7 +772,7 @@ class CourseList extends Component {
                         <span className="woocommerce-Price-amount amount">
                             <bdi>
                             <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.sale_price !== '' ? '$' : '' }
+                                { course.loop_price.sale_price !== '' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                 </span>
                                 { course.loop_price.sale_price }
                             </bdi>

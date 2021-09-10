@@ -602,7 +602,7 @@ class CourseCarousel extends Component {
                             <span className="woocommerce-Price-amount amount">
                                 <bdi>
                                     <span className="woocommerce-Price-currencySymbol">
-                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                     </span>
                                     { course.loop_price.regular_price }
                                 </bdi>
@@ -613,7 +613,7 @@ class CourseCarousel extends Component {
                         <span className="woocommerce-Price-amount amount">
                             <bdi>
                                 <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? '$' : '' }
+                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                 </span>
                                 { course.loop_price.regular_price }
                             </bdi>
@@ -624,7 +624,7 @@ class CourseCarousel extends Component {
                         <span className="woocommerce-Price-amount amount">
                             <bdi>
                             <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.sale_price !== '' ? '$' : '' }
+                                { course.loop_price.sale_price !== '' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
                                 </span>
                                 { course.loop_price.sale_price }
                             </bdi>
@@ -692,6 +692,7 @@ class CourseCarousel extends Component {
     courseTemplate(props) {
         const hover_animation = props.hover_animation === 'on' ? 'hover-animation' : '';
         const courses = props.__courses.map((course) => {
+           
             return (
             <div className="tutor-course-col">
                 <div className={`tutor-divi-card ${hover_animation}`}>
@@ -757,6 +758,7 @@ class CourseCarousel extends Component {
         if(!this.props.__courses) {
             return '';
         }
+        console.log(this.props.__courses)
         const thumbnail_hide    = this.props.show_image === 'off' ? 'hide-thumbnail': '';
         return (
         <Fragment>

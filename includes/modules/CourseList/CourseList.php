@@ -792,14 +792,14 @@ class CourseList extends ET_Builder_Module {
 		}
 
 		$courses = [];
-
+		$currency_symbol = function_exists( 'get_woocommerce_currency_symbol' ) ? get_woocommerce_currency_symbol() : '$'; 
 		$query	= new WP_Query( $query_args );
 
 		if($query->have_posts()) {
 		
 			//get all required post contents
 			foreach($query->posts as $post) {
-
+				$post->currency_symbol = $currency_symbol;
 				$thumbnail = get_the_post_thumbnail_url( $post->ID, $image_size) ? get_the_post_thumbnail_url( $post->ID, $image_size) : get_tutor_course_thumbnail($image_size, $url = true);
 				
 				$category = wp_get_post_terms($post->ID,'course-category');
