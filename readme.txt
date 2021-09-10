@@ -17,7 +17,7 @@ Tutor LMS Divi Page builder Addons is a WordPress plugin that integrates Tutor L
 
 https://www.youtube.com/watch?v=WKi6Nngn6q4
 
-=What you can do with Tutor LMS Divi Page builder Addons:=
+= What you can do with Tutor LMS Divi Page builder Addons: =
 
 Tutor LMS Divi Page builder Addons helps you create gorgeous looking eLearning sites Tutor LMS and then style it with Divi Page builder. You can do a lot of things, including the following: 
 
@@ -32,7 +32,6 @@ Tutor LMS Divi Modules will ask you to install the following plugins to make sur
 
 1) [Tutor LMS](https://wordpress.org/plugins/tutor)
 2) [Divi Page Builder](https://www.elegantthemes.com/gallery/divi/)
-3) [Tutor LMS Divi Modules] ()
 
 After installing and activating all of these plugins, you will be able to build single course pages with Divi Page builder using all of its unique features. For a more in-depth look at the integration and all details, please visit our documentation on Tutor LMS Divi Modules.
 
@@ -102,6 +101,19 @@ To install Tutor LMS Divi Page builder Addons manually, you need to download the
 
 The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
+== Screenshots ==
+1. Create Astonishing Course List
+2. Course List Horizontal Style
+3. 23+ Tutor LMS Divi Moduels
+4. Advance customization options
+5. Default Single Course Layout
+6. Classic Style For Course Curriculum
+7. Stylish Course Topic Display
+8. Display Ratings Stylishly
+9. Different Card Designs For Instructors
+10. Preview Modes for Implemented design
+
+
 == Frequently Asked Questions ==
 
 = Can I use the Divi Page builder with my existing Tutor LMS courses?
@@ -129,17 +141,7 @@ If you find a conflict or problem in your theme, please post on the support sect
 = How can I request more features? =
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
-== Screenshots ==
-1. Create Astonishing Course List
-2. 23+ Tutor LMS Divi Moduels
-3. Advance customization options
-4. Default Single Course Layout
-5. Classic Style For Course Curriculum
-6. Stylish Course Topic Display
-7. Display Ratings Stylishly
-8. Different Card Designs For Instructors
-9. Preview Modes for Implemented design
-
+== Changelog ==
 
 = 1.0.0 =
 * Initial Release
