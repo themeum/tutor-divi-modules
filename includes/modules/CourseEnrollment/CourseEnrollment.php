@@ -28,12 +28,12 @@ class CourseEnrollment extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		// Module name & icon
+		// Module name & icon.
 		$this->name      = esc_html__( 'Tutor Course Enrollment', 'tutor-lms-divi-modules' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
-		// Toggles are grouped into array of tab name > toggles > toggle definition
+		// Toggles are grouped into array of tab name > toggles > toggle definition.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
@@ -45,16 +45,13 @@ class CourseEnrollment extends ET_Builder_Module {
 				'toggles' => array(
 					'enrollment_button'     => esc_html__( 'Enroll Button', 'tutor-lms-divi-modules' ),
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
-					'start_continue_button' => esc_html__( 'Start/Continue Button', 'tutor-lms-divi-modules' ),
-					'complete_button'       => esc_html__( 'Complete Button', 'tutor-lms-divi-modules' ),
-					'gradebook_button'      => esc_html__( 'Gradebook Button', 'tutor-lms-divi-modules' ),
+					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
 				),
 			),
-
 		);
 
-		// advanced fiedls settings
+		// advanced fiedls settings.
 		$this->advanced_fields = array(
 			'fonts'      => array(
 
@@ -133,36 +130,6 @@ class CourseEnrollment extends ET_Builder_Module {
 					'toggle_slug'   => 'start_continue_button',
 					'important'     => true,
 				),
-				'complete_button'       => array(
-					'label'         => esc_html__( 'Button', 'tutor-lms-divi-modules' ),
-					'box_shadow'    => array(
-						'css' => array(
-							'main' => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button',
-						),
-					),
-					'css'           => array(
-						'main' => '%%order_class%% .tutor-course-compelte-form-wrap .course-complete-button',
-					),
-					'use_alignment' => false,
-					'tab_slug'      => 'advanced',
-					'toggle_slug'   => 'complete_button',
-					'important'     => true,
-				),
-				'gradebook_button'      => array(
-					'label'         => esc_html__( 'Gradebook Button', 'tutor-lms-divi-modules' ),
-					'box_shadow'    => array(
-						'css' => array(
-							'main' => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap .tutor-button',
-						),
-					),
-					'css'           => array(
-						'main' => '%%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap > .tutor-button',
-					),
-					'use_alignment' => false,
-					'tab_slug'      => 'advanced',
-					'toggle_slug'   => 'gradebook_button',
-					'important'     => true,
-				),
 			),
 			'borders'    => false,
 			'box_shadow' => false,
@@ -207,7 +174,7 @@ class CourseEnrollment extends ET_Builder_Module {
 					'course',
 				),
 			),
-			// general tab main_content toggle
+			// general tab main_content toggle.
 			'preview_mode' => array(
 				'label'       => esc_html__( 'Preview Mode', 'tutor-lms-divi-modules' ),
 				'type'        => 'select',
@@ -218,7 +185,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				'default'     => 'enrollment',
 				'toggle_slug' => 'main_content',
 			),
-			// general tab customize_btn toggle
+			// general tab customize_btn toggle.
 			'alignment'    => array(
 				'label'           => esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
 				'type'            => 'text_align',
@@ -269,7 +236,7 @@ class CourseEnrollment extends ET_Builder_Module {
 					'btn_width' => 'fixed',
 				),
 			),
-			// advanced tab enrolled_info toggle
+			// advanced tab enrolled_info toggle.
 			'icon_size'    => array(
 				'label'          => esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
