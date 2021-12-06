@@ -197,10 +197,11 @@ class CourseEnrollment extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'CourseEnrollment',
-					'get_props',
+					'get_edit_template',
 				),
 				'computed_depends_on' => array(
 					'course',
+					'preview_mode',
 				),
 				'computed_minimum'    => array(
 					'course',
@@ -298,8 +299,10 @@ class CourseEnrollment extends ET_Builder_Module {
 	 * @since 1.0.0
 	 * @return bool
 	 */
-	public static function get_props( $args = array() ) {
-		return tutils()->is_course_purchasable( $args['course'] ) ? 'yes' : 'no';
+	public static function get_edit_template( $args = array() ) {
+		ob_start();
+		include_once dtlms_get_template( 'course/enrolment-editor' );
+		return apply_filters( 'dtlms_enrolment_editor_template', ob_get_clean() );
 	}
 
 	/**
@@ -310,19 +313,8 @@ class CourseEnrollment extends ET_Builder_Module {
 	 */
 	public function get_content( $args = array() ) {
 		ob_start();
-		$is_enrolled           = tutils()->is_enrolled();
-		$is_administrator      = current_user_can( 'administrator' );
-		$is_instructor         = tutor_utils()->is_instructor_of_this_course();
-		$course_content_access = (bool) get_tutor_option( 'course_content_access_for_ia' );
-
-		$template = 'enrolment_box';
-		if ( $is_enrolled || ( $course_content_access && ( $is_administrator || $is_instructor ) ) ) {
-			$template = 'enrolled-box';
-		} else {
-			$template = 'enrolment-box';
-		}
-		include_once dtlms_get_template( 'course/' . $template );
-		return ob_get_clean();
+		include tutor()->path . 'templates/single/course/course-entry-box.php';
+		return apply_filters( 'dtlms_enrollment_template', ob_get_clean() );
 	}
 	/**
 	 * Render module output

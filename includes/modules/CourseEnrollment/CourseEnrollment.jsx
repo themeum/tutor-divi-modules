@@ -335,8 +335,7 @@ class CourseEnrollment extends Component {
         return (
            <Fragment>
 
-               <div className="tutor-divi-enroll-buttons-wrapper">
-                    { this.switchTemplate(this.props) }
+               <div className="tutor-divi-enroll-buttons-wrapper" dangerouslySetInnerHTML={{__html: this.props.__enrollment}}>
                </div>
 
            </Fragment>
