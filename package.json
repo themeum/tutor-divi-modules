@@ -12,6 +12,7 @@
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-wp-pot": "^2.5.0",
+    "install": "^0.13.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-player": "^2.9.0",

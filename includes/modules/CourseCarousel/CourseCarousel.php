@@ -874,7 +874,7 @@ class CourseCarousel extends ET_Builder_Module {
 	}
 	
 
-	public function render( $unprocessed_props, $content = null, $render_slug ) {
+	public function render( $unprocessed_props, $content, $render_slug ) {
 		//selectors
 		$wrapper			= "%%order_class%% .tutor-divi-carousel-main-wrap";
 		$card_selector		= $wrapper." .tutor-divi-card";

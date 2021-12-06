@@ -145,7 +145,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content = null, $render_slug) {
+	public function render($attrs, $content, $render_slug) {
 
 		$output = self::get_content($this->props);
 

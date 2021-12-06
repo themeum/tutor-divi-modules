@@ -893,7 +893,7 @@ class CourseList extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render( $unprocessed_props, $content = null, $render_slug ) {
+	public function render( $unprocessed_props, $content, $render_slug ) {
 		//selectors
 		$wrapper			= "%%order_class%% .tutor-divi-courselist-main-wrap";
 		$card_selector		= $wrapper." .tutor-divi-card";

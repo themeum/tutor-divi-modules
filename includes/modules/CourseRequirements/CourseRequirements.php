@@ -353,7 +353,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content = null, $render_slug) {
+	public function render($attrs, $content, $render_slug) {
 		//selectors
 		$wrapper 		= '%%order_class%% .tutor-course-requirements-wrap';
 		$title_selector	= $wrapper." .tutor-segment-title";

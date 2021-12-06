@@ -270,7 +270,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content = null, $render_slug) {
+	public function render($attrs, $content, $render_slug) {
 		// selectors
 		$wrapper			= '%%order_class%% .tutor-single-course-author-meta';
 		$img_selector 		= '%%order_class%% .tutor-single-course-avatar a img';

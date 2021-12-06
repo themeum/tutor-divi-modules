@@ -332,7 +332,7 @@ class CourseEnrollment extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */    
-    public function render ( $attrs, $content = null, $render_slug ) {
+    public function render ( $attrs, $content, $render_slug ) {
 
         //selectors
         $three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';

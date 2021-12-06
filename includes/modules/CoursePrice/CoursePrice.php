@@ -143,7 +143,7 @@ class CoursePrice extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-    public function render( $attr, $content = null, $render_slug) {
+    public function render( $attr, $content, $render_slug) {
 		//selectors
 		$selector 		= '%%order_class%% .price .price';
 

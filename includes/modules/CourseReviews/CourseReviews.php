@@ -393,7 +393,7 @@ class CourseReviews extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-    public function render( $attrs, $content = null, $render_slug ) {
+    public function render( $attrs, $content, $render_slug ) {
         //selectors
         $avg_star_selector         = '%%order_class%% .tutor-col-auto .tutor-star-rating-group i';
         $rating_bar_selector       = '%%order_class%% .course-rating-meter .rating-meter-bar';

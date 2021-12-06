@@ -427,7 +427,7 @@ class CourseCurriculum extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render( $unprocessed_props, $content = null, $render_slug ) {
+	public function render( $unprocessed_props, $content, $render_slug ) {
 		//selectors
         $wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';

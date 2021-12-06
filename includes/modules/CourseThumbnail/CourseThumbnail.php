@@ -157,7 +157,7 @@ class CourseThumbnail extends ET_Builder_Module {
      *
      * @return string module's rendered output
      */
-	public function render( $unprocessed_props, $content = null, $render_slug ) {
+	public function render( $unprocessed_props, $content, $render_slug ) {
         $output = self::get_content( $this->props );
         return $this->_render_module_wrapper( $output, $render_slug );
 	}
