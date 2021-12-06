@@ -2,6 +2,7 @@
 
 /**
  * Tutor Course About Module for Divi Builder
+ *
  * @since 1.0.0
  * @author Themeum<www.themeum.com>
  */
@@ -28,59 +29,59 @@ class TutorCourseAbout extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course About', 'tutor-lms-divi-modules');
-		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$this->name      = esc_html__( 'Tutor Course About', 'tutor-lms-divi-modules' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
+					'main_content' => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'heading' => array(
-						'title'    => esc_html__('Heading', 'tutor-lms-divi-modules'),
+					'heading'    => array(
+						'title' => esc_html__( 'Heading', 'tutor-lms-divi-modules' ),
 					),
 					'about_text' => array(
-						'title'    => esc_html__('Paragraph', 'tutor-lms-divi-modules'),
+						'title' => esc_html__( 'Paragraph', 'tutor-lms-divi-modules' ),
 					),
 				),
 			),
 		);
-		
-		$paragraph_selector = '%%order_class%% .tutor-course-summery p';
-        $heading_selector = '%%order_class%% .tutor-segment-title';
+
+		$paragraph_selector    = '%%order_class%% .tutor-course-summery p';
+		$heading_selector      = '%%order_class%% .tutor-segment-title';
 		$this->advanced_fields = array(
-			'fonts'          => array(
-				'heading' => array(
-					'label'        => esc_html__('Heading', 'tutor-lms-divi-modules'),
-					'css'          => array(
+			'fonts'      => array(
+				'heading'    => array(
+					'label'       => esc_html__( 'Heading', 'tutor-lms-divi-modules' ),
+					'css'         => array(
 						'main' => $heading_selector,
 					),
-					'tab_slug'     => 'advanced',
-					'toggle_slug'  => 'heading',
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'heading',
 				),
 				'about_text' => array(
-					'css'          		=> array(
+					'css'         => array(
 						'main' => $paragraph_selector,
 					),
-					'tab_slug'     		=> 'advanced',
-					'toggle_slug'  		=> 'about_text',
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'about_text',
 				),
-				
+
 			),
-			'max_width'			=> false,
-			'text'				=> false,
-			//'margin_padding'	=> false,
-			'background'		=> false,
-			'borders'			=> false,
-			'box_shadow'		=> false,
-			'filters'			=> false,
-			'animation'			=> false,
-			'transform'			=> false
+			'max_width'  => false,
+			'text'       => false,
+			// 'margin_padding'  => false,
+			'background' => false,
+			'borders'    => false,
+			'box_shadow' => false,
+			'filters'    => false,
+			'animation'  => false,
+			'transform'  => false,
 		);
 	}
 
@@ -93,7 +94,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 	 */
 	public function get_fields() {
 		$fields = array(
-			'course'       	=> Helper::get_field(
+			'course'  => Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -101,14 +102,14 @@ class TutorCourseAbout extends ET_Builder_Module {
 					),
 				)
 			),
-			'__about'		=> array(
+			'__about' => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseAbout',
 					'get_content',
 				),
 				'computed_depends_on' => array(
-					'course'
+					'course',
 				),
 				'computed_minimum'    => array(
 					'course',
@@ -121,14 +122,15 @@ class TutorCourseAbout extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course author
+	 *
 	 * @since 1.0.0
 	 * @return string
 	 */
-	public static function get_content($args = []) {
-		$course = Helper::get_course($args);
+	public static function get_content( $args = array() ) {
+		$course = Helper::get_course( $args );
 		ob_start();
-		if ($course) {
-			include_once dtlms_get_template('course/about');
+		if ( $course ) {
+			include_once dtlms_get_template( 'course/about' );
 		}
 
 		return ob_get_clean();
@@ -145,17 +147,17 @@ class TutorCourseAbout extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content, $render_slug) {
+	public function render( $attrs, $content, $render_slug ) {
 
-		$output = self::get_content($this->props);
+		$output = self::get_content( $this->props );
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
-		if ('' === $output) {
+		if ( '' === $output ) {
 			return '';
 		}
 
-		return $this->_render_module_wrapper($output, $render_slug);
+		return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
 
-new TutorCourseAbout;
+new TutorCourseAbout();
