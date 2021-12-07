@@ -2,7 +2,7 @@
 /*
 Plugin Name: Tutor LMS Divi Modules
 Description: Easily design your courses and lessons on Divi builder with Tutor LMS
-Version:     1.0.1
+Version:     1.0.2
 Author:      Themeum
 Author URI:  https://themeum.com
 License: GPLv3
@@ -13,7 +13,7 @@ Domain Path: /languages
 
 defined('ABSPATH') || die();
 
-define('DTLMS_VERSION', '1.0.1');
+define('DTLMS_VERSION', '1.0.2');
 define('DTLMS_FILE__', __FILE__);
 define('DTLMS_DIR_PATH', plugin_dir_path(DTLMS_FILE__));
 define('DTLMS_DIR_URL', plugin_dir_url(DTLMS_FILE__));
