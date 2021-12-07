@@ -35,7 +35,7 @@ $expand_icon 		= et_pb_process_font_icon($args['expand_icon']);
 		$is_instructor = tutor_utils()->is_instructor_of_this_course();
 		$course_content_access = (bool) get_tutor_option('course_content_access_for_ia');
 		if (tutils()->is_enrolled() || ($course_content_access && ($is_administrator || $is_instructor))) {
-			tutor_course_enrolled_nav();
+			//tutor_course_enrolled_nav();
 
 			if (!empty($wp_query->query_vars['course_subpage'])) {
 				$course_subpage = $wp_query->query_vars['course_subpage'];

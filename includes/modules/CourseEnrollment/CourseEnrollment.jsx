@@ -14,8 +14,7 @@ class CourseEnrollment extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper               = '%%order_class%% .tutor-divi-enroll-buttons-wrapper';
-        const three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';
+        const wrapper               = '%%order_class%% .tutor-course-sidebar-card';
         const enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
 
         //props
@@ -31,29 +30,14 @@ class CourseEnrollment extends Component {
         const icon_size_tablet          = is_responsive_icon_size && '' !== props.icon_size_tablet ? props.icon_size_tablet : icon_size;
         const icon_size_phone           = is_responsive_icon_size && '' !== props.icon_size_phone ? props.icon_size_phone : icon_size;
         const icon_color                = props.icon_color;
-
-        const add_to_cart_font_icon     = props.add_to_cart_button_icon;
         //set styles
         /**
          * default template styling
          */
         additionalCss.push([
             {
-                selector: wrapper,
+                selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
                 declaration: 'display: flex; flex-direction: column; row-gap: 10px;'
-            }
-        ]);
-
-        additionalCss.push([
-            {
-                selector: three_buttons_wrapper,
-                declaration: 'display: flex; flex-direction: column; row-gap: 5px;'
-            }
-        ]);
-        additionalCss.push([
-            {
-                selector: three_buttons_wrapper,
-                declaration: 'border-bottom: 0px;'
             }
         ]);
 
@@ -68,15 +52,8 @@ class CourseEnrollment extends Component {
 
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
-                    declaration: `display: flex; justify-content: ${align};`
-                }
-            ]);
-        
-            additionalCss.push([
-                {
-                    selector: three_buttons_wrapper,
-                    declaration: `display:flex; align-items: ${align};`
+                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
+                    declaration: `align-items: ${align};`
                 }
             ]);
         }
@@ -91,16 +68,8 @@ class CourseEnrollment extends Component {
 
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
-                    declaration: `display: flex; justify-content: ${align};`,
-                    device: 'tablet'
-                }
-            ]);
-        
-            additionalCss.push([
-                {
-                    selector: three_buttons_wrapper,
-                    declaration: `display:flex; align-items: ${align};`,
+                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
+                    declaration: `align-items: ${align};`,
                     device: 'tablet'
                 }
             ]);
@@ -116,16 +85,8 @@ class CourseEnrollment extends Component {
 
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-purchase-box, %%order_class%% .tutor-course-enroll-wrap, %%order_class%% .tutor-course-compelte-form-wrap',
-                    declaration: `display: flex; justify-content: ${align};`,
-                    device: 'phone'
-                }
-            ]);
-        
-            additionalCss.push([
-                {
-                    selector: three_buttons_wrapper,
-                    declaration: `display:flex; align-items: ${align};`,
+                    selector: `${wrapper} .tutor-btn`,
+                    declaration: `align-items: ${align};`,
                     device: 'phone'
                 }
             ]);
@@ -140,21 +101,13 @@ class CourseEnrollment extends Component {
         ]);
 
         if('fill' === btn_width) {
-            //enroll & add to cart button
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-course-enrollment-box .tutor-single-add-to-cart-box .single_add_to_cart_button, %%order_class%% .tutor-course-enrollment-box .tutor-course-enroll-wrap .tutor-btn-enroll, %%order_class%% .generate-course-gradebook-btn-wrap, %%order_class%% #tutor-gradebook-generate-for-course',
-                    declaration: `width: 100% !important; display: flex; justify-content: center;`
-                }
-            ]);
 
-            //enrolled(start/continue not gradebook) btn default width 100% so no need to style if width is fill
         } else if('auto' === btn_width) {
             //start/continue btn not gradebook
             additionalCss.push([
                 {
-                    selector: `${three_buttons_wrapper} .tutor-button, ${three_buttons_wrapper} .course-complete-button`,
-                    declaration: 'width: auto;'
+                    selector: `${wrapper} .tutor-btn`,
+                    declaration: 'width: auto !important;'
                 }
             ]);
              //enrollment (enroll/add to cart) btn default width auto so no need to style if width is fill
@@ -162,14 +115,8 @@ class CourseEnrollment extends Component {
             //fixed width
             additionalCss.push([
                 {
-                    selector: `${wrapper} .single_add_to_cart_button, ${wrapper} .tutor-course-enroll-wrap .tutor-btn, ${wrapper} .tutor-lead-info-btn-group .tutor-button, ${wrapper} .course-complete-button, ${wrapper} .generate-course-gradebook-btn-wrap .tutor-button`,
+                    selector:  `${wrapper} .tutor-btn`,
                     declaration: `width: ${width_px} !important; text-align:center;`
-                }
-            ]);
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .tutor-course-enroll-wrap .tutor-btn, ${wrapper} .single_add_to_cart_button.tutor-button`,
-                    declaration: `display: flex; justify-content: center;`
                 }
             ]);
         }
@@ -177,14 +124,14 @@ class CourseEnrollment extends Component {
         if('small' === props.button_size) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .single_add_to_cart_button, ${wrapper} .tutor-course-enroll-wrap .tutor-btn, ${wrapper} .tutor-lead-info-btn-group .tutor-button, ${wrapper} .course-complete-button, ${wrapper} .generate-course-gradebook-btn-wrap .tutor-button`,
-                    declaration: `padding: 9px 14px !important;`
+                    selector: `${wrapper} .tutor-btn`,
+                    declaration: `padding: 4px 14px !important;`
                 }
             ]);
         } else if ('large' === props.button_size) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .single_add_to_cart_button, ${wrapper} .tutor-course-enroll-wrap .tutor-btn, ${wrapper} .tutor-lead-info-btn-group .tutor-button, ${wrapper} .course-complete-button, ${wrapper} .generate-course-gradebook-btn-wrap .tutor-button`,
+                    selector:  `${wrapper} .tutor-btn`,
                     declaration: `padding: 18px !important;`
                 }
             ]);            
@@ -201,7 +148,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
                     declaration: `color: ${icon_color};`
                 }
             ]);
@@ -209,7 +156,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_size) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
@@ -217,7 +164,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
@@ -226,20 +173,11 @@ class CourseEnrollment extends Component {
         if('' !== icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-single-course-segment.tutor-course-enrolled-wrap p >i',
+                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }
             ]);
-        }
-        //if add_to_cart_icon has custom icon then remove default icon
-        if('' !== add_to_cart_font_icon) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% i.tutor-icon-shopping-cart:before',
-                    declaration: `content: '';`,
-                }
-            ]);            
         }
         //set styles end
         return additionalCss;
