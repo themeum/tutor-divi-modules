@@ -59,16 +59,16 @@ class CourseEnrollment extends ET_Builder_Module {
 				'label_font' => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card .tutor-enrolled-info-text',
+						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-regular-caption',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrolled_info',
 				),
-				'date_font'  => array(
-					'label'           => esc_html__( 'Date', 'tutor-lms-divi-modules' ),
+				'text_font'  => array(
+					'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card .tutor-enrolled-info-date',
+						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-medium-caption',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -262,7 +262,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			'icon_size'    => array(
 				'label'          => esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
-				'default'        => '10px',
+				'default'        => '24px',
 				'default_unit'   => 'px',
 				'range_settings' => array(
 					'min'  => '1',
@@ -456,11 +456,12 @@ class CourseEnrollment extends ET_Builder_Module {
 		);
 
 		// purchase icon style
+		$course_info_wrapper = '%%order_class%% .tutor-course-sidebar-card-footer';
 		if ( $icon_color !== '' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+					'selector'    => "$course_info_wrapper span.tutor-icon-24",
 					'declaration' => sprintf(
 						'color: %1$s;',
 						$icon_color
@@ -473,7 +474,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+					'selector'    => "$course_info_wrapper span.tutor-icon-24",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size
@@ -486,7 +487,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+					'selector'    => "$course_info_wrapper span.tutor-icon-24",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_tablet
@@ -500,7 +501,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+					'selector'    => "$course_info_wrapper span.tutor-icon-24",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_phone

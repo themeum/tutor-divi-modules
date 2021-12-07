@@ -145,10 +145,11 @@ class CourseEnrollment extends Component {
             }
         ]);
         //purchase icon style
+        const course_info_wrapper = '%%order_class%% .tutor-course-sidebar-card-footer';
         if('' !== icon_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+                    selector: `${course_info_wrapper} span.tutor-icon-24`,
                     declaration: `color: ${icon_color};`
                 }
             ]);
@@ -156,7 +157,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_size) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+                    selector: `${course_info_wrapper} span.tutor-icon-24`,
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
@@ -164,7 +165,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+                    selector: `${course_info_wrapper} span.tutor-icon-24`,
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
@@ -173,7 +174,7 @@ class CourseEnrollment extends Component {
         if('' !== icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-sidebar-card-body span.ttr-purchase-filled',
+                    selector: `${course_info_wrapper} span.tutor-icon-24`,
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }

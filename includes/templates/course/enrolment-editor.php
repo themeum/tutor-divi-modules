@@ -7,33 +7,35 @@
 
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $args['preview_mode'];
-$sidebar_meta = apply_filters(
+$course               = get_post( $args['course'] );
+$is_enable_date       = get_tutor_option( 'enable_course_update_date' );
+$sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
 		array(
 			'icon_class' => 'ttr-level-line',
 			'label'      => __( 'Level', 'tutor-lms-divi-modules' ),
-			'value'      => get_tutor_course_level( get_the_ID() ),
+			'value'      => get_tutor_course_level( $course->ID ),
 		),
 		array(
 			'icon_class' => 'ttr-student-line-1',
 			'label'      => __( 'Total Enrolled', 'tutor-lms-divi-modules' ),
-			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
+			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course( $course->ID ) : null,
 		),
 		array(
 			'icon_class' => 'ttr-clock-filled',
 			'label'      => __( 'Duration', 'tutor-lms-divi-modules' ),
-			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
+			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context( $course->ID ) : '',
 		),
 		array(
 			'icon_class' => 'ttr-refresh-l',
 			'label'      => __( 'Last Updated', 'tutor-lms-divi-modules' ),
-			'value'      => get_tutor_option( 'enable_course_update_date' ) ? tutor_get_formated_date( get_option( 'date_format' ), get_the_modified_date() ) : null,
+			'value'      => $is_enable_date && isset( $course->post_modified ) && '' !== $course->post_modified ? tutor_get_formated_date( get_option( 'date_format' ), $post->post_modified ) : '',
 		),
 	),
 	get_the_ID()
 );
-$button_size  = $args['course_enroll_buttons_size'];
+$button_size = $args['course_enroll_buttons_size'];
 
 ?>
 
@@ -49,19 +51,8 @@ $button_size  = $args['course_enroll_buttons_size'];
 				<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
 			</a>
 			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-                <?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules'); ?>                        
+				<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
 			</button>
-
-			<div class="text-regular-caption color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
-				<span class="tutor-icon-26 color-success ttr-purchase-filled tutor-mr-6"></span>
-				<span class="tutor-enrolled-info-text">
-					<?php esc_html_e( 'You enrolled this course on', 'tutor-lms-divi-modules' ); ?>
-				</span>
-				<span class="text-bold-small color-success tutor-ml-3 tutor-enrolled-info-date">
-					<?php echo esc_html( tutor_get_formated_date( get_option( 'date_format' ), date( 'Y-m-d' ) ) ); ?>
-				</span>
-			</div>
-		
 			<?php else : ?>
 				<div>
 					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
@@ -71,6 +62,31 @@ $button_size  = $args['course_enroll_buttons_size'];
 					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
 				</button>
 			<?php endif; ?>
-
 	</div>
+	<!-- Course Info -->
+	<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+	<div class="tutor-course-sidebar-card-footer tutor-p-30">
+		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
+			<?php foreach ( $sidebar_meta as $meta ) : ?>
+				<?php
+				if ( ! $meta['value'] ) {
+					continue;}
+				?>
+				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+					<div class="flex-center">
+						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
+						<span class="text-regular-caption color-text-hints tutor-ml-5">
+							<?php echo esc_html( $meta['label'] ); ?>
+						</span>
+					</div>
+					<div>
+						<span class="text-medium-caption color-text-primary">
+							<?php echo wp_kses_post( $meta['value'] ); ?>
+						</span>
+					</div>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>	
+	<?php endif; ?>
 </div>
