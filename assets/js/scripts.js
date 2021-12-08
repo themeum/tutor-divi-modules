@@ -9,83 +9,20 @@ if(params.has('et_fb')) {
 } else {
     /**
      * Tutor Divi Modules
-     * course curricle on click toggle icon
+     * course curriculum on click toggle icon
      * @since 1.0.0
      */
-     if(document.querySelector("#tutor_divi_col_icon") !== null){
-        
-        const collaps_icon    = document.querySelector("#tutor_divi_col_icon").value;
-        const expand_icon     = document.querySelector("#tutor_divi_exp_icon").value;
-        
-        let divs = document.querySelectorAll(".tutor-divi-course-topic").forEach((div)=> {
-                div.onclick = (e) => {
-                let icon =  e.currentTarget.querySelector("#tutor_divi_topic_icon");
-                let icon_type = icon.textContent;
-                    if( icon_type == collaps_icon) {
-                        icon.textContent = expand_icon;
-                    
-                    } else if (icon_type == expand_icon) {
-                        icon.textContent = collaps_icon;
-                    }
-                }
-        });
-     }
-
-    /**
-     * Carousel cart button icon
-     * set data-icon attr to show et font icon
-     * @since 1.0.0
-    */ 
-    if(document.querySelector("#cart_button_font_icon") !== null) {
-        const cart_selector = document.querySelectorAll('.tutor-loop-cart-btn-wrap a');
-        const icon          = document.querySelector("#cart_button_font_icon").value;
-        if(cart_selector) {
-            for(let cs of cart_selector) {
-                cs.setAttribute('data-icon', icon)   
-            }
-        }        
-    }
-
 
     jQuery(document).ready(function($){
-
-        /**
-         * enrollment/enrolled cart button icon
-         * set data-icon attr to show et font icon
-         * @since 1.0.0
-        */ 
-        const __enroll_button_icon     = $('#enroll_button_font_icon').val();
-        if(__enroll_button_icon != undefined) {
-            initialize_font_icon('.tutor-btn-enroll.tutor-btn', __enroll_button_icon)
-        } 
-
-        const __add_to_cart_button_icon     = $('#add_to_cart_button_font_icon').val();
-        if(__add_to_cart_button_icon != undefined) {
-            initialize_font_icon('.single_add_to_cart_button', __add_to_cart_button_icon)
-        }
-        const __start_continue_button_icon  = $('#start_continue_button_icon').val();
-        if(__start_continue_button_icon != undefined) {
-            initialize_font_icon('.tutor-lead-info-btn-group .tutor-button.tutor-success', __start_continue_button_icon)
-        }    
-
-        const __complete_button_icon     = $('#complete_button_icon').val();
-        if(__complete_button_icon != '') {
-           
-            initialize_font_icon('.course-complete-button', __complete_button_icon)
-        }    
-
-        const __gradebook_icon     = $('#gradebook_button_icon').val();
-        if(__gradebook_icon != '') {
-           
-            initialize_font_icon('.generate-course-gradebook-btn-wrap > .tutor-button', __gradebook_icon)
-        }
-
-        function initialize_font_icon(elem, icon) {
-            if(document.querySelector(elem) != null) {
-                document.querySelector(elem).setAttribute('data-icon', icon)
+        $(document).on('click', '.tutor-accordion-item-header', function() {
+            $(this).toggleClass('is-active');
+            var sibling = $(this).next();
+            if ($(this).hasClass('is-active')) {
+                sibling.css('maxHeight', sibling.prop('scrollHeight'));
+            } else {
+                sibling.css('maxHeight', 0);
             }
-        } 
-
+        });
 
     /**
      * Tutor Course Carousel Modules

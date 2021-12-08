@@ -409,52 +409,8 @@ class CourseCurriculum extends Component {
   
         return (
             <Fragment>
-                <div className="tutor-wrap">
-
-                    <div className="course-enrolled-nav-wrap">
-                        <nav className="course-enrolled-nav">
-                            <ul>
-                                <li className="active">
-                                    <a href="/">Course Page</a>
-                                </li>
-                                <li className="">
-                                    <a href="/">Q&A</a>
-                                </li>
-                                <li className="">
-                                    <a href="/">Announcements</a>
-                                </li>
-                                <li className="">
-                                    <a href="/">Gradebook</a>
-                                </li>
-                                <li className="">
-                                    <a href="/">Resources</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
+                <div className="tutor-wrap dtlms-course-curriculum" dangerouslySetInnerHTML={{__html: this.props.__curriculum}}>
                 </div>
-
-                <div className="tutor-single-course-segment  tutor-course-topics-wrap">
-
-                    <div className="tutor-course-topics-header">
-                        <div className="tutor-course-topics-header-left">
-                            <h4 className="tutor-segment-title">
-                                { this.props.label }
-                            </h4>
-                        </div>
-                        <div className="tutor-course-topics-header-right">
-                            <span>{ this.props.__curriculum.lesson_count } Lessons</span>
-                            <span>{ this.props.__curriculum.course_duration }h</span>
-                        </div>
-                    </div>
-
-                    <div className="tutor-course-topics-contents">
-                        { this.topicTemplate( this.props.__curriculum.topics,this.props.collaps_icon, this.props.expand_icon) }
-                    </div>
-
-                </div>
-
             </Fragment>
         );
     }

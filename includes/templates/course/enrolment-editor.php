@@ -30,12 +30,12 @@ $sidebar_meta         = apply_filters(
 		array(
 			'icon_class' => 'ttr-refresh-l',
 			'label'      => __( 'Last Updated', 'tutor-lms-divi-modules' ),
-			'value'      => $is_enable_date && isset( $course->post_modified ) && '' !== $course->post_modified ? tutor_get_formated_date( get_option( 'date_format' ), $post->post_modified ) : '',
+			'value'      => $is_enable_date && isset( $course->post_modified ) && '' !== $course->post_modified ? tutor_get_formated_date( get_option( 'date_format' ), $course->post_modified ) : '',
 		),
 	),
 	get_the_ID()
 );
-$button_size = $args['course_enroll_buttons_size'];
+$button_size = $args['button_size'];
 
 ?>
 
