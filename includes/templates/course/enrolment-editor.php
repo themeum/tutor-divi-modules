@@ -38,7 +38,6 @@ $sidebar_meta         = apply_filters(
 $button_size = $args['button_size'];
 
 ?>
-
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
 	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">

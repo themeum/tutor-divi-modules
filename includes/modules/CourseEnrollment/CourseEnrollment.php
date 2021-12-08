@@ -291,7 +291,7 @@ class CourseEnrollment extends ET_Builder_Module {
 	 */
 	public static function get_edit_template( $args = array() ) {
 		ob_start();
-		include_once dtlms_get_template( 'course/enrolment-editor' );
+		include dtlms_get_template( 'course/enrolment-editor' );
 		return apply_filters( 'dtlms_enrolment_editor_template', ob_get_clean() );
 	}
 

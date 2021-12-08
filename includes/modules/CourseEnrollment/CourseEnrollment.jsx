@@ -268,9 +268,6 @@ class CourseEnrollment extends Component {
     }
 
     render() {
-        if(!this.props.__enrollment) {
-            return '';
-        }
         return (
            <Fragment>
 
