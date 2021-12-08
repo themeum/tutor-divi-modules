@@ -77,55 +77,7 @@ class CoursePrice extends Component {
         }
         return (
             <Fragment>
-               <div className="tutor-divi-course-price">
-                    <div className="price">
-                        <div className="price">
-                        {
-                            this.props.__price.regular_price === 0 ?
-                            <span>Free</span>
-                            :
-                            <Fragment>
-                                {
-                                    this.props.__price.sale_price ?
-                                    <del>
-                                        <span className="woocommerce-Price-amount amount">
-                                            <bdi>
-                                                <span className="woocommerce-Price-currencySymbol">
-                                                $
-                                                </span>
-                                                { this.props.__price.regular_price }
-                                            </bdi>
-                                        </span>
-                                    </del>
-                                    :
-                                    <span className="woocommerce-Price-amount amount">
-                                        <bdi>
-                                            <span className="woocommerce-Price-currencySymbol">
-                                            $
-                                            </span>
-                                            { this.props.__price.regular_price }
-                                        </bdi>
-                                    </span>                                    
-                                }
-                                {
-                                    this.props.__price.sale_price ?
-                                    <ins>
-                                        <span className="woocommerce-Price-amount amount">
-                                            <bdi>
-                                                <span className="woocommerce-Price-currencySymbol">
-                                                $
-                                                </span>
-                                                { this.props.__price.sale_price }
-                                            </bdi>
-                                        </span>
-                                    </ins>
-                                    : ''
-                                }
-                                   
-                            </Fragment>
-                        }
-                        </div>
-                    </div>
+               <div className="tutor-divi-course-price" dangerouslySetInnerHTML={{__html: this.props.__price}}>
                </div>
             </Fragment>            
         );

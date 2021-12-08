@@ -81,7 +81,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__share',
+						'__price',
 					),
 				)
 			),
@@ -89,7 +89,7 @@ class CoursePrice extends ET_Builder_Module {
 				'type'					=> 'computed',
 				'computed_callback'		=> array(
 					'CoursePrice',
-					'get_props'
+					'get_content'
 				),
 				'computed_depends_on'	=> array( 'course' ),
 				'computed_minimum'		=> array( 'course' ),
