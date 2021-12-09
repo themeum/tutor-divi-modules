@@ -35,18 +35,29 @@ class CourseCurriculum extends ET_Builder_Module {
 			'general'  => array(),
 			'advanced' => array(
 				'toggles' => array(
-					'header'      => array(
+					'header'                  => array(
 						'title' => esc_html__( 'Curriculum Header', 'tutor-lms-divi-modules' ),
 					),
-					'topics'      => array(
+					'topics'                  => array(
 						'title' => esc_html__( 'Topics', 'tutor-lms-divi-modules' ),
 					),
-					'lesson'      => array(
+					'lesson'                  => array(
 						'title' => esc_html__( 'Lesson', 'tutor-lms-divi-modules' ),
 					),
-					'lesson_info' => array(
+					'lesson_info'             => array(
 						'title' => esc_html__( 'Lesson Info', 'tutor-lms-divi-modules' ),
 					),
+					'review_section_title'    => esc_html__( 'Review Section Title', 'tutor-lms-divi-modules' ),
+					'review_avg_total'        => esc_html__( 'Review Average Total', 'tutor-lms-divi-modules' ),
+					'review_avg_text'         => esc_html__( 'Review Average Text', 'tutor-lms-divi-modules' ),
+					'review_avg_count'        => esc_html__( 'Review Average Count', 'tutor-lms-divi-modules' ),
+					'review_avg_star'         => esc_html__( 'Review Average Star', 'tutor-lms-divi-modules' ),
+					'rating_bar'              => esc_html__( 'Right Rating Bar', 'tutor-lms-divi-modules' ),
+					'review_list_avatar'      => esc_html__( 'Review List Avatar', 'tutor-lms-divi-modules' ),
+					'review_list_author_name' => esc_html__( 'Review List Author Name', 'tutor-lms-divi-modules' ),
+					'review_list_time'        => esc_html__( 'Review List Time', 'tutor-lms-divi-modules' ),
+					'review_list_comment'     => esc_html__( 'Review List Comment', 'tutor-lms-divi-modules' ),
+					'review_list_star'        => esc_html__( 'Review List Star', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -58,9 +69,15 @@ class CourseCurriculum extends ET_Builder_Module {
 		$lesson_title_selector   = '%%order_class%% .tutor-courses-lession-list .text-regular-body.color-text-primary';
 		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
 
+		// Reviews selectors.
+        $title_selector         = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
+        $avg_total_selector     = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
+        $avg_text_selector      = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
+        $avg_count_selector     = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
+		
 		$this->advanced_fields = array(
 			'fonts'          => array(
-				'header' => array(
+				'header'                  => array(
 					'css'             => array(
 						'main' => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
 					),
@@ -68,7 +85,7 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'header',
 				),
-				'topics' => array(
+				'topics'                  => array(
 					'css'             => array(
 						'main' => "$wrapper .tutor-accordion-item-header",
 					),
@@ -77,7 +94,7 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'topics',
 				),
-				'lesson' => array(
+				'lesson'                  => array(
 					'css'             => array(
 						'main' => '%%order_class%% .lesson-preview-title',
 					),
@@ -85,6 +102,82 @@ class CourseCurriculum extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'lesson',
 					'important'       => true,
+				),
+
+				// reviews controls.
+				'review_section_title'    => array(
+					'css' => array(
+						'main'        => $title_selector,
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'section_title',
+					),
+				),
+				'review_avg_total'        => array(
+					'css'             => array(
+						'main'        => $avg_total_selector,
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_avg_total',
+
+					),
+					'hide_text_align' => true,
+				),
+				'review_avg_text'         => array(
+					'label'           => 'Review Avg Total',
+					'css'             => array(
+						'main'        => $avg_text_selector,
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_avg_text',
+
+					),
+					'hide_text_align' => true,
+				),
+				'review_avg_count'        => array(
+
+					'css'             => array(
+						'main'        => $avg_count_selector,
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_avg_count',
+
+					),
+					'hide_text_align' => true,
+				),
+				'rating_bar'              => array(
+					'css' => array(
+						'main'        => '%%order_class%% .course-rating-meter .rating-text-col, %%order_class%% .course-ratings-count-meter-wrap .rating-meter-col',
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'rating_abr',
+					),
+				),
+				'review_list_author_name' => array(
+					'css'             => array(
+						'main'        => '%%order_class%% .tutor-review-user-info .review-time-name p a',
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_list_author_name',
+					),
+					'hide_text_align' => true,
+				),
+				'review_list_time'        => array(
+					'css'             => array(
+						'main'        => '%%order_class%% .tutor-review-user-info .review-time-name .review-meta',
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_list_time',
+					),
+					'hide_text_align' => true,
+				),
+				'review_list_comment'     => array(
+					'css' => array(
+						'main'        => '%%order_class%% .review-content.review-right p',
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_list_comment',
+					),
+				),
+				'review_list_star'        => array(
+					'css'             => array(
+						'main'        => '%%order_class%% .individual-review-rating-wrap .tutor-star-rating-group i',
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_list_comment',
+					),
+					'hide_text_align' => true,
 				),
 			),
 			'borders'        => array(
@@ -113,7 +206,7 @@ class CourseCurriculum extends ET_Builder_Module {
 					'toggle_slug' => 'lesson',
 				),
 			),
-			'margin_padding'  => array(
+			'margin_padding' => array(
 				'css' => array(
 					'main'      => '%%order_class%% .tutor-accordion-item',
 					'important' => array( 'custom_padding' ),
