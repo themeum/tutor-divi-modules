@@ -19,8 +19,8 @@ class CourseCurriculum extends Component {
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
         const lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
-        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body-content';
-        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .lesson-preview-title';
+        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body';
+        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
       
 
         //props
@@ -67,12 +67,6 @@ class CourseCurriculum extends Component {
         /**
          * topic default display flex
          */
-        additionalCss.push([
-            {
-                selector: topics_wrapper,
-                declaration: `display: flex; flex-direction: column;`
-            }
-        ]);
 
         if('' !== space_between_topics) {
             additionalCss.push([
