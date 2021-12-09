@@ -14,7 +14,6 @@ class CourseCurriculum extends Component {
         const additionalCss = [];
         //selectors
         const wrapper                   = '%%order_class%% .dtlms-course-curriculum';
-        const topics_wrapper            = '%%order_class%% .tutor-course-topics-contents';
         const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
@@ -71,8 +70,8 @@ class CourseCurriculum extends Component {
         if('' !== space_between_topics) {
             additionalCss.push([
                 {
-                    selector: topics_wrapper,
-                    declaration: `row-gap: ${space_between_topics};`
+                    selector: '%%order_class%% .dtlms-course-curriculum .tutor-accordion-item',
+                    declaration: `margin-bottom: ${space_between_topics};`
                 }
             ]);       
         }

@@ -113,7 +113,12 @@ class CourseCurriculum extends ET_Builder_Module {
 					'toggle_slug' => 'lesson',
 				),
 			),
-			'margin_padding' => array(),
+			'margin_padding'  => array(
+				'css' => array(
+					'main'      => '%%order_class%% .tutor-accordion-item',
+					'important' => array( 'custom_padding' ),
+				),
+			),
 			'text'           => false,
 			'max_width'      => false,
 			'animation'      => false,
@@ -163,7 +168,7 @@ class CourseCurriculum extends ET_Builder_Module {
 					'left'  => esc_html__( 'Left', 'tutor-lms-divi-modules' ),
 					'right' => esc_html__( 'Right', 'tutor-lms-divi-modules' ),
 				),
-				'default'        => 'left',
+				'default'        => 'right',
 				'toggle_slug'    => 'main_content',
 				'mobile_options' => true,
 			),
@@ -415,7 +420,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				array(
 					'selector'    => '%%order_class%% .dtlms-course-curriculum .tutor-accordion-item',
 					'declaration' => sprintf(
-						'row-gap: %1$s;',
+						'margin-bottom: %1$s;',
 						$space_between_topics
 					),
 				)
