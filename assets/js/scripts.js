@@ -2,18 +2,15 @@
  * Tutor Divi Modules srcipts
  * @since 1.0.0
  */
-const params = new URLSearchParams(window.location.search);
-//check if not front end builder
-if(params.has('et_fb')) {
+jQuery(document).ready(function($){
 
-} else {
-    /**
-     * Tutor Divi Modules
-     * course curriculum on click toggle icon
-     * @since 1.0.0
-     */
-
-    jQuery(document).ready(function($){
+    //check if not front end builder
+    if(dtlmsData.is_divi_builder) {
+        /**
+         * Tutor Divi Modules
+         * course curriculum on click toggle icon
+         * @since 1.0.0
+         */            
         $(document).on('click', '.tutor-accordion-item-header', function() {
             $(this).toggleClass('is-active');
             var sibling = $(this).next();
@@ -23,12 +20,12 @@ if(params.has('et_fb')) {
                 sibling.css('maxHeight', 0);
             }
         });
-
-    /**
-     * Tutor Course Carousel Modules
-     * course carousel settings
-     * @since 1.0.0
-     */        
+        } else {
+        /**
+         * Tutor Course Carousel Modules
+         * course carousel settings
+         * @since 1.0.0
+         */        
         $('.tutor-divi-carousel-main-wrap').each(function(i,obj){
             var settings                    = $(this).find("#tutor_divi_carousel_settings");
             var slides_to_show              = settings.attr('slides_to_show');
@@ -91,8 +88,8 @@ if(params.has('et_fb')) {
                 ]
             })
         });
-    });
+    }
+});
 
-}
 
 

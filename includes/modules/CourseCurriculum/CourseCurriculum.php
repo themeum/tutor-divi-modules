@@ -13,6 +13,7 @@ class CourseCurriculum extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_curriculum';
 	public $vb_support = 'on';
+	protected static $curriculum_title;
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
@@ -36,10 +37,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			'advanced'		=> array(
 				'toggles'		=> array(
 					'header'		=> array(
-						'title'		=> esc_html__( 'Header', 'tutor-lms-divi-modules' )
-					),
-					'topic_info'	=> array(
-						'title'		=> esc_html__( 'Info', 'tutor-lms-divi-modules' )
+						'title'		=> esc_html__( 'Curriculum Header', 'tutor-lms-divi-modules' )
 					),
 					'topics'	=> array(
 						'title'		=> esc_html__( 'Topics', 'tutor-lms-divi-modules' )
@@ -56,7 +54,7 @@ class CourseCurriculum extends ET_Builder_Module {
 
 
 		// advanced fields config
-		$wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
+		$wrapper               		= '%%order_class%% .dtlms-course-curriculum';
         $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
         $topic_wrapper_selector 	= '%%order_class%% .tutor-divi-course-topic';
 	
@@ -70,23 +68,15 @@ class CourseCurriculum extends ET_Builder_Module {
 			'fonts'			=> array(
 				'header'		=> array(
 					'css'		=> array(
-						'main'	=> $header_title_selector
+						'main'	=> "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary"
 					),
 					'hide_text_align'	=> true,
 					'tab_slug'			=> 'advanced',
 					'toggle_slug'		=> 'header'
 				),
-				'topic_info'		=> array(
-					'css'		=> array(
-						'main'	=> $header_info_selector
-					),
-					'hide_text_align'	=> true,
-					'tab_slug'			=> 'advanced',
-					'toggle_slug'		=> 'topic_info'
-				),
 				'topics'		=> array(
 					'css'		=> array(
-						'main'	=> $topic_wrapper_selector." h4"
+						'main'	=> "$wrapper .tutor-accordion-item-header"
 					),
 					'hide_text_align'	=> true,
 					'hide_text_color'	=> true,
@@ -164,7 +154,8 @@ class CourseCurriculum extends ET_Builder_Module {
 					'get_content'
 				),
 				'computed_depends_on'	=> array(
-					'course'
+					'course',
+					'label'
 				),
 				'computed_minimum'		=> array(
 					'course'
@@ -177,22 +168,6 @@ class CourseCurriculum extends ET_Builder_Module {
 				'default'			=> esc_html__( 'Topics for this course', 'tutor-lms-divi-modules' ),
 				'option_category' 	=> 'basic_option',
 				'toggle_slug'     	=> 'main_content',
-			),
-			'collaps_icon' => array(
-				'label'             => esc_html__( 'Collaps Icon', 'tutor-lms-divi-modules' ),
-				'type'              => 'select_icon',
-				'default'			=> ';',
-				'class'				=> array( 'et-pb-font-icon' ),
-				'option_category'   => 'basic_option',
-				'toggle_slug'     	=> 'main_content',		
-			),
-			'expand_icon' => array(
-				'label'             => esc_html__( 'Expand Icon', 'tutor-lms-divi-modules' ),
-				'type'              => 'select_icon',
-				'default'			=> ':',
-				'class'				=> array( 'et-pb-font-icon' ),
-				'option_category'   => 'basic_option',
-				'toggle_slug'     	=> 'main_content',		
 			),
 			'icon_position'	=> array(
 				'label'				=> esc_html__( 'Icon Position', 'tutor-lms-divi-modules' ),
@@ -225,7 +200,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			'topic_icon_size'			=> array(
 				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
 				'type'				=> 'range',
-				'default'			=> '18px',
+				'default'			=> '32',
 				'default_unit'		=> 'px',
 				'range_settings'	=> array(
 					'min'	=> 0,
@@ -352,68 +327,31 @@ class CourseCurriculum extends ET_Builder_Module {
 		);
 	}
 
-	/**
-	 * computed value
-	 * @since 1.0.0
-	 * @return string | array course level
-	 */
-	// public static  function get_props( $args = [] ) {
-	// 	$course_id				= $args['course'];
-	// 	$tutor_lesson_count 	= tutor_utils()->get_lesson_count_by_course($course_id);
-	// 	$tutor_course_duration 	= get_tutor_course_duration_context($course_id);
-	// 	$is_administrator 		= current_user_can('administrator');
-	// 	$is_instructor 			= tutor_utils()->is_instructor_of_this_course( $instructor_id=0, $course_id );
-
-	// 	if( $is_administrator || $is_instructor ) {
-	// 		$curriculum;
-	// 		$topics			= tutor_utils()->get_topics( $course_id );
-	// 		/**
-	// 		 * for each topics get lesson & set curriculum
-	// 		 */
-	// 		$topics			= tutor_utils()->get_topics( $course_id );
-			
-	// 		$curriculum 		= [
-	// 			'lesson_count'		=> $tutor_lesson_count,
-	// 			'course_duration'	=> $tutor_course_duration,
-	// 			'topics'			=> []
-	// 		];
-	// 		/**
-	// 		 * for each topics get lesson & set curriculum
-	// 		 */
-	// 		if(	!is_null( $topics ) ) {
-	// 			foreach( $topics->posts as $key => $topic ) {
-	// 				//get topic curriculums lesson/assignment/quiz
-	// 				$topic_curriculums		= tutor_utils()->get_course_contents_by_topic( $topic->ID );
-	// 				//get video info for each lesson
-	// 				if( !is_null($topic_curriculums)) {
-	// 					foreach($topic_curriculums->posts as $tc) {
-	// 						$tc->video_info = '';
-	// 						$video_info = tutor_utils()->get_video_info($tc->ID);
-	// 						if($video_info) {
-	// 							$tc->video_info = $video_info;
-	// 						}
-	// 					}
-	// 				}
-
-	// 				$topic->curriculums 	= is_null($topic_curriculums) ? [] : $topic_curriculums->posts;
-	// 				$curriculum['topics'][] = $topic;
-	// 			  }
-	// 		}
-
-	// 		return $curriculum;
-	// 	}
-	// 	return false;
-	// }
 
 	/**
 	 * Get the tutor course author
 	 * @since 1.0.0
 	 * @return string
 	 */
-	public static function get_content( $args = [] ) {
+	public static function get_content( $args = array() ) {
+		if ( isset( $args['label'] ) ) {
+			self::$curriculum_title = $args['label'];
+			add_filter( 'tutor_course_topics_title', [__CLASS__, 'update_curriculumn_title'] );
+		}
 		ob_start();
 		include_once dtlms_get_template('course/curriculum');
 		return ob_get_clean();
+	}
+
+	/**
+	 * Filter curricle title as per user value
+	 *
+	 * @return string 
+	 *
+	 * @since v1.0.0
+	 */
+	public static function update_curriculumn_title() {
+		return self::$curriculum_title;
 	}
 
 	/**
@@ -429,8 +367,8 @@ class CourseCurriculum extends ET_Builder_Module {
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		//selectors
-        $wrapper               		= '%%order_class%% .tutor-course-topics-wrap';
-        $topic_icon_selector   		= $wrapper.' .tutor-course-title >span';
+        $wrapper               		= '%%order_class%% .dtlms-course-curriculum';
+        $topic_icon_selector   		= $wrapper.' .tutor-accordion-item-header::after';
 		$topic_wrapper				= '%%order_class%% .tutor-divi-course-topic';
 		$topics_wrapper            	= '%%order_class%% .tutor-course-topics-contents';
         $topic_wrapper_selector 	= $wrapper.' .tutor-course-title';
@@ -438,9 +376,9 @@ class CourseCurriculum extends ET_Builder_Module {
 		$header_wrapper_selector   	= '%%order_class%% .tutor-course-topics-header';
 		$header_wrapper_selector   = '%%order_class%% .tutor-course-topics-header';
 		
-		$lesson_icon_selector      = '%%order_class%% .tutor-course-lesson h5 i';
-		$lesson_wrapper_selector   = '%%order_class%% .tutor-course-lessons';
-		$lesson_info_selector      = '%%order_class%% .tutor-course-lesson .tutor-lesson-duration';
+		$lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
+		$lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body-content';
+		$lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .lesson-preview-title';
 	
 		//props
 		$icon_position		= sanitize_text_field( $this->props['icon_position'] );
@@ -529,12 +467,12 @@ class CourseCurriculum extends ET_Builder_Module {
 			)
 		);
 
-		if( $icon_position === 'right' ) {
+		if( $icon_position === 'left' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $topic_wrapper_selector,
-					'declaration'	=> 'justify-content: space-between; flex-direction: row-reverse;'
+					'selector'		=> $topic_icon_selector,
+					'declaration'	=> 'position: inherit !important; padding-left: 20px;'
 				)
 			);		
 		}
@@ -584,7 +522,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $topic_icon_selector,
+					'selector'		=> "$wrapper .tutor-accordion-item-header::after",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_icon_color
@@ -596,7 +534,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .et-pb-icon',
+					'selector'		=> "$wrapper .tutor-accordion-item-header.is-active::after",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_icon_active_color
@@ -608,7 +546,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic .et-pb-icon:hover',
+					'selector'		=> "$wrapper .tutor-accordion-item-header:hover:after",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_icon_hover_color
@@ -621,7 +559,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4',
+					'selector'		=> "$wrapper .tutor-accordion-item-header",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_text_color
@@ -633,7 +571,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title h4',
+					'selector'		=> "$wrapper .tutor-accordion-item-header.is-active",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_text_active_color
@@ -645,7 +583,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4:hover',
+					'selector'		=> "$wrapper .tutor-accordion-item-header.is-active:hover",
 					'declaration'	=> sprintf(
 						'color: %1$s;',
 						$topic_text_hover_color
@@ -658,7 +596,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title',
+					'selector'		=> "$wrapper .tutor-accordion-item-header",
 					'declaration'	=> sprintf(
 						'background-color: %1$s;',
 						$topic_background_color
@@ -670,7 +608,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title',
+					'selector'		=> "$wrapper .tutor-accordion-item-header.is-active",
 					'declaration'	=> sprintf(
 						'background-color: %1$s;',
 						$topic_background_active_color
@@ -682,7 +620,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .tutor-divi-course-topic .tutor-course-title:hover',
+					'selector'		=> "$wrapper .tutor-accordion-item-header:hover",
 					'declaration'	=> sprintf(
 						'background-color: %1$s;',
 						$topic_background_hover_color
@@ -695,7 +633,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $header_wrapper_selector,
+					'selector'		=> "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
 					'declaration'	=> sprintf(
 						'margin-bottom: %1$s;',
 						$gap
@@ -707,7 +645,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $header_wrapper_selector,
+					'selector'		=> "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
 					'declaration'	=> sprintf(
 						'margin-bottom: %1$s ;',
 						$gap_tablet
@@ -720,7 +658,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $header_wrapper_selector,
+					'selector'		=> "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
 					'declaration'	=> sprintf(
 						'margin-bottom: %1$s ;',
 						$gap_phone

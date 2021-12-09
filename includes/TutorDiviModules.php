@@ -37,8 +37,9 @@ class TutorDiviModules extends DiviExtension {
 	/**
 	 * TUDM_TutorDiviModules constructor.
 	 * load dependecny
-	 * load scripts 
+	 * load scripts
 	 * load text-domain
+	 *
 	 * @param string $name
 	 * @param array  $args
 	 */
@@ -50,8 +51,8 @@ class TutorDiviModules extends DiviExtension {
 
 		$this->load_dependencies();
 
-		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
-		add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_scripts'], 99);
+		// add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_divi_scripts' ), 99 );
 	}
 
 	public function load_dependencies() {
@@ -61,51 +62,57 @@ class TutorDiviModules extends DiviExtension {
 		require_once $this->plugin_dir . 'classes/Requirements.php';
 	}
 
-    public function enqueue_divi_styles(){
-		$css_file 	= DTLMS_ENV == 'DEV' ? "css/tutor-divi-style.css" : "css/tutor-divi-style.min.css"; 
-		$version	= DTLMS_ENV == 'DEV' ? time() : $this->version;
-        wp_enqueue_style(
-            'tutor-divi-styles',
-            DTLMS_ASSETS . $css_file,
-            array(), 
-            $version
-        );
+	public function enqueue_divi_styles() {
+		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
+		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
 		wp_enqueue_style(
-            'tutor-divi-slick-css',
-            DTLMS_ASSETS.'slick/slick.min.css',
-            null,
-            $this->version
-        );      
+			'tutor-divi-styles',
+			DTLMS_ASSETS . $css_file,
+			array(),
+			$version
+		);
+		wp_enqueue_style(
+			'tutor-divi-slick-css',
+			DTLMS_ASSETS . 'slick/slick.min.css',
+			null,
+			$this->version
+		);
 
-        wp_enqueue_style(
-            'tutor-divi-slick-theme-css',
-			DTLMS_ASSETS.'slick/slick-theme.css',
-            null,
-            $this->version
-        );
-    }
+		wp_enqueue_style(
+			'tutor-divi-slick-theme-css',
+			DTLMS_ASSETS . 'slick/slick-theme.css',
+			null,
+			$this->version
+		);
+	}
 
-    public function enqueue_divi_scripts(){
- 		$version = DTLMS_ENV == 'DEV' ? time() : $this->version;
- 		$scripts_file = 'js/scripts.js';
+	public function enqueue_divi_scripts() {
+
+		$this->enqueue_divi_styles();
+
+		$version      = $this->version;
+		$scripts_file = 'js/scripts.js';
 		wp_enqueue_script(
 			'tutor-divi-scripts',
 			DTLMS_ASSETS . $scripts_file,
-			array('jquery'),
+			array( 'jquery' ),
 			$version,
 			true
 		);
 		wp_enqueue_script(
 			'tutor-divi-slick',
-			DTLMS_ASSETS.'slick/slick.min.js',
-			array('jquery'),
+			DTLMS_ASSETS . 'slick/slick.min.js',
+			array( 'jquery' ),
 			$this->version,
 			true
 		);
-
-    }	
+		$inline_data = array(
+			'is_divi_builder' => isset( $_GET['et_fb'] ) ? $_GET['et_fb'] : false,
+		);
+		wp_add_inline_script( 'tutor-divi-scripts', 'const dtlmsData = ' . json_encode( $inline_data ), 'before' );
+	}
 
 }
 
-new TutorDiviModules;
+new TutorDiviModules();
 

@@ -13,15 +13,14 @@ class CourseCurriculum extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper                   = '%%order_class%% .tutor-course-topics-wrap';
+        const wrapper                   = '%%order_class%% .dtlms-course-curriculum';
         const topics_wrapper            = '%%order_class%% .tutor-course-topics-contents';
         const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
-        const topic_icon_selector       = `${wrapper} .tutor-course-title >span`;
-        const header_wrapper_selector   = '%%order_class%% .tutor-course-topics-header';
-        const lesson_icon_selector      = '%%order_class%% .tutor-course-lesson h5 i';
-        const lesson_wrapper_selector   = '%%order_class%% .tutor-course-lessons';
-        const lesson_info_selector      = '%%order_class%% .tutor-course-lesson .tutor-lesson-duration';
+        const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
+        const lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
+        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body-content';
+        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .lesson-preview-title';
       
 
         //props
@@ -96,11 +95,11 @@ class CourseCurriculum extends Component {
                 declaration: `padding: 0; margin: 0;`
             }
         ]);
-        if('right' === topic_icon_position) {
+        if('left' === topic_icon_position) {
             additionalCss.push([
                 {
-                    selector: topic_title_selector,
-                    declaration: 'justify-content: space-between; flex-direction: row-reverse;'
+                    selector: topic_icon_selector,
+                    declaration: 'position: inherit !important; padding-left: 20px;'
                 }
             ])            
         }
@@ -144,7 +143,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_icon_color) {
             additionalCss.push([
                 {
-                    selector: topic_icon_selector,
+                    selector: `${wrapper} .tutor-accordion-item-header::after`,
                     declaration: `color: ${topic_icon_color};`
                 }
             ])
@@ -152,7 +151,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_icon_active_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic.tutor-active .et-pb-icon',
+                    selector: `${wrapper} .tutor-accordion-item-header.is-active::after`,
                     declaration: `color: ${topic_icon_active_color};`
                 }
             ])            
@@ -160,7 +159,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_icon_hover_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic .et-pb-icon:hover',
+                    selector: `${wrapper} .tutor-accordion-item-header.is-active:hover::after`,
                     declaration: `color: ${topic_icon_hover_color};`
                 }
             ])            
@@ -169,7 +168,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_text_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4',
+                    selector: `${wrapper} .tutor-accordion-item-header`,
                     declaration: `color: ${topic_text_color};`
                 }
             ])
@@ -177,7 +176,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_text_active_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title h4',
+                    selector: `${wrapper} .tutor-accordion-item-header.is-active`,
                     declaration: `color: ${topic_text_active_color};`
                 }
             ])            
@@ -185,7 +184,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_text_hover_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic .tutor-course-title h4:hover',
+                    selector: `${wrapper} .tutor-accordion-item-header:hover`,
                     declaration: `color: ${topic_text_hover_color};`
                 }
             ])            
@@ -194,7 +193,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_background_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic .tutor-course-title',
+                    selector: `${wrapper} .tutor-accordion-item-header`,
                     declaration: `background-color: ${topic_background_color};`
                 }
             ])
@@ -202,7 +201,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_background_active_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic.tutor-active .tutor-course-title',
+                    selector: `${wrapper} .tutor-accordion-item-header.is-active`,
                     declaration: `background-color: ${topic_background_active_color};`
                 }
             ])            
@@ -210,7 +209,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_background_hover_color) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-course-topic .tutor-course-title:hover',
+                    selector: `${wrapper} .tutor-accordion-item-header:hover`,
                     declaration: `background-color: ${topic_background_hover_color};`
                 }
             ])            
@@ -219,7 +218,7 @@ class CourseCurriculum extends Component {
         if(gap) {
             additionalCss.push([
                 {
-                    selector: header_wrapper_selector,
+                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
                     declaration: `margin-bottom: ${gap};`
                 }
             ]);            
@@ -228,7 +227,7 @@ class CourseCurriculum extends Component {
         if(gap_tablet) {
             additionalCss.push([
                 {
-                    selector: header_wrapper_selector,
+                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
                     declaration: `margin-bottom: ${gap_tablet};`,
                     device: 'tablet'
                 }
@@ -237,7 +236,7 @@ class CourseCurriculum extends Component {
         if(gap_phone) {
             additionalCss.push([
                 {
-                    selector: header_wrapper_selector,
+                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
                     declaration: `margin-bottom: ${gap_phone};`,
                     device: 'phone'
                 }
