@@ -425,7 +425,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
 		}
 		ob_start();
-		include_once dtlms_get_template( 'course/curriculum' );
+		include dtlms_get_template( 'course/curriculum' );
 		return ob_get_clean();
 	}
 
