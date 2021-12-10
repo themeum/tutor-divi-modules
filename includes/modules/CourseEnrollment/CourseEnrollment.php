@@ -187,11 +187,11 @@ class CourseEnrollment extends ET_Builder_Module {
 				'computed_callback'   => array(
 					'CourseEnrollment',
 					'get_edit_template',
-					'button_size',
 				),
 				'computed_depends_on' => array(
 					'course',
 					'preview_mode',
+					'button_size',
 				),
 				'computed_minimum'    => array(
 					'course',

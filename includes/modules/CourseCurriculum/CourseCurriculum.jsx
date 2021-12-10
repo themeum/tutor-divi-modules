@@ -362,8 +362,6 @@ class CourseCurriculum extends Component {
         if(!this.props.__curriculum) {
             return ''
         }
-        console.log(this.props.__curriculum)
-  
         return (
             <Fragment>
                 <div className="tutor-wrap dtlms-course-curriculum" dangerouslySetInnerHTML={{__html: this.props.__curriculum}}>

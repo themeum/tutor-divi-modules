@@ -184,96 +184,98 @@ class CourseEnrollment extends Component {
         return additionalCss;
     }
 
-    addToCartOrEnrollNow(props) {
-        const utils         = window.ET_Builder.API.Utils;
-        const enroll_now    = utils.processFontIcon(props.enrollment_button_icon);
-        const add_to_cart   = utils.processFontIcon(props.add_to_cart_button_icon);
+    // addToCartOrEnrollNow(props) {
+    //     const utils         = window.ET_Builder.API.Utils;
+    //     const enroll_now    = utils.processFontIcon(props.enrollment_button_icon);
+    //     const add_to_cart   = utils.processFontIcon(props.add_to_cart_button_icon);
 
-        if(props.__enrollment === 'yes') {
-            return (
-                    <div className="tutor-course-enrollment-box">
-                        <div className="tutor-single-add-to-cart-box">
-                            <div className="tutor-course-purchase-box">
-                                <button className="single_add_to_cart_button tutor-button alt" data-icon={add_to_cart}>
-                                    <i className="tutor-icon-shopping-cart"></i>  
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-            );
-        }
-        return (
-            <div className="tutor-course-enrollment-box">
-                <div className="tutor-single-add-to-cart-box">
-                    <div className="tutor-course-enroll-wrap">
-                        <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn" data-icon={enroll_now}>
-                            <span>Enroll Now</span>  
-                        </button>
-                    </div>
-                </div>
-            </div>
-        );     
-    }
+    //     if(props.__enrollment === 'yes') {
+    //         return (
+    //                 <div className="tutor-course-enrollment-box">
+    //                     <div className="tutor-single-add-to-cart-box">
+    //                         <div className="tutor-course-purchase-box">
+    //                             <button className="single_add_to_cart_button tutor-button alt" data-icon={add_to_cart}>
+    //                                 <i className="tutor-icon-shopping-cart"></i>  
+    //                                 Add to Cart
+    //                             </button>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //         );
+    //     }
+    //     return (
+    //         <div className="tutor-course-enrollment-box">
+    //             <div className="tutor-single-add-to-cart-box">
+    //                 <div className="tutor-course-enroll-wrap">
+    //                     <button className="tutor-btn-enroll tutor-btn tutor-course-purchase-btn" data-icon={enroll_now}>
+    //                         <span>Enroll Now</span>  
+    //                     </button>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     );     
+    // }
    
-    switchTemplate(props) {
-        const utils     = window.ET_Builder.API.Utils;
-        const start_continue_button = utils.processFontIcon(props.start_continue_button_icon);
-        const complete_button       = utils.processFontIcon(props.complete_button_icon);
-        const gradebook_button      = utils.processFontIcon(props.gradebook_button_icon);
+    // switchTemplate(props) {
+    //     const utils     = window.ET_Builder.API.Utils;
+    //     const start_continue_button = utils.processFontIcon(props.start_continue_button_icon);
+    //     const complete_button       = utils.processFontIcon(props.complete_button_icon);
+    //     const gradebook_button      = utils.processFontIcon(props.gradebook_button_icon);
 
-        if('enrollment' === props.preview_mode) {
-            return (
-                <Fragment>
-                    { this.addToCartOrEnrollNow(props) } 
-                </Fragment>
-            );
-        } else {
-            return (
-                <Fragment>
-                    <div className="tutor-course-enrollment-box">
+    //     if('enrollment' === props.preview_mode) {
+    //         return (
+    //             <Fragment>
+    //                 { this.addToCartOrEnrollNow(props) } 
+    //             </Fragment>
+    //         );
+    //     } else {
+    //         return (
+    //             <Fragment>
+    //                 <div className="tutor-course-enrollment-box">
 
-                        <div className="tutor-lead-info-btn-group">
-                            <a href="/" className="tutor-button tutor-success" data-icon={start_continue_button}>
-                                Start Course
-                            </a>
+    //                     <div className="tutor-lead-info-btn-group">
+    //                         <a href="/" className="tutor-button tutor-success" data-icon={start_continue_button}>
+    //                             Start Course
+    //                         </a>
 
-                            <div className="tutor-course-compelte-form-wrap">
-                                <button className="course-complete-button" data-icon={complete_button}>
-                                    Complete Course
-                                </button>
-                            </div>
+    //                         <div className="tutor-course-compelte-form-wrap">
+    //                             <button className="course-complete-button" data-icon={complete_button}>
+    //                                 Complete Course
+    //                             </button>
+    //                         </div>
                             
-                            <a href="/" className="generate-course-gradebook-btn-wrap">
-                                <button className="tutor-button tutor-button-block button-primary" data-icon={gradebook_button}>
-                                    Generate Gradebook
-                                </button>
-                            </a>
+    //                         <a href="/" className="generate-course-gradebook-btn-wrap">
+    //                             <button className="tutor-button tutor-button-block button-primary" data-icon={gradebook_button}>
+    //                                 Generate Gradebook
+    //                             </button>
+    //                         </a>
 
-                        </div>
+    //                     </div>
 
-                        <div className="tutor-single-course-segment  tutor-course-enrolled-wrap">
-                            <p>
-                                <i className="tutor-icon-purchase"></i>
-                                Enrolled info dummy text for style
-                                <span className="enroll-date"> YY/MM/DD </span>
-                            </p>
-                        </div>
+    //                     <div className="tutor-single-course-segment  tutor-course-enrolled-wrap">
+    //                         <p>
+    //                             <i className="tutor-icon-purchase"></i>
+    //                             Enrolled info dummy text for style
+    //                             <span className="enroll-date"> YY/MM/DD </span>
+    //                         </p>
+    //                     </div>
 
-                    </div>                    
-                </Fragment>
-            );
-        }
+    //                 </div>                    
+    //             </Fragment>
+    //         );
+    //     }
  
-    }
+    // }
 
     render() {
+        if(!this.props.__enrollment) {
+            return '';
+        }
+        console.log(this.props.__enrollment)
         return (
            <Fragment>
-
                <div className="tutor-divi-enroll-buttons-wrapper" dangerouslySetInnerHTML={{__html: this.props.__enrollment}}>
                </div>
-
            </Fragment>
         );
     }
