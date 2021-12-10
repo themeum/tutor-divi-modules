@@ -311,7 +311,49 @@ class CourseCurriculum extends Component {
                     declaration: `background-color: ${lesson_background_color_hover};`,
                 }
             ])
+        }
+        // review start color
+        if ('' !== props.review_avg_star) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-rating-stars span`,
+                    declaration: `color: ${props.review_avg_star};`,
+                }
+            ]);         
         }      
+        if ('' !== props.review_right_star) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .tutor-rating-stars span`,
+                    declaration: `color: ${props.review_right_star};`,
+                }
+            ]);         
+        }      
+        if ('' !== props.review_right_bar_height) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
+                    declaration: `height: ${props.review_right_bar_height};`,
+                }
+            ]);         
+        }      
+        if ('' !== props.review_right_bar_color) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
+                    declaration: `background-color: ${props.review_right_bar_color};`,
+                }
+            ]);         
+        }      
+        if ('' !== props.review_right_bar_fill_color) {
+            additionalCss.push([
+                {
+                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-value`,
+                    declaration: `background-color: ${props.review_right_bar_fill_color};`,
+                }
+            ]);         
+        }      
+        //
         //set styles end
         return additionalCss;
     }

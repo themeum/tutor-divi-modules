@@ -4,7 +4,6 @@
  *
  * @package Course Topics
  */
-
 	$course_nav_items = tutor_utils()->course_nav_items();
 	unset( $course_nav_items['info'] );
 	add_filter(
@@ -25,15 +24,13 @@
 						<div class="tab-body-item <?php echo esc_attr( 'curriculum' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
 							$method = $subpage['method'];
-
-						if ( is_string( $method ) ) {
-							$method();
-						} else {
-							$_object = $method[0];
-							$_method = $method[1];
-							$_object->$_method( get_the_ID() );
-						}
-
+							if ( is_string( $method ) ) {
+								$method();
+							} else {
+								$_object = $method[0];
+								$_method = $method[1];
+								$_object->$_method( get_the_ID() );
+							}
 						?>
 						</div>
 						<?php
