@@ -316,88 +316,11 @@ class CourseCurriculum extends Component {
         return additionalCss;
     }
 
-    iconTemplate(collaps_icon, expand_icon) {
-        const utils = window.ET_Builder.API.Utils;
-        const ex_icon = utils.processFontIcon(expand_icon);
-        const col_icon = utils.processFontIcon(collaps_icon);
-        if(this.state.collapse) {
-            return <span className="et-pb-icon"> {col_icon}</span>
-        }
-        return <span className="et-pb-icon"> {ex_icon}</span> 
-    }
-
-    topicTemplate(topics,collaps_icon,expand_icon) {
-        let topic = topics.map((topic)=>{
-            return (
-            <Fragment>
-                <div className="tutor-course-topics-contents">
-                    <div className="tutor-divi-course-topic tutor-topics-in-single-lesson" onClick={(e)=> {
-                        const utils = window.ET_Builder.API.Utils;
-                        const ex_icon = utils.processFontIcon(expand_icon);
-                        const col_icon = utils.processFontIcon(collaps_icon);
-                        e.currentTarget.classList.toggle('tutor-active');
-                        let div = e.currentTarget.querySelector(".tutor-course-lessons"); 
-                        let icondiv = e.currentTarget.querySelector(".et-pb-icon");
-                        if(div.style.display !== 'none') {
-                            div.style.display = 'none';
-                        } else {
-                            div.style.display = 'block';
-                        }  
-                    
-                        if(icondiv.textContent === ex_icon) {
-                            icondiv.textContent = String(col_icon);
-                        } else {
-                            icondiv.textContent = String(ex_icon);
-                        }
-                }
-                    }
-                        
-                        >
-                        <div className="tutor-course-title has-summery">
-                            
-                            { this.iconTemplate(collaps_icon, expand_icon) }
-                        
-                            <h4> { topic.post_title }</h4>
-                        </div>
-                        <div className="tutor-course-lessons">
-                            { this.curriculumTemplate(topic.curriculums) }
-                        </div>
-                    </div>
-                 </div>
-            </Fragment>
-            );
-        }) 
-        return topic;
-    }
-
-    curriculumTemplate(curriculums) {
-       
-        let c = curriculums.map((curriculum) => {
-            let icon = curriculum.video_info ? 'tutor-icon-youtube' : 'tutor-icon-document-alt';
-            if(curriculum.post_type === 'tutor_quiz') {
-                icon = 'tutor-icon-doubt';
-            } else if(curriculum.post_type === 'tutor_assignments') {
-                icon = 'tutor-icon-clipboard';
-            }   
-            return(
-                <div className="tutor-course-lesson">
-                <h5>
-                    <i className={ icon }></i>
-                    <a href="/">{ curriculum.post_title }</a>
-                    <span className="tutor-lesson-duration">
-                        { curriculum.video_info ? curriculum.video_info.playtime : '' }
-                    </span>
-                </h5>
-            </div>
-            );
-        })
-        return c;
-    }
-
     render(){
         if(!this.props.__curriculum) {
             return ''
         }
+        console.log(this.props.__curriculum)
   
         return (
             <Fragment>
