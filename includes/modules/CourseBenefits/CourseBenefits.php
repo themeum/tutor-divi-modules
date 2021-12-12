@@ -59,7 +59,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 		
 		$wrapper 		= '%%order_class%% .tutor-course-benefits-wrap';
 		$title_selector	= $wrapper." .tutor-segment-title";
-		$li_selector	= $wrapper." li";
+		$li_selector	= $wrapper." .tutor-course-benefits-items ul li";
 		$icon_selector	= $li_selector." .et-pb-icon";
 		
 		$this->advanced_fields = array(
@@ -84,8 +84,8 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'list'              => array(
 					'css'             	=> array(
 						'main' => array(
-							'border_radii'  => $li_selector,//"{$this->main_css_element} .tutor-social-share-wrap i",
-							'border_styles' => $li_selector,
+							'border_radii'  => "%%order_class%% .tutor-course-benefits-items ul li",
+							'border_styles' => "%%order_class%% .tutor-course-benefits-items ul li",
 						),
 						'important'		=> true
 					),
