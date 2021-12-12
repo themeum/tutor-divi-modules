@@ -35,8 +35,9 @@ $sidebar_meta         = apply_filters(
 	),
 	get_the_ID()
 );
-$button_size = $args['button_size'];
-
+$button_size          = $args['button_size'];
+$product_id           = tutor_utils()->get_course_product_id( $args['course'] );
+$product              = wc_get_product( $product_id );
 ?>
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
@@ -59,6 +60,10 @@ $button_size = $args['button_size'];
 
 				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
 					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
+				</button>
+				<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+					<span class="btn-icon ttr-cart-filled"></span>
+					<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
 				</button>
 			<?php endif; ?>
 	</div>

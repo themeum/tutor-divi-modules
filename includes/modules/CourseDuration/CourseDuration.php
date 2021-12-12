@@ -101,10 +101,11 @@ class TutorCourseDuration extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseDuration',
-					'get_duration',
+					'get_content',
 				),
 				'computed_depends_on' => array(
-					'course'
+					'course',
+					'duration_label',
 				),
 				'computed_minimum'    => array(
 					'course',
@@ -177,7 +178,7 @@ class TutorCourseDuration extends ET_Builder_Module {
 		$course = $args['course'];
 		$markup = '';
 		if ($course) {
-			$course_duration = get_tutor_course_duration_context();
+			$course_duration = get_tutor_course_duration_context( $course );
 			$disable_course_duration = get_tutor_option('disable_course_duration');
 			if (!empty($course_duration) && !$disable_course_duration) {
 				$markup 	 = '<div class="tutor-single-course-meta-duration tutor-divi-course-duration">';
