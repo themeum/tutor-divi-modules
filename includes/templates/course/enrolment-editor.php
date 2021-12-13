@@ -4,7 +4,6 @@
  *
  * @package Enrollment Widget
  */
-
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $args['preview_mode'];
 $course               = get_post( $args['course'] );
@@ -61,9 +60,9 @@ $product              = wc_get_product( $product_id );
 				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
 					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
 				</button>
-				<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+				<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
 					<span class="btn-icon ttr-cart-filled"></span>
-					<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
+					<span><?php echo esc_html( 'Add to cart', 'tutor' ); ?></span>
 				</button>
 			<?php endif; ?>
 	</div>
