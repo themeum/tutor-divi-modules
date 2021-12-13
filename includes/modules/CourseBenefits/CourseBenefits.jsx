@@ -56,7 +56,7 @@ class CourseBenefits extends Component {
         additionalCss.push([
             {
                 selector: li_selector,
-                declaration: 'list-style: none; padding: 0;'
+                declaration: 'list-style: none; padding: 0; border-style: solid;'
             }
         ]);
         
