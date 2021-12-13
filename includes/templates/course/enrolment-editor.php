@@ -8,6 +8,8 @@ $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $args['preview_mode'];
 $course               = get_post( $args['course'] );
 $is_enable_date       = get_tutor_option( 'enable_course_update_date' );
+$course_progress      = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+
 $sidebar_meta         = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
@@ -46,13 +48,35 @@ $product              = wc_get_product( $product_id );
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
 		?>
 			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+				<?php if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
+					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+						<span class="color-text-primary text-medium-h6">
+							<?php esc_html_e( 'Course Progress', 'tutor' ); ?>
+						</span>
+						<div class="list-item-progress tutor-mt-16">
+							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+								<span class="progress-steps">
+									<?php echo esc_html( $course_progress['completed_count'] ); ?>/
+									<?php echo esc_html( $course_progress['total_count'] ); ?>
+								</span>
+								<span class="progress-percentage"> 
+									<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
+									<?php esc_html_e( 'Complete', 'tutor' ); ?>
+								</span>
+							</div>
+							<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+								<span class="progress-value"></span>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>					
 			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
 			</a>
 			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
 				<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
 			</button>
-			<?php else : ?>
+			<?php else : ?>			
 				<div>
 					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 				</div>
