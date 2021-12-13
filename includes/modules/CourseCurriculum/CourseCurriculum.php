@@ -921,62 +921,62 @@ class CourseCurriculum extends ET_Builder_Module {
 			);
 		}
 		// review star color.
-		if ( '' !== $unprocessed_props['review_avg_star'] ) {
+		if ( '' !== $this->props['review_avg_star'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector' 	  => '%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-rating-stars span',
 					'declaration' => sprintf(
 						'color: %1$s;',
-						$unprocessed_props['review_avg_star']
+						$this->props['review_avg_star']
 					),
 				)
 			);
 		}
-		if ( '' !== $unprocessed_props['review_right_star'] ) {
+		if ( '' !== $this->props['review_right_star'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector' 	=> '%%order_class%% .tutor-ratingsreviews-ratings-all .tutor-rating-stars span',
 					'declaration' => sprintf(
 						'color: %1$s;',
-						$unprocessed_props['review_right_star']
+						$this->props['review_right_star']
 					),
 				)
 			);
 		}
-		if ( '' !== $unprocessed_props['review_right_bar_height'] ) {
+		if ( '' !== $this->props['review_right_bar_height'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector' 	=> '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar',
 					'declaration' => sprintf(
 						'height: %1$s;',
-						$unprocessed_props['review_right_bar_height']
+						$this->props['review_right_bar_height']
 					),
 				)
 			);
 		}
-		if ( '' !== $unprocessed_props['review_right_bar_color'] ) {
+		if ( '' !== $this->props['review_right_bar_color'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector' 	=> '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
-						$unprocessed_props['review_right_bar_color']
+						$this->props['review_right_bar_color']
 					),
 				)
 			);
 		}
-		if ( '' !== $unprocessed_props['review_right_bar_fill_color'] ) {
+		if ( '' !== $this->props['review_right_bar_fill_color'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector' 	=> '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-value',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
-						$unprocessed_props['review_right_bar_fill_color']
+						$this->props['review_right_bar_fill_color']
 					),
 				)
 			);
