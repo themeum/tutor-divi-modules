@@ -276,10 +276,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors
 		$wrapper        = '%%order_class%% .tutor-single-course-author-meta';
-		$img_selector   = '
-		"%%order_class%% .tutor-single-course-avatar img, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar';
-		$level_selector = '%%order_class%% .tutor-single-course-author-name > spane';
-		$name_selector  = '%%order_class%% .tutor-single-course-author-name > a';
+		$img_selector   = '%%order_class%% .tutor-single-course-avatar a > img, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar';
 
 		// props
 		$display   = 'flex';
@@ -295,14 +292,23 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		$gap_phone  = isset( $this->props['avatar_gap_phone'] ) ? sanitize_text_field( $this->props['avatar_gap_phone'] ) : '';
 
 		$alignment = ( $alignment == 'left' ? 'flex-start ' : ( $alignment == 'center' ? 'center' : 'flex-end' ) );
-
+		// List style none.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => "%%order_class%% .tutor-single-course-meta li.tutor-single-course-author-meta",
+				'declaration' => sprintf(
+					'list-style: none;'
+				),
+			)
+		);
 		if ( '' !== $avatar_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'    => $img_selector,
 					'declaration' => sprintf(
-						'width: %1$s;',
+						'width: %1$s !important;',
 						esc_html( $avatar_size )
 					),
 				)
@@ -312,7 +318,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				array(
 					'selector'    => $img_selector,
 					'declaration' => sprintf(
-						'height: %1$s;',
+						'height: %1$s !important;',
 						esc_html( $avatar_size )
 					),
 				)
