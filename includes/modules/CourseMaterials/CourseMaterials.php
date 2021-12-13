@@ -85,8 +85,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'list'    => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => $li_selector, // "{$this->main_css_element} .tutor-social-share-wrap i",
-							'border_styles' => $li_selector,
+							'border_radii'  => '%%order_class%% ul li', // "{$this->main_css_element} .tutor-social-share-wrap i",
+							'border_styles' => '%%order_class%% ul li',
 						),
 						'important' => true,
 					),
@@ -336,7 +336,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => $li_selector,
-				'declaration' => 'list-style: none; padding:0px;',
+				'declaration' => 'list-style: none; padding:0px; border-style: solid;',
 			)
 		);
 

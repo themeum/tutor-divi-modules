@@ -10,28 +10,28 @@
 
 defined( 'ABSPATH' ) || exit;
 
-do_action('tutor_course/single/before/material_includes');
+do_action( 'tutor_course/single/before/material_includes' );
 
-$materials = tutor_course_material_includes();
+$materials = tutor_course_material_includes( $args['course'] );
 /**
- * get icon from setttings
+ * Get icon from setttings.
  */
-$icon = et_pb_process_font_icon( $args[ 'icon' ] );
+$icon = et_pb_process_font_icon( $args['icon'] );
 
-if ( empty($materials)){
+if ( empty( $materials ) ) {
 	return;
 }
 
-if (is_array($materials) && count($materials)){
+if ( is_array( $materials ) && count( $materials ) ) {
 	?>
 
 	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
-        <h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
+		<h4 class="tutor-segment-title"><?php esc_html( $args['label'] ); ?></h4>
 		<div class="tutor-course-target-audience-content">
 			<ul class="tutor-course-target-audience-items">
 				<?php
-				foreach ($materials as $material){
-					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> ".esc_html( $material )." </span> </li>";
+				foreach ( $materials as $material ) {
+					echo "<li> <span class='et-pb-icon'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $material ) . ' </span> </li>';
 				}
 				?>
 			</ul>
@@ -40,5 +40,4 @@ if (is_array($materials) && count($materials)){
 
 <?php } ?>
 
-<?php do_action('tutor_course/single/after/material_includes'); ?>
-
+<?php do_action( 'tutor_course/single/after/material_includes' ); ?>

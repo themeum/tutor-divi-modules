@@ -79,18 +79,23 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'toggle_slug'  		=> 'benefit_text',
 				),
 			),
-			'borders'    => array(
-				'default'            => false,
-				'list'              => array(
-					'css'             	=> array(
-						'main' => array(
-							'border_radii'  => "%%order_class%% .tutor-course-benefits-items ul li",
-							'border_styles' => "%%order_class%% .tutor-course-benefits-items ul li",
+			'borders'        => array(
+				'default' => false,
+				'list_border'  => array(
+					'css'         => array(
+						'main'      => array(
+							'border_radii'  => '%%order_class%% .tutor-course-benefits-items li',
+							'border_styles' => '%%order_class%% .tutor-course-benefits-items li',
 						),
-						'important'		=> true
+						'defaults' => array(
+							'border_styles' => array(
+								'style' => 'solid',
+							),
+						),
 					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'list',
+					'tab_slug'    	=> 'advanced',
+					'toggle_slug' 	=> 'list',
+					'important' 	=> true,
 				),
 			),
 			'max_width'			=> false,
