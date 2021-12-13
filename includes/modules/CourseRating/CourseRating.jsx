@@ -25,7 +25,7 @@ class CourseRating extends Component {
         
         if (props.star_color) {
             additionalCss.push([{
-                selector:    star_selector,
+                selector:    `${star_selector} i`,
                 declaration: `color: ${props.star_color};`,
             }]);
         }
