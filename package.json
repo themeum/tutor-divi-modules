@@ -22,6 +22,7 @@
   "scripts": {
     "start": "divi-scripts start",
     "build": "divi-scripts build",
+    "b": "divi-scripts build",
     "zip": "divi-scripts build && divi-scripts zip",
     "eject": "divi-scripts eject"
   },
