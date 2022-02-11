@@ -2,8 +2,12 @@
 
 /**
  * Tutor Course Title Module for Divi Builder
+ *
  * @since 1.0.0
- * @author Themeum<www.themeum.com>
+ *
+ * @author Themeum<www.themeum.com
+ *
+ * @package DTLMSCourseTitle
  */
 
 use TutorLMS\Divi\Helper;
@@ -11,12 +15,17 @@ use TutorLMS\Divi\Helper;
 defined( 'ABSPATH' ) || exit;
 
 class TutorCourseTitle extends ET_Builder_Module {
-	// Module slug (also used as shortcode tag)
-	public $slug       = 'tutor_course_title';
+	// Module slug (also used as shortcode tag).
+	public $slug = 'tutor_course_title';
 
+	/**
+	 * Visual builder support
+	 *
+	 * @var string
+	 */
 	public $vb_support = 'on';
 
-	// Module Credits (Appears at the bottom of the module settings modal)
+	// Module Credits (Appears at the bottom of the module settings modal).
 	protected $module_credits = array(
 		'author'     => 'Themeum',
 		'author_uri' => 'https://themeum.com',
@@ -28,26 +37,26 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Title', 'tutor-lms-divi-modules');
-		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+		// Module name & icon.
+		$this->name      = esc_html__( 'Tutor Course Title', 'tutor-lms-divi-modules' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
-		// Toggles are grouped into array of tab name > toggles > toggle definition
+		// Toggles are grouped into array of tab name > toggles > toggle definition.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
+					'main_content' => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
 					'header' => array(
-						'title'    => esc_html__('Title Text', 'tutor-lms-divi-modules'),
+						'title'    => esc_html__( 'Title Text', 'tutor-lms-divi-modules' ),
 						'priority' => 49,
 					),
 					'width'  => array(
-						'title'    => esc_html__('Sizing', 'tutor-lms-divi-modules'),
+						'title'    => esc_html__( 'Sizing', 'tutor-lms-divi-modules' ),
 						'priority' => 65,
 					),
 				),
@@ -55,9 +64,9 @@ class TutorCourseTitle extends ET_Builder_Module {
 		);
 
 		$this->advanced_fields = array(
-			'fonts'          => array(
+			'fonts'      => array(
 				'header' => array(
-					'label'        => esc_html__('Title', 'tutor-lms-divi-modules'),
+					'label'        => esc_html__( 'Title', 'tutor-lms-divi-modules' ),
 					'css'          => array(
 						'main' => '%%order_class%% h1, %%order_class%% h2, %%order_class%% h3, %%order_class%% h4, %%order_class%% h5, %%order_class%% h6',
 					),
@@ -68,15 +77,15 @@ class TutorCourseTitle extends ET_Builder_Module {
 					'toggle_slug'  => 'header',
 				),
 			),
-			'borders'       => false,
-			'button'        => false,
-			'text'			=> false,
-			'max_width'		=> false,
-			'background'	=> false,
-			'filters'		=> false,
-			'animation'		=> false,
-			'box_shadow'	=> false,
-			'transform'		=> false			
+			'borders'    => false,
+			'button'     => false,
+			'text'       => false,
+			'max_width'  => false,
+			'background' => false,
+			'filters'    => false,
+			'animation'  => false,
+			'box_shadow' => false,
+			'transform'  => false,
 		);
 	}
 
@@ -89,7 +98,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 */
 	public function get_fields() {
 		$fields = array(
-			'course'       	=> Helper::get_field(
+			'course'  => Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -97,14 +106,14 @@ class TutorCourseTitle extends ET_Builder_Module {
 					),
 				)
 			),
-			'__title'      	=> array(
+			'__title' => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseTitle',
 					'get_title',
 				),
 				'computed_depends_on' => array(
-					'course'
+					'course',
 				),
 				'computed_minimum'    => array(
 					'course',
@@ -117,14 +126,15 @@ class TutorCourseTitle extends ET_Builder_Module {
 
 	/**
 	 * Get the Title.
+	 *
 	 * @since 1.0.0
 	 * @param array $args Additional arguments.
 	 * @return string
 	 */
-	public static function get_title($args = array()) {
-		$title = __('Course Title', 'tutor-lms-divi-modules');
-		$course = Helper::get_course($args);
-		if ($course) {
+	public static function get_title( $args = array() ) {
+		$title  = __( 'Course Title', 'tutor-lms-divi-modules' );
+		$course = Helper::get_course( $args );
+		if ( $course ) {
 			$title = get_the_title();
 		}
 		return $title;
@@ -132,17 +142,18 @@ class TutorCourseTitle extends ET_Builder_Module {
 
 	/**
 	 * Get the tutor course Title markup.
+	 *
 	 * @since 1.0.0
 	 * @return string
 	 */
 	protected function get_title_markup() {
-		$header_level  = sanitize_text_field( $this->props['header_level'] );
-		$course_title = self::get_title($this->props);
+		$header_level = sanitize_text_field( $this->props['header_level'] );
+		$course_title = self::get_title( $this->props );
 
 		return sprintf(
 			'<%1$s>%2$s</%1$s>',
-			et_pb_process_header_level($header_level, 'h1'),
-			et_core_esc_previously($course_title)
+			et_pb_process_header_level( $header_level, 'h1' ),
+			et_core_esc_previously( $course_title )
 		);
 	}
 
@@ -151,23 +162,23 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $attrs       List of unprocessed attributes
-	 * @param string $content     Content being processed
-	 * @param string $render_slug Slug of module that is used for rendering output
+	 * @param array  $attrs       List of unprocessed attributes.
+	 * @param string $content     Content being processed.
+	 * @param string $render_slug Slug of module that is used for rendering output.
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content, $render_slug) {
+	public function render( $attrs, $content, $render_slug ) {
 
 		$output = self::get_title_markup();
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
-		if ('' === $output) {
+		if ( '' === $output ) {
 			return '';
 		}
 
-		return $this->_render_module_wrapper($output, $render_slug);
+		return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
 
-new TutorCourseTitle;
+new TutorCourseTitle();

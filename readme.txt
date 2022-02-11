@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, e-learning, Learning management system, Courses, Education, Divi integration for LMS, Divi LMS Modules, tutor LMS, Online courses
 Requires at least: 5.3
-Tested up to: 5.7.2
+Tested up to: 5.9
 Requires PHP: 7.3
-Stable tag: 1.0.2
+Stable tag: 2.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
