@@ -170,13 +170,13 @@ class TutorCourseDuration extends ET_Builder_Module {
 	public static function get_content( $args = array() ) {
 		$course = $args['course'];
 		$markup = '';
-		if ( $course ) {
+		if ( $course && get_tutor_option( 'enable_course_duration' ) ) {
 			$course_duration         = get_tutor_course_duration_context( $course );
 			$disable_course_duration = get_tutor_option( 'disable_course_duration' );
 			if ( ! empty( $course_duration ) && ! $disable_course_duration ) {
 				$markup  = '<div class="tutor-single-course-meta-duration tutor-divi-course-duration">';
-				$markup .= sprintf( '<label>%s</label>', $args['duration_label'] );
-				$markup .= sprintf( '<span>%s</span>', $course_duration );
+				$markup .= sprintf( '<label class="text-regular-caption tutor-color-text-hints">%s</label>', $args['duration_label'] );
+				$markup .= sprintf( '<span class="text-medium-caption tutor-color-text-primary">%s</span>', $course_duration );
 				$markup .= '</div>';
 			}
 		}
@@ -222,7 +222,6 @@ class TutorCourseDuration extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $attrs, $content, $render_slug ) {
-
 		// Settings attrs.
 		$wrapper_selector = '%%order_class%% .tutor-divi-course-duration';
 		$display          = 'flex';

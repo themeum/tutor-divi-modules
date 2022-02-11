@@ -6,7 +6,9 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-?>
+$is_enabled_reviews = get_tutor_option( 'enable_course_review' );
+if ( $is_enabled_reviews ) :
+	?>
 <div class="tutor-leadinfo-top-meta tutor-divi-rating-wrapper">
 	<span class="tutor-single-course-rating">
 		<?php
@@ -23,4 +25,4 @@ defined( 'ABSPATH' ) || exit;
 		</span>
 	</span>
 </div>
-
+<?php endif; ?>

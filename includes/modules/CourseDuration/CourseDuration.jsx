@@ -8,8 +8,8 @@ class CourseDuration extends Component {
     const additionalCss = [];
     const wrapper_selector = "%%order_class%% .tutor-divi-course-duration";
     const display = "flex";
-    const layout = props.duration_layout;
-    let alignment = props.duration_alignment;
+    const layout = props.duration_layout ? props.duration_layout : 'row';
+    let alignment = props.duration_alignment ? props.duration_alignment : 'left';
     const gap = props.gap;
     const is_responsive = props.gap_last_edited && props.gap_last_edited.startsWith("on");
     const gap_tablet = is_responsive && props.gap_tablet ? props.gap_tablet : gap;

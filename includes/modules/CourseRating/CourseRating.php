@@ -137,7 +137,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				'option_category' => 'configuration',
 				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
 				'toggle_slug'     => 'main_content',
-				'mobile_options'	=> true,
+				'mobile_options'  => true,
 			),
 
 			// content tab controls end.
@@ -195,12 +195,11 @@ class TutorCourseRating extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_rating( $args = array() ) {
-		$course = Helper::get_course( $args );
+		$course             = Helper::get_course( $args );
 		ob_start();
 		if ( $course ) {
 			include_once dtlms_get_template( 'course/rating' );
 		}
-
 		return ob_get_clean();
 	}
 
@@ -389,12 +388,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			);
 		}
 		// make sure reviews is enable from Tutor settings.
-		$is_enabled = (bool) get_tutor_option( 'enable_course_review' );
-		if ( $is_enabled ) {
-			$output = self::get_rating( $this->props );
-		} else {
-			$output = esc_html__( 'Please enable course reviews from Tutor Settings', 'tutor-lms-divi-modules' );
-		}
+		$output = self::get_rating( $this->props );
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ( '' === $output ) {
 			return '';
