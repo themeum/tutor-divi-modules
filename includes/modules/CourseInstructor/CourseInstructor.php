@@ -138,7 +138,7 @@ class CourseInstructor extends ET_Builder_Module {
                     'main'  => '%%order_class%% .instructor-avatar a span',
                     'important' => true
                 ),
-                'settings'  => array(
+                'instructor_avatar'  => array(
                     'tab_slug'      => 'advanced',
                     'toggle_slug'   => 'instructor_avatar'
                 ),

@@ -359,12 +359,12 @@ class CourseContent extends Component {
     }
 
     render(){
-        if(!this.props.__curriculum) {
+        if(!this.props.__content) {
             return ''
         }
         return (
             <Fragment>
-                <div className="tutor-wrap dtlms-course-curriculum" dangerouslySetInnerHTML={{__html: this.props.__curriculum}}>
+                <div className="tutor-wrap dtlms-course-curriculum" dangerouslySetInnerHTML={{__html: this.props.__content}}>
                 </div>
             </Fragment>
         );

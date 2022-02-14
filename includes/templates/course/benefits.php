@@ -7,35 +7,37 @@
  * @author Themeum
  * @url https://themeum.com
  *
- *
  * @package Tutor Divi Modules
  */
 
 defined( 'ABSPATH' ) || exit;
 
-do_action('tutor_course/single/before/benefits');
+do_action( 'tutor_course/single/before/benefits' );
 
 /**
  * getting props from settings
  */
-
-$icon = et_pb_process_font_icon( $args[ 'icon' ] );
+$icon            = et_pb_process_font_icon( $args['course_benefits_icon'] );
 $course_benefits = tutor_course_benefits( $args['course'] );
-if ( empty($course_benefits)){
+if ( empty( $course_benefits ) ) {
 	return;
 }
 
-if (is_array($course_benefits) && count($course_benefits)){
+if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 	?>
 
 	<div class="tutor-single-course-segment tutor-course-benefits-wrap">
 
-		<h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
+		<div class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
+			<span>
+			<?php echo esc_html( $args['course_benefits_label'] ); ?>
+			</span>
+		</div>
 		<div class="tutor-divi-course-benefits-content">
 			<ul class="tutor-course-benefits-items">
 				<?php
-				foreach ($course_benefits as $benefit){
-					echo "<li> <span class='et-pb-icon'>".esc_html( $icon )."</span> <span class='list-item'>".esc_html( $benefit )."</span> </li>";
+				foreach ( $course_benefits as $benefit ) {
+					echo "<li> <span class='et-pb-icon'>" . esc_html( $icon ) . "</span> <span class='list-item'>" . esc_html( $benefit ) . '</span> </li>';
 				}
 				?>
 			</ul>
@@ -44,4 +46,4 @@ if (is_array($course_benefits) && count($course_benefits)){
 
 <?php } ?>
 
-<?php do_action('tutor_course/single/after/benefits'); ?>
+<?php do_action( 'tutor_course/single/after/benefits' ); ?>

@@ -32,9 +32,48 @@ class CourseContent extends ET_Builder_Module {
 		// Toggle settings
 		// Toggles are grouped into array of tab name > toggles > toggle definition
 		$this->settings_modal_toggles = array(
-			'general'  => array(),
+			'general'  => array(
+				'toggles' => array(
+                    'main_content' => esc_html__( 'Course Benefits', 'tutor-lms-divi-modules' ),
+					'course_instructor' => array(
+						'title' => esc_html__( 'About the Instructor', 'tutor-lms-divi-modules' ),
+					),
+					'course_curriculum' => array(
+						'title' => esc_html__( 'Course Curriculum', 'tutor-lms-divi-modules' ),
+					),
+					'course_reviews'    => array(
+						'title' => esc_html__( 'Course Reviews', 'tutor-lms-divi-modules' ),
+					),
+				),
+			),
 			'advanced' => array(
 				'toggles' => array(
+                    // course benefits advanced toggles.
+                    'course_benefits_title'        => array(
+						'title' => esc_html__( 'Course Benefits Title', 'tutor-lms-divi-modules' ),
+					),
+					'course_benefits_list'         => array(
+						'title' => esc_html__( 'Course Benefits List', 'tutor-lms-divi-modules' ),
+					),
+					'course_benefits_icon'         => array(
+						'title' => esc_html__( 'Course Benefits Icon', 'tutor-lms-divi-modules' ),
+					),
+					'course_benefits_text' => array(
+						'title' => esc_html__( 'Course Benefits Text', 'tutor-lms-divi-modules' ),
+					),
+                    // course benefits advanced toggles end.
+
+                    // course instructor advanced toggle.
+                    'course_instructor_section'		=> esc_html__( 'Instructor Section', 'tutor-lms-divi-modules' ),
+					'course_instructor_title'			=> esc_html__( 'Section Title', 'tutor-lms-divi-modules' ),
+					'instructor_avatar'		=> esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
+					'instructor_name'		=> esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
+					'instructor_designation'=> esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
+					'instructor_bio'		=> esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
+					'bottom_info_star'		=> esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
+					'bottom_info_label'		=> esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
+					'bottom_info_value'		=> esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
+                    // course instructor advanced toggle end.
 					'header'                  => array(
 						'title' => esc_html__( 'Curriculum Header', 'tutor-lms-divi-modules' ),
 					),
@@ -74,13 +113,83 @@ class CourseContent extends ET_Builder_Module {
 		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
 
 		// Reviews selectors.
-		$title_selector        = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
-		$avg_total_selector    = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
-		$avg_text_selector     = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
-		$avg_count_selector    = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
-		$reviews_wrapper       = '%%order_class%% #tutor-course-details-tab-reviews ';
+		$title_selector     = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
+		$avg_total_selector = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
+		$avg_text_selector  = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
+		$avg_count_selector = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
+		$reviews_wrapper    = '%%order_class%% #tutor-course-details-tab-reviews ';
+
+		/**
+		 * Course benefits controls
+		 */
+
+		// course benefits controls end.
 		$this->advanced_fields = array(
 			'fonts'          => array(
+                'course_benefits_title'   => array(
+                    'css'   => array(
+                        'main'  => '%%order_class%% .tutor-course-benefits-wrap .tutor-segment-title',
+                        'tab_slug'  => 'advanced',
+                        'toggle_slug'   => 'course_benefits_title',
+                    ),
+                ),
+                'course_benefits_text'   => array(
+                    'css'   => array(
+                        'main'  => '%%order_class%% ul.tutor-course-benefits-items .list-item',
+                        'tab_slug'  => 'advanced',
+                        'toggle_slug'   => 'course_benefits_text',
+                    ),
+                ),
+                // course instructor font toggle.
+                'course_instructor_title'		=> array(
+					'css'		=> array(
+						'main'	=> '',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'course_instructor_title'
+				),
+				'instructor_name'		=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .instructor-name h3 a',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'instructor_name',
+					'hide_text_align'	=> true,
+				),
+				'instructor_designation'	=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .instructor-name h4',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'instructor_designation',
+					'hide_text_align'	=> true,
+				),
+				'instructor_bio'	=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .instructor-bio',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'instructor_bio'
+				),
+				//icon
+				'bottom_info_label'	=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .courses i, %%order_class%% .students i, %%order_class%% .rating-digits',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'bottom_info_label',
+					'hide_text_align'	=> true
+				),
+				//text
+				'bottom_info_value'	=> array(
+					'css'		=> array(
+						'main'	=> '%%order_class%% .courses .tutor-text-mute, %%order_class%% .students .tutor-text-mute, %%order_class%% .rating-total-meta',
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'bottom_info_value',
+					'hide_text_align'	=> true
+				),
+                // course instructor font toggle end.
 				'header'                  => array(
 					'css'             => array(
 						'main' => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
@@ -186,6 +295,42 @@ class CourseContent extends ET_Builder_Module {
 			),
 			'borders'        => array(
 				'default' => false,
+                'course_benefits_list_border'  => array(
+					'css'         => array(
+						'main'      => array(
+							'border_radii'  => '%%order_class%% ul.tutor-course-benefits-items li',
+							'border_styles' => '%%order_class%% ul.tutor-course-benefits-items li',
+
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'course_benefits_list',
+				),
+                // course instructor border toggle.
+                'instructor_avatar'	=> array(
+					'css'	=> array(
+						'main'	=> array(
+							'border_styles'	=> '%%order_class%% .instructor-avatar a span, %%order_class%% .instructor-avatar a img',
+							'border_radii'	=> '%%order_class%% .instructor-avatar a span, %%order_class%% .instructor-avatar a img',
+						)
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'instructor_avatar' 
+				),
+				'section_content'	=> array(
+					'css'	=> array(
+						'main'	=> array(
+							'border_styles'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+							'border_radii'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+						),
+						'important'	=> 'all'
+					),
+					'tab_slug'		=> 'advanced',
+					'toggle_slug'	=> 'section_content' 
+				),
+                // course instructor border toggle end.
+
 				'topics'  => array(
 					'css'         => array(
 						'main'      => array(
@@ -232,33 +377,143 @@ class CourseContent extends ET_Builder_Module {
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
-						'__curriculum',
+						'__content',
 					),
 				)
 			),
-			'__curriculum'                => array(
+			'__content'                   => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
-					'CourseCurriculum',
-					'get_edit_template',
+					'CourseContent',
+					'get_content',
 				),
 				'computed_depends_on' => array(
 					'course',
-					'label',
+					'course_benefits_label',
+                    'course_instructor_label',
+					'course_topics_label',
+					'course_reviews_label',
 				),
 				'computed_minimum'    => array(
 					'course',
+					'course_benefits_label',
+                    'course_instructor_label',
+					'course_topics_label',
+					'course_reviews_label',
 				),
 			),
-			// general tab content toggle
-			'label'                       => array(
+			// course benefits controls start.
+			'course_benefits_label'       => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'         => esc_html__( 'Course Curriculum', 'tutor-lms-divi-modules' ),
+				'default'         => esc_html__( 'Course Benefits', 'tutor-lms-divi-modules' ),
+				'option_category' => 'basic',
+				'toggle_slug'     => 'main_content',
+
+			),
+			'course_benefits_layout'      => array(
+				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
+				'type'            => 'select',
+				'options'         => array(
+					'block'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
+					'inline-block' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+				),
+				'default'         => 'block',
+				'option_category' => 'layout',
+				'toggle_slug'     => 'main_content',
+				'mobile_options'  => true,
+			),
+			'course_benefits_icon'        => array(
+				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
+				'type'            => 'select_icon',
+				'default'         => 'N',
+				'class'           => array( 'et-pb-font-icon' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
-			'icon_position'               => array(
+			'course_benefits_alignment'   => array(
+				'label'           => esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
+				'type'            => 'text_align',
+				'option_category' => 'configuration',
+				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'         => 'left',
+				'toggle_slug'     => 'main_content',
+				'mobile_options'  => true,
+			),
+			// course benefits controls end.
+
+			// course instructor content controls start.
+			'course_instructor_label'     => array(
+				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				'type'            => 'text',
+				'default'         => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),
+				'option_category' => 'basic_option',
+				'toggle_slug'     => 'course_instructor',
+			),
+			'profile_picture'             => array(
+				'label'       => esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+				),
+				'default'     => 'on',
+				'toggle_slug' => 'course_instructor',
+			),
+			'display_name'                => array(
+				'label'       => esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+				),
+				'default'     => 'on',
+				'toggle_slug' => 'course_instructor',
+			),
+			'designation'                 => array(
+				'label'       => esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+				),
+				'default'     => 'on',
+				'toggle_slug' => 'course_instructor',
+			),
+			'course_instructor_link'      => array(
+				'label'           => esc_html__( 'Link', 'tutor-lms-divi-modules' ),
+				'type'            => 'select',
+				'options'         => array(
+					'_blank' => esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
+					''       => esc_html__( 'Same Window', 'tutor-lms-divi-modules' ),
+				),
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
+				'default'         => 'new',
+				'toggle_slug'     => 'course_instructor',
+			),
+			'course_instructor_layout'    => array(
+				'label'       => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
+				'type'        => 'select',
+				'options'     => array(
+					'row'    => esc_html__( 'Left', 'tutor-lms-divi-modules' ),
+					'column' => esc_html__( 'Top', 'tutor-lms-divi-modules' ),
+				),
+				'description' => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
+				'default'     => 'row',
+				'toggle_slug' => 'course_instructor',
+			),
+			// course instructor content controls end.
+
+			// course curriculum content controls start.
+			'course_topics_label'         => array(
+				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				'type'            => 'text',
+				'default'         => esc_html__( 'Topics for this course', 'tutor-lms-divi-modules' ),
+				'option_category' => 'basic_option',
+				'toggle_slug'     => 'course_curriculum',
+			),
+			'course_topics_icon_position' => array(
 				'label'          => esc_html__( 'Icon Position', 'tutor-lms-divi-modules' ),
 				'type'           => 'select',
 				'options'        => array(
@@ -266,9 +521,162 @@ class CourseContent extends ET_Builder_Module {
 					'right' => esc_html__( 'Right', 'tutor-lms-divi-modules' ),
 				),
 				'default'        => 'right',
-				'toggle_slug'    => 'main_content',
+				'toggle_slug'    => 'course_curriculum',
 				'mobile_options' => true,
 			),
+			// course curriculum content controls end.
+
+			// course reviews content controls start.
+			'course_reviews_label'        => array(
+				'label'       => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				'type'        => 'text',
+				'default'     => esc_html__( 'Student Ratings & Reviews ', 'tutor-lms-divi-modules' ),
+				'toggle_slug' => 'course_reviews',
+			),
+			// course reviews content controls end.
+
+            /**
+             * Course benefits advance controls
+             */
+			// advanced tab section title toggles.
+			'course_benefits_gap'           => array(
+				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '10',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => -10,
+					'max'  => 100,
+					'step' => 1,
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_title',
+				'mobile_options' => true,
+			),
+			// advanced tab section list toggles
+			'space_between' => array(
+				'label'          => esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '10',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '-10',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_list',
+				'mobile_options' => true,
+			),
+			'padding'       => array(
+				'label'           => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'            => 'custom_padding',
+				'hover'           => 'tabs',
+				'option_category' => 'layout',
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'course_benefits_list',
+				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
+			),
+			// advanced tab text toggle
+			'color'         => array(
+				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'course_benefits_icon',
+			),
+			'size'          => array(
+				'label'          => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '12px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '-10',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_icon',
+				'mobile_options' => true,
+			),
+			// advanced tab text toggle
+			'indent'        => array(
+				'label'          => esc_html__( 'Text Indent', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '7px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '0',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_text',
+				'mobile_options' => true,
+			),
+            // course benefits advance controls end.
+
+            /**
+             * Course instructor advanced controls
+             */
+            'course_instructor_section_background'=> array(
+				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
+				'type'			=> 'color-alpha',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'course_instructor_section' 
+			), 
+			//advanced tab instructor_avatar toggle
+			'image_size'		=> array(
+				'label'				=> esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
+				'type'				=> 'range',
+				'default'			=> '48px',
+				'default_unit'		=> 'px',
+				'range_settings'	=> array(
+					'min'	=> '1',
+					'max'	=> '200',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'instructor_avatar'
+			),
+			//advanced tab bottom_info_star toggle
+			'star_size'		=> array(
+				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules' ),
+				'type'			=> 'range',
+				'default'		=> '14px',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'bottom_info_star'
+			),
+			'star_color'	=> array(
+				'label'			=> esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
+				'type'			=> 'color-alpha',
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'bottom_info_star'
+			),
+			//advanced tab margin_padding toggle
+			'space_between'		=> array(
+				'label'			=> esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
+				'type'			=> 'range',
+				'default'		=> '10px',
+				'default_unit'	=> 'px',
+				'range_settings'=> array(
+					'min'	=> '1',
+					'max'	=> '100',
+					'step'	=> '1'
+				),
+				'tab_slug'		=> 'advanced',
+				'toggle_slug'	=> 'margin_padding'
+			),
+            // course instructor advanced controls end.
+
+            /**
+             * Course curriculum advance tab controls
+             */
 			// advanced tab header toggle
 			'gap'                         => array(
 				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
@@ -461,12 +869,12 @@ class CourseContent extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_edit_template( $args = array() ) {
-		if ( isset( $args['label'] ) ) {
-			self::$curriculum_title = $args['label'];
-			add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
-		}
+		// if ( isset( $args['label'] ) ) {
+		// self::$curriculum_title = $args['label'];
+		// add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
+		// }
 		ob_start();
-		include dtlms_get_template( 'course/curriculum-editor' );
+		include dtlms_get_template( 'course/content' );
 		return ob_get_clean();
 	}
 
@@ -477,12 +885,25 @@ class CourseContent extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content( $args = array() ) {
-		if ( isset( $args['label'] ) ) {
-			self::$curriculum_title = $args['label'];
-			add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
+		// Filter course topic title.
+		if ( isset( $args['course_topics_label'] ) && '' !== $args['course_topics_label'] ) {
+			add_filter(
+				'tutor_course_topics_title',
+				function() use ( $args ) {
+					return esc_html( $args['course_topics_label'] );
+				}
+			);
+		}
+		if ( isset( $args['course_reviews_label'] ) && '' !== $args['course_reviews_label'] ) {
+			add_filter(
+				'tutor_course_reviews_section_title',
+				function() use ( $args ) {
+					return esc_html( $args['course_reviews_label'] );
+				}
+			);
 		}
 		ob_start();
-		include dtlms_get_template( 'course/curriculum' );
+		include dtlms_get_template( 'course/content' );
 		return ob_get_clean();
 	}
 

@@ -18,6 +18,7 @@ define( 'DTLMS_FILE__', __FILE__ );
 define( 'DTLMS_DIR_PATH', plugin_dir_path( DTLMS_FILE__ ) );
 define( 'DTLMS_DIR_URL', plugin_dir_url( DTLMS_FILE__ ) );
 define( 'DTLMS_ASSETS', trailingslashit( DTLMS_DIR_URL . 'assets' ) );
+define( 'DTLMS_TEMPLATES', trailingslashit( DTLMS_DIR_PATH . 'includes/templates/course/' ) );
 /**
  * Environment
  * PROD
