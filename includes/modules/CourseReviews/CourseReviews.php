@@ -378,7 +378,7 @@ class CourseReviews extends ET_Builder_Module {
 		$course_id = Helper::get_course( $args );
 		ob_start();
 		if ( $course_id ) {
-			include_once dtlms_get_template( 'course/reviews' );
+			include dtlms_get_template( 'course/reviews' );
 		}
 
 		return ob_get_clean();

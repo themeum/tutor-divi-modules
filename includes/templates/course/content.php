@@ -4,14 +4,18 @@
  *
  * @package Course Topics
  */
-	$course_nav_items = tutor_utils()->course_nav_items();
-	add_filter(
-		'tutor_default_topics_active_tab',
-		function() {
-			return 'info';
-		}
-	);
-	?>
+
+global $post;
+$post = get_post( $args['course'] );
+setup_postdata( $post );
+$course_nav_items = tutor_utils()->course_nav_items();
+add_filter(
+	'tutor_default_topics_active_tab',
+	function() {
+		return 'info';
+	}
+);
+?>
 <div class="tutor-wrap dtlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
 		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">

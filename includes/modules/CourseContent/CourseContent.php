@@ -316,7 +316,7 @@ class CourseContent extends ET_Builder_Module {
 						)
 					),
 					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'instructor_avatar' 
+					'toggle_slug'	=> 'instructor_avatar'
 				),
 				'section_content'	=> array(
 					'css'	=> array(
@@ -327,7 +327,7 @@ class CourseContent extends ET_Builder_Module {
 						'important'	=> 'all'
 					),
 					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'section_content' 
+					'toggle_slug'	=> 'section_content',
 				),
                 // course instructor border toggle end.
 
@@ -385,7 +385,7 @@ class CourseContent extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'CourseContent',
-					'get_content',
+					'get_edit_template',
 				),
 				'computed_depends_on' => array(
 					'course',
@@ -869,12 +869,25 @@ class CourseContent extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_edit_template( $args = array() ) {
-		// if ( isset( $args['label'] ) ) {
-		// self::$curriculum_title = $args['label'];
-		// add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
-		// }
+        // Filter title.
+		if ( isset( $args['course_topics_label'] ) && '' !== $args['course_topics_label'] ) {
+			add_filter(
+				'tutor_course_topics_title',
+				function() use ( $args ) {
+					return esc_html( $args['course_topics_label'] );
+				}
+			);
+		}
+		if ( isset( $args['course_reviews_label'] ) && '' !== $args['course_reviews_label'] ) {
+			add_filter(
+				'tutor_course_reviews_section_title',
+				function() use ( $args ) {
+					return esc_html( $args['course_reviews_label'] );
+				}
+			);
+		}
 		ob_start();
-		include dtlms_get_template( 'course/content' );
+		include dtlms_get_template( 'course/content-editor' );
 		return ob_get_clean();
 	}
 

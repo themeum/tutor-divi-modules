@@ -13,18 +13,23 @@
 
 
 do_action( 'tutor_course/single/enrolled/before/reviews' );
+if ( ! isset( $data ) && count( $data ) ) {
+	return;
+}
+$course_id = $data['post_id'];
 
 $disable = ! get_tutor_option( 'enable_course_review' );
+
 if ( $disable ) {
 	return;
 }
+$reviews = tutor_utils()->get_course_reviews( $course_id );
 
-$reviews = tutor_utils()->get_course_reviews( $args['course'] );
 if ( ! is_array( $reviews ) || ! count( $reviews ) ) {
 	return;
 }
 
-$rating = tutor_utils()->get_course_rating();
+$rating = tutor_utils()->get_course_rating( $course_id );
 
 ?>
 <div class="tutor-course-topics-header">
