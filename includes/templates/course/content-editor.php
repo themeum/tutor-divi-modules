@@ -30,13 +30,17 @@ add_filter(
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
 							include dtlms_get_template( 'course/benefits' );
-							include dtlms_get_template( 'course/instructor' );
+							tutor_load_template_from_custom_path(
+								dtlms_get_template( 'course/instructor' ),
+								array( 'course_id' => $args['course'], 'args' => $args ),
+								false
+							);
 						} elseif ( 'reviews' === $key ) {
 							tutor_load_template_from_custom_path(
-                                dtlms_get_template( 'course/curriculum/reviews' ),
-                                array( 'post_id' => $args['course'] ),
-                                false
-                            );
+								dtlms_get_template( 'course/curriculum/reviews' ),
+								array( 'post_id' => $args['course'] ),
+								false
+							);
 						} else {
 							if ( is_string( $method ) ) {
 								$method();
