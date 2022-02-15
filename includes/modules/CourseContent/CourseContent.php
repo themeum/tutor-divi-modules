@@ -139,6 +139,7 @@ class CourseContent extends ET_Builder_Module {
                         'tab_slug'  => 'advanced',
                         'toggle_slug'   => 'course_benefits_text',
                     ),
+                    'hide_text_align' => true,
                 ),
                 // course instructor font toggle.
                 'course_instructor_title'		=> array(
@@ -390,6 +391,7 @@ class CourseContent extends ET_Builder_Module {
 				'computed_depends_on' => array(
 					'course',
 					'course_benefits_label',
+                    'course_benefits_icon',
                     'course_instructor_label',
 					'course_topics_label',
 					'course_reviews_label',
@@ -397,6 +399,7 @@ class CourseContent extends ET_Builder_Module {
 				'computed_minimum'    => array(
 					'course',
 					'course_benefits_label',
+                    'course_benefits_icon',
                     'course_instructor_label',
 					'course_topics_label',
 					'course_reviews_label',
@@ -415,8 +418,8 @@ class CourseContent extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'block'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline-block' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'list-teim'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
+					'inline' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
 				),
 				'default'         => 'block',
 				'option_category' => 'layout',
@@ -578,13 +581,13 @@ class CourseContent extends ET_Builder_Module {
 				'allowed_units'   => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
 			),
 			// advanced tab text toggle
-			'color'         => array(
+			'course_benefits_icon_color'         => array(
 				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'course_benefits_icon',
 			),
-			'size'          => array(
+			'course_benefits_icon_size'          => array(
 				'label'          => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default'        => '12px',
@@ -958,7 +961,7 @@ class CourseContent extends ET_Builder_Module {
 		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
 
 		// props
-		$icon_position   = sanitize_text_field( $this->props['icon_position'] );
+		$icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
 		$topic_icon_size = sanitize_text_field( $this->props['topic_icon_size'] );
 
 		$gap        = sanitize_text_field( $this->props['gap'] );
@@ -996,6 +999,347 @@ class CourseContent extends ET_Builder_Module {
 
 		$space_between_topics = sanitize_text_field( $this->props['space_between_topics'] );
 
+        // course benefits styles start.
+        // selectors.
+        $benefits_wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
+        $benefits_li_selector    = '%%order_class%% ul.tutor-course-benefits-items li';
+        $benefits_icon_selector  = "%%order_class%% ul.tutor-course-benefits-items .et-pb-icon";
+        // props.
+        $benefits_icon_size        = sanitize_text_field( $this->props['course_benefits_icon_size'] );
+        $benefits_icon_size_tablet = isset( $this->props['course_benefits_icon_size_tablet'] ) && $this->props['course_benefits_icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['course_benefits_icon_size_tablet'] ) : $benefits_icon_size;
+        $benefits_icon_size_phone  = isset( $this->props['course_benefits_icon_size_phone'] ) && $this->props['course_benefits_icon_size_phone'] !== '' ? sanitize_text_field( $this->props['course_benefits_icon_size_phone'] ) : $benefits_icon_size;
+
+        $benefits_gap        = $this->props['course_benefits_gap'];
+        $benefits_gap_tablet = isset( $this->props['course_benefits_gap_tablet'] ) && $this->props['course_benefits_gap_tablet'] !== '' ? sanitize_text_field( $this->props['course_benefits_gap_tablet'] ) : $benefits_gap;
+        $benefits_gap_phone  = isset( $this->props['course_benefits_gap_phone'] ) && $this->props['course_benefits_gap_phone'] !== '' ? sanitize_text_field( $this->props['course_benefits_gap_phone'] ) : $benefits_gap;
+
+        $padding = sanitize_text_field( $this->props['padding'] );
+
+        $benefits_icon_color = sanitize_text_field( $this->props['course_benefits_icon_color'] );
+
+        $benefits_layout        = sanitize_text_field( $this->props['course_benefits_layout'] );
+        $benefits_layout_tablet = isset( $this->props['course_benefits_layout_tablet'] ) && '' !== $this->props['course_benefits_layout_tablet'] ? sanitize_text_field( $this->props['course_benefits_layout_tablet'] ) : $benefits_layout;
+        $benefits_layout_phone  = isset( $this->props['course_benefits_layout_phone'] ) && '' !== $this->props['course_benefits_layout_phone'] ? sanitize_text_field( $this->props['course_benefits_layout_phone'] ) : $benefits_layout;
+
+        $benefits_alignment        = $this->props['course_benefits_alignment'];
+        $benefits_alignment_tablet = isset( $this->props['course_benefits_alignment_tablet'] ) && '' !== $this->props['course_benefits_alignment_tablet'] ? sanitize_text_field( $this->props['course_benefits_alignment_tablet'] ) : $benefits_alignment;
+        $benefits_alignment_phone  = isset( $this->props['course_benefits_alignment_phone'] ) && '' !== $this->props['course_benefits_alignment_phone'] ? sanitize_text_field( $this->props['course_benefits_alignment_phone'] ) : $benefits_alignment;
+
+        $space_between = $this->props['space_between'];
+        $space_tablet  = isset( $this->props['space_between_tablet'] ) && '' !== $this->props['space_between_tablet'] ? sanitize_text_field( $this->props['space_between_tablet'] ) : $space_between;
+        $space_phone   = isset( $this->props['space_between_phone'] ) && '' !== $this->props['space_between_phone'] ? sanitize_text_field( $this->props['space_between_phone'] ) : $space_between;
+
+        $indent        = $this->props['indent'];
+        $indent_tablet = isset( $this->props['indent_tablet'] ) && '' !== $this->props['indent_tablet'] ? sanitize_text_field( $this->props['indent_tablet'] ) : $indent;
+        $indent_phone  = isset( $this->props['indent_phone'] ) && '' !== $this->props['indent_phone'] ? sanitize_text_field( $this->props['indent_phone'] ) : $indent;
+
+        // set styles
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'    => $benefits_wrapper . ' ul',
+                'declaration' => 'list-style:none; padding: 0px;',
+            )
+        );
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'    => $benefits_icon_selector,
+                'declaration' => 'font-size: 18px;',
+            )
+        );
+
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'    => $benefits_li_selector,
+                'declaration' => 'list-style:none; padding: 0px; border-style: solid;',
+            )
+        );
+
+        // wrapper style
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'    => $benefits_wrapper,
+                'declaration' => 'display: flex; flex-direction: column;',
+            )
+        );
+
+        if ( $benefits_gap ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'row-gap: %1$s;',
+                        $benefits_gap
+                    ),
+                )
+            );
+        }
+        if ( $benefits_gap_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'row-gap: %1$s;',
+                        $benefits_gap_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+        if ( $benefits_gap_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'row-gap: %1$s;',
+                        $benefits_gap_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+
+        // icons tyle
+        ET_Builder_Element::set_style(
+            $render_slug,
+            array(
+                'selector'    => $benefits_icon_selector,
+                'declaration' => sprintf(
+                    'font-size: %1$s !important;',
+                    $benefits_icon_size
+                ),
+            )
+        );
+
+        if ( $benefits_icon_size_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_icon_selector,
+                    'declaration' => sprintf(
+                        'font-size: %1$s !important;',
+                        $benefits_icon_size_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+
+        if ( $benefits_icon_size_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_icon_selector,
+                    'declaration' => sprintf(
+                        'font-size: %1$s !important;',
+                        $benefits_icon_size_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+
+        if ( $benefits_icon_color ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_icon_selector,
+                    'declaration' => sprintf(
+                        'color: %1$s !important;',
+                        $benefits_icon_color
+                    ),
+                )
+            );
+        }
+
+        // padding
+        if ( $padding ) {
+            $paddings = $this->props['padding'];
+            $paddings = explode( '|', $paddings );
+            if ( is_array( $paddings ) ) {
+                ET_Builder_Element::set_style(
+                    $render_slug,
+                    array(
+                        'selector'    => $benefits_li_selector,
+                        'declaration' => sprintf(
+                            'padding: %1$s %2$s %3$s %4$s;',
+                            $paddings[0],
+                            $paddings[1],
+                            $paddings[2],
+                            $paddings[3]
+                        ),
+                    )
+                );
+            }
+        }
+
+        // layout
+        if ( $benefits_layout ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector,
+                    'declaration' => sprintf(
+                        'display: %1$s !important;',
+                        $benefits_layout
+                    ),
+                )
+            );
+        }
+        if ( $benefits_layout_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector,
+                    'declaration' => sprintf(
+                        'display: %1$s !important;',
+                        $benefits_layout_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+        if ( $benefits_layout_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector,
+                    'declaration' => sprintf(
+                        'display: %1$s !important;',
+                        $benefits_layout_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+
+        // alignment
+        if ( $benefits_alignment ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'text-align: %1$s !important;',
+                        $benefits_alignment
+                    ),
+                )
+            );
+        }
+        if ( $benefits_alignment_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'text-align: %1$s !important;',
+                        $benefits_alignment_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+        if ( $benefits_alignment_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_wrapper,
+                    'declaration' => sprintf(
+                        'text-align: %1$s !important;',
+                        $benefits_alignment_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+
+        // space between
+        if ( $space_between ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ':not(:last-child)',
+                    'declaration' => sprintf(
+                        'margin-bottom: %1$s !important;',
+                        $space_between
+                    ),
+                )
+            );
+        }
+
+        if ( $space_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ':not(:last-child)',
+                    'declaration' => sprintf(
+                        'margin-bottom: %1$s !important;',
+                        $space_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+        if ( $space_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ':not(:last-child)',
+                    'declaration' => sprintf(
+                        'margin-bottom: %1$s !important;',
+                        $space_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+
+        if ( $indent ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ' .list-item',
+                    'declaration' => sprintf(
+                        'padding-left: %1$s !important;',
+                        $indent
+                    ),
+                )
+            );
+        }
+
+        if ( $indent_tablet ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ' .list-item',
+                    'declaration' => sprintf(
+                        'padding-left: %1$s !important;',
+                        $indent_tablet
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+                )
+            );
+        }
+        if ( $indent_phone ) {
+            ET_Builder_Element::set_style(
+                $render_slug,
+                array(
+                    'selector'    => $benefits_li_selector . ' .list-item',
+                    'declaration' => sprintf(
+                        'padding-left: %1$s !important;',
+                        $indent_phone
+                    ),
+                    'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+                )
+            );
+        }
+        // course benefits styles start end.
 		// set styles.
 
 		if ( '' !== $space_between_topics ) {

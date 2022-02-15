@@ -62,6 +62,269 @@ class CourseContent extends Component {
 
         const space_between_topics  = props.space_between_topics;
 
+        // course benefits styles start
+        //selectors
+        const benefits_wrapper = '%%order_class%% .tutor-course-benefits-wrap';
+        const benefits_li_selector = '%%order_class%% ul.tutor-course-benefits-items li';
+		const benefits_icon_selector	= "%%order_class%% ul.tutor-course-benefits-items .et-pb-icon";
+
+        //props
+        const course_benefits_layout = props.course_benefits_layout;
+
+        const is_responsive_course_benefits_layout = props.course_benefits_layout_last_edited && props.course_benefits_layout_last_edited.startsWith("on");
+
+        const course_benefits_layout_tablet = is_responsive_course_benefits_layout && props.course_benefits_layout_tablet ? props.course_benefits_layout_tablet : course_benefits_layout;
+
+        const course_benefits_layout_phone = is_responsive_course_benefits_layout && props.course_benefits_layout_phone ? props.course_benefits_layout : course_benefits_layout;
+
+        const course_benefits_alignment = props.course_benefits_alignment;
+        const is_responsive_course_benefits_alignment = props.course_benefits_alignment_last_edited && props.course_benefits_alignment_last_edited.startsWith("on");
+
+        const course_benefits_alignment_tablet = is_responsive_course_benefits_alignment && props.course_benefits_alignment_tablet ? props.course_benefits_alignment_tablet : course_benefits_alignment;
+
+        const course_benefits_alignment_phone = is_responsive_course_benefits_alignment && props.course_benefits_alignment_phone ? props.course_benefits_alignment_phone : course_benefits_alignment;
+
+        const course_benefits_icon_size = props.course_benefits_icon_size;
+
+        const is_responsive_course_benefits_icon_size = props.course_benefits_icon_size_last_edited && props.course_benefits_icon_size_last_edited.startsWith("on");
+
+        const course_benefits_icon_size_tablet = is_responsive_course_benefits_icon_size && props.course_benefits_icon_size_tablet ? props.course_benefits_icon_size_tablet : course_benefits_icon_size;
+
+        const course_benefits_icon_size_phone = is_responsive_course_benefits_icon_size && props.course_benefits_icon_size_phone ? props.course_benefits_icon_size_phone : course_benefits_icon_size;
+
+        const course_benefits_icon_color = props.course_benefits_icon_color;
+
+        // title gap
+        const course_benefits_gap = props.course_benefits_gap;
+        const is_responsive_course_benefits_gap = props.course_benefits_gap_last_edited && props.course_benefits_gap_last_edited.startsWith("on");
+        const course_benefits_gap_tablet = is_responsive_course_benefits_gap && props.course_benefits_gap_tablet ? props.course_benefits_gap_tablet : course_benefits_gap;
+
+        const course_benefits_gap_phone = is_responsive_course_benefits_gap && props.course_benefits_gap_phone ? props.course_benefits_gap_phone : course_benefits_gap;
+
+        const padding = props.padding;
+
+        const space_between = props.space_between;
+        const is_responsive_space = props.space_between_last_edited && props.space_between_last_edited.startsWith("on");
+        const space_between_tablet = is_responsive_space && props.space_between_tablet ? props.space_between_tablet : space_between;
+        const space_between_phone = is_responsive_space && props.space_between_phone ? props.space_between_phone : space_between;
+
+        const indent = props.indent;
+        const is_responsive_indent = props.indent_last_edited && props.indent_last_edited.startsWith("on");
+        const indent_tablet = is_responsive_indent && props.indent_tablet ? props.indent_tablet : indent;
+        const indent_phone = is_responsive_indent && props.indent_phone ? props.indent_phone : indent;  
+
+        //set styles
+        additionalCss.push([
+            {
+                selector: `${benefits_wrapper} ul`,
+                declaration: 'padding: 0;'
+            }
+        ]);        
+
+        additionalCss.push([
+            {
+                selector: benefits_li_selector,
+                declaration: 'list-style: none; padding: 0; border-style: solid;'
+            }
+        ]);
+        
+        //wrapper style
+        additionalCss.push([
+            {
+                selector: benefits_wrapper,
+                declaration: 'display: flex; flex-direction: column;'
+            }
+        ]);
+
+        if(course_benefits_gap) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `row-gap: ${course_benefits_gap};`
+                }
+            ]);            
+        }
+
+        if(course_benefits_gap_tablet) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `row-gap: ${course_benefits_gap_tablet};`,
+                    device: 'tablet'
+                }
+            ]);            
+        }
+        if(course_benefits_gap_phone) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `row-gap: ${course_benefits_gap_phone};`,
+                    device: 'phone'
+                }
+            ]);            
+        }
+
+        //icons style
+        if('' !== course_benefits_icon_color) {
+            additionalCss.push([
+                {
+                    selector: benefits_icon_selector,
+                    declaration: `color: ${course_benefits_icon_color};`
+                }
+            ]);            
+        }
+
+        additionalCss.push([
+            {
+                selector: benefits_icon_selector,
+                declaration: `font-size: ${course_benefits_icon_size};`
+            }
+        ]);
+
+        if(course_benefits_icon_size_tablet) {
+            additionalCss.push([
+                {
+                    selector: benefits_icon_selector,
+                    declaration: `font-size: ${course_benefits_icon_size_tablet};`,
+                    device: 'tablet'
+                }
+            ]);     
+        }
+
+        if(course_benefits_icon_size_phone) {
+            additionalCss.push([
+                {
+                    selector: benefits_icon_selector,
+                    declaration: `font-size: ${course_benefits_icon_size_phone};`,
+                    device: 'phone'
+                }
+            ]);     
+        }
+
+        //layout
+        if(course_benefits_layout) {
+            additionalCss.push([
+                {
+                    selector: benefits_li_selector,
+                    declaration: `display: ${course_benefits_layout};`
+                }
+            ])
+        }
+        if(course_benefits_layout_tablet) {
+            additionalCss.push([
+                {
+                    selector: benefits_li_selector,
+                    declaration: `display: ${course_benefits_layout_tablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
+        if(course_benefits_layout_phone) {
+            additionalCss.push([
+                {
+                    selector: benefits_li_selector,
+                    declaration: `display: ${course_benefits_layout_phone};`,
+                    device: 'phone'
+                }
+            ])
+        }
+
+        if(course_benefits_alignment) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `text-align: ${course_benefits_alignment};`
+                }
+            ])
+        }
+        if(course_benefits_alignment_tablet) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `text-align: ${course_benefits_alignment_tablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
+        if(course_benefits_alignment_phone) {
+            additionalCss.push([
+                {
+                    selector: benefits_wrapper,
+                    declaration: `text-align: ${course_benefits_alignment_phone};`,
+                    device: 'phone'
+                }
+            ])
+        }
+        //padding
+        if(padding) {
+            const split_padding = padding.split("|");
+            additionalCss.push([
+                {
+                    selector: benefits_li_selector,
+                    declaration: `padding: ${split_padding[0]} ${split_padding[1]} ${split_padding[2]} ${split_padding[3]};`
+                }
+            ])
+        }
+        //space 
+        if(space_between) {
+            additionalCss.push([
+                {
+                    selector: `${benefits_li_selector}:not(:last-child)`,
+                    declaration: `margin-bottom: ${space_between};`
+                }
+            ])
+        }
+
+        if(space_between_tablet) {
+            additionalCss.push([
+                {
+                    selector: `${benefits_li_selector}:not(:last-child)`,
+                    declaration: `margin-bottom: ${space_between_tablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
+
+        if(space_between_phone) {
+            additionalCss.push([
+                {
+                    selector: `${benefits_li_selector}:not(:last-child)`,
+                    declaration: `margin-bottom: ${space_between_phone};`,
+                    device: 'phone'
+                }
+            ])
+        }
+        //text indent
+        if(indent) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    declaration: `padding-left: ${indent} !important;`
+                }
+            ])
+        }
+
+        if(indent_tablet) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    declaration: `padding-left: ${indent_tablet} !important;`,
+                    device: 'tablet'
+                }
+            ])
+        }
+
+        if(indent_phone) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    declaration: `padding-left: ${indent_phone} !important;`,
+                    device: 'phone'
+                }
+            ])
+        }
+        // course benefits styles end
+
         //set styles
         /**
          * topic default display flex
