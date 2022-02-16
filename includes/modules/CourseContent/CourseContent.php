@@ -357,6 +357,19 @@ class CourseContent extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'lesson',
 				),
+                // reviews border.
+                'review_list_avatar' => array(
+					'css'         => array(
+						'main'      => array(
+							'border_radii'  => '%%order_class%% .review-list img',
+							'border_styles' => '%%order_class%% .review-list img',
+
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'review_list_avatar',
+				),
 			),
 			'margin_padding' => array(
 				'css' => array(
@@ -1781,6 +1794,7 @@ class CourseContent extends ET_Builder_Module {
 				'declaration' => 'padding: 0 !important;',
 			)
 		);
+        // review styles start.
 		// review star color.
 		if ( '' !== $this->props['review_avg_star'] ) {
 			ET_Builder_Element::set_style(
@@ -1842,6 +1856,7 @@ class CourseContent extends ET_Builder_Module {
 				)
 			);
 		}
+        // reviews styles end.
 		// set styles end
 		$output = self::get_content( $this->props );
 		// Render empty string if no output is generated to avoid unwanted vertical space.
