@@ -148,6 +148,7 @@ class CourseContent extends ET_Builder_Module {
 					),
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'course_instructor_title',
+                    'hide_text_align' => true,
 				),
 				'instructor_name'         => array(
 					'css'             => array(
@@ -225,6 +226,7 @@ class CourseContent extends ET_Builder_Module {
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'section_title',
 					),
+                    'hide_text_align'   => true,
 				),
 				'review_avg_total'        => array(
 					'css'             => array(
