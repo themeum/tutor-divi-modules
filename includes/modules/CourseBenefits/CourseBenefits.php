@@ -137,7 +137,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				),
 			),
 			// general settings content tab
-			'label'         => array(
+			'course_benefits_label'         => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
 				'default'         => esc_html__( 'Course Benefits', 'tutor-lms-divi-modules' ),
@@ -149,15 +149,15 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'block'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline-block' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'list'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
+					'inline' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
 				),
 				'default'         => 'block',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
 			),
-			'icon'          => array(
+			'course_benefits_icon'          => array(
 				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'            => 'select_icon',
 				'default'         => 'N',
@@ -217,13 +217,14 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			'color'         => array(
 				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
+				'default'	  => '#3e64de',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'icon',
 			),
 			'size'          => array(
 				'label'          => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
-				'default'        => '12px',
+				'default'        => '18px',
 				'default_unit'   => 'px',
 				'range_settings' => array(
 					'min'  => '-10',
@@ -275,7 +276,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 
 		ob_start();
 		if ( $course ) {
-			include_once dtlms_get_template( 'course/benefits' );
+			include dtlms_get_template( 'course/benefits' );
 		}
 
 		return ob_get_clean();
@@ -293,13 +294,13 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $attrs, $content, $render_slug ) {
-		// selectors
+		// selectors.
 		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
 		$title_selector = $wrapper . ' .tutor-segment-title';
 		$li_selector    = $wrapper . ' li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
-		// props
+		// props.
 		$size        = sanitize_text_field( $this->props['size'] );
 		$size_tablet = isset( $this->props['size_tablet'] ) && $this->props['size_tablet'] !== '' ? sanitize_text_field( $this->props['size_tablet'] ) : $size;
 		$size_phone  = isset( $this->props['size_phone'] ) && $this->props['size_phone'] !== '' ? sanitize_text_field( $this->props['size_phone'] ) : $size;
@@ -548,7 +549,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 		}
 
 		// space between
-		if ( $space_between ) {
+		if ( $space_between && 'list' === $this->props['layout'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -560,8 +561,20 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				)
 			);
 		}
+		if ( $space_between && 'inline' === $this->props['layout'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $li_selector . ':not(:last-child)',
+					'declaration' => sprintf(
+						'margin-right: %1$s !important;',
+						$space_between
+					),
+				)
+			);
+		}
 
-		if ( $space_tablet ) {
+		if ( $space_tablet && 'list' === $this->props['layout'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -574,13 +587,39 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				)
 			);
 		}
-		if ( $space_phone ) {
+		if ( $space_tablet && 'inline' === $this->props['layout'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $li_selector . ':not(:last-child)',
+					'declaration' => sprintf(
+						'margin-margin: %1$s !important;',
+						$space_tablet
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+				)
+			);
+		}
+		if ( $space_phone && 'list' === $this->props['layout'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'    => $li_selector . ':not(:last-child)',
 					'declaration' => sprintf(
 						'margin-bottom: %1$s !important;',
+						$space_phone
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+				)
+			);
+		}
+		if ( $space_phone && 'inline' === $this->props['layout'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $li_selector . ':not(:last-child)',
+					'declaration' => sprintf(
+						'margin-right: %1$s !important;',
 						$space_phone
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),

@@ -602,13 +602,14 @@ class CourseContent extends ET_Builder_Module {
 			'course_benefits_icon_color'               => array(
 				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
+                'default'     => '#3e64de',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'course_benefits_icon',
 			),
 			'course_benefits_icon_size'                => array(
 				'label'          => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
-				'default'        => '12px',
+				'default'        => '18px',
 				'default_unit'   => 'px',
 				'range_settings' => array(
 					'min'  => '-10',
@@ -979,7 +980,7 @@ class CourseContent extends ET_Builder_Module {
 		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
 
 		// props
-		$icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
+		//$icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
 		$topic_icon_size = sanitize_text_field( $this->props['topic_icon_size'] );
 
 		$gap        = sanitize_text_field( $this->props['gap'] );

@@ -198,7 +198,7 @@ class CourseBenefits extends Component {
             ])
         }
         //space 
-        if(space_between) {
+        if(space_between && 'list' === layout ) {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
@@ -206,8 +206,16 @@ class CourseBenefits extends Component {
                 }
             ])
         }
+        if(space_between && 'inline' === layout ) {
+            additionalCss.push([
+                {
+                    selector: `${li_selector}:not(:last-child)`,
+                    declaration: `margin-right: ${space_between};`
+                }
+            ])
+        }
 
-        if(space_between_tablet) {
+        if(space_between_tablet && 'list' === layout ) {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
@@ -216,12 +224,30 @@ class CourseBenefits extends Component {
                 }
             ])
         }
+        if(space_between_tablet && 'inline' === layout ) {
+            additionalCss.push([
+                {
+                    selector: `${li_selector}:not(:last-child)`,
+                    declaration: `margin-right: ${space_between_tablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
 
-        if(space_between_phone) {
+        if(space_between_phone && 'list' === layout ) {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
                     declaration: `margin-bottom: ${space_between_phone};`,
+                    device: 'phone'
+                }
+            ])
+        }
+        if(space_between_phone && 'inline' === layout ) {
+            additionalCss.push([
+                {
+                    selector: `${li_selector}:not(:last-child)`,
+                    declaration: `margin-right: ${space_between_phone};`,
                     device: 'phone'
                 }
             ])
@@ -284,13 +310,13 @@ class CourseBenefits extends Component {
 
                 <div class="course-benefits-title">
                     <h4 class="tutor-segment-title">
-                        {this.props.label}
+                        {this.props.course_benefits_label}
                     </h4>
                 </div>
 
                 <div class="tutor-divi-course-benefits-content">
                     <ul class="tutor-course-benefits-items">
-                        { this.benefitsList(this.props.__benefits, this.props.icon)}
+                        { this.benefitsList(this.props.__benefits, this.props.course_benefits_icon)}
                     </ul>
                 </div>
 
