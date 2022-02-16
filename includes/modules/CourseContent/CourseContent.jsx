@@ -20,7 +20,7 @@ class CourseContent extends Component {
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
         const lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
         const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body';
-        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
+        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.tutor-color-text-hints';
 
         //props
         const topic_icon_size               = props.topic_icon_size;
@@ -33,7 +33,7 @@ class CourseContent extends Component {
         const lesson_icon_size_tablet        = is_responsive_lesson_icon_size && '' !== props.lesson_icon_size_tablet ? props.lesson_icon_size_tablet: lesson_icon_size;
         const lesson_icon_size_phone         = is_responsive_lesson_icon_size && '' !== props.lesson_icon_size_phone ? props.lesson_icon_size_phone: lesson_icon_size;
 
-        const topic_icon_position   = props.icon_position;
+        //const topic_icon_position   = props.icon_position;
         const gap                   = props.gap;
         const is_responsive_gap     = props.gap_last_edited && props.gap_last_edited.startsWith("on");
         const gap_tablet            = is_responsive_gap && props.gap_tablet ? props.gap_tablet : gap;
@@ -390,14 +390,14 @@ class CourseContent extends Component {
                 declaration: `padding: 0; margin: 0;`
             }
         ]);
-        if('left' === topic_icon_position) {
-            additionalCss.push([
-                {
-                    selector: topic_icon_selector,
-                    declaration: 'position: inherit !important; padding-left: 20px;'
-                }
-            ])            
-        }
+        // if('left' === topic_icon_position) {
+        //     additionalCss.push([
+        //         {
+        //             selector: topic_icon_selector,
+        //             declaration: 'position: inherit !important; padding-left: 20px;'
+        //         }
+        //     ])            
+        // }
         //topic style
         //default border for topic wrapper
         additionalCss.push([
@@ -513,8 +513,8 @@ class CourseContent extends Component {
         if(gap) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
-                    declaration: `margin-bottom: ${gap};`
+                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
+                    declaration: `margin-top: ${gap};`
                 }
             ]);            
         }
@@ -522,8 +522,8 @@ class CourseContent extends Component {
         if(gap_tablet) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
-                    declaration: `margin-bottom: ${gap_tablet};`,
+                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
+                    declaration: `margin-top: ${gap_tablet};`,
                     device: 'tablet'
                 }
             ]);            
@@ -531,8 +531,8 @@ class CourseContent extends Component {
         if(gap_phone) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
-                    declaration: `margin-bottom: ${gap_phone};`,
+                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
+                    declaration: `margin-top: ${gap_phone};`,
                     device: 'phone'
                 }
             ]);            
@@ -614,6 +614,12 @@ class CourseContent extends Component {
                 }
             ])
         }
+        additionalCss.push([
+            {
+                selector: '%%order_class%% ul.tutor-courses-lession-list',
+                declaration: 'padding: 0 !important;'
+            }
+        ]);
         // review start color
         if ('' !== props.review_avg_star) {
             additionalCss.push([

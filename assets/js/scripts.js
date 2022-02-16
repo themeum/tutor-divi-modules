@@ -20,7 +20,8 @@ jQuery(document).ready(function($){
                 sibling.css('maxHeight', 0);
             }
         });
-        } else {
+
+    } else {
         /**
          * Tutor Course Carousel Modules
          * course carousel settings
