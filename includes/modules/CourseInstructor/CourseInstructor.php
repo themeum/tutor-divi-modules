@@ -1,10 +1,11 @@
 <?php
 
 /**
-* Tutor Course Instructor Module for Divi Builder
-* @since 1.0.0
-* @author Themeum<www.themeum.com>
-*/
+ * Tutor Course Instructor Module for Divi Builder
+ *
+ * @since 1.0.0
+ * @author Themeum<www.themeum.com>
+ */
 
 use TutorLMS\Divi\Helper;
 
@@ -21,141 +22,141 @@ class CourseInstructor extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		$this->name = esc_html__( 'Tutor Course Instructor', 'tutor-lms-divi-modules' );
-		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
-		//settings modal toggles 
-		//define toggles & titles
+		$this->name      = esc_html__( 'Tutor Course Instructor', 'tutor-lms-divi-modules' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
+		// settings modal toggles
+		// define toggles & titles
 		$this->settings_modal_toggles = array(
-			'general'	=> array(
-				'toggles'	=> array(
-					'main_content'	=> esc_html__( 'Content', 'tutor-lms-divi-modules' ),
-				)
-			),
-			'advanced'	=> array(
-				'toggles'	=> array(
-					'section_content'		=> esc_html__( 'Content', 'tutor-lms-divi-modules' ),
-					'section_title'			=> esc_html__( 'Section Title', 'tutor-lms-divi-modules' ),
-					'instructor_avatar'		=> esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
-					'instructor_name'		=> esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
-					'instructor_designation'=> esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
-					'instructor_bio'		=> esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
-					'bottom_info_star'		=> esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
-					'bottom_info_label'		=> esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
-					'bottom_info_value'		=> esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
+			'general'  => array(
+				'toggles' => array(
+					'main_content' => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
 				),
-			)
+			),
+			'advanced' => array(
+				'toggles' => array(
+					'course_instructor_section' => esc_html__( 'Instructor Section', 'tutor-lms-divi-modules' ),
+					'course_instructor_title'   => esc_html__( 'Instructor Section Title', 'tutor-lms-divi-modules' ),
+					'instructor_avatar'         => esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
+					'instructor_name'           => esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
+					'instructor_designation'    => esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
+					'instructor_bio'            => esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
+					'bottom_info_star'          => esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
+					'bottom_info_label'         => esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
+					'bottom_info_value'         => esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
+				),
+			),
 		);
 
-		//advanced fields configuration
-		//define selectors for the advanced fields
-		$title_selector			= '%%order_class%% .tutor-segment-title';
+		// advanced fields configuration
+		// define selectors for the advanced fields
+		$title_selector = '%%order_class%% .tutor-segment-title';
 
 		$this->advanced_fields = array(
-			'fonts'		=> array(
-				'section_title'		=> array(
-					'css'		=> array(
-						'main'	=> $title_selector,
+			'fonts'          => array(
+				'course_instructor_title' => array(
+					'css'             => array(
+						'main' => '%%order_class%% .dtlms-course-instructor-title',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'section_title'
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'course_instructor_title',
+					'hide_text_align' => true,
 				),
-				'instructor_name'		=> array(
-					'css'		=> array(
-						'main'	=> '%%order_class%% .instructor-name h3 a',
+				'instructor_name'         => array(
+					'css'             => array(
+						'main' => '%%order_class%% .instructor-name-designation-wrapper h3 a',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'instructor_name',
-					'hide_text_align'	=> true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'instructor_name',
+					'hide_text_align' => true,
 				),
-				'instructor_designation'	=> array(
-					'css'		=> array(
-						'main'	=> '%%order_class%% .instructor-name h4',
+				'instructor_designation'  => array(
+					'css'             => array(
+						'main' => '%%order_class%% .tutor-ins-designation',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'instructor_designation',
-					'hide_text_align'	=> true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'instructor_designation',
+					'hide_text_align' => true,
 				),
-				'instructor_bio'	=> array(
-					'css'		=> array(
-						'main'	=> '%%order_class%% .instructor-bio',
+				'instructor_bio'          => array(
+					'css'         => array(
+						'main' => '%%order_class%% .instructor-bio',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'instructor_bio'
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'instructor_bio',
 				),
-				//icon
-				'bottom_info_label'	=> array(
-					'css'		=> array(
-						'main'	=> '%%order_class%% .courses i, %%order_class%% .students i, %%order_class%% .rating-digits',
+				// icon
+				'bottom_info_label'       => array(
+					'css'             => array(
+						'main' => '%%order_class%% .courses i, %%order_class%% .students i',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'bottom_info_label',
-					'hide_text_align'	=> true
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'bottom_info_label',
+					'hide_text_align' => true,
 				),
-				//text
-				'bottom_info_value'	=> array(
-					'css'		=> array(
-						'main'	=> '%%order_class%% .courses .tutor-text-mute, %%order_class%% .students .tutor-text-mute, %%order_class%% .rating-total-meta',
+				// text
+				'bottom_info_value'       => array(
+					'css'             => array(
+						'main' => '%%order_class%% .courses .tutor-color-text-subsued, %%order_class%% .students .tutor-color-text-subsued, %%order_class%% .rating-total-meta',
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'bottom_info_value',
-					'hide_text_align'	=> true
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'bottom_info_value',
+					'hide_text_align' => true,
 				),
 			),
-			'borders'		=> array(
-				'instructor_avatar'	=> array(
-					'css'	=> array(
-						'main'	=> array(
-							'border_styles'	=> '%%order_class%% .instructor-avatar a span, %%order_class%% .instructor-avatar a img',
-							'border_radii'	=> '%%order_class%% .instructor-avatar a span, %%order_class%% .instructor-avatar a img',
-						)
-					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'instructor_avatar' 
-				),
-				'section_content'	=> array(
-					'css'	=> array(
-						'main'	=> array(
-							'border_styles'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
-							'border_radii'	=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
+			'borders'        => array(
+				'instructor_avatar' => array(
+					'css'         => array(
+						'main' => array(
+							'border_styles' => '%%order_class%% .instructor-avatar a img',
+							'border_radii'  => '%%order_class%% .instructor-avatar a img',
 						),
-						'important'	=> 'all'
 					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'section_content' 
-				)
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'instructor_avatar',
+				),
+				'section_content'   => array(
+					'css'         => array(
+						'main'      => array(
+							'border_styles' => '%%order_class%% .tutor-instructor-info-card',
+							'border_radii'  => '%%order_class%% .tutor-instructor-info-card',
+						),
+						'important' => 'all',
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'course_instructor_section',
+				),
 			),
-            'box_shadow' => array(
-                'section_background'    => array(
-                    'css' => array(
-                        'main' => '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap'
-                        ),
-                    'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'section_content'
-                ),
-            ),
-			'background'    => array(
-                'css'   => array(
-                    'main'  => '%%order_class%% .instructor-avatar a span',
-                    'important' => true
-                ),
-                'instructor_avatar'  => array(
-                    'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'instructor_avatar'
-                ),
-                'use_background_video'  => false
-            ),
-            'text'              => false,
-            'max_width'         => false,
-            //'margin_padding'  => false,           
-            'filters'           => false,
-            'animation'         => false,
-            'transform'         => false
+			'margin_padding' => array(
+				'css' => array(
+					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'important' => 'all',
+				),
+			),
+			'text'           => false,
+			'max_width'      => false,
+			// 'animation'  => false,
+			'transform'      => false,
+			'background'     => array(
+				'css'                  => array(
+					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'important' => true,
+				),
+				'use_background_video' => false,
+			),
+			// 'filters'    => false,
+			'box_shadow' => array(
+				'default' => array(
+					'css' => array(
+						'main' => "%%order_class%% .tutor-instructor-info-card",
+					),
+				),
+			),
 		);
 	}
 
 	public function get_fields() {
 		return array(
-			'course'       	=> Helper::get_field(
+			'course'                   => Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -163,157 +164,91 @@ class CourseInstructor extends ET_Builder_Module {
 					),
 				)
 			),
-			'__instructor'	=> array(
-				'type'					=> 'computed',
-				'computed_callback'		=> array(
+			'__instructor'             => array(
+				'type'                => 'computed',
+				'computed_callback'   => array(
 					'CourseInstructor',
-					'get_props'
+					'get_content',
 				),
-				'computed_depends_on'	=> array(
-					'course'
+				'computed_depends_on' => array(
+					'course',
+					'course_instructor_label',
+					'profile_picture',
+					'display_name',
+					'designation',
+					'course_instructor_link',
 				),
-				'computed_minimum'		=> array(
-					'course'
-				)
+				'computed_minimum'    => array(
+					'course',
+					'course_instructor_label',
+					'profile_picture',
+					'display_name',
+					'designation',
+					'course_instructor_link',
+				),
 			),
-			//general tab main_content toggle
-			'label'     => array(
+			// general tab main_content toggle.
+			'course_instructor_label'  => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'		  => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),	
+				'default'         => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
-			'profile_picture'	=> array(
-				'label'			=> esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
-				'type'			=> 'yes_no_button',
-				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
+			'profile_picture'          => array(
+				'label'       => esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
 				),
-				'default'		=> 'on',
-				'toggle_slug'	=> 'main_content'
+				'default'     => 'on',
+				'toggle_slug' => 'main_content',
 			),
-			'display_name'	=> array(
-				'label'			=> esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
-				'type'			=> 'yes_no_button',
-				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
+			'display_name'             => array(
+				'label'       => esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
 				),
-				'default'		=> 'on',
-				'toggle_slug'	=> 'main_content'
+				'default'     => 'on',
+				'toggle_slug' => 'main_content',
 			),
-			'designation'	=> array(
-				'label'			=> esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
-				'type'			=> 'yes_no_button',
-				'options'		=> array(
-					'on'		=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off'		=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
+			'designation'              => array(
+				'label'       => esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
 				),
-				'default'		=> 'on',
-				'toggle_slug'	=> 'main_content'
+				'default'     => 'on',
+				'toggle_slug' => 'main_content',
 			),
-			'link'	=> array(
-				'label'			=> esc_html__( 'Link', 'tutor-lms-divi-modules' ),
-				'type'			=> 'select',
-				'options'		=> array(
-					'_blank'		=> esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
-					''		=> esc_html__( 'Same Window', 'tutor-lms-divi-modules' )
+			'course_instructor_link'   => array(
+				'label'           => esc_html__( 'Link', 'tutor-lms-divi-modules' ),
+				'type'            => 'select',
+				'options'         => array(
+					'_blank' => esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
+					''       => esc_html__( 'Same Window', 'tutor-lms-divi-modules' ),
 				),
-				'option_category'	=> 'basic_option',
-				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'		=> 'new',
-				'toggle_slug'	=> 'main_content'
+				'option_category' => 'basic_option',
+				'description'     => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
+				'default'         => 'new',
+				'toggle_slug'     => 'main_content',
 			),
-			'layout'	=> array(
-				'label'			=> esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
-				'type'			=> 'select',
-				'options'		=> array(
-					'row'		=> esc_html__( 'Left', 'tutor-lms-divi-modules' ),
-					'column'	=> esc_html__( 'Top', 'tutor-lms-divi-modules' )
+			'course_instructor_layout' => array(
+				'label'       => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
+				'type'        => 'select',
+				'options'     => array(
+					'row'    => esc_html__( 'Left', 'tutor-lms-divi-modules' ),
+					'column' => esc_html__( 'Top', 'tutor-lms-divi-modules' ),
 				),
-				'description'	=> esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'		=> 'row',
-				'toggle_slug'	=> 'main_content'
+				'description' => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
+				'default'     => 'row',
+				'toggle_slug' => 'main_content',
 			),
-			//advanced tab section_content toggle
-			'section_content_back'=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'section_content' 
-			), 
-			//advanced tab instructor_avatar toggle
-			'image_size'		=> array(
-				'label'				=> esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
-				'type'				=> 'range',
-				'default'			=> '48px',
-				'default_unit'		=> 'px',
-				'range_settings'	=> array(
-					'min'	=> '1',
-					'max'	=> '200',
-					'step'	=> '1'
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'instructor_avatar'
-			),
-			//advanced tab bottom_info_star toggle
-			'star_size'		=> array(
-				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules' ),
-				'type'			=> 'range',
-				'default'		=> '14px',
-				'default_unit'	=> 'px',
-				'range_settings'=> array(
-					'min'	=> '1',
-					'max'	=> '100',
-					'step'	=> '1'
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'bottom_info_star'
-			),
-			'star_color'	=> array(
-				'label'			=> esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'bottom_info_star'
-			),
-			//advanced tab margin_padding toggle
-			'space_between'		=> array(
-				'label'			=> esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
-				'type'			=> 'range',
-				'default'		=> '10px',
-				'default_unit'	=> 'px',
-				'range_settings'=> array(
-					'min'	=> '1',
-					'max'	=> '100',
-					'step'	=> '1'
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'margin_padding'
-			)
 		);
-	}
-
-	/**
-	 * get require props	
-	 * @param array
-	 * @return array | string
-	 * @since 1.0.0
-	 */
-	public static function get_props( $args = [] ) {
-		$course_id = $args['course'];
-		$instructors	= tutor_utils()->get_instructors_by_course( $course_id );
-		if( !is_null( $instructors ) ) {
-			foreach( $instructors as $instructor ) {
-				$instructor->avatar				= tutils()->get_tutor_avatar( $instructor->ID, $size = 'thumbnail' );
-				$instructor->ratings 			= tutils()->get_instructor_ratings( $instructor->ID );
-				//$instructor->rating_generate	= tutils()->star_rating_generator($instructor->ratings ? $instructor->ratings->rating_avg : 0);
-				$instructor->course_count 		= tutils()->get_course_count_by_instructor( $instructor->ID );
-				$instructor->student_count 		= tutils()->get_total_students_by_instructor( $instructor->ID );
-			}
-		}
-		return $instructors;
 	}
 
 	/**
@@ -321,9 +256,9 @@ class CourseInstructor extends ET_Builder_Module {
 	 * @return template
 	 * @since 1.0.0
 	 */
-	public  static function get_content( $args = [] ) {
+	public static function get_content( $args = array() ) {
 		ob_start();
-		include_once dtlms_get_template( 'course/instructor' );
+		include dtlms_get_template( 'course/instructor' );
 		return ob_get_clean();
 	}
 
@@ -339,145 +274,67 @@ class CourseInstructor extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
-
-		//selectors
-		$wrapper                   = '%%order_class%% .single-instructor-wrap';
-        $tutor_instructor_right    = '%%order_class%% .single-instructor-wrap .tutor-instructor-right';
-		$avatar_selector           = '%%order_class%% .instructor-avatar a img, %%order_class%% .instructor-avatar a span';
-		$star_selector 			   = '%%order_class%% .tutor-star-rating-group i';
-
-		//props
-		$layout 			= sanitize_text_field( $this->props['layout'] );
-		$image_size			= sanitize_text_field( $this->props['image_size'] );
-
-		$star_color  		= sanitize_text_field( $this->props['star_color'] );
-		$star_size 			= sanitize_text_field( $this->props['star_size'] );
-
-		$space_between		= sanitize_text_field( $this->props['space_between'] );
-
-		$section_background = sanitize_text_field( $this->props['section_content_back'] );
-
-		//set styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% #single-course-ratings',
-				'declaration'	=> 'display:-webkit-flex;
-				display:-webkit-box;
-				display:-moz-flex;
-				display:-moz-box;
-				display:-ms-flexbox;
-				display:flex; -webkit-flex-direction: column; flex-direction: column;'
-			)
-		);
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .single-instructor-wrap',
-				'declaration'	=> 'margin-bottom: 0px;'
-			)
-		);
-
-		if( '' !== $space_between ) {
+		// selectors.
+		$course_instructor_layout                 = $this->props['course_instructor_layout'];
+		$course_instructor_section_background     = $this->props['course_instructor_section_background'];
+		$course_instructor_bottom_info_star_size  = $this->props['course_instructor_bottom_info_star_size'];
+		$course_instructor_bottom_info_star_color = $this->props['course_instructor_bottom_info_star_color'];
+		if ( '' !== $course_instructor_layout ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '%%order_class%% .single-instructor-wrap:not(last-child)',
-					'declaration'	=> sprintf(
-						'margin-bottom: %1$s;',
-						$space_between
-					)
+					'selector'    => '%%order_class%% .tutor-instructor-right',
+					'declaration' => sprintf(
+						'flex-direction: %1$s;',
+						$course_instructor_layout
+					),
 				)
 			);
 		}
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .single-instructor-wrap .instructor-name',
-				'declaration'	=> 'padding-left: 0px;'
-			)
-		);
-		
-		//layout
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $tutor_instructor_right,
-				'declaration'	=> sprintf(
-					'display: flex; flex-direction: %1$s; gap: 10px 10px;',
-					$layout
-				)
-			)
-		);
-		//avatar
-		if( '' !== $image_size ) {
+		if ( '' !== $course_instructor_section_background ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $avatar_selector,
-					'declaration' 	=> sprintf(
-						'width: %1$s; height: %1$s; max-width: %1$s; line-height: %1$s;',
-						$image_size
-					)
-				)
-			);
-		}
-
-		//star
-		if( '' !== $star_color ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $star_selector,
-					'declaration' 	=> sprintf(
-						'color: %1$s;',
-						$star_color
-					)
-				)
-			);
-		}
-
-		if( '' !== $star_size ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $star_selector,
-					'declaration' 	=> sprintf(
-						'font-size: %1$s;',
-						$star_size
-					)
-				)
-			);
-		}		
-
-		if( '' !== $section_background ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> '%%order_class%% .tutor-course-instructors-wrap .single-instructor-wrap',
-					'declaration' 	=> sprintf(
+					'selector'    => '%%order_class%% .tutor-instructor-info-card',
+					'declaration' => sprintf(
 						'background-color: %1$s;',
-						$section_background
-					)
+						$course_instructor_section_background
+					),
+				)
+			);
+		}
+		if ( '' !== $course_instructor_bottom_info_star_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
+					'declaration' => sprintf(
+						'color: %1$s;',
+						$course_instructor_bottom_info_star_color
+					),
+				)
+			);
+		}
+		if ( '' !== $course_instructor_bottom_info_star_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
+					'declaration' => sprintf(
+						'font-size: %1$s;',
+						$course_instructor_bottom_info_star_size
+					),
 				)
 			);
 		}
 
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> '%%order_class%% .single-instructor-wrap .instructor-name > h3',
-				'declaration'	=> 'margin-bottom: 3px;'
-			)
-		);
-		//set styles end
+		// course instructor styles end.
+		// set styles end
 		$output = self::get_content( $this->props );
-		if( '' === $output ) {
+		if ( '' === $output ) {
 			return '';
 		}
 		return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
-new CourseInstructor;
+new CourseInstructor();
