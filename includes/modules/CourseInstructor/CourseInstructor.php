@@ -276,9 +276,8 @@ class CourseInstructor extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		// selectors.
 		$course_instructor_layout                 = $this->props['course_instructor_layout'];
-		$course_instructor_section_background     = $this->props['course_instructor_section_background'];
-		$course_instructor_bottom_info_star_size  = $this->props['course_instructor_bottom_info_star_size'];
-		$course_instructor_bottom_info_star_color = $this->props['course_instructor_bottom_info_star_color'];
+		//$course_instructor_bottom_info_star_size  = $this->props['course_instructor_bottom_info_star_size'];
+		//$course_instructor_bottom_info_star_color = $this->props['course_instructor_bottom_info_star_color'];
 		if ( '' !== $course_instructor_layout ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -291,42 +290,31 @@ class CourseInstructor extends ET_Builder_Module {
 				)
 			);
 		}
-		if ( '' !== $course_instructor_section_background ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-instructor-info-card',
-					'declaration' => sprintf(
-						'background-color: %1$s;',
-						$course_instructor_section_background
-					),
-				)
-			);
-		}
-		if ( '' !== $course_instructor_bottom_info_star_color ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-					'declaration' => sprintf(
-						'color: %1$s;',
-						$course_instructor_bottom_info_star_color
-					),
-				)
-			);
-		}
-		if ( '' !== $course_instructor_bottom_info_star_size ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-					'declaration' => sprintf(
-						'font-size: %1$s;',
-						$course_instructor_bottom_info_star_size
-					),
-				)
-			);
-		}
+
+		// if ( '' !== $course_instructor_bottom_info_star_color ) {
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
+		// 			'declaration' => sprintf(
+		// 				'color: %1$s;',
+		// 				$course_instructor_bottom_info_star_color
+		// 			),
+		// 		)
+		// 	);
+		// }
+		// if ( '' !== $course_instructor_bottom_info_star_size ) {
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
+		// 			'declaration' => sprintf(
+		// 				'font-size: %1$s;',
+		// 				$course_instructor_bottom_info_star_size
+		// 			),
+		// 		)
+		// 	);
+		// }
 
 		// course instructor styles end.
 		// set styles end
