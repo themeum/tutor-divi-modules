@@ -6,6 +6,7 @@
  */
 	$course_nav_items = tutor_utils()->course_nav_items();
 	unset( $course_nav_items['info'] );
+	unset( $course_nav_items['reviews'] );
 	add_filter(
 		'tutor_default_topics_active_tab',
 		function() {
