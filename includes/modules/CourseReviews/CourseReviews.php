@@ -195,9 +195,9 @@ class CourseReviews extends ET_Builder_Module {
 			'button'     => false,
 			'text'       => false,
 			'max_width'  => false,
-			'filters'    => false,
-			'animation'  => false,
-			'transform'  => false,
+			//'filters'    => false,
+			//'animation'  => false,
+			//'transform'  => false,
 		);
 	}
 

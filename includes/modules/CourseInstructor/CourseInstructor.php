@@ -135,7 +135,7 @@ class CourseInstructor extends ET_Builder_Module {
 			'text'           => false,
 			'max_width'      => false,
 			// 'animation'  => false,
-			'transform'      => false,
+			//'transform'      => false,
 			'background'     => array(
 				'css'                  => array(
 					'main'      => '%%order_class%% .tutor-instructor-info-card',

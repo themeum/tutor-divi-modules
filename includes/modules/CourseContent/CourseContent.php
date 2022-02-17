@@ -388,11 +388,11 @@ class CourseContent extends ET_Builder_Module {
 			),
 			'text'           => false,
 			'max_width'      => false,
-			'animation'      => false,
-			'transform'      => false,
+			//'animation'      => false,
+			//'transform'      => false,
 			'background'     => false,
-			'filters'        => false,
-			'box_shadow'     => false,
+			//'filters'        => false,
+			//'box_shadow'     => false,
 		);
 	}
 
