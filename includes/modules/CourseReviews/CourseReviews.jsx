@@ -5,16 +5,7 @@ class CourseReviews extends Component {
     static slug = "tutor-course-reviews";
 
     static css(props) {
-        const additionalCss = [];
-        // review start color
-        if ('' !== props.review_avg_star) {
-            additionalCss.push([
-                {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-rating-stars span`,
-                    declaration: `color: ${props.review_avg_star};`,
-                }
-            ]);         
-        }      
+        const additionalCss = [];   
         if ('' !== props.review_right_star) {
             additionalCss.push([
                 {

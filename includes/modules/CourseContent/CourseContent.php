@@ -237,6 +237,15 @@ class CourseContent extends ET_Builder_Module {
 					),
 					'hide_text_align' => true,
 				),
+				'review_avg_star'        => array(
+					'css'             => array(
+						'main'        => "%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-ratings .tutor-rating-stars span",
+						'tab_slug'    => 'advanced',
+						'toggle_slug' => 'review_avg_star',
+
+					),
+					'hide_text_align' => true,
+				),
 				'review_avg_text'         => array(
 					'label'           => 'Review Avg Total',
 					'css'             => array(
@@ -857,12 +866,6 @@ class CourseContent extends ET_Builder_Module {
 				'toggle_slug'    => 'margin_padding',
 			),
 			// reviews fields.
-			'review_avg_star'                          => array(
-				'label'       => esc_html__( 'Average Star Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'review_avg_total',
-			),
 			'review_right_star'                        => array(
 				'label'       => esc_html__( 'Right Star Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
@@ -1796,18 +1799,6 @@ class CourseContent extends ET_Builder_Module {
 		);
         // review styles start.
 		// review star color.
-		if ( '' !== $this->props['review_avg_star'] ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-rating-stars span',
-					'declaration' => sprintf(
-						'color: %1$s;',
-						$this->props['review_avg_star']
-					),
-				)
-			);
-		}
 		if ( '' !== $this->props['review_right_star'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,

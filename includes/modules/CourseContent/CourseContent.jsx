@@ -621,14 +621,7 @@ class CourseContent extends Component {
             }
         ]);
         // review start color
-        if ('' !== props.review_avg_star) {
-            additionalCss.push([
-                {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-rating-stars span`,
-                    declaration: `color: ${props.review_avg_star};`,
-                }
-            ]);         
-        }      
+      
         if ('' !== props.review_right_star) {
             additionalCss.push([
                 {
