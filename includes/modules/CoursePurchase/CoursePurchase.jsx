@@ -45,7 +45,7 @@ class CoursePurchase extends Component {
 
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
+                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
                     declaration: `align-items: ${align};`
                 }
             ]);
@@ -61,7 +61,7 @@ class CoursePurchase extends Component {
 
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
+                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
                     declaration: `align-items: ${align};`,
                     device: 'tablet'
                 }
@@ -78,7 +78,7 @@ class CoursePurchase extends Component {
 
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-btn`,
+                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
                     declaration: `align-items: ${align};`,
                     device: 'phone'
                 }
@@ -169,6 +169,79 @@ class CoursePurchase extends Component {
                 {
                     selector: `${course_info_wrapper} span.tutor-icon-24`,
                     declaration: `font-size: ${icon_size_phone};`,
+                    device: 'phone'
+                }
+            ]);
+        }
+        additionalCss.push([
+            {
+                selector: '%%order_class%% form',
+                declaration: 'width: 100%;'
+            }
+        ]);
+        // alignment for add to cart button
+        if ( 'left' === props.alignment ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: left;'
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: left;',
+                    device: 'tablet',
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: left;',
+                    device: 'phone',
+                }
+            ]);
+        }
+        if ( 'right' === props.alignment ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: right;'
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: right;',
+                    device: 'tablet'
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: right;',
+                    device: 'phone'
+                }
+            ]);
+        }
+        if ( 'center' === props.alignment ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: center;'
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: center;',
+                    device: 'tablet'
+                }
+            ]);
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% form',
+                    declaration: 'text-align: center;',
                     device: 'phone'
                 }
             ]);

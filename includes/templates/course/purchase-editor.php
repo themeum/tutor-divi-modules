@@ -10,6 +10,7 @@ $course               = get_post( $args['course'] );
 
 $is_enable_date  = get_tutor_option( 'enable_course_update_date' );
 $course_progress = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+$is_woocommerce_active = ( class_exists( 'woocommerce' ) ) ? true : false;
 
 $sidebar_meta   = apply_filters(
 	'tutor/course/single/sidebar/metadata',
@@ -54,7 +55,7 @@ $product        = wc_get_product( $product_id );
 				<?php if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
 						<span class="color-text-primary text-medium-h6">
-							<?php esc_html_e( 'Course Progress', 'tutor' ); ?>
+							<?php echo esc_html( $args['course_progress_title'] ); ?>
 						</span>
 						<div class="list-item-progress tutor-mt-16">
 							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
