@@ -7,38 +7,41 @@
 $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $args['preview_mode'];
 $course               = get_post( $args['course'] );
-$is_enable_date       = get_tutor_option( 'enable_course_update_date' );
-$course_progress      = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
 
-$sidebar_meta         = apply_filters(
+$is_enable_date  = get_tutor_option( 'enable_course_update_date' );
+$course_progress = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+
+$sidebar_meta   = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
 		array(
-			'icon_class' => 'ttr-level-line',
-			'label'      => __( 'Level', 'tutor-lms-divi-modules' ),
-			'value'      => get_tutor_course_level( $course->ID ),
+			'icon_class' => 'tutor-icon-level-line',
+			'label'      => __( 'Level', 'tutor-lms-elementor-addons' ),
+			'value'      => get_tutor_course_level( $args['course'] ),
 		),
 		array(
-			'icon_class' => 'ttr-student-line-1',
-			'label'      => __( 'Total Enrolled', 'tutor-lms-divi-modules' ),
-			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course( $course->ID ) : null,
+			'icon_class' => 'tutor-icon-student-line-1',
+			'label'      => __( 'Total Enrolled', 'tutor-lms-elementor-addons' ),
+			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course( $args['course'] ) : null,
 		),
 		array(
-			'icon_class' => 'ttr-clock-filled',
-			'label'      => __( 'Duration', 'tutor-lms-divi-modules' ),
-			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context( $course->ID ) : '',
+			'icon_class' => 'tutor-icon-clock-filled',
+			'label'      => __( 'Duration', 'tutor-lms-elementor-addons' ),
+			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context( $args['course'] ) : null,
 		),
 		array(
-			'icon_class' => 'ttr-refresh-l',
-			'label'      => __( 'Last Updated', 'tutor-lms-divi-modules' ),
-			'value'      => $is_enable_date && isset( $course->post_modified ) && '' !== $course->post_modified ? tutor_get_formated_date( get_option( 'date_format' ), $course->post_modified ) : '',
+			'icon_class' => 'tutor-icon-refresh-l',
+			'label'      => __( 'Last Updated', 'tutor-lms-elementor-addons' ),
+			'value'      => get_tutor_option( 'enable_course_update_date' ) ? tutor_get_formated_date( get_option( 'date_format' ), get_the_modified_date( '', $course ) ) : null,
 		),
 	),
-	get_the_ID()
+	$args['course']
 );
-$button_size          = $args['button_size'];
-$product_id           = tutor_utils()->get_course_product_id( $args['course'] );
-$product              = wc_get_product( $product_id );
+$button_size    = $args['button_size'];
+$is_purchasable = tutor_utils()->is_course_purchasable( $args['course'] );
+$product_id     = tutor_utils()->get_course_product_id( $args['course'] );
+$product        = wc_get_product( $product_id );
+
 ?>
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
@@ -70,28 +73,54 @@ $product              = wc_get_product( $product_id );
 						</div>
 					</div>
 				<?php endif; ?>					
-			<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-				<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
-			</a>
-			<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
-				<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
-			</button>
-			<?php else : ?>			
-				<div>
-					<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
-				</div>
+				<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+					<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
+				</a>
+				<button type="submit" class="tutor-mt-25 tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full" name="complete_course_btn" value="complete_course">
+					<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
+				</button>
+			<?php else : ?>	
+				<!-- if woocommerce load template from divi modules -->
+				<?php if ( $is_purchasable ) : ?>
+					<?php if( 'woocommerce' === $tutor_course_sell_by ) : ?>
+						<?php
+							tutor_load_template_from_custom_path(
+								dtlms_get_template( 'course/add-to-cart-woocommerce' ),
+								array( 'product_id' => $product_id ),
+								false
+							);
+						?>
+					<?php else: ?>
+						<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
+					<?php endif; ?>
+				<?php else : ?>
+					<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
+						<div>
+							<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
+						</div>
+					</div>
+				<?php endif; ?>
 
 				<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
 					<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
 				</button>
-				<button type="submit" name="add-to-cart" value=""  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
-					<span class="btn-icon ttr-cart-filled"></span>
-					<span><?php echo esc_html( 'Add to cart', 'tutor' ); ?></span>
-				</button>
+			<?php endif; ?>
+
+			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
+					<span class="tutor-enrolled-info-text">
+						<span class="text">
+						<?php esc_html_e( 'You enrolled this course on', 'tutor-lms-elementor-addons' ); ?>	
+						</span>					
+						<span class="text-bold-small tutor-color-success tutor-ml-3 tutor-enrolled-info-date">
+						<?php esc_html_e( 'January 31, 2022(Dummy date)', 'tutor-lms-elementor-addons' ); ?>					
+						</span>
+					</span>
+				</div>
 			<?php endif; ?>
 	</div>
 	<!-- Course Info -->
-	<?php if ( 'enrolled' === $enrollment_mode ) : ?>
 	<div class="tutor-course-sidebar-card-footer tutor-p-30">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
@@ -114,6 +143,5 @@ $product              = wc_get_product( $product_id );
 				</li>
 			<?php endforeach; ?>
 		</ul>
-	</div>	
-	<?php endif; ?>
+	</div>
 </div>
