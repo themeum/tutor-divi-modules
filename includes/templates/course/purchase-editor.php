@@ -54,7 +54,7 @@ $product        = wc_get_product( $product_id );
 			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
 				<?php if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
 					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-						<span class="color-text-primary text-medium-h6">
+						<span class="tutor-color-text-primary text-medium-h6">
 							<?php echo esc_html( $args['course_progress_title'] ); ?>
 						</span>
 						<div class="list-item-progress tutor-mt-16">
@@ -132,13 +132,13 @@ $product        = wc_get_product( $product_id );
 				?>
 				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
 					<div class="flex-center">
-						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
-						<span class="text-regular-caption color-text-hints tutor-ml-5">
+						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> tutor-color-text-primary"></span>
+						<span class="text-regular-caption tutor-color-text-hints tutor-ml-5">
 							<?php echo esc_html( $meta['label'] ); ?>
 						</span>
 					</div>
 					<div>
-						<span class="text-medium-caption color-text-primary">
+						<span class="text-medium-caption tutor-color-text-primary">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
 					</div>

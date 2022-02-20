@@ -85,7 +85,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'enrollment_meta_info_label'           => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.color-text-hints',
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-hints',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -94,7 +94,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'enrollment_meta_info_value'           => array(
 					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.color-text-primary',
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-primary',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -449,20 +449,20 @@ class CoursePurchase extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'progress_bar',
 			),
-			'gap'                   => array(
-				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default_unit'   => 'px',
-				'default'        => '10',
-				'range_settings' => array(
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'progress_bar',
-				'mobile_options' => true,
-			),
+			// 'gap'                   => array(
+			// 	'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+			// 	'type'           => 'range',
+			// 	'default_unit'   => 'px',
+			// 	'default'        => '10',
+			// 	'range_settings' => array(
+			// 		'min'  => 1,
+			// 		'max'  => 100,
+			// 		'step' => 1,
+			// 	),
+			// 	'tab_slug'       => 'advanced',
+			// 	'toggle_slug'    => 'progress_bar',
+			// 	'mobile_options' => true,
+			// ),
 		);
 	}
 	/**
