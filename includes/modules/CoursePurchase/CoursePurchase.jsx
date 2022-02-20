@@ -246,6 +246,48 @@ class CoursePurchase extends Component {
                 }
             ]);
         }
+        // course progress style start
+        if ( props.bar_height ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    declaration: `height: ${props.bar_height} !important;`
+                }
+            ]);
+		}
+		if ( props.bar_radius ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    declaration: `border-radius: ${props.bar_radius};`
+                }
+            ]);
+		}
+		if ( props.bar_background ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    declaration: `background-color: ${props.bar_background};`
+                }
+            ]);
+		}
+		if ( props.bar_color ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .list-item-progress .progress-bar .progress-value',
+                    declaration: `background-color: ${props.bar_color};`
+                }
+            ]);
+		}
+		if ( props.bar_gap ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    declaration: `margin-top: ${props.bar_gap};`
+                }
+            ]);
+		}
+        // course progress style end
         //set styles end
         return additionalCss;
     }

@@ -60,15 +60,14 @@ $product        = wc_get_product( $product_id );
 						<div class="list-item-progress tutor-mt-16">
 							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
 								<span class="progress-steps">
-									<?php echo esc_html( $course_progress['completed_count'] ); ?>/
-									<?php echo esc_html( $course_progress['total_count'] ); ?>
+									5/10
 								</span>
 								<span class="progress-percentage"> 
 									<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
 									<?php esc_html_e( 'Complete', 'tutor' ); ?>
 								</span>
 							</div>
-							<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+							<div class="progress-bar tutor-mt-10" style="--progress-value:50%;">
 								<span class="progress-value"></span>
 							</div>
 						</div>

@@ -48,6 +48,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
 					'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
+					'enrolled_date'         => esc_html__( 'Enrolled Date', 'tutor-lms-divi-modules' ),
 					// course price advanced toggle.
 					'course_price'          => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'course_strike_price'   => esc_html__( 'Course Strike Price', 'tutor-lms-divi-modules' ),
@@ -55,6 +56,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'status_title'          => esc_html__( 'Progress Title', 'tutor-lms-divi-modules' ),
 					'progress_bar'          => esc_html__( 'Progress Bar', 'tutor-lms-divi-modules' ),
 					'status_text'           => esc_html__( 'Progress Text', 'tutor-lms-divi-modules' ),
+					'enrollment_meta_info'           => esc_html__( 'Meta Info', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -62,45 +64,62 @@ class CoursePurchase extends ET_Builder_Module {
 		// advanced fiedls settings.
 		$this->advanced_fields = array(
 			'fonts'      => array(
-
-				'label_font'   => array(
+				'label_font'          => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-regular-caption',
+						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text span.text',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrolled_info',
 				),
-				'text_font'    => array(
-					'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				'enrolled_date'           => array(
+					//'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-medium-h6',
+						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text .tutor-enrolled-info-date',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'enrolled_info',
+					'toggle_slug'     => 'enrolled_date',
 				),
-                // course price font toggle.
-                'course_price'  => array(
-                    //'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				'enrollment_meta_info_label'           => array(
+					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.color-text-hints',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrollment_meta_info',
+				),
+				'enrollment_meta_info_value'           => array(
+					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.color-text-primary',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrollment_meta_info',
+				),
+				// course price font toggle.
+				'course_price'        => array(
+					// 'label'           => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing .tutor-text-bold-h4',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'course_price',
-                ),
-                'course_strike_price'  => array(
-                    //'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				),
+				'course_strike_price' => array(
+					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing del.tutor-text-regular-caption',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'course_strike_price',
-                ),
-				'status_title' => array(
+				),
+				'status_title'        => array(
 					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-progress-wrapper .color-text-primary',
@@ -109,7 +128,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'status_title',
 				),
-				'status_text'  => array(
+				'status_text'         => array(
 					'label'           => esc_html__( 'Status Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .progress-steps, %%order_class%% .progress-percentage',
@@ -356,7 +375,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'label'          => esc_html__( 'Height', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
-				'default'        => '15',
+				'default'        => '7',
 				'range_settings' => array(
 					'min'  => 1,
 					'max'  => 100,
@@ -378,7 +397,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'progress_bar',
 			),
-			'gap'                   => array(
+			'bar_gap'                   => array(
 				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
@@ -390,7 +409,6 @@ class CoursePurchase extends ET_Builder_Module {
 				),
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'progress_bar',
-				'mobile_options' => true,
 			),
 			// progress bar advanced tab.
 			'bar_color'             => array(
@@ -422,7 +440,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'label'          => esc_html__( 'Border Radius', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
-				'default'        => '30',
+				'default'        => '6',
 				'range_settings' => array(
 					'min'  => 1,
 					'max'  => 100,
@@ -472,6 +490,7 @@ class CoursePurchase extends ET_Builder_Module {
 		include dtlms_get_template( 'course/purchase' );
 		return apply_filters( 'dtlms_enrollment_template', ob_get_clean() );
 	}
+
 	/**
 	 * Render module output
 	 *
@@ -724,6 +743,70 @@ class CoursePurchase extends ET_Builder_Module {
                 font-family: "ETmodules" !important;',
 			)
 		);
+
+		// progress bar styles start.
+		if ( '' !== $this->props['bar_height'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
+						'height: %1$s;',
+						$this->props['bar_height']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_radius'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
+						'border-radius: %1$s !important;',
+						$this->props['bar_radius']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_background'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$this->props['bar_background']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_color'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$this->props['bar_color']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_gap'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'declaration' => sprintf(
+						'margin-top: %1$s;',
+						$this->props['bar_gap']
+					),
+				),
+			);
+		}
+
+		// progress bar styles start end.
 
 		// set styles end
 
