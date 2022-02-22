@@ -410,59 +410,6 @@ class CoursePurchase extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'progress_bar',
 			),
-			// progress bar advanced tab.
-			'bar_color'             => array(
-				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'progress_bar',
-			),
-			'bar_background'        => array(
-				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'progress_bar',
-			),
-			'bar_height'            => array(
-				'label'          => esc_html__( 'Height', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default_unit'   => 'px',
-				'default'        => '15',
-				'range_settings' => array(
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'progress_bar',
-			),
-			'bar_radius'            => array(
-				'label'          => esc_html__( 'Border Radius', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default_unit'   => 'px',
-				'default'        => '6',
-				'range_settings' => array(
-					'min'  => 1,
-					'max'  => 100,
-					'step' => 1,
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'progress_bar',
-			),
-			// 'gap'                   => array(
-			// 'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
-			// 'type'           => 'range',
-			// 'default_unit'   => 'px',
-			// 'default'        => '10',
-			// 'range_settings' => array(
-			// 'min'  => 1,
-			// 'max'  => 100,
-			// 'step' => 1,
-			// ),
-			// 'tab_slug'       => 'advanced',
-			// 'toggle_slug'    => 'progress_bar',
-			// 'mobile_options' => true,
-			// ),
 		);
 	}
 	/**

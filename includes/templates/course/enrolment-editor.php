@@ -4,14 +4,13 @@
  *
  * @package Enrollment Widget
  */
-$tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
-$enrollment_mode      = $args['preview_mode'];
-$course               = get_post( $args['course'] );
 
-$is_enable_date  = get_tutor_option( 'enable_course_update_date' );
-$course_progress = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+$enrollment_mode = $args['preview_mode'];
+$course          = get_post( $args['course'] );
 
-$sidebar_meta   = apply_filters(
+$is_enable_date = get_tutor_option( 'enable_course_update_date' );
+
+$sidebar_meta = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
 		array(
@@ -37,10 +36,7 @@ $sidebar_meta   = apply_filters(
 	),
 	$args['course']
 );
-$button_size    = $args['button_size'];
-$is_purchasable = tutor_utils()->is_course_purchasable( $args['course'] );
-$product_id     = tutor_utils()->get_course_product_id( $args['course'] );
-$product        = wc_get_product( $product_id );
+$button_size  = $args['button_size'];
 
 ?>
 <div class="tutor-course-sidebar-card">
@@ -50,29 +46,7 @@ $product        = wc_get_product( $product_id );
 		<?php
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
 		?>
-			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
-				<?php if ( is_array( $course_progress ) && count( $course_progress ) ) : ?>
-					<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-						<span class="color-text-primary text-medium-h6">
-							<?php esc_html_e( 'Course Progress', 'tutor' ); ?>
-						</span>
-						<div class="list-item-progress tutor-mt-16">
-							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
-								<span class="progress-steps">
-									<?php echo esc_html( $course_progress['completed_count'] ); ?>/
-									<?php echo esc_html( $course_progress['total_count'] ); ?>
-								</span>
-								<span class="progress-percentage"> 
-									<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
-									<?php esc_html_e( 'Complete', 'tutor' ); ?>
-								</span>
-							</div>
-							<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
-								<span class="progress-value"></span>
-							</div>
-						</div>
-					</div>
-				<?php endif; ?>					
+			<?php if ( 'enrolled' === $enrollment_mode ) : ?>			
 				<a href="#" class="<?php echo esc_attr( $button_class ); ?> start-continue-retake-button" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
 					<?php esc_html_e( 'Continue Learning', 'tutor-lms-divi-modules' ); ?>
 				</a>
@@ -80,27 +54,6 @@ $product        = wc_get_product( $product_id );
 					<?php esc_html_e( ' Complete Course', 'tutor-lms-divi-modules' ); ?>                        
 				</button>
 			<?php else : ?>	
-				<!-- if woocommerce load template from divi modules -->
-				<?php if ( $is_purchasable ) : ?>
-					<?php if( 'woocommerce' === $tutor_course_sell_by ) : ?>
-						<?php
-							tutor_load_template_from_custom_path(
-								dtlms_get_template( 'course/add-to-cart-woocommerce' ),
-								array( 'product_id' => $product_id ),
-								false
-							);
-						?>
-					<?php else: ?>
-						<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
-					<?php endif; ?>
-				<?php else : ?>
-					<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
-						<div>
-							<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
-						</div>
-					</div>
-				<?php endif; ?>
-
 				<form>
 					<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-enroll-course-button" name="complete_course_btn" value="complete_course">
 						<?php esc_html_e( 'Enroll Course', 'tutor-lms-divi-modules' ); ?>
@@ -132,13 +85,13 @@ $product        = wc_get_product( $product_id );
 				?>
 				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
 					<div class="flex-center">
-						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> color-text-primary"></span>
-						<span class="text-regular-caption color-text-hints tutor-ml-5">
+						<span class="tutor-icon-24 <?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-text-primary"></span>
+						<span class="text-regular-caption tutor-color-text-hints tutor-ml-5">
 							<?php echo esc_html( $meta['label'] ); ?>
 						</span>
 					</div>
 					<div>
-						<span class="text-medium-caption color-text-primary">
+						<span class="text-medium-caption tutor-color-text-primary">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
 					</div>

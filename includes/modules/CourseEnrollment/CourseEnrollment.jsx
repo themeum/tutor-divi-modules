@@ -145,36 +145,35 @@ class CourseEnrollment extends Component {
             }
         ]);
         //purchase icon style
-        const course_info_wrapper = '%%order_class%% .tutor-course-sidebar-card-footer';
-        if('' !== icon_color) {
+        if(icon_color) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: `%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24`,
                     declaration: `color: ${icon_color};`
                 }
             ]);
         }
-        if('' !== icon_size) {
+        if(icon_size) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
         }
-        if('' !== icon_size_tablet) {
+        if(icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
             ]);
         }
-        if('' !== icon_size_phone) {
+        if(icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }

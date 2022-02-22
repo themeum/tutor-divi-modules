@@ -47,11 +47,7 @@ class CourseEnrollment extends ET_Builder_Module {
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
-					'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
-					// course status toggles.
-					'status_title'          => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
-					'progress_bar'          => esc_html__( 'Progress Bar', 'tutor-lms-divi-modules' ),
-					'status_text'           => esc_html__( 'Progress Text', 'tutor-lms-divi-modules' ),
+					'enrollment_meta_info'  => esc_html__( 'Meta Info', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -59,47 +55,36 @@ class CourseEnrollment extends ET_Builder_Module {
 		// advanced fiedls settings.
 		$this->advanced_fields = array(
 			'fonts'      => array(
-
-				'label_font' => array(
+				'enrolled_date'              => array(
+					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text .tutor-enrolled-info-date',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrolled_date',
+				),
+				'enrollment_meta_info_label' => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-regular-caption',
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-hints',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'enrolled_info',
+					'toggle_slug'     => 'enrollment_meta_info',
 				),
-				'text_font'  => array(
-					'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				'enrollment_meta_info_value' => array(
+					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-footer span.text-medium-h6',
+						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-primary:not(.tutor-icon-24), %%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-meta-value',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'enrolled_info',
-				),
-				'status_title'  => array(
-					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
-					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-progress-wrapper .color-text-primary',
-					),
-					'hide_text_align' => true,
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'status_title',
-				),
-				'status_text'  => array(
-					'label'           => esc_html__( 'Status Text', 'tutor-lms-divi-modules' ),
-					'css'             => array(
-						'main' => '%%order_class%% .progress-steps, %%order_class%% .progress-percentage'
-					),
-					'hide_text_align' => true,
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'status_text',
+					'toggle_slug'     => 'enrollment_meta_info',
 				),
 			),
 
 			'button'     => array(
-
 				'enrollment_button'     => array(
 					'label'         => esc_html__( 'Enrollment Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'    => array(
@@ -175,15 +160,15 @@ class CourseEnrollment extends ET_Builder_Module {
 					'hide_icon'     => true,
 				),
 			),
-			'borders'    => false,
-			'box_shadow' => false,
+			//'borders'    => false,
+			//'box_shadow' => false,
 			'text'       => false,
 			'max_width'  => false,
 			// 'margin_padding'  => false,
 			// 'background'        => false,
-			'filters'    => false,
-			'animation'  => false,
-			'transform'  => false,
+			//'filters'    => false,
+			//'animation'  => false,
+			//'transform'  => false,
 		);
 	}
 
@@ -281,18 +266,6 @@ class CourseEnrollment extends ET_Builder_Module {
 					'btn_width' => 'fixed',
 				),
 			),
-			// general tab course status controls.
-			'status_label' => array(
-				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
-				'type'            => 'text',
-				'default'         => esc_html__( 'Course Status', 'tutor-lms-divi-modules' ),
-				'option_category' => 'basic_option',
-				'tab_slug'     	=> 'general',
-				'toggle_slug'	=> 'main_content',
-				'show_if'         => array(
-					'preview_mode' => 'enrolled',
-				),
-			),
 
 			// advanced tab enrolled_info toggle.
 			'icon_size'    => array(
@@ -306,122 +279,15 @@ class CourseEnrollment extends ET_Builder_Module {
 					'step' => '1',
 				),
 				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'enrolled_info',
+				'toggle_slug'    => 'enrollment_meta_info',
 				'mobile_options' => true,
 			),
 			'icon_color'   => array(
 				'label'       => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'enrolled_info',
+				'toggle_slug' => 'enrollment_meta_info',
 			),
-			// advanced tab course status controls.
-						//progress bar advanced tab
-			'bar_color'			=> array(
-				'label'			=> esc_html__( 'Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
-			),
-			'bar_background'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
-			),
-			'bar_height'		=> array(
-				'label'			=> esc_html__( 'Height', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '15',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
-			),
-			'bar_radius'		=> array(
-				'label'			=> esc_html__( 'Border Radius', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '30',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
-			),
-			'gap'		=> array(
-				'label'			=> esc_html__( 'Gap', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '10',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar',
-				'mobile_options'=> true				
-			),
-			// progress bar advanced tab.
-			'bar_color'			=> array(
-				'label'			=> esc_html__( 'Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
-			),
-			'bar_background'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
-			),
-			'bar_height'		=> array(
-				'label'			=> esc_html__( 'Height', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '15',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
-			),
-			'bar_radius'		=> array(
-				'label'			=> esc_html__( 'Border Radius', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '30',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
-			),
-			'gap'		=> array(
-				'label'			=> esc_html__( 'Gap', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '10',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
-				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar',
-				'mobile_options'=> true				
-			),			
 		);
 	}
 	/**
@@ -446,9 +312,10 @@ class CourseEnrollment extends ET_Builder_Module {
 	 */
 	public function get_content( $args = array() ) {
 		ob_start();
-		include tutor()->path . 'templates/single/course/course-entry-box.php';
+		include dtlms_get_template( 'course.enrolment' );
 		return apply_filters( 'dtlms_enrollment_template', ob_get_clean() );
 	}
+
 	/**
 	 * Render module output
 	 *
@@ -590,7 +457,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			);
 		}
 
-		// boders default border style
+		// borders default border style.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -599,13 +466,12 @@ class CourseEnrollment extends ET_Builder_Module {
 			)
 		);
 
-		// purchase icon style
-		$course_info_wrapper = '%%order_class%% .tutor-course-sidebar-card-footer';
-		if ( $icon_color !== '' ) {
+		// purchase icon style.
+		if ( '' !== $icon_color ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$course_info_wrapper span.tutor-icon-24",
+					'selector'    => "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
 					'declaration' => sprintf(
 						'color: %1$s;',
 						$icon_color
@@ -618,7 +484,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$course_info_wrapper span.tutor-icon-24",
+					'selector'    => "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size
@@ -631,8 +497,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$course_info_wrapper span.tutor-icon-24",
-					'declaration' => sprintf(
+					'selector'    => "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_tablet
 					),
@@ -645,7 +510,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$course_info_wrapper span.tutor-icon-24",
+					'selector'    => "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_phone
