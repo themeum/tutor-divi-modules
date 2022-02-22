@@ -47,7 +47,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
-					//'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
+					// 'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
 					'enrolled_date'         => esc_html__( 'Enrolled Date', 'tutor-lms-divi-modules' ),
 					// course price advanced toggle.
 					'course_price'          => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
@@ -56,7 +56,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'status_title'          => esc_html__( 'Progress Title', 'tutor-lms-divi-modules' ),
 					'progress_bar'          => esc_html__( 'Progress Bar', 'tutor-lms-divi-modules' ),
 					'status_text'           => esc_html__( 'Progress Text', 'tutor-lms-divi-modules' ),
-					'enrollment_meta_info'           => esc_html__( 'Meta Info', 'tutor-lms-divi-modules' ),
+					'enrollment_meta_info'  => esc_html__( 'Meta Info', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -65,16 +65,16 @@ class CoursePurchase extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'      => array(
 				// 'label_font'          => array(
-				// 	'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
-				// 	'css'             => array(
-				// 		'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text span.text',
-				// 	),
-				// 	'hide_text_align' => true,
-				// 	'tab_slug'        => 'advanced',
-				// 	'toggle_slug'     => 'enrolled_info',
+				// 'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				// 'css'             => array(
+				// 'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text span.text',
 				// ),
-				'enrolled_date'           => array(
-					//'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				// 'hide_text_align' => true,
+				// 'tab_slug'        => 'advanced',
+				// 'toggle_slug'     => 'enrolled_info',
+				// ),
+				'enrolled_date'              => array(
+					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text .tutor-enrolled-info-date',
 					),
@@ -82,7 +82,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrolled_date',
 				),
-				'enrollment_meta_info_label'           => array(
+				'enrollment_meta_info_label' => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-hints',
@@ -91,7 +91,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrollment_meta_info',
 				),
-				'enrollment_meta_info_value'           => array(
+				'enrollment_meta_info_value' => array(
 					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% ul.tutor-course-sidebar-card-meta-list li span.tutor-color-text-primary',
@@ -101,7 +101,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'toggle_slug'     => 'enrollment_meta_info',
 				),
 				// course price font toggle.
-				'course_price'        => array(
+				'course_price'               => array(
 					// 'label'           => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing .tutor-text-bold-h4',
@@ -110,7 +110,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'course_price',
 				),
-				'course_strike_price' => array(
+				'course_strike_price'        => array(
 					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing del.tutor-text-regular-caption',
@@ -119,7 +119,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'course_strike_price',
 				),
-				'status_title'        => array(
+				'status_title'               => array(
 					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .tutor-course-progress-wrapper .color-text-primary',
@@ -128,7 +128,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'status_title',
 				),
-				'status_text'         => array(
+				'status_text'                => array(
 					'label'           => esc_html__( 'Status Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .progress-steps, %%order_class%% .progress-percentage',
@@ -397,7 +397,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'progress_bar',
 			),
-			'bar_gap'                   => array(
+			'bar_gap'               => array(
 				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
@@ -450,18 +450,18 @@ class CoursePurchase extends ET_Builder_Module {
 				'toggle_slug'    => 'progress_bar',
 			),
 			// 'gap'                   => array(
-			// 	'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
-			// 	'type'           => 'range',
-			// 	'default_unit'   => 'px',
-			// 	'default'        => '10',
-			// 	'range_settings' => array(
-			// 		'min'  => 1,
-			// 		'max'  => 100,
-			// 		'step' => 1,
-			// 	),
-			// 	'tab_slug'       => 'advanced',
-			// 	'toggle_slug'    => 'progress_bar',
-			// 	'mobile_options' => true,
+			// 'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+			// 'type'           => 'range',
+			// 'default_unit'   => 'px',
+			// 'default'        => '10',
+			// 'range_settings' => array(
+			// 'min'  => 1,
+			// 'max'  => 100,
+			// 'step' => 1,
+			// ),
+			// 'tab_slug'       => 'advanced',
+			// 'toggle_slug'    => 'progress_bar',
+			// 'mobile_options' => true,
 			// ),
 		);
 	}
