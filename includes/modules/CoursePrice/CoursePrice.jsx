@@ -7,7 +7,7 @@ class CoursePrice extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const selector = '%%order_class%% .price .price';
+        const selector = '%%order_class%% .dtlms-course-price';
 
         //props
         let alignment = props.alignment;
@@ -15,36 +15,11 @@ class CoursePrice extends Component {
         let alignment_tablet = is_responsive_alignment && props.alignment_tablet ? props.alignment_tablet : alignment;
         let alignment_phone = is_responsive_alignment && props.alignment_phone ? props.alignment_phone : alignment;
 
-        if('left' === alignment) {
-            alignment = 'flex-end';
-        } else if('right' === alignment) {
-            alignment = 'flex-start';
-        }        
-
-        if('left' === alignment_tablet) {
-            alignment_tablet = 'flex-end';
-        } else if('right' === alignment_tablet) {
-            alignment_tablet = 'flex-start';
-        }        
-
-        if('left' === alignment_phone) {
-            alignment_phone = 'flex-end';
-        } else if('right' === alignment_phone) {
-            alignment_phone = 'flex-start';
-        }
-
-        additionalCss.push([
-            {
-                selector: selector,
-                declaration: `display: flex; flex-direction: row-reverse;`
-            }
-        ]);
-
         if(alignment) {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `justify-content: ${alignment};`
+                    declaration: `text-align: ${alignment};`
                 }
             ]);
         }
@@ -53,7 +28,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `justify-content: ${alignment_tablet};`,
+                    declaration: `text-align: ${alignment_tablet};`,
                     device: 'tablet'
                 }
             ]);
@@ -63,7 +38,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `justify-content: ${alignment_phone};`,
+                    declaration: `text-align: ${alignment_phone};`,
                     device: 'phone'
                 }
             ]);

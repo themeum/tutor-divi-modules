@@ -6,7 +6,11 @@
 
 
 $product_id = isset( $data['product_id'] ) ? $data['product_id']: tutor_utils()->get_course_product_id();
-$product    = wc_get_product( $product_id );
+$product    = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : '';
+if ( '' === $product ) {
+	esc_html_e( 'Woocommerce product not found.', 'tutor-lms-divi-modules' );
+	return;
+}
 if ( $product ) {
 	if ( tutor_utils()->is_course_added_to_cart( $product_id, true ) ) {
 		?>

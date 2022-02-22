@@ -104,7 +104,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'course_price'               => array(
 					// 'label'           => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing .tutor-text-bold-h4',
+						'main' => '%%order_class%% .tutor-course-sidebar-card-pricing .text-bold-h4',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
