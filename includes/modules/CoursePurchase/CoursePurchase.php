@@ -47,7 +47,7 @@ class CoursePurchase extends ET_Builder_Module {
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
-					'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
+					//'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
 					'enrolled_date'         => esc_html__( 'Enrolled Date', 'tutor-lms-divi-modules' ),
 					// course price advanced toggle.
 					'course_price'          => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
@@ -64,15 +64,15 @@ class CoursePurchase extends ET_Builder_Module {
 		// advanced fiedls settings.
 		$this->advanced_fields = array(
 			'fonts'      => array(
-				'label_font'          => array(
-					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
-					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text span.text',
-					),
-					'hide_text_align' => true,
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'enrolled_info',
-				),
+				// 'label_font'          => array(
+				// 	'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				// 	'css'             => array(
+				// 		'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text span.text',
+				// 	),
+				// 	'hide_text_align' => true,
+				// 	'tab_slug'        => 'advanced',
+				// 	'toggle_slug'     => 'enrolled_info',
+				// ),
 				'enrolled_date'           => array(
 					//'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
@@ -348,14 +348,14 @@ class CoursePurchase extends ET_Builder_Module {
 					'step' => '1',
 				),
 				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'enrolled_info',
+				'toggle_slug'    => 'enrollment_meta_info',
 				'mobile_options' => true,
 			),
 			'icon_color'            => array(
 				'label'       => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'enrolled_info',
+				'toggle_slug' => 'enrollment_meta_info',
 			),
 			// advanced tab course status controls.
 						// progress bar advanced tab
