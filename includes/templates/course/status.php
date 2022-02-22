@@ -5,26 +5,33 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$completed_count = tutor_utils()->get_course_completed_percent();
-$display_percent = $args['display_percent'];
 do_action( 'tutor_course/single/enrolled/before/lead_info/progress_bar' );
+$course_progress = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+
 ?>
 
-<div class="tutor-course-status">
-	<h4 class="tutor-segment-title"><?php _e( $args['status_label'], 'tutor-lms-divi-modules' ); ?></h4>
-	<div class="tutor-progress-bar-wrap">
-		<div class="tutor-progress-bar">
-			<div class="tutor-progress-filled" style="--tutor-progress-left: <?php esc_html_e( $completed_count . '%;' ); ?>"></div>
+<?php if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>
+	<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+		<span class="tutor-color-text-primary tutor-text-medium-h6">
+			<?php echo esc_html( $args['course_progress_title'], 'tutor-lms-divi-modules' ); ?>
+		</span>
+		<div class="list-item-progress tutor-mt-16">
+			<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<span class="progress-steps">
+					<?php echo esc_html( $course_progress['completed_count'] ); ?>/
+					<?php echo esc_html( $course_progress['total_count'] ); ?>
+				</span>
+				<span class="progress-percentage"> 
+					<?php echo esc_html( $course_progress['completed_percent'] . '%' ); ?>
+					<?php esc_html_e( 'Complete', 'tutor-lms-divi-modules' ); ?>
+				</span>
+			</div>
+			<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+				<span class="progress-value"></span>
+			</div>
 		</div>
-		<?php
-		if ( $display_percent == 'on' ) :
-			;
-			?>
-			<span class="tutor-progress-percent"><?php esc_attr_e( $completed_count ); ?>% <?php _e( ' Complete', 'tutor-lms-divi-modules' ); ?></span>
-		<?php endif; ?>
 	</div>
-</div>
-
+<?php endif; ?>
 <?php
 	do_action( 'tutor_course/single/enrolled/after/lead_info/progress_bar' );
 ?>

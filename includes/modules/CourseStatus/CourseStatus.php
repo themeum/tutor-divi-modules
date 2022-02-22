@@ -1,7 +1,7 @@
 <?php
-
 /**
  * Tutor Course Status Module for Divi Builder
+ *
  * @since 1.0.0
  * @author Themeum<www.themeum.com>
  */
@@ -12,9 +12,9 @@ defined( 'ABSPATH' ) || exit;
 
 class CourseStatus extends ET_Builder_Module {
 
-    // Module slug (also used as shortcode tag)
-    public $slug        = 'tutor_course_status';
-    public $vb_support  = 'on';
+	// Module slug (also used as shortcode tag)
+	public $slug       = 'tutor_course_status';
+	public $vb_support = 'on';
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
@@ -27,67 +27,62 @@ class CourseStatus extends ET_Builder_Module {
 	 *
 	 * @since 1.0.0
 	 */
-    public function init() {
-        $this->name         = esc_html__( 'Tutor Course Status', 'tutor-lms-divi-modules' ); 
-        $this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+	public function init() {
+		$this->name      = esc_html__( 'Tutor Course Status', 'tutor-lms-divi-modules' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
-		//toggles settings (content tab)
+		// toggles settings (content tab)
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
+					'main_content' => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
 				),
 			),
-			'advanced'	=> array(
-				'toggles'	=> array(
-					'section_title'	=> array(
-						'title'	=> esc_html__( 'Section Title', 'tutor-lms-divi-modules')
-					),
-					'progress_bar'	=> array(
-						'title'	=> esc_html__( 'Progress Bar', 'tutor-lms-divi-modules')
-					),
-					'progress_text'	=> array(
-						'title'	=> esc_html__( 'Progress Text', 'tutor-lms-divi-modules')
-					),
-				)
-			)
-		);
-
-		//advanced fields settings (design tab)
-		$label_selector		= '%%order_class%% .tutor-course-status .tutor-segment-title';
-		$text_selector		= '%%order_class%% .tutor-course-status .tutor-progress-percent';
-
-		$this->advanced_fields = array (
-			'fonts'		=> array(
-				'label'				=> array(
-					'label'			=> esc_html__( 'Section Title', 'tutor-lms-divi-modules'),
-					'css'			=> array(
-						'main'	=> $label_selector
-					),
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'section_title'
-				),
-				'progress_text'		=> array(
-					'label'			=> esc_html__( 'Progress', 'tutor-lms-divi-modules'),
-					'css'			=> array(
-						'main'	=> $text_selector
-					),
-					'hide_text_align'	=> true,
-					'tab_slug'		=> 'advanced',
-					'toggle_slug'	=> 'progress_text'
+			'advanced' => array(
+				'toggles' => array(
+					'status_title'          => esc_html__( 'Progress Title', 'tutor-lms-divi-modules' ),
+					'progress_bar'          => esc_html__( 'Progress Bar', 'tutor-lms-divi-modules' ),
+					'status_text'           => esc_html__( 'Progress Text', 'tutor-lms-divi-modules' ),
 				),
 			),
-			'button'        => false,
-			'text'			=> false,
-			'max_width'		=> false,
-			'borders'		=> false,
-			'background'	=> false,
-			'filters'		=> false,
-			'animation'		=> false,
-			'box_shadow'	=> false,
-			'transform'		=> false			
 		);
-    }
+
+		// advanced fields settings (design tab)
+		$label_selector = '%%order_class%% .tutor-course-status .tutor-segment-title';
+		$text_selector  = '%%order_class%% .tutor-course-status .tutor-progress-percent';
+
+		$this->advanced_fields = array(
+			'fonts'     => array(
+				'status_title'               => array(
+					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .tutor-course-progress-wrapper .tutor-color-text-primary',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'status_title',
+				),
+				'status_text'                => array(
+					'label'           => esc_html__( 'Status Text', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .progress-steps, %%order_class%% .progress-percentage',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'status_text',
+				),
+			),
+			'button'    => false,
+			'text'      => false,
+			'max_width' => false,
+			//'borders'   => false,
+			// 'background' => false,
+			// 'filters'    => false,
+			// 'animation'  => false,
+			// 'box_shadow' => false,
+			// 'transform'  => false,
+		);
+	}
 
 	/**
 	 * Module's specific fields
@@ -96,102 +91,130 @@ class CourseStatus extends ET_Builder_Module {
 	 *
 	 * @return array
 	 */
-    public function get_fields() {
+	public function get_fields() {
 		return array(
-			'status_label'    	=> array(
-				'label'				=> esc_html__( 'Label', 'tutor-lms-divi-modules' ),
-				'type'            	=> 'text',
-				'default'			=> esc_html__( 'Course Status', 'tutor-lms-divi-modules' ),
-				'option_category' 	=> 'basic_option',
-				'toggle_slug'     	=> 'main_content',
+			'course'                => Helper::get_field(
+				array(
+					'default'          => Helper::get_course_default(),
+					'computed_affects' => array(
+						'__course_progress',
+					),
+				)
 			),
-            'display_percent'	=> array(
-				'label'				=> esc_html__( 'Dispaly Percent', 'tutor-lms-divi-modules' ),
-				'type'            	=> 'yes_no_button',
-				'options'			=> array(
-					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+			'__course_progress'     => array(
+				'type'                => 'computed',
+				'computed_callback'   => array(
+					'CourseStatus',
+					'get_edit_content',
 				),
-				'default'			=> 'on',
-				'option_category' 	=> 'basic_option',
-				'toggle_slug'     	=> 'main_content',
+				'computed_depends_on' => array( 'course', 'course_progress_title' ),
+				'computed_minimum'    => array( 'course', 'course_progress_title' ),
 			),
-			'position'			=> array(
-				'label'				=> esc_html__( 'Position', 'tutor-lms-divi-modules'),
-				'type'				=> 'select',
-				'options'			=> array(
-					'inside'	=> esc_html__( 'Inside', 'tutor-lms-divi-modules' ),
-					'outside'	=> esc_html__( 'Outside', 'tutor-lms-divi-modules' ),
-					'on_top'	=> esc_html__( 'On Top', 'tutor-lms-divi-modules' ),
-				),
-				'default'			=> 'outside',
-				'toggle_slug'		=> 'main_content'
+			'course_progress_title' => array(
+				'label'           => esc_html__( 'Progress Title', 'tutor-lms-divi-modules' ),
+				'type'            => 'text',
+				'default'         => esc_html__( 'Course Progress', 'tutor-lms-divi-modules' ),
+				'option_category' => 'basic_option',
+				'tab_slug'        => 'general',
+				'toggle_slug'     => 'main_content',
 			),
 
-			//progress bar advanced tab
-			'bar_color'			=> array(
-				'label'			=> esc_html__( 'Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
+			// progress bar advanced tab.
+			'bar_color'             => array(
+				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'progress_bar',
 			),
-			'bar_background'	=> array(
-				'label'			=> esc_html__( 'Background Color', 'tutor-lms-divi-modules'),
-				'type'			=> 'color-alpha',
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'
+			'bar_background'        => array(
+				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'progress_bar',
 			),
-			'bar_height'		=> array(
-				'label'			=> esc_html__( 'Height', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '15',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
+			'bar_height'            => array(
+				'label'          => esc_html__( 'Height', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default_unit'   => 'px',
+				'default'        => '7',
+				'range_settings' => array(
+					'min'  => 1,
+					'max'  => 100,
+					'step' => 1,
 				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'progress_bar',
 			),
-			'bar_radius'		=> array(
-				'label'			=> esc_html__( 'Border Radius', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '30',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
+			'bar_radius'            => array(
+				'label'          => esc_html__( 'Border Radius', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default_unit'   => 'px',
+				'default'        => '30',
+				'range_settings' => array(
+					'min'  => 1,
+					'max'  => 100,
+					'step' => 1,
 				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar'				
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'progress_bar',
 			),
-			'gap'		=> array(
-				'label'			=> esc_html__( 'Gap', 'tutor-lms-divi-modules'),
-				'type'			=> 'range',
-				'default_unit'	=> 'px',
-				'default'		=> '10',
-				'range_settings'=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
+			'bar_gap'               => array(
+				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default_unit'   => 'px',
+				'default'        => '10',
+				'range_settings' => array(
+					'min'  => 1,
+					'max'  => 100,
+					'step' => 1,
 				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'progress_bar',
-				'mobile_options'=> true				
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'progress_bar',
 			),
 
 		);
-    }
+	}
+
+	/**
+	 * Editing template just for mocking main template with dummy data
+	 *
+	 * @return string  template markup
+	 */
+	public static function get_edit_content( $args = array() ) {
+		ob_start();
+		if ( isset( $args['course'] ) ) :
+			?>
+			<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
+				<span class="tutor-color-text-primary tutor-text-medium-h6">
+					<?php echo esc_html( $args['course_progress_title'], 'tutor-lms-divi-modules' ); ?>
+				</span>
+				<div class="list-item-progress tutor-mt-16">
+					<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+						<span class="progress-steps">
+							5/10
+						</span>
+						<span class="progress-percentage"> 
+							50%
+							<?php esc_html_e( 'Complete', 'tutor-lms-divi-modules' ); ?>
+						</span>
+					</div>
+					<div class="progress-bar tutor-mt-10" style="--progress-value:50%;">
+						<span class="progress-value"></span>
+					</div>
+				</div>
+			</div>
+			<?php
+		endif;
+		return ob_get_clean();
+	}
 	/**
 	 * Get the tutor course author
 	 *
 	 * @return string
 	 */
-	public static function get_content($args = []) {
+	public static function get_content( $args = array() ) {
 		ob_start();
-		include_once dtlms_get_template('course/status');
+		include_once dtlms_get_template( 'course/status' );
 		return ob_get_clean();
 	}
 
@@ -206,189 +229,78 @@ class CourseStatus extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-    public function render( $attr, $content, $render_slug) {
-        //selectors
-		$wrapper				= '%%order_class%% .tutor-course-status';
-        $progress_bar_wrap		= '%%order_class%% .tutor-progress-bar-wrap';
-        $progress_bar_selector	= '%%order_class%% .tutor-progress-bar';
-        $progress_fill_selector = '%%order_class%% .tutor-progress-bar .tutor-progress-filled';
-        $text_selector			= '%%order_class%% .tutor-progress-percent';
-
-        //props
-        $position				= sanitize_text_field( $this->props[ 'position' ] );
-        $bar_color				= sanitize_text_field( $this->props[ 'bar_color' ] );
-        $bar_background			= sanitize_text_field( $this->props[ 'bar_background' ] );
-        $bar_height				= sanitize_text_field( $this->props[ 'bar_height' ] );
-        $bar_radius				= sanitize_text_field( $this->props[ 'bar_radius' ] );
-
-		$gap					= sanitize_text_field( $this->props['gap'] );
-		$gap_tablet				= isset( $this->props['gap_tablet'] ) && '' !== $this->props['gap_tablet'] ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
-		$gap_phone				= isset( $this->props['gap_phone'] ) && '' !== $this->props['gap_phone'] ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
-
-		//set style
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $progress_fill_selector.':after',
-				'declaration'	=> 'content: none;'
-			)
-		);		
-		if( '' !== $position && $position === 'inside' ) {
+	public function render( $attr, $content, $render_slug ) {
+		// set style.
+		if ( '' !== $this->props['bar_height'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $text_selector,
-					'declaration'	=> 'position: absolute; left: 50%;'
-				)
-			);
-		}
-
-		if( '' !== $position && $position === 'on_top' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_bar_wrap,
-					'declaration'	=> 'dislay: flex; flex-direction: column-reverse;'
-				)
-			);
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $text_selector,
-					'declaration'	=> 'align-self: flex-end;'
-				)
-			);
-		}
-
-		if( '' !== $bar_color ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_fill_selector,
-					'declaration'	=> sprintf(
-						'background-color: %1$s;',
-						$bar_color
-					)
-				)
-			);
-		}
-
-		if( '' !== $bar_background ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_bar_selector,
-					'declaration'	=> sprintf(
-						'background-color: %1$s;',
-						$bar_background
-					)
-				)
-			);
-		}
-
-		if( '' !== $bar_height ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_bar_selector,
-					'declaration'	=> sprintf(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
 						'height: %1$s;',
-						$bar_height
-					)
-				)
-			);
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_fill_selector,
-					'declaration'	=> sprintf(
-						'height: %1$s;',
-						$bar_height
-					)
-				)
-			);
-		}
-
-		if( '' !== $bar_radius ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_bar_selector,
-					'declaration'	=> sprintf(
-						'border-radius: %1$s;',
-						$bar_radius
-					)
-				)
-			);
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $progress_fill_selector,
-					'declaration'	=> sprintf(
-						'border-radius: %1$s;',
-						$bar_radius
-					)
-				)
-			);
-		}
-
-		//gap style
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $wrapper,
-				'declaration'	=> 'display: flex; flex-direction: column;'
-			)				
-		);
-
-		if ( '' !== $gap ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $wrapper,
-					'declaration'	=> sprintf(
-						'row-gap: %1$s;',
-						esc_html( $gap ) 
-					)
-				)				
-			);
-		}
-		if ( '' !== $gap_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'		=> $wrapper,
-					'declaration'	=> sprintf(
-						'row-gap: %1$s;',
-						esc_html( $gap_tablet ) 
+						$this->props['bar_height']
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
-				)				
+				),
 			);
 		}
-		if ( '' !== $gap_phone ) {
+		if ( '' !== $this->props['bar_radius'] ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $wrapper,
-					'declaration'	=> sprintf(
-						'row-gap: %1$s;',
-						esc_html( $gap_phone ) 
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
+						'border-radius: %1$s !important;',
+						$this->props['bar_radius']
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
-				)				
+				),
 			);
 		}
-		//set style end
-		$output = self::get_content($this->props);
+		if ( '' !== $this->props['bar_background'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$this->props['bar_background']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_color'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$this->props['bar_color']
+					),
+				),
+			);
+		}
+		if ( '' !== $this->props['bar_gap'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'declaration' => sprintf(
+						'margin-top: %1$s;',
+						$this->props['bar_gap']
+					),
+				),
+			);
+		}
+
+		// set style end.
+		$output = self::get_content( $this->props );
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
-		if ('' === $output) {
+		if ( '' === $output ) {
 			return '';
 		}
-
-		return $this->_render_module_wrapper($output, $render_slug);
-    }
+		return $this->_render_module_wrapper( $output, $render_slug );
+	}
 
 }
-new CourseStatus;
+new CourseStatus();

@@ -122,7 +122,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'status_title'               => array(
 					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-progress-wrapper .color-text-primary',
+						'main' => '%%order_class%% .tutor-course-progress-wrapper .tutor-color-text-primary',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
