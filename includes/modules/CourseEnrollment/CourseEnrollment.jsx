@@ -16,7 +16,6 @@ class CourseEnrollment extends Component {
         //selectors
         const wrapper               = '%%order_class%% .tutor-course-sidebar-card';
         const enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
-
         //props
         const alignment                 = props.alignment;
         const is_responsive_alignment   = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");

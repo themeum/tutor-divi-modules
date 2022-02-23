@@ -15,8 +15,8 @@ class CourseList extends Component {
         const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
         const badge_selector        = `${wrapper} .tutor-course-loop-level`;
         const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar, %%order_class%% .tutor-single-course-avatar img`;
-        const star_selector         = `${wrapper} .tutor-star-rating-group i`;
-        const star_wrapper_selector = `${wrapper} .tutor-star-rating-group`;
+        const star_selector         = `${wrapper} .tutor-loop-rating-wrap .tutor-rating-stars span`;
+        const star_wrapper_selector = `${wrapper} .tutor-loop-rating-wrap .tutor-rating-stars`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
         const dots_wrapper_selector = '%%order_class%% .slick-dots';
@@ -628,6 +628,14 @@ class CourseList extends Component {
             {
                 selector: '%%order_class%% .tutor-course-header a img',
                 declaration: `filter: hue-rotate(${props.child_filter_hue_rotate}) saturate(${props.child_filter_saturate}) brightness(${props.child_filter_brightness}) invert(${props.child_filter_invert}) sepia(${props.child_filter_sepia}) opacity(${props.child_filter_opacity}) blur(${props.child_filter_blur}) contrast(${props.child_filter_contrast});`
+            },
+            {
+                selector: '%%order_class%% .tutor-loop-cart-btn-wrap a::before',
+                declaration: 'content: "" ',
+            },
+            {
+                selector: '%%order_class%% .list-item-price .price',
+                declaration: 'display: flex;',
             }
         ]);
         //set styles end
@@ -644,9 +652,9 @@ class CourseList extends Component {
         const ratings = [];
         for(let i=1; i < 6; i++) {
             if(avg_rating >= i) {
-                ratings.push(<i className='tutor-icon-star-full'></i>)
+                ratings.push(<span className='tutor-icon-star-full-filled'></span>)
             } else {
-                ratings.push(<i className='tutor-icon-star-line'></i>)
+                ratings.push(<span className='tutor-icon-star-line-filled'></span>)
             }
         }
         return ratings;
@@ -678,12 +686,12 @@ class CourseList extends Component {
         return (
             <Fragment>
                 <div className="tutor-single-loop-meta">
-                    <i className='tutor-icon-user'></i>
+                    <i className='meta-icon tutor-icon-user-filled tutor-color-text-hints'></i>
                     <span> {course.enroll_count} </span>
                 </div>
                 <div className="tutor-single-loop-meta">
-                    <i className='tutor-icon-clock'></i> 
-                    <span> {course.course_duration} </span>
+                    <i className='meta-icon tutor-icon-clock-filled tutor-color-text-hints'></i> 
+                    <span dangerouslySetInnerHTML={{__html: course.course_duration}}></span>
                 </div>
             </Fragment>
             
@@ -707,7 +715,7 @@ class CourseList extends Component {
         }
         return(
         <span className="tutor-course-wishlist">
-            <span className="tutor-icon-fav-line tutor-course-wishlist-btn  "></span> 
+            <span className="tutor-icon-fav-line-filled tutor-course-wishlist-btn  "></span> 
         </span>
         );
     }
@@ -735,60 +743,6 @@ class CourseList extends Component {
         }
     }
 
-    footerTemplate(show,course,icon) {
-        if(show === 'off') {
-            return '';
-        }
-        const utils     = window.ET_Builder.API.Utils;
-        const cart_icon = utils.processFontIcon(icon);
-        return (
-            <div className="tutor-course-loop-price">
-                <div className="price">
-                    {
-                        course.loop_price.sale_price ?                     
-                        <del>
-                            <span className="woocommerce-Price-amount amount">
-                                <bdi>
-                                    <span className="woocommerce-Price-currencySymbol">
-                                    { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
-                                    </span>
-                                    { course.loop_price.regular_price }
-                                </bdi>
-                            </span>
-                        </del>  
-                        :
-
-                        <span className="woocommerce-Price-amount amount">
-                            <bdi>
-                                <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
-                                </span>
-                                { course.loop_price.regular_price }
-                            </bdi>
-                        </span>
-
-                    }                      
-                    <ins>
-                        <span className="woocommerce-Price-amount amount">
-                            <bdi>
-                            <span className="woocommerce-Price-currencySymbol">
-                                { course.loop_price.sale_price !== '' ? <span dangerouslySetInnerHTML={{__html: course.currency_symbol}}></span> : '' }
-                                </span>
-                                { course.loop_price.sale_price }
-                            </bdi>
-                        </span>
-                    </ins> 
-                    <div className="tutor-loop-cart-btn-wrap">
-                        <a href="/" data-icon={cart_icon}>
-                            { this.footerButtonText(course.is_enrolled, course) }
-                        </a>
-                    </div>    
-                </div>
-            </div>
-        );       
-    }
-
-
     /**
      * 
      * @param {*} props 
@@ -815,8 +769,10 @@ class CourseList extends Component {
                             <div className="tutor-loop-course-container">
 
                                 <div className="tutor-loop-rating-wrap">
-                                    <div className="tutor-star-rating-group">
-                                        {this.ratingStars(props.rating, course.course_rating.rating_avg)}
+                                    <div className="tutor-ratings">
+                                        <div className="tutor-rating-stars">
+                                            {this.ratingStars(props.rating, course.course_rating.rating_avg)}
+                                        </div>
                                     </div>
                                 </div>
                             
@@ -832,24 +788,23 @@ class CourseList extends Component {
                                     { this.metaTemplate(props.meta_data,course) }
                                 </div>
 
-                                <div className="tutor-loop-author">
+                                <div className="tutor-loop-author list-item-author tutor-bs-d-flex tutor-bs-align-items-center tutor-mt-30">
                                     { this.avatarTemplate(props.avatar,course.author_avatar) }
-                                    <div className="tutor-single-course-author-name">
-                                    
-                                        <a href="/">By {course.author_name}</a>
-                                    </div>
-
-                                    <div className="tutor-course-lising-category">
-                                        { course.course_category.length ? <span> In </span> : '' }
-                                        { this.categoryTemplate(props.category,course.course_category) }
+                                    <div className='tutor-course-meta text-regular-caption tutor-color-text-subsued'>
+                                        <span className="tutor-single-course-author-name tutor-course-meta-name">
+                                            <a href="/">By {course.author_name}</a>
+                                        </span>
+                                        <span className="tutor-course-lising-category">
+                                            { course.course_category.length ? <span className='tutor-course-meta-cat'> In </span> : '' }
+                                            { this.categoryTemplate(props.category,course.course_category) }
+                                        </span>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="tutor-loop-course-footer tutor-divi-courselist-footer" dangerouslySetInnerHTML={{__html: course.footer_template}}>
 
-                            <div className="tutor-loop-course-footer tutor-divi-courselist-footer">
-                                { this.footerTemplate(props.footer, course, props.cart_button_icon) }
                             </div>
-                        
                         </div> 
 
                 </div>

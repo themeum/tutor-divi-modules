@@ -52,7 +52,6 @@ class CourseList extends ET_Builder_Module {
 					'category'			=> esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 					'rating'			=> esc_html__( 'Rating', 'tutor-lms-divi-modules' ),
 					'footer'			=> esc_html__( 'Footer', 'tutor-lms-divi-modules' ),
-					'cart_button'		=> esc_html__( 'Cart Button', 'tutor-lms-divi-modules' ),
 					'pagination_styles'	=> esc_html__( 'Pagination', 'tutor-lms-divi-modules' )
 				),
 			)
@@ -88,12 +87,12 @@ class CourseList extends ET_Builder_Module {
 				),
 				'footer'	=> array(
 					'css'				=> array(
-						'main'	=> '%%order_class%% .tutor-divi-courselist-main-wrap .price',
+						'label'	=> esc_html( 'Price', 'tutor-lms-divi-modules' ),
+						'main'	=> '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
 					),
 					'tab_slug'				=> 'advanced',
-					'toggle_slug'			=> 'footer' ,
+					'toggle_slug'			=> 'footer',
 					'hide_text_align'		=> true,
-					
 				),
 				'pagination'	=> array(
 					'css'				=> array(
@@ -108,24 +107,46 @@ class CourseList extends ET_Builder_Module {
 			),
 			
 			'button'		=> array(
-                'cart_button' => array(
-                    'label'         => esc_html__( 'Cart Button', 'tutor-lms-divi-modules' ),
+                'add_to_cart_button' => array(
+                    'label'         => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
-                            'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
+                            'main'  => '%%order_class%% .add_to_cart_button'
                         )
                     ),
                     'css'           => array(
-                        'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
+                        'main'  => '%%order_class%% .add_to_cart_button'
                     ),
 					'margin_padding' => array(
 						'css' => array(
 							'important' => 'all',
 						),
 					),
-                    //'use_alignment' => false,
+                    'use_alignment' => false,
+					'hide_icon'     => true,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'cart_button' , 
+                    'toggle_slug'   => 'footer', 
+                    'important'     => true
+                ),
+                'enroll_course_button' => array(
+                    'label'         => esc_html__( 'Enroll Course/ Continue Learning/ Start Learning/ Download Certificate Button', 'tutor-lms-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .list-item-button a:not(.add_to_cart_button)',
+                        )
+                    ),
+                    'css'           => array(
+                        'main'  => '%%order_class%% .list-item-button a:not(.add_to_cart_button)',
+                    ),
+					'margin_padding' => array(
+						'css' => array(
+							'important' => 'all',
+						),
+					),
+                    'use_alignment' => false,
+					'hide_icon'     => true,
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'footer',
                     'important'     => true
                 ),
 
@@ -199,7 +220,7 @@ class CourseList extends ET_Builder_Module {
 			'max_width'		=> false,
 			'transform'		=> false,
 			'box_shadow'	=> false,
-			'button'		=> false
+			//'button'		=> false
 			
 		);
 		
@@ -825,11 +846,31 @@ class CourseList extends ET_Builder_Module {
 				$post->course_rating	= tutils()->get_course_rating( $post->ID );
 
 				$post->course_price 	= tutils()->get_course_price( $post->ID );
+				$post->is_course_purchasable 	= tutils()->is_course_purchasable( $post->ID );
 
 				$post->loop_price		= self::get_course_price( $post->ID );
 
 				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
 
+				// prepare footer.
+				ob_start();
+				if(tutor_utils()->is_course_added_to_cart( $post->ID ) ){
+					tutor_load_template( 'loop.course-in-cart' );
+				}
+				else if( tutor_utils()->is_enrolled( $post->ID ) ){
+					tutor_load_template( 'loop.course-continue' );
+				}
+				else{
+					$tutor_course_sell_by = apply_filters('tutor_course_sell_by', null);
+					if ($tutor_course_sell_by){
+						tutor_load_template( 'loop.course-price-'.$tutor_course_sell_by );
+					}else{
+						tutor_load_template( 'loop.course-price' );
+					}
+				}
+				$footer_template = apply_filters( 'tutor_course_loop_price', ob_get_clean() );
+				$post->footer_template = $footer_template;
+				// prepare footer end.
 				array_push($courses, $post);
 	
 			}
@@ -901,8 +942,8 @@ class CourseList extends ET_Builder_Module {
 		$badge_selector		= $wrapper." .tutor-course-loop-level";
 		$avatar_selector    = $wrapper." .tutor-single-course-avatar a img," .$wrapper." .tutor-single-course-avatar a span";
 
-		$star_selector         	= $wrapper.' .tutor-star-rating-group i';
-        $star_wrapper_selector 	= $wrapper.' .tutor-star-rating-group';
+		$star_selector         	= $wrapper.' .tutor-loop-rating-wrap .tutor-rating-stars span';
+        $star_wrapper_selector 	= $wrapper.' .tutor-loop-rating-wrap .tutor-rating-stars';
 		$cart_button_selector	= $wrapper.' .tutor-loop-cart-btn-wrap a';
 
 		$pagination_selector   = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers';
@@ -954,6 +995,20 @@ class CourseList extends ET_Builder_Module {
 				'selector'		=> '%%order_class%% 
 					.tutor-divi-card.hover-animation',
 					'declaration'	=> 'margin-top: 7px;'
+			)
+		);		
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .list-item-price .price',
+				'declaration'	=> 'display: flex;'
+			)
+		);		
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-course-header',
+				'declaration'	=> 'border-radius: 10px;'
 			)
 		);		
 		//make list item equal height
