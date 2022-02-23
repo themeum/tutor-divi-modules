@@ -47,6 +47,9 @@ class CourseEnrollment extends ET_Builder_Module {
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
+					'enrolled_text'         => esc_html__( 'Enrolled Text', 'tutor-lms-divi-modules' ),
+					'enrolled_icon'         => esc_html__( 'Enrolled Icon', 'tutor-lms-divi-modules' ),
+					'enrolled_date'         => esc_html__( 'Enrolled Date', 'tutor-lms-divi-modules' ),
 					'enrollment_meta_info'  => esc_html__( 'Meta Info', 'tutor-lms-divi-modules' ),
 				),
 			),
@@ -81,6 +84,24 @@ class CourseEnrollment extends ET_Builder_Module {
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrollment_meta_info',
+				),
+				'enrolled_date'              => array(
+					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .tutor-course-sidebar-card-body .tutor-enrolled-info-text .tutor-enrolled-info-date',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrolled_date',
+				),
+				'enrolled_text'            => array(
+					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .etlms-enrolled-info-wrapper .tutor-enrolled-info-text > .text',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrolled_text',
 				),
 			),
 
@@ -288,8 +309,30 @@ class CourseEnrollment extends ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'enrollment_meta_info',
 			),
+			'enrolled_icon_size'    => array(
+				'label'          => esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '24px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'enrolled_icon',
+				'mobile_options' => true,
+			),
+			'enrolled_icon_color'   => array(
+				'label'       => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'enrolled_icon',
+			),
+
 		);
 	}
+
 	/**
 	 * Get props
 	 *
@@ -566,7 +609,32 @@ class CourseEnrollment extends ET_Builder_Module {
                 font-family: "ETmodules" !important;',
 			)
 		);
-
+		$enrolled_icon_color = $this->props['enrolled_icon_color'];
+		$enrolled_icon_size  = $this->props['enrolled_icon_size'];
+		if ( '' !== $enrolled_icon_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+					'declaration' => sprintf(
+						'color: %1$s;',
+						$enrolled_icon_color
+					),
+				)
+			);
+		}
+		if ( '' !== $enrolled_icon_size ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+					'declaration' => sprintf(
+						'font-size: %1$s;',
+						$enrolled_icon_size
+					),
+				)
+			);
+		}
 		// set styles end
 
 		$output = self::get_content( $this->props );

@@ -179,6 +179,25 @@ class CoursePurchase extends Component {
                 declaration: 'width: 100%;'
             }
         ]);
+
+        const enrolled_icon_color = props.enrolled_icon_color;
+		const enrolled_icon_size  = props.enrolled_icon_size;
+		if ( enrolled_icon_color ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    declaration: `color: ${enrolled_icon_color};`
+                }
+            ]);
+		}
+		if ( enrolled_icon_size ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    declaration: `font-size: ${enrolled_icon_size};`
+                }
+            ]);
+		}
         // alignment for add to cart button
         if ( 'left' === props.alignment ) {
             additionalCss.push([
