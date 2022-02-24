@@ -271,8 +271,6 @@ else :
 
 endif;
 
-tutor_course_archive_pagination();
-
 do_action('tutor_course/archive/after_loop');
 ?>
 <!--loading course init-->

@@ -62,7 +62,7 @@ $query_args = array(
 	'post_type'      => tutor()->course_post_type,
 	'post_status'    => 'publish',
 	'posts_per_page' => $limit,
-    'paged'          => max( 1, esc_html( isset( $_GET['current_page'] ) ? $_GET['current_page'] : 0 ) ),
+	'paged'          => max( 1, esc_html( isset( $_GET['current_page'] ) ? $_GET['current_page'] : 0 ) ),
 	'order_by'       => $order_by,
 	'order'          => $order,
 );
@@ -314,8 +314,6 @@ else :
 	tutor_load_template( 'course-none' );
 
 endif;
-
-tutor_course_archive_pagination();
 
 do_action( 'tutor_course/archive/after_loop' );
 ?>
