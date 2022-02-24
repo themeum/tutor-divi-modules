@@ -149,7 +149,6 @@ class CourseList extends ET_Builder_Module {
                     'toggle_slug'   => 'footer',
                     'important'     => true
                 ),
-
 			),
 			'borders'		=> array(
 				'default'	=> false,

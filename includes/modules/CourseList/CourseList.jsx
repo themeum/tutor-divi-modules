@@ -743,6 +743,15 @@ class CourseList extends Component {
         }
     }
 
+    footerTemplate(show, course) {
+        if(show === 'off') {
+            return '';
+        }
+        return(
+            <div class="tutor-loop-course-footer tutor-divi-courselist-footer" dangerouslySetInnerHTML={{__html: course.footer_template}}></div>
+        );
+    }
+
     /**
      * 
      * @param {*} props 
@@ -801,10 +810,7 @@ class CourseList extends Component {
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="tutor-loop-course-footer tutor-divi-courselist-footer" dangerouslySetInnerHTML={{__html: course.footer_template}}>
-
-                            </div>
+                            { this.footerTemplate(props.footer, course) }
                         </div> 
 
                 </div>

@@ -88,12 +88,12 @@ class CourseCarousel extends ET_Builder_Module {
 				),
 				'footer'	=> array(
 					'css'				=> array(
-						'main'	=> '%%order_class%% .tutor-divi-carousel-main-wrap .price',
+						'label'	=> esc_html( 'Price', 'tutor-lms-divi-modules' ),
+						'main'	=> '%%order_class%% .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
 					),
 					'tab_slug'				=> 'advanced',
-					'toggle_slug'			=> 'footer' ,
+					'toggle_slug'			=> 'footer',
 					'hide_text_align'		=> true,
-					
 				),
 				'arrows'	=> array(
 					'css'				=> array(
@@ -116,27 +116,48 @@ class CourseCarousel extends ET_Builder_Module {
 			),
 			
 			'button'		=> array(
-                'cart_button' => array(
-                    'label'         => esc_html__( 'Cart Button', 'tutor-lms-divi-modules' ),
+                'add_to_cart_button' => array(
+                    'label'         => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
                     'box_shadow'    => array(
                         'css'   => array(
-                            'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
+                            'main'  => '%%order_class%% .add_to_cart_button'
                         )
                     ),
                     'css'           => array(
-                        'main'  => '%%order_class%% .tutor-loop-cart-btn-wrap a'
+                        'main'  => '%%order_class%% .add_to_cart_button'
                     ),
 					'margin_padding' => array(
 						'css' => array(
 							'important' => 'all',
 						),
 					),
-                    //'use_alignment' => false,
+                    'use_alignment' => false,
+					'hide_icon'     => true,
                     'tab_slug'      => 'advanced',
-                    'toggle_slug'   => 'cart_button' , 
+                    'toggle_slug'   => 'footer', 
                     'important'     => true
                 ),
-
+                'enroll_course_button' => array(
+                    'label'         => esc_html__( 'Enroll Course/ Continue Learning/ Start Learning/ Download Certificate Button', 'tutor-lms-divi-modules' ),
+                    'box_shadow'    => array(
+                        'css'   => array(
+                            'main'  => '%%order_class%% .list-item-button a:not(.add_to_cart_button)',
+                        )
+                    ),
+                    'css'           => array(
+                        'main'  => '%%order_class%% .list-item-button a:not(.add_to_cart_button)',
+                    ),
+					'margin_padding' => array(
+						'css' => array(
+							'important' => 'all',
+						),
+					),
+                    'use_alignment' => false,
+					'hide_icon'     => true,
+                    'tab_slug'      => 'advanced',
+                    'toggle_slug'   => 'footer',
+                    'important'     => true
+                ),
 			),
 			'borders'		=> array(
 				'default'	=> array(),
@@ -165,8 +186,8 @@ class CourseCarousel extends ET_Builder_Module {
 				'avatar'	=> array(
 					'css'			=> array(
 						'main'	=> array(
-							'border_radii'	=> '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span',
-							'border_styles'	=> '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span'
+							'border_radii'	=> '%%order_class%% .tutor-single-course-avatar .tutor-image-avatar, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar',
+							'border_styles'	=> '%%order_class%% .tutor-single-course-avatar .tutor-image-avatar, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar',
 						)
 					),
 					'tab_slug'		=> 'advanced',
@@ -206,7 +227,7 @@ class CourseCarousel extends ET_Builder_Module {
 			'text'			=> false,
 			'max_width'		=> false,
 			'transform'		=> false,
-			'button'		=> false
+			//'button'		=> false
 			
 		);
 		
@@ -827,7 +848,25 @@ class CourseCarousel extends ET_Builder_Module {
 				$post->woo_currency		= function_exists( 'get_woocommerce_currency_symbol' ) ? get_woocommerce_currency_symbol() : '' ;
 
 				$post->is_enrolled		= tutils()->is_enrolled($post->ID , get_current_user_id() );
-
+				// prepare footer.
+				ob_start();
+				if(tutor_utils()->is_course_added_to_cart( $post->ID ) ){
+					tutor_load_template( 'loop.course-in-cart' );
+				}
+				else if( tutor_utils()->is_enrolled( $post->ID ) ){
+					tutor_load_template( 'loop.course-continue' );
+				}
+				else{
+					$tutor_course_sell_by = apply_filters('tutor_course_sell_by', null);
+					if ($tutor_course_sell_by){
+						tutor_load_template( 'loop.course-price-'.$tutor_course_sell_by );
+					}else{
+						tutor_load_template( 'loop.course-price' );
+					}
+				}
+				$footer_template = apply_filters( 'tutor_course_loop_price', ob_get_clean() );
+				$post->footer_template = $footer_template;
+				// prepare footer end.
 				array_push($courses, $post);
 	
 			}
@@ -882,8 +921,8 @@ class CourseCarousel extends ET_Builder_Module {
 		$badge_selector		= $wrapper." .tutor-course-loop-level";
 		$avatar_selector    = $wrapper." .tutor-single-course-avatar a img," .$wrapper." .tutor-single-course-avatar a span";
 
-		$star_selector         	= $wrapper.' .tutor-star-rating-group i';
-        $star_wrapper_selector 	= $wrapper.' .tutor-star-rating-group';
+		$star_selector         	= $wrapper.' .tutor-rating-stars span';
+        $star_wrapper_selector 	= $wrapper.' .tutor-rating-stars';
 		$cart_button_selector	= $wrapper.' .tutor-loop-cart-btn-wrap a';
 		$arrows_selector		= '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
 		$dots_wrapper_selector	= '%%order_class%% .slick-dots';
@@ -1479,6 +1518,13 @@ class CourseCarousel extends ET_Builder_Module {
 				'declaration'	=> 'filter: none !important;'
 			)
 		);		
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .list-item-price .price',
+				'declaration'	=> 'display: flex;'
+			)
+		);
 		//set styles end
 
 		$output = self::get_content($this->props);
