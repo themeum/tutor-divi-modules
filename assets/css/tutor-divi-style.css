@@ -22,7 +22,9 @@
 .tutor_course_target_audience .et_module_title,
 .tutor_course_thumbnail .et_module_title,
 .tutor_course_total_enroll .et_module_title,
-.tutor_course_enrollment .et_module_title {
+.tutor_course_enrollment .et_module_title,
+.tutor_course_content .et_module_title,
+.tutor_course_purchase .et_module_title {
   margin-top: 10px;
 }
 
@@ -50,7 +52,9 @@
 .tutor_course_target_audience > div,
 .tutor_course_thumbnail > div,
 .tutor_course_total_enroll > div,
-.tutor_course_enrollment > div {
+.tutor_course_enrollment > div, 
+.tutor_course_content > div, 
+.tutor_course_purchase > div {
   fill: #2b87da !important;
 }
 
