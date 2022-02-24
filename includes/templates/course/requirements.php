@@ -12,27 +12,27 @@
 
 defined( 'ABSPATH' ) || exit;
 
-do_action('tutor_course/single/before/requirements');
+do_action( 'tutor_course/single/before/requirements' );
 
 $course_requirements = tutor_course_requirements( $args['course'] );
-$icon = et_pb_process_font_icon( $args[ 'icon' ] );
-if ( empty($course_requirements)){
+$icon                = et_pb_process_font_icon( $args['icon'] );
+if ( empty( $course_requirements ) ) {
 	return;
 }
 
-if (is_array($course_requirements) && count($course_requirements)){
+if ( is_array( $course_requirements ) && count( $course_requirements ) ) {
 	?>
 
 	<div class="tutor-single-course-segment  tutor-course-requirements-wrap">
 	
-		<h4 class="tutor-segment-title">
-			<?php esc_html_e( $args['label'] );?>
+		<h4 class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
+			<?php esc_html_e( $args['label'] ); ?>
 		</h4>
 		<div class="tutor-course-requirements-content">
 			<ul class="tutor-course-requirements-items">
 				<?php
-				foreach ($course_requirements as $requirement){
-					echo "<li> <span class='et-pb-icon'> ".esc_html($icon)." </span> <span class='list-item'> ".esc_html( $requirement )." </span> </li>";
+				foreach ( $course_requirements as $requirement ) {
+					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $requirement ) . ' </span> </li>';
 				}
 				?>
 			</ul>
@@ -42,4 +42,4 @@ if (is_array($course_requirements) && count($course_requirements)){
 
 <?php } ?>
 
-<?php do_action('tutor_course/single/after/requirements'); ?>
+<?php do_action( 'tutor_course/single/after/requirements' ); ?>
