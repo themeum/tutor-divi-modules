@@ -1,20 +1,9 @@
 // External Dependencies
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class CourseCategories extends Component {
 
     static slug = 'tutor_course_categories';
-
-    categories(categories) {
-        let count = 1;
-       
-        const cat = categories.map( (category) => {
-            let comma = categories.length > count ? ',' : '' ;
-            count += 1;
-            return <a href={category.term_link}> { category.name }{comma} </a>
-        });
-        return cat;
-    }
 
     static css(props) {
         const additionalCss = [];
@@ -166,11 +155,8 @@ class CourseCategories extends Component {
             return '';
         }
         return (
-            <Fragment>
-                <div className="tutor-single-course-meta-categories">
-                       { this.categories(this.props.__categories) }
-                </div>
-            </Fragment>
+            <div dangerouslySetInnerHTML={{__html: this.props.__categories}}>
+            </div>
         );
     }
 }

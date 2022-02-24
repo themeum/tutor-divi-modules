@@ -45,6 +45,9 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'heading'    => array(
 						'title' => esc_html__( 'Heading', 'tutor-lms-divi-modules' ),
 					),
+					'short_text'    => array(
+						'title' => esc_html__( 'Short Text', 'tutor-lms-divi-modules' ),
+					),
 					'about_text' => array(
 						'title' => esc_html__( 'Paragraph', 'tutor-lms-divi-modules' ),
 					),
@@ -52,8 +55,9 @@ class TutorCourseAbout extends ET_Builder_Module {
 			),
 		);
 
-		$paragraph_selector    = '%%order_class%% .tutor-course-summery p';
-		$heading_selector      = '%%order_class%% .tutor-segment-title';
+		$heading_selector      = '%%order_class%% .tutor-showmore-content .text-medium-h6';
+		$paragraph_selector    = '%%order_class%% .showmore-text';
+		$short_text            = '%%order_class%% .showmore-short-text';
 		$this->advanced_fields = array(
 			'fonts'      => array(
 				'heading'    => array(
@@ -71,6 +75,13 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'about_text',
 				),
+				'short_text' => array(
+					'css'         => array(
+						'main' => $short_text,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'short_text',
+				),
 
 			),
 			'max_width'  => false,
@@ -78,10 +89,10 @@ class TutorCourseAbout extends ET_Builder_Module {
 			// 'margin_padding'  => false,
 			'background' => false,
 			'borders'    => false,
-		//	'box_shadow' => false,
-		//	'filters'    => false,
-		//	'animation'  => false,
-		//	'transform'  => false,
+		// 'box_shadow' => false,
+		// 'filters'    => false,
+		// 'animation'  => false,
+		// 'transform'  => false,
 		);
 	}
 

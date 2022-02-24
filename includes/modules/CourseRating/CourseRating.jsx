@@ -84,7 +84,15 @@ class CourseRating extends Component {
             }
         }
         // alignments end
-
+        
+        //default star color
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-star-rating-group i',
+				declaration: 'color: #ed9700;'
+            }
+        ]);
+    
         if (props.star_size) {
             additionalCss.push([{
                 selector:    '%%order_class%% .tutor-star-rating-group i',

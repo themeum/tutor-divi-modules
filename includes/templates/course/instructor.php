@@ -71,7 +71,7 @@ if ( $instructors ) {
 								?>
 							</div>
 							
-							<div class="instructor-bio">
+							<div class="instructor-bio tutor-ins-summary tutor-text-regular-body text-subsued tutor-mt-18">
 								<?php echo esc_textarea( $instructor->tutor_profile_bio ); ?>
 							</div>
 						</div>

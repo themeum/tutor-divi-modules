@@ -347,6 +347,15 @@ class TutorCourseRating extends ET_Builder_Module {
 		}
 
 		// alignment end.
+		
+		// default star color.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'	=> '%%order_class%% .tutor-star-rating-group i',
+				'declaration' => 'color: #ed9700;'
+			)
+		);
 
 		if ( '' !== $this->props['star_size'] ) {
 			ET_Builder_Element::set_style(

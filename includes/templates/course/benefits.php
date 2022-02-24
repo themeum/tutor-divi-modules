@@ -37,7 +37,7 @@ if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 			<ul class="tutor-course-benefits-items">
 				<?php
 				foreach ( $course_benefits as $benefit ) {
-					echo "<li> <span class='et-pb-icon'>" . esc_html( $icon ) . "</span> <span class='list-item'>" . esc_html( $benefit ) . '</span> </li>';
+					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon'>" . esc_html( $icon ) . "</span> <span class='list-item'>" . esc_html( $benefit ) . '</span> </li>';
 				}
 				?>
 			</ul>
