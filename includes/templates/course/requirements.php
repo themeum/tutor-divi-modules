@@ -32,7 +32,7 @@ if ( is_array( $course_requirements ) && count( $course_requirements ) ) {
 			<ul class="tutor-course-requirements-items">
 				<?php
 				foreach ( $course_requirements as $requirement ) {
-					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $requirement ) . ' </span> </li>';
+					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon tutor-color-design-brand'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $requirement ) . ' </span> </li>';
 				}
 				?>
 			</ul>

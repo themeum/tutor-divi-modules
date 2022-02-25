@@ -26,12 +26,12 @@ if ( is_array( $materials ) && count( $materials ) ) {
 	?>
 
 	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
-		<h4 class="tutor-segment-title"><?php echo esc_html( $args['label'] ); ?></h4>
+		<h4 class="tutor-segment-title tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"><?php echo esc_html( $args['label'] ); ?></h4>
 		<div class="tutor-course-target-audience-content">
 			<ul class="tutor-course-target-audience-items">
 				<?php
 				foreach ( $materials as $material ) {
-					echo "<li> <span class='et-pb-icon'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $material ) . ' </span> </li>';
+					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon tutor-color-design-brand'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $material ) . ' </span> </li>';
 				}
 				?>
 			</ul>

@@ -264,7 +264,7 @@ class CourseMaterials extends Component {
         const et_icon = utils.processFontIcon(icon);
         if(lists !== 0) {
             const list =  lists.map((list)=> {
-                return <li> <span className="et-pb-icon"> {et_icon}</span> <span className="list-item"> {list} </span> </li>
+                return <li className='tutor-bs-align-items-center tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span className="et-pb-icon tutor-color-design-brand"> {et_icon}</span> <span className="list-item"> {list} </span> </li>
             });
             return list;
         }
@@ -279,7 +279,7 @@ class CourseMaterials extends Component {
         return (
             <Fragment>
             <div className="tutor-single-course-segment  tutor-course-material-includes-wrap">
-                <h4 className="tutor-segment-title"> { this.props.label } </h4>
+                <h4 className="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"> { this.props.label } </h4>
                 <div className="tutor-course-target-audience-content">
                     <ul className="tutor-course-target-audience-items">
                         { this.materialsList(this.props.__materials, this.props.icon) }

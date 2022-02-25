@@ -266,7 +266,7 @@ class CourseRequirements extends Component {
         const et_icon = utils.processFontIcon(icon);
         if(lists !== 0) {
             const list =  lists.map((list)=> {
-                return <li> <span className="et-pb-icon"> {et_icon}</span> <span className="list-item">{list}</span></li>
+                return <li className='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span className="et-pb-icon tutor-color-design-brand"> {et_icon}</span> <span className="list-item">{list}</span></li>
             });
             return list;
         }
@@ -282,7 +282,7 @@ class CourseRequirements extends Component {
             <Fragment>
               	<div className="tutor-single-course-segment  tutor-course-requirements-wrap">
                     <div className="course-requirements-title">
-                        <h4 className="tutor-segment-title"> { this.props.label } </h4>
+                        <h4 className="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"> { this.props.label } </h4>
                     </div>
 
                     <div className="tutor-course-requirements-content">
