@@ -24,7 +24,8 @@
 .tutor_course_total_enroll .et_module_title,
 .tutor_course_enrollment .et_module_title,
 .tutor_course_content .et_module_title,
-.tutor_course_purchase .et_module_title {
+.tutor_course_purchase .et_module_title,
+.tutor_course_wishlist .et_module_title {
   margin-top: 10px;
 }
 
@@ -54,8 +55,14 @@
 .tutor_course_total_enroll > div,
 .tutor_course_enrollment > div, 
 .tutor_course_content > div, 
-.tutor_course_purchase > div {
+.tutor_course_purchase > div,
+.tutor_course_wishlist > div {
   fill: #2b87da !important;
+}
+.tutor_course_wishlist > div svg, 
+.tutor_course_purchase > div svg,
+.tutor_course_content > div svg {
+  width: 32px !important;
 }
 
 /* carousel styles */
