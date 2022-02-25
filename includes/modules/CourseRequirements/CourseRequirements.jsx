@@ -202,7 +202,7 @@ class CourseRequirements extends Component {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
-                    declaration: `margin-bottom: ${space_between};`
+                    declaration: layout === 'list' ? `margin-bottom: ${space_between};` : `margin-right: ${space_between};`, 
                 }
             ])
         }
@@ -211,7 +211,7 @@ class CourseRequirements extends Component {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
-                    declaration: `margin-bottom: ${space_between_tablet};`,
+                    declaration: layout === 'list' ? `margin-bottom: ${space_between_tablet};` : `margin-right: ${space_between_tablet};`,
                     device: 'tablet'
                 }
             ])
@@ -221,7 +221,7 @@ class CourseRequirements extends Component {
             additionalCss.push([
                 {
                     selector: `${li_selector}:not(:last-child)`,
-                    declaration: `margin-bottom: ${space_between_phone};`,
+                    declaration: layout === 'list' ? `margin-bottom: ${space_between_phone};` : `margin-right: ${space_between_phone};`,
                     device: 'phone'
                 }
             ])
