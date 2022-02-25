@@ -147,8 +147,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'block'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline-block' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'list'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
+					'inline' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
 				),
 				'default'         => 'list',
 				'option_category' => 'layout',
@@ -552,43 +552,84 @@ class TutorCourseMaterials extends ET_Builder_Module {
 
 		// space between
 		if ( $space_between ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $li_selector . ':not(:last-child)',
-					'declaration' => sprintf(
-						'margin-bottom: %1$s !important;',
-						$space_between
-					),
-				)
-			);
+			if ( 'list' === $layout ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-bottom: %1$s !important;',
+							$space_between
+						),
+					)
+				);
+			} else {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-right: %1$s !important;',
+							$space_between
+						),
+					)
+				);
+			}
 		}
 
 		if ( $space_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $li_selector . ':not(:last-child)',
-					'declaration' => sprintf(
-						'margin-bottom: %1$s !important;',
-						$space_tablet
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
-				)
-			);
+			if ( 'list' === $layout ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-bottom: %1$s !important;',
+							$space_tablet
+						),
+						'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+					)
+				);
+			} else {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-right: %1$s !important;',
+							$space_tablet
+						),
+						'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+					)
+				);
+			}
 		}
 		if ( $space_phone ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $li_selector . ':not(:last-child)',
-					'declaration' => sprintf(
-						'margin-bottom: %1$s !important;',
-						$space_phone
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
-				)
-			);
+			if ( 'list' === $layout ) {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-bottom: %1$s !important;',
+							$space_phone
+						),
+						'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+					)
+				);
+			} else {
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'    => $li_selector . ':not(:last-child)',
+						'declaration' => sprintf(
+							'margin-right: %1$s !important;',
+							$space_phone
+						),
+						'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+					)
+				);
+			}
 		}
 
 		if ( $indent ) {
