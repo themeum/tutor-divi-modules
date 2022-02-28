@@ -19,6 +19,17 @@ define( 'DTLMS_DIR_PATH', plugin_dir_path( DTLMS_FILE__ ) );
 define( 'DTLMS_DIR_URL', plugin_dir_url( DTLMS_FILE__ ) );
 define( 'DTLMS_ASSETS', trailingslashit( DTLMS_DIR_URL . 'assets' ) );
 define( 'DTLMS_TEMPLATES', trailingslashit( DTLMS_DIR_PATH . 'includes/templates/course/' ) );
+
+/**
+ * Tutor LMS Divi Modules v2.0.0 dependency on Tutor core
+ *
+ * Define Tutor core version on that Tutor LMS Divi Modules is dependent to run,
+ * without require version v2.0.0 will just show admin notice to install require core version.
+ *
+ * @since v2.0.0
+ */
+define( 'DTLMS_TUTOR_CORE_REQ_VERSION', '2.0.0-beta1' );
+
 /**
  * Environment
  * PROD

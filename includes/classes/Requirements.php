@@ -59,6 +59,7 @@ class Requirements {
 		);
 
 	}
+
 }
 
 new Requirements();
