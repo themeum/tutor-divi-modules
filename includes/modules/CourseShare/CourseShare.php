@@ -2,6 +2,8 @@
 
 /**
  * Tutor Course Share Module for Divi Builder
+ *
+ * @package  DTLMSCourseShare
  * @since 1.0.0
  * @author Themeum<www.themeum.com>
  */
@@ -28,73 +30,175 @@ class TutorCourseShare extends ET_Builder_Module {
 	 */
 	public function init() {
 		// Module name & icon
-		$this->name			= esc_html__('Tutor Course Share', 'tutor-lms-divi-modules');
-		$this->icon_path	= plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$this->name      = esc_html__( 'Tutor Course Share', 'tutor-lms-divi-modules' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
-		// Toggles are grouped into array of tab name > toggles > toggle definition
+		// Toggles are grouped into array of tab name > toggles > toggle definition.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__('Content', 'tutor-lms-divi-modules'),
+					'main_content' => esc_html__( 'Content', 'tutor-lms-divi-modules' ),
+					'share_popup'  => esc_html__( 'Share Popup', 'tutor-lms-divi-modules' ),
 				),
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'label'			=> array(
-						'title'	=> esc_html__('Label', 'tutor-lms-divi-modules'),
+					'label'               => array(
+						'title' => esc_html__( 'Share Label & Icon', 'tutor-lms-divi-modules' ),
 					),
-					'icons' 		=> array(
-						'title' => esc_html__('Icons', 'tutor-lms-divi-modules'),
+					'popup_section_title' => array(
+						'title' => esc_html__( 'Popup Section Title', 'tutor-lms-divi-modules' ),
 					),
-					'icon_hover'	=> array(
-						'title'	=> esc_html('Icon Hover', 'tutor-lms-divi-modules' )	
-					)
+					'popup_share_title'   => array(
+						'title' => esc_html__( 'Popup Share Title', 'tutor-lms-divi-modules' ),
+					),
+					'popup_share_link'    => array(
+						'title' => esc_html__( 'Popup Share Link', 'tutor-lms-divi-modules' ),
+					),
+					'social_buttons'      => array(
+						'title' => esc_html__( 'Social Buttons', 'tutor-lms-divi-modules' ),
+					),
+					'close_button'        => array(
+						'title' => esc_html__( 'Close Button', 'tutor-lms-divi-modules' ),
+					),
 				),
 			),
 		);
 
-        $wrapper 				= '%%order_class%% .tutor-social-share';
-        $icon_wrapper_selector	= '%%order_class%% .tutor-social-share-wrap';
-		$icon_selector   		= '%%order_class%% .tutor-social-share-wrap button i';
-		$button_selector		= '%%order_class%% .tutor-social-share-wrap button';
-        $label_selector			= '%%order_class%% .tutor-social-share > span';
+		$wrapper       = '%%order_class%% .dtlms-course-share a';
+		$popup_wrapper = '%%order_class%% .tutor-modal-body.etlms-course-share-popup';
 
 		$this->advanced_fields = array(
-			'fonts'				=> array(
-				'label' => array(
-					'label'        		=> esc_html__('Label', 'tutor-lms-divi-modules'),
-					'css'          		=> array(
-						'main'	=> $label_selector,
-					),
-					'tab_slug'     		=> 'advanced',
-					'toggle_slug'  		=> 'label',
-					'hide_text_align'	=> true,
-				),
-			),
-			'borders'    => array(
-				'default'            => false,
-				'icons'              => array(
-					'css'             	=> array(
-						'main' => array(
-							'border_radii'  => "%%order_class%% .tutor-social-share-wrap i",//"{$this->main_css_element} .tutor-social-share-wrap i",
-							'border_styles' => "%%order_class%% .tutor-social-share-wrap i",
-						),
-						'important'		=> true
+			'fonts'      => array(
+				'share_label'            => array(
+					'label'           => esc_html__( 'Share Label', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$wrapper .share-text",
 					),
 					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'icons',
+					'toggle_slug'     => 'label',
+					'hide_text_align' => true,
 				),
-			),	
+				'share_icon'             => array(
+					'label'           => esc_html__( 'Share Icon', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$wrapper .tutor-icon-share-filled",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'label',
+					'hide_text_align' => true,
+				),
+				'popup_section_title'    => array(
+					'label'           => esc_html__( 'Popup Section Title', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper div.tutor-text-medium-h5",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'popup_section_title',
+					'hide_text_align' => true,
+				),
+				'popup_share_title'      => array(
+					'label'           => esc_html__( 'Popup Share Title', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper div.tutor-text-medium-h6",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'popup_share_title',
+					'hide_text_align' => true,
+				),
+				'popup_share_link'       => array(
+					'label'           => esc_html__( 'Popup Share Input', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper input",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'popup_share_link',
+					'hide_text_align' => true,
+				),
+				'popup_share_link_title' => array(
+					'label'           => esc_html__( 'Popup Share Link Title', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper div.tutor-text-regular-caption",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'popup_share_link',
+					'hide_text_align' => true,
+				),
+				'social_buttons_icon'    => array(
+					'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper .tutor_share span:first-child i",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'social_buttons',
+					'hide_text_align' => true,
+				),
+				'social_buttons_text'    => array(
+					'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => "$popup_wrapper .tutor_share span:last-child",
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'social_buttons',
+					'hide_text_align' => true,
+				),
+			),
+			'background' => array(
+				'label'                => esc_html__( 'Popup Background', 'tutor-lms-divi-modules' ),
+				'css'                  => array(
+					'main'      => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
+					'important' => true,
+				),
+				'settings'             => array(
+					'tab_slug' => 'advanced',
+				),
+				'use_background_video' => false,
+			),
+			'button'     => false,
+			'borders'    => array(
+				'label'	=> esc_html__( 'Popup Border', 'tutor-lms-divi-modules' ),
+				'default'               => array(
+					'label_prefix' => esc_html__( 'Popup', 'et_builder' ),
+					'css'          => array(
+						'main' => array(
+							'border_radii'  => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
+							'border_styles' => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
+						),
+					),
+					'tab_slug'     => 'advanced',
+				),
+				'link_input_border'     => array(
+					'label_prefix' => esc_html__( 'Input', 'et_builder' ),
+					'css'          => array(
+						'main' => array(
+							'border_radii'  => "$popup_wrapper input",
+							'border_styles' => "$popup_wrapper input",
+						),
+					),
+					'important'    => true,
+					'tab_slug'     => 'advanced',
+					'toggle_slug'  => 'popup_share_link',
+				),
+				'social_buttons_border' => array(
+					'css'         => array(
+						'main' => array(
+							'border_radii'  => "$popup_wrapper .tutor_share",
+							'border_styles' => "$popup_wrapper .tutor_share",
+						),
+					),
+					'important'   => true,
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'social_buttons',
+				),
+			),
+			'text'       => false,
+			'max_width'  => false,
 
-			'button'        => false,
-			'text'			=> false,
-			'max_width'		=> false,
-			'background'	=> false,
-			'filters'		=> false,
-			'animation'		=> false,
-			'box_shadow'	=> false,
-			'transform'		=> false			
+			// 'filters'     => false,
+			// 'animation'       => false,
+			// 'box_shadow'  => false,
+			// 'transform'       => false
 		);
 	}
 
@@ -107,7 +211,7 @@ class TutorCourseShare extends ET_Builder_Module {
 	 */
 	public function get_fields() {
 		$fields = array(
-			'course'       	=> Helper::get_field(
+			'course'                 => Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -115,146 +219,150 @@ class TutorCourseShare extends ET_Builder_Module {
 					),
 				)
 			),
-			'__share'		=> array(
+			'__share'                => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'TutorCourseShare',
-					'get_props',
+					'get_content',
 				),
 				'computed_depends_on' => array(
-					'course'
+					'course',
+					'label',
+					'course_share_text_show',
+					'course_share_icon_show',
+					'popup_section_title',
+					'popup_share_title',
+					'show_social_icon',
+					'show_social_text',
 				),
 				'computed_minimum'    => array(
 					'course',
+					'label',
+					'course_share_text_show',
+					'course_share_icon_show',
+					'popup_section_title',
+					'popup_share_title',
+					'show_social_icon',
+					'show_social_text',
 				),
 			),
-			//general settings tab main_content toggle
-			'share_label'	=> array(
-				'label'				=> esc_html__('Label', 'tutor-lms-divi-modules'),
-				'type'				=> 'yes_no_button',
-				'option_category'	=> 'configuration',
-				'options'			=> array(
-					'off'	=> esc_html__('Hide', 'tutor-lms-divi-modules'),
-					'on'	=> esc_html__('Show', 'tutor-lms-divi-modules')
+			// general settings tab main_content toggle
+			'label'                  => array(
+				'label'       => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+				'type'        => 'text',
+				'toggle_slug' => 'main_content',
+				'default'     => esc_html__( 'Share', 'tutor-lms-divi-modules' ),
+			),
+			'course_share_text_show' => array(
+				'label'            => esc_html__( 'Show Label', 'tutor-lms-divi-modules' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 				),
-				'default_on_front'	=> "on",
-				'toggle_slug'		=> 'main_content',	
+				'default_on_front' => 'on',
+				'toggle_slug'      => 'main_content',
 			),
-			'shape'			=> array(
-				'label'				=> esc_html__( 'Shape', 'tutor-lms-divi-modules' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					'rounded'	=> esc_html__( 'Rounded', 'tutor-lms-divi-modules' ),
-					'circle'	=> esc_html__( 'Circle', 'tutor-lms-divi-modules' ),
-					'square'	=> esc_html__( 'Square', 'tutor-lms-divi-modules' ),
+			'course_share_icon_show' => array(
+				'label'            => esc_html__( 'Show Icon', 'tutor-lms-divi-modules' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 				),
-				'default'			=> 'rounded',
-				'option_category'	=> 'layout',
-				'toggle_slug'		=> 'main_content'
+				'default_on_front' => 'on',
+				'toggle_slug'      => 'main_content',
 			),
-			'alignment'		=> array(
-				'label'				=> esc_html__('Alignment', 'tutor-lms-divi-modules'),
-				'type'				=> 'text_align',
-				'option_category'	=> 'configuration',
-				'options'			=> et_builder_get_text_orientation_options( array( 'justified' ) ),
-				'default'			=> 'left',
-				'toggle_slug'		=> 'main_content',
-				'mobile_options'	=> true
+			'alignment'              => array(
+				'label'           => esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
+				'type'            => 'text_align',
+				'option_category' => 'configuration',
+				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'         => 'left',
+				'toggle_slug'     => 'main_content',
+				'mobile_options'  => true,
 			),
-
-			//advanced tab icon settings
-			'color'			=> array(
-				'label'				=> esc_html__( 'Color', 'tutor-lms-divi-modules' ),
-				'type'				=> 'select',
-				'options'			=> array(
-					'official'	=> esc_html__( 'Official Color', 'tutor-lms-divi-modules' ),
-					'custom'	=> esc_html__( 'Custom', 'tutor-lms-divi-modules' )
+			'space_between'          => array(
+				'label'           => esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
+				'type'            => 'range',
+				'option_category' => 'layout',
+				'default_unit'    => 'px',
+				'default'         => '2px',
+				'range_settings'  => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
 				),
-				'default'			=> 'official',
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons'
-			),
-			'icon_color'	=> array(
-				'label'				=> esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
-				'type'				=> 'color-alpha',
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons',
-				'show_if'			=> array(
-					'color'		=> 'custom'
-				)
-			),
-			'shape_color'	=> array(
-				'label'				=> esc_html__( 'Shape Color', 'tutor-lms-divi-modules' ),
-				'type'				=> 'color-alpha',
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons',
-				'show_if'			=> array(
-					'color'		=> 'custom'
-				)				
-			),
-			'icon_size'		=> array(
-				'label'				=> esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
-				'type'				=> 'range',
-				'default_unit'		=> 'px',
-				'default'			=> '14',
-				'range_settings'	=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
+				'toggle_slug'     => 'main_content',
+				'show_if'         => array(
+					'course_share_icon_show' => 'on',
+					'course_share_text_show' => 'on',
 				),
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons',		
-				'mobile_options'	=> true	
+				'mobile_options'  => true,
 			),
-
-			'icon_padding'	=> array(
-				'label'			=> esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
-				'type'			=> 'range',
-				'default'		=> '10px',
-				'default_unit'	=> 'px',
-				'range_settings'	=> array(
-					'min'	=> '1',
-					'max'	=> '100',
-					'step'	=> '1'
+			// share popup content controls.
+			'popup_section_title'    => array(
+				'label'       => esc_html__( 'Section', 'tutor-lms-divi-modules' ),
+				'type'        => 'text',
+				'toggle_slug' => 'share_popup',
+				'default'     => esc_html__( 'Share Course', 'tutor-lms-divi-modules' ),
+			),
+			'popup_share_title'      => array(
+				'label'       => esc_html__( 'Share Title', 'tutor-lms-divi-modules' ),
+				'type'        => 'text',
+				'toggle_slug' => 'share_popup',
+				'default'     => esc_html__( 'Share Course', 'tutor-lms-divi-modules' ),
+			),
+			'show_social_icon'       => array(
+				'label'            => esc_html__( 'Social Icon', 'tutor-lms-divi-modules' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 				),
-				'tab_slug'		=> 'advanced',
-				'toggle_slug'	=> 'icons'
+				'default_on_front' => 'on',
+				'toggle_slug'      => 'share_popup',
 			),
-			'icon_spacing'		=> array(
-				'label'				=> esc_html__( 'Spacing', 'tutor-lms-divi-modules' ),
-				'type'				=> 'range',
-				'default_unit'		=> 'px',
-				'default'			=> '14',
-				'range_settings'	=> array(
-					'min'	=> 1,
-					'max'	=> 100,
-					'step'	=> 1
+			'show_social_text'       => array(
+				'label'            => esc_html__( 'Social Text', 'tutor-lms-divi-modules' ),
+				'type'             => 'yes_no_button',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 				),
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icons',	
-				'mobile_options'	=> true		
+				'default_on_front' => 'on',
+				'toggle_slug'      => 'share_popup',
 			),
-
-			//icon hover advanced tab
-			'icon_hover_color'	=> array(
-				'label'				=> esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
-				'type'				=> 'color-alpha',
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icon_hover',
-				'show_if'			=> array(
-					'color'		=> 'custom'
-				)
+			'social_icon_background' => array(
+				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'social_buttons',
 			),
-			'shape_hover_color'	=> array(
-				'label'				=> esc_html__( 'Shape Color', 'tutor-lms-divi-modules' ),
-				'type'				=> 'color-alpha',
-				'tab_slug'			=> 'advanced',
-				'toggle_slug'		=> 'icon_hover',
-				'show_if'			=> array(
-					'color'		=> 'custom'
-				)				
-			),		
-			
+			'close_button_color'     => array(
+				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'close_button',
+			),
+			'close_button_size'      => array(
+				'label'           => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
+				'type'            => 'range',
+				'option_category' => 'layout',
+				'default_unit'    => 'px',
+				'default'         => '30px',
+				'range_settings'  => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'close_button',
+			),
 		);
 
 		return $fields;
@@ -262,17 +370,18 @@ class TutorCourseShare extends ET_Builder_Module {
 
 	/**
 	 * computed value
+	 *
 	 * @return string | array course level
 	 */
-	public static function get_props( $args = [] ) {
-		$course_id 			= $args[ 'course' ];
-		$is_enable_share	= get_tutor_option('disable_course_share');
-		$share_icons		= tutils()->tutor_social_share_icons();
+	public static function get_props( $args = array() ) {
+		$course_id       = $args['course'];
+		$is_enable_share = get_tutor_option( 'disable_course_share' );
+		$share_icons     = tutils()->tutor_social_share_icons();
 
-		$props = [
-			'is_enable_share'	=> $is_enable_share,
-			'social_icon'		=> $share_icons
-		];
+		$props = array(
+			'is_enable_share' => $is_enable_share,
+			'social_icon'     => $share_icons,
+		);
 
 		return $props;
 	}
@@ -282,9 +391,9 @@ class TutorCourseShare extends ET_Builder_Module {
 	 *
 	 * @return string
 	 */
-	public static function get_content($args = []) {
+	public static function get_content( $args = array() ) {
 		ob_start();
-		include_once dtlms_get_template('course/share');
+		include_once dtlms_get_template( 'course/share' );
 		return ob_get_clean();
 	}
 
@@ -299,359 +408,151 @@ class TutorCourseShare extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	public function render($attrs, $content, $render_slug) {
-		//selectors
-        $wrapper 				= '%%order_class%% .tutor-social-share';
-        $icon_wrapper_selector	= '%%order_class%% .tutor-social-share-wrap';
-		$icon_selector			= '%%order_class%% .tutor-social-share-wrap i';
-        $label_selector			= '%%order_class%% .tutor-social-share > label';
-		
-		//props
-		$alignment 				= sanitize_text_field( $this->props['alignment'] );
+	public function render( $attrs, $content, $render_slug ) {
+		$wrapper_selector = '%%order_class%% .dtlms-course-wishlist-wrapper a';
 
-		if( $alignment === 'left' ) {
-			$alignment = 'flex-start';
-		} else if( $alignment === 'center' ) {
-			$alignment = 'center';
-		} else if( $alignment === 'right' ) {
-			$alignment = 'flex-end';
-		} else {
-			$alignment = 'flex-start';
-		}
+		$alignment        = $this->props['alignment'];
+		$alignment_tablet = isset( $this->props['alignment_tablet'] ) ? $this->props['alignment_tablet'] : $alignment;
+		$alignment_phone  = isset( $this->props['alignment_phone'] ) ? $this->props['alignment_phone'] : $alignment;
 
-		$alignment_tablet 		= isset($this->props['alignment_tablet']) ? sanitize_text_field( $this->props['alignment_tablet'] ) : $alignment;
+		$space_between        = $this->props['space_between'];
+		$space_between_tablet = isset( $this->props['space_between_tablet'] ) ? $this->props['space_between_tablet'] : $space_between;
+		$space_between_phone  = isset( $this->props['space_between_phone'] ) ? $this->props['space_between_phone'] : $space_between;
 
-		if( $alignment_tablet === 'left' ) {
-			$alignment_tablet = 'flex-start';
-		} else if( $alignment_tablet === 'center' ) {
-			$alignment_tablet = 'center';
-		} else if( $alignment_tablet === 'right' ) {
-			$alignment_tablet = 'flex-end';
-		} else {
-			$alignment_tablet = 'flex-start';
-		}
-
-		$alignment_phone 		= isset($this->props['alignment_phone']) ? sanitize_text_field( $this->props['alignment_phone'] ) : $alignment;
-
-		if( $alignment_phone === 'left' ) {
-			$alignment_phone = 'flex-start';
-		} else if( $alignment_phone === 'center' ) {
-			$alignment_phone = 'center';
-		} else if( $alignment_phone === 'right' ) {
-			$alignment_phone = 'flex-end';
-		} else {
-			$alignment_phone = 'flex-start';
-		}
-		
-		$color					= sanitize_text_field( $this->props['color'] );
-		$icon_color				= sanitize_text_field( $this->props['icon_color'] );
-		$shape					= sanitize_text_field( $this->props['shape'] );
-		$shape_color			= sanitize_text_field( $this->props['shape_color'] );
-
-		$icon_hover_color		= sanitize_text_field( $this->props['icon_hover_color'] );
-		$shape_hover_color		= sanitize_text_field( $this->props['shape_hover_color'] );
-
-		$icon_size				= sanitize_text_field( $this->props['icon_size'] );
-		$icon_size_tablet		= sanitize_text_field( $this->props['icon_size_tablet'] );
-		$icon_size_phone		= sanitize_text_field( $this->props['icon_size_phone'] );
-
-		$icon_padding			= sanitize_text_field( $this->props['icon_padding'] );
-
-		$icon_spacing			= sanitize_text_field( $this->props['icon_spacing'] );
-		$icon_spacing_tablet	= sanitize_text_field( $this->props['icon_spacing_tablet'] );
-		$icon_spacing_phone		= sanitize_text_field( $this->props['icon_spacing_phone'] );
-
-		//set styles
+		// style .
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'		=> $wrapper,
-				'declaration'	=> 'display:flex;width:100%;column-gap: 10px;'
-			)
-		);
-		/**
-		 * set social icon official color
-		 */
-
-		//fb icon styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook',
-				'declaration'	=> 'color: #fff; background-color: #3b5998;'
+				'selector'    => $wrapper_selector,
+				'declaration' => 'display: flex; align-items: center;',
 			)
 		);
 
-		//twitter icon styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-twitter',
-				'declaration'	=> 'color: #fff; background-color: #1da1f2;'
-			)
-		);
-
-		//linkedin icon styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-linkedin',
-				'declaration'	=> 'color: #fff; background-color: #0077b5;'
-			)
-		);
-		//tumblr icon styles
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'		=> $icon_wrapper_selector. ' .tutor-icon-tumblr',
-				'declaration'	=> 'color: #fff; background-color: #000;'
-			)
-		);
-
-		if( $color === 'custom' ) {
-		 //if custom color 
-			if( '' !== $icon_color ) {
-				ET_Builder_Element::set_style(
-					$render_slug,
-					array(
-						'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook , '. $icon_wrapper_selector. ' .tutor-icon-twitter , '. $icon_wrapper_selector.' .tutor-icon-linkedin , '. $icon_wrapper_selector.' .tutor-icon-tumblr',
-						'declaration'	=> sprintf(
-							'color: %1$s !important;',
-							esc_html($icon_color)
-						)
-					)
-				);
-			}
-			if( '' !== $shape_color ) {
-				ET_Builder_Element::set_style(
-					$render_slug,
-					array(
-						'selector'		=> $icon_wrapper_selector. ' .tutor-icon-facebook , '. $icon_wrapper_selector. ' .tutor-icon-twitter , '. $icon_wrapper_selector.' .tutor-icon-linkedin , '. $icon_wrapper_selector.' .tutor-icon-tumblr',
-						'declaration'	=> sprintf(
-							'background-color: %1$s !important;',
-							esc_html($shape_color)
-						)
-					)
-				);
-			}			
-		}
-
-		//icon size
-		if( '' !== $icon_size ) {
+		if ( $alignment ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $icon_selector,
-					'declaration'	=> sprintf(
-						'font-size: %1$s !important;',
-						$icon_size
-					)
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'justify-content: %1$s;',
+						$alignment
+					),
 				)
 			);
 		}
-		if( '' !== $icon_size_tablet ) {
+		if ( $alignment_tablet ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $icon_selector,
-					'declaration'	=> sprintf(
-						'font-size: %1$s !important;',
-						$icon_size_tablet
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'justify-content: %1$s;',
+						$alignment_tablet
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
 				)
 			);
 		}
-		if( '' !== $icon_size_phone ) {
+		if ( $alignment_phone ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> $icon_selector,
-					'declaration'	=> sprintf(
-						'font-size: %1$s !important;',
-						$icon_size_phone
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'justify-content: %1$s;',
+						$alignment_phone
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
 				)
 			);
 		}
 
-		//icon spacing
-		//icon display flex default
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector' 		=> $icon_wrapper_selector,
-				'declaration'	=> 'display: flex !important;'
-			)
-		);
-		if( '' !== $icon_spacing ) {
+		if ( $space_between ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector' 		=> $icon_wrapper_selector,
-					'declaration'	=> sprintf(
-						'column-gap: %1$s !important;',
-						$icon_spacing
-					)
-				)
-			);			
-		}
-		if( '' !== $icon_spacing_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_wrapper_selector,
-					'declaration'	=> sprintf(
-						'column-gap: %1$s !important;',
-						$icon_spacing_tablet
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'column-gap: %1$s;',
+						$space_between
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
-				)
-			);			
-		}
-		if( '' !== $icon_spacing_phone ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_wrapper_selector,
-					'declaration'	=> sprintf(
-						'column-gap: %1$s !important;',
-						$icon_spacing_phone
-					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
-				)
-			);			
-		}
-
-		//icon padding
-		if( '' !== $icon_padding ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_selector,
-					'declaration'	=> sprintf(
-						'padding: %1$s !important;',
-						$icon_padding
-					)
-				)
-			);			
-		}
-		//set space on tutor social icon wrapper
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector' 		=> $icon_wrapper_selector,
-				'declaration'	=> 'padding:20px 0px 20px;'
-			)
-		);		
-		
-		//set icon shape style as shape dropdown
-		if( $shape === 'rounded' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_selector,
-					'declaration'	=> 'border-radius: 10%;'
-				)
-			);				
-		} else if( $shape === 'circle' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_selector,
-					'declaration'	=> 'border-radius: 100%;'
 				)
 			);
-		} else if( $shape === 'square' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_selector,
-					'declaration'	=> 'border-radius: none;'
-				)
-			);			
 		}
-
-		//icon & shape hover color
-		if( '' !== $icon_hover_color ) {
+		if ( $space_between_tablet ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector' 		=> $icon_selector.':hover',
-					'declaration'	=> sprintf(
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'column-gap: %1$s;',
+						$space_between_tablet
+					),
+				)
+			);
+		}
+		if ( $space_between_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $wrapper_selector,
+					'declaration' => sprintf(
+						'column-gap: %1$s;',
+						$space_between_phone
+					),
+				)
+			);
+		}
+		$social_icon_background = $this->props['social_icon_background'];
+		$close_button_color     = $this->props['close_button_color'];
+		$close_button_size      = $this->props['close_button_size'];
+
+		if ( $social_icon_background ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-modal-body.etlms-course-share-popup button.tutor_share',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$social_icon_background
+					),
+				)
+			);
+		}
+		if ( $close_button_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-modal-close span',
+					'declaration' => sprintf(
 						'color: %1$s !important;',
-						esc_html( $icon_hover_color )	
-					)
-				)
-			);				
-		}
-
-		if( '' !== $shape_hover_color ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $icon_selector.':hover',
-					'declaration'	=> sprintf(
-						'background-color: %1$s !important;',
-						esc_html( $shape_hover_color )	
-					)
-				)
-			);				
-		}
-
-		//share alignment
-		if( '' !== $alignment ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $wrapper,
-					'declaration'	=> sprintf(
-						'justify-content: %1$s !important;',
-						esc_html( $alignment )	
-					)
-				)
-			);				
-		}
-		if( '' !== $alignment_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector' 		=> $wrapper,
-					'declaration'	=> sprintf(
-						'justify-content: %1$s !important;',
-						esc_html( $alignment_tablet )	
+						$close_button_color
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_980')
 				)
-			);				
+			);
 		}
-		if( '' !== $alignment_phone ) {
+		if ( $close_button_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector' 		=> $wrapper,
-					'declaration'	=> sprintf(
-						'justify-content: %1$s !important;',
-						esc_html( $alignment_phone )	
+					'selector'    => '%%order_class%% .tutor-modal-close span',
+					'declaration' => sprintf(
+						'font-size: %1$s !important;',
+						$close_button_size
 					),
-					'media_query'	=> ET_Builder_Element::get_media_query('max_width_767')
 				)
-			);				
-		}		
-
-		//set styles end
-
-		$output = self::get_content($this->props);
+			);
+		}
+		// set styles end
+		$output = self::get_content( $this->props );
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
-		if ('' === $output) {
+		if ( '' === $output ) {
 			return '';
 		}
 
-		return $this->_render_module_wrapper($output, $render_slug);
+		return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }
 
-new TutorCourseShare;
+new TutorCourseShare();

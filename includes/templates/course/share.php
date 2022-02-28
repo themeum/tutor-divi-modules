@@ -9,8 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 $tutor_social_share_icons = tutor_utils()->tutor_social_share_icons();
-$disable_course_share = ! tutor_utils()->get_option( 'enable_course_share' );
-if ( ! tutor_utils()->count( $tutor_social_share_icons || $disable_course_share  ) ) {
+$enable     = tutor_utils()->get_option( 'enable_course_share' );
+
+if ( ! tutor_utils()->count( $tutor_social_share_icons ) || ! $enable ) {
 	return;
 }
 
@@ -19,27 +20,25 @@ $share_config  = array(
 	'text'  => get_the_excerpt(),
 	'image' => get_tutor_course_thumbnail( 'post-thumbnail', true ),
 );
-$section_title = $args['course_share_section_title'];
-$share_title   = $args['course_share_title'];
+$section_title = $args['popup_section_title'];
+$share_title   = $args['popup_share_title'];
 
 ?>
 
-<div class="etlms-course-share">
-	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
-		<?php if ( isset( $args['course_share_icon']['value'] ) && '' !== $args['course_share_icon']['value'] ) : ?>
-			<?php \Elementor\Icons_Manager::render_icon( $args['course_share_icon'], array( 'aria-hidden' => 'true' ) ); ?>
-		<?php else : ?>
+<div class="dtlms-course-share">
+	<a data-tutor-modal-target="dtlms-tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
+		<?php if ( 'on' === $args['course_share_icon_show'] ) : ?>
 			<i class="tutor-icon-share-filled"></i>
 		<?php endif; ?>
 		<span class="share-text">
-			<?php if ( 'yes' === $args['course_share_label_content'] ) : ?>
-				<?php esc_html_e( 'Share', 'tutor-lms-elementor-addons' ); ?>
+			<?php if ( 'on' === $args['course_share_text_show'] ) : ?>
+				<?php echo esc_html( $args['label'] ); ?>
 			<?php endif; ?>
 		</span>
 	</a>
 </div>
 
-<div id="tutor-course-share-opener" class="tutor-modal">
+<div id="dtlms-tutor-course-share-opener" class="tutor-modal">
 	<span class="tutor-modal-overlay"></span>
 	<div class="tutor-modal-root">
 		<div class="tutor-modal-inner tutor-modal-close-inner">
@@ -56,7 +55,7 @@ $share_title   = $args['course_share_title'];
 					<?php esc_html_e( 'Page Link', 'tutor-lms-elementor-addons' ); ?>
 				</div>
 				<div class="tutor-mb-30">
-					<input class="tutor-form-control" value="<?php echo get_permalink( get_the_ID() ); ?>" />
+					<input class="tutor-form-control" value="<?php echo get_permalink( $args['course'] ); ?>" />
 				</div>
 				<div>
 					<?php if ( '' !== $share_title ) : ?>
@@ -66,17 +65,17 @@ $share_title   = $args['course_share_title'];
 					<?php endif; ?>
 					<div class="tutor-social-share-wrap tutor-bs-d-flex" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
 						<?php foreach ( $tutor_social_share_icons as $icon ) : ?>
-							<button class="tutor_share <?php echo esc_attr( $icon['share_class'] . ' elementor-animation-' . $args['course_share_hover_animation'] ); ?>">
+							<button class="tutor_share <?php echo esc_attr( $icon['share_class'] ); ?>">
 								<span class="social-icon">
 									<?php
-									if ( 'yes' === $args['course_social_icon'] ) {
+									if ( 'on' === $args['show_social_icon'] ) {
 										echo $icon['icon_html'];
 									}
 									?>
 								</span>
 								<span>
 									<?php
-									if ( 'yes' === $args['course_social_icon_text'] ) {
+									if ( 'on' === $args['show_social_text'] ) {
 										echo esc_html( $icon['text'] );
 									}
 									?>
