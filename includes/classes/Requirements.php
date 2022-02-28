@@ -33,6 +33,11 @@ class Requirements {
 		if ( ! defined( 'TUTOR_VERSION' ) ) {
 			// Required Tutor Message
 			add_action( 'admin_notices', array( $this, 'required_tutor_lms' ) );
+		} else {
+			$dependency = new Dependency;
+			if ( ! $dependency->is_tutor_core_has_req_verion() ) {
+				add_action( 'admin_notices', array( $dependency, 'show_admin_notice' ) );
+			}
 		}
 	}
 

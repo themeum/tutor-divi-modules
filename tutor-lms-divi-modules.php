@@ -44,6 +44,7 @@ if ( ! function_exists( 'tudm_initialize_extension' ) ) :
 	 * @since 1.0.0
 	 */
 	function tudm_initialize_extension() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/classes/Dependency.php';
 		require_once plugin_dir_path( __FILE__ ) . 'includes/TutorDiviModules.php';
 	}
 

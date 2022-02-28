@@ -32,7 +32,7 @@ class Dependency {
 					<div>
 						<div class="tutor-bs-d-flex align-items-center" style="column-gap: 10px;" style="display:flex; align-items: center;">
 							<div class="etlms-install-notice-icon">
-								<img src="<?php echo ETLMS_ASSETS . 'images/plugin-logo.jpg'; ?>" alt="Tutor LMS Elementor Addons">
+                                <img src="<?php esc_attr_e( DTLMS_ASSETS . 'images/tutor-divi-logo.png' ); ?>" alt="Tutor Divi Modules Logo">
 							</div>
 							<div class="etlms-install-notice-content">
 								<h2 style="margin-bottom: 5px">
@@ -40,14 +40,14 @@ class Dependency {
 								<p style="margin-bottom: 5px">
 						<?php
 							esc_html_e(
-								'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install this ' . DTLMS_TUTOR_CORE_REQ_VERSION . ' version.
+								'It seems you have installed the wrong version Of Tutor LMS. For a smoother Tutor LMS experience, you need to install minimum ' . DTLMS_TUTOR_CORE_REQ_VERSION . ' version.
                                     ',
 								'tutor-lms-divi-modules'
 							);
 						?>
 								</p>
 								<p style="color: #757C8E;">
-									<?php esc_html_e( 'Note: Tutor LMS Elementor Add-on will be installed but you will not be able to avail any of its’ features as well specific Tutor LMS add-ons.', 'tutor-lms-elementor-addons' ); ?>
+									<?php esc_html_e( 'Note: Tutor LMS Divi Modules will be installed but you will not be able to avail any of its’ features as well specific Tutor LMS add-ons.', 'tutor-lms-divi-modules' ); ?>
 								</p>
 							</div>
 						</div>
