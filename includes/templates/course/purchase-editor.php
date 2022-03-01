@@ -8,8 +8,8 @@ $tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 $enrollment_mode      = $args['preview_mode'];
 $course               = get_post( $args['course'] );
 
-$is_enable_date  = get_tutor_option( 'enable_course_update_date' );
-$course_progress = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
+$is_enable_date        = get_tutor_option( 'enable_course_update_date' );
+$course_progress       = tutor_utils()->get_course_completed_percent( $args['course'], 0, true );
 $is_woocommerce_active = ( class_exists( 'woocommerce' ) ) ? true : false;
 
 $sidebar_meta   = apply_filters(
@@ -41,7 +41,7 @@ $sidebar_meta   = apply_filters(
 $button_size    = $args['button_size'];
 $is_purchasable = tutor_utils()->is_course_purchasable( $args['course'] );
 $product_id     = tutor_utils()->get_course_product_id( $args['course'] );
-$product        = wc_get_product( $product_id );
+$product        = $product_id && function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : false;
 
 ?>
 <div class="tutor-course-sidebar-card">
@@ -81,8 +81,8 @@ $product        = wc_get_product( $product_id );
 				</button>
 			<?php else : ?>	
 				<!-- if woocommerce load template from divi modules -->
-				<?php if ( $is_purchasable ) : ?>
-					<?php if( 'woocommerce' === $tutor_course_sell_by ) : ?>
+				<?php if ( $is_purchasable && $product ) : ?>
+					<?php if ( 'woocommerce' === $tutor_course_sell_by ) : ?>
 						<?php
 							tutor_load_template_from_custom_path(
 								dtlms_get_template( 'course/add-to-cart-woocommerce' ),
@@ -90,7 +90,7 @@ $product        = wc_get_product( $product_id );
 								false
 							);
 						?>
-					<?php else: ?>
+					<?php else : ?>
 						<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 					<?php endif; ?>
 				<?php else : ?>
