@@ -5,6 +5,8 @@ Description: Easily design your courses and lessons on Divi builder with Tutor L
 Version:     2.0.0
 Author:      Themeum
 Author URI:  https://themeum.com
+Requires at least: 5.3
+Tested up to: 5.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: tutor-lms-divi-modules
