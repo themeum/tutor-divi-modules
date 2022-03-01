@@ -1,74 +1,242 @@
-.tutor_course_about .et_module_title,
-.tutor_course_title .et_module_title,
-.tutor_course_author .et_module_title,
-.tutor_course_benefits .et_module_title,
-.tutor_course_carousel .et_module_title,
-.tutor_course_curriculum .et_module_title,
-.tutor_course_description .et_module_title,
-.tutor_course_categories .et_module_title,
-.tutor_course_duration .et_module_title,
-.tutor_course_instructor .et_module_title,
-.tutor_course_last_update .et_module_title,
-.tutor_course_level .et_module_title,
-.tutor_course_list .et_module_title,
-.tutor_course_materials .et_module_title,
-.tutor_course_price .et_module_title,
-.tutor_course_rating .et_module_title,
-.tutor_course_requirements .et_module_title,
-.tutor-course-reviews .et_module_title,
-.tutor_course_share .et_module_title,
-.tutor_course_status .et_module_title,
-.tutor_course_tags .et_module_title,
-.tutor_course_target_audience .et_module_title,
-.tutor_course_thumbnail .et_module_title,
-.tutor_course_total_enroll .et_module_title,
-.tutor_course_enrollment .et_module_title,
-.tutor_course_content .et_module_title,
-.tutor_course_purchase .et_module_title,
-.tutor_course_wishlist .et_module_title {
+.tutor-course-reviews .et_module_title {
   margin-top: 10px;
 }
 
-.tutor_course_about > div,
-.tutor_course_title > div,
-.tutor_course_author > div,
-.tutor_course_benefits > div,
-.tutor_course_carousel > div,
-.tutor_course_curriculum > div,
-.tutor_course_description > div,
-.tutor_course_categories > div,
-.tutor_course_duration > div,
-.tutor_course_instructor > div,
-.tutor_course_last_update > div,
-.tutor_course_level > div,
-.tutor_course_list > div,
-.tutor_course_materials > div,
-.tutor_course_price > div,
-.tutor_course_rating > div,
-.tutor_course_requirements > div,
-.tutor-course-reviews > div,
-.tutor_course_share > div,
-.tutor_course_status > div,
-.tutor_course_tags > div,
-.tutor_course_target_audience > div,
-.tutor_course_thumbnail > div,
-.tutor_course_total_enroll > div,
-.tutor_course_enrollment > div, 
-.tutor_course_content > div, 
-.tutor_course_purchase > div,
-.tutor_course_wishlist > div {
+.tutor-course-reviews > div {
   fill: #2b87da !important;
 }
-.tutor_course_wishlist > div svg, 
-.tutor_course_purchase > div svg,
+
+.tutor_course_about .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_about > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_author .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_author > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_benefits .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_benefits > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_carousel .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_carousel > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_categories .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_categories > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_content .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_content > div {
+  fill: #2b87da !important;
+}
+
 .tutor_course_content > div svg {
   width: 32px !important;
 }
 
-/* carousel styles */
+.tutor_course_curriculum .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_curriculum > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_description .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_description > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_duration .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_duration > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_enrollment .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_enrollment > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_instructor .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_instructor > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_last_update .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_last_update > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_level .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_level > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_list .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_list > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_materials .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_materials > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_price .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_price > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_purchase .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_purchase > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_purchase > div svg {
+  width: 32px !important;
+}
+
+.tutor_course_rating .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_rating > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_requirements .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_requirements > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_share .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_share > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_status .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_status > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_tags .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_tags > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_target_audience .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_target_audience > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_thumbnail .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_thumbnail > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_title .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_title > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_total_enroll .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_total_enroll > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_wishlist .et_module_title {
+  margin-top: 10px;
+}
+
+.tutor_course_wishlist > div {
+  fill: #2b87da !important;
+}
+
+.tutor_course_wishlist > div svg {
+  width: 32px !important;
+}
+
 .tutor-divi-carousel-classic .tutor-divi-card {
   border-radius: 8px;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #ebebeb;
   overflow: hidden;
 }
 
@@ -84,10 +252,9 @@
   border-radius: 20px;
 }
 
-/* list styles */
 .tutor-divi-courselist-classic .tutor-divi-card {
   border-radius: 8px;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #ebebeb;
   overflow: hidden;
 }
 

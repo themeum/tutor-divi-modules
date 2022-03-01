@@ -8,8 +8,10 @@ var gulp = require("gulp"),
     plumber = require("gulp-plumber");
 
 var tasks = {
-    tutor_divi: {src: "assets/scss/main.scss", mode: 'expanded', destination: 'tutor-divi-style.css'},
-    tutor_divi_min: {src: "assets/scss/main.scss", mode: 'compressed', destination: 'tutor-divi-style.min.css'},
+    backendExpended: {src: "assets/scss/backend-main.scss", mode: 'expanded', destination: 'admin_notice.css'},
+    backendCompressed: {src: "assets/scss/backend-main.scss", mode: 'compressed', destination: 'admin_notice.min.css'},
+    frontendExpanded: {src: "assets/scss/frontend-main.scss", mode: 'expanded', destination: 'tutor-divi-style.css'},
+    frontendCompressed: {src: "assets/scss/frontend-main.scss", mode: 'compressed', destination: 'tutor-divi-style.min.css'},
 };
 
 var task_keys = Object.keys(tasks);
@@ -72,7 +74,7 @@ function minifyJs(cb) {
 
 //clean existing build zip file
 function cleanZip(cb) {
-	return gulp.src("./tutor-lms-divi-modules.zip", {
+	return gulp.src("./*.zip", {
 		read: false,
 		allowEmpty: true
 	}).pipe(clean());
@@ -132,7 +134,8 @@ function bundleFiles(cb){
 
 // from destination directory take all files make zip
 function exportZip(cb) {
-	return src("./build/**/*.*").pipe(zip("tutor-lms-divi-modules.zip")).pipe(dest("./"));
+	const buildName = `tutor-lms-divi-modules-${require('./package.json').version}.zip`;
+	return src("./build/**/*.*").pipe(zip(buildName)).pipe(dest("./"));
 	cb();
 }
 
@@ -142,4 +145,4 @@ gulp.task("watch", function () {
 });
 
 exports.default 	= series(...task_keys, "watch");
-exports.build 		= series(cleanZip,cleanBuild,makePot,bundleFiles, exportZip);
+exports.build 		= series(...task_keys, cleanZip,cleanBuild,makePot,bundleFiles, exportZip);

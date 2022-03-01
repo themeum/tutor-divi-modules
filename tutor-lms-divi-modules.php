@@ -35,7 +35,7 @@ define( 'DTLMS_TUTOR_CORE_REQ_VERSION', '2.0.0-beta1' );
  * PROD
  * DEV
  */
-define( 'DTLMS_ENV', 'DEV' );
+define( 'DTLMS_ENV', 'PROD' );
 
 if ( ! function_exists( 'tudm_initialize_extension' ) ) :
 	/**

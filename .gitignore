@@ -24,8 +24,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-#ignore scss
-assets/scss
-
 #ignore issue
 issue.txt
