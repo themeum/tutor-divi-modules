@@ -7,7 +7,7 @@ class CourseTags extends Component {
     tagTemplate(tags) {
         if(tags.length) {
             const tag = tags.map((tag) => {
-                return <a href={tag.slug}>{ tag.name }</a>
+                return <a href={tag.slug} dangerouslySetInnerHTML={{__html: tag.name}}></a>
             });
             return tag;
         }
@@ -40,6 +40,13 @@ class CourseTags extends Component {
                 }
             ]);        
         }
+        // default tag style
+        additionalCss.push([
+            {
+                selector:'%%order_class%% .tutor-course-tags a',
+                declaration: 'font-size: 16px;line-height: 26px;text-decoration: none;padding: 7px 23px;border: 1px solid #c0c3cb;color: #5b616f;margin-left: 15px;border-radius: 6px;-webkit-transition: 200ms;transition: 200ms;background-color: #fff;',
+            }
+        ]);
         return additionalCss;
     }
 
