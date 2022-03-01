@@ -93,7 +93,7 @@ msgstr ""
 msgid "Author Name"
 msgstr ""
 
-#: includes/modules/CourseAuthor/CourseAuthor.php:62, includes/modules/CourseBenefits/CourseBenefits.php:141, includes/modules/CourseContent/CourseContent.php:450, includes/modules/CourseContent/CourseContent.php:490, includes/modules/CourseContent/CourseContent.php:553, includes/modules/CourseContent/CourseContent.php:574, includes/modules/CourseCurriculum/CourseCurriculum.php:168, includes/modules/CourseDuration/CourseDuration.php:117, includes/modules/CourseDuration/CourseDuration.php:199, includes/modules/CourseEnrollment/CourseEnrollment.php:71, includes/modules/CourseInstructor/CourseInstructor.php:192, includes/modules/CourseLastUpdate/CourseLastUpdate.php:117, includes/modules/CourseLastUpdate/CourseLastUpdate.php:176, includes/modules/CourseLevel/CourseLevel.php:45, includes/modules/CourseLevel/CourseLevel.php:61, includes/modules/CourseLevel/CourseLevel.php:126, includes/modules/CourseLevel/CourseLevel.php:184, includes/modules/CoursePurchase/CoursePurchase.php:87, includes/modules/CourseRequirements/CourseRequirements.php:142, includes/modules/CourseReviews/CourseReviews.php:239, includes/modules/CourseShare/CourseShare.php:251, includes/modules/CourseTags/CourseTags.php:150, includes/modules/CourseTargetAudience/CourseTargetAudience.php:142, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:116, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:175, includes/modules/CourseWishlist/CourseWishlist.php:55, includes/modules/CourseWishlist/CourseWishlist.php:69, includes/modules/CourseWishlist/CourseWishlist.php:142
+#: includes/modules/CourseAuthor/CourseAuthor.php:62, includes/modules/CourseBenefits/CourseBenefits.php:141, includes/modules/CourseContent/CourseContent.php:450, includes/modules/CourseContent/CourseContent.php:490, includes/modules/CourseContent/CourseContent.php:553, includes/modules/CourseContent/CourseContent.php:574, includes/modules/CourseCurriculum/CourseCurriculum.php:168, includes/modules/CourseDuration/CourseDuration.php:117, includes/modules/CourseDuration/CourseDuration.php:199, includes/modules/CourseEnrollment/CourseEnrollment.php:71, includes/modules/CourseInstructor/CourseInstructor.php:192, includes/modules/CourseLastUpdate/CourseLastUpdate.php:117, includes/modules/CourseLastUpdate/CourseLastUpdate.php:176, includes/modules/CourseLevel/CourseLevel.php:45, includes/modules/CourseLevel/CourseLevel.php:61, includes/modules/CourseLevel/CourseLevel.php:126, includes/modules/CourseLevel/CourseLevel.php:184, includes/modules/CoursePurchase/CoursePurchase.php:87, includes/modules/CourseRequirements/CourseRequirements.php:142, includes/modules/CourseReviews/CourseReviews.php:239, includes/modules/CourseShare/CourseShare.php:251, includes/modules/CourseTags/CourseTags.php:149, includes/modules/CourseTargetAudience/CourseTargetAudience.php:142, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:116, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:175, includes/modules/CourseWishlist/CourseWishlist.php:55, includes/modules/CourseWishlist/CourseWishlist.php:69, includes/modules/CourseWishlist/CourseWishlist.php:142
 msgid "Label"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Tutor Course Benefits"
 msgstr ""
 
-#: includes/modules/CourseBenefits/CourseBenefits.php:46, includes/modules/CourseMaterials/CourseMaterials.php:46, includes/modules/CourseRequirements/CourseRequirements.php:46, includes/modules/CourseTags/CourseTags.php:45, includes/modules/CourseTargetAudience/CourseTargetAudience.php:46
+#: includes/modules/CourseBenefits/CourseBenefits.php:46, includes/modules/CourseMaterials/CourseMaterials.php:46, includes/modules/CourseRequirements/CourseRequirements.php:46, includes/modules/CourseTags/CourseTags.php:44, includes/modules/CourseTargetAudience/CourseTargetAudience.php:46
 msgid "Section Title"
 msgstr ""
 
@@ -409,7 +409,7 @@ msgstr ""
 msgid "Paush on Hover"
 msgstr ""
 
-#: includes/modules/CourseCarousel/CourseCarousel.php:537, includes/modules/CourseCarousel/CourseCarousel.php:590, includes/modules/CourseCarousel/CourseCarousel.php:697, includes/modules/CourseContent/CourseContent.php:666, includes/modules/CourseContent/CourseContent.php:774, includes/modules/CourseContent/CourseContent.php:791, includes/modules/CourseContent/CourseContent.php:808, includes/modules/CourseContent/CourseContent.php:847, includes/modules/CourseCurriculum/CourseCurriculum.php:234, includes/modules/CourseCurriculum/CourseCurriculum.php:251, includes/modules/CourseCurriculum/CourseCurriculum.php:268, includes/modules/CourseCurriculum/CourseCurriculum.php:307, includes/modules/CourseList/CourseList.php:510, includes/modules/CourseList/CourseList.php:563, includes/modules/CourseList/CourseList.php:676, includes/modules/CourseList/CourseList.php:707, includes/modules/CourseList/CourseList.php:720, includes/modules/CourseList/CourseList.php:733, includes/modules/CoursePurchase/CoursePurchase.php:399, includes/modules/CourseShare/CourseShare.php:341, includes/modules/CourseStatus/CourseStatus.php:130, includes/modules/CourseTags/CourseTags.php:158
+#: includes/modules/CourseCarousel/CourseCarousel.php:537, includes/modules/CourseCarousel/CourseCarousel.php:590, includes/modules/CourseCarousel/CourseCarousel.php:697, includes/modules/CourseContent/CourseContent.php:666, includes/modules/CourseContent/CourseContent.php:774, includes/modules/CourseContent/CourseContent.php:791, includes/modules/CourseContent/CourseContent.php:808, includes/modules/CourseContent/CourseContent.php:847, includes/modules/CourseCurriculum/CourseCurriculum.php:234, includes/modules/CourseCurriculum/CourseCurriculum.php:251, includes/modules/CourseCurriculum/CourseCurriculum.php:268, includes/modules/CourseCurriculum/CourseCurriculum.php:307, includes/modules/CourseList/CourseList.php:510, includes/modules/CourseList/CourseList.php:563, includes/modules/CourseList/CourseList.php:676, includes/modules/CourseList/CourseList.php:707, includes/modules/CourseList/CourseList.php:720, includes/modules/CourseList/CourseList.php:733, includes/modules/CoursePurchase/CoursePurchase.php:399, includes/modules/CourseShare/CourseShare.php:341, includes/modules/CourseStatus/CourseStatus.php:130, includes/modules/CourseTags/CourseTags.php:157
 msgid "Background Color"
 msgstr ""
 
@@ -1009,15 +1009,15 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-#: includes/modules/CourseTags/CourseTags.php:31
+#: includes/modules/CourseTags/CourseTags.php:32
 msgid "Tutor Course Tags"
 msgstr ""
 
-#: includes/modules/CourseTags/CourseTags.php:48
+#: includes/modules/CourseTags/CourseTags.php:47
 msgid "Tags"
 msgstr ""
 
-#: includes/modules/CourseTags/CourseTags.php:152
+#: includes/modules/CourseTags/CourseTags.php:151
 msgid "Course Tags"
 msgstr ""
 

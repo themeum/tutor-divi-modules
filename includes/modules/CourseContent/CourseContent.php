@@ -543,7 +543,7 @@ class CourseContent extends ET_Builder_Module {
 					'column' => esc_html__( 'Top', 'tutor-lms-divi-modules' ),
 				),
 				'description' => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'     => 'row',
+				'default'     => 'column',
 				'toggle_slug' => 'course_instructor',
 			),
 			// course instructor content controls end.
