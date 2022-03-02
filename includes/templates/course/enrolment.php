@@ -22,7 +22,8 @@ $is_public             = get_post_meta( get_the_ID(), '_tutor_is_public_course',
 $monetize_by              = tutor_utils()->get_option( 'monetize_by' );
 $enable_guest_course_cart = tutor_utils()->get_option( 'enable_guest_course_cart' );
 $is_purchasable           = tutor_utils()->is_course_purchasable();
-
+$product_id               = tutor_utils()->get_course_product_id( $args['course'] );
+$product                  = $product_id && function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : false;
 // Get login url if
 $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
 $auth_url                = $is_tutor_login_disabled ? isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) : '' : '';
@@ -191,9 +192,9 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 				} else {
 					?>
 					<form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
-						<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
+						<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product ? $product->get_id() : '' ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
 							<span class="btn-icon tutor-icon-cart-filled"></span>
-							<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
+							<span><?php echo esc_html( $product ? $product->single_add_to_cart_text() : __( 'View Cart', 'tutor-lms-divi-modules' ) ); ?></span>
 						</button>
 					</form>
 					<?php

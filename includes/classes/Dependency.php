@@ -87,6 +87,6 @@ class Dependency {
 	 * @return boolean
 	 */
 	public function is_tutor_file_available(): bool {
-		return file_exists( WP_PLUGIN_DIR . '/tutor/tutor.php' ) ? true : false;
+		return file_exists( WP_PLUGIN_DIR . '/tutor/tutor.php' );
 	}
 }
