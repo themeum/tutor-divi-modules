@@ -28,6 +28,8 @@ add_filter(
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
+
+							include dtlms_get_template( 'course/about' );
 							include dtlms_get_template( 'course/benefits' );
 							include dtlms_get_template( 'course/instructor' );
 						} else {

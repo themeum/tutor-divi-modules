@@ -48,6 +48,15 @@ class CourseContent extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
+					'heading'                   => array(
+						'title' => esc_html__( 'About Course', 'tutor-lms-divi-modules' ),
+					),
+					'short_text'                => array(
+						'title' => esc_html__( 'About Course Short Text', 'tutor-lms-divi-modules' ),
+					),
+					'about_text'                => array(
+						'title' => esc_html__( 'About Course Full Text', 'tutor-lms-divi-modules' ),
+					),
 					// course benefits advanced toggles.
 					'course_benefits_title'     => array(
 						'title' => esc_html__( 'Course Benefits Title', 'tutor-lms-divi-modules' ),
@@ -124,8 +133,33 @@ class CourseContent extends ET_Builder_Module {
 		 */
 
 		// course benefits controls end.
+		$heading_selector      = '%%order_class%% .tutor-showmore-content .text-medium-h6';
+		$paragraph_selector    = '%%order_class%% .showmore-text';
+		$short_text            = '%%order_class%% .showmore-short-text';
 		$this->advanced_fields = array(
 			'fonts'          => array(
+				'heading'                 => array(
+					'css'         => array(
+						'main' => $heading_selector,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'heading',
+				),
+				'about_text'              => array(
+					'css'         => array(
+						'main' => $paragraph_selector,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'about_text',
+				),
+				'short_text'              => array(
+					'css'         => array(
+						'main' => $short_text,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'short_text',
+				),
+				// course benefit controls.
 				'course_benefits_title'   => array(
 					'css' => array(
 						'main'        => '%%order_class%% .tutor-course-benefits-wrap .tutor-segment-title',
@@ -143,12 +177,12 @@ class CourseContent extends ET_Builder_Module {
 				),
 				// course instructor font toggle.
 				'course_instructor_title' => array(
-					'css'         => array(
+					'css'             => array(
 						'main' => '%%order_class%% .dtlms-course-instructor-title',
 					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'course_instructor_title',
-                    'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'course_instructor_title',
+					'hide_text_align' => true,
 				),
 				'instructor_name'         => array(
 					'css'             => array(
@@ -221,12 +255,12 @@ class CourseContent extends ET_Builder_Module {
 
 				// reviews controls.
 				'review_section_title'    => array(
-					'css' => array(
+					'css'             => array(
 						'main'        => "$reviews_wrapper .tutor-course-topics-header .text-primary",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'section_title',
 					),
-                    'hide_text_align'   => true,
+					'hide_text_align' => true,
 				),
 				'review_avg_total'        => array(
 					'css'             => array(
@@ -237,9 +271,9 @@ class CourseContent extends ET_Builder_Module {
 					),
 					'hide_text_align' => true,
 				),
-				'review_avg_star'        => array(
+				'review_avg_star'         => array(
 					'css'             => array(
-						'main'        => "%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-ratings .tutor-rating-stars span",
+						'main'        => '%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-ratings .tutor-rating-stars span',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_star',
 
@@ -366,8 +400,8 @@ class CourseContent extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'lesson',
 				),
-                // reviews border.
-                'review_list_avatar' => array(
+				// reviews border.
+				'review_list_avatar'          => array(
 					'css'         => array(
 						'main'      => array(
 							'border_radii'  => '%%order_class%% .review-list img',
@@ -388,11 +422,11 @@ class CourseContent extends ET_Builder_Module {
 			),
 			'text'           => false,
 			'max_width'      => false,
-			//'animation'      => false,
-			//'transform'      => false,
+			// 'animation'      => false,
+			// 'transform'      => false,
 			'background'     => false,
-			//'filters'        => false,
-			//'box_shadow'     => false,
+			// 'filters'        => false,
+			// 'box_shadow'     => false,
 		);
 	}
 
@@ -624,7 +658,7 @@ class CourseContent extends ET_Builder_Module {
 			'course_benefits_icon_color'               => array(
 				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
-                'default'     => '#3e64de',
+				'default'     => '#3e64de',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'course_benefits_icon',
 			),
@@ -704,17 +738,17 @@ class CourseContent extends ET_Builder_Module {
 			),
 			// advanced tab margin_padding toggle
 			// 'space_between'                            => array(
-			// 	'label'          => esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
-			// 	'type'           => 'range',
-			// 	'default'        => '10px',
-			// 	'default_unit'   => 'px',
-			// 	'range_settings' => array(
-			// 		'min'  => '1',
-			// 		'max'  => '100',
-			// 		'step' => '1',
-			// 	),
-			// 	'tab_slug'       => 'advanced',
-			// 	'toggle_slug'    => 'margin_padding',
+			// 'label'          => esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
+			// 'type'           => 'range',
+			// 'default'        => '10px',
+			// 'default_unit'   => 'px',
+			// 'range_settings' => array(
+			// 'min'  => '1',
+			// 'max'  => '100',
+			// 'step' => '1',
+			// ),
+			// 'tab_slug'       => 'advanced',
+			// 'toggle_slug'    => 'margin_padding',
 			// ),
 			// course instructor advanced controls end.
 
@@ -996,7 +1030,7 @@ class CourseContent extends ET_Builder_Module {
 		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
 
 		// props
-		//$icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
+		// $icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
 		$topic_icon_size = sanitize_text_field( $this->props['topic_icon_size'] );
 
 		$gap        = sanitize_text_field( $this->props['gap'] );
@@ -1797,7 +1831,7 @@ class CourseContent extends ET_Builder_Module {
 				'declaration' => 'padding: 0 !important;',
 			)
 		);
-        // review styles start.
+		// review styles start.
 		// review star color.
 		if ( '' !== $this->props['review_right_star'] ) {
 			ET_Builder_Element::set_style(
@@ -1847,7 +1881,7 @@ class CourseContent extends ET_Builder_Module {
 				)
 			);
 		}
-        // reviews styles end.
+		// reviews styles end.
 		// set styles end
 		$output = self::get_content( $this->props );
 		// Render empty string if no output is generated to avoid unwanted vertical space.

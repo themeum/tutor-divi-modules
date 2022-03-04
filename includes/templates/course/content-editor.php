@@ -29,6 +29,11 @@ add_filter(
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
+							tutor_load_template_from_custom_path(
+								dtlms_get_template( 'course/about' ),
+								array( 'post_id' => $args['course'] ),
+								false
+							);
 							include dtlms_get_template( 'course/benefits' );
 							tutor_load_template_from_custom_path(
 								dtlms_get_template( 'course/instructor' ),

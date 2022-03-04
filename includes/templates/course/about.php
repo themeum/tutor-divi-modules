@@ -102,9 +102,7 @@ if ( ! function_exists( 'truncate' ) ) {
 		return $truncate;
 	}
 }
-
-
-$excerpt    = tutor_get_the_excerpt();
+$excerpt    = tutor_get_the_excerpt( isset( $data ) && isset( $data['post_id'] ) ? $data['post_id'] : 0 );
 $is_enabled = get_tutor_option( 'enable_course_about' );
 
 $string       = $excerpt;
@@ -118,7 +116,7 @@ if ( strlen( $string ) > $limit ) {
 
 if ( ! empty( $excerpt ) && $is_enabled ) {
 	?>
-	<div class='tab-item-content <?php echo $has_readmore ? 'tutor-has-showmore' : ''; ?>'>
+	<div class='tab-item-content <?php echo $has_readmore ? 'tutor-has-showmore' : ''; ?> tutor-mb-50'>
 		<div class='tutor-showmore-content'>
 			<div class="text-medium-h6 tutor-color-text-primary">
 				<?php esc_html_e( 'About Course', 'tutor-lms-divi-modules' ); ?>
