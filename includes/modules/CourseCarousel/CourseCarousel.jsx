@@ -680,7 +680,7 @@ class CourseCarousel extends Component {
                             
                                 <div className="tutor-course-loop-title">
                                     <h2>
-                                        <a href="/">
+                                        <a href="/" className='tutor-text-medium-h5 tutor-color-text-primary'>
                                             {course.post_title}
                                         </a>
                                     </h2>

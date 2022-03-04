@@ -764,7 +764,7 @@ class CourseList extends Component {
         const courses 			= props.__courses.courses.map((course) => {
             return (
             <div className={`tutor-course-col-${this.props.columns} tutor-divi-courselist-col`}>
-                <div className={`tutor-divi-card ${hover_animation} ${single_style}`}>
+                <div className={`tutor-divi-card ${hover_animation} ${single_style}`} {...props.skin === 'classic' || props.skin === 'card' ? `tutor-course-listing-item`: ''}>
 
                         <div className="tutor-course-header ">
                              { this.thumbnailTemplate(props.show_image,course) }                       
@@ -787,7 +787,7 @@ class CourseList extends Component {
                             
                                 <div className="tutor-course-loop-title">
                                     <h2>
-                                        <a href="/">
+                                        <a href="/" className='tutor-text-medium-h5 tutor-color-text-primary'>
                                             {course.post_title}
                                         </a>
                                     </h2>

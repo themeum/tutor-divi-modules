@@ -349,7 +349,7 @@ class CourseCarousel extends ET_Builder_Module {
 			'difficulty_label'	=> array(
 				'label'			=> esc_html__( 'Difficulty Label', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
-				'default'		=> 'on',
+				'default'		=> 'off',
 				'options'		=> array(
 					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
@@ -553,7 +553,6 @@ class CourseCarousel extends ET_Builder_Module {
 					'max'	=> '100',
 					'step'	=> '1'
 				),
-				'default'		=> '1px',
 				'default_unit'	=> 'px',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
@@ -647,7 +646,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
-				'default'		=> '14px',
+				'default'		=> '18px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '100',
@@ -1523,6 +1522,13 @@ class CourseCarousel extends ET_Builder_Module {
 			array(
 				'selector'		=> '%%order_class%% .list-item-price .price',
 				'declaration'	=> 'display: flex;'
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-course-listing-item-footer',
+				'declaration'	=> 'border-left: none; border-right: none; border-bottom: none;'
 			)
 		);
 		//set styles end

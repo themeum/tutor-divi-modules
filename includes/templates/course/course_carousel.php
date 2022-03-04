@@ -167,7 +167,7 @@ if ( $the_query->have_posts() ) :
 							<?php endif; ?>
 							<!-- loop title -->
 							<div class="tutor-course-loop-title">
-								<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() ); ?></a></h2>
+								<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>" class="tutor-text-medium-h5 tutor-color-text-primary"><?php esc_html( the_title() ); ?></a></h2>
 							</div>
 
 							<!-- loop meta -->
@@ -243,7 +243,7 @@ if ( $the_query->have_posts() ) :
 
 						<!-- loop footer -->
 						<?php if ( 'on' === $footer ) : ?>
-							<div class="tutor-loop-course-footer tutor-divi-carousel-footer">
+							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-divi-carousel-footer">
 								<?php
 								tutor_course_loop_price()
 								?>

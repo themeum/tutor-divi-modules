@@ -104,7 +104,7 @@ if ( $the_query->have_posts() ) :
 				$image_url  = get_tutor_course_thumbnail( $image_size, $url = true );
 
 			?>
-			<div class="tutor-divi-card 
+			<div class="<?php echo 'stacked' !== $args['skin'] ? 'tutor-course-listing-item ' : ''; ?> tutor-divi-card 
 			<?php
 			echo $hover_animation == 'on' ? esc_attr( 'hover-animation' ) : '';
 			if ( $columns == 1 && $skin != 'overlayed' ) {
@@ -172,7 +172,7 @@ if ( $the_query->have_posts() ) :
 							<?php endif; ?>
 							<!-- loop title -->
 							<div class="tutor-course-loop-title">
-								<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() ); ?></a></h2>
+								<h2><a class="tutor-text-medium-h5 tutor-color-text-primary" href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() ); ?></a></h2>
 							</div>
 
 							<!-- loop meta -->
@@ -217,50 +217,52 @@ if ( $the_query->have_posts() ) :
 								</div>
 							<?php endif; ?>
 
-							<div class="tutor-loop-author list-item-author tutor-bs-d-flex tutor-bs-align-items-center tutor-mt-30">
-								<div class="tutor-single-course-avatar">
+							<!-- update cat meta -->
+							<div class="tutor-loop-author tutor-bs-d-flex align-items-center">
+								<span class="tutor-single-course-avatar">
 									<?php if ( 'on' === $avatar ) : ?>
-										<a href="<?php echo esc_url( $profile_url ); ?>"> 
-											<?php echo wp_kses_post( tutor_utils()->get_tutor_avatar( $post->post_author ) ); ?>
-										</a>
+										<a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>
 									<?php endif; ?>
-								</div>
-								<div class="tutor-course-meta text-regular-caption tutor-color-text-subsued">
-									<span class="tutor-single-course-author-name">
-										<span class="tutor-course-meta-name"><?php esc_html_e( 'by', 'tutor-lms-divi-modules' ); ?></span>
-										<a href="<?php echo esc_url( $profile_url ); ?>">
-											<?php echo wp_kses_post( get_the_author() ); ?>
-										</a>
-									</span>
+								</span>
+								<div class="tutor-course-lising-category">
+									<?php if ( 'on' == $category ) : ?>
+										<span class="tutor-single-course-author-name">
+											<span class="tutor-color-text-subsued"><?php _e( 'by', 'tutor-lms-divi-modules' ); ?></span>
+											<span class="etlms-author-name tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
+										</span>
+									<?php endif; ?>
+									<?php
+									if ( 'on' === $category ) {
 
-									<span class="tutor-course-lising-category">
-										<?php
-										if ( 'on' === $category ) {
-
-											$course_categories = get_tutor_course_categories();
-											if ( ! empty( $course_categories ) && is_array( $course_categories ) && count( $course_categories ) ) {
-												?>
-												<span class="tutor-course-meta-cat">
-													<?php esc_html_e( 'In', 'tutor-lms-divi-modules' ); ?></span>
-												<?php
-												foreach ( $course_categories as $course_category ) {
-													$category_name = $course_category->name;
-													$category_link = get_term_link( $course_category->term_id );
-													echo "<a href='" . esc_url( $category_link ) . "'> " . esc_html( $category_name ) . ' </a>';
-												}
+										$course_categories = get_tutor_course_categories();
+										if ( is_array( $course_categories ) && count( $course_categories ) > 3 && 'overlayed' === $args['skin']  ) {
+											$chunk = array_chunk( $course_categories, 3 );
+											if ( count( $chunk ) && isset( $chunk[0] ) ) {
+												$course_categories = $chunk[0];
 											}
 										}
-										?>
-									</span>
+										if ( is_array( $course_categories ) && count( $course_categories ) ) {
+											?>
+											<span class="tutor-color-text-subsued tutor-course-meta-cat"><?php esc_html_e( 'In', 'tutor-lms-divi-modules' ); ?></span>
+											<?php
+											foreach ( $course_categories as $course_category ) {
+												$category_name = $course_category->name;
+												$category_link = get_term_link( $course_category->term_id );
+												echo "<a href='" . esc_url( $category_link ) . "'> " . esc_html( $category_name ) . " </a>";
+											}
+										}
+									}
+									?>
 								</div>
 							</div>
+							<!-- update cat meta -->
 
 							<!-- end content wrap -->
 						</div>
 
 						<!-- loop footer -->
 						<?php if ( 'on' === $footer ) : ?>
-							<div class="tutor-loop-course-footer tutor-divi-courselist-footer">
+							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-loop-course-footer tutor-divi-courselist-footer">
 								<?php
 								tutor_course_loop_price()
 								?>

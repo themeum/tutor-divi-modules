@@ -347,7 +347,7 @@ class CourseList extends ET_Builder_Module {
 			'difficulty_label'	=> array(
 				'label'			=> esc_html__( 'Difficulty Label', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
-				'default'		=> 'on',
+				'default'		=> 'off',
 				'options'		=> array(
 					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
@@ -526,7 +526,6 @@ class CourseList extends ET_Builder_Module {
 					'max'	=> '100',
 					'step'	=> '1'
 				),
-				'default'		=> '1px',
 				'default_unit'	=> 'px',
 				'tab_slug'		=> 'advanced',
 				'toggle_slug'	=> 'card'
@@ -601,6 +600,7 @@ class CourseList extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Avatar Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
+				'default'		=> '34px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '200',
@@ -620,7 +620,7 @@ class CourseList extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Star Size', 'tutor-lms-divi-modules'),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
-				'default'		=> '14px',
+				'default'		=> '18px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '100',
@@ -1721,6 +1721,29 @@ class CourseList extends ET_Builder_Module {
 				'declaration'	=> 'filter: none !important;'
 			)
 		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-color-text-primary',
+				'declaration'	=> 'color: #212327;'
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-loop-author>div span',
+				'declaration'	=> 'color: #7A7A7A !important;'
+			)
+		);
+		// author avatar cat gap.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'		=> '%%order_class%% .tutor-loop-author.tutor-bs-d-flex',
+				'declaration'	=> 'gap: 5px;'
+			)
+		);
+
 		//set styles end
 
 		$output = self::get_content($this->props);
