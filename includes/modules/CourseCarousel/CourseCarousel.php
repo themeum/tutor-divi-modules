@@ -346,6 +346,17 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'		=> 'general',
 				'toggle_slug'	=> 'layout'
 			),
+			'author'	=> array(
+				'label'			=> esc_html__( 'Author', 'tutor-lms-divi-modules' ),
+				'type'			=> 'yes_no_button',
+				'default'		=> 'on',
+				'options'		=> array(
+					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
+				),
+				'tab_slug'		=> 'general',
+				'toggle_slug'	=> 'layout'
+			),
 			'difficulty_label'	=> array(
 				'label'			=> esc_html__( 'Difficulty Label', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
@@ -627,6 +638,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'			=> esc_html__( 'Avatar Size', 'tutor-lms-divi-modules' ),
 				'type'			=> 'range',
 				'default_unit'	=> 'px',
+				'default'		=> '34px',
 				'range_settings'=> array(
 					'min'	=> '1',
 					'max'	=> '200',
@@ -1529,6 +1541,49 @@ class CourseCarousel extends ET_Builder_Module {
 			array(
 				'selector'		=> '%%order_class%% .tutor-course-listing-item-footer',
 				'declaration'	=> 'border-left: none; border-right: none; border-bottom: none;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-color-text-primary',
+				'declaration' => 'color: #212327;',
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-color-text-subsued',
+				'declaration' => 'color: #5b616f;',
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist a',
+				'declaration' => 'color: #fff;',
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
+				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px;',
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist:hover',
+				'declaration' => 'background-color: #3e64de;',
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-loop-author.tutor-bs-d-flex.align-items-center',
+				'declaration' => 'gap: 10px;',
 			)
 		);
 		//set styles end

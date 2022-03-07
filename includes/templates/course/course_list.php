@@ -43,6 +43,7 @@ $image_size       = $args['image_size'];
 $meta_data        = $args['meta_data'];
 $rating           = $args['rating'];
 $avatar           = $args['avatar'];
+$author           = $args['author'];
 $difficulty_label = $args['difficulty_label'];
 $wish_list        = $args['wish_list'];
 $category         = $args['category'];
@@ -225,7 +226,7 @@ if ( $the_query->have_posts() ) :
 									<?php endif; ?>
 								</span>
 								<div class="tutor-course-lising-category">
-									<?php if ( 'on' == $category ) : ?>
+									<?php if ( 'on' == $author ) : ?>
 										<span class="tutor-single-course-author-name">
 											<span class="tutor-color-text-subsued"><?php _e( 'by', 'tutor-lms-divi-modules' ); ?></span>
 											<span class="etlms-author-name tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
