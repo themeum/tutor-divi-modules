@@ -204,7 +204,7 @@ class CourseWishlist extends ET_Builder_Module {
 	 * @since 1.0.0
 	 * @return string
 	 */
-	public function get_content( $args = array() ) {
+	public static function get_content( $args = array() ) {
 		ob_start();
 		?>
 		<div class="dtlms-course-wishlist-wrapper">
