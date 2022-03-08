@@ -1788,6 +1788,14 @@ class CourseList extends ET_Builder_Module {
 				'declaration' => 'min-height: 300px; height: auto;'
 			)
 		);
+		// min height for stacked container.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'	=> '%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
+				'declaration' => 'min-height: 320px;'
+			)
+		);
 		// set styles end
 
 		$output = self::get_content( $this->props );
