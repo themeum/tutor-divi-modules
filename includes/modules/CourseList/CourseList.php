@@ -1198,13 +1198,25 @@ class CourseList extends ET_Builder_Module {
 		// skin layout styles end
 
 		// card style
-		if ( '' !== $card_background_color ) {
+		if ( '' !== $card_background_color && ( 'classic' === $skin || 'card' === $skin || 'overlayed' === $skin ) ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'    => $card_selector,
 					'declaration' => sprintf(
 						'background-color: %1$s;',
+						$card_background_color
+					),
+				)
+			);
+		}
+		if ( '' !== $card_background_color && 'stacked' === $skin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-divi-courselist-course-container',
+					'declaration' => sprintf(
+						'background-color: %1$s !important;',
 						$card_background_color
 					),
 				)
@@ -1768,6 +1780,14 @@ class CourseList extends ET_Builder_Module {
 			)
 		);
 
+		// 1 col style.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'	=> '%%order_class%% .tutor-course-col-1 .tutor-course-header a img',
+				'declaration' => 'min-height: 300px; height: auto;'
+			)
+		);
 		// set styles end
 
 		$output = self::get_content( $this->props );

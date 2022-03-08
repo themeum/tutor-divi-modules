@@ -100,11 +100,19 @@ class CourseList extends Component {
                 declaration: 'width: 100%;height: 100%; position: absolute;content: "";z-index: 2;'  
             }
         ]);
-        if('' !== card_background_color) {
+        if('' !== card_background_color && ( 'classic' === skin || 'card' === skin || 'overlayed' === skin )) {
             additionalCss.push([
                 {
                     selector: card_selector,
                     declaration: `background-color: ${card_background_color};`
+                }
+            ]);
+        }
+        if('' !== card_background_color && 'stacked' === skin ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-courselist-course-container',
+                    declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
         }
@@ -658,6 +666,13 @@ class CourseList extends Component {
             }
         ]);
 
+        // 1 col style
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-col-1 .tutor-course-header a img',
+				declaration: 'min-height: 300px; height: auto;'
+            }
+        ]);
         //set styles end
         return additionalCss;
     }
@@ -823,14 +838,14 @@ class CourseList extends Component {
                                         <span className="tutor-single-course-author-name tutor-course-meta-name">
                                             <a href="/">By {course.author_name}</a>
                                         </span>
-                                        { course.course_category.length ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
+                                        { course.course_category.length && props.category === 'on' ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
                                         { this.categoryTemplate(props.category,course.course_category) }
                                     </div>
                                 </div>
                             </div>
-                            { props.skin === 'stacked' || props.skin === 'overlayed' ? this.footerTemplate(props.footer, course) : '' }
+                            { (props.skin === 'stacked' || props.skin === 'overlayed') ? this.footerTemplate(props.footer, course) : '' }
                         </div> 
-                        { props.skin === 'classic' || props.skin === 'card' ? this.footerTemplate(props.footer, course) : '' }
+                        { (props.skin === 'classic' || props.skin === 'card')  ? this.footerTemplate(props.footer, course) : '' }
 
                 </div>
             </div>    
