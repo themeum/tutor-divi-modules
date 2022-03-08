@@ -488,6 +488,26 @@ class CourseCarousel extends Component {
                 declaration: 'content: "" ',
             },
         ]);
+
+        // default wishlist style
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist a',
+                declaration: 'color: #fff;',
+            }
+        ]);
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
+                declaration: 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px; color:#fff; width: 40px; height: 40px;',
+            }
+        ]);
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist:hover',
+                declaration: 'background-color: #3e64de;',
+            }
+        ]);
         //set styles end
         return additionalCss;
     }

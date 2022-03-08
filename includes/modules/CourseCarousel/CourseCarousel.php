@@ -382,7 +382,7 @@ class CourseCarousel extends ET_Builder_Module {
 			'category'	=> array(
 				'label'			=> esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'			=> 'yes_no_button',
-				'default'		=> 'on',
+				'default'		=> 'off',
 				'options'		=> array(
 					'on'	=> esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 					'off'	=> esc_html__( 'Hide', 'tutor-lms-divi-modules' )
@@ -1569,7 +1569,7 @@ class CourseCarousel extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
-				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px;',
+				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4);',
 			)
 		);
 		ET_Builder_Element::set_style(
