@@ -141,7 +141,7 @@ if ( $the_query->have_posts() ) :
 								echo wp_kses_post( $level );
 							}
 							if ( 'on' === $wish_list ) {
-								$wish_list_html = '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line-filled ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
+								$wish_list_html = '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line-filled save-bookmark-btn tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-center ' . $action_class . ' ' . $has_wish_list . ' " data-course-id="' . $course_id . '"></a> </span>';
 								echo wp_kses_post( $wish_list_html );
 							}
 							?>
@@ -172,7 +172,7 @@ if ( $the_query->have_posts() ) :
 								</div>
 							<?php endif; ?>
 							<!-- loop title -->
-							<div class="tutor-course-loop-title">
+							<div class="tutor-course-loop-title" title="<?php esc_attr( the_title() ); ?>">
 								<h2><a class="tutor-text-medium-h5 tutor-color-text-primary" href="<?php echo esc_url( get_the_permalink() ); ?>"><?php esc_html( the_title() ); ?></a></h2>
 							</div>
 
@@ -262,7 +262,7 @@ if ( $the_query->have_posts() ) :
 						</div>
 
 						<!-- loop footer -->
-						<?php if ( 'on' === $footer ) : ?>
+						<?php if ( 'on' === $footer && ( 'stacked' === $skin || 'overlayed' === $skin ) ) : ?>
 							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-loop-course-footer tutor-divi-courselist-footer">
 								<?php
 								tutor_course_loop_price()
@@ -270,8 +270,14 @@ if ( $the_query->have_posts() ) :
 							</div>
 						<?php endif; ?>    
 					</div> <!-- tutor-divi-course-container -->
-					
-
+					<!-- loop footer -->
+					<?php if ( 'on' === $footer && ( 'classic' === $skin || 'card' === $skin ) ) : ?>
+						<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-loop-course-footer tutor-divi-courselist-footer">
+							<?php
+							tutor_course_loop_price()
+							?>
+						</div>
+					<?php endif; ?>  
 
 				</div><!--card-end-->
 			</div>

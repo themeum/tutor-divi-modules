@@ -1007,7 +1007,7 @@ class CourseList extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => '%%order_class%% .list-item-price .price',
-				'declaration' => 'display: flex;',
+				'declaration' => 'display: flex; align-items: center; gap: 4px;',
 			)
 		);
 		ET_Builder_Element::set_style(

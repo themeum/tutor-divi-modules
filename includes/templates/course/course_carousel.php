@@ -167,7 +167,7 @@ if ( $the_query->have_posts() ) :
 								</div>
 							<?php endif; ?>
 							<!-- loop title -->
-							<div class="tutor-course-loop-title">
+							<div class="tutor-course-loop-title" title="<?php esc_attr( the_title() ); ?>">
 								<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>" class="tutor-text-medium-h5 tutor-color-text-primary"><?php esc_html( the_title() ); ?></a></h2>
 							</div>
 
@@ -244,7 +244,7 @@ if ( $the_query->have_posts() ) :
 						</div>
 
 						<!-- loop footer -->
-						<?php if ( 'on' === $footer ) : ?>
+						<?php if ( 'on' === $footer && ( 'stacked' === $skin || 'overlayed' === $skin ) ) : ?>
 							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-divi-carousel-footer">
 								<?php
 								tutor_course_loop_price()
@@ -252,8 +252,14 @@ if ( $the_query->have_posts() ) :
 							</div>
 						<?php endif; ?>    
 					</div> <!-- tutor-divi-course-container -->
-					
-
+					<!-- loop footer -->
+					<?php if ( 'on' === $footer && ( 'classic' === $skin || 'card' === $skin ) ) : ?>
+						<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-divi-carousel-footer">
+							<?php
+							tutor_course_loop_price()
+							?>
+						</div>
+					<?php endif; ?>  
 
 				</div><!--card-end-->
 			</div>
