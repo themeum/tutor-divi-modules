@@ -252,12 +252,9 @@ class CourseList extends ET_Builder_Module {
 				'type'        => 'select',
 				'description' => esc_html__( 'No: of slides that will display on desktop view', 'tutor-lms-divi-modules' ),
 				'options'     => array(
-					'3' => esc_html__( 'Default', 'tutor-lms-divi-modules' ),
 					'1' => '1',
 					'2' => '2',
 					'3' => '3',
-					'4' => '4',
-					'5' => '5',
 				),
 				'default'     => '3',
 				'tab_slug'    => 'general',

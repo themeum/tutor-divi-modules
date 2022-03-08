@@ -87,11 +87,19 @@ class CourseCarousel extends Component {
                 declaration: 'width: 100%;height: 100%; position: absolute;content: "";z-index: 2;'  
             }
         ]);
-        if('' !== card_background_color) {
+        if('' !== card_background_color && ('classic' === skin || 'card' === skin || 'overlayed' === skin )) {
             additionalCss.push([
                 {
                     selector: card_selector,
                     declaration: `background-color: ${card_background_color};`
+                }
+            ]);
+        }
+        if('' !== card_background_color && 'stacked' === skin ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-divi-carousel-course-container',
+                    declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
         }
@@ -596,7 +604,7 @@ class CourseCarousel extends Component {
         }
         const categories = course_cat.map((category) => {
             return (
-                <a href="/">{ category.name }</a>
+                <a href="/" dangerouslySetInnerHTML={{__html: category.name}}></a>
             );
         })
         return categories
@@ -712,14 +720,12 @@ class CourseCarousel extends Component {
 
                                 <div className="tutor-loop-author list-item-author tutor-bs-d-flex tutor-bs-align-items-center tutor-mt-30">
                                     { this.avatarTemplate(props.avatar,course.author_avatar) }
-                                    <div className="tutor-course-meta text-regular-caption tutor-color-text-subsued">
-                                        <span className="tutor-single-course-author-name">
+                                    <div className='tutor-course-lising-category'>
+                                        <span className="tutor-single-course-author-name tutor-course-meta-name">
                                             <a href="/">By {course.author_name}</a>
                                         </span>
-                                        <span className="tutor-course-lising-category">
-                                            { course.course_category.length ? <span> In </span> : '' }
-                                            { this.categoryTemplate(props.category,course.course_category) }
-                                        </span>
+                                        { course.course_category.length && props.category === 'on' ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
+                                        { this.categoryTemplate(props.category,course.course_category) }
                                     </div>
                                 </div>
                             </div>

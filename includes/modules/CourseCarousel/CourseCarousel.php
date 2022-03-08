@@ -261,17 +261,9 @@ class CourseCarousel extends ET_Builder_Module {
 				'type'			=> 'select',
 				'description'	=> esc_html__( 'No: of slides that will display on desktop view', 'tutor-lms-divi-modules' ),
 				'options'		=> array(
-					'3'	=>		 esc_html__( 'Default', 'tutor-lms-divi-modules' ),
 					'1'			=> '1',
 					'2'			=> '2',
 					'3'			=> '3',
-					'4'			=> '4',
-					'5'			=> '5',
-					'6'			=> '6',
-					'7'			=> '7',
-					'8'			=> '8',
-					'9'			=> '9',
-					'10'		=> '10',
 				),
 				'default'		=> '3',
 				'tab_slug'		=> 'general',
@@ -1200,13 +1192,25 @@ class CourseCarousel extends ET_Builder_Module {
 		//skin layout styles end
 
 		//card style
-		if( '' !== $card_background_color ) {
+		if( '' !== $card_background_color && ( 'classic' === $skin || 'card' === $skin || 'overlayed' === $skin ) ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
 					'selector'		=> $card_selector,
 					'declaration'	=> sprintf(
 						'background-color: %1$s;',
+						$card_background_color
+					)
+				)
+			);
+		}		
+		if( '' !== $card_background_color && 'stacked' === $skin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '{{WRAPPER}} .tutor-divi-carousel-course-container',
+					'declaration'	=> sprintf(
+						'background-color: %1$s !important;',
 						$card_background_color
 					)
 				)
@@ -1569,7 +1573,7 @@ class CourseCarousel extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
-				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4);',
+				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px;',
 			)
 		);
 		ET_Builder_Element::set_style(
