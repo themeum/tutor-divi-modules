@@ -638,6 +638,26 @@ class CourseList extends Component {
                 declaration: 'display: flex;',
             }
         ]);
+        // default wishlist style
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist a',
+                declaration: 'color: #fff;',
+            }
+        ]);
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
+                declaration: 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px; color:#fff; width: 40px; height: 40px;',
+            }
+        ]);
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist:hover',
+                declaration: 'background-color: #3e64de;',
+            }
+        ]);
+
         //set styles end
         return additionalCss;
     }
@@ -703,9 +723,9 @@ class CourseList extends Component {
             return '';
         }
         return (
-            <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
+            <span className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
                                             
-            </div>
+            </span>
         );
     }
 
@@ -726,7 +746,7 @@ class CourseList extends Component {
         }
         const categories = course_cat.map((category) => {
             return (
-                <a href="/">{ category.name }</a>
+                <a href="/" dangerouslySetInnerHTML={{__html: category.name}}></a>
             );
         })
         return categories
@@ -799,19 +819,18 @@ class CourseList extends Component {
 
                                 <div className="tutor-loop-author list-item-author tutor-bs-d-flex tutor-bs-align-items-center tutor-mt-30">
                                     { this.avatarTemplate(props.avatar,course.author_avatar) }
-                                    <div className='tutor-course-meta text-regular-caption tutor-color-text-subsued'>
+                                    <div className='tutor-course-lising-category'>
                                         <span className="tutor-single-course-author-name tutor-course-meta-name">
                                             <a href="/">By {course.author_name}</a>
                                         </span>
-                                        <span className="tutor-course-lising-category">
-                                            { course.course_category.length ? <span className='tutor-course-meta-cat'> In </span> : '' }
-                                            { this.categoryTemplate(props.category,course.course_category) }
-                                        </span>
+                                        { course.course_category.length ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
+                                        { this.categoryTemplate(props.category,course.course_category) }
                                     </div>
                                 </div>
                             </div>
-                            { this.footerTemplate(props.footer, course) }
+                            { props.skin === 'stacked' || props.skin === 'overlayed' ? this.footerTemplate(props.footer, course) : '' }
                         </div> 
+                        { props.skin === 'classic' || props.skin === 'card' ? this.footerTemplate(props.footer, course) : '' }
 
                 </div>
             </div>    

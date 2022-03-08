@@ -87,8 +87,8 @@ class CourseList extends ET_Builder_Module {
 					'toggle_slug'     => 'category',
 				),
 				'footer'     => array(
+					'label' => esc_html( 'Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'label' => esc_html( 'Price', 'tutor-lms-divi-modules' ),
 						'main'  => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
 					),
 					'tab_slug'        => 'advanced',
@@ -108,27 +108,27 @@ class CourseList extends ET_Builder_Module {
 			),
 
 			'button'         => array(
-				'add_to_cart_button'   => array(
-					'label'          => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
-					'box_shadow'     => array(
-						'css' => array(
-							'main' => '%%order_class%% .add_to_cart_button',
-						),
-					),
-					'css'            => array(
-						'main' => '%%order_class%% .add_to_cart_button',
-					),
-					'margin_padding' => array(
-						'css' => array(
-							'important' => 'all',
-						),
-					),
-					'use_alignment'  => false,
-					'hide_icon'      => true,
-					'tab_slug'       => 'advanced',
-					'toggle_slug'    => 'footer',
-					'important'      => true,
-				),
+				// 'add_to_cart_button'   => array(
+				// 	'label'          => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
+				// 	'box_shadow'     => array(
+				// 		'css' => array(
+				// 			'main' => '%%order_class%% .add_to_cart_button',
+				// 		),
+				// 	),
+				// 	'css'            => array(
+				// 		'main' => '%%order_class%% .add_to_cart_button',
+				// 	),
+				// 	'margin_padding' => array(
+				// 		'css' => array(
+				// 			'important' => 'all',
+				// 		),
+				// 	),
+				// 	'use_alignment'  => false,
+				// 	'hide_icon'      => true,
+				// 	'tab_slug'       => 'advanced',
+				// 	'toggle_slug'    => 'footer',
+				// 	'important'      => true,
+				// ),
 				'enroll_course_button' => array(
 					'label'          => esc_html__( 'Enroll Course/ Continue Learning/ Start Learning/ Download Certificate Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'     => array(
@@ -178,8 +178,8 @@ class CourseList extends ET_Builder_Module {
 				'avatar'     => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span',
-							'border_styles' => '%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span',
+							'border_radii'  => '%%order_class%% .tutor-text-avatar, %%order_class%% .tutor-image-avatar',
+							'border_styles' => '%%order_class%% .tutor-text-avatar, %%order_class%% .tutor-image-avatar',
 						),
 					),
 					'tab_slug'    => 'advanced',

@@ -319,3 +319,42 @@
 .tutor-loop-author > div span {
   margin: 0px;
 }
+
+/* overlayed skin footer text */
+.tutor-divi-courselist-overlayed .tutor-course-header a img,
+.tutor-divi-carousel-overlayed .tutor-course-header a img {
+  height: auto;
+  min-height: 300px;
+}
+
+.tutor-divi-carousel-overlayed .tutor-course-listing-item-footer .list-item-button .tutor-btn.tutor-btn-ghost,
+.tutor-divi-courselist-overlayed .tutor-course-listing-item-footer .list-item-button .tutor-btn.tutor-btn-ghost {
+  color: #7A7A7A;
+}
+
+.tutor-divi-carousel-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .btn-icon,
+.tutor-divi-carousel-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .cart-text,
+.tutor-divi-courselist-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .btn-icon,
+.tutor-divi-carousellist-overlayed .tutor-course-listing-item-footer .list-item-button .product_type_external .cart-text {
+  color: #7A7A7A;
+}
+
+.tutor-divi-carousel-overlayed .list-item-button .product_type_external,
+.tutor-divi-courselist-overlayed .list-item-button .product_type_external {
+  color: #7A7A7A !important;
+}
+
+.tutor-divi-carousel-overlayed .tutor-loop-course-footer,
+.tutor-divi-courselist-overlayed .tutor-loop-course-footer {
+  border-color: #ffffff3b !important;
+}
+
+.tutor-divi-carousel-overlayed .tutor-course-listing-item-footer .list-item-price-with-booking .list-item-booking > *,
+.tutor-divi-courselist-overlayed .tutor-course-listing-item-footer .list-item-price-with-booking .list-item-booking > * {
+  color: #fff !important;
+}
+
+.tutor-divi-carousel-overlayed .dtlms-author-name,
+.tutor-divi-courselist-overlayed .dtlms-author-name {
+  color: #fff !important;
+}

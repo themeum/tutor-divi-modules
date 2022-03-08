@@ -213,7 +213,7 @@ if ( $the_query->have_posts() ) :
 									<?php if ( 'on' == $author ) : ?>
 										<span class="tutor-single-course-author-name">
 											<span class="tutor-color-text-subsued"><?php esc_html_e( 'by', 'tutor-lms-divi-modules' ); ?></span>
-											<span class="etlms-author-name tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
+											<span class="dtlms-author-name tutor-text-medium-caption tutor-color-text-primary"><?php echo get_the_author(); ?></span>
 										</span>
 									<?php endif; ?>
 									<?php
