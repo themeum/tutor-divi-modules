@@ -59,6 +59,7 @@ const zip = require('gulp-zip');
 
 const babel		= require('gulp-babel');
 
+const package = require('./package.json'); 
 
 // minify all js
 function minifyJs(cb) {
@@ -134,7 +135,7 @@ function bundleFiles(cb){
 
 // from destination directory take all files make zip
 function exportZip(cb) {
-	const buildName = `tutor-lms-divi-modules-${require('./package.json').version}.zip`;
+	const buildName = `tutor-lms-divi-modules.zip`;
 	return src("./build/**/*.*").pipe(zip(buildName)).pipe(dest("./"));
 	cb();
 }
