@@ -9,7 +9,7 @@ Stable tag: 2.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Get 23+ Tutor LMS Divi Page builder widgets to create an entire eLearning site and design custom course pages, course carousels, listings, and more.
+Get 26+ Tutor LMS Divi Page builder widgets to create an entire eLearning site and design custom course pages, course carousels, listings, and more.
 
 == Description ==
 
@@ -23,7 +23,7 @@ Tutor LMS Divi Page builder Addons helps you create gorgeous looking eLearning s
 
 * Create a course page template from scratch and save it for future use.
 * Customize each course page design individually.
-* 23+ modules to take care of the linear aspects of the design.
+* 26+ modules to take care of the linear aspects of the design.
 * Insert course carousels on any page you want.
 
 = Prerequisite =
@@ -81,6 +81,9 @@ Tutor LMS Divi Modules currently offers the following Divi Page builder modules 
 22. Course Thumbnail
 23. Course Title
 24. Course Total Enrollment
+25. Course Content
+26. Course Purchase
+27. Course wishlist
 
 == Installation ==
 
@@ -142,6 +145,18 @@ If you find a conflict or problem in your theme, please post on the support sect
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
 == Changelog ==
+
+= 2.0.0 - 9 March, 2022
+
+* New: Introducing compatibility with WordPress 5.9
+* New: Full compatibility with Tutor LMS 2.0
+* New: New Tutor LMS Divi Module for course content
+* New: New Tutor LMS Divi Module for course wishlist
+* New: New Tutor LMS Divi Module for course purchase
+* Update: Course requirement title doesn’t show up now without description
+* Update: Course materials title doesn’t show up now without description
+* Update: Target audience title doesn’t show up now without description
+* Fix: Pagination on course listing page redirected to course archive page issue
 
 = 1.0.0 =
 * Initial Release
