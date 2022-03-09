@@ -135,7 +135,17 @@ if ( $the_query->have_posts() ) :
 								echo '<span class="tutor-course-loop-level">' . esc_html( get_tutor_course_level() ) . '</span>';
 							}
 							if ( 'on' === $wish_list ) {
-								echo '<span class="tutor-course-wishlist"><a href="javascript:;" class="tutor-icon-fav-line-filled ' . esc_attr( $action_class ) . ' ' . esc_attr( $has_wish_list ) . ' " data-course-id="' . esc_attr( $course_id ) . '"></a> </span>';
+								$icon_class = 'tutor-icon-fav-line-filled';
+								if ( $has_wish_list ) {
+									$icon_class = 'tutor-icon-fav-full-filled';
+								}
+								?>
+								<span class="tutor-bs-d-flex tutor-bs-justify-content-end">
+										<a href="javascript:;" class="tutor-course-wishlist-btn save-bookmark-btn tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-center" data-course-id="<?php echo esc_attr( $course_id ); ?>">
+										<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
+									</a>
+									</span>
+								<?php
 							}
 
 							?>
@@ -220,7 +230,7 @@ if ( $the_query->have_posts() ) :
 									if ( 'on' === $category ) {
 
 										$course_categories = get_tutor_course_categories();
-										if ( is_array( $course_categories ) && count( $course_categories ) > 3 && 'overlayed' === $args['skin']  ) {
+										if ( is_array( $course_categories ) && count( $course_categories ) > 3 && 'overlayed' === $args['skin'] ) {
 											$chunk = array_chunk( $course_categories, 3 );
 											if ( count( $chunk ) && isset( $chunk[0] ) ) {
 												$course_categories = $chunk[0];
@@ -233,7 +243,7 @@ if ( $the_query->have_posts() ) :
 											foreach ( $course_categories as $course_category ) {
 												$category_name = $course_category->name;
 												$category_link = get_term_link( $course_category->term_id );
-												echo "<a href='" . esc_url( $category_link ) . "'> " . esc_html( $category_name ) . " </a>";
+												echo "<a href='" . esc_url( $category_link ) . "'> " . esc_html( $category_name ) . ' </a>';
 											}
 										}
 									}

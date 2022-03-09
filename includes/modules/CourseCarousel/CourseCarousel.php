@@ -1561,21 +1561,22 @@ class CourseCarousel extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist a',
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist-btn',
 				'declaration' => 'color: #fff;',
 			)
 		);
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist',
-				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px;',
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist-btn',
+				'declaration' => 'border-radius: 50%; background-color: rgba(33,35,39,0.4); padding: 10px; width: 38px;
+				height: 38px; line-height: 38px;',
 			)
 		);
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist:hover',
+				'selector'    => '%%order_class%% .tutor-course-loop-header-meta .tutor-course-wishlist-btn:hover',
 				'declaration' => 'background-color: #3e64de;',
 			)
 		);
