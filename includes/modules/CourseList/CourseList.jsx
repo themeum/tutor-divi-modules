@@ -673,6 +673,12 @@ class CourseList extends Component {
 				declaration: 'min-height: 300px; height: auto;'
             }
         ]);
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-courses-layout-2.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
+                declaration: 'min-height: 320px !important;'
+            }
+        ]);
         //set styles end
         return additionalCss;
     }

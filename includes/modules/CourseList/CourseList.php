@@ -1789,12 +1789,19 @@ class CourseList extends ET_Builder_Module {
 				'declaration' => 'min-height: 300px; height: auto;'
 			)
 		);
-		// min height for stacked container.
+		//min height for stacked container.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'	=> '%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
-				'declaration' => 'min-height: 320px;'
+				'selector'	=> '%%order_class%% .tutor-courses-layout-2.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
+				'declaration' => 'min-height: 320px !important;'
+			)
+		);
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'	=> '%%order_class%% .tutor-courses-layout-1 .tutor-divi-courselist-stacked .tutor-loop-course-container',
+				'declaration' => 'padding: 10px;'
 			)
 		);
 		// set styles end

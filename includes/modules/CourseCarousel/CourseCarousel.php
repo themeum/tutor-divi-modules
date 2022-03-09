@@ -1590,10 +1590,11 @@ class CourseCarousel extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container',
+				'selector'    => '%%order_class%% .tutor-courses-layout-2.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container',
 				'declaration' => 'min-height: 320px;',
 			)
 		);
+
 		// set styles end
 
 		$output = self::get_content( $this->props );

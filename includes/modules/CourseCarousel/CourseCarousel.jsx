@@ -516,6 +516,14 @@ class CourseCarousel extends Component {
                 declaration: 'background-color: #3e64de;',
             }
         ]);
+
+        // min height for stacked container
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-courses-layout-2.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container',
+                declaration: 'min-height: 320px;',
+            }
+        ]);
         //set styles end
         return additionalCss;
     }
