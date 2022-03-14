@@ -8,7 +8,7 @@
 	$post = get_post( $args['course'] );
 	setup_postdata( $post );
 
-	$course_nav_items = tutor_utils()->course_nav_items();
+	$course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils()->course_nav_items(), $args['course'] );
 	unset( $course_nav_items['info'] );
 	unset( $course_nav_items['reviews'] );
 	// unset( $course_nav_items['info'] );
