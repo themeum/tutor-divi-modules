@@ -107,7 +107,7 @@ The WordPress codex contains [instructions on how to do this here](https://codex
 == Screenshots ==
 1. Create Astonishing Course List
 2. Course List Horizontal Style
-3. 23+ Tutor LMS Divi Moduels
+3. 26+ Tutor LMS Divi Moduels
 4. Advance customization options
 5. Default Single Course Layout
 6. Classic Style For Course Curriculum
@@ -146,7 +146,7 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.0 - 9 March, 2022
+= 2.0.0 - 14 March, 2022
 
 * New: Introducing compatibility with WordPress 5.9
 * New: Full compatibility with Tutor LMS 2.0

@@ -1,6 +1,6 @@
 # Tutor Divi Modules
 
-This plugin adds 27+ Modules to the Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses using the powerful Divi page builder.
+This plugin adds 26+ Modules to the Divi page builder and allows you to create your own custom layout and styling for Tutor LMS courses using the powerful Divi page builder.
 
 ## Prerequisite
 
