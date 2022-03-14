@@ -206,11 +206,12 @@ class CourseWishlist extends ET_Builder_Module {
 	 */
 	public static function get_content( $args = array() ) {
 		ob_start();
+		$is_wishlisted = tutor_utils()->is_wishlisted( $args['course'], get_current_user_id() );
 		?>
 		<div class="dtlms-course-wishlist-wrapper">
-		<a href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary tutor-bs-d-flex tutor-bs-align-items-center" data-course-id="<?php echo get_the_ID(); ?>">
+		<a href="#" class="action-btn tutor-course-wishlist-btn tutor-text-regular-body tutor-color-text-primary tutor-bs-d-flex tutor-bs-align-items-center" data-course-id="<?php echo get_the_ID(); ?>">
 			<?php if ( 'on' === $args['course_wishlist_icon_show'] ) : ?>
-				<i class="tutor-icon-fav-line-filled"></i>
+				<i class="<?php echo esc_attr( $is_wishlisted ? 'tutor-icon-fav-full-filled' : 'tutor-icon-fav-line-filled' ); ?>"></i>
 			<?php endif; ?>
 			<span>
 				<?php
