@@ -53,6 +53,8 @@ class TutorDiviModules extends DiviExtension {
 
 		// add_action('wp_enqueue_scripts', [$this, 'enqueue_divi_styles'], 99);
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_divi_scripts' ), 99 );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 99 );
 	}
 
 	public function load_dependencies() {
@@ -110,6 +112,17 @@ class TutorDiviModules extends DiviExtension {
 			'is_divi_builder' => isset( $_GET['et_fb'] ) ? $_GET['et_fb'] : false,
 		);
 		wp_add_inline_script( 'tutor-divi-scripts', 'const dtlmsData = ' . json_encode( $inline_data ), 'before' );
+	}
+
+	public function admin_enqueue_scripts() {
+		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
+		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
+		wp_enqueue_style(
+			'tutor-divi-styles',
+			DTLMS_ASSETS . $css_file,
+			array(),
+			$version
+		);
 	}
 
 }
