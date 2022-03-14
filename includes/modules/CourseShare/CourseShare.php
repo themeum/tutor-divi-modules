@@ -409,7 +409,7 @@ class TutorCourseShare extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $attrs, $content, $render_slug ) {
-		$wrapper_selector = '%%order_class%% .dtlms-course-wishlist-wrapper a';
+		$wrapper_selector = '%%order_class%% .dtlms-course-share a';
 
 		$alignment        = $this->props['alignment'];
 		$alignment_tablet = isset( $this->props['alignment_tablet'] ) ? $this->props['alignment_tablet'] : $alignment;
