@@ -400,7 +400,7 @@ class CourseEnrollment extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-30',
+				'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
 				'declaration' => sprintf(
 					'display:flex; flex-direction: column; row-gap: 10px;',
 					$alignment
@@ -413,7 +413,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-30',
+					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
 					'declaration' => sprintf(
 						'align-items: %1$s;',
 						$alignment
@@ -427,7 +427,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-30',
+					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
 					'declaration' => sprintf(
 						'align-items: %1$s;',
 						$alignment_tablet
@@ -441,7 +441,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-30',
+					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
 					'declaration' => sprintf(
 						'align-items: %1$s;',
 						$alignment
