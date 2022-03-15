@@ -264,7 +264,7 @@ class CourseMaterials extends Component {
         const et_icon = utils.processFontIcon(icon);
         if(lists !== 0) {
             const list =  lists.map((list)=> {
-                return <li className='tutor-bs-align-items-center tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span className="et-pb-icon tutor-color-design-brand"> {et_icon}</span> <span className="list-item"> {list} </span> </li>
+                return <li className='tutor-align-items-center tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span className="et-pb-icon tutor-color-design-brand"> {et_icon}</span> <span className="list-item"> {list} </span> </li>
             });
             return list;
         }

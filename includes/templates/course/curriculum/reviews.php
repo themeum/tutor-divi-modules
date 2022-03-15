@@ -51,7 +51,7 @@ $rating = tutor_utils()->get_course_rating( $course_id );
 			<div class="text-medium-h1 color-text-primary">
 				<?php echo number_format( $rating->rating_avg, 1 ); ?>
 			</div>
-			<?php tutor_utils()->star_rating_generator_v2( $rating->rating_avg, null, false, 'tutor-bs-d-block' ); ?>
+			<?php tutor_utils()->star_rating_generator_v2( $rating->rating_avg, null, false, 'tutor-d-block' ); ?>
 			<div class="tutor-total-ratings-text text-regular-body text-subsued">
 				<span class="tutor-rating-text-part">
 					<?php esc_html_e( 'Total ', 'tutor' ); ?>

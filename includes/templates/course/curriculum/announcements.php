@@ -22,8 +22,8 @@ $announcements = tutor_utils()->get_announcements( $args['course'] );
 				<div class="text-medium-h6">
 					<?php echo $announcement->post_title; ?>
 				</div>
-				<div class="tutor-bs-d-flex tutor-mt-14">
-					<div class="tutor-bs-d-flex tutor-mr-md-32 tutor-mr-10">
+				<div class="tutor-d-flex tutor-mt-14">
+					<div class="tutor-d-flex tutor-mr-md-32 tutor-mr-10">
 						<div class="tutor-avatar-circle tutor-26 tutor-mr-6">
 							<img src="<?php echo get_avatar_url( $announcement->post_author ); ?>" alt="instructor avatar" />
 						</div>

@@ -189,7 +189,7 @@ class CourseStatus extends ET_Builder_Module {
 					<?php echo esc_html( $args['course_progress_title'], 'tutor-lms-divi-modules' ); ?>
 				</span>
 				<div class="list-item-progress tutor-mt-16">
-					<div class="text-regular-body tutor-color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+					<div class="text-regular-body tutor-color-text-subsued tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 						<span class="progress-steps">
 							5/10
 						</span>

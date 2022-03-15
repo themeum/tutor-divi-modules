@@ -146,8 +146,8 @@ if ( $the_query->have_posts() ) :
 									$icon_class = 'tutor-icon-fav-full-filled';
 								}
 								?>
-									<span class="tutor-bs-d-flex tutor-bs-justify-content-end">
-										<a href="javascript:;" class="tutor-course-wishlist-btn save-bookmark-btn tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-center" data-course-id="<?php echo esc_attr( $course_id ); ?>">
+									<span class="tutor-d-flex tutor-justify-content-end">
+										<a href="javascript:;" class="tutor-course-wishlist-btn save-bookmark-btn tutor-d-flex tutor-align-items-center tutor-justify-content-center" data-course-id="<?php echo esc_attr( $course_id ); ?>">
 										<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
 									</a>
 									</span>
@@ -228,7 +228,7 @@ if ( $the_query->have_posts() ) :
 							<?php endif; ?>
 
 							<!-- update cat meta -->
-							<div class="tutor-loop-author tutor-bs-d-flex align-items-center">
+							<div class="tutor-loop-author tutor-d-flex align-items-center">
 								<span class="tutor-single-course-avatar">
 									<?php if ( 'on' === $avatar ) : ?>
 										<a href="<?php echo esc_url( $profile_url ); ?>"> <?php echo tutor_utils()->get_tutor_avatar( $post->post_author ); ?></a>

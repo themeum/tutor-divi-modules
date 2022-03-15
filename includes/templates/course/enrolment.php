@@ -134,7 +134,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 			}
 
 			?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
@@ -230,7 +230,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 				if ( ! $meta['value'] ) {
 					continue;}
 				?>
-				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> tutor-color-text-primary"></span>
 						<span class="text-regular-caption tutor-color-text-hints tutor-ml-5">

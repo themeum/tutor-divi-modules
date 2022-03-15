@@ -58,7 +58,7 @@ $product        = $product_id && function_exists( 'wc_get_product' ) ? wc_get_pr
 							<?php echo esc_html( $args['course_progress_title'] ); ?>
 						</span>
 						<div class="list-item-progress tutor-mt-16">
-							<div class="text-regular-body color-text-subsued tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+							<div class="text-regular-body color-text-subsued tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 								<span class="progress-steps">
 									5/10
 								</span>
@@ -94,7 +94,7 @@ $product        = $product_id && function_exists( 'wc_get_product' ) ? wc_get_pr
 						<?php tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by ); ?>
 					<?php endif; ?>
 				<?php else : ?>
-					<div class="tutor-course-sidebar-card-pricing tutor-bs-d-flex align-items-end tutor-bs-justify-content-between">
+					<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
 						<div>
 							<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
 						</div>
@@ -109,7 +109,7 @@ $product        = $product_id && function_exists( 'wc_get_product' ) ? wc_get_pr
 			<?php endif; ?>
 
 			<?php if ( 'enrolled' === $enrollment_mode ) : ?>
-				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-bs-d-flex tutor-bs-justify-content-center">
+				<div class="etlms-enrolled-info-wrapper text-regular-caption tutor-color-text-hints tutor-mt-12 tutor-d-flex tutor-justify-content-center">
 					<span class="tutor-icon-26 tutor-color-success tutor-icon-purchase-filled tutor-mr-6"></span>
 					<span class="tutor-enrolled-info-text">
 						<span class="text">
@@ -130,7 +130,7 @@ $product        = $product_id && function_exists( 'wc_get_product' ) ? wc_get_pr
 				if ( ! $meta['value'] ) {
 					continue;}
 				?>
-				<li class="tutor-bs-d-flex tutor-bs-align-items-center tutor-bs-justify-content-between">
+				<li class="tutor-d-flex tutor-align-items-center tutor-justify-content-between">
 					<div class="flex-center">
 						<span class="tutor-icon-24 <?php echo $meta['icon_class']; ?> tutor-color-text-primary"></span>
 						<span class="text-regular-caption tutor-color-text-hints tutor-ml-5">

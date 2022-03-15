@@ -63,7 +63,7 @@ $share_title   = $args['popup_share_title'];
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
-					<div class="tutor-social-share-wrap tutor-bs-d-flex" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
+					<div class="tutor-social-share-wrap tutor-d-flex" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
 						<?php foreach ( $tutor_social_share_icons as $icon ) : ?>
 							<button class="tutor_share <?php echo esc_attr( $icon['share_class'] ); ?>">
 								<span class="social-icon">

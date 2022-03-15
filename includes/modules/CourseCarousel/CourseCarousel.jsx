@@ -726,7 +726,7 @@ class CourseCarousel extends Component {
                                     { this.metaTemplate(props.meta_data,course) }
                                 </div>
 
-                                <div className="tutor-loop-author list-item-author tutor-bs-d-flex tutor-bs-align-items-center tutor-mt-30">
+                                <div className="tutor-loop-author list-item-author tutor-d-flex tutor-align-items-center tutor-mt-30">
                                     { this.avatarTemplate(props.avatar,course.author_avatar) }
                                     <div className='tutor-course-lising-category'>
                                         <span className="tutor-single-course-author-name tutor-course-meta-name">

@@ -1776,7 +1776,7 @@ class CourseList extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-loop-author.tutor-bs-d-flex',
+				'selector'    => '%%order_class%% .tutor-loop-author.tutor-d-flex',
 				'declaration' => 'gap: 5px;',
 			)
 		);

@@ -53,7 +53,7 @@ if ( $instructors ) {
 						</div>
 						<?php endif; ?>
 
-						<div class="tutor-instructor-right tutor-bs-d-flex justify-content-between">
+						<div class="tutor-instructor-right tutor-d-flex justify-content-between">
 							<div class="instructor-name-designation-wrapper" style="flex: 0 0 30%;">
 								<?php if ( $display_name === 'on' ) : ?>
 									<h3>
@@ -83,7 +83,7 @@ if ( $instructors ) {
 					?>
 
 					<div class="single-instructor-bottom">
-						<div class="ratings tutor-bs-d-flex">
+						<div class="ratings tutor-d-flex">
 							<span class="rating-generated">
 								<?php wp_kses_post( tutor_utils()->star_rating_generator( $instructor_rating->rating_avg ) ); ?>
 							</span>
