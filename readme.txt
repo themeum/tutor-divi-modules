@@ -146,7 +146,7 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.0 - 14 March, 2022
+= 2.0.0 - 15 March, 2022
 
 * New: Introducing compatibility with WordPress 5.9
 * New: Full compatibility with Tutor LMS 2.0
