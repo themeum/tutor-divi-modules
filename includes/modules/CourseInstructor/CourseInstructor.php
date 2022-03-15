@@ -291,6 +291,14 @@ class CourseInstructor extends ET_Builder_Module {
 			);
 		}
 
+				// default star color.
+				ET_Builder_Element::set_style(
+					$render_slug,
+					array(
+						'selector'	=> '%%order_class%% .tutor-star-rating-group i',
+						'declaration' => 'color: #ed9700 !important;'
+					)
+				);
 		// if ( '' !== $course_instructor_bottom_info_star_color ) {
 		// 	ET_Builder_Element::set_style(
 		// 		$render_slug,

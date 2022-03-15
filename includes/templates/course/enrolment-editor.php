@@ -41,7 +41,7 @@ $button_size  = $args['button_size'];
 ?>
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
-	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
+	<div class="tutor-course-sidebar-card-body tutor-p-32 <?php echo ! is_user_logged_in() ? 'tutor-course-entry-box-login' : ''; ?>">
 
 		<?php
 			$button_class = 'tutor-is-fullwidth tutor-btn tutor-is-outline tutor-btn-lg tutor-btn-full tutor-is-fullwidth tutor-course-retake-button tutor-mb-10';
@@ -76,7 +76,7 @@ $button_size  = $args['button_size'];
 			<?php endif; ?>
 	</div>
 	<!-- Course Info -->
-	<div class="tutor-course-sidebar-card-footer tutor-p-30">
+	<div class="tutor-course-sidebar-card-footer tutor-p-32">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
 				<?php

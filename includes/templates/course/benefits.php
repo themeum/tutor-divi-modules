@@ -26,7 +26,7 @@ if ( empty( $course_benefits ) ) {
 if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 	?>
 
-	<div class="tutor-single-course-segment tutor-course-benefits-wrap">
+	<div class="tutor-single-course-segment tutor-course-benefits-wrap tutor-mt-32">
 
 		<div class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
 			<span>

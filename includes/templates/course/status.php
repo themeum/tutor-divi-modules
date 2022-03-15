@@ -26,7 +26,7 @@ $course_progress = tutor_utils()->get_course_completed_percent( $args['course'],
 					<?php esc_html_e( 'Complete', 'tutor-lms-divi-modules' ); ?>
 				</span>
 			</div>
-			<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+			<div class="progress-bar tutor-mt-12" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
 				<span class="progress-value"></span>
 			</div>
 		</div>

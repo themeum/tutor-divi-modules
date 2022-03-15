@@ -67,7 +67,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 
 <div class="tutor-course-sidebar-card">
 	<!-- Course Entry -->
-	<div class="tutor-course-sidebar-card-body tutor-p-30 <?php echo $login_class; ?>" data-login_url="<?php echo $login_url; ?>">
+	<div class="tutor-course-sidebar-card-body tutor-p-32 <?php echo $login_class; ?>" data-login_url="<?php echo $login_url; ?>">
 		<?php
 		if ( $is_enrolled ) {
 			// The user is enrolled anyway. No matter manual, free, purchased, woocommerce, edd, membership.
@@ -99,7 +99,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 								<?php esc_html_e( 'Complete', 'tutor' ); ?>
 							</span>
 						</div>
-						<div class="progress-bar tutor-mt-10" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
+						<div class="progress-bar tutor-mt-12" style="--progress-value:<?php echo esc_attr( $course_progress['completed_percent'] ); ?>%;">
 							<span class="progress-value"></span>
 						</div>
 					</div>
@@ -243,7 +243,7 @@ $login_url   = tutor_utils()->get_option( 'enable_tutor_native_login', null, tru
 	</div>
 
 	<!-- Course Info -->
-	<div class="tutor-course-sidebar-card-footer tutor-p-30">
+	<div class="tutor-course-sidebar-card-footer tutor-p-32">
 		<ul class="tutor-course-sidebar-card-meta-list tutor-m-0 tutor-pl-0">
 			<?php foreach ( $sidebar_meta as $meta ) : ?>
 				<?php

@@ -30,12 +30,12 @@ $instructors = tutor_utils()->get_instructors_by_course( $course_id );
 if ( $instructors ) {
 	$count = is_array( $instructors ) ? count( $instructors ) : 0;
 	?>
-	<div class="tutor-mt-65">
-		<div class="tutor-color-text-primary tutor-text-medium-h6 tutor-mb-25">
+	<div class="tutor-mt-32">
+		<div class="tutor-color-text-primary tutor-text-medium-h6 tutor-mb-32">
 			<span class="dtlms-course-instructor-title  tutor-segment-title"><?php echo esc_html( $label ); ?></span>
 		</div>
 		
-		<div class="tutor-instructor-info-card tutor-mb-15 etlms-course-instructors-wrap" id="single-course-ratings">
+		<div class="tutor-instructor-info-card tutor-mb-16 etlms-course-instructors-wrap" id="single-course-ratings">
 			<?php
 			foreach ( $instructors as $instructor ) {
 				$profile_url = tutor_utils()->profile_url( $instructor->ID );

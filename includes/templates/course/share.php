@@ -26,7 +26,7 @@ $share_title   = $args['popup_share_title'];
 ?>
 
 <div class="dtlms-course-share">
-	<a data-tutor-modal-target="dtlms-tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-text-primary">
+	<a data-tutor-modal-target="dtlms-tutor-course-share-opener" href="#" class="action-btn tutor-text-regular-body tutor-color-black">
 		<?php if ( 'on' === $args['course_share_icon_show'] ) : ?>
 			<i class="tutor-icon-share-filled"></i>
 		<?php endif; ?>
@@ -47,19 +47,19 @@ $share_title   = $args['popup_share_title'];
 					<span class="tutor-icon-line-cross-line"></span>
 				</button>
 				<?php if ( '' !== $section_title ) : ?>
-				<div class="tutor-text-medium-h5 color-text-primary tutor-mb-15">
+				<div class="tutor-text-medium-h5 tutor-color-black tutor-mb-16">
 					<?php echo esc_html( $section_title ); ?>
 				</div>
 				<?php endif; ?>
-				<div class="tutor-text-regular-caption color-text-subsued tutor-mb-10">
+				<div class="tutor-text-regular-caption color-text-subsued tutor-mb-12">
 					<?php esc_html_e( 'Page Link', 'tutor-lms-elementor-addons' ); ?>
 				</div>
-				<div class="tutor-mb-30">
+				<div class="tutor-mb-32">
 					<input class="tutor-form-control" value="<?php echo get_permalink( $args['course'] ); ?>" />
 				</div>
 				<div>
 					<?php if ( '' !== $share_title ) : ?>
-						<div class="color-text-primary tutor-text-medium-h6 tutor-mb-15">
+						<div class="tutor-color-black tutor-text-medium-h6 tutor-mb-16">
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
