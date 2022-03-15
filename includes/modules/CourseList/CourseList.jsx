@@ -849,9 +849,9 @@ class CourseList extends Component {
                                     </div>
                                 </div>
                             </div>
-                            { (props.skin === 'stacked' || props.skin === 'overlayed') ? this.footerTemplate(props.footer, course) : '' }
+                            { ( props.columns < 2 || props.skin === 'stacked' || props.skin === 'overlayed') ? this.footerTemplate(props.footer, course) : '' }
                         </div> 
-                        { (props.skin === 'classic' || props.skin === 'card')  ? this.footerTemplate(props.footer, course) : '' }
+                        {  props.columns > 1 &&  (props.skin === 'classic' || props.skin === 'card')  ? this.footerTemplate(props.footer, course) : '' }
 
                 </div>
             </div>    

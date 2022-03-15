@@ -271,7 +271,7 @@ if ( $the_query->have_posts() ) :
 						</div>
 
 						<!-- loop footer -->
-						<?php if ( 'on' === $footer && ( 'stacked' === $skin || 'overlayed' === $skin ) ) : ?>
+						<?php if ( 'on' === $footer &&  ( $columns < 2 || 'stacked' === $skin || 'overlayed' === $skin ) ) : ?>
 							<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-loop-course-footer tutor-divi-courselist-footer">
 								<?php
 								tutor_course_loop_price()
@@ -280,7 +280,7 @@ if ( $the_query->have_posts() ) :
 						<?php endif; ?>    
 					</div> <!-- tutor-divi-course-container -->
 					<!-- loop footer -->
-					<?php if ( 'on' === $footer && ( 'classic' === $skin || 'card' === $skin ) ) : ?>
+					<?php if ( 'on' === $footer && $columns > 1 && ( 'classic' === $skin || 'card' === $skin ) ) : ?>
 						<div class="tutor-course-listing-item-footer has-border tutor-py-15 tutor-px-20 tutor-loop-course-footer tutor-loop-course-footer tutor-divi-courselist-footer">
 							<?php
 							tutor_course_loop_price()
