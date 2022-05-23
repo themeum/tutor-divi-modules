@@ -47,7 +47,7 @@ class CoursePrice extends ET_Builder_Module {
 			),
 		);
 
-		$selector       = '%%order_class%% .price >ins, %%order_class%% .price > span';
+		$selector       = '%%order_class%% .tutor-course-sidebar-card-pricing';
 		$hover_selector = '%%order_class%% .price:hover';
 
 		$this->advanced_fields = array(
@@ -55,7 +55,7 @@ class CoursePrice extends ET_Builder_Module {
 				'course_price'        => array(
 					// 'label'           => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'css'         => array(
-						'main' => '%%order_class%% .dtlms-course-price .text-bold-h4',
+						'main' => "$selector ins .woocommerce-Price-amount, %%order_class%% .tutor-course-sidebar-card-pricing .edd_price",
 					),
 					'hide_text_align' => true,
 					'tab_slug'    => 'advanced',
@@ -64,7 +64,7 @@ class CoursePrice extends ET_Builder_Module {
 				'course_strike_price' => array(
 					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .dtlms-course-price del.tutor-text-regular-caption',
+						'main' => "$selector del .woocommerce-Price-amount",
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -133,42 +133,26 @@ class CoursePrice extends ET_Builder_Module {
 	 */
 	public static function get_content( $args = array() ) {
 		ob_start();
-		$is_purchasable = tutor_utils()->is_course_purchasable( $args['course'] );
-		$product_id     = tutor_utils()->get_course_product_id( $args['course'] );
-
-		$tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
+		$course = $args['course'];
+		$price 	= tutor_utils()->get_course_price( $course );
 		?>
 			<div class="dtlms-course-price">
-				<?php if ( $is_purchasable ) : ?>
-					<?php
-					if ( 'woocommerce' === $tutor_course_sell_by ) :
-							$product       = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : '';
-							$sale_price    = $product->get_sale_price();
-							$regular_price = $product->get_regular_price();
-							$symbol        = get_woocommerce_currency_symbol();
-						?>
-						<span class="text-bold-h4 tutor-color-text-primary">
-							<?php
-							echo wp_kses(
-								$symbol . ( $sale_price ? $sale_price : $regular_price ),
-								array( 'span', 'del' )
-							);
-							?>
-						</span>
-						<?php if ( $regular_price && $sale_price && $sale_price != $regular_price ) : ?>
-							<del class="tutor-text-regular-caption tutor-color-text-hints tutor-ml-7">
-								<?php echo wp_kses( $symbol . $regular_price, array( 'span', 'del' ) ); ?>
-							</del>
-						<?php endif; ?>
+				<?php if ( $course ) : ?>
+					<?php if ( null != $price ) : ?>
+						<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
+							<div>
+								<?php echo tutor_kses_html( $price ); ?>
+							</div>
+						</div>
+					<?php else : ?>
+						<div class="tutor-course-sidebar-card-pricing tutor-d-flex align-items-end tutor-justify-content-between">
+							<div>
+								<span class="tutor-fs-4 tutor-fw-bold tutor-color-black">
+									<?php echo esc_html_x( 'Free', 'course price', 'tutor-lms-elementor-addons' ); ?>
+								</span>
+							</div>
+						</div>
 					<?php endif; ?>
-					<?php if ( 'edd' === $tutor_course_sell_by ) : ?>
-						<span>
-							<?php echo esc_html( function_exists( 'edd_format_amount' ) ? edd_format_amount( $download->price ) : '' ); ?>
-						</span>
-					<?php endif; ?>
-				<?php else : ?>
-					<span class="text-bold-h4 tutor-color-text-primary"><?php esc_html_e( 'Free', 'tutor-lms-elementor-addons' ); ?></span>
-					</div>
 				<?php endif; ?>
 			</div>
 		<?php
@@ -188,7 +172,7 @@ class CoursePrice extends ET_Builder_Module {
 	 */
 	public function render( $attr, $content, $render_slug ) {
 		// selectors.
-		$selector = '%%order_class%% .dtlms-course-price';
+		$selector = '%%order_class%% .tutor-course-sidebar-card-pricing';
 
 		// props.
 		$alignment        = sanitize_text_field( $this->props['alignment'] );
@@ -202,7 +186,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'    => $selector,
 					'declaration' => sprintf(
-						'text-align: %1$s;',
+						'display: block !important; text-align: %1$s;',
 						$alignment
 					),
 				)
@@ -214,7 +198,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'    => $selector,
 					'declaration' => sprintf(
-						'text-align: %1$s;',
+						'display: block !important; text-align: %1$s;',
 						$alignment_tablet
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
@@ -227,7 +211,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'    => $selector,
 					'declaration' => sprintf(
-						'text-align: %1$s;',
+						'display: block !important; text-align: %1$s;',
 						$alignment_phone
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),

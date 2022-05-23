@@ -70,9 +70,6 @@ class CourseWishlist extends ET_Builder_Module {
 					'css'             => array(
 						'main' => '%%order_class%% .dtlms-course-wishlist-wrapper a span',
 					),
-					'header_level'    => array(
-						'default' => 'h1',
-					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'label_style',
 					'hide_text_align' => true,
@@ -81,9 +78,6 @@ class CourseWishlist extends ET_Builder_Module {
 					'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 					'css'             => array(
 						'main' => '%%order_class%% .dtlms-course-wishlist-wrapper a i',
-					),
-					'header_level'    => array(
-						'default' => 'h1',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'icon_style',
