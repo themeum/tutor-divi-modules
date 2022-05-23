@@ -119,6 +119,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 				'type'            => 'text',
 				'option_category' => 'layout',
 				'default'         => esc_html__( 'Categories:', 'tutor-lms-divi-modules' ),
+				'toggle_slug'	  => 'main_content',
 			),
 			'layout'       => array(
 				'label'           => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
@@ -216,8 +217,8 @@ class TutorCourseCategories extends ET_Builder_Module {
 	public static function get_content( $args = array() ) {
 		$course = Helper::get_course( $args );
 		$label  = esc_html( $args['label'] );
-		$markup = '<div class="tutor-single-course-meta-categories tutor-course-details-category tutor-text-medium-body tutor-color-text-primary">
-			<span class="text-regular-body tutor-color-text-hints">' . $label . '</span>
+		$markup = '<div class="tutor-single-course-meta-categories tutor-course-details-category tutor-meta tutor-course-details-info">
+			' . $label . '
 		<div>
 		';
 		if ( $course ) {
