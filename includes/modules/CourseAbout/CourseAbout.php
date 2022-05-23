@@ -55,9 +55,8 @@ class TutorCourseAbout extends ET_Builder_Module {
 			),
 		);
 
-		$heading_selector      = '%%order_class%% .tutor-showmore-content .text-medium-h6';
-		$paragraph_selector    = '%%order_class%% .showmore-text';
-		$short_text            = '%%order_class%% .showmore-short-text';
+		$heading_selector      = '%%order_class%% .tutor-course-details-content h2';
+		$paragraph_selector    = '%%order_class%% .dtlms-course-about-text';
 		$this->advanced_fields = array(
 			'fonts'      => array(
 				'heading'    => array(
@@ -75,14 +74,6 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'about_text',
 				),
-				'short_text' => array(
-					'css'         => array(
-						'main' => $short_text,
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'short_text',
-				),
-
 			),
 			'max_width'  => false,
 			'text'       => false,
