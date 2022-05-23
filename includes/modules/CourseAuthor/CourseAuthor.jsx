@@ -14,7 +14,7 @@ class CourseAuthor extends Component {
     const additionalCss = [];
     const wrapper = "%%order_class%% .tutor-single-course-author-meta";
     const img_selector =
-      "%%order_class%% .tutor-single-course-avatar img, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar";
+      "%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img";
     //const label_selector = '%%order_class%% .tutor-single-course-author-name > span';
     //const name_selector = '%%order_class%% .tutor-single-course-author-name > a';
 
@@ -23,16 +23,30 @@ class CourseAuthor extends Component {
     let alignment = props.author_alignment;
 
     const avatar_size = props.avatar_size;
-    const is_responsive_avatar_size = props.avatar_size_last_edited && props.avatar_size_last_edited.startsWith("on");
+    const is_responsive_avatar_size =
+      props.avatar_size_last_edited &&
+      props.avatar_size_last_edited.startsWith("on");
     const avatar_size_tablet =
-      is_responsive_avatar_size && props.avatar_size_tablet ? props.avatar_size_tablet : avatar_size;
+      is_responsive_avatar_size && props.avatar_size_tablet
+        ? props.avatar_size_tablet
+        : avatar_size;
     const avatar_size_phone =
-      is_responsive_avatar_size && props.avatar_size_phone ? props.avatar_size_phone : avatar_size;
+      is_responsive_avatar_size && props.avatar_size_phone
+        ? props.avatar_size_phone
+        : avatar_size;
 
     const gap = props.avatar_gap;
-    const is_responsive_gap = props.avatar_gap_last_edited && props.avatar_gap_last_edited.startsWith("on");
-    const gap_tablet = is_responsive_gap && props.avatar_gap_tablet ? props.avatar_gap_tablet : gap;
-    const gap_phone = is_responsive_gap && props.avatar_gap_phone ? props.avatar_gap_phone : gap;
+    const is_responsive_gap =
+      props.avatar_gap_last_edited &&
+      props.avatar_gap_last_edited.startsWith("on");
+    const gap_tablet =
+      is_responsive_gap && props.avatar_gap_tablet
+        ? props.avatar_gap_tablet
+        : gap;
+    const gap_phone =
+      is_responsive_gap && props.avatar_gap_phone
+        ? props.avatar_gap_phone
+        : gap;
 
     /**
      * set alignment property as per align
@@ -66,14 +80,16 @@ class CourseAuthor extends Component {
           declaration: `width: ${avatar_size};`,
         },
         {
-          selector: "%%order_class%% .tutor-single-course-avatar .tutor-text-avatar",
+          selector:
+            "%%order_class%% .tutor-single-course-avatar .tutor-text-avatar",
           declaration: `line-height: ${avatar_size}; text-align: center;`,
         },
       ]);
     }
     additionalCss.push([
       {
-        selector: "%%order_class%% .tutor-single-course-avatar .tutor-text-avatar",
+        selector:
+          "%%order_class%% .tutor-single-course-avatar .tutor-text-avatar",
         declaration: `line-height: ${avatar_size}; text-align: center;`,
       },
     ]);
@@ -141,7 +157,8 @@ class CourseAuthor extends Component {
       additionalCss.push([
         {
           selector: wrapper,
-          declaration: layout === "row" ? `column-gap: ${gap};` : `row-gap: ${gap};`,
+          declaration:
+            layout === "row" ? `column-gap: ${gap};` : `row-gap: ${gap};`,
         },
       ]);
     }
@@ -150,7 +167,10 @@ class CourseAuthor extends Component {
       additionalCss.push([
         {
           selector: wrapper,
-          declaration: layout === "row" ? `column-gap: ${gap_tablet};` : `row-gap: ${gap_tablet};`,
+          declaration:
+            layout === "row"
+              ? `column-gap: ${gap_tablet};`
+              : `row-gap: ${gap_tablet};`,
           device: "tablet",
         },
       ]);
@@ -160,7 +180,10 @@ class CourseAuthor extends Component {
       additionalCss.push([
         {
           selector: wrapper,
-          declaration: layout === "row" ? `column-gap: ${gap_phone};` : `row-gap: ${gap_phone};`,
+          declaration:
+            layout === "row"
+              ? `column-gap: ${gap_phone};`
+              : `row-gap: ${gap_phone};`,
           device: "phone",
         },
       ]);
@@ -174,7 +197,10 @@ class CourseAuthor extends Component {
     if (props.profile_picture === "on") {
       return (
         <div className="tutor-single-course-avatar">
-          <a href={this.props.__author.profile_url} dangerouslySetInnerHTML={{ __html: props.__author.avatar_url }}></a>
+          <a
+            href={this.props.__author.profile_url}
+            dangerouslySetInnerHTML={{ __html: props.__author.avatar_url }}
+          ></a>
         </div>
       );
     }
@@ -186,7 +212,9 @@ class CourseAuthor extends Component {
       return (
         <div className="tutor-single-course-author-name">
           <span> By </span>
-          <a href={this.props.__author.profile_url}>{this.props.__author.author_name}</a>
+          <a href={this.props.__author.profile_url}>
+            {this.props.__author.author_name}
+          </a>
         </div>
       );
     }

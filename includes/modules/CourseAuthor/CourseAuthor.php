@@ -83,7 +83,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			'box_shadow' => array(
 				'default' => array(
 					'css' => array(
-						'main' => '%%order_class%% .tutor-single-course-avatar img, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar',
+						'main' => '%%order_class%% .tutor-avatar',
 					),
 				),
 			),
@@ -276,7 +276,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors
 		$wrapper        = '%%order_class%% .tutor-single-course-author-meta';
-		$img_selector   = '%%order_class%% .tutor-single-course-avatar a > img, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar';
+		$img_selector   = '%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img';
 
 		// props
 		$display   = 'flex';
