@@ -248,7 +248,6 @@ class CourseTags extends ET_Builder_Module {
 				padding: 7px 23px;
 				border: 1px solid #c0c3cb;
 				color: #5b616f;
-				margin-left: 15px;
 				border-radius: 6px;
 				-webkit-transition: 200ms;
 				transition: 200ms;
