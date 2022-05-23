@@ -5,7 +5,7 @@ Tags: LMS, e-learning, Learning management system, Courses, Education, Divi inte
 Requires at least: 5.3
 Tested up to: 5.9
 Requires PHP: 7.3
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -145,6 +145,10 @@ If you find a conflict or problem in your theme, please post on the support sect
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
 == Changelog ==
+
+= 2.0.1 - 23 May, 2022
+
+* Update: Compatibility with Tutor LMS
 
 = 2.0.0 - 15 March, 2022
 
