@@ -13,9 +13,7 @@ class CourseRating extends Component {
      */
     static css(props) {
         const additionalCss = [];
-        const star_selector = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
-        const star_icon_group = '%%order_class%% .tutor-star-rating-group';
-        
+
         const layout = props.rating_layout;
 
         // prepare alignment props.
@@ -95,21 +93,21 @@ class CourseRating extends Component {
     
         if (props.star_size) {
             additionalCss.push([{
-                selector:    '%%order_class%% .tutor-star-rating-group i',
+                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars i`,
                 declaration: `font-size: ${props.star_size};`,
             }]);
         }
         
         if (props.star_color) {
             additionalCss.push([{
-                selector:    `${star_selector} i`,
+                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars i`,
                 declaration: `color: ${props.star_color};`,
             }]);
         }
 
         if (props.star_gap) {
             additionalCss.push([{
-                selector:    star_icon_group,
+                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars`,
                 declaration: `letter-spacing: ${props.star_gap};`,
             }]);
         }

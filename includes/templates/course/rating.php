@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 $is_enabled_reviews = get_tutor_option( 'enable_course_review' );
 if ( $is_enabled_reviews ) :
 	?>
-<div class="tutor-leadinfo-top-meta tutor-divi-rating-wrapper">
+<div class="tutor-leadinfo-top-meta dtlms-rating-wrapper">
 	<span class="tutor-single-course-rating">
 		<?php
 		$course_rating = tutor_utils()->get_course_rating();
@@ -20,7 +20,7 @@ if ( $is_enabled_reviews ) :
 			$text = __( 'Ratings', 'tutor-lms-divi-modules' );
 			echo esc_html( $course_rating->rating_avg );
 			$count = $course_rating->rating_count . ' ' . $text;
-			echo '<i>(' . esc_html( $count ) . ')</i>';
+			echo '(' . esc_html( $count ) . ')';
 		?>
 		</span>
 	</span>

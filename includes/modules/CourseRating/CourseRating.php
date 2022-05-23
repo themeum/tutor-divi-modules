@@ -57,7 +57,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			'fonts'          => array(
 				'count_text' => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count, %%order_class%% .tutor-divi-rating-wrapper',
+						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -216,9 +216,9 @@ class TutorCourseRating extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// Process image size value into style.
-		$selector        = '%%order_class%% .tutor-single-course-rating .tutor-star-rating-group';
-		$star_icon_group = '%%order_class%% .tutor-star-rating-group';
-		$star_icon       = '%%order_class%% .tutor-icon-star-line';
+		$selector        = '%%order_class%% .dtlms-rating-wrapper';
+		$star_icon_group = "$selector .tutor-ratings-stars";
+		$star_icon       = "$selector .tutor-ratings-stars i";
 		$layout          = $this->props['rating_layout'];
 		// prepare alignment props.
 		$alignment        = $this->props['rating_alignment'];
@@ -246,7 +246,8 @@ class TutorCourseRating extends ET_Builder_Module {
 		if ( '' !== $alignment_mobile && 'right' === $alignment_mobile ) {
 			$alignment_mobile = 'flex-end';
 		}
-
+		tutor_log( 'size: ' . $this->props['star_size'] );
+		tutor_log( 'size: ' . $this->props['star_color'] );
 		// rating layout.
 		if ( '' !== $layout ) {
 			ET_Builder_Element::set_style(
@@ -352,7 +353,7 @@ class TutorCourseRating extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'	=> '%%order_class%% .tutor-star-rating-group i',
+				'selector'	=> $star_icon,
 				'declaration' => 'color: #ed9700;'
 			)
 		);
@@ -361,9 +362,9 @@ class TutorCourseRating extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-star-rating-group i',
+					'selector'    => $star_icon,
 					'declaration' => sprintf(
-						'font-size: %1$s;',
+						'font-size: %1$s !important;',
 						esc_html( $this->props['star_size'] )
 					),
 				)
@@ -375,7 +376,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$selector i",
+					'selector'    => $star_icon,
 					'declaration' => sprintf(
 						'color: %1$s;',
 						esc_html( $this->props['star_color'] )
