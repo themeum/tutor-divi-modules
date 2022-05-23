@@ -247,7 +247,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 					'step' => '1',
 				),
 				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'benefit_text',
+				'toggle_slug'    => 'list',
 				'mobile_options' => true,
 			),
 		);
