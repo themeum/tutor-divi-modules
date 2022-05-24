@@ -186,7 +186,7 @@ class CoursePrice extends ET_Builder_Module {
 				array(
 					'selector'    => $selector,
 					'declaration' => sprintf(
-						'display: block !important; text-align: %1$s;',
+						'display: block !important; text-align: %1$s !important;',
 						$alignment
 					),
 				)

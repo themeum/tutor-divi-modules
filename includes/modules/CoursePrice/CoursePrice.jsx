@@ -7,7 +7,7 @@ class CoursePrice extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const selector = '%%order_class%% .dtlms-course-price';
+        const selector = '%%order_class%% .tutor-course-sidebar-card-pricing';
 
         //props
         let alignment = props.alignment;
@@ -19,7 +19,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment};`
+                    declaration: `display: block !important; text-align: ${alignment}  !important;`
                 }
             ]);
         }
@@ -28,7 +28,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment_tablet};`,
+                    declaration: `display: block !important; text-align: ${alignment_tablet}  !important;`,
                     device: 'tablet'
                 }
             ]);
@@ -38,7 +38,7 @@ class CoursePrice extends Component {
             additionalCss.push([
                 {
                     selector: selector,
-                    declaration: `text-align: ${alignment_phone};`,
+                    declaration: `display: block !important; text-align: ${alignment_phone}  !important;`,
                     device: 'phone'
                 }
             ]);
