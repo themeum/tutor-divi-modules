@@ -29,6 +29,7 @@ class CourseEnrollment extends Component {
         const icon_size_tablet          = is_responsive_icon_size && '' !== props.icon_size_tablet ? props.icon_size_tablet : icon_size;
         const icon_size_phone           = is_responsive_icon_size && '' !== props.icon_size_phone ? props.icon_size_phone : icon_size;
         const icon_color                = props.icon_color;
+        const preview_mode              = props.preview_mode;
         //set styles
         /**
          * default template styling
@@ -41,52 +42,90 @@ class CourseEnrollment extends Component {
         ]);
 
         //alignment styles
-        if('' !== alignment) {
-            let align = 'center';
-            if(alignment === 'left') {
-                align = 'flex-start';
-            } else if (alignment === 'right') {
-                align = 'flex-end';
-            }
-
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
-                    declaration: `align-items: ${align};`
+        if ('enrollment' === preview_mode) {
+            if('' !== alignment) {
+                let align = 'center';
+                if(alignment === 'left') {
+                    align = 'flex-start';
+                } else if (alignment === 'right') {
+                    align = 'flex-end';
                 }
-            ]);
-        }
-
-        if('' !== alignment_tablet) {
-            let align = 'center';
-            if(alignment_tablet === 'left') {
-                align = 'flex-start';
-            } else if (alignment_tablet === 'right') {
-                align = 'flex-end';
+    
+                additionalCss.push([
+                    {
+                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
+                        declaration: `text-align: ${align} !important;`
+                    }
+                ]);
             }
-
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
-                    declaration: `align-items: ${align};`,
-                    device: 'tablet'
+    
+            if('' !== alignment_tablet) {
+                let align = 'center';
+                if(alignment_tablet === 'left') {
+                    align = 'flex-start';
+                } else if (alignment_tablet === 'right') {
+                    align = 'flex-end';
                 }
-            ]);
-        }
-
-        if('' !== alignment_phone) {
-            let align = 'center';
-            if(alignment_phone === 'left') {
-                align = 'flex-start';
-            } else if (alignment_phone === 'right') {
-                align = 'flex-end';
+    
+                additionalCss.push([
+                    {
+                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
+                        declaration: `text-align: ${align} !important;`,
+                        device: 'tablet'
+                    }
+                ]);
             }
-
+    
+            if('' !== alignment_phone) {
+                let align = 'center';
+                if(alignment_phone === 'left') {
+                    align = 'flex-start';
+                } else if (alignment_phone === 'right') {
+                    align = 'flex-end';
+                }
+    
+                additionalCss.push([
+                    {
+                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
+                        declaration: `text-align: ${align} !important;`,
+                        device: 'phone'
+                    }
+                ]);
+            }
+        }
+        if ('enrolled' === preview_mode) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-btn`,
-                    declaration: `align-items: ${align};`,
-                    device: 'phone'
+                    selector: '.dtlms-enroll-btn-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					declaration: 'display: flex; flex-direction: column;', 
+                },
+                {
+					selector: '.dtlms-enroll-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					declaration: 'align-items: flex-start;', 
+                },
+                {
+					selector: '.dtlms-enroll-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					declaration: 'align-items: center;',
+                },
+                {
+                    selector: '.dtlms-enroll-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					declaration: 'align-items: flex-end;',
+                },
+                {
+                    selector: '%%order_class%% .dtlms-enroll-btn-width-auto form',
+					declaration: 'display: flex; flex-direction: column;',
+                }, 
+                {
+					selector: '%%order_class%% .dtlms-enroll-btn-align-left form, ',
+					declaration: 'align-items: flex-start;',
+                },
+                {
+					selector: '%%order_class%% .dtlms-enroll-btn-align-right form, ',
+					declaration: 'align-items: flex-end;',
+                },
+                {
+                    selector: '%%order_class%% .dtlms-enroll-btn-align-center form, ',
+					declaration: 'align-items: center;',
                 }
             ]);
         }
@@ -100,13 +139,18 @@ class CourseEnrollment extends Component {
         ]);
 
         if('fill' === btn_width) {
-
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-sidebar-card-btns, %%order_class%% .tutor-course-sidebar-card-body form',
+					declaration: 'width: 100%;',
+                }
+            ]);
         } else if('auto' === btn_width) {
             //start/continue btn not gradebook
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-btn`,
-                    declaration: 'width: auto !important;'
+					selector: '%%order_class%% .dtlms-enroll-btn-width-auto .tutor-btn',
+					declaration: 'width: auto !important; display: inline-flex !important;',
                 }
             ]);
              //enrollment (enroll/add to cart) btn default width auto so no need to style if width is fill
@@ -114,7 +158,7 @@ class CourseEnrollment extends Component {
             //fixed width
             additionalCss.push([
                 {
-                    selector:  `${wrapper} .tutor-btn`,
+                    selector:  `%%order_class%% button, %%order_class%% .tutor-button, %%order_class%% .start-continue-retake-button`,
                     declaration: `width: ${width_px} !important; text-align:center;`
                 }
             ]);
@@ -123,15 +167,15 @@ class CourseEnrollment extends Component {
         if('small' === props.button_size) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-btn`,
-                    declaration: `padding: 4px 14px !important;`
+					selector: '%%order_class%% .dtlms-enroll-btn-size-small .tutor-btn',
+					declaration: 'font-size: 14px; padding: 5px 12px;'
                 }
             ]);
         } else if ('large' === props.button_size) {
             additionalCss.push([
                 {
-                    selector:  `${wrapper} .tutor-btn`,
-                    declaration: `padding: 18px !important;`
+					selector: '%%order_class%% .dtlms-enroll-btn-size-large .tutor-btn',
+					declaration: 'font-size: 18px; padding: 10px 20px;',
                 }
             ]);            
         }

@@ -220,9 +220,17 @@ class CourseEnrollment extends ET_Builder_Module {
 					'course',
 					'preview_mode',
 					'button_size',
+					'alignment',
+					'btn_width',
+					'enrollment_box'
 				),
 				'computed_minimum'    => array(
 					'course',
+					'preview_mode',
+					'button_size',
+					'alignment',
+					'btn_width',
+					'enrollment_box'
 				),
 			),
 			// general tab main_content toggle.
@@ -234,6 +242,16 @@ class CourseEnrollment extends ET_Builder_Module {
 					'enrolled'   => esc_html__( 'Enrolled', 'tutor-lms-divi-modules' ),
 				),
 				'default'     => 'enrollment',
+				'toggle_slug' => 'main_content',
+			),
+			'enrollment_box' => array(
+				'label'       => esc_html__( 'Enrollment Box', 'tutor-lms-divi-modules' ),
+				'type'        => 'yes_no_button',
+				'options'     => array(
+					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
+					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
+				),
+				'default'     => 'on',
 				'toggle_slug' => 'main_content',
 			),
 			// general tab customize_btn toggle.
@@ -375,7 +393,7 @@ class CourseEnrollment extends ET_Builder_Module {
 		// selectors
 		$three_buttons_wrapper = '%%order_class%% .tutor-lead-info-btn-group';
 		$enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
-		$wrapper               = '%%order_class%% .tutor-course-sidebar-card';
+		$wrapper               = '%%order_class%% .tutor-sidebar-card ';
 
 		// props
 		$alignment = sanitize_text_field( $this->props['alignment'] );
@@ -396,27 +414,25 @@ class CourseEnrollment extends ET_Builder_Module {
 		$icon_size_tablet = isset( $this->props['icon_size_tablet'] ) && $this->props['icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['icon_size_tablet'] ) : $icon_size;
 		$icon_size_phone  = isset( $this->props['icon_size_phone'] ) && $this->props['icon_size_phone'] !== '' ? sanitize_text_field( $this->props['icon_size_phone'] ) : $icon_size;
 
-		// Apply default css.
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
-				'declaration' => sprintf(
-					'display:flex; flex-direction: column; row-gap: 10px;',
-					$alignment
-				),
-			)
-		);
 		// alignment styles.
 		if ( $alignment !== '' ) {
 			// button alignment for all button
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
-					'declaration' => sprintf(
-						'align-items: %1$s;',
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: %1$s !important;',
 						$alignment
+					),
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-right .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: left !important;'
 					),
 				)
 			);
@@ -427,10 +443,20 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
-					'declaration' => sprintf(
-						'align-items: %1$s;',
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: %1$s !important;',
 						$alignment_tablet
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-right .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: left !important;'
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
 				)
@@ -441,21 +467,91 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-course-sidebar-card-body.tutor-p-32',
-					'declaration' => sprintf(
-						'align-items: %1$s;',
-						$alignment
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: %1$s !important;',
+						$alignment_phone
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' 		=> '%%order_class%% .dtlms-enrollment-btn-align-right .dtlms-course-enroll-date',
+					'declaration' 	=> sprintf(
+						'text-align: left !important;'
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
 				)
 			);
 		}
+
+		if ( 'enrolled' === $this->props['preview_mode'] || tutor_utils()->is_enrolled( $this->props['course'], get_current_user_id() ) ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '.dtlms-enroll-btn-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'declaration' 	=> 'display: flex; flex-direction: column;', 
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '.dtlms-enroll-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'declaration' 	=> 'align-items: flex-start;', 
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '.dtlms-enroll-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'declaration' 	=> 'align-items: center;', 
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '.dtlms-enroll-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'declaration' 	=> 'align-items: flex-end;',
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .dtlms-enroll-btn-width-auto form',
+					'declaration' 	=> 'display: flex; flex-direction: column;',
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .dtlms-enroll-btn-align-left form, ',
+					'declaration' 	=> 'align-items: flex-start;',
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .dtlms-enroll-btn-align-right form, ',
+					'declaration' 	=> 'align-items: flex-end;',
+				)
+			);
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'		=> '%%order_class%% .dtlms-enroll-btn-align-center form, ',
+					'declaration' 	=> 'align-items: center;',
+				)
+			);
+		}
+
 		// btn width.
 		if ( $width === 'fill' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$wrapper .tutor-course-sidebar-card-btns, $wrapper .tutor-course-sidebar-card-body form",
+					'selector'    => '%%order_class%% .tutor-course-sidebar-card-btns, %%order_class%% .tutor-course-sidebar-card-body form',
 					'declaration' => 'width: 100%;',
 				)
 			);
@@ -463,8 +559,8 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-btn',
-					'declaration' => 'width: auto !important;',
+					'selector'    => '%%order_class%% .dtlms-enroll-btn-width-auto .tutor-btn',
+					'declaration' => 'width: auto !important; display: inline-flex !important;',
 				)
 			);
 		} else {
@@ -472,7 +568,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => $wrapper . ' .tutor-btn',
+						'selector'    =>  '%%order_class%% button, %%order_class%% .tutor-button, %%order_class%% .start-continue-retake-button',
 						'declaration' => sprintf(
 							'width: %1$s !important;',
 							$width_px
@@ -482,20 +578,20 @@ class CourseEnrollment extends ET_Builder_Module {
 			}
 		}
 		// button size style.
-		if ( $button_size === 'small' ) {
+		if ( $button_size === 'large' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-btn',
-					'declaration' => 'padding: 9px 14px !important;',
+					'selector'    =>  '%%order_class%% .dtlms-enroll-btn-size-large .tutor-btn',
+					'declaration' => 'font-size: 18px; padding: 10px 20px;',
 				)
 			);
-		} elseif ( $button_size === 'large' ) {
+		} elseif ( $button_size === 'small' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $wrapper . ' .tutor-btn',
-					'declaration' => 'padding: 18px !important;',
+					'selector'    =>  '%%order_class%% .dtlms-enroll-btn-size-small .tutor-btn',
+					'declaration' => 'font-size: 14px; padding: 5px 12px;'
 				)
 			);
 		}
