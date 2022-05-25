@@ -44,50 +44,59 @@ class CourseEnrollment extends Component {
         //alignment styles
         if ('enrollment' === preview_mode) {
             if('' !== alignment) {
-                let align = 'center';
-                if(alignment === 'left') {
-                    align = 'flex-start';
-                } else if (alignment === 'right') {
-                    align = 'flex-end';
-                }
-    
                 additionalCss.push([
                     {
-                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
-                        declaration: `text-align: ${align} !important;`
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto .tutor-card-body`,
+                        declaration: `text-align: ${alignment} !important;`
+                    },
+                    {
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto form`,
+                        declaration: `display: inline-flex !important;`
+                    },
+                    {
+                        selector: `%%order_class%% .tutor-btn`,
+                        declaration: `display: inline-flex !important;`
                     }
                 ]);
             }
     
             if('' !== alignment_tablet) {
-                let align = 'center';
-                if(alignment_tablet === 'left') {
-                    align = 'flex-start';
-                } else if (alignment_tablet === 'right') {
-                    align = 'flex-end';
-                }
     
                 additionalCss.push([
                     {
-                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
-                        declaration: `text-align: ${align} !important;`,
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto .tutor-card-body`,
+                        declaration: `text-align: ${alignment_tablet} !important;`,
+                        device: 'tablet'
+                    },
+                    {
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto form`,
+                        declaration: `display: inline-flex !important;`,
+                        device: 'tablet'
+                    },
+                    {
+                        selector: `%%order_class%% .tutor-btn`,
+                        declaration: `display: inline-flex !important;`,
                         device: 'tablet'
                     }
                 ]);
             }
     
             if('' !== alignment_phone) {
-                let align = 'center';
-                if(alignment_phone === 'left') {
-                    align = 'flex-start';
-                } else if (alignment_phone === 'right') {
-                    align = 'flex-end';
-                }
-    
+
                 additionalCss.push([
                     {
-                        selector: `%%order_class%% .dtlms-enrollment-btn-align-left .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-right .tutor-card-body, %%order_class%% .dtlms-enrollment-btn-align-center .dtlms-course-enroll-date`,
-                        declaration: `text-align: ${align} !important;`,
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto .tutor-card-body`,
+                        declaration: `text-align: ${alignment_tablet} !important;`,
+                        device: 'phone'
+                    },
+                    {
+                        selector: `%%order_class%% .dtlms-enroll-btn-width-auto form`,
+                        declaration: `display: inline-flex !important;`,
+                        device: 'phone'
+                    },
+                    {
+                        selector: `%%order_class%% .tutor-btn`,
+                        declaration: `display: inline-flex !important;`,
                         device: 'phone'
                     }
                 ]);
@@ -191,7 +200,7 @@ class CourseEnrollment extends Component {
         if(icon_color) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24`,
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrolled-icon",
                     declaration: `color: ${icon_color};`
                 }
             ]);
@@ -199,7 +208,7 @@ class CourseEnrollment extends Component {
         if(icon_size) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
@@ -207,7 +216,7 @@ class CourseEnrollment extends Component {
         if(icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
@@ -216,7 +225,7 @@ class CourseEnrollment extends Component {
         if(icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .tutor-course-sidebar-card-meta-list span.tutor-icon-24",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }
@@ -227,7 +236,7 @@ class CourseEnrollment extends Component {
 		if ( enrolled_icon_color ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    selector: '%%order_class%% .tutor-icon-purchase-mark',
                     declaration: `color: ${enrolled_icon_color};`
                 }
             ]);
@@ -235,7 +244,7 @@ class CourseEnrollment extends Component {
 		if ( enrolled_icon_size ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    selector: '%%order_class%% .tutor-icon-purchase-mark',
                     declaration: `font-size: ${enrolled_icon_size};`
                 }
             ]);

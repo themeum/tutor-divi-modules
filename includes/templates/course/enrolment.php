@@ -132,7 +132,7 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 				$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
 				if ( '' !== $post_date ) :
 				?>
-				<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  etlms-course-enroll-info-wrapper">
+				<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  dtlms-course-enroll-info-wrapper">
 					<span class="tutor-fs-5 tutor-color-success tutor-icon-purchase-mark tutor-mr-8"></span>
 					<span class="tutor-enrolled-info-text">
 						<?php esc_html_e( 'You enrolled in this course on', 'tutor' ); ?>
@@ -178,8 +178,8 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 		} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
 			// Load template based on monetization option
 			ob_start();
-			if ( file_exists( ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
-				include ETLMS_TEMPLATE . 'add-to-cart-' . $tutor_course_sell_by . '.php';
+			if ( file_exists( DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
+				include DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php';
 			} else {
 				esc_html_e( $tutor_course_sell_by . ' template not found' );
 			}
@@ -228,13 +228,13 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 			?>
 			<li class="tutor-row tutor-align-items-center<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
 				<div class="tutor-col-6">
-					<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black etlms-enrolled-icon"></span>
-					<span class="tutor-fs-7 tutor-color-muted tutor-ml-8 etlms-enrolled-level">
+					<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black dtlms-enrolled-icon"></span>
+					<span class="tutor-fs-7 tutor-color-muted tutor-ml-8 dtlms-enrolled-level">
 						<?php echo esc_html( $meta['label'] ); ?>
 					</span>
 				</div>
 				<div class="tutor-col-6">
-					<span class="tutor-fs-7 tutor-fw-medium tutor-color-black etlms-enrolled-level-value">
+					<span class="tutor-fs-7 tutor-fw-medium tutor-color-black dtlms-enrolled-level-value">
 						<?php echo wp_kses_post( $meta['value'] ); ?>
 					</span>
 				</div>
