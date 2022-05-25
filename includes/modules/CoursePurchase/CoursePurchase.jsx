@@ -11,12 +11,6 @@ class CoursePurchase extends Component {
         const enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
 
         //props
-        const alignment                 = props.alignment;
-        const is_responsive_alignment   = props.alignment_last_edited && props.alignment_last_edited.startsWith("on");
-        const alignment_tablet          = is_responsive_alignment && '' !== props.alignment_tablet ? props.alignment_tablet : alignment;
-        const alignment_phone           = is_responsive_alignment && '' !== props.alignment_phone ? props.alignment_phone : alignment;
-        const btn_width                 = props.btn_width;
-        const width_px                  = props.width_px;
 
         const icon_size                 = props.icon_size;
         const is_responsive_icon_size   = props.icon_size && props.icon_size.startsWith("on");
@@ -34,57 +28,7 @@ class CoursePurchase extends Component {
             }
         ]);
 
-        //alignment styles
-        if('' !== alignment) {
-            let align = 'center';
-            if(alignment === 'left') {
-                align = 'flex-start';
-            } else if (alignment === 'right') {
-                align = 'flex-end';
-            }
 
-            additionalCss.push([
-                {
-                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
-                    declaration: `align-items: ${align};`
-                }
-            ]);
-        }
-
-        if('' !== alignment_tablet) {
-            let align = 'center';
-            if(alignment_tablet === 'left') {
-                align = 'flex-start';
-            } else if (alignment_tablet === 'right') {
-                align = 'flex-end';
-            }
-
-            additionalCss.push([
-                {
-                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
-                    declaration: `align-items: ${align};`,
-                    device: 'tablet'
-                }
-            ]);
-        }
-
-        if('' !== alignment_phone) {
-            let align = 'center';
-            if(alignment_phone === 'left') {
-                align = 'flex-start';
-            } else if (alignment_phone === 'right') {
-                align = 'flex-end';
-            }
-
-            additionalCss.push([
-                {
-                    selector: `%%order_class%% .tutor-course-sidebar-card-body >*:not(.tutor-course-sidebar-card-pricing)`,
-                    declaration: `align-items: ${align};`,
-                    device: 'phone'
-                }
-            ]);
-        }
-        //button width style
         //enroll & add to cart button wrapper default width
         additionalCss.push([
             {
@@ -92,43 +36,6 @@ class CoursePurchase extends Component {
                 declaration: `width: 100%;`
             }
         ]);
-
-        if('fill' === btn_width) {
-
-        } else if('auto' === btn_width) {
-            //start/continue btn not gradebook
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .tutor-btn`,
-                    declaration: 'width: auto !important;'
-                }
-            ]);
-             //enrollment (enroll/add to cart) btn default width auto so no need to style if width is fill
-        } else {
-            //fixed width
-            additionalCss.push([
-                {
-                    selector:  `${wrapper} .tutor-btn`,
-                    declaration: `width: ${width_px} !important; text-align:center;`
-                }
-            ]);
-        }
-        //button size 
-        if('small' === props.button_size) {
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .tutor-btn`,
-                    declaration: `padding: 4px 14px !important;`
-                }
-            ]);
-        } else if ('large' === props.button_size) {
-            additionalCss.push([
-                {
-                    selector:  `${wrapper} .tutor-btn`,
-                    declaration: `padding: 18px !important;`
-                }
-            ]);            
-        }
 
         //button borders default style solid
         additionalCss.push([
@@ -138,11 +45,10 @@ class CoursePurchase extends Component {
             }
         ]);
         //purchase icon style
-        const course_info_wrapper = '%%order_class%% .tutor-course-sidebar-card-footer';
         if('' !== icon_color) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .dtlms-enrolled-icon",
                     declaration: `color: ${icon_color};`
                 }
             ]);
@@ -150,7 +56,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
@@ -158,7 +64,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
@@ -167,7 +73,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: `${course_info_wrapper} span.tutor-icon-24`,
+                    selector: "%%order_class%% .dtlms-enrolled-icon",
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }
@@ -185,7 +91,7 @@ class CoursePurchase extends Component {
 		if ( enrolled_icon_color ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    selector: '%%order_class%% .tutor-icon-purchase-mark',
                     declaration: `color: ${enrolled_icon_color};`
                 }
             ]);
@@ -193,7 +99,7 @@ class CoursePurchase extends Component {
 		if ( enrolled_icon_size ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .etlms-enrolled-info-wrapper .tutor-icon-purchase-filled',
+                    selector: '%%order_class%% .tutor-icon-purchase-mark',
                     declaration: `font-size: ${enrolled_icon_size};`
                 }
             ]);
@@ -269,7 +175,7 @@ class CoursePurchase extends Component {
         if ( props.bar_height ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `height: ${props.bar_height} !important;`
                 }
             ]);
@@ -277,7 +183,7 @@ class CoursePurchase extends Component {
 		if ( props.bar_radius ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `border-radius: ${props.bar_radius};`
                 }
             ]);
@@ -285,7 +191,7 @@ class CoursePurchase extends Component {
 		if ( props.bar_background ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `background-color: ${props.bar_background};`
                 }
             ]);
@@ -293,7 +199,7 @@ class CoursePurchase extends Component {
 		if ( props.bar_color ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar .progress-value',
+                    selector: '%%order_class%% .tutor-progress-value',
                     declaration: `background-color: ${props.bar_color};`
                 }
             ]);
@@ -301,7 +207,7 @@ class CoursePurchase extends Component {
 		if ( props.bar_gap ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `margin-top: ${props.bar_gap};`
                 }
             ]);
