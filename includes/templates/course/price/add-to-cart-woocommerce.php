@@ -14,11 +14,11 @@ if ( ! $isLoggedIn && ! $enable_guest_course_cart){
 	$required_loggedin_class = apply_filters('tutor_enroll_required_login_class', 'tutor-open-login-modal');
 }
 
-if ($product) {
-    if(tutor_utils()->is_course_added_to_cart($product_id, true)){
+if ( $product ) {
+    if ( tutor_utils()->is_course_added_to_cart( $product_id, true ) ){
         ?>
             <a href="<?php echo wc_get_cart_url(); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-lg tutor-btn-block tutor-woocommerce-view-cart">
-                <?php _e('View Cart', 'tutor'); ?>
+                <?php _e( 'View Cart', 'tutor' ); ?>
             </a>
         <?php
     } else {

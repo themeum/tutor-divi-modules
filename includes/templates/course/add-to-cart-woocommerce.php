@@ -4,34 +4,35 @@
  * @version 1.4.3
  */
 
+$product_id = isset( $current_course ) ? tutor_utils()->get_course_product_id( $current_course ) : tutor_utils()->get_course_product_id();
+$product = wc_get_product( $product_id );
 
-$product_id = isset( $data['product_id'] ) ? $data['product_id']: tutor_utils()->get_course_product_id();
-$product    = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : '';
-if ( '' === $product ) {
-	esc_html_e( 'Woocommerce product not found.', 'tutor-lms-divi-modules' );
-	return;
+$isLoggedIn = is_user_logged_in();
+$enable_guest_course_cart = tutor_utils()->get_option('enable_guest_course_cart');
+$required_loggedin_class = '';
+if ( ! $isLoggedIn && ! $enable_guest_course_cart){
+	$required_loggedin_class = apply_filters('tutor_enroll_required_login_class', 'tutor-open-login-modal');
 }
-if ( $product ) {
-	if ( tutor_utils()->is_course_added_to_cart( $product_id, true ) ) {
-		?>
-			<a href="<?php echo wc_get_cart_url(); ?>" class="tutor-btn tutor-btn-tertiary tutor-is-outline tutor-btn-lg tutor-btn-full">
-				<?php _e( 'View Cart', 'tutor' ); ?>
-			</a>
-		<?php
-	} else {
-		$sale_price    = $product->get_sale_price();
-		$regular_price = $product->get_regular_price();
-		$symbol        = get_woocommerce_currency_symbol();
-		?>
 
-		<form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
-			<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-icon tutor-btn-primary tutor-btn-lg tutor-btn-full tutor-mt-24 tutor-add-to-cart-button">
-				<span class="btn-icon tutor-icon-cart-filled"></span>
-				<span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
-			</button>
-		</form>
-		<?php
-	}
+if ( $product ) {
+    if ( tutor_utils()->is_course_added_to_cart( $product_id, true ) ){
+        ?>
+            <a href="<?php echo wc_get_cart_url(); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-lg tutor-btn-block tutor-woocommerce-view-cart">
+                <?php _e( 'View Cart', 'tutor' ); ?>
+            </a>
+        <?php
+    } else {
+        $sale_price = $product->get_sale_price();
+        $regular_price = $product->get_regular_price();
+        ?>
+        <form action="<?php echo esc_url( apply_filters( 'tutor_course_add_to_cart_form_action', get_permalink( get_the_ID() ) ) ); ?>" method="post" enctype="multipart/form-data">
+            <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"  class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-block tutor-mt-24 tutor-add-to-cart-button <?php echo $required_loggedin_class; ?>">
+                <span class="btn-icon tutor-icon-cart-filled"></span>
+                <span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></span>
+            </button>
+        </form>
+        <?php
+    }
 } else {
 	?>
 	<p class="tutor-alert-warning">

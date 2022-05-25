@@ -7,8 +7,10 @@
 
 $enrollment_mode = $args['preview_mode'];
 $course          = get_post( $args['course'] );
-$is_purchasable  = tutor_utils()->is_course_purchasable();
-$is_enable_date = get_tutor_option( 'enable_course_update_date' );
+$is_purchasable  = tutor_utils()->is_course_purchasable( $args['course'] );
+$is_enable_date  = get_tutor_option( 'enable_course_update_date' );
+
+$tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
 
 $sidebar_meta = apply_filters(
 	'tutor/course/single/sidebar/metadata',
@@ -48,7 +50,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			$completed_percent   = tutor_utils()->get_course_completed_percent();
 			$is_completed_course = tutor_utils()->is_completed_course();
 			$retake_course       = tutor_utils()->can_user_retake_course();
-			$course_id           = get_the_ID();
+			$course_id           = $args['course'];
 			$course_progress     = tutor_utils()->get_course_completed_percent( $course_id, 0, true );
 			?>
 
@@ -70,7 +72,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				$tag               = $retake_course ? 'button' : 'a';
 				ob_start();
 				?>
-					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
+					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( $args['course'] ); ?>">
 					<?php
 					if ( $retake_course ) {
 						esc_html_e( 'Retake This Course', 'tutor' );
@@ -84,7 +86,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 					<?php
 					$start_content = ob_get_clean();
 			}
-			echo apply_filters( 'tutor_course/single/start/button', $start_content, get_the_ID() );
+			echo apply_filters( 'tutor_course/single/start/button', $start_content, $args['course'] );
 
 			// Show Course Completion Button.
 			
@@ -93,7 +95,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				<form method="post" class="tutor-mt-20">
 					<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
 
-					<input type="hidden" value="<?php echo esc_attr( get_the_ID() ); ?>" name="course_id"/>
+					<input type="hidden" value="<?php echo esc_attr( $args['course'] ); ?>" name="course_id"/>
 					<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 
 					<button type="submit" class="tutor-btn tutor-btn-outline-primary tutor-btn-block" name="complete_course_btn" value="complete_course">
@@ -120,10 +122,10 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				<?php endif; ?>
 			<?php
 			do_action( 'tutor_course/single/actions_btn_group/after' );
-			echo apply_filters( 'tutor/course/single/entry-box/is_enrolled', ob_get_clean(), get_the_ID() );
+			echo apply_filters( 'tutor/course/single/entry-box/is_enrolled', ob_get_clean(), $args['course'] );
 		} else {
 			// The course enroll options like purchase or free enrolment
-			$price = apply_filters( 'get_tutor_course_price', null, get_the_ID() );
+			$price = apply_filters( 'get_tutor_course_price', null, $args['course'] );
 
 			if ( tutor_utils()->is_course_fully_booked( null ) ) {
 				ob_start();
@@ -137,17 +139,18 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 						</div>
 					</div>
 				<?php
-				echo apply_filters( 'tutor/course/single/entry-box/fully_booked', ob_get_clean(), get_the_ID() );
+				echo apply_filters( 'tutor/course/single/entry-box/fully_booked', ob_get_clean(), $args['course'] );
 			} elseif ( $is_purchasable && $price && $tutor_course_sell_by ) {
 				// Load template based on monetization option
-				// ob_start();
-				// if ( file_exists( DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
-				// 	include DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php';
-				// } else {
-				// 	esc_html_e( $tutor_course_sell_by . ' template not found' );
-				// }
+				$current_course = $args['course'];
+				ob_start();
+				if ( file_exists( DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php' ) ) {
+					include DTLMS_TEMPLATES . 'add-to-cart-' . $tutor_course_sell_by . '.php';
+				} else {
+					esc_html_e( $tutor_course_sell_by . ' template not found' );
+				}
 				
-				// echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(), get_the_ID() );
+				echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(), $args['course'] );
 			} else {
 				ob_start();
 				?>
@@ -155,7 +158,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 					<div class="tutor-course-single-btn-group <?php echo is_user_logged_in() ? '' : 'tutor-course-entry-box-login'; ?>" data-login_url="<?php echo $login_url; ?>">
 						<form class="tutor-enrol-course-form" method="post">
 							<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
-							<input type="hidden" name="tutor_course_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
+							<input type="hidden" name="tutor_course_id" value="<?php echo esc_attr( $args['course'] ); ?>">
 							<input type="hidden" name="tutor_course_action" value="_tutor_course_enroll_now">
 							<button type="submit" class="tutor-btn tutor-btn-primary tutor-btn-lg tutor-btn-block tutor-mt-24 tutor-enroll-course-button">
 								<?php esc_html_e( 'Enroll now', 'tutor' ); ?>
@@ -167,11 +170,11 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 						<?php esc_html_e( 'Free access this course', 'tutor' ); ?>
 					</div>
 				<?php
-				echo apply_filters( 'tutor/course/single/entry-box/free', ob_get_clean(), get_the_ID() );
+				echo apply_filters( 'tutor/course/single/entry-box/free', ob_get_clean(), $args['course'] );
 			}
 		}
 
-		do_action('tutor_course/single/entry/after', get_the_ID());
+		do_action('tutor_course/single/entry/after', $args['course']);
 		?>
 	</div>
 
