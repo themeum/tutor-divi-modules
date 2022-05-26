@@ -56,7 +56,7 @@ class CourseStatus extends ET_Builder_Module {
 				'status_title'               => array(
 					'label'           => esc_html__( 'Status Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-progress-wrapper .tutor-color-text-primary',
+						'main' => '%%order_class%% .dtlms-course-progress-title',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -75,7 +75,7 @@ class CourseStatus extends ET_Builder_Module {
 			'button'    => false,
 			'text'      => false,
 			'max_width' => false,
-			//'borders'   => false,
+			'borders'   => false,
 			// 'background' => false,
 			// 'filters'    => false,
 			// 'animation'  => false,
@@ -184,22 +184,21 @@ class CourseStatus extends ET_Builder_Module {
 		ob_start();
 		if ( isset( $args['course'] ) ) :
 			?>
-			<div class="tutor-course-progress-wrapper tutor-mb-30" style="width: 100%;">
-				<span class="tutor-color-text-primary tutor-text-medium-h6">
-					<?php echo esc_html( $args['course_progress_title'], 'tutor-lms-divi-modules' ); ?>
+			<div class="dtlms-course-progress tutor-course-progress-wrapper tutor-mb-32">
+				<span class="dtlms-course-progress-title tutor-color-black tutor-fs-5 tutor-fw-bold tutor-mb-16">
+					<?php echo esc_html( $args['course_progress_title'] ); ?>
 				</span>
-				<div class="list-item-progress tutor-mt-16">
-					<div class="text-regular-body tutor-color-text-subsued tutor-d-flex tutor-align-items-center tutor-justify-content-between">
+				<div class="list-item-progress">
+					<div class="tutor-fs-6 tutor-color-secondary tutor-d-flex tutor-align-center tutor-justify-between">
 						<span class="progress-steps">
 							5/10
 						</span>
-						<span class="progress-percentage"> 
-							50%
-							<?php esc_html_e( 'Complete', 'tutor-lms-divi-modules' ); ?>
+						<span class="progress-percentage">
+							<?php esc_html_e( '50% Complete', 'tutor-lms-divi-modules' ); ?>						
 						</span>
 					</div>
-					<div class="progress-bar tutor-mt-10" style="--progress-value:50%;">
-						<span class="progress-value"></span>
+					<div class="tutor-progress-bar tutor-mt-12" style="--tutor-progress-value: 50%;">
+						<span class="tutor-progress-value" area-hidden="true"></span>
 					</div>
 				</div>
 			</div>
@@ -235,7 +234,7 @@ class CourseStatus extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'selector'    => '%%order_class%% .tutor-progress-bar',
 					'declaration' => sprintf(
 						'height: %1$s;',
 						$this->props['bar_height']
@@ -247,7 +246,7 @@ class CourseStatus extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'selector'    => '%%order_class%% .tutor-progress-bar',
 					'declaration' => sprintf(
 						'border-radius: %1$s !important;',
 						$this->props['bar_radius']
@@ -259,7 +258,7 @@ class CourseStatus extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .list-item-progress .progress-bar',
+					'selector'    => '%%order_class%% .tutor-progress-bar',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
 						$this->props['bar_background']
@@ -271,7 +270,7 @@ class CourseStatus extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'selector'    => '%%order_class%% .tutor-progress-value',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
 						$this->props['bar_color']
@@ -283,7 +282,7 @@ class CourseStatus extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .list-item-progress .progress-bar .progress-value',
+					'selector'    => '%%order_class%% .tutor-progress-bar',
 					'declaration' => sprintf(
 						'margin-top: %1$s;',
 						$this->props['bar_gap']

@@ -10,7 +10,7 @@ class CourseStatus extends Component {
         if ( props.bar_height ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `height: ${props.bar_height} !important;`
                 }
             ]);
@@ -18,7 +18,7 @@ class CourseStatus extends Component {
 		if ( props.bar_radius ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `border-radius: ${props.bar_radius};`
                 }
             ]);
@@ -26,7 +26,7 @@ class CourseStatus extends Component {
 		if ( props.bar_background ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `background-color: ${props.bar_background};`
                 }
             ]);
@@ -34,7 +34,7 @@ class CourseStatus extends Component {
 		if ( props.bar_color ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar .progress-value',
+                    selector: '%%order_class%% .tutor-progress-value',
                     declaration: `background-color: ${props.bar_color};`
                 }
             ]);
@@ -42,7 +42,7 @@ class CourseStatus extends Component {
 		if ( props.bar_gap ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .list-item-progress .progress-bar',
+                    selector: '%%order_class%% .tutor-progress-bar',
                     declaration: `margin-top: ${props.bar_gap};`
                 }
             ]);
