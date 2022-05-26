@@ -20,13 +20,13 @@ add_filter(
 ?>
 <div class="tutor-wrap dtlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
-		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">
+		<div class="tutor-course-details-tab tutor-mt-32">
 			<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
-			<div class="tab-body">
+			<div class="tutor-tab tutor-pt-24">
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {
 					?>
-						<div class="tab-body-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
+						<div class="tutor-tab-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
@@ -36,11 +36,9 @@ add_filter(
 								false
 							);
 							include dtlms_get_template( 'course/benefits' );
-							tutor_load_template_from_custom_path(
-								dtlms_get_template( 'course/instructor' ),
-								array( 'course_id' => $args['course'], 'args' => $args ),
-								false
-							);
+							if ( function_exists( 'tutor_course_topics' ) ) {
+								tutor_course_topics();
+							}
 						} elseif ( 'reviews' === $key ) {
 							tutor_load_template_from_custom_path(
 								dtlms_get_template( 'course/curriculum/reviews' ),

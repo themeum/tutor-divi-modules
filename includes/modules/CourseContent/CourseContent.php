@@ -432,7 +432,7 @@ class CourseContent extends ET_Builder_Module {
 
 	public function get_fields() {
 		return array(
-			'course'                                   => Helper::get_field(
+			'course' 	=> Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -440,7 +440,7 @@ class CourseContent extends ET_Builder_Module {
 					),
 				)
 			),
-			'__content'                                => array(
+			'__content' => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'CourseContent',
