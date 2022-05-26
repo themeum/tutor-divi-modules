@@ -74,7 +74,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'share_label'            => array(
 					'label'           => esc_html__( 'Share Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$wrapper .share-text",
+						'main' => "%%order_class%% .tutor-icon-share",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'label',
@@ -83,7 +83,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'share_icon'             => array(
 					'label'           => esc_html__( 'Share Icon', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$wrapper .tutor-icon-share-filled",
+						'main' => "%%order_class%% .dtlms-course-share-label",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'label',
@@ -92,7 +92,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'popup_section_title'    => array(
 					'label'           => esc_html__( 'Popup Section Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper div.tutor-text-medium-h5",
+						'main' => "%%order_class%% .dtlms-course-share-modal-title",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'popup_section_title',
@@ -101,7 +101,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'popup_share_title'      => array(
 					'label'           => esc_html__( 'Popup Share Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper div.tutor-text-medium-h6",
+						'main' => "%%order_class%% .dtlms-course-share-modal-link",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'popup_share_title',
@@ -110,7 +110,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'popup_share_link'       => array(
 					'label'           => esc_html__( 'Popup Share Input', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper input",
+						'main' => "%%order_class%% .tutor-modal-body .tutor-form-control",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'popup_share_link',
@@ -119,7 +119,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'popup_share_link_title' => array(
 					'label'           => esc_html__( 'Popup Share Link Title', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper div.tutor-text-regular-caption",
+						'main' => "%%order_class%% .dtlms-course-share-modal-sub-title",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'popup_share_link',
@@ -128,7 +128,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'social_buttons_icon'    => array(
 					'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper .tutor_share span:first-child i",
+						'main' => "%%order_class%% .tutor-social-share-button .social-icon",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'social_buttons',
@@ -137,7 +137,7 @@ class TutorCourseShare extends ET_Builder_Module {
 				'social_buttons_text'    => array(
 					'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => "$popup_wrapper .tutor_share span:last-child",
+						'main' => "%%order_class%% .tutor-social-share-button span:nth-child(2)",
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'social_buttons',
@@ -147,7 +147,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			'background' => array(
 				'label'                => esc_html__( 'Popup Background', 'tutor-lms-divi-modules' ),
 				'css'                  => array(
-					'main'      => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
+					'main'      => '%%order_class%% .tutor-modal-content-white',
 					'important' => true,
 				),
 				'settings'             => array(
@@ -157,13 +157,12 @@ class TutorCourseShare extends ET_Builder_Module {
 			),
 			'button'     => false,
 			'borders'    => array(
-				'label'	=> esc_html__( 'Popup Border', 'tutor-lms-divi-modules' ),
-				'default'               => array(
+				'default' => array(
 					'label_prefix' => esc_html__( 'Popup', 'et_builder' ),
 					'css'          => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
-							'border_styles' => '%%order_class%% .tutor-modal-body.etlms-course-share-popup',
+							'border_radii'  => '%%order_class%% .tutor-modal-content-white',
+							'border_styles' => '%%order_class%% .tutor-modal-content-white',
 						),
 					),
 					'tab_slug'     => 'advanced',
@@ -172,7 +171,7 @@ class TutorCourseShare extends ET_Builder_Module {
 					'label_prefix' => esc_html__( 'Input', 'et_builder' ),
 					'css'          => array(
 						'main' => array(
-							'border_radii'  => "$popup_wrapper input",
+							'border_radii'  => "%%order_class%% .tutor-modal-body .tutor-form-control",
 							'border_styles' => "$popup_wrapper input",
 						),
 					),
@@ -183,8 +182,8 @@ class TutorCourseShare extends ET_Builder_Module {
 				'social_buttons_border' => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => "$popup_wrapper .tutor_share",
-							'border_styles' => "$popup_wrapper .tutor_share",
+							'border_radii'  => "%%order_class%% .tutor-social-share-button",
+							'border_styles' => "%%order_class%% .tutor-social-share-button",
 						),
 					),
 					'important'   => true,
@@ -511,7 +510,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-modal-body.etlms-course-share-popup button.tutor_share',
+					'selector'    => '%%order_class%% .tutor-social-share-button',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
 						$social_icon_background
@@ -523,7 +522,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-modal-close span',
+					'selector'    => '%%order_class%% .tutor-iconic-btn',
 					'declaration' => sprintf(
 						'color: %1$s !important;',
 						$close_button_color
@@ -535,7 +534,7 @@ class TutorCourseShare extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-modal-close span',
+					'selector'    => '%%order_class%% .tutor-iconic-btn',
 					'declaration' => sprintf(
 						'font-size: %1$s !important;',
 						$close_button_size
@@ -550,7 +549,6 @@ class TutorCourseShare extends ET_Builder_Module {
 		if ( '' === $output ) {
 			return '';
 		}
-
 		return $this->_render_module_wrapper( $output, $render_slug );
 	}
 }

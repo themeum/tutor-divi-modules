@@ -28,9 +28,7 @@ $share_title   = $args['popup_share_title'];
 <div class="dtlms-course-share">
 	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost dtlms-course-share-btn">
 		<?php if ( 'on' === $args['course_share_icon_show'] ) : ?>
-			<span class="dtlms-course-share-icon">
-				<span class="tutor-icon-share" area-hidden="true"></span>
-			</span>
+			<span class="tutor-icon-share" area-hidden="true"></span>
 		<?php endif; ?>
 		<?php if ( 'on' === $args['course_share_text_show'] ) : ?>
 			<span class="dtlms-course-share-label tutor-ml-8">

@@ -102,7 +102,7 @@ class CourseShare extends Component {
     if (social_icon_background) {
       additionalCss.push([
         {
-          selector: '%%order_class%% .tutor-modal-body.etlms-course-share-popup button.tutor_share',
+          selector: '%%order_class%% .tutor-social-share-button',
           declaration: `background-color: ${social_icon_background};`
         }
       ]);
@@ -110,7 +110,7 @@ class CourseShare extends Component {
     if (close_button_color) {
       additionalCss.push([
         {
-          selector: '%%order_class%% .tutor-modal-close span',
+          selector: '%%order_class%% .tutor-iconic-btn',
           declaration: `color: ${close_button_color} !important;`
         }
       ]);
@@ -118,7 +118,7 @@ class CourseShare extends Component {
     if (close_button_size) {
       additionalCss.push([
         {
-          selector: '%%order_class%% .tutor-modal-close span',
+          selector: '%%order_class%% .tutor-iconic-btn',
           declaration: `font-size: ${close_button_size} !important;`
         }
       ]);
