@@ -7,7 +7,7 @@
  * @package ETLMCourseEnrollment
  */
 
-// Utillity data
+// Utility data.
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 $lesson_url            = tutor_utils()->get_course_first_lesson();
 $is_administrator      = tutor_utils()->has_user_role( 'administrator' );
@@ -243,10 +243,10 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 	</ul>
 </div>
 <?php endif; ?>
+<?php
+	if ( ! is_user_logged_in() ) {
+		tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php', false );
+	}
+?>
 </div>
 
-<?php
-if ( ! is_user_logged_in() ) {
-	tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php' );
-}
-?>

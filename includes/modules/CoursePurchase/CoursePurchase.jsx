@@ -221,7 +221,6 @@ class CoursePurchase extends Component {
         if(!this.props.__enrollment) {
             return '';
         }
-        console.log(this.props.__enrollment)
         return (
            <Fragment>
                <div className="tutor-divi-enroll-buttons-wrapper" dangerouslySetInnerHTML={{__html: this.props.__enrollment}}>

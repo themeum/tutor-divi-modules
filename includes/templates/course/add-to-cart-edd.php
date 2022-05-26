@@ -11,8 +11,8 @@ if ( $download->ID ) {
 	echo edd_get_purchase_link( array( 'download_id' => $download->ID ) );
 } else {
 	?>
-    <p class="tutor-alert-warning">
-		<?php _e('Please make sure that your EDD product exists and valid for this course', 'tutor'); ?>
-    </p>
-	<?php
+<p class="tutor-alert-warning">
+    <?php _e( 'Please make sure that your EDD product exists and valid for this course', 'tutor' ); ?>
+</p>
+<?php
 }

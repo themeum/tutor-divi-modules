@@ -262,6 +262,6 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 
 <?php
 if ( ! is_user_logged_in() ) {
-	tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php' );
+	tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php', false );
 }
 ?>
