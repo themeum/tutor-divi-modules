@@ -26,22 +26,18 @@ if ( empty( $course_benefits ) ) {
 if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 	?>
 
-	<div class="tutor-single-course-segment tutor-course-benefits-wrap tutor-mt-32">
-
-		<div class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
-			<span>
+	<div class="tutor-course-details-widget tutor-course-details-widget-col-2 tutor-mt-lg-50 tutor-mt-32">
+		<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16">
 			<?php echo esc_html( $args['course_benefits_label'] ); ?>
-			</span>
-		</div>
-		<div class="tutor-divi-course-benefits-content">
-			<ul class="tutor-course-benefits-items">
-				<?php
-				foreach ( $course_benefits as $benefit ) {
-					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon'>" . esc_html( $icon ) . "</span> <span class='list-item'>" . esc_html( $benefit ) . '</span> </li>';
-				}
-				?>
-			</ul>
-		</div>
+		</h3>
+		<ul class="tutor-course-details-widget-list tutor-color-black tutor-fs-6 tutor-m-0 tutor-mt-16">
+			<?php foreach ($course_benefits as $benefit): ?>
+				<li class="tutor-d-flex tutor-mb-12">
+					<span class="tutor-icon-bullet-point tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span>
+					<span><?php echo $benefit; ?></span>
+				</li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 
 <?php } ?>

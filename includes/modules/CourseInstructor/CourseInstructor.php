@@ -39,10 +39,6 @@ class CourseInstructor extends ET_Builder_Module {
 					'instructor_avatar'         => esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
 					'instructor_name'           => esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
 					'instructor_designation'    => esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
-					'instructor_bio'            => esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
-					'bottom_info_star'          => esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
-					'bottom_info_label'         => esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
-					'bottom_info_value'         => esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -63,7 +59,7 @@ class CourseInstructor extends ET_Builder_Module {
 				),
 				'instructor_name'         => array(
 					'css'             => array(
-						'main' => '%%order_class%% .instructor-name-designation-wrapper h3 a',
+						'main' => '%%order_class%% .instructor-name-designation-wrapper',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'instructor_name',
@@ -75,31 +71,6 @@ class CourseInstructor extends ET_Builder_Module {
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'instructor_designation',
-					'hide_text_align' => true,
-				),
-				'instructor_bio'          => array(
-					'css'         => array(
-						'main' => '%%order_class%% .instructor-bio',
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'instructor_bio',
-				),
-				// icon
-				'bottom_info_label'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses i, %%order_class%% .students i',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_label',
-					'hide_text_align' => true,
-				),
-				// text
-				'bottom_info_value'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses .tutor-color-text-subsued, %%order_class%% .students .tutor-color-text-subsued, %%order_class%% .rating-total-meta',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_value',
 					'hide_text_align' => true,
 				),
 			),
@@ -117,8 +88,8 @@ class CourseInstructor extends ET_Builder_Module {
 				'section_content'   => array(
 					'css'         => array(
 						'main'      => array(
-							'border_styles' => '%%order_class%% .tutor-instructor-info-card',
-							'border_radii'  => '%%order_class%% .tutor-instructor-info-card',
+							'border_styles' => '%%order_class%% .tutor-course-details-instructors',
+							'border_radii'  => '%%order_class%% .tutor-course-details-instructors',
 						),
 						'important' => 'all',
 					),
@@ -128,7 +99,7 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'main'      => '%%order_class%% .tutor-course-details-instructors',
 					'important' => 'all',
 				),
 			),
@@ -138,7 +109,7 @@ class CourseInstructor extends ET_Builder_Module {
 			//'transform'      => false,
 			'background'     => array(
 				'css'                  => array(
-					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'main'      => '%%order_class%% .tutor-course-details-instructors',
 					'important' => true,
 				),
 				'use_background_video' => false,
@@ -147,7 +118,7 @@ class CourseInstructor extends ET_Builder_Module {
 			'box_shadow' => array(
 				'default' => array(
 					'css' => array(
-						'main' => "%%order_class%% .tutor-instructor-info-card",
+						'main' => "%%order_class%% .tutor-course-details-instructors",
 					),
 				),
 			),

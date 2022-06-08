@@ -26,7 +26,9 @@ if ( is_array( $materials ) && count( $materials ) ) {
 	?>
 
 	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
-		<h4 class="tutor-segment-title tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"><?php echo esc_html( $args['label'] ); ?></h4>
+		<h4 class="tutor-segment-title tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
+			<?php echo esc_html( $args['label'] ); ?>
+		</h4>
 		<div class="tutor-course-target-audience-content">
 			<ul class="tutor-course-target-audience-items">
 				<?php

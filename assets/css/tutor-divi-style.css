@@ -358,3 +358,6 @@
 .tutor-divi-courselist-overlayed .dtlms-author-name {
   color: #fff !important;
 }
+.dtlms-course-curriculum .tutor-course-content-list li{
+  padding: 0px !important;
+}
