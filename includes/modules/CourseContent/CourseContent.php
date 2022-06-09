@@ -35,9 +35,6 @@ class CourseContent extends ET_Builder_Module {
 			'general'  => array(
 				'toggles' => array(
 					'main_content'      => esc_html__( 'Course Benefits', 'tutor-lms-divi-modules' ),
-					'course_instructor' => array(
-						'title' => esc_html__( 'About the Instructor', 'tutor-lms-divi-modules' ),
-					),
 					'course_curriculum' => array(
 						'title' => esc_html__( 'Course Curriculum', 'tutor-lms-divi-modules' ),
 					),
@@ -52,10 +49,7 @@ class CourseContent extends ET_Builder_Module {
 						'title' => esc_html__( 'About Course', 'tutor-lms-divi-modules' ),
 					),
 					'short_text'                => array(
-						'title' => esc_html__( 'About Course Short Text', 'tutor-lms-divi-modules' ),
-					),
-					'about_text'                => array(
-						'title' => esc_html__( 'About Course Full Text', 'tutor-lms-divi-modules' ),
+						'title' => esc_html__( 'About Course', 'tutor-lms-divi-modules' ),
 					),
 					// course benefits advanced toggles.
 					'course_benefits_title'     => array(
@@ -71,18 +65,6 @@ class CourseContent extends ET_Builder_Module {
 						'title' => esc_html__( 'Course Benefits Text', 'tutor-lms-divi-modules' ),
 					),
 					// course benefits advanced toggles end.
-
-					// course instructor advanced toggle.
-					'course_instructor_section' => esc_html__( 'Instructor Section', 'tutor-lms-divi-modules' ),
-					'course_instructor_title'   => esc_html__( 'Instructor Section Title', 'tutor-lms-divi-modules' ),
-					'instructor_avatar'         => esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
-					'instructor_name'           => esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
-					'instructor_designation'    => esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
-					'instructor_bio'            => esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
-					'bottom_info_star'          => esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
-					'bottom_info_label'         => esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
-					'bottom_info_value'         => esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
-					// course instructor advanced toggle end.
 					'header'                    => array(
 						'title' => esc_html__( 'Curriculum Header', 'tutor-lms-divi-modules' ),
 					),
@@ -116,10 +98,10 @@ class CourseContent extends ET_Builder_Module {
 
 		// advanced fields config
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
-		$topic_icon_selector     = $wrapper . ' .tutor-course-title >span';
-		$topic_wrapper_selector  = '%%order_class%% .tutor-accordion-item';
-		$lesson_title_selector   = '%%order_class%% .tutor-courses-lession-list .text-regular-body.color-text-primary';
-		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
+		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
+		$topic_wrapper_selector  = '%%order_class%% .tutor-divi-course-topic';
+		$lesson_title_selector   = '%%order_class%% .tutor-course-content-list-item-title a';
+		$lesson_wrapper_selector = '%%order_class%% .tutor-course-content-list-item';
 
 		// Reviews selectors.
 		$title_selector     = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
@@ -519,69 +501,6 @@ class CourseContent extends ET_Builder_Module {
 			),
 			// course benefits controls end.
 
-			// course instructor content controls start.
-			'course_instructor_label'                  => array(
-				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
-				'type'            => 'text',
-				'default'         => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),
-				'option_category' => 'basic_option',
-				'toggle_slug'     => 'course_instructor',
-			),
-			'profile_picture'                          => array(
-				'label'       => esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
-				'type'        => 'yes_no_button',
-				'options'     => array(
-					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
-				),
-				'default'     => 'on',
-				'toggle_slug' => 'course_instructor',
-			),
-			'display_name'                             => array(
-				'label'       => esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
-				'type'        => 'yes_no_button',
-				'options'     => array(
-					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
-				),
-				'default'     => 'on',
-				'toggle_slug' => 'course_instructor',
-			),
-			'designation'                              => array(
-				'label'       => esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
-				'type'        => 'yes_no_button',
-				'options'     => array(
-					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
-					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
-				),
-				'default'     => 'on',
-				'toggle_slug' => 'course_instructor',
-			),
-			'course_instructor_link'                   => array(
-				'label'           => esc_html__( 'Link', 'tutor-lms-divi-modules' ),
-				'type'            => 'select',
-				'options'         => array(
-					'_blank' => esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
-					''       => esc_html__( 'Same Window', 'tutor-lms-divi-modules' ),
-				),
-				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'         => 'new',
-				'toggle_slug'     => 'course_instructor',
-			),
-			'course_instructor_layout'                 => array(
-				'label'       => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
-				'type'        => 'select',
-				'options'     => array(
-					'row'    => esc_html__( 'Left', 'tutor-lms-divi-modules' ),
-					'column' => esc_html__( 'Top', 'tutor-lms-divi-modules' ),
-				),
-				'description' => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'     => 'column',
-				'toggle_slug' => 'course_instructor',
-			),
-			// course instructor content controls end.
-
 			// course curriculum content controls start.
 			'course_topics_label'                      => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
@@ -692,65 +611,6 @@ class CourseContent extends ET_Builder_Module {
 				'mobile_options' => true,
 			),
 			// course benefits advance controls end.
-
-			/**
-			 * Course instructor advanced controls
-			 */
-			'course_instructor_section_background'     => array(
-				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'course_instructor_section',
-			),
-			// advanced tab instructor_avatar toggle
-			'image_size'                               => array(
-				'label'          => esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default'        => '48px',
-				'default_unit'   => 'px',
-				'range_settings' => array(
-					'min'  => '1',
-					'max'  => '200',
-					'step' => '1',
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'instructor_avatar',
-			),
-			// advanced tab bottom_info_star toggle
-			'course_instructor_bottom_info_star_size'  => array(
-				'label'          => esc_html__( 'Star Size', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default'        => '14px',
-				'default_unit'   => 'px',
-				'range_settings' => array(
-					'min'  => '1',
-					'max'  => '100',
-					'step' => '1',
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'bottom_info_star',
-			),
-			'course_instructor_bottom_info_star_color' => array(
-				'label'       => esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'bottom_info_star',
-			),
-			// advanced tab margin_padding toggle
-			// 'space_between'                            => array(
-			// 'label'          => esc_html__( 'Space Between', 'tutor-lms-divi-modules' ),
-			// 'type'           => 'range',
-			// 'default'        => '10px',
-			// 'default_unit'   => 'px',
-			// 'range_settings' => array(
-			// 'min'  => '1',
-			// 'max'  => '100',
-			// 'step' => '1',
-			// ),
-			// 'tab_slug'       => 'advanced',
-			// 'toggle_slug'    => 'margin_padding',
-			// ),
-			// course instructor advanced controls end.
 
 			/**
 			 * Course curriculum advance tab controls
@@ -1019,15 +879,15 @@ class CourseContent extends ET_Builder_Module {
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
 		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
 		$topic_wrapper           = '%%order_class%% .tutor-divi-course-topic';
-		$topics_wrapper          = '%%order_class%% .tutor-course-topics-contents';
-		$topic_wrapper_selector  = $wrapper . ' .tutor-course-title';
-		$title_selector          = $wrapper . '.tutor-course-title';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
+		$topics_wrapper          = '%%order_class%% .tutor-divi-course-topic';
+		$topic_wrapper_selector  = $wrapper . ' h3';
+		$title_selector          = $wrapper . ' h3';
+		$header_wrapper_selector = '%%order_class%% .tutor-course-title';
+		$header_wrapper_selector = '%%order_class%% .tutor-course-title';
 
-		$lesson_icon_selector    = '%%order_class%% .tutor-courses-lession-list span::before';
-		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
-		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
+		$lesson_icon_selector    = '%%order_class%% .tutor-course-content-list-item span';
+		$lesson_wrapper_selector = '%%order_class%% .tutor-course-content-list-item';
+		$lesson_info_selector    = '%%order_class%% .tutor-course-content-list-item-title a';
 
 		// props
 		// $icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
@@ -1409,62 +1269,6 @@ class CourseContent extends ET_Builder_Module {
 			);
 		}
 		// course benefits styles start end.
-
-		// course instructor styles start.
-		$course_instructor_layout                 = $this->props['course_instructor_layout'];
-		$course_instructor_section_background     = $this->props['course_instructor_section_background'];
-		$course_instructor_bottom_info_star_size  = $this->props['course_instructor_bottom_info_star_size'];
-		$course_instructor_bottom_info_star_color = $this->props['course_instructor_bottom_info_star_color'];
-		if ( '' !== $course_instructor_layout ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-instructor-right',
-					'declaration' => sprintf(
-						'flex-direction: %1$s;',
-						$course_instructor_layout
-					),
-				)
-			);
-		}
-		if ( '' !== $course_instructor_section_background ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-instructor-info-card',
-					'declaration' => sprintf(
-						'background-color: %1$s;',
-						$course_instructor_section_background
-					),
-				)
-			);
-		}
-		if ( '' !== $course_instructor_bottom_info_star_color ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-					'declaration' => sprintf(
-						'color: %1$s;',
-						$course_instructor_bottom_info_star_color
-					),
-				)
-			);
-		}
-		if ( '' !== $course_instructor_bottom_info_star_size ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-					'declaration' => sprintf(
-						'font-size: %1$s;',
-						$course_instructor_bottom_info_star_size
-					),
-				)
-			);
-		}
-
-		// course instructor styles end.
 
 		// set styles.
 

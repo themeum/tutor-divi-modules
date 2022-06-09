@@ -19,7 +19,7 @@ class CourseContent extends Component {
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
         const lesson_icon_selector      = '%%order_class%% .tutor-course-content-list-item span';
-        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body-content';
+        const lesson_wrapper_selector   = '%%order_class%% .tutor-course-content-list-item';
         const lesson_info_selector      = '%%order_class%% .tutor-course-content-list-item-title a';
 
         //props
