@@ -18,9 +18,9 @@ class CourseContent extends Component {
         const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
-        const lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
-        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body';
-        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.tutor-color-text-hints';
+        const lesson_icon_selector      = '%%order_class%% .tutor-course-content-list-item span';
+        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body-content';
+        const lesson_info_selector      = '%%order_class%% .tutor-course-content-list-item-title a';
 
         //props
         const topic_icon_size               = props.topic_icon_size;

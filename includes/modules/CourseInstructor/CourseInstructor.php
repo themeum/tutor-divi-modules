@@ -78,8 +78,8 @@ class CourseInstructor extends ET_Builder_Module {
 				'instructor_avatar' => array(
 					'css'         => array(
 						'main' => array(
-							'border_styles' => '%%order_class%% .instructor-avatar a img',
-							'border_radii'  => '%%order_class%% .instructor-avatar a img',
+							'border_styles' => '%%order_class%% .tutor-avatar .tutor-ratio img',
+							'border_radii'  => '%%order_class%% .tutor-avatar .tutor-ratio img',
 						),
 					),
 					'tab_slug'    => 'advanced',

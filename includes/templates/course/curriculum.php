@@ -22,7 +22,7 @@ $index       = 0;
 
 do_action( 'tutor_course/single/before/topics' );
 ?>
-<div class="tutor-mt-40">
+<div class="tutor-mt-40 dtlms-course-curriculum">
 	<h3 class="tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24">
 		<?php
 			$title = __( 'Course Content', 'tutor' );
@@ -38,8 +38,8 @@ do_action( 'tutor_course/single/before/topics' );
 				$topic_summery = get_the_content();
 				$index++;
 			?>
-			<div class="tutor-accordion-item">
-				<h4 class="tutor-accordion-item-header<?php echo $index == 1 ? ' is-active': ''; ?>">
+			<div class="tutor-accordion-item tutor-divi-course-topic">
+				<h4 class="tutor-course-title tutor-accordion-item-header<?php echo $index == 1 ? ' is-active': ''; ?>">
 					<?php the_title(); ?>
 					<?php if ( ! empty( $topic_summery ) ): ?>
 						<div class="tooltip-wrap tooltip-icon">

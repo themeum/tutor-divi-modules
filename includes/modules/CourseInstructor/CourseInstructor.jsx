@@ -20,7 +20,7 @@ class CourseInstructor extends Component {
         if ( course_instructor_section_background ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-instructor-info-card',
+                    selector: '%%order_class%% .tutor-course-details-instructors',
                     declaration: `background-color: ${course_instructor_section_background};`
                 }
             ]);
@@ -36,7 +36,7 @@ class CourseInstructor extends Component {
        
         return (
             <Fragment>
-                <div className="tutor-course-details-instructors" dangerouslySetInnerHTML={{__html: this.props.__instructor}}></div>
+                <div className="dtlms-course-instructor-wrapper" dangerouslySetInnerHTML={{__html: this.props.__instructor}}></div>
             </Fragment>
         );
     }
