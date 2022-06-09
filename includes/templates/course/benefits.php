@@ -25,7 +25,7 @@ if ( empty( $course_benefits ) ) {
 
 if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 	?>
-
+<div class="tutor-course-benefits-wrap">
 	<div class="tutor-course-details-widget tutor-course-details-widget-col-2 tutor-mt-lg-50 tutor-mt-32">
 		<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16">
 			<?php echo esc_html( $args['course_benefits_label'] ); ?>
@@ -39,7 +39,7 @@ if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
 			<?php endforeach; ?>
 		</ul>
 	</div>
-
+</div>
 <?php } ?>
 
 <?php do_action( 'tutor_course/single/after/benefits' ); ?>

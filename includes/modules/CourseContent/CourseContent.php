@@ -144,70 +144,19 @@ class CourseContent extends ET_Builder_Module {
 				// course benefit controls.
 				'course_benefits_title'   => array(
 					'css' => array(
-						'main'        => '%%order_class%% .tutor-course-benefits-wrap .tutor-segment-title',
+						'main'        => '%%order_class%% .tutor-course-benefits-wrap .tutor-course-details-widget-title',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'course_benefits_title',
 					),
 				),
 				'course_benefits_text'    => array(
 					'css'             => array(
-						'main'        => '%%order_class%% ul.tutor-course-benefits-items .list-item',
+						'main'        => '%%order_class%%  .tutor-course-details-widget ul li',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'course_benefits_text',
 					),
 					'hide_text_align' => true,
 				),
-				// course instructor font toggle.
-				'course_instructor_title' => array(
-					'css'             => array(
-						'main' => '%%order_class%% .dtlms-course-instructor-title',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'course_instructor_title',
-					'hide_text_align' => true,
-				),
-				'instructor_name'         => array(
-					'css'             => array(
-						'main' => '%%order_class%% .instructor-name-designation-wrapper h3 a',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'instructor_name',
-					'hide_text_align' => true,
-				),
-				'instructor_designation'  => array(
-					'css'             => array(
-						'main' => '%%order_class%% .tutor-ins-designation',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'instructor_designation',
-					'hide_text_align' => true,
-				),
-				'instructor_bio'          => array(
-					'css'         => array(
-						'main' => '%%order_class%% .instructor-bio',
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'instructor_bio',
-				),
-				// icon
-				'bottom_info_label'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses i, %%order_class%% .students i',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_label',
-					'hide_text_align' => true,
-				),
-				// text
-				'bottom_info_value'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses .tutor-color-text-subsued, %%order_class%% .students .tutor-color-text-subsued, %%order_class%% .rating-total-meta',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_value',
-					'hide_text_align' => true,
-				),
-				// course instructor font toggle end.
 				'header'                  => array(
 					'css'             => array(
 						'main' => "$wrapper .tutor-course-topics-header-left .text-medium-h6.tutor-color-text-primary",
@@ -326,8 +275,8 @@ class CourseContent extends ET_Builder_Module {
 				'course_benefits_list_border' => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% ul.tutor-course-benefits-items li',
-							'border_styles' => '%%order_class%% ul.tutor-course-benefits-items li',
+							'border_radii'  => '%%order_class%% .tutor-course-details-widget ul li',
+							'border_styles' => '%%order_class%% .tutor-course-details-widget ul li',
 
 						),
 						'important' => true,
@@ -335,29 +284,6 @@ class CourseContent extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'course_benefits_list',
 				),
-				// course instructor border toggle.
-				'instructor_avatar'           => array(
-					'css'         => array(
-						'main' => array(
-							'border_styles' => '%%order_class%% .instructor-avatar a img',
-							'border_radii'  => '%%order_class%% .instructor-avatar a img',
-						),
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'instructor_avatar',
-				),
-				'section_content'             => array(
-					'css'         => array(
-						'main'      => array(
-							'border_styles' => '%%order_class%% .tutor-instructor-info-card',
-							'border_radii'  => '%%order_class%% .tutor-instructor-info-card',
-						),
-						'important' => 'all',
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'course_instructor_section',
-				),
-				// course instructor border toggle end.
 
 				'topics'                      => array(
 					'css'         => array(
@@ -374,8 +300,8 @@ class CourseContent extends ET_Builder_Module {
 				'lesson'                      => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% .tutor-courses-lession-list li:not(:last-child)',
-							'border_styles' => '%%order_class%% .tutor-courses-lession-list li:not(:last-child)',
+							'border_radii'  => '%%order_class%% .tutor-course-content-list-item:not(:last-child)',
+							'border_styles' => '%%order_class%% .tutor-course-content-list-item:not(:last-child)',
 						),
 						'important' => true,
 					),
@@ -481,14 +407,6 @@ class CourseContent extends ET_Builder_Module {
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
-			),
-			'course_benefits_icon'                     => array(
-				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
-				'type'            => 'select_icon',
-				'default'         => 'N',
-				'class'           => array( 'et-pb-font-icon' ),
-				'option_category' => 'basic_option',
-				'toggle_slug'     => 'main_content',
 			),
 			'course_benefits_alignment'                => array(
 				'label'           => esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
@@ -931,8 +849,8 @@ class CourseContent extends ET_Builder_Module {
 		// course benefits styles start.
 		// selectors.
 		$benefits_wrapper       = '%%order_class%% .tutor-course-benefits-wrap';
-		$benefits_li_selector   = '%%order_class%% ul.tutor-course-benefits-items li';
-		$benefits_icon_selector = '%%order_class%% ul.tutor-course-benefits-items .et-pb-icon';
+		$benefits_li_selector   = '%%order_class%% .tutor-course-details-widget ul li';
+		$benefits_icon_selector = '%%order_class%% .tutor-course-details-widget ul li span.tutor-color-muted';
 		// props.
 		$benefits_icon_size        = sanitize_text_field( $this->props['course_benefits_icon_size'] );
 		$benefits_icon_size_tablet = isset( $this->props['course_benefits_icon_size_tablet'] ) && $this->props['course_benefits_icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['course_benefits_icon_size_tablet'] ) : $benefits_icon_size;
