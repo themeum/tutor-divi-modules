@@ -46,10 +46,10 @@ class CourseContent extends ET_Builder_Module {
 			'advanced' => array(
 				'toggles' => array(
 					'heading'                   => array(
-						'title' => esc_html__( 'About Course', 'tutor-lms-divi-modules' ),
+						'title' => esc_html__( 'About Course Title', 'tutor-lms-divi-modules' ),
 					),
 					'short_text'                => array(
-						'title' => esc_html__( 'About Course', 'tutor-lms-divi-modules' ),
+						'title' => esc_html__( 'About Course Text', 'tutor-lms-divi-modules' ),
 					),
 					// course benefits advanced toggles.
 					'course_benefits_title'     => array(
