@@ -9,8 +9,8 @@ class CourseBenefits extends Component {
         const additionalCss = [];
         //selectors
         const wrapper = '%%order_class%% .tutor-course-benefits-wrap';
-        const li_selector = '%%order_class%% .tutor-course-benefits-wrap ul li';
-		const icon_selector	= "%%order_class%% .tutor-course-benefits-wrap li .et-pb-icon";
+        const li_selector = '%%order_class%% .tutor-course-details-widget ul li';
+		const icon_selector	= "%%order_class%% .tutor-course-details-widget ul li span.tutor-color-muted";
 
         //props
         const layout = props.layout;
@@ -306,20 +306,15 @@ class CourseBenefits extends Component {
    
         return (
             <Fragment>
-            <div class="tutor-single-course-segment tutor-course-benefits-wrap">
-
-                <div class="course-benefits-title">
-                    <h4 class="tutor-segment-title">
+            <div class="tutor-course-benefits-wrap">
+	            <div class="tutor-course-details-widget tutor-course-details-widget-col-2 tutor-mt-lg-50 tutor-mt-32">
+		            <h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16">
                         {this.props.course_benefits_label}
-                    </h4>
-                </div>
-
-                <div class="tutor-divi-course-benefits-content">
-                    <ul class="tutor-course-benefits-items">
+                    </h3>
+                    <ul class="tutor-course-details-widget-list tutor-color-black tutor-fs-6 tutor-m-0 tutor-mt-16">
                         { this.benefitsList(this.props.__benefits, this.props.course_benefits_icon)}
                     </ul>
                 </div>
-
             </div>
             </Fragment>
         );

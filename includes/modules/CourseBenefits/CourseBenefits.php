@@ -59,9 +59,9 @@ class TutorCourseBenefits extends ET_Builder_Module {
 		);
 
 		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
-		$li_selector    = $wrapper . ' .tutor-course-benefits-items ul li';
-		$icon_selector  = $li_selector . ' .et-pb-icon';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
+		$li_selector    = $wrapper . ' tutor-course-details-widget ul li';
+		$icon_selector  = $li_selector . ' .tutor-icon-bullet-point';
 
 		$this->advanced_fields = array(
 			'fonts'      => array(

@@ -96,6 +96,8 @@ class CourseContent extends ET_Builder_Module {
 			),
 		);
 
+
+
 		// advanced fields config
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
 		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
@@ -115,9 +117,9 @@ class CourseContent extends ET_Builder_Module {
 		 */
 
 		// course benefits controls end.
-		$heading_selector      = '%%order_class%% .tutor-showmore-content .text-medium-h6';
-		$paragraph_selector    = '%%order_class%% .showmore-text';
-		$short_text            = '%%order_class%% .showmore-short-text';
+		$heading_selector      = '%%order_class%% .tutor-course-details-content h2';
+		$paragraph_selector    = '%%order_class%% .tutor-course-details-content p';
+		$short_text            = '%%order_class%% .tutor-course-details-content p';
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'heading'                 => array(
