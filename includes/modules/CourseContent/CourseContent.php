@@ -106,10 +106,10 @@ class CourseContent extends ET_Builder_Module {
 		$lesson_wrapper_selector = '%%order_class%% .tutor-course-content-list-item';
 
 		// Reviews selectors.
-		$title_selector     = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
-		$avg_total_selector = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
-		$avg_text_selector  = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
-		$avg_count_selector = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
+		$title_selector     = '%%order_class%% #tutor-course-details-tab-reviews h3';
+		$avg_total_selector = '%%order_class%% .tutor-review-summary .tutor-ratings-stars span';
+		$avg_text_selector  = '%%order_class%% .tutor-review-summary-average-rating';
+		$avg_count_selector = '%%order_class%% .tutor-review-summary .tutor-color-secondary';
 		$reviews_wrapper    = '%%order_class%% #tutor-course-details-tab-reviews ';
 
 		/**
@@ -189,7 +189,7 @@ class CourseContent extends ET_Builder_Module {
 				// reviews controls.
 				'review_section_title'    => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-course-topics-header .text-primary",
+						'main'        => "$reviews_wrapper .tutor-pagination-wrapper-replaceable h3",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'section_title',
 					),
@@ -197,7 +197,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_avg_total'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-ratingsreviews-ratings-avg .text-medium-h1",
+						'main'        => "$reviews_wrapper .tutor-review-summary .tutor-review-summary-average-rating",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_total',
 
@@ -206,7 +206,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_avg_star'         => array(
 					'css'             => array(
-						'main'        => '%%order_class%% .tutor-ratingsreviews-ratings-avg .tutor-ratings .tutor-rating-stars span',
+						'main'        => '%%order_class%% .tutor-review-summary .tutor-ratings-stars span',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_star',
 
@@ -216,7 +216,7 @@ class CourseContent extends ET_Builder_Module {
 				'review_avg_text'         => array(
 					'label'           => 'Review Avg Total',
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-rating-text-part",
+						'main'        => "$reviews_wrapper .tutor-review-summary .tutor-color-secondary",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_text',
 
@@ -226,7 +226,7 @@ class CourseContent extends ET_Builder_Module {
 				'review_avg_count'        => array(
 
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-rating-count-part",
+						'main'        => "$reviews_wrapper .tutor-review-summary .tutor-review-summary-average-rating",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_count',
 
@@ -235,14 +235,14 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'rating_bar'              => array(
 					'css' => array(
-						'main'        => "$reviews_wrapper .rating-num.color-text-subsued",
+						'main'        => "$reviews_wrapper .tutor-review-summary .tutor-progress-bar",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'rating_abr',
 					),
 				),
 				'review_list_author_name' => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-reviewer-name",
+						'main'        => "$reviews_wrapper .tutor-reviewer-name a",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_author_name',
 					),
@@ -250,7 +250,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_time'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-review-time",
+						'main'        => "$reviews_wrapper .tutor-reviewed-on",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_time',
 					),
@@ -258,14 +258,14 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_comment'     => array(
 					'css' => array(
-						'main'        => "$reviews_wrapper .tutor-review-comment",
+						'main'        => "$reviews_wrapper .tutor-review-list-item .tutor-review-comment",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_comment',
 					),
 				),
 				'review_list_star'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .review-list .tutor-rating-stars span ",
+						'main'        => "$reviews_wrapper .tutor-review-list-item .tutor-ratings-stars span ",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_comment',
 					),
@@ -1561,7 +1561,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-ratingsreviews-ratings-all .tutor-rating-stars span',
+					'selector'    => '%%order_class%% #tutor-course-details-tab-reviews .tutor-ratings-stars span',
 					'declaration' => sprintf(
 						'color: %1$s;',
 						$this->props['review_right_star']
@@ -1573,7 +1573,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar',
+					'selector'    => '%%order_class%% #tutor-course-details-tab-reviews .tutor-progress-bar',
 					'declaration' => sprintf(
 						'height: %1$s;',
 						$this->props['review_right_bar_height']
@@ -1585,7 +1585,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar',
+					'selector'    => '%%order_class%% #tutor-course-details-tab-reviews .tutor-progress-bar',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
 						$this->props['review_right_bar_color']
@@ -1597,7 +1597,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-ratingsreviews-ratings-all .progress-value',
+					'selector'    => '%%order_class%% #tutor-course-details-tab-reviews .tutor-ratings-progress-bar .tutor-progress-value',
 					'declaration' => sprintf(
 						'background-color: %1$s;',
 						$this->props['review_right_bar_fill_color']
