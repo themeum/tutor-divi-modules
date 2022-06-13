@@ -387,15 +387,15 @@ class CourseCurriculum extends ET_Builder_Module {
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
 		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
 		$topic_wrapper           = '%%order_class%% .tutor-divi-course-topic';
-		$topics_wrapper          = '%%order_class%% .tutor-course-topics-contents';
-		$topic_wrapper_selector  = $wrapper . ' .tutor-course-title';
-		$title_selector          = $wrapper . '.tutor-course-title';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
+		$topics_wrapper          = '%%order_class%% .tutor-divi-course-topic';
+		$topic_wrapper_selector  = $wrapper . ' h3';
+		$title_selector          = $wrapper . ' h3';
+		$header_wrapper_selector = '%%order_class%% .tutor-course-title';
+		$header_wrapper_selector = '%%order_class%% .tutor-course-title';
 
-		$lesson_icon_selector    = '%%order_class%% .tutor-courses-lession-list span::before';
-		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
-		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
+		$lesson_icon_selector    = '%%order_class%% .tutor-course-content-list-item span';
+		$lesson_wrapper_selector = '%%order_class%% .tutor-course-content-list-item';
+		$lesson_info_selector    = '%%order_class%% .tutor-course-content-list-item-title a';
 
 		// props
 		$icon_position   = sanitize_text_field( $this->props['icon_position'] );
