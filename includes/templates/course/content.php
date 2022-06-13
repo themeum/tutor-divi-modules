@@ -15,6 +15,7 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 			</div>
 
 			<div class="tutor-tab tutor-pt-24">
+				
 				<?php foreach ( $course_nav_items as $key => $subpage ) : ?>
 					<?php $method = $subpage['method']; ?>
 					<div id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>" class="tutor-tab-item<?php echo esc_attr( 'info' === $key ? ' is-active' : '' ); ?>">
@@ -25,6 +26,7 @@ $course_nav_items = apply_filters( 'tutor_course/single/nav_items', tutor_utils(
 							include dtlms_get_template( 'course/about' );
 							include dtlms_get_template( 'course/benefits' );
 							include dtlms_get_template( 'course/curriculum' );
+							tutor_course_topics();
 						} else {
 							if ( is_string( $method ) ) {
 								$method();
