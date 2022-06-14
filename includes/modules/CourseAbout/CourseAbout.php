@@ -80,10 +80,10 @@ class TutorCourseAbout extends ET_Builder_Module {
 			// 'margin_padding'  => false,
 			'background' => false,
 			'borders'    => false,
-		// 'box_shadow' => false,
-		// 'filters'    => false,
-		// 'animation'  => false,
-		// 'transform'  => false,
+			// 'box_shadow' => false,
+			// 'filters'    => false,
+			// 'animation'  => false,
+			// 'transform'  => false,
 		);
 	}
 

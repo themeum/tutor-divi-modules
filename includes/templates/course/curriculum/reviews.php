@@ -16,30 +16,27 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 if ( ! isset( $data ) && count( $data ) ) {
 	return;
 }
-$course_id = $data['post_id'];
+$course_id = (int) $data['post_id'];
 
 $disable = ! get_tutor_option( 'enable_course_review' );
 if ( $disable ) {
 	return;
 }
 
-$per_page = tutor_utils()->get_option( 'pagination_per_page', 10 );
-$current_page = max(1, (int)tutor_utils()->avalue_dot('current_page', $_POST));
-$offset = ($current_page - 1) * $per_page;
-$is_enrolled = tutor_utils()->is_enrolled($course_id, get_current_user_id());
+$per_page 		= tutor_utils()->get_option( 'pagination_per_page', 10 );
+$current_page   = max( 1, (int) tutor_utils()->avalue_dot( 'current_page', $_POST ) );
+$offset 		= ($current_page - 1) * $per_page;
 
-$reviews = tutor_utils()->get_course_reviews($course_id, $offset, $per_page);
-$reviews_total = tutor_utils()->get_course_reviews($course_id, null, null, true);
-$rating = tutor_utils()->get_course_rating($course_id);
-$my_rating = tutor_utils()->get_reviews_by_user(0, 0, 150, false, $course_id);
+$current_user_id = get_current_user_id();
+$is_enrolled 	 = tutor_utils()->is_enrolled( $course_id, $current_user_id );
 
-if(isset($_POST['course_id'])) {
-	// It's load more
-	tutor_load_template('single.course.reviews-loop', array('reviews' => $reviews));
-	return;
-}
+$reviews 		= tutor_utils()->get_course_reviews( $course_id, $offset, $per_page, false, array( 'approved' ), $current_user_id );
+$reviews_total  = tutor_utils()->get_course_reviews( $course_id, null, null, true, array('approved'), $current_user_id );
+$rating 		= tutor_utils()->get_course_rating( $course_id );
+$my_rating 		= tutor_utils()->get_reviews_by_user( 0, 0, 150, false, $course_id, array( 'approved', 'hold' ) );
 
 do_action( 'tutor_course/single/enrolled/before/reviews' );
+
 ?>
 
 <div class="tutor-pagination-wrapper-replaceable">
@@ -50,7 +47,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 		?>
 	</h3>
 
-	<?php if(! is_array( $reviews ) || ! count( $reviews )): ?>
+	<?php if ( ! is_array( $reviews ) || ! count( $reviews ) ) : ?>
 		<?php tutor_utils()->tutor_empty_state(__('No Review Yet', 'tutor')); ?>
 	<?php else: ?>
 		<div class="tutor-card tutor-review-card">
@@ -97,7 +94,7 @@ do_action( 'tutor_course/single/enrolled/before/reviews' );
 									</div>
 
 									<div class="tutor-col-4 tutor-col-lg-3">
-										<span class="tutor-fs-6 tutor-color-secondary"><?php echo $value . ' ' . ( $value > 1 ? __( 'Ratings', 'tutor' ) : __( 'Rating', 'tutor' ) ); ?></span>
+										<span class="tutor-fs-6 tutor-color-secondary tutor-individual-star-rating"><?php echo $value . ' ' . ( $value > 1 ? __( 'Ratings', 'tutor' ) : __( 'Rating', 'tutor' ) ); ?></span>
 									</div>
 								</div>
 							<?php endforeach; ?>
