@@ -5,24 +5,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// $excerpt    = tutor_get_the_excerpt( isset( $data ) && isset( $data['post_id'] ) ? $data['post_id'] : 0 );
-// $is_enabled = get_tutor_option( 'enable_course_about' );
-
-// $string       = $excerpt;
-// $limit        = 500;
-// $has_readmore = false;
-// if ( strlen( $string ) > $limit ) {
-// 	$has_readmore = true;
-// 	// truncate string.
-// 	$first_part = truncate( $string, $limit );
-// }
-
-// global $post;
-
 do_action('tutor_course/single/before/content');
 
+$course_id = get_the_ID();
+if ( isset( $data['post_id'] ) ) {
+	$course_id = $data['post_id'];
+}
+if ( isset( $args['course'] ) ) {
+	$course_id = $args['course'];
+}
+
 if ( tutor_utils()->get_option( 'enable_course_about', true, true ) ) {
-	$excerpt    		= tutor_get_the_excerpt( $args['course'] );
+	$excerpt    		= tutor_get_the_excerpt( $course_id );
     $string             = apply_filters( 'tutor_course_about_content', $excerpt );
     $content_summary 	= (bool) get_tutor_option( 'course_content_summary', true );
     $post_size_in_words = sizeof( explode(" ", $string) );
