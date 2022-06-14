@@ -14,7 +14,7 @@ class CourseEnrollment extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper               = '%%order_class%% .tutor-sidebar-card';
+        const wrapper               = '%%order_class%% .tutor-course-sidebar-card';
         const enroll_box_selector   = '%%order_class%% .tutor-course-enrollment-box';
         //props
         const alignment                 = props.alignment;
@@ -36,7 +36,7 @@ class CourseEnrollment extends Component {
          */
         additionalCss.push([
             {
-                selector: `${wrapper} .tutor-card-body`,
+                selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
                 declaration: 'display: flex; flex-direction: column; row-gap: 10px;'
             }
         ]);
@@ -105,19 +105,19 @@ class CourseEnrollment extends Component {
         if ('enrolled' === preview_mode) {
             additionalCss.push([
                 {
-                    selector: '.dtlms-enroll-btn-width-auto .tutor-card-body:not(.tutor-course-progress-wrapper)',
+                    selector: '.dtlms-enroll-btn-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
 					declaration: 'display: flex; flex-direction: column;', 
                 },
                 {
-					selector: '.dtlms-enroll-btn-align-left .tutor-card-body:not(.tutor-course-progress-wrapper)',
+					selector: '.dtlms-enroll-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
 					declaration: 'align-items: flex-start;', 
                 },
                 {
-					selector: '.dtlms-enroll-btn-align-center .tutor-card-body:not(.tutor-course-progress-wrapper)',
+					selector: '.dtlms-enroll-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
 					declaration: 'align-items: center;',
                 },
                 {
-                    selector: '.dtlms-enroll-btn-align-right .tutor-card-body:not(.tutor-course-progress-wrapper)',
+                    selector: '.dtlms-enroll-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
 					declaration: 'align-items: flex-end;',
                 },
                 {
@@ -150,7 +150,7 @@ class CourseEnrollment extends Component {
         if('fill' === btn_width) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-card-body, %%order_class%% .tutor-card-body form',
+                    selector: '%%order_class%% .tutor-course-sidebar-card-btns, %%order_class%% .tutor-course-sidebar-card-body form',
 					declaration: 'width: 100%;',
                 }
             ]);
@@ -167,7 +167,7 @@ class CourseEnrollment extends Component {
             //fixed width
             additionalCss.push([
                 {
-                    selector:  `%%order_class%% button, %%order_class%% .tutor-btn, %%order_class%% .tutor-course-retake-button`,
+                    selector:  `%%order_class%% button, %%order_class%% .tutor-button, %%order_class%% .start-continue-retake-button`,
                     declaration: `width: ${width_px} !important; text-align:center;`
                 }
             ]);
@@ -259,7 +259,7 @@ class CourseEnrollment extends Component {
         }
         return (
            <Fragment>
-               <div className="tutor-course-enrollment-box" dangerouslySetInnerHTML={{__html: this.props.__enrollment}}>
+               <div className="tutor-divi-enroll-buttons-wrapper" dangerouslySetInnerHTML={{__html: this.props.__enrollment}}>
                </div>
            </Fragment>
         );
