@@ -26,7 +26,7 @@ $display_name    = $args['display_name'];
 $designation     = $args['designation'];
 $link            = $args['course_instructor_link'];
 
-$instructors = tutor_utils()->get_instructors_by_course();
+$instructors = tutor_utils()->get_instructors_by_course( $course_id );
 
 if($instructors && count($instructors)) : ?>
 <div class="dtlms-course-instructor-wrapper">
