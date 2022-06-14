@@ -58,19 +58,28 @@ class CourseEnrollment extends ET_Builder_Module {
 		// advanced fiedls settings.
 		$this->advanced_fields = array(
 			'fonts'      => array(
-				'enrolled_date'              => array(
-					// 'label'           => esc_html__( 'Text', 'tutor-lms-divi-modules' ),
+				'enrolled_text'            => array(
+					'label'           => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-enrolled-info-date',
+						'main' => '%%order_class%% .tutor-enrolled-info-text',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'enrolled_text',
+				),
+				'enrolled_date'              => array(
+					'label'           => esc_html__( 'Enrolment Validity', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% .enrolment-expire-info',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrolled_date',
 				),
 				'enrollment_meta_info_label' => array(
-					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
+					'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-card-footer .dtlms-enrolled-level',
+						'main' => '%%order_class%% .tutor-card-footer .dtlms-enrolled-icon',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -79,20 +88,11 @@ class CourseEnrollment extends ET_Builder_Module {
 				'enrollment_meta_info_value' => array(
 					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-card-footer .dtlms-enrolled-level-value',
+						'main' => '%%order_class%% .tutor-card-footer .tutor-color-secondary',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'enrollment_meta_info',
-				),
-				'enrolled_text'            => array(
-					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
-					'css'             => array(
-						'main' => '%%order_class%% .tutor-enrolled-info-text',
-					),
-					'hide_text_align' => true,
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'enrolled_text',
 				),
 			),
 
@@ -101,11 +101,11 @@ class CourseEnrollment extends ET_Builder_Module {
 					'label'         => esc_html__( 'Enrollment Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'    => array(
 						'css' => array(
-							'main' => '%%order_class%% .tutor-enroll-course-button',
+							'main' => '%%order_class%% ..tutor-btn-primary',
 						),
 					),
 					'css'           => array(
-						'main' => '%%order_class%% .tutor-enroll-course-button',
+						'main' => '%%order_class%% .tutor-btn-primary',
 					),
 					'use_alignment' => false,
 					'tab_slug'      => 'advanced',
@@ -120,11 +120,11 @@ class CourseEnrollment extends ET_Builder_Module {
 					'label'         => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'    => array(
 						'css' => array(
-							'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button',
+							'main' => '%%order_class%% .tutor-btn-primary',
 						),
 					),
 					'css'           => array(
-						'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button',
+						'main' => '%%order_class%% .tutor-btn-primary',
 					),
 					'use_alignment' => false,
 					'tab_slug'      => 'advanced',
@@ -139,12 +139,12 @@ class CourseEnrollment extends ET_Builder_Module {
 					'label'         => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'    => array(
 						'css' => array(
-							'main' => '%%order_class%% .',
+							'main' => '%%order_class%% .tutor-btn-outline-primary',
 						),
 					),
 					'use_borders'   => false,
 					'css'           => array(
-						'main' => '%%order_class%% .start-continue-retake-button, %%order_class%% [value=complete_course]',
+						'main' => '%%order_class%% .tutor-btn-outline-primary, %%order_class%% [value=complete_course]',
 					),
 					'use_alignment' => false,
 					'use_icon'      => false,
@@ -511,28 +511,28 @@ class CourseEnrollment extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '.dtlms-enroll-btn-width-auto .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'selector'		=> '.dtlms-enroll-btn-width-auto .tutor-card-body:not(.tutor-course-progress-wrapper)',
 					'declaration' 	=> 'display: flex; flex-direction: column;', 
 				)
 			);
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '.dtlms-enroll-btn-align-left .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'selector'		=> '.dtlms-enroll-btn-align-left .tutor-card-body:not(.tutor-course-progress-wrapper)',
 					'declaration' 	=> 'align-items: flex-start;', 
 				)
 			);
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '.dtlms-enroll-btn-align-center .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'selector'		=> '.dtlms-enroll-btn-align-center .tutor-card-body:not(.tutor-course-progress-wrapper)',
 					'declaration' 	=> 'align-items: center;', 
 				)
 			);
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'		=> '.dtlms-enroll-btn-align-right .tutor-course-sidebar-card-body:not(.tutor-course-progress-wrapper)',
+					'selector'		=> '.dtlms-enroll-btn-align-right .tutor-card-body:not(.tutor-course-progress-wrapper)',
 					'declaration' 	=> 'align-items: flex-end;',
 				)
 			);
@@ -588,7 +588,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    =>  '%%order_class%% button, %%order_class%% .tutor-button, %%order_class%% .start-continue-retake-button',
+						'selector'    =>  '%%order_class%% button, %%order_class%% .tutor-btn, %%order_class%% .tutor-btn-outline-primary',
 						'declaration' => sprintf(
 							'width: %1$s !important;',
 							$width_px
@@ -620,7 +620,7 @@ class CourseEnrollment extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-enroll,  %%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button, %%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success, %%order_class%% .tutor-course-compelte-form-wrap .course-complete-button, %%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap',
+				'selector'    => '%%order_class%% .tutor-course-enrollment-box .tutor-btn-primary,  %%order_class%% .tutor-course-enrollment-box .single_add_to_cart_button.tutor-button, %%order_class%% .tutor-lead-info-btn-group .tutor-button.tutor-success, %%order_class%% .tutor-course-compelte-form-wrap .course-complete-button, %%order_class%% .tutor-lead-info-btn-group .generate-course-gradebook-btn-wrap',
 				'declaration' => 'border-style: solid;',
 			)
 		);

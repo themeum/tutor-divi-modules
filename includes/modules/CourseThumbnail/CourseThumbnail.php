@@ -135,7 +135,7 @@ class CourseThumbnail extends ET_Builder_Module {
         ob_start();
         if ($args['course']) {
     
-            echo "<div class='tutor-divi-course-thumbnail'>";
+            echo "<div class='tutor-divi-course-thumbnail tutor-course-thumbnail tutor-course-details-page'>";
             if(tutils()->has_video_in_single()){
                 tutor_course_video();
             } else{

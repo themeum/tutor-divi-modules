@@ -48,7 +48,7 @@
 	$login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
 ?>
 
-<div class="tutor-card tutor-card-md tutor-sidebar-card">
+<div class="tutor-card tutor-card-md tutor-sidebar-card tutor-course-enrollment-box dtlms-enroll-btn-width-<?php echo esc_attr( $button_width ); ?>">
 	<div class="tutor-card-body">
 		<?php
 		if ( $is_enrolled || $is_privileged_user) {
@@ -232,7 +232,7 @@
 				}
 				?>
 				<li class="tutor-d-flex<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
-					<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black tutor-mt-4 tutor-mr-12" aria-labelledby="<?php echo esc_html( $meta['label'] ); ?>"></span>
+					<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black tutor-mt-4 tutor-mr-12 dtlms-enrolled-icon" aria-labelledby="<?php echo esc_html( $meta['label'] ); ?>"></span>
 					<span class="tutor-fs-6 tutor-color-secondary">
 						<?php echo wp_kses_post( $meta['value'] ); ?>
 					</span>
