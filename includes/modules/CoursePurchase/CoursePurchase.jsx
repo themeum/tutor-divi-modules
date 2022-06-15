@@ -48,7 +48,7 @@ class CoursePurchase extends Component {
         if('' !== icon_color) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .dtlms-enrolled-icon",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
                     declaration: `color: ${icon_color};`
                 }
             ]);
@@ -56,7 +56,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .dtlms-enrolled-icon",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
                     declaration: `font-size: ${icon_size};`
                 }
             ]);
@@ -64,7 +64,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size_tablet) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .dtlms-enrolled-icon",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
                     declaration: `font-size: ${icon_size_tablet};`,
                     device: 'tablet'
                 }
@@ -73,7 +73,7 @@ class CoursePurchase extends Component {
         if('' !== icon_size_phone) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% .dtlms-enrolled-icon",
+                    selector: "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
                     declaration: `font-size: ${icon_size_phone};`,
                     device: 'phone'
                 }

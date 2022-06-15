@@ -77,7 +77,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'enrollment_meta_info_label' => array(
 					'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .dtlms-enrollment-meta-label',
+						'main' =>  "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -86,7 +86,7 @@ class CoursePurchase extends ET_Builder_Module {
 				'enrollment_meta_info_value' => array(
 					'label'           => esc_html__( 'Value', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .dtlms-enrollment-meta-value',
+						'main' =>  "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-value, %%order_class%% .tutor-card-footer .dtlms-enrollment-meta-value .tutor-meta-value",
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -216,8 +216,23 @@ class CoursePurchase extends ET_Builder_Module {
 					'hide_icon'     => true,
 				),
 			),
-			'borders'    => false,
-			'box_shadow' => false,
+			'borders'    => array(
+				'default' => array(
+					'css'      => array(
+						'main' => array(
+							'border_styles' => "%%order_class%% .tutor-sidebar-card",
+							'border_radii'  => "%%order_class%% .tutor-sidebar-card",
+						),
+					),
+				),
+			),
+			'box_shadow' => array(
+				'default' => array(
+					'css' => array(
+						'main' => "%%order_class%% .tutor-sidebar-card",
+					),
+				),
+			),
 			'text'       => false,
 			'max_width'  => false,
 			// 'margin_padding'  => false,
@@ -457,7 +472,7 @@ class CoursePurchase extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "%%order_class%% .dtlms-enrolled-icon",
+					'selector'    =>  "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
 					'declaration' => sprintf(
 						'color: %1$s;',
 						$icon_color
@@ -470,7 +485,7 @@ class CoursePurchase extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "%%order_class%% .dtlms-enrolled-icon",
+					'selector'    => "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size
@@ -483,7 +498,7 @@ class CoursePurchase extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "%%order_class%% .dtlms-enrolled-icon",
+					'selector'    =>  "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_tablet
@@ -497,7 +512,7 @@ class CoursePurchase extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "%%order_class%% .dtlms-enrolled-icon",
+					'selector'    =>  "%%order_class%% .tutor-card-footer .dtlms-enrollment-meta-label",
 					'declaration' => sprintf(
 						'font-size: %1$s',
 						$icon_size_phone
