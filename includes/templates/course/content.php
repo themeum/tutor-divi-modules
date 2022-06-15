@@ -29,7 +29,8 @@ add_filter(
 						<?php
 							$method = $subpage['method'];
 						if ( 'info' === $key ) {
-
+							// ?Do action to show course prerequisite.
+							do_action( 'tutor_course/single/tab/info/before' );
 							include dtlms_get_template( 'course/about' );
 							include dtlms_get_template( 'course/benefits' );
 							tutor_course_topics();
