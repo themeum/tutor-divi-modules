@@ -28,7 +28,7 @@ add_filter(
 					?>
 						<div class="tutor-tab-item <?php echo esc_attr( 'info' === $key ? 'is-active' : '' ); ?>" id="tutor-course-details-tab-<?php echo esc_attr( $key ); ?>">
 						<?php
-							$method = $subpage['method'];
+						$method = $subpage['method'];
 						if ( 'info' === $key ) {
 							tutor_load_template_from_custom_path(
 								dtlms_get_template( 'course/about' ),

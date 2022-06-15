@@ -11,7 +11,6 @@ $is_purchasable  = tutor_utils()->is_course_purchasable( $args['course'] );
 $is_enable_date  = get_tutor_option( 'enable_course_update_date' );
 
 $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
-
 $sidebar_meta = apply_filters(
 	'tutor/course/single/sidebar/metadata',
 	array(
@@ -180,30 +179,23 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 
 	<!-- Course Info -->
 	<?php if ( 'on' === $args['enrollment_box'] ) : ?>
-	<div class="tutor-card-footer">
-		<ul class="tutor-ul">
-			<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
-				<?php
-				if ( ! $meta['value'] ) {
-					continue;
-				}
-				?>
-				<li class="tutor-row tutor-align-items-center<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
-					<div class="tutor-col-6">
-						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black dtlms-enrolled-icon"></span>
-						<span class="tutor-fs-7 tutor-color-muted tutor-ml-8 dtlms-enrolled-level">
-							<?php echo esc_html( $meta['label'] ); ?>
-						</span>
-					</div>
-					<div class="tutor-col-6">
-						<span class="tutor-fs-7 tutor-fw-medium tutor-color-black dtlms-enrolled-level-value">
+		<div class="tutor-card-footer">
+			<ul class="tutor-ul">
+				<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
+					<?php
+					if ( ! $meta['value'] ) {
+						continue;
+					}
+					?>
+					<li class="tutor-d-flex<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
+						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black tutor-mt-4 tutor-mr-12 dtlms-enrollment-meta-label" aria-labelledby="<?php echo esc_html( $meta['label'] ); ?>"></span>
+						<span class="tutor-fs-6 tutor-color-secondary dtlms-enrollment-meta-value">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
-					</div>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 	<?php endif; ?>
 </div>
 
