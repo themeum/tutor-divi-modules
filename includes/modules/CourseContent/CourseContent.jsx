@@ -68,6 +68,7 @@ class CourseContent extends Component {
         const benefits_li_selector = '%%order_class%% ul.tutor-course-benefits-items li';
 		const benefits_icon_selector	= "%%order_class%% ul.tutor-course-benefits-items .et-pb-icon";
 
+        const rating_right_bar_selector = "%%order_class%% .tutor-review-summary-ratings"; 
         //props
         const course_benefits_layout = props.course_benefits_layout;
 
@@ -586,23 +587,23 @@ class CourseContent extends Component {
         if ('' !== props.review_right_star) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .tutor-rating-stars span`,
-                    declaration: `color: ${props.review_right_star};`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings .tutor-ratings-stars`,
+                    declaration: `color: ${props.review_right_star} !important;`,
                 }
             ]);         
         }      
         if ('' !== props.review_right_bar_height) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
-                    declaration: `height: ${props.review_right_bar_height};`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings-progress-bar`,
+                    declaration: `height: ${props.review_right_bar_height} !important;`,
                 }
             ]);         
         }      
         if ('' !== props.review_right_bar_color) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
+                    selector: `${rating_right_bar_selector} .tutor-progress-bar`,
                     declaration: `background-color: ${props.review_right_bar_color};`,
                 }
             ]);         
@@ -610,7 +611,7 @@ class CourseContent extends Component {
         if ('' !== props.review_right_bar_fill_color) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-value`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings-progress-bar .tutor-progress-value`,
                     declaration: `background-color: ${props.review_right_bar_fill_color};`,
                 }
             ]);         

@@ -197,7 +197,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_avg_star'         => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-review-summary-average-rating .tutor-ratings-stars",
+						'main'        => "$reviews_wrapper .tutor-ratings.tutor-ratings-lg",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_star',
 
@@ -226,7 +226,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_author_name' => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-reviewer-name",
+						'main'        => "$reviews_wrapper .tutor-reviewer-name a",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_author_name',
 					),
@@ -234,7 +234,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_time'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-review-time",
+						'main'        => "$reviews_wrapper .tutor-reviewed-on",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_time',
 					),
@@ -249,7 +249,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_star'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .review-list .tutor-rating-stars span ",
+						'main'        => "$reviews_wrapper .tutor-ratingstutor-is-sm .tutor-rating-stars span ",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_comment',
 					),
@@ -286,8 +286,8 @@ class CourseContent extends ET_Builder_Module {
 				'review_list_avatar'          => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% .review-list img',
-							'border_styles' => '%%order_class%% .review-list img',
+							'border_radii'  => '%%order_class%% .tutor-reviews .tutor-avatar',
+							'border_styles' => '%%order_class%% .tutor-reviews .tutor-avatar',
 
 						),
 						'important' => true,
@@ -500,49 +500,6 @@ class CourseContent extends ET_Builder_Module {
 			),
 			// course benefits advance controls end.
 
-			/**
-			 * Course instructor advanced controls
-			 */
-			'course_instructor_section_background'     => array(
-				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'course_instructor_section',
-			),
-			// advanced tab instructor_avatar toggle
-			'image_size'                               => array(
-				'label'          => esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default'        => '48px',
-				'default_unit'   => 'px',
-				'range_settings' => array(
-					'min'  => '1',
-					'max'  => '200',
-					'step' => '1',
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'instructor_avatar',
-			),
-			// advanced tab bottom_info_star toggle
-			'course_instructor_bottom_info_star_size'  => array(
-				'label'          => esc_html__( 'Star Size', 'tutor-lms-divi-modules' ),
-				'type'           => 'range',
-				'default'        => '14px',
-				'default_unit'   => 'px',
-				'range_settings' => array(
-					'min'  => '1',
-					'max'  => '100',
-					'step' => '1',
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'bottom_info_star',
-			),
-			'course_instructor_bottom_info_star_color' => array(
-				'label'       => esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'bottom_info_star',
-			),
 			/**
 			 * Course curriculum advance tab controls
 			 */
@@ -1563,7 +1520,7 @@ class CourseContent extends ET_Builder_Module {
 				array(
 					'selector'    => "$rating_right_bar_selector .tutor-ratings .tutor-ratings-stars",
 					'declaration' => sprintf(
-						'color: %1$s;',
+						'color: %1$s !important;',
 						$this->props['review_right_star']
 					),
 				)
@@ -1575,7 +1532,7 @@ class CourseContent extends ET_Builder_Module {
 				array(
 					'selector'    => "$rating_right_bar_selector .tutor-ratings-progress-bar",
 					'declaration' => sprintf(
-						'height: %1$s;',
+						'height: %1$s !important;',
 						$this->props['review_right_bar_height']
 					),
 				)
