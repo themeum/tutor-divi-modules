@@ -280,6 +280,12 @@ class CoursePurchase extends ET_Builder_Module {
 				),
 			),
 			// general tab main_content toggle.
+			'enrollment_box_background' => array(
+				'label'       => esc_html__( 'Enrollment Box', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'default' 	  => '#F4F6F9',
+				'toggle_slug' => 'main_content',
+			),
 			'preview_mode'          => array(
 				'label'       => esc_html__( 'Preview Mode', 'tutor-lms-divi-modules' ),
 				'type'        => 'select',
@@ -457,7 +463,19 @@ class CoursePurchase extends ET_Builder_Module {
 		$icon_size_tablet = isset( $this->props['icon_size_tablet'] ) && $this->props['icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['icon_size_tablet'] ) : $icon_size;
 		$icon_size_phone  = isset( $this->props['icon_size_phone'] ) && $this->props['icon_size_phone'] !== '' ? sanitize_text_field( $this->props['icon_size_phone'] ) : $icon_size;
 
-		// boders default border style
+		$enrollment_box_background = $this->props['enrollment_box_background'];
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-card-body',
+				'declaration' => sprintf(
+					'background-color: %1$s;',
+					$enrollment_box_background
+				),
+			)
+		);
+		// Borders default border style.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(

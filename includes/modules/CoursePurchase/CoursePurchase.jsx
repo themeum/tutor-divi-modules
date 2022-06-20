@@ -17,10 +17,18 @@ class CoursePurchase extends Component {
         const icon_size_tablet          = is_responsive_icon_size && '' !== props.icon_size_tablet ? props.icon_size_tablet : icon_size;
         const icon_size_phone           = is_responsive_icon_size && '' !== props.icon_size_phone ? props.icon_size_phone : icon_size;
         const icon_color                = props.icon_color;
+
+        const enrollmentBoxBackground   = props.enrollment_box_background;
         //set styles
         /**
          * default template styling
          */
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .tutor-card-body`,
+                declaration: `background-color: ${enrollmentBoxBackground} !important;`
+            }
+        ]);
         additionalCss.push([
             {
                 selector: `${wrapper} .tutor-course-sidebar-card-body.tutor-p-30`,
