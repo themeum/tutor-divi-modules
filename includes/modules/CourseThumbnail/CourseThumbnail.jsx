@@ -19,11 +19,9 @@ class CourseThumbnail extends Component {
         if( !this.props.__thumbnail) {
             return '';
         }
- 
         return (
             <Fragment>
-                <div className="tutor-divi-course-thumbnail">
-                    { this.thumbnailTemplate(this.props.__thumbnail) }
+                <div className="tutor-divi-course-thumbnail" dangerouslySetInnerHTML={{__html: this.props.__thumbnail}}>
                 </div>
             </Fragment>
         );

@@ -104,28 +104,40 @@ class CourseThumbnail extends ET_Builder_Module {
 	 */
 	public static function get_props( $args = array() ) {
 		$course_id = $args['course'];
-		$thumbnail = '';
-		$has_video = get_post_meta( $course_id, '_video', true );
-		$source    = '';
-		if ( $has_video['source'] == '-1' ) {
-			$thumbnail = get_the_post_thumbnail_url( $course_id, $size = 'post-thumbnail' );
-
+		$content   = '';
+		$has_video = true; // (bool) tutor_utils()->has_video_in_single( $course_id );
+		$video     = tutor_utils()->get_video( $course_id );
+		if ( $video && tutor_utils()->array_get( 'source', $video ) !== '-1' ) {
+			$not_empty = ! empty( $video['source_video_id'] ) ||
+				! empty( $video['source_external_url'] ) ||
+				! empty( $video['source_youtube'] ) ||
+				! empty( $video['source_vimeo'] ) ||
+				! empty( $video['source_embedded'] ) ||
+				! empty( $video['source_shortcode'] );
+			$has_video = $not_empty ? $video : false;
+		}
+		if ( false === $has_video ) {
+			$post_thumbnail_id = (int) get_post_thumbnail_id( $course_id );
+			$place_holder_url  = tutor()->url . 'assets/images/placeholder.svg';
+			$size              = apply_filters( 'tutor_course_thumbnail_size', 'post-thumbnail', $course_id );
+			$thumb_url         = $post_thumbnail_id ? wp_get_attachment_image_url( $post_thumbnail_id, $size ) : $place_holder_url;
+			ob_start();
+			echo '<div class="tutor-course-thumbnail">
+                <img src="' . esc_url( $thumb_url ) . '" />
+            </div>';
+			$content = ob_get_clean();
 		} else {
-			$video = $has_video;
-			if ( $video && '' !== $video['source_youtube'] ) {
-				$thumbnail = $video['source_youtube'];
-				$source    = 'youtube';
-			} elseif ( $video && '' !== $video['source_vimeo'] ) {
-				$thumbnail = $video['source_vimeo'];
-				$source    = 'vimeo';
+			$template = trailingslashit( DTLMS_TEMPLATES . 'video' ) . 'video.php';
+			if ( file_exists( $template ) ) {
+				ob_start();
+				tutor_load_template_from_custom_path(
+					$template,
+					array( 'course_id' => $course_id )
+				);
+				$content = ob_get_clean();
 			}
 		}
-		$props = array(
-			'url'       => $thumbnail,
-			'has_video' => $has_video['source'] == '-1' ? false : true,
-			'source'    => $source,
-		);
-		return $props;
+		return $content;
 	}
 
 	/**
