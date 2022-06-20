@@ -5,6 +5,7 @@
  *
  * @since 1.0.0
  * @author Themeum<www.themeum.com>
+ * @package DTLMS\CourseInstructor
  */
 
 use TutorLMS\Divi\Helper;
@@ -34,15 +35,10 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			'advanced' => array(
 				'toggles' => array(
-					'course_instructor_section' => esc_html__( 'Instructor Section', 'tutor-lms-divi-modules' ),
-					'course_instructor_title'   => esc_html__( 'Instructor Section Title', 'tutor-lms-divi-modules' ),
-					'instructor_avatar'         => esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
-					'instructor_name'           => esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
-					'instructor_designation'    => esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
-					'instructor_bio'            => esc_html__( 'Instructor Bio', 'tutor-lms-divi-modules' ),
-					'bottom_info_star'          => esc_html__( 'Bottom Info Star', 'tutor-lms-divi-modules' ),
-					'bottom_info_label'         => esc_html__( 'Bottom Info Icon', 'tutor-lms-divi-modules' ),
-					'bottom_info_value'         => esc_html__( 'Bottom Info Text', 'tutor-lms-divi-modules' ),
+					'course_instructor_title' => esc_html__( 'Title', 'tutor-lms-divi-modules' ),
+					'instructor_name'         => esc_html__( 'Instructor Name', 'tutor-lms-divi-modules' ),
+					'instructor_designation'  => esc_html__( 'Instructor Designation', 'tutor-lms-divi-modules' ),
+					'instructor_avatar'       => esc_html__( 'Instructor Avatar', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -63,7 +59,7 @@ class CourseInstructor extends ET_Builder_Module {
 				),
 				'instructor_name'         => array(
 					'css'             => array(
-						'main' => '%%order_class%% .instructor-name-designation-wrapper h3 a',
+						'main' => '%%order_class%% .tutor-instructor-name',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'instructor_name',
@@ -71,44 +67,28 @@ class CourseInstructor extends ET_Builder_Module {
 				),
 				'instructor_designation'  => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-ins-designation',
+						'main' => '%%order_class%% .tutor-instructor-designation',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'instructor_designation',
 					'hide_text_align' => true,
 				),
-				'instructor_bio'          => array(
-					'css'         => array(
-						'main' => '%%order_class%% .instructor-bio',
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'instructor_bio',
-				),
-				// icon
-				'bottom_info_label'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses i, %%order_class%% .students i',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_label',
-					'hide_text_align' => true,
-				),
-				// text
-				'bottom_info_value'       => array(
-					'css'             => array(
-						'main' => '%%order_class%% .courses .tutor-color-text-subsued, %%order_class%% .students .tutor-color-text-subsued, %%order_class%% .rating-total-meta',
-					),
-					'tab_slug'        => 'advanced',
-					'toggle_slug'     => 'bottom_info_value',
-					'hide_text_align' => true,
-				),
 			),
 			'borders'        => array(
+				'default' => array(
+					'css'         => array(
+						'main' => array(
+							'border_styles' => '%%order_class%% .tutor-course-details-instructors',
+							'border_radii'  => '%%order_class%% .tutor-course-details-instructors',
+						),
+					),
+					'tab_slug'    => 'advanced',
+				),
 				'instructor_avatar' => array(
 					'css'         => array(
 						'main' => array(
-							'border_styles' => '%%order_class%% .instructor-avatar a img',
-							'border_radii'  => '%%order_class%% .instructor-avatar a img',
+							'border_styles' => '%%order_class%% .tutor-avatar',
+							'border_radii'  => '%%order_class%% .tutor-avatar',
 						),
 					),
 					'tab_slug'    => 'advanced',
@@ -117,8 +97,8 @@ class CourseInstructor extends ET_Builder_Module {
 				'section_content'   => array(
 					'css'         => array(
 						'main'      => array(
-							'border_styles' => '%%order_class%% .tutor-instructor-info-card',
-							'border_radii'  => '%%order_class%% .tutor-instructor-info-card',
+							'border_styles' => '%%order_class%% .tutor-course-details-instructors',
+							'border_radii'  => '%%order_class%% .tutor-course-details-instructors',
 						),
 						'important' => 'all',
 					),
@@ -128,26 +108,26 @@ class CourseInstructor extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'main'      => '%%order_class%% .tutor-course-details-instructors',
 					'important' => 'all',
 				),
 			),
 			'text'           => false,
 			'max_width'      => false,
 			// 'animation'  => false,
-			//'transform'      => false,
+			// 'transform'      => false,
 			'background'     => array(
 				'css'                  => array(
-					'main'      => '%%order_class%% .tutor-instructor-info-card',
+					'main'      => '%%order_class%% .tutor-course-details-instructors',
 					'important' => true,
 				),
 				'use_background_video' => false,
 			),
 			// 'filters'    => false,
-			'box_shadow' => array(
+			'box_shadow'     => array(
 				'default' => array(
 					'css' => array(
-						'main' => "%%order_class%% .tutor-instructor-info-card",
+						'main' => '%%order_class%% .tutor-course-details-instructors',
 					),
 				),
 			),
@@ -156,7 +136,7 @@ class CourseInstructor extends ET_Builder_Module {
 
 	public function get_fields() {
 		return array(
-			'course'                   => Helper::get_field(
+			'course'                                    => Helper::get_field(
 				array(
 					'default'          => Helper::get_course_default(),
 					'computed_affects' => array(
@@ -164,7 +144,7 @@ class CourseInstructor extends ET_Builder_Module {
 					),
 				)
 			),
-			'__instructor'             => array(
+			'__instructor'                              => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'CourseInstructor',
@@ -188,14 +168,14 @@ class CourseInstructor extends ET_Builder_Module {
 				),
 			),
 			// general tab main_content toggle.
-			'course_instructor_label'  => array(
+			'course_instructor_label'                   => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'         => esc_html__( 'About the Instructors', 'tutor-lms-divi-modules' ),
+				'default'         => esc_html__( 'A Course by', 'tutor-lms-divi-modules' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
-			'profile_picture'          => array(
+			'profile_picture'                           => array(
 				'label'       => esc_html__( 'Profile Picture', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
 				'options'     => array(
@@ -205,7 +185,7 @@ class CourseInstructor extends ET_Builder_Module {
 				'default'     => 'on',
 				'toggle_slug' => 'main_content',
 			),
-			'display_name'             => array(
+			'display_name'                              => array(
 				'label'       => esc_html__( 'Display Name', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
 				'options'     => array(
@@ -215,7 +195,7 @@ class CourseInstructor extends ET_Builder_Module {
 				'default'     => 'on',
 				'toggle_slug' => 'main_content',
 			),
-			'designation'              => array(
+			'designation'                               => array(
 				'label'       => esc_html__( 'Designation', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
 				'options'     => array(
@@ -225,7 +205,7 @@ class CourseInstructor extends ET_Builder_Module {
 				'default'     => 'on',
 				'toggle_slug' => 'main_content',
 			),
-			'course_instructor_link'   => array(
+			'course_instructor_link'                    => array(
 				'label'           => esc_html__( 'Link', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
@@ -234,19 +214,21 @@ class CourseInstructor extends ET_Builder_Module {
 				),
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'         => 'new',
+				'default'         => '_blank',
 				'toggle_slug'     => 'main_content',
 			),
-			'course_instructor_layout' => array(
-				'label'       => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
-				'type'        => 'select',
-				'options'     => array(
-					'row'    => esc_html__( 'Left', 'tutor-lms-divi-modules' ),
-					'column' => esc_html__( 'Top', 'tutor-lms-divi-modules' ),
-				),
-				'description' => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),
-				'default'     => 'row',
-				'toggle_slug' => 'main_content',
+			// Avatar section.
+			'course_instructor_avatar_background_color' => array(
+				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'instructor_avatar',
+			),
+			'course_instructor_avatar_text_color'       => array(
+				'label'       => esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'instructor_avatar',
 			),
 		);
 	}
@@ -267,65 +249,39 @@ class CourseInstructor extends ET_Builder_Module {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $attrs       List of unprocessed attributes
-	 * @param string $content     Content being processed
-	 * @param string $render_slug Slug of module that is used for rendering output
+	 * @param array  $unprocessed_props List of unprocessed attributes.
+	 * @param string $content     Content being processed.
+	 * @param string $render_slug Slug of module that is used for rendering output.
 	 *
 	 * @return string module's rendered output
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
-		// selectors.
-		$course_instructor_layout                 = $this->props['course_instructor_layout'];
-		//$course_instructor_bottom_info_star_size  = $this->props['course_instructor_bottom_info_star_size'];
-		//$course_instructor_bottom_info_star_color = $this->props['course_instructor_bottom_info_star_color'];
-		if ( '' !== $course_instructor_layout ) {
+		$text_avatar_background = $this->props['course_instructor_avatar_background_color'];
+		$avatar_text_color      = $this->props['course_instructor_avatar_text_color'];
+		if ( '' !== $text_avatar_background ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-instructor-right',
+					'selector'    => '%%order_class%% .tutor-avatar-text',
 					'declaration' => sprintf(
-						'flex-direction: %1$s;',
-						$course_instructor_layout
+						'background-color: %1$s !important;',
+						$text_avatar_background
 					),
 				)
 			);
 		}
-
-				// default star color.
-				ET_Builder_Element::set_style(
-					$render_slug,
-					array(
-						'selector'	=> '%%order_class%% .tutor-star-rating-group i',
-						'declaration' => 'color: #ed9700 !important;'
-					)
-				);
-		// if ( '' !== $course_instructor_bottom_info_star_color ) {
-		// 	ET_Builder_Element::set_style(
-		// 		$render_slug,
-		// 		array(
-		// 			'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-		// 			'declaration' => sprintf(
-		// 				'color: %1$s;',
-		// 				$course_instructor_bottom_info_star_color
-		// 			),
-		// 		)
-		// 	);
-		// }
-		// if ( '' !== $course_instructor_bottom_info_star_size ) {
-		// 	ET_Builder_Element::set_style(
-		// 		$render_slug,
-		// 		array(
-		// 			'selector'    => '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-		// 			'declaration' => sprintf(
-		// 				'font-size: %1$s;',
-		// 				$course_instructor_bottom_info_star_size
-		// 			),
-		// 		)
-		// 	);
-		// }
-
-		// course instructor styles end.
-		// set styles end
+		if ( '' !== $avatar_text_color ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-avatar-text',
+					'declaration' => sprintf(
+						'color: %1$s !important;',
+						$avatar_text_color
+					),
+				)
+			);
+		}
 		$output = self::get_content( $this->props );
 		if ( '' === $output ) {
 			return '';

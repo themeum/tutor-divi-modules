@@ -6,43 +6,26 @@ class CourseInstructor extends Component {
 
     static css(props) {
         const additionalCss = [];
+        const textAvatarBackground = props.course_instructor_avatar_background_color;
+		const avatarTextColor      = props.course_instructor_avatar_text_color;
         //selector
-        const course_instructor_layout = props.course_instructor_layout;
-        const course_instructor_section_background = props.course_instructor_section_background;
-        const course_instructor_bottom_info_star_size = props['course_instructor_bottom_info_star_size'];
-        const course_instructor_bottom_info_star_color = props['course_instructor_bottom_info_star_color'];
-        if ( course_instructor_layout ) {
+        if ( textAvatarBackground !== '' ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-instructor-right',
-                    declaration: `flex-direction: ${course_instructor_layout};`
+                    selector: '%%order_class%% .tutor-avatar-text',   
+                    declaration: `background-color: ${textAvatarBackground} !important;`
                 }
             ]);
         }
-        if ( course_instructor_section_background ) {
+        if ( avatarTextColor !== '' ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-instructor-info-card',
-                    declaration: `background-color: ${course_instructor_section_background};`
+                    selector: '%%order_class%% .tutor-avatar-text',   
+                    declaration: `color: ${avatarTextColor} !important;`
                 }
             ]);
         }
-        if ( course_instructor_bottom_info_star_size ) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-                    declaration: `font-size: ${course_instructor_bottom_info_star_size};`
-                }
-            ]);
-        }
-        if ( course_instructor_bottom_info_star_color ) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .single-instructor-bottom .tutor-star-rating-group i',
-                    declaration: `color: ${course_instructor_bottom_info_star_color};`
-                }
-            ]);
-        }        //set styles end
+        //set styles end
 
         return additionalCss;
     }
