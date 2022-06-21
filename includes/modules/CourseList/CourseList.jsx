@@ -882,7 +882,7 @@ class CourseList extends Component {
 
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
 
-                <div className={`tutor-divi-courselist-loop-wrap ${masonry} tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
+                <div className={`tutor-course-list tutor-grid tutor-grid-${this.props.columns} tutor-divi-courselist-loop-wrap ${masonry} tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns}`} id="tutor-divi-slick-responsive">
                     { this.courseTemplate( this.props) }
 
                 </div>  
