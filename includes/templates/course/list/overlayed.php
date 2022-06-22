@@ -12,7 +12,7 @@
             echo esc_html( $header_template ) . __( 'not found', 'tutor-lms-divi-modules' );
         }
     ?>
-    <div class="tutor-card tutor-loop-course-container dtlms-course-card-overlay">
+    <div class="tutor-card tutor-loop-course-container">
         <div class="tutor-card-body">
             <?php
                 $body_templates = array(
@@ -33,8 +33,8 @@
                     }
                 }
             ?>
-        </div>
 
+        </div>
         <?php
             $footer_template = DTLMS_TEMPLATES . 'list/parts/footer.php';
             if ( file_exists( $footer_template ) ) {

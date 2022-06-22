@@ -1077,7 +1077,7 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-#: includes/templates/course/list/card.php:17, includes/templates/course/list/card.php:38, includes/templates/course/list/card.php:53, includes/templates/course/list/classic.php:17, includes/templates/course/list/classic.php:38, includes/templates/course/list/classic.php:53, includes/templates/course/list/overlayed.php:12, includes/templates/course/list/overlayed.php:32, includes/templates/course/list/overlayed.php:47, includes/templates/course/list/stacked.php:17, includes/templates/course/list/stacked.php:39, includes/templates/course/list/stacked.php:54
+#: includes/templates/course/list/card.php:17, includes/templates/course/list/card.php:38, includes/templates/course/list/card.php:53, includes/templates/course/list/classic.php:17, includes/templates/course/list/classic.php:38, includes/templates/course/list/classic.php:53, includes/templates/course/list/overlayed.php:12, includes/templates/course/list/overlayed.php:32, includes/templates/course/list/overlayed.php:43, includes/templates/course/list/stacked.php:17, includes/templates/course/list/stacked.php:39, includes/templates/course/list/stacked.php:54
 msgid "not found"
 msgstr ""
 

@@ -398,6 +398,10 @@
   box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 }
 
+.dtlms-course-list-loop-wrap .tutor-course-card.dtlms-course-card-overlay {
+  position: relative;
+}
+
 .dtlms-course-list-loop-wrap .tutor-course-card.dtlms-course-card-overlay .tutor-card {
   position: absolute;
   left: 0;

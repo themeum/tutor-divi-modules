@@ -408,6 +408,7 @@
 	
 		// overlay
 		&.dtlms-course-card-overlay {
+			position: relative;
 			.tutor-card {
 				position: absolute;
 				left: 0;
