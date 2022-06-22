@@ -682,11 +682,47 @@ class CourseList extends Component {
         //set styles end
         return additionalCss;
     }
+
+    thumbnailTemplate(show,course) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+            <div className="tutor-course-thumbnail">
+                <a href="<?php the_permalink(); ?>" className="tutor-d-block">
+                    <div className={`tutor-ratio tutor-ratio-${course.skin === 'overlayed' ? 'overlayed' : '1x1'}`}>
+                        <img src="" className="tutor-card-image-top" loading="lazy" alt="" />
+                    </div>
+                </a>
+            </div>
+        );
+    }
+
+    wishlistTemplate(show) {
+        if(show === 'off') {
+            return ''
+        }
+        return(
+        <span className="tutor-course-wishlist">
+            <span className="tutor-icon-fav-line-filled tutor-course-wishlist-btn  "></span> 
+        </span>
+        );
+    }
+
+    levelTemplate(show,level) {
+        if(show === 'off') {
+            return ''
+        }
+        return (
+            <span className="tutor-course-loop-level">{level}</span>
+        );
+    }
+
     /**
      * @return total ratings star
      * @param avg_rating
      */
-    ratingStars(show,avg_rating) {
+    ratingTemplate(show,avg_rating) {
         if(show === 'off') {
             return '';
         }
@@ -701,42 +737,39 @@ class CourseList extends Component {
         return ratings;
     }
 
-    thumbnailTemplate(show,course) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-        <a href="/">
-            <img src={course.post_thumbnail} alt="thumbnail"/>
-        </a> 
-        );
+    titleTemplate() {
+
     }
 
-    levelTemplate(show,level) {
-        if(show === 'off') {
-            return ''
-        }
-        return (
-            <span className="tutor-course-loop-level">{level}</span>
-        );
-    }
     metaTemplate(show,course) {
         if(show === 'off') {
             return '';
         }
         return (
             <Fragment>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-user-filled tutor-color-text-hints'></i>
-                    <span> {course.enroll_count} </span>
-                </div>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-clock-filled tutor-color-text-hints'></i> 
-                    <span dangerouslySetInnerHTML={{__html: course.course_duration}}></span>
+                <div class="tutor-meta tutor-mt-auto">
+                    <div>
+                        <a href="http://localhost/tutor-v2/profile/ins?view=instructor" class="tutor-d-flex">
+                            <div class="tutor-avatar">
+                                <div class="tutor-ratio tutor-ratio-1x1">
+                                    <span class="tutor-avatar-text">I</span>
+                                </div>
+                            </div>        
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <span class="dtlms-course-author-meta tutor-meta-key">By</span>
+                        <a class="dtlms-course-author-meta tutor-meta-value" href="http://localhost/tutor-v2/profile/ins?view=instructor">ins</a>
+                    </div>
                 </div>
             </Fragment>
             
         );
+    }
+
+    infoTemplate() {
+
     }
     
     avatarTemplate(show,avatar) {
@@ -747,17 +780,6 @@ class CourseList extends Component {
             <span className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
                                             
             </span>
-        );
-    }
-
-    wishlistTemplate(show) {
-        if(show === 'off') {
-            return ''
-        }
-        return(
-        <span className="tutor-course-wishlist">
-            <span className="tutor-icon-fav-line-filled tutor-course-wishlist-btn  "></span> 
-        </span>
         );
     }
 
@@ -793,6 +815,22 @@ class CourseList extends Component {
         );
     }
 
+    classicLayoutTemplate() {
+
+    }
+    
+    cardLayoutTemplate() {
+
+    }
+
+    stackedLayoutTemplate() {
+
+    }
+
+    overlayLayoutTemplate() {
+        
+    }
+
     /**
      * 
      * @param {*} props 
@@ -804,7 +842,7 @@ class CourseList extends Component {
 
         const courses 			= props.__courses.courses.map((course) => {
             return (
-            <div className={`tutor-course-col-${this.props.columns} tutor-divi-courselist-col`}>
+            <div className={`dtlms-course-list-col`}>
                 <div className={`tutor-divi-card ${hover_animation} ${single_style}`} {...props.skin === 'classic' || props.skin === 'card' ? `tutor-course-listing-item`: ''}>
 
                         <div className="tutor-course-header ">
@@ -821,7 +859,7 @@ class CourseList extends Component {
                                 <div className="tutor-loop-rating-wrap">
                                     <div className="tutor-ratings">
                                         <div className="tutor-rating-stars">
-                                            {this.ratingStars(props.rating, course.course_rating.rating_avg)}
+                                            {this.ratingTemplate(props.rating, course.course_rating.rating_avg)}
                                         </div>
                                     </div>
                                 </div>
@@ -882,9 +920,8 @@ class CourseList extends Component {
 
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
 
-                <div className={`tutor-course-list tutor-grid tutor-grid-${this.props.columns} tutor-divi-courselist-loop-wrap ${masonry} tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns}`} id="tutor-divi-slick-responsive">
+                <div className={`dtlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-${this.props.columns}"`}>
                     { this.courseTemplate( this.props) }
-
                 </div>  
 
                 { this.paginationTemplate(this.props.pagination, this.props.__courses.pagination) }    
