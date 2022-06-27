@@ -716,7 +716,7 @@ class CourseList extends Component {
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                    <div className='tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card'>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>

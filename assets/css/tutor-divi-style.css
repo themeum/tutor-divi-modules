@@ -386,6 +386,10 @@
   box-shadow: 0 4px 10px rgba(39, 57, 101, 0.12) !important;
 }
 
+.dtlms-course-list-loop-wrap .tutor-course-card.dtlms-course-card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
 .dtlms-course-list-loop-wrap .tutor-course-card.dtlms-course-card-stacked .tutor-card {
   margin: -80px 30px 0px 30px;
   border: 0;

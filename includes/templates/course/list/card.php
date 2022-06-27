@@ -1,5 +1,5 @@
 <?php $animation_class  = ''; ?>
-<div class="tutor-card tutor-course-card tutor-loop-course-container <?php echo $animation_class; ?>">
+<div class="tutor-card tutor-course-card dtlms-course-card tutor-loop-course-container <?php echo $animation_class; ?>">
     <?php
         $header_templates = array(
             DTLMS_TEMPLATES . 'list/parts/thumbnail.php',
