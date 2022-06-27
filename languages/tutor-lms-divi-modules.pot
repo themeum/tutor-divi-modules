@@ -1037,15 +1037,11 @@ msgstr ""
 msgid "Wishlist"
 msgstr ""
 
-#: includes/templates/course/author.php:26, includes/templates/course/course_carousel.php:225
+#: includes/templates/course/author.php:26
 msgid "by"
 msgstr ""
 
-#: includes/templates/course/course_carousel.php:241
-msgid "In"
-msgstr ""
-
-#: includes/templates/course/course_list.php:108
+#: includes/templates/course/course_carousel.php:110, includes/templates/course/course_list.php:108
 msgid " not exist"
 msgstr ""
 
@@ -1077,7 +1073,7 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-#: includes/templates/course/list/card.php:17, includes/templates/course/list/card.php:38, includes/templates/course/list/card.php:53, includes/templates/course/list/classic.php:17, includes/templates/course/list/classic.php:38, includes/templates/course/list/classic.php:53, includes/templates/course/list/overlayed.php:12, includes/templates/course/list/overlayed.php:32, includes/templates/course/list/overlayed.php:43, includes/templates/course/list/stacked.php:17, includes/templates/course/list/stacked.php:39, includes/templates/course/list/stacked.php:54
+#: includes/templates/course/carousel/card.php:17, includes/templates/course/carousel/card.php:38, includes/templates/course/carousel/card.php:53, includes/templates/course/carousel/classic.php:17, includes/templates/course/carousel/classic.php:38, includes/templates/course/carousel/classic.php:53, includes/templates/course/carousel/overlayed.php:12, includes/templates/course/carousel/overlayed.php:32, includes/templates/course/carousel/overlayed.php:47, includes/templates/course/carousel/stacked.php:17, includes/templates/course/carousel/stacked.php:39, includes/templates/course/carousel/stacked.php:54, includes/templates/course/list/card.php:17, includes/templates/course/list/card.php:38, includes/templates/course/list/card.php:53, includes/templates/course/list/classic.php:17, includes/templates/course/list/classic.php:38, includes/templates/course/list/classic.php:53, includes/templates/course/list/overlayed.php:12, includes/templates/course/list/overlayed.php:32, includes/templates/course/list/overlayed.php:47, includes/templates/course/list/stacked.php:17, includes/templates/course/list/stacked.php:39, includes/templates/course/list/stacked.php:54, includes/templates/course/list/grid/card.php:19, includes/templates/course/list/grid/card.php:42, includes/templates/course/list/grid/card.php:57, includes/templates/course/list/grid/classic.php:19, includes/templates/course/list/grid/classic.php:42, includes/templates/course/list/grid/classic.php:57, includes/templates/course/list/grid/overlayed.php:15, includes/templates/course/list/grid/overlayed.php:37, includes/templates/course/list/grid/overlayed.php:52, includes/templates/course/list/grid/stacked.php:19, includes/templates/course/list/grid/stacked.php:43, includes/templates/course/list/grid/stacked.php:58
 msgid "not found"
 msgstr ""
 

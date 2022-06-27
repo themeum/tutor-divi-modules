@@ -428,85 +428,80 @@
   transform: translateY(-5px);
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-classic .dtlms-card.hover-animation {
+.dtlms-course-carousel-loop-wrap .slick-slide {
+  height: inherit !important;
+  margin: 0 10px;
+}
+
+.dtlms-course-carousel-loop-wrap .slick-list {
+  margin: 0 -10px;
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card .tutor-course-thumbnail {
+  border-radius: 5px 5px 0px 0px;
   position: relative;
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card .tutor-course-thumbnail:after {
+  content: " ";
+  position: absolute;
   top: 0;
-  transition: top .5s;
-  z-index: 999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-classic .dtlms-card.hover-animation:hover {
-  top: -5px;
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-classic {
+  border: 0;
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-classic .dtlms-card {
-  border-radius: 8px;
-  border: 1px solid #EBEBEB;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  border: 1px solid #ebebeb;
-  box-sizing: border-box;
-  border-radius: 8px;
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-classic.dtlms-has-hover-animation {
+  box-shadow: 0 4px 15px 4px rgba(39, 57, 101, 0.1) !important;
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-classic .dtlms-card:hover {
-  box-shadow: 0px 5px 2px #ebebeb;
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-classic.dtlms-has-hover-animation:hover {
+  box-shadow: 0 4px 10px rgba(39, 57, 101, 0.12) !important;
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-card .dtlms-card.hover-animation {
-  position: relative;
-  top: 0;
-  transition: top .5s;
-  z-index: 999;
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-card .dtlms-card.hover-animation:hover {
-  top: -5px;
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-card .dtlms-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-card .dtlms-card:hover {
-  box-shadow: 0px 24px 34px -5px rgba(0, 0, 0, 0.1);
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-stacked .dtlms-card.hover-animation .dtlms-carousel-course-container {
-  position: relative !important;
-  top: 0 !important;
-  transition: top .5s;
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-stacked .dtlms-card.hover-animation:hover .dtlms-carousel-course-container {
-  top: -5px;
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-stacked .dtlms-card {
-  overflow: visible !important;
-}
-
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-stacked .dtlms-carousel-course-container {
-  z-index: 99;
-  margin-top: -80px;
-  background: white;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  border-radius: 10px;
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-stacked .tutor-card {
+  margin: -80px 30px 0px 30px;
+  border: 0;
   box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
 }
 
-.dtlms-course-carousel-loop-wrap .dtlms-coursel-stacked .dtlms-carousel-course-container:hover {
-  box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-grid-stacked .tutor-card {
+  margin: 30px 0px 30px -80px;
+  border: 0;
+  box-shadow: 0px 34px 28px -20px rgba(0, 0, 0, 0.15);
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-overlay {
+  position: relative;
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-overlay .tutor-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-course-card-overlay .tutor-course-thumbnail {
+  border-radius: 0;
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-has-hover-animation {
+  transform: translateY(0px);
+  transition: 300ms ease-in;
+}
+
+.dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-has-hover-animation:hover {
+  transform: translateY(-5px);
 }
