@@ -894,16 +894,16 @@ class CourseList extends Component {
             return(
                 <div className="dtlms-course-list-col">
                     <div className='tutor-card tutor-course-card tutor-loop-course-container'>
-                        { this.thumbnailTemplate(props.show_image,course) }
-                        { this.wishlistTemplate(props.wish_list) }
-                        { this.levelTemplate(props.difficulty_label, course.course_level) }
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <Wishlist show={props.wish_list}/>
+                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
                         <div className="tutor-card-body">
-                            { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
-                            { this.titleTemplate(course.post_title) }
-                            { this.infoTemplate(props, props.meta_data, course) }
-                            { this.metaTemplate(props.avatar, props.author,course) }
+                            <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                            <Title title={course.post_title}/>
+                            <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                         </div>
-                        { this.footerTemplate(props.footer, course) }
+                        <Footer data={{show: props.footer, course}}/>
                     </div>
                 </div>
             );
@@ -916,17 +916,17 @@ class CourseList extends Component {
             return(
                 <div className="dtlms-course-list-col">
                     <div className='tutor-course-card dtlms-course-card-stacked'>
-                        { this.thumbnailTemplate(props.show_image,course) }
-                        { this.wishlistTemplate(props.wish_list) }
-                        { this.levelTemplate(props.difficulty_label, course.course_level) }
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <Wishlist show={props.wish_list}/>
+                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
                         <div className="tutor-card dtlms-course-card-inner">
                             <div className="tutor-card-body">
-                                { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
-                                { this.titleTemplate(course.post_title) }
-                                { this.infoTemplate(props, props.meta_data, course) }
-                                { this.metaTemplate(props.avatar, props.author,course) }
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                             </div>
-                            { this.footerTemplate(props.footer, course) }
+                            <Footer data={{show: props.footer, course}}/>
                         </div>
                     </div>
                 </div>
@@ -940,15 +940,15 @@ class CourseList extends Component {
             return(
                 <div className="dtlms-course-list-col">
                     <div className='tutor-course-card dtlms-course-card-overlay'>
-                        { this.thumbnailTemplate(props.show_image,course) }
+                        <Thumbnail data={{show: props.show_image, course}}/>
                         <div className="tutor-card tutor-loop-course-container">
                             <div className="tutor-card-body">
-                                { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
-                                { this.titleTemplate(course.post_title) }
-                                { this.infoTemplate(props, props.meta_data, course) }
-                                { this.metaTemplate(props.avatar, props.author,course) }
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                             </div>
-                            { this.footerTemplate(props.footer, course) }
+                            <Footer data={{show: props.footer, course}}/>
                         </div>
                     </div>
                 </div>
