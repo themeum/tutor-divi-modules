@@ -3,9 +3,6 @@
     <div class="tutor-row tutor-gx-0">
         <div class="tutor-col-lg-4">
             <?php
-                // include dtlms_get_template( 'course/list/grid/parts/thumbnail' );
-                // include dtlms_get_template( 'course/list/parts/wishlist' );
-                // include dtlms_get_template( 'course/list/parts/level' );
                 $header_templates = array(
                     DTLMS_TEMPLATES . 'list/grid/parts/thumbnail.php',
                     DTLMS_TEMPLATES . 'list/parts/wishlist.php',
@@ -28,10 +25,6 @@
         <div class="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
             <div class="tutor-card-body">
                 <?php
-                    // include dtlms_get_template( 'course/list/parts/ratings' );
-                    // include dtlms_get_template( 'course/list/parts/title' );
-                    // include dtlms_get_template( 'course/list/parts/meta' );
-                    // include dtlms_get_template( 'course/list/parts/info' );
                     $body_templates = array(
                         DTLMS_TEMPLATES . 'list/parts/ratings.php',
                         DTLMS_TEMPLATES . 'list/parts/title.php',

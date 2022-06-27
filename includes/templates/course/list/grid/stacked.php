@@ -26,11 +26,6 @@
             <div class="tutor-card dtlms-course-card-inner">
                 <div class="tutor-card-body">
                     <?php
-                        // include dtlms_get_template( 'course/list/parts/ratings' );
-                        // include dtlms_get_template( 'course/list/parts/title' );
-                        // include dtlms_get_template( 'course/list/parts/meta' );
-                        // include dtlms_get_template( 'course/list/parts/info' );
-
                         $body_templates = array(
                             DTLMS_TEMPLATES . 'list/parts/ratings.php',
                             DTLMS_TEMPLATES . 'list/parts/title.php',
