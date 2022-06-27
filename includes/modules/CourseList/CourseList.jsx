@@ -1,5 +1,13 @@
 
 import React, {Component, Fragment} from 'react';
+import Footer from './Components/Footer';
+import Info from './Components/Info';
+import Level from './Components/Level';
+import Meta from './Components/Meta';
+import Rating from './Components/Rating';
+import Thumbnail from './Components/Thumbnai';
+import Title from './Components/Title';
+import Wishlist from './Components/Wishlist';
 
 class CourseList extends Component {
 
@@ -688,7 +696,7 @@ class CourseList extends Component {
         }
         return (
             <div className="tutor-course-thumbnail">
-                <a href="#" className="tutor-d-block">
+                <a href='/' className="tutor-d-block">
                     <div className={`tutor-ratio tutor-ratio-${course.skin === 'overlayed' ? 'overlayed' : '1x1'}`}>
                         <img src={course.post_thumbnail} className="tutor-card-image-top" loading="lazy" alt="" />
                     </div>
@@ -703,7 +711,7 @@ class CourseList extends Component {
         }
         return(
             <div class="tutor-course-bookmark">
-                <a href="javascript:;" class="tutor-course-wishlist-btn save-bookmark-btn tutor-iconic-btn tutor-iconic-btn-secondary">
+                <a href="/" class="tutor-course-wishlist-btn save-bookmark-btn tutor-iconic-btn tutor-iconic-btn-secondary">
                     <i class="tutor-icon-bookmark-line"></i>
                 </a>
             </div>
@@ -742,7 +750,7 @@ class CourseList extends Component {
                 <div class="tutor-ratings-stars">
                     {ratings}
                 </div>
-                <div class="tutor-ratings-average">{rating.avg_rating}</div>
+                <div class="tutor-ratings-average">{rating.rating_avg}</div>
                 <div class="tutor-ratings-count">({rating.rating_count})</div>
             </div>
         );
@@ -751,7 +759,7 @@ class CourseList extends Component {
     titleTemplate(title) {
         return(
         <h3 class="tutor-course-name tutor-fs-5 tutor-fw-medium tutor-mb-12" title="<?php the_title( ); ?>">
-            <a href="#">
+            <a href="/">
             {title}
             </a>
         </h3>
@@ -802,8 +810,10 @@ class CourseList extends Component {
                 <a href="http://localhost/tutor-v2/profile/ins?view=instructor" class="tutor-d-flex">
                     <div class="tutor-avatar">
                         <div class="tutor-ratio tutor-ratio-1x1">
-                            { course.post_thumbnail === '' ?
-                                <span class="tutor-avatar-text">I</span> : 
+                            { course.post_thumbnail.includes('placeholder.svg') ?
+                                <span class="tutor-avatar-text">
+                                    {course.author_name[0].toUpperCase()}
+                                </span> : 
                                 <img src={course.post_thumbnail} alt={course.author_name}/>
                             } 
                         </div>
@@ -820,7 +830,7 @@ class CourseList extends Component {
         return(
             <div>
                 <span class="dtlms-course-author-meta tutor-meta-key">By</span>
-                <a class="dtlms-course-author-meta tutor-meta-value" href="http://localhost/tutor-v2/profile/tutor?view=instructor">{course.author_name}</a>
+                <a class="dtlms-course-author-meta tutor-meta-value" href="http://localhost/tutor-v2/profile/tutor?view=instructor">{` ${course.author_name}`}</a>
             </div>
         );
     }
@@ -862,16 +872,16 @@ class CourseList extends Component {
             return(
                 <div className="dtlms-course-list-col">
                     <div className='tutor-card tutor-course-card tutor-loop-course-container'>
-                        { this.thumbnailTemplate(props.show_image,course) }
-                        { this.wishlistTemplate(props.wish_list) }
-                        { this.levelTemplate(props.difficulty_label, course.course_level) }
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <Wishlist show={props.wish_list}/>
+                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
                         <div className="tutor-card-body">
-                            { this.ratingTemplate(props.rating, course.course_rating) }
-                            { this.titleTemplate(course.post_title) }
-                            { this.infoTemplate(props, props.meta_data, course) }
-                            { this.metaTemplate(props.avatar, props.author,course) }
+                            <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                            <Title title={course.post_title}/>
+                            <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                         </div>
-                        { this.footerTemplate(props.footer, course) }
+                        <Footer data={{show: props.footer, course}}/>
                     </div>
                 </div>
             );
@@ -883,15 +893,15 @@ class CourseList extends Component {
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-course-card dtlms-course-card-overlay'>
+                    <div className='tutor-card tutor-course-card tutor-loop-course-container'>
                         { this.thumbnailTemplate(props.show_image,course) }
-                        <div className="tutor-card tutor-loop-course-container">
-                            <div className="tutor-card-body">
-                                { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
-                                { this.titleTemplate(course.post_title) }
-                                { this.infoTemplate(props, props.meta_data, course) }
-                                { this.metaTemplate(props.avatar, props.author,course) }
-                            </div>
+                        { this.wishlistTemplate(props.wish_list) }
+                        { this.levelTemplate(props.difficulty_label, course.course_level) }
+                        <div className="tutor-card-body">
+                            { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
+                            { this.titleTemplate(course.post_title) }
+                            { this.infoTemplate(props, props.meta_data, course) }
+                            { this.metaTemplate(props.avatar, props.author,course) }
                         </div>
                         { this.footerTemplate(props.footer, course) }
                     </div>
@@ -929,22 +939,22 @@ class CourseList extends Component {
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                    <div className='tutor-course-card dtlms-course-card-overlay'>
                         { this.thumbnailTemplate(props.show_image,course) }
-                        { this.wishlistTemplate(props.wish_list) }
-                        { this.levelTemplate(props.difficulty_label, course.course_level) }
-                        <div className="tutor-card-body">
-                            { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
-                            { this.titleTemplate(course.post_title) }
-                            { this.infoTemplate(props, props.meta_data, course) }
-                            { this.metaTemplate(props.avatar, props.author,course) }
+                        <div className="tutor-card tutor-loop-course-container">
+                            <div className="tutor-card-body">
+                                { this.ratingTemplate(props.rating, course.course_rating.rating_avg) }
+                                { this.titleTemplate(course.post_title) }
+                                { this.infoTemplate(props, props.meta_data, course) }
+                                { this.metaTemplate(props.avatar, props.author,course) }
+                            </div>
+                            { this.footerTemplate(props.footer, course) }
                         </div>
-                        { this.footerTemplate(props.footer, course) }
                     </div>
                 </div>
             );
         })
-        return courses;        
+        return courses;    
     }
 
     paginationTemplate(show, pagination_links) {
@@ -963,7 +973,7 @@ class CourseList extends Component {
             return '';
         }
         console.log(this.props)
-        const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
+        //const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
