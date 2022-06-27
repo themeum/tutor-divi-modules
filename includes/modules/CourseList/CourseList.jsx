@@ -5,10 +5,9 @@ import Info from './Components/Info';
 import Level from './Components/Level';
 import Meta from './Components/Meta';
 import Rating from './Components/Rating';
-import Thumbnail from './Components/Thumbnai';
 import Title from './Components/Title';
 import Wishlist from './Components/Wishlist';
-
+import Thumbnail from './Components/Thumbnail';
 class CourseList extends Component {
 
     static slug = 'tutor_course_list';
@@ -795,8 +794,6 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
-        console.log(this.props)
-        //const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">

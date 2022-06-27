@@ -92,7 +92,7 @@ if ( $the_query->have_posts() ) :
 	$layout        = $skin;
 	?>
 	<!-- loop start -->
-	<div class="tutor-divi-slick-responsive dtlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo $course_cols; ?> dtlms-coursel-<?php echo $skin; ?> dtlms-carousel-dots-<?php echo $args['dots_alignment']; ?>">
+	<div class="tutor-divi-slick-responsive dtlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $course_cols ); ?> dtlms-coursel-<?php echo esc_attr( $skin ); ?> dtlms-carousel-dots-<?php echo esc_attr( $args['dots_alignment'] ); ?>">
 		<?php
 		while ( $the_query->have_posts() ) :
 			$the_query->the_post();
@@ -107,7 +107,7 @@ if ( $the_query->have_posts() ) :
 						false
 					);
 				} else {
-					echo esc_html( $template ) . __( ' not exist', 'tutor-lms-divi-modules' );
+					echo esc_html( $template . ' not exist', 'tutor-lms-divi-modules' );
 				}
 				?>
 			</div>
