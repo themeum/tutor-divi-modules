@@ -252,9 +252,9 @@ class CourseList extends ET_Builder_Module {
 				'type'        => 'select',
 				'description' => esc_html__( 'No: of slides that will display on desktop view', 'tutor-lms-divi-modules' ),
 				'options'     => array(
-					'1' => '1',
 					'2' => '2',
 					'3' => '3',
+					'4' => '4',
 				),
 				'default'     => '3',
 				'tab_slug'    => 'general',
@@ -1702,9 +1702,9 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-divi-courselist-col',
+					'selector'    => '%%order_class%% .tutor-grid',
 					'declaration' => sprintf(
-						'margin-bottom: %1$s;',
+						'grid-row-gap: %1$s;',
 						$rows_gap
 					),
 				)

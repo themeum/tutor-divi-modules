@@ -689,26 +689,155 @@ class CourseList extends Component {
         return additionalCss;
     }
 
-    classicLayoutTemplate(props) {
+    gridThumbnail(show, skin, thumbnail) {
+        if(show === 'off') {
+            return '';
+        }
+        return (
+            <div className="tutor-course-thumbnail">
+                <a href='/' className="tutor-d-block">
+                    <div className={`tutor-ratio tutor-ratio-${skin === 'overlayed' ? 'overlayed' : '1x1'}`}>
+                        <img src={thumbnail} className="tutor-card-image-top" loading="lazy" alt="" />
+                    </div>
+                </a>
+            </div>
+        );
+    }
+
+    gridClassicLayoutTemplate(props) {
         const courses = props.__courses.courses.map((course) => {
-            return(
+            return (
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container'>
-                        <Thumbnail data={{show: props.show_image, course}}/>
-                        <Wishlist show={props.wish_list}/>
-                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
-                        <div className="tutor-card-body">
+                    <div classname="tutor-card tutor-course-card tutor-loop-course-container">
+                        <div classname="tutor-row tutor-gx-0">
+                            <div classname="tutor-col-lg-4">
+                                {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                                <Wishlist show={props.wish_list}/>
+                                <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                            </div>
+            
+                            <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                                <div classname="tutor-card-body">
+                                    <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                    <Title title={course.post_title}/>
+                                    <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                </div>
+            
+                                <Footer data={{show: props.footer, course}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridCardLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return (
+                <div classname="tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card">
+                    <div classname="tutor-row tutor-gx-0">
+                        <div classname="tutor-col-lg-4">
+                        {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        </div>
+        
+                        <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                            <div classname="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+        
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridStackedLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) =>{
+            return (
+                <div classname="tutor-course-card dtlms-course-grid-stacked <?php echo $animation_classname; ?>">
+                    <div classname="tutor-row tutor-gx-0">
+                        <div classname="tutor-col-lg-4">
+                            {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        </div>
+
+                        <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                            <div classname="tutor-card dtlms-course-card-inner">
+                                <div classname="tutor-card-body">
+                                    <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                    <Title title={course.post_title}/>
+                                    <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                </div>
+
+                                <Footer data={{show: props.footer, course}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridOverlayedLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) =>{
+            return (
+                <div classname="tutor-course-card dtlms-course-card-overlay <?php echo $animation_classname; ?>">
+                    {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+
+                    <div classname="tutor-card tutor-loop-course-container">
+                        <div classname="tutor-card-body">
                             <Rating data={{show: props.rating, rating: course.course_rating}}/>
                             <Title title={course.post_title}/>
                             <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
                             <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                         </div>
+
                         <Footer data={{show: props.footer, course}}/>
                     </div>
                 </div>
             );
-        })
+        });
         return courses;
+    }
+
+    classicLayoutTemplate(props) {
+        if (Number(props.columns) === 1) {
+            return this.gridClassicLayoutTemplate(props);
+        } else {
+            const courses = props.__courses.courses.map((course) => {
+                return(
+                    <div className="dtlms-course-list-col">
+                        <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                            <Thumbnail data={{show: props.show_image, course}}/>
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                            <div className="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                );
+            })
+            return courses;
+        }
     }
     
     cardLayoutTemplate(props) {
