@@ -694,11 +694,12 @@ class CourseCarousel extends Component {
     }
 
     classicLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
 
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                    <div className={`tutor-card tutor-course-card tutor-loop-course-container ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -717,10 +718,11 @@ class CourseCarousel extends Component {
     }
     
     cardLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card'>
+                    <div className={`tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -739,10 +741,11 @@ class CourseCarousel extends Component {
     }
 
     stackedLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-course-card dtlms-course-card-stacked'>
+                    <div className={`tutor-course-card dtlms-course-card-stacked ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -763,10 +766,11 @@ class CourseCarousel extends Component {
     }
 
     overlayLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-course-card dtlms-course-card-overlay'>
+                    <div className={`tutor-course-card dtlms-course-card-overlay ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <div className="tutor-card tutor-loop-course-container">
                             <div className="tutor-card-body">
