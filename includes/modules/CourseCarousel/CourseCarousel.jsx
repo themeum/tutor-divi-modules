@@ -24,13 +24,13 @@ class CourseCarousel extends Component {
         const card_selector         = `${wrapper} .dtlms-course-list-col > .tutor-card`;
         const footer_selector       = `${wrapper} .tutor-card-footer:not(.tutor-no-border)`;
         const badge_selector        = `${wrapper} .tutor-course-difficulty-level`;
-        const avatar_selector       = `${wrapper} ..tutor-avatar`;
+        const avatar_selector       = `${wrapper} .tutor-avatar`;
         const star_selector         = `${wrapper} .tutor-ratings-stars span`;
         const star_wrapper_selector = `${wrapper} .tutor-ratings-stars`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
         const dots_wrapper_selector = '%%order_class%% .slick-dots';
-
+        const thumbnail_selector    = '%%order_class%% .tutor-course-thumbnail img';
         //props
         const skin                      = props.skin;
         const hover_animation           = props.hover_animation;
@@ -347,7 +347,7 @@ class CourseCarousel extends Component {
         if('' !== image_spacing) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-course-header a img`,
+                    selector: thumbnail_selector,
                     declaration: `padding: ${image_spacing};`
                 }
             ]);

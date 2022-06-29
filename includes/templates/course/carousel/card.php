@@ -1,5 +1,15 @@
-<?php $animation_class = ''; ?>
-<div class="tutor-card tutor-course-card dtlms-course-card tutor-loop-course-container <?php echo $animation_class; ?>">
+<?php
+/**
+ * Tutor Divi Modules Course Carousel Layout
+ *
+ * @package TutorDiviModules\Template
+ *
+ * @since v2.0.1
+ */
+
+$animation_class = 'on' === $data['hover_animation'] ? 'dtlms-has-hover-animation' : '';
+?>
+<div class="tutor-card tutor-course-card dtlms-course-card tutor-loop-course-container <?php echo esc_attr( $animation_class ); ?>">
 	<?php
 		$header_templates = array(
 			DTLMS_TEMPLATES . 'list/parts/thumbnail.php',
@@ -17,7 +27,7 @@
 				echo esc_html( $template ) . __( 'not found', 'tutor-lms-divi-modules' );
 			}
 		}
-	?>
+		?>
 
 	<div class="tutor-card-body">
 		<?php

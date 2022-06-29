@@ -994,7 +994,7 @@ class CourseCarousel extends ET_Builder_Module {
 		$cart_button_selector  = $wrapper . ' .tutor-loop-cart-btn-wrap a';
 		$arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
 		$dots_wrapper_selector = '%%order_class%% .slick-dots';
-
+		$thumbnail_selector    = '%%order_class%% .tutor-course-thumbnail img';
 		// props.
 		$skin                  = sanitize_text_field( $this->props['skin'] );
 		$hover_animation       = sanitize_text_field( $this->props['hover_animation'] );
@@ -1351,7 +1351,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-header a img',
+					'selector'    => $thumbnail_selector,
 					'declaration' => sprintf(
 						'padding: %1$s;',
 						$image_spacing
