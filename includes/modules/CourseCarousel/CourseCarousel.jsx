@@ -706,7 +706,7 @@ class CourseCarousel extends Component {
                             <Rating data={{show: props.rating, rating: course.course_rating}}/>
                             <Title title={course.post_title}/>
                             <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,category: props.category, course: course }}/>
                         </div>
                         <Footer data={{show: props.footer, course}}/>
                     </div>

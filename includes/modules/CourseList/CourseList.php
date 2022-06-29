@@ -892,7 +892,7 @@ class CourseList extends ET_Builder_Module {
 				ob_start();
 				$can_continue = tutor_utils()->is_enrolled( $post->ID ) || get_post_meta( $post->ID, '_tutor_is_public_course', true ) == 'yes';
 				// Check for further access type like course content access settings.
-				if ( ! $can_continue ){
+				if ( ! $can_continue ) {
 					$can_continue = tutor_utils()->has_user_course_content_access( get_current_user_id(), $post->ID );
 				}
 				if ( $can_continue ) {
