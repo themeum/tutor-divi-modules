@@ -1,7 +1,13 @@
 
 import React, {Component, Fragment} from 'react';
-
-
+import Footer from './Components/Footer';
+import Info from './Components/Info';
+import Level from './Components/Level';
+import Meta from './Components/Meta';
+import Rating from './Components/Rating';
+import Title from './Components/Title';
+import Wishlist from './Components/Wishlist';
+import Thumbnail from './Components/Thumbnail';
 class CourseList extends Component {
 
     static slug = 'tutor_course_list';
@@ -682,189 +688,230 @@ class CourseList extends Component {
         //set styles end
         return additionalCss;
     }
-    /**
-     * @return total ratings star
-     * @param avg_rating
-     */
-    ratingStars(show,avg_rating) {
-        if(show === 'off') {
-            return '';
-        }
-        const ratings = [];
-        for(let i=1; i < 6; i++) {
-            if(avg_rating >= i) {
-                ratings.push(<span className='tutor-icon-star-full-filled'></span>)
-            } else {
-                ratings.push(<span className='tutor-icon-star-line-filled'></span>)
-            }
-        }
-        return ratings;
-    }
 
-    thumbnailTemplate(show,course) {
+    gridThumbnail(show, skin, thumbnail) {
         if(show === 'off') {
             return '';
         }
         return (
-        <a href="/">
-            <img src={course.post_thumbnail} alt="thumbnail"/>
-        </a> 
+            <div className="tutor-course-thumbnail">
+                <a href='/' className="tutor-d-block">
+                    <div className={`tutor-ratio tutor-ratio-${skin === 'overlayed' ? 'overlayed' : '1x1'}`}>
+                        <img src={thumbnail} className="tutor-card-image-top" loading="lazy" alt="" />
+                    </div>
+                </a>
+            </div>
         );
     }
 
-    levelTemplate(show,level) {
-        if(show === 'off') {
-            return ''
-        }
-        return (
-            <span className="tutor-course-loop-level">{level}</span>
-        );
-    }
-    metaTemplate(show,course) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-            <Fragment>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-user-filled tutor-color-text-hints'></i>
-                    <span> {course.enroll_count} </span>
-                </div>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-clock-filled tutor-color-text-hints'></i> 
-                    <span dangerouslySetInnerHTML={{__html: course.course_duration}}></span>
-                </div>
-            </Fragment>
+    gridClassicLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return (
+                <div className="dtlms-course-list-col">
+                    <div classname="tutor-card tutor-course-card tutor-loop-course-container">
+                        <div classname="tutor-row tutor-gx-0">
+                            <div classname="tutor-col-lg-4">
+                                {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                                <Wishlist show={props.wish_list}/>
+                                <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                            </div>
             
-        );
+                            <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                                <div classname="tutor-card-body">
+                                    <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                    <Title title={course.post_title}/>
+                                    <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                </div>
+            
+                                <Footer data={{show: props.footer, course}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridCardLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return (
+                <div classname="tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card">
+                    <div classname="tutor-row tutor-gx-0">
+                        <div classname="tutor-col-lg-4">
+                        {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        </div>
+        
+                        <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                            <div classname="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+        
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridStackedLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) =>{
+            return (
+                <div classname="tutor-course-card dtlms-course-grid-stacked <?php echo $animation_classname; ?>">
+                    <div classname="tutor-row tutor-gx-0">
+                        <div classname="tutor-col-lg-4">
+                            {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        </div>
+
+                        <div classname="tutor-col-lg-8 tutor-d-flex tutor-flex-column">
+                            <div classname="tutor-card dtlms-course-card-inner">
+                                <div classname="tutor-card-body">
+                                    <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                    <Title title={course.post_title}/>
+                                    <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                </div>
+
+                                <Footer data={{show: props.footer, course}}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    gridOverlayedLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) =>{
+            return (
+                <div classname="tutor-course-card dtlms-course-card-overlay <?php echo $animation_classname; ?>">
+                    {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
+
+                    <div classname="tutor-card tutor-loop-course-container">
+                        <div classname="tutor-card-body">
+                            <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                            <Title title={course.post_title}/>
+                            <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                        </div>
+
+                        <Footer data={{show: props.footer, course}}/>
+                    </div>
+                </div>
+            );
+        });
+        return courses;
+    }
+
+    classicLayoutTemplate(props) {
+        if (Number(props.columns) === 1) {
+            return this.gridClassicLayoutTemplate(props);
+        } else {
+            const courses = props.__courses.courses.map((course) => {
+                return(
+                    <div className="dtlms-course-list-col">
+                        <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                            <Thumbnail data={{show: props.show_image, course}}/>
+                            <Wishlist show={props.wish_list}/>
+                            <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                            <div className="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                );
+            })
+            return courses;
+        }
     }
     
-    avatarTemplate(show,avatar) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-            <span className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
-                                            
-            </span>
-        );
-    }
-
-    wishlistTemplate(show) {
-        if(show === 'off') {
-            return ''
-        }
-        return(
-        <span className="tutor-course-wishlist">
-            <span className="tutor-icon-fav-line-filled tutor-course-wishlist-btn  "></span> 
-        </span>
-        );
-    }
-
-    categoryTemplate(show,course_cat) {
-        if(show === 'off') {
-            return '';
-        }
-        const categories = course_cat.map((category) => {
-            return (
-                <a href="/" dangerouslySetInnerHTML={{__html: category.name}}></a>
-            );
-        })
-        return categories
-    }
-
-    footerButtonText(is_enrolled, course) {
-        if(is_enrolled) {
-            return 'Continue Course';
-        } 
-        if(course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ) {
-            return 'Add to Cart';
-        } else {
-            return 'Get Enrolled';
-        }
-    }
-
-    footerTemplate(show, course) {
-        if(show === 'off') {
-            return '';
-        }
-        return(
-            <div class="tutor-loop-course-footer tutor-divi-courselist-footer" dangerouslySetInnerHTML={{__html: course.footer_template}}></div>
-        );
-    }
-
-    /**
-     * 
-     * @param {*} props 
-     * @returns course template
-     */
-    courseTemplate(props) {
-    	const hover_animation 	= props.hover_animation === 'on' ? 'hover-animation' : '';
-    	const single_style		= props.columns === '1' ? 'tutor-divi-courselist-style' : '';
-
-        const courses 			= props.__courses.courses.map((course) => {
-            return (
-            <div className={`tutor-course-col-${this.props.columns} tutor-divi-courselist-col`}>
-                <div className={`tutor-divi-card ${hover_animation} ${single_style}`} {...props.skin === 'classic' || props.skin === 'card' ? `tutor-course-listing-item`: ''}>
-
-                        <div className="tutor-course-header ">
-                             { this.thumbnailTemplate(props.show_image,course) }                       
-                            <div className="tutor-course-loop-header-meta">
-                                    { this.levelTemplate(props.difficulty_label, course.course_level) }
-                                    { this.wishlistTemplate(props.wish_list)}
-                            </div> 
+    cardLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return(
+                <div className="dtlms-course-list-col">
+                    <div className='tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card'>
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <Wishlist show={props.wish_list}/>
+                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        <div className="tutor-card-body">
+                            <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                            <Title title={course.post_title}/>
+                            <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
                         </div>
-                    
-                        <div className="tutor-divi-courselist-course-container">
-                            <div className="tutor-loop-course-container">
-
-                                <div className="tutor-loop-rating-wrap">
-                                    <div className="tutor-ratings">
-                                        <div className="tutor-rating-stars">
-                                            {this.ratingStars(props.rating, course.course_rating.rating_avg)}
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div className="tutor-course-loop-title">
-                                    <h2>
-                                        <a href="/" className='tutor-text-medium-h5 tutor-color-text-primary'>
-                                            {course.post_title}
-                                        </a>
-                                    </h2>
-                                </div>
-                            
-                                <div className="tutor-course-loop-meta">
-                                    { this.metaTemplate(props.meta_data,course) }
-                                </div>
-
-                                <div className="tutor-loop-author list-item-author tutor-d-flex tutor-align-items-center tutor-mt-30">
-                                    { this.avatarTemplate(props.avatar,course.author_avatar) }
-                                    <div className='tutor-course-lising-category'>
-                                        <span className="tutor-single-course-author-name tutor-course-meta-name">
-                                            <a href="/">By {course.author_name}</a>
-                                        </span>
-                                        { course.course_category.length && props.category === 'on' ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
-                                        { this.categoryTemplate(props.category,course.course_category) }
-                                    </div>
-                                </div>
-                            </div>
-                            { ( props.columns < 2 || props.skin === 'stacked' || props.skin === 'overlayed') ? this.footerTemplate(props.footer, course) : '' }
-                        </div> 
-                        {  props.columns > 1 &&  (props.skin === 'classic' || props.skin === 'card')  ? this.footerTemplate(props.footer, course) : '' }
-
+                        <Footer data={{show: props.footer, course}}/>
+                    </div>
                 </div>
-            </div>    
-                             
             );
         })
         return courses;
     }
 
+    stackedLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return(
+                <div className="dtlms-course-list-col">
+                    <div className='tutor-course-card dtlms-course-card-stacked'>
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <Wishlist show={props.wish_list}/>
+                        <Level data={{show: props.difficulty_label, level: course.course_level}}/>
+                        <div className="tutor-card dtlms-course-card-inner">
+                            <div className="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        })
+        return courses;
+    }
+
+    overlayLayoutTemplate(props) {
+        const courses = props.__courses.courses.map((course) => {
+            return(
+                <div className="dtlms-course-list-col">
+                    <div className='tutor-course-card dtlms-course-card-overlay'>
+                        <Thumbnail data={{show: props.show_image, course}}/>
+                        <div className="tutor-card tutor-loop-course-container">
+                            <div className="tutor-card-body">
+                                <Rating data={{show: props.rating, rating: course.course_rating}}/>
+                                <Title title={course.post_title}/>
+                                <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            </div>
+                            <Footer data={{show: props.footer, course}}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        })
+        return courses;    
+    }
+
     paginationTemplate(show, pagination_links) {
     	if(show === 'on') {
     		return (
-		        <div className="tutor-divi-courselist-pagination" dangerouslySetInnerHTML={{__html:pagination_links}}>
+		        <div className="tutor-divi-courselist-pagination tutor-mt-32" dangerouslySetInnerHTML={{__html:pagination_links}}>
 
 		        </div> 
     		);
@@ -876,16 +923,16 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
-        const masonry = this.props.masonry === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
         return (
         <Fragment>
-
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">
 
-                <div className={`tutor-divi-courselist-loop-wrap ${masonry} tutor-courses-loop-wrap tutor-courses-layout-${this.props.columns} tutor-divi-courselist-${this.props.skin}`} id="tutor-divi-slick-responsive">
-                    { this.courseTemplate( this.props) }
-
-                </div>  
+                <div className={`dtlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-${this.props.columns}`}>
+                    { this.props.skin === 'classic' ? this.classicLayoutTemplate( this.props ) : '' }
+                    { this.props.skin === 'card' ? this.cardLayoutTemplate( this.props ) : '' }
+                    { this.props.skin === 'stacked' ? this.stackedLayoutTemplate( this.props ) : '' }
+                    { this.props.skin === 'overlayed' ? this.overlayLayoutTemplate( this.props ) : '' }
+                </div>      
 
                 { this.paginationTemplate(this.props.pagination, this.props.__courses.pagination) }    
 

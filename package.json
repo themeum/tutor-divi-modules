@@ -20,7 +20,7 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "start": "divi-scripts start",
+    "start": "divi-scripts start && npm run build",
     "build": "divi-scripts build",
     "b": "divi-scripts build",
     "zip": "divi-scripts build && divi-scripts zip",
