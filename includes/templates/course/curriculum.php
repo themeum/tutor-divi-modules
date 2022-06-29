@@ -13,7 +13,7 @@ $index       = 0;
 
 do_action( 'tutor_course/single/before/topics' );
 ?>
-<div class="etlms-course-curriculum">
+<div class="tutor-wrap dtlms-course-curriculum">
 	<?php
 		// ?Do action to show course prerequisite @since v2.0.3.
 		do_action( 'tutor_course/single/tab/info/before' );

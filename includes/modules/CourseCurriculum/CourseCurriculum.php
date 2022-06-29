@@ -432,22 +432,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			);
 		}
 
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => $topic_wrapper_selector,
-				'declaration' => 'display: flex; column-gap: 10px; align-items: center;',
-			)
-		);
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => $topic_wrapper_selector . ' h4',
-				'declaration' => 'padding: 0; margin: 0;',
-			)
-		);
-		// topic styles
-		// topic wrapper default border
+		// topic wrapper default border.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(

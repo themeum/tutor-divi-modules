@@ -13,7 +13,7 @@ class CourseCurriculum extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper                   = '%%order_class%% .dtlms-course-curriculum';
+        const wrapper                   = '%%order_class%% .tutor-wrap';
         const topic_wrapper             = '%%order_class%% .tutor-accordion-item';
         const topic_title_selector      = '%%order_class%% .tutor-accordion-item-header';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
