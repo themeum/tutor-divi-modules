@@ -2,24 +2,14 @@ import React, {Fragment} from 'react';
 
 export default function Meta (props) {
     const {data} = props;
-
     const avatarTemplate = (show,course) => {
         if(show === 'off') {
             return '';
         }
         return (
             <div>
-                <a href="/" class="tutor-d-flex">
-                    <div class="tutor-avatar">
-                        <div class="tutor-ratio tutor-ratio-1x1">
-                            { course.post_thumbnail.includes('placeholder.svg') ?
-                                <span class="tutor-avatar-text">
-                                    {course.author_name[0].toUpperCase()}
-                                </span> : 
-                                <img src={course.post_thumbnail} alt={course.author_name}/>
-                            } 
-                        </div>
-                    </div>        
+                <a href="/" class="tutor-d-flex" dangerouslySetInnerHTML={{__html: course.author_avatar}}>
+                            
                 </a>
             </div>
         );
@@ -37,14 +27,33 @@ export default function Meta (props) {
         );
     }
 
+    const categoryTemplate = (show_category, categories) => {
+        console.dir(categories)
+        if (show_category === 'off' || ! categories.length ) {
+            return '';
+        }
+        const cats = categories.map((category) => {
+            return (
+                <a href='/' id={category.term_id}>{category.name}</a>
+            );
+        });
+        return(
+            <div>
+                <span class="dtlms-course-category-meta tutor-meta-key">In </span>
+                {cats}
+            </div>
+        );
+    }
+
     if(data.show_avatar === 'off' && data.show_author === 'off') {
         return '';
     }
     return (
         <Fragment>
             <div class="tutor-meta tutor-mt-auto">
-                { avatarTemplate(data.show_avatar, data.course) }
-                { authorTemplate(data.show_author, data.course) }
+                { avatarTemplate(data.avatar, data.course) }
+                { authorTemplate(data.author, data.course) }
+                { categoryTemplate(data.category, data.course.course_category) }
             </div>
         </Fragment>
         

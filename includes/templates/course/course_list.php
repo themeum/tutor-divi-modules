@@ -52,7 +52,7 @@ $pagination       = $args['pagination'];
 $pagination_type  = $args['pagination_type'];
 $prev_text        = isset( $args['prev_level'] ) ? $args['prev_level'] : __( 'Previous', 'tutor-lms-divi-modules' );
 $next_text        = isset( $args['next_level'] ) ? $args['next_level'] : __( 'Next', 'tutor-lms-divi-modules' );
-$masonry          = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
+//$masonry          = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
 
 ?>
 <input type="hidden" id="cart_button_font_icon" value="">

@@ -914,10 +914,10 @@ class CourseCarousel extends ET_Builder_Module {
 
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
-		// selectors
+		// selectors.
 		$wrapper         = '%%order_class%% .tutor-divi-carousel-main-wrap';
-		$card_selector   = $wrapper . ' .tutor-divi-card';
-		$footer_selector = $wrapper . ' .tutor-loop-course-footer';
+		$card_selector   = $wrapper . ' .dtlms-course-list-col > .tutor-card';
+		$footer_selector = $wrapper . ' .tutor-card-footer:not(.tutor-no-border)';
 		$badge_selector  = $wrapper . ' .tutor-course-loop-level';
 		$avatar_selector = $wrapper . ' .tutor-single-course-avatar a img,' . $wrapper . ' .tutor-single-course-avatar a span';
 
@@ -1204,7 +1204,7 @@ class CourseCarousel extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '{{WRAPPER}} .tutor-divi-carousel-course-container',
+					'selector'    => '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
 					'declaration' => sprintf(
 						'background-color: %1$s !important;',
 						$card_background_color

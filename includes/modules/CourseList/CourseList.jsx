@@ -17,11 +17,11 @@ class CourseList extends Component {
 
         //selectors
         const wrapper               = "%%order_class%% .tutor-divi-courselist-main-wrap";
-        const card_selector         = `${wrapper} .tutor-divi-card`;
-        const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
-        const badge_selector        = `${wrapper} .tutor-course-loop-level`;
-        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar, %%order_class%% .tutor-single-course-avatar img`;
-        const star_selector         = `${wrapper} .tutor-loop-rating-wrap .tutor-rating-stars span`;
+        const card_selector         = `${wrapper} .dtlms-course-list-col > .tutor-card`;
+        const footer_selector       = `${wrapper} .tutor-card-footer:not(.tutor-no-border)`;
+        const badge_selector        = `${wrapper} .tutor-course-difficulty-level`;
+        const avatar_selector       = `${wrapper} .tutor-avatar`;
+        const star_selector         = `${wrapper} .tutor-ratings-stars span`;
         const star_wrapper_selector = `${wrapper} .tutor-loop-rating-wrap .tutor-rating-stars`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
@@ -29,7 +29,7 @@ class CourseList extends Component {
 
         const pagination_selector   = '%%order_class%% .tutor-divi-courselist-pagination span,%%order_class%% .tutor-divi-courselist-pagination a'
         const pagination_active_selector   = '%%order_class%% .tutor-divi-courselist-pagination .current';
-
+        const thumbnail_selector = `%%order_class%% .tutor-course-thumbnail img`;
         //props
         const skin                      = props.skin;
         const hover_animation           = props.hover_animation;
@@ -117,7 +117,7 @@ class CourseList extends Component {
         if('' !== card_background_color && 'stacked' === skin ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-courselist-course-container',
+                    selector: '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
                     declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
@@ -323,7 +323,7 @@ class CourseList extends Component {
         if('' !== image_spacing) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-course-header a img`,
+                    selector: thumbnail_selector,
                     declaration: `padding: ${image_spacing};`
                 }
             ]);
@@ -575,56 +575,56 @@ class CourseList extends Component {
         } 
 
         //masonry styles 
-        if(props.masonry === 'on') {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
-                    declaration: '-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
-                }
-            ]);          
+        // if(props.masonry === 'on') {
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
+        //             declaration: '-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+        //         }
+        //     ]);          
 
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
-                    declaration: '-webkit-column-count: 3 ;-moz-column-count: 3 ;column-count: 3 ;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
-                }
-            ]);        
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
+        //             declaration: '-webkit-column-count: 3 ;-moz-column-count: 3 ;column-count: 3 ;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+        //         }
+        //     ]);        
 
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
-                    declaration: '-webkit-column-count: 4;-moz-column-count: 4;column-count: 4;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
-                }
-            ]);         
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
+        //             declaration: '-webkit-column-count: 4;-moz-column-count: 4;column-count: 4;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+        //         }
+        //     ]);         
 
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
-                    declaration: '-webkit-column-count: 5;-moz-column-count: 5;column-count: 5;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
-                }
-            ]);         
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
+        //             declaration: '-webkit-column-count: 5;-moz-column-count: 5;column-count: 5;-webkit-column-gap: 10px;-moz-column-gap: 10px;column-gap: 10px;'
+        //         }
+        //     ]);         
 
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
-                    declaration: 'display: inline-block;width: auto;position: relative;top: 5px;'
-                }
-            ]);        
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
+        //             declaration: 'display: inline-block;width: auto;position: relative;top: 5px;'
+        //         }
+        //     ]);        
 
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
-                    declaration: 'height: auto !important;min-height: 180px;'
-                }
-            ]);             
-        }
+        //     additionalCss.push([
+        //         {
+        //             selector: '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
+        //             declaration: 'height: auto !important;min-height: 180px;'
+        //         }
+        //     ]);             
+        // }
 
         //layout_styles toggle
         if('' !== columns_gap) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-courselist-col',
-                    declaration: `padding: 0 ${columns_gap};`
+                    selector: '%%order_class%% .tutor-grid',
+                    declaration: `grid-column-gap: ${columns_gap} !important;`
                 }
             ]);
         }        
@@ -632,8 +632,8 @@ class CourseList extends Component {
         if('' !== rows_gap) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-courselist-col',
-                    declaration: `margin-bottom: ${rows_gap};`
+                    selector: '%%order_class%% .tutor-grid',
+                    declaration: `grid-row-gap: ${rows_gap} !important;`
                 }
             ]);
         }
@@ -705,10 +705,11 @@ class CourseList extends Component {
     }
 
     gridClassicLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) => {
             return (
                 <div className="dtlms-course-list-col">
-                    <div classname="tutor-card tutor-course-card tutor-loop-course-container">
+                    <div classname={`tutor-card tutor-course-card tutor-loop-course-container ${animation_class}`}>
                         <div classname="tutor-row tutor-gx-0">
                             <div classname="tutor-col-lg-4">
                                 {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
@@ -721,7 +722,7 @@ class CourseList extends Component {
                                     <Rating data={{show: props.rating, rating: course.course_rating}}/>
                                     <Title title={course.post_title}/>
                                     <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                                    <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,category: props.category, course: course }}/>
                                 </div>
             
                                 <Footer data={{show: props.footer, course}}/>
@@ -735,9 +736,10 @@ class CourseList extends Component {
     }
 
     gridCardLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) => {
             return (
-                <div classname="tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card">
+                <div classname={`tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card ${animation_class}`}>
                     <div classname="tutor-row tutor-gx-0">
                         <div classname="tutor-col-lg-4">
                         {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
@@ -763,9 +765,10 @@ class CourseList extends Component {
     }
 
     gridStackedLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) =>{
             return (
-                <div classname="tutor-course-card dtlms-course-grid-stacked <?php echo $animation_classname; ?>">
+                <div classname={`tutor-course-card dtlms-course-grid-stacked ${animation_class}`}>
                     <div classname="tutor-row tutor-gx-0">
                         <div classname="tutor-col-lg-4">
                             {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
@@ -793,9 +796,10 @@ class CourseList extends Component {
     }
 
     gridOverlayedLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) =>{
             return (
-                <div classname="tutor-course-card dtlms-course-card-overlay <?php echo $animation_classname; ?>">
+                <div classname={`tutor-course-card dtlms-course-card-overlay ${animation_class}`}>
                     {this.gridThumbnail(props.show_image,props.skin, course.post_thumbnail )}
 
                     <div classname="tutor-card tutor-loop-course-container">
@@ -815,13 +819,14 @@ class CourseList extends Component {
     }
 
     classicLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         if (Number(props.columns) === 1) {
             return this.gridClassicLayoutTemplate(props);
         } else {
             const courses = props.__courses.courses.map((course) => {
                 return(
                     <div className="dtlms-course-list-col">
-                        <div className='tutor-card tutor-course-card tutor-loop-course-container'>
+                        <div className={`tutor-card tutor-course-card tutor-loop-course-container ${animation_class}`}>
                             <Thumbnail data={{show: props.show_image, course}}/>
                             <Wishlist show={props.wish_list}/>
                             <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -841,10 +846,11 @@ class CourseList extends Component {
     }
     
     cardLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card'>
+                    <div className={`tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -863,10 +869,11 @@ class CourseList extends Component {
     }
 
     stackedLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-course-card dtlms-course-card-stacked'>
+                    <div className={`tutor-course-card dtlms-course-card-stacked ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
@@ -887,10 +894,11 @@ class CourseList extends Component {
     }
 
     overlayLayoutTemplate(props) {
+        const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.courses.map((course) => {
             return(
                 <div className="dtlms-course-list-col">
-                    <div className='tutor-course-card dtlms-course-card-overlay'>
+                    <div className={`tutor-course-card dtlms-course-card-overlay ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <div className="tutor-card tutor-loop-course-container">
                             <div className="tutor-card-body">
@@ -923,6 +931,7 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
+        console.log( this.props);
         return (
         <Fragment>
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">

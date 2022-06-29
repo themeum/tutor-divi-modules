@@ -4,8 +4,10 @@
  *
  * @since 1.0.0
  * @author Themeum<www.themeum.com>
+ * @package TutorDiviModules\CourseList
  */
 
+use SebastianBergmann\Environment\Console;
 use TutorLMS\Divi\Helper;
 
 defined( 'ABSPATH' ) || exit;
@@ -47,7 +49,13 @@ class CourseList extends ET_Builder_Module {
 	public function init() {
 		$this->name      = esc_html__( 'Tutor Course List', 'tutor-lms-divi-modules' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$wrapper         = '%%order_class%% .tutor-divi-courselist-main-wrap';
+		$badge_selector  = $wrapper . ' .tutor-course-difficulty-level';
+		$avatar_selector = $wrapper . ' .tutor-avatar';
+		$course_title_selector = $wrapper . ' .tutor-course-name';
+		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
 
+		$add_to_cart_button = '%%order_class%% .tutor-btn.add_to_cart_button';
 		// settings modal toggles.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
@@ -81,7 +89,7 @@ class CourseList extends ET_Builder_Module {
 			'fonts'          => array(
 				'title'      => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-loop-title h2 a',
+						'main' => $course_title_selector,
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -89,7 +97,7 @@ class CourseList extends ET_Builder_Module {
 				),
 				'meta'       => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-single-loop-meta i,%%order_class%% .tutor-single-loop-meta span',
+						'main' => $meta_selector,
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -106,7 +114,16 @@ class CourseList extends ET_Builder_Module {
 				'footer'     => array(
 					'label'           => esc_html( 'Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
+						'main' => '%%order_class%% ins .woocommerce-Price-amount',
+					),
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'footer',
+					'hide_text_align' => true,
+				),
+				'footer_sale_price'     => array(
+					'label'           => esc_html( 'Sell Price', 'tutor-lms-divi-modules' ),
+					'css'             => array(
+						'main' => '%%order_class%% del .woocommerce-Price-amount',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'footer',
@@ -146,14 +163,35 @@ class CourseList extends ET_Builder_Module {
 					'toggle_slug'    => 'footer',
 					'important'      => true,
 				),
+				'add_to_cart_button' => array(
+					'label'          => esc_html__( 'Add to cart button', 'tutor-lms-divi-modules' ),
+					'box_shadow'     => array(
+						'css' => array(
+							'main' => $add_to_cart_button,
+						),
+					),
+					'css'            => array(
+						'main' => $add_to_cart_button,
+					),
+					'margin_padding' => array(
+						'css' => array(
+							'important' => 'all',
+						),
+					),
+					'use_alignment'  => false,
+					'hide_icon'      => true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'footer',
+					'important'      => true,
+				),
 			),
 			'borders'        => array(
 				'default'    => false,
 				'card'       => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card,%%order_class%% .tutor-divi-courselist-card .tutor-divi-card,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
-							'border_styles' => '%%order_class%% .tutor-divi-courselist-classic .tutor-divi-card,%%order_class%% .tutor-divi-courselist-card .tutor-divi-card,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card,%%order_class%% .tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
+							'border_radii'  => '%%order_class%% .dtlms-course-list-col > .tutor-card, %%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
+							'border_styles' => '%%order_class%% .dtlms-course-list-col > .tutor-card, %%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
 						),
 						'important' => true,
 					),
@@ -164,8 +202,8 @@ class CourseList extends ET_Builder_Module {
 				'badge'      => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-level',
-							'border_styles' => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-level',
+							'border_radii'  => $badge_selector,
+							'border_styles' => $badge_selector,
 						),
 					),
 					'tab_slug'    => 'advanced',
@@ -174,8 +212,8 @@ class CourseList extends ET_Builder_Module {
 				'avatar'     => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-text-avatar, %%order_class%% .tutor-image-avatar',
-							'border_styles' => '%%order_class%% .tutor-text-avatar, %%order_class%% .tutor-image-avatar',
+							'border_radii'  => $avatar_selector,
+							'border_styles' => $avatar_selector,
 						),
 					),
 					'tab_slug'    => 'advanced',
@@ -196,7 +234,7 @@ class CourseList extends ET_Builder_Module {
 			'margin_padding' => array(),
 			'background'     => array(
 				'css'                  => array(
-					'main'      => '%%order_class%% .tutor-divi-courselist-classic .tutor-course-header:before,%%order_class%% .tutor-divi-courselist-card .tutor-course-header:before,%%order_class%% .tutor-divi-courselist-stacked .tutor-course-header:before,%%order_class%% .tutor-divi-courselist-overlayed .tutor-divi-card:before',
+					'main'      => '%%order_class%% .tutor-course-thumbnail img',
 					'important' => true,
 				),
 				'settings'             => array(
@@ -207,7 +245,7 @@ class CourseList extends ET_Builder_Module {
 			),
 			'filters'        => array(
 				'css' => array(
-					'main' => '%%order_class%% .tutor-course-header a img',
+					'main' => '%%order_class%% .tutor-course-thumbnail img',
 				),
 			),
 			'text'           => false,
@@ -276,17 +314,17 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			),
-			'masonry'                => array(
-				'label'       => esc_html__( 'Masonry', 'tutor-lms-divi-modules' ),
-				'type'        => 'yes_no_button',
-				'default'     => 'off',
-				'options'     => array(
-					'on'  => esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
-					'off' => esc_html__( 'No', 'tutor-lms-divi-modules' ),
-				),
-				'tab_slug'    => 'general',
-				'toggle_slug' => 'layout',
-			),
+			// 'masonry'                => array(
+			// 	'label'       => esc_html__( 'Masonry', 'tutor-lms-divi-modules' ),
+			// 	'type'        => 'yes_no_button',
+			// 	'default'     => 'off',
+			// 	'options'     => array(
+			// 		'on'  => esc_html__( 'Yes', 'tutor-lms-divi-modules' ),
+			// 		'off' => esc_html__( 'No', 'tutor-lms-divi-modules' ),
+			// 	),
+			// 	'tab_slug'    => 'general',
+			// 	'toggle_slug' => 'layout',
+			// ),
 			'image_size'             => array(
 				'label'       => esc_html__( 'Image Size', 'tutor-lms-divi-modules' ),
 				'type'        => 'select',
@@ -370,7 +408,7 @@ class CourseList extends ET_Builder_Module {
 			'category'               => array(
 				'label'       => esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
-				'default'     => 'off',
+				'default'     => 'on',
 				'options'     => array(
 					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),
@@ -850,18 +888,35 @@ class CourseList extends ET_Builder_Module {
 				$post->is_enrolled = tutils()->is_enrolled( $post->ID, get_current_user_id() );
 
 				// prepare footer.
+				$template = '';
 				ob_start();
-				if ( tutor_utils()->is_course_added_to_cart( $post->ID ) ) {
-					tutor_load_template( 'loop.course-in-cart' );
+				$can_continue = tutor_utils()->is_enrolled( $post->ID ) || get_post_meta( $post->ID, '_tutor_is_public_course', true ) == 'yes';
+				// Check for further access type like course content access settings.
+				if ( ! $can_continue ){
+					$can_continue = tutor_utils()->has_user_course_content_access( get_current_user_id(), $post->ID );
+				}
+				if ( $can_continue ) {
+					$template = trailingslashit( DTLMS_TEMPLATES . 'loop' ) . 'course-continue.php';
+				} elseif ( tutor_utils()->is_course_added_to_cart( $post->ID ) ) {
+					$template = trailingslashit( DTLMS_TEMPLATES . 'loop' ) . 'course-in-cart.php';
 				} elseif ( tutor_utils()->is_enrolled( $post->ID ) ) {
-					tutor_load_template( 'loop.course-continue' );
+					$template = trailingslashit( DTLMS_TEMPLATES . 'loop' ) . 'course-continue.php';
 				} else {
 					$tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
 					if ( $tutor_course_sell_by ) {
-						tutor_load_template( 'loop.course-price-' . $tutor_course_sell_by );
+						$template = trailingslashit( DTLMS_TEMPLATES . 'loop' ) . 'course-price-' . $tutor_course_sell_by . '.php';
 					} else {
-						tutor_load_template( 'loop.course-price' );
+						$template = trailingslashit( DTLMS_TEMPLATES . 'loop' ) . 'course-price.php';
 					}
+				}
+				if ( file_exists( $template ) ) {
+					tutor_load_template_from_custom_path(
+						$template,
+						array( 'course_id' => $post->ID ),
+						false
+					);
+				} else {
+					echo esc_html( $template . ' file not exists', 'tutor-lms-divi-modules' );
 				}
 				$footer_template       = apply_filters( 'tutor_course_loop_price', ob_get_clean() );
 				$post->footer_template = $footer_template;
@@ -911,10 +966,14 @@ class CourseList extends ET_Builder_Module {
 			'sale_price'    => $sale_price,
 		);
 	}
+
 	/**
 	 * Get the tutor course author
 	 *
+	 * @param array $args  array of args.
+	 *
 	 * @since 1.0.0
+	 *
 	 * @return string
 	 */
 	public static function get_content( $args = array() ) {
@@ -928,27 +987,28 @@ class CourseList extends ET_Builder_Module {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $attrs       List of unprocessed attributes
-	 * @param string $content     Content being processed
-	 * @param string $render_slug Slug of module that is used for rendering output
+	 * @param array  $unprocessed_props       List of unprocessed attributes.
+	 * @param string $content     Content being processed.
+	 * @param string $render_slug Slug of module that is used for rendering output.
 	 *
 	 * @return string module's rendered output
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		// selectors.
 		$wrapper         = '%%order_class%% .tutor-divi-courselist-main-wrap';
-		$card_selector   = $wrapper . ' .tutor-divi-card';
-		$footer_selector = $wrapper . ' .tutor-loop-course-footer';
-		$badge_selector  = $wrapper . ' .tutor-course-loop-level';
-		$avatar_selector = $wrapper . ' .tutor-single-course-avatar a img,' . $wrapper . ' .tutor-single-course-avatar a span';
+		$card_selector   = $wrapper . ' .dtlms-course-list-col > .tutor-card';
+		$footer_selector = $wrapper . ' .tutor-card-footer:not(.tutor-no-border)';
+		$badge_selector  = $wrapper . ' .tutor-course-difficulty-level';
+		$avatar_selector = $wrapper . ' .tutor-avatar';
 
-		$star_selector         = $wrapper . ' .tutor-loop-rating-wrap .tutor-rating-stars span';
+		$star_selector         = $wrapper . ' .tutor-ratings-stars span';
 		$star_wrapper_selector = $wrapper . ' .tutor-loop-rating-wrap .tutor-rating-stars';
 		$cart_button_selector  = $wrapper . ' .tutor-loop-cart-btn-wrap a';
 
 		$pagination_selector        = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers';
 		$pagination_active_selector = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers.current';
 
+		$thumbnail_selector = '%%order_class%% .tutor-course-thumbnail img';
 		// props.
 		$skin                  = sanitize_text_field( $this->props['skin'] );
 		$hover_animation       = sanitize_text_field( $this->props['hover_animation'] );
@@ -1210,7 +1270,7 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-divi-courselist-course-container',
+					'selector'    => '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
 					'declaration' => sprintf(
 						'background-color: %1$s !important;',
 						$card_background_color
@@ -1289,7 +1349,7 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-course-header a img',
+					'selector'    => $thumbnail_selector,
 					'declaration' => sprintf(
 						'padding: %1$s;',
 						$image_spacing
@@ -1610,84 +1670,84 @@ class CourseList extends ET_Builder_Module {
 		}
 
 		// masonry styles.
-		if ( $this->props['masonry'] === 'on' ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
-					'declaration' => '-webkit-column-count: 2;
-						-moz-column-count: 2;
-						column-count: 2;
-						-webkit-column-gap: 10px;
-						-moz-column-gap: 10px;
-						column-gap: 10px;',
-				)
-			);
+		// if ( $this->props['masonry'] === 'on' ) {
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-2',
+		// 			'declaration' => '-webkit-column-count: 2;
+		// 				-moz-column-count: 2;
+		// 				column-count: 2;
+		// 				-webkit-column-gap: 10px;
+		// 				-moz-column-gap: 10px;
+		// 				column-gap: 10px;',
+		// 		)
+		// 	);
 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
-					'declaration' => '-webkit-column-count: 3;
-						-moz-column-count: 3;
-						column-count: 3;
-						-webkit-column-gap: 10px;
-						-moz-column-gap: 10px;
-						column-gap: 10px;',
-				)
-			);
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-3',
+		// 			'declaration' => '-webkit-column-count: 3;
+		// 				-moz-column-count: 3;
+		// 				column-count: 3;
+		// 				-webkit-column-gap: 10px;
+		// 				-moz-column-gap: 10px;
+		// 				column-gap: 10px;',
+		// 		)
+		// 	);
 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
-					'declaration' => '-webkit-column-count: 4;
-						-moz-column-count: 4;
-						column-count: 4;
-						-webkit-column-gap: 10px;
-						-moz-column-gap: 10px;
-						column-gap: 10px;',
-				)
-			);
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-4',
+		// 			'declaration' => '-webkit-column-count: 4;
+		// 				-moz-column-count: 4;
+		// 				column-count: 4;
+		// 				-webkit-column-gap: 10px;
+		// 				-moz-column-gap: 10px;
+		// 				column-gap: 10px;',
+		// 		)
+		// 	);
 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
-					'declaration' => '-webkit-column-count: 5;
-						-moz-column-count: 5;
-						column-count: 5;
-						-webkit-column-gap: 10px;
-						-moz-column-gap: 10px;
-						column-gap: 10px;',
-				)
-			);
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-courses-layout-5',
+		// 			'declaration' => '-webkit-column-count: 5;
+		// 				-moz-column-count: 5;
+		// 				column-count: 5;
+		// 				-webkit-column-gap: 10px;
+		// 				-moz-column-gap: 10px;
+		// 				column-gap: 10px;',
+		// 		)
+		// 	);
 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
-					'declaration' => 'display: inline-block;width: auto;position: relative;top: 5px;',
-				)
-			);
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry .tutor-divi-courselist-col',
+		// 			'declaration' => 'display: inline-block;width: auto;position: relative;top: 5px;',
+		// 		)
+		// 	);
 
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
-					'declaration' => 'height: auto !important;min-height: 180px;',
-				)
-			);
-		}
+		// 	ET_Builder_Element::set_style(
+		// 		$render_slug,
+		// 		array(
+		// 			'selector'    => '%%order_class%% .tutor-divi-masonry.tutor-divi-courselist-overlayed .tutor-divi-card',
+		// 			'declaration' => 'height: auto !important;min-height: 180px;',
+		// 		)
+		// 	);
+		// }
 
 		// layout_styles.
 		if ( '' !== $columns_gap ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-divi-courselist-col',
+					'selector'    => '%%order_class%% .tutor-grid',
 					'declaration' => sprintf(
-						'padding: 0 %1$s;',
+						'grid-column-gap: %1$s !important;',
 						$columns_gap
 					),
 				)
@@ -1700,7 +1760,7 @@ class CourseList extends ET_Builder_Module {
 				array(
 					'selector'    => '%%order_class%% .tutor-grid',
 					'declaration' => sprintf(
-						'grid-row-gap: %1$s;',
+						'grid-row-gap: %1$s !important;',
 						$rows_gap
 					),
 				)

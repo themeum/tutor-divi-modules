@@ -20,9 +20,9 @@ class CourseCarousel extends Component {
         const additionalCss = [];
 
         //selectors
-        const wrapper               = "%%order_class%% .tutor-divi-carousel-main-wrap";
-        const card_selector         = `${wrapper} .tutor-divi-card`;
-        const footer_selector       = `${wrapper} .tutor-loop-course-footer`;
+        const wrapper               = '%%order_class%% .tutor-divi-carousel-main-wrap';
+        const card_selector         = `${wrapper} .dtlms-course-list-col > .tutor-card`;
+        const footer_selector       = `${wrapper} .tutor-card-footer:not(.tutor-no-border)`;
         const badge_selector        = `${wrapper} .tutor-course-loop-level`;
         const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar, %%order_class%% .tutor-single-course-avatar img`;
         const star_selector         = `${wrapper} .tutor-rating-stars span`;
