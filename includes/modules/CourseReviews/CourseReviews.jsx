@@ -6,10 +6,11 @@ class CourseReviews extends Component {
 
     static css(props) {
         const additionalCss = [];   
+        const rating_right_bar_selector = '%%order_class%% .tutor-review-summary-ratings';
         if ('' !== props.review_right_star) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .tutor-rating-stars span`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings .tutor-ratings-stars`,
                     declaration: `color: ${props.review_right_star};`,
                 }
             ]);         
@@ -17,15 +18,15 @@ class CourseReviews extends Component {
         if ('' !== props.review_right_bar_height) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
-                    declaration: `height: ${props.review_right_bar_height};`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings-progress-bar`,
+                    declaration: `height: ${props.review_right_bar_height} !important;`,
                 }
             ]);         
         }      
         if ('' !== props.review_right_bar_color) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-bar`,
+                    selector: `${rating_right_bar_selector} .tutor-progress-bar`,
                     declaration: `background-color: ${props.review_right_bar_color};`,
                 }
             ]);         
@@ -33,7 +34,7 @@ class CourseReviews extends Component {
         if ('' !== props.review_right_bar_fill_color) {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-ratingsreviews-ratings-all .progress-value`,
+                    selector: `${rating_right_bar_selector} .tutor-ratings-progress-bar .tutor-progress-value`,
                     declaration: `background-color: ${props.review_right_bar_fill_color};`,
                 }
             ]);         

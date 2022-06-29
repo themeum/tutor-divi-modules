@@ -246,8 +246,6 @@ class TutorCourseRating extends ET_Builder_Module {
 		if ( '' !== $alignment_mobile && 'right' === $alignment_mobile ) {
 			$alignment_mobile = 'flex-end';
 		}
-		tutor_log( 'size: ' . $this->props['star_size'] );
-		tutor_log( 'size: ' . $this->props['star_color'] );
 		// rating layout.
 		if ( '' !== $layout ) {
 			ET_Builder_Element::set_style(
