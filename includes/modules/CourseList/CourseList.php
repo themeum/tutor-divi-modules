@@ -54,7 +54,7 @@ class CourseList extends ET_Builder_Module {
 		$avatar_selector = $wrapper . ' .tutor-avatar';
 		$course_title_selector = $wrapper . ' .tutor-course-name';
 		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
-
+		$category_selector  = $wrapper .' .dtlms-course-category-meta a';
 		$add_to_cart_button = '%%order_class%% .tutor-btn.add_to_cart_button';
 		// settings modal toggles.
 		$this->settings_modal_toggles = array(
@@ -105,7 +105,7 @@ class CourseList extends ET_Builder_Module {
 				),
 				'category'   => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-course-lising-category a',
+						'main' => $category_selector,
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -1270,7 +1270,7 @@ class CourseList extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
+					'selector'    => '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner',
 					'declaration' => sprintf(
 						'background-color: %1$s !important;',
 						$card_background_color

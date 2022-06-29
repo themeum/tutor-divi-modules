@@ -23,10 +23,10 @@ class CourseCarousel extends Component {
         const wrapper               = '%%order_class%% .tutor-divi-carousel-main-wrap';
         const card_selector         = `${wrapper} .dtlms-course-list-col > .tutor-card`;
         const footer_selector       = `${wrapper} .tutor-card-footer:not(.tutor-no-border)`;
-        const badge_selector        = `${wrapper} .tutor-course-loop-level`;
-        const avatar_selector       = `%%order_class%% .tutor-single-course-avatar a img, %%order_class%% .tutor-single-course-avatar a span, %%order_class%% .tutor-single-course-avatar .tutor-text-avatar, %%order_class%% .tutor-single-course-avatar img`;
-        const star_selector         = `${wrapper} .tutor-rating-stars span`;
-        const star_wrapper_selector = `${wrapper} .tutor-rating-stars`;
+        const badge_selector        = `${wrapper} .tutor-course-difficulty-level`;
+        const avatar_selector       = `${wrapper} ..tutor-avatar`;
+        const star_selector         = `${wrapper} .tutor-ratings-stars span`;
+        const star_wrapper_selector = `${wrapper} .tutor-ratings-stars`;
         const cart_button_selector  = `${wrapper} .tutor-loop-cart-btn-wrap a`;
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
         const dots_wrapper_selector = '%%order_class%% .slick-dots';
@@ -106,7 +106,7 @@ class CourseCarousel extends Component {
         if('' !== card_background_color && 'stacked' === skin ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-carousel-course-container',
+                    selector: '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner',
                     declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);

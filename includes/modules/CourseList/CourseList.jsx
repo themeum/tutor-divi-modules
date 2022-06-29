@@ -117,7 +117,7 @@ class CourseList extends Component {
         if('' !== card_background_color && 'stacked' === skin ) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner > .tutor-card-body',
+                    selector: '%%order_class%% .dtlms-course-list-col .dtlms-course-card-inner',
                     declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
