@@ -58,21 +58,15 @@ class CourseCurriculum extends ET_Builder_Module {
 		// advanced fields config
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
 		$topic_icon_selector     = $wrapper . ' .tutor-course-title >span';
-		$topic_wrapper_selector  = '%%order_class%% .tutor-accordion-item';
+		$topic_wrapper_selector  = '%%order_class%% ul.tutor-course-benefits-items li';
 		$lesson_title_selector   = '%%order_class%% .tutor-courses-lession-list .text-regular-body.color-text-primary';
 		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
-
-		// Reviews selectors.
-        $title_selector         = '%%order_class%% .tutor-single-course-segment .course-student-rating-title h4';
-        $avg_total_selector     = '%%order_class%% .course-avg-rating-wrap .course-avg-rating';
-        $avg_text_selector      = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total';
-        $avg_count_selector     = '%%order_class%% .course-avg-rating-wrap .tutor-course-avg-rating-total > span';
 
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'header'                  => array(
 					'css'             => array(
-						'main' => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
+						'main' => "$wrapper .tutor-course-content-title",
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -89,7 +83,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				),
 				'lesson'                  => array(
 					'css'             => array(
-						'main' => '%%order_class%% ul.tutor-courses-lession-list li a',
+						'main' => '%%order_class%% .tutor-accordion .tutor-course-content-list-item-title',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
@@ -110,17 +104,6 @@ class CourseCurriculum extends ET_Builder_Module {
 					),
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'topics',
-				),
-				'lesson'  => array(
-					'css'         => array(
-						'main'      => array(
-							'border_radii'  => '%%order_class%% ul.tutor-courses-lession-list li',
-							'border_styles' => '%%order_class%% ul.tutor-courses-lession-list li',
-						),
-						'important' => true,
-					),
-					'tab_slug'    => 'advanced',
-					'toggle_slug' => 'lesson',
 				),
 			),
 			'margin_padding' => array(
@@ -153,7 +136,7 @@ class CourseCurriculum extends ET_Builder_Module {
 				'type'                => 'computed',
 				'computed_callback'   => array(
 					'CourseCurriculum',
-					'get_edit_template',
+					'get_content',
 				),
 				'computed_depends_on' => array(
 					'course',
@@ -383,21 +366,19 @@ class CourseCurriculum extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
-		// selectors
+		// selectors.
 		$wrapper                 = '%%order_class%% .dtlms-course-curriculum';
 		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
-		$topic_wrapper           = '%%order_class%% .tutor-divi-course-topic';
-		$topics_wrapper          = '%%order_class%% .tutor-course-topics-contents';
-		$topic_wrapper_selector  = $wrapper . ' .tutor-course-title';
-		$title_selector          = $wrapper . '.tutor-course-title';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
-		$header_wrapper_selector = '%%order_class%% .tutor-course-topics-header';
+		$topic_wrapper           = '%%order_class%% .tutor-accordion-item';
 
-		$lesson_icon_selector    = '%%order_class%% .tutor-courses-lession-list span::before';
-		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item-body';
-		$lesson_info_selector    = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
+		$topic_wrapper_selector  = $wrapper . ' .tutor-accordion-item';
 
-		// props
+		$lesson_icon_selector    = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon, %%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status';
+		$lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item';
+		$lesson_info_selector    = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-duration';
+
+		$curriculum_title_selector = $wrapper . ' .tutor-course-content-title';
+		// props.
 		$icon_position   = sanitize_text_field( $this->props['icon_position'] );
 		$topic_icon_size = sanitize_text_field( $this->props['topic_icon_size'] );
 
@@ -641,9 +622,9 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
+					'selector'    => $curriculum_title_selector,
 					'declaration' => sprintf(
-						'margin-bottom: %1$s;',
+						'margin-top: %1$s !important;',
 						$gap
 					),
 				)
@@ -653,9 +634,9 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
+					'selector'    => $curriculum_title_selector,
 					'declaration' => sprintf(
-						'margin-bottom: %1$s ;',
+						'margin-top: %1$s !important;',
 						$gap_tablet
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
@@ -666,9 +647,9 @@ class CourseCurriculum extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => "$wrapper .tutor-course-topics-header-left .text-medium-h6.color-text-primary",
+					'selector'    => $curriculum_title_selector,
 					'declaration' => sprintf(
-						'margin-bottom: %1$s ;',
+						'margin-top: %1$s !important;',
 						$gap_phone
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
@@ -676,14 +657,6 @@ class CourseCurriculum extends ET_Builder_Module {
 			);
 		}
 		// lesson style.
-
-		// ET_Builder_Element::set_style(
-		// $render_slug,
-		// array(
-		// 'selector'      => '%%order_class%% .tutor-course-lesson h5',
-		// 'declaration'   => 'display: block !important;'
-		// )
-		// );
 		if ( '' !== $lesson_icon_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -696,17 +669,6 @@ class CourseCurriculum extends ET_Builder_Module {
 				)
 			);
 		}
-
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => '%%order_class%% ul.tutor-courses-lession-list',
-				'declaration' => sprintf(
-					'padding: 0px;',
-				),
-			)
-		);
-
 		if ( '' !== $lesson_icon_size_tablet ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -805,6 +767,13 @@ class CourseCurriculum extends ET_Builder_Module {
 				)
 			);
 		}
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% ul.tutor-courses-lession-list',
+				'declaration' => 'padding: 0 !important;',
+			)
+		);
 		// set styles end.
 		$output = self::get_content( $this->props );
 		// Render empty string if no output is generated to avoid unwanted vertical space.

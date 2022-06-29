@@ -52,7 +52,7 @@ $pagination       = $args['pagination'];
 $pagination_type  = $args['pagination_type'];
 $prev_text        = isset( $args['prev_level'] ) ? $args['prev_level'] : __( 'Previous', 'tutor-lms-divi-modules' );
 $next_text        = isset( $args['next_level'] ) ? $args['next_level'] : __( 'Next', 'tutor-lms-divi-modules' );
-//$masonry          = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
+// $masonry          = $args['masonry'] === 'on' ? 'tutor-divi-masonry' : 'tutor-courses';
 
 ?>
 <input type="hidden" id="cart_button_font_icon" value="">
@@ -89,24 +89,27 @@ $the_query = new WP_Query( $query_args );
 
 if ( $the_query->have_posts() ) :
 	$layout = ' ' !== $skin ? $skin : 'card';
-	$path = $columns > 1 ? 'list' : 'list/grid';
+	$path   = $columns > 1 ? 'list' : 'list/grid';
 	?>
 
 	<!-- loop start -->
 	<div class="dtlms-course-list-loop-wrap tutor-course-list tutor-grid tutor-grid-<?php echo esc_attr( $columns ); ?>">
-		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<?php
+		while ( $the_query->have_posts() ) :
+			$the_query->the_post();
+			?>
 			<div class="dtlms-course-list-col">
 				<?php
 					$template = DTLMS_TEMPLATES . $path . '/' . $layout . '.php';
-					if ( file_exists( $template ) ) {
-						tutor_load_template_from_custom_path(
-							$template,
-							$args,
-							false
-						);
-					} else {
-						echo esc_html( $template ) . __( ' not exist', 'tutor-lms-divi-modules' );
-					}
+				if ( file_exists( $template ) ) {
+					tutor_load_template_from_custom_path(
+						$template,
+						$args,
+						false
+					);
+				} else {
+					echo esc_html( $template ) . __( ' not exist', 'tutor-lms-divi-modules' );
+				}
 				?>
 			</div>
 		<?php endwhile; ?>
@@ -151,3 +154,8 @@ do_action( 'tutor_course/archive/after_loop' );
 
 </div>
 
+<?php
+if ( ! is_user_logged_in() ) {
+	tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php', false );
+}
+?>

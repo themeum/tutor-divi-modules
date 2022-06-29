@@ -1386,7 +1386,7 @@ class CourseContent extends ET_Builder_Module {
 				)
 			);
 		}
-		// lesson style
+		// lesson style.
 
 		// ET_Builder_Element::set_style(
 		// $render_slug,

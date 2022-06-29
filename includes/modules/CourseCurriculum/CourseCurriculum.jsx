@@ -14,13 +14,13 @@ class CourseCurriculum extends Component {
         const additionalCss = [];
         //selectors
         const wrapper                   = '%%order_class%% .dtlms-course-curriculum';
-        const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
-        const topic_title_selector      = '%%order_class%% .tutor-course-title';//
+        const topic_wrapper             = '%%order_class%% .tutor-accordion-item';
+        const topic_title_selector      = '%%order_class%% .tutor-accordion-item-header';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
-        const lesson_icon_selector      = '%%order_class%% .tutor-courses-lession-list span::before';
-        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item-body';
-        const lesson_info_selector      = '%%order_class%% .tutor-courses-lession-list .text-regular-caption.color-text-hints';
-      
+        const lesson_icon_selector      = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon, %%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status';
+        const lesson_wrapper_selector   = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item';
+        const lesson_info_selector      = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-duration';
+        const curriculum_title_selector = `${wrapper} .tutor-course-content-title`;
 
         //props
         const topic_icon_size               = props.topic_icon_size;
@@ -70,7 +70,7 @@ class CourseCurriculum extends Component {
         if('' !== space_between_topics) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .dtlms-course-curriculum .tutor-accordion-item',
+                    selector:  '%%order_class%% .dtlms-course-curriculum .tutor-accordion-item',
                     declaration: `margin-bottom: ${space_between_topics};`
                 }
             ]);       
@@ -152,7 +152,7 @@ class CourseCurriculum extends Component {
         if('' !== topic_icon_hover_color) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-accordion-item-header.is-active:hover::after`,
+                    selector: `${wrapper} .tutor-accordion-item-header:hover:after`,
                     declaration: `color: ${topic_icon_hover_color};`
                 }
             ])            
@@ -211,7 +211,7 @@ class CourseCurriculum extends Component {
         if(gap) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
+                    selector: curriculum_title_selector,
                     declaration: `margin-bottom: ${gap};`
                 }
             ]);            
@@ -220,7 +220,7 @@ class CourseCurriculum extends Component {
         if(gap_tablet) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
+                    selector: curriculum_title_selector,
                     declaration: `margin-bottom: ${gap_tablet};`,
                     device: 'tablet'
                 }
@@ -229,7 +229,7 @@ class CourseCurriculum extends Component {
         if(gap_phone) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .tutor-course-topics-header-left .text-medium-h6.color-text-primary`,
+                    selector: curriculum_title_selector,
                     declaration: `margin-bottom: ${gap_phone};`,
                     device: 'phone'
                 }
@@ -263,13 +263,7 @@ class CourseCurriculum extends Component {
                 }
             ])
         }  
-        //lesson color styles   
-        additionalCss.push([
-            {
-                selector: '%%order_class%% ul.tutor-courses-lession-list',
-                declaration: 'padding: 0px'
-            }
-        ]);
+        //lesson color styles.   
         if('' !== lesson_icon_color) {
             additionalCss.push([
                 {

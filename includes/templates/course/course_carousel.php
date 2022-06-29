@@ -87,8 +87,8 @@ if ( $the_query->have_posts() ) :
 	<!-- loop start -->
 	<?php
 	$shortcode_arg = isset( $GLOBALS['tutor_shortcode_arg'] ) ? $GLOBALS['tutor_shortcode_arg']['column_per_row'] : null;
-	$course_cols    = $shortcode_arg === null ? tutor_utils()->get_option( 'courses_col_per_row', 4 ) : $shortcode_arg;
-	$course_cols    = $slide_to_show;
+	$course_cols   = $shortcode_arg === null ? tutor_utils()->get_option( 'courses_col_per_row', 4 ) : $shortcode_arg;
+	$course_cols   = $slide_to_show;
 	$layout        = $skin;
 	?>
 	<!-- loop start -->
@@ -148,3 +148,8 @@ $pause_on_hover   = $args['paush_on_hover'];
 </div>
 
 </div>
+<?php
+if ( ! is_user_logged_in() ) {
+	tutor_load_template_from_custom_path( tutor()->path . '/views/modal/login.php', false );
+}
+?>
