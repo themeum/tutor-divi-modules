@@ -10,12 +10,30 @@ use TutorLMS\Divi\Helper;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Course List controls
+ */
 class CourseList extends ET_Builder_Module {
 
-	public $slug       = 'tutor_course_list';
+	/**
+	 * Course List slug
+	 *
+	 * @var $slug
+	 */
+	public $slug = 'tutor_course_list';
+
+	/**
+	 * Visual Builder support
+	 *
+	 * @var $vb_support
+	 */
 	public $vb_support = 'on';
 
-	// Module Credits (Appears at the bottom of the module settings modal)
+	/**
+	 * Module Credits (Appears at the bottom of the module settings modal)
+	 *
+	 * @var $module_credits
+	 */
 	protected $module_credits = array(
 		'author'     => 'Themeum',
 		'author_uri' => 'https://themeum.com',
@@ -30,7 +48,7 @@ class CourseList extends ET_Builder_Module {
 		$this->name      = esc_html__( 'Tutor Course List', 'tutor-lms-divi-modules' );
 		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
-		// settings modal toggles
+		// settings modal toggles.
 		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
@@ -58,8 +76,7 @@ class CourseList extends ET_Builder_Module {
 			),
 		);
 
-		// advanced fields configuration
-
+		// advanced fields configuration.
 		$this->advanced_fields = array(
 			'fonts'          => array(
 				'title'      => array(
@@ -87,9 +104,9 @@ class CourseList extends ET_Builder_Module {
 					'toggle_slug'     => 'category',
 				),
 				'footer'     => array(
-					'label' => esc_html( 'Price', 'tutor-lms-divi-modules' ),
+					'label'           => esc_html( 'Price', 'tutor-lms-divi-modules' ),
 					'css'             => array(
-						'main'  => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
+						'main' => '%%order_class%% .tutor-divi-courselist-main-wrap .tutor-course-loop-price > .price, %%order_class%% .woocommerce-Price-amount .amount',
 					),
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'footer',
@@ -108,27 +125,6 @@ class CourseList extends ET_Builder_Module {
 			),
 
 			'button'         => array(
-				// 'add_to_cart_button'   => array(
-				// 	'label'          => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
-				// 	'box_shadow'     => array(
-				// 		'css' => array(
-				// 			'main' => '%%order_class%% .add_to_cart_button',
-				// 		),
-				// 	),
-				// 	'css'            => array(
-				// 		'main' => '%%order_class%% .add_to_cart_button',
-				// 	),
-				// 	'margin_padding' => array(
-				// 		'css' => array(
-				// 			'important' => 'all',
-				// 		),
-				// 	),
-				// 	'use_alignment'  => false,
-				// 	'hide_icon'      => true,
-				// 	'tab_slug'       => 'advanced',
-				// 	'toggle_slug'    => 'footer',
-				// 	'important'      => true,
-				// ),
 				'enroll_course_button' => array(
 					'label'          => esc_html__( 'Enroll Course/ Continue Learning/ Start Learning/ Download Certificate Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'     => array(
@@ -218,21 +214,19 @@ class CourseList extends ET_Builder_Module {
 			'max_width'      => false,
 			'transform'      => false,
 			'box_shadow'     => false,
-			// 'button'      => false
-
 		);
 
 	}
 
 	/**
-	 * fields configuration
+	 * Fields configuration
 	 *
 	 * @since 1.0.0
 	 */
 	public function get_fields() {
 		return array(
 
-			// general tab layout toggle
+			// general tab layout toggle.
 			'skin'                   => array(
 				'label'           => esc_html__( 'Skin' ),
 				'type'            => 'select',
@@ -406,7 +400,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			),
-			// general tab query toggle
+			// general tab query toggle.
 			'order_by'               => array(
 				'label'       => esc_html__( 'Order by', 'tutor-lms-divi-modules' ),
 				'type'        => 'select',
@@ -452,7 +446,7 @@ class CourseList extends ET_Builder_Module {
 				'description' => esc_html__( 'Leave checkboxes unchecked to select all', 'tutor-lms-divi-modules' ),
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'query',
-			),          // general tab pagination toggle
+			),          // general tab pagination toggle.
 			'pagination_type'        => array(
 				'label'       => esc_html__( 'Pagination Type', 'tutor-lms-divi-modules' ),
 				'type'        => 'select',
@@ -484,7 +478,7 @@ class CourseList extends ET_Builder_Module {
 					'pagination_type' => 'prev_next',
 				),
 			),
-			// advanced tab layout_styles toggle
+			// advanced tab layout_styles toggle.
 			'columns_gap'            => array(
 				'label'          => esc_html__( 'Columns Gap', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
@@ -509,7 +503,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'layout_styles',
 			),
-			// advacned tab card toggle
+			// advacned tab card toggle.
 			'card_background_color'  => array(
 				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
@@ -547,7 +541,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'card',
 			),
-			// advanced tab image toggle
+			// advanced tab image toggle.
 			'image_spacing'          => array(
 				'label'          => esc_html__( 'Spacing', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
@@ -561,7 +555,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'image',
 			),
-			// advanced tab badge toggle
+			// advanced tab badge toggle.
 			'badge_background_color' => array(
 				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
@@ -599,7 +593,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'badge',
 			),
-			// advanced tab avatar toggle
+			// advanced tab avatar toggle.
 			'avatar_size'            => array(
 				'label'          => esc_html__( 'Avatar Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
@@ -613,7 +607,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'avatar',
 			),
-			// advanced tab rating toggle
+			// advanced tab rating toggle.
 			'star_color'             => array(
 				'label'       => esc_html__( 'Star Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
@@ -645,7 +639,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'rating',
 			),
-			// computed
+			// computed.
 			'__courses'              => array(
 				'type'                => 'computed',
 				'computed_callback'   => array(
@@ -675,7 +669,7 @@ class CourseList extends ET_Builder_Module {
 					'next_level',
 				),
 			),
-			// advanced tab footer toggle
+			// advanced tab footer toggle.
 			'footer_background'      => array(
 				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
@@ -694,7 +688,7 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'footer',
 			),
-			// pagination_styles toggle
+			// pagination_styles toggle.
 			'pagination_composite'   => array(
 				'label'               => esc_html__( 'Text Color', 'tutor-lms-divi-modules' ),
 				'type'                => 'composite',
@@ -761,11 +755,10 @@ class CourseList extends ET_Builder_Module {
 	}
 
 	/**
-	 * get require props
+	 * Get require props
 	 *
 	 * @since 1.0.0
-	 * @return array of courses
-	 * @return false if course not found
+	 * @return mixed array | bool
 	 */
 	public static function get_props( $args = array() ) {
 		$post_type   = tutor()->course_post_type;
@@ -775,12 +768,12 @@ class CourseList extends ET_Builder_Module {
 		$order       = isset( $args['order'] ) ? sanitize_text_field( $args['order'] ) : 'DESC';
 		$image_size  = isset( $args['image_size'] ) ? sanitize_text_field( $args['image_size'] ) : 'medium_large';
 
-		// available categories
+		// available categories.
 		$available_cat = tutor_divi_course_categories();
-		// sort be key asc order
+		// sort be key asc order.
 		ksort( $available_cat );
 
-		// user's selected category
+		// user's selected category.
 		$category_includes = $args['category_includes'];
 		$category_includes = explode( '|', $category_includes );
 
@@ -822,7 +815,7 @@ class CourseList extends ET_Builder_Module {
 
 		if ( $query->have_posts() ) {
 
-			// get all required post contents
+			// get all required post contents.
 			foreach ( $query->posts as $post ) {
 				$post->currency_symbol = $currency_symbol;
 				$thumbnail             = get_the_post_thumbnail_url( $post->ID, $image_size ) ? get_the_post_thumbnail_url( $post->ID, $image_size ) : get_tutor_course_thumbnail( $image_size, $url = true );
@@ -877,7 +870,7 @@ class CourseList extends ET_Builder_Module {
 
 			}
 
-			$big             = 999999999;// unline int
+			$big             = 999999999;
 			$pagination_args = array(
 				'base'      => str_replace( $big, '%#%', esc_url( site_url( 'courses/page/' . $big ) ) ),
 				'format'    => '?paged=%#%',
@@ -902,10 +895,13 @@ class CourseList extends ET_Builder_Module {
 	/**
 	 * Get tutor course product price
 	 *
-	 * @return array
 	 * @since 1.0.0
+	 *
+	 * @param int $course_id  course id.
+	 *
+	 * @return array
 	 */
-	static function get_course_price( $course_id ) {
+	public static function get_course_price( $course_id ) {
 		$product_id = tutor_utils()->get_course_product_id( $course_id );
 		$product    = function_exists( 'wc_get_product' ) ? wc_get_product( $product_id ) : false;
 		$price      = $product ? $product->get_regular_price() : __( 'Free', 'tutor-lms-divi-modules' );
@@ -939,7 +935,7 @@ class CourseList extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
-		// selectors
+		// selectors.
 		$wrapper         = '%%order_class%% .tutor-divi-courselist-main-wrap';
 		$card_selector   = $wrapper . ' .tutor-divi-card';
 		$footer_selector = $wrapper . ' .tutor-loop-course-footer';
@@ -953,7 +949,7 @@ class CourseList extends ET_Builder_Module {
 		$pagination_selector        = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers';
 		$pagination_active_selector = '%%order_class%% .tutor-divi-courselist-pagination .page-numbers.current';
 
-		// props
+		// props.
 		$skin                  = sanitize_text_field( $this->props['skin'] );
 		$hover_animation       = sanitize_text_field( $this->props['hover_animation'] );
 		$card_background_color = sanitize_text_field( $this->props['card_background_color'] );
@@ -990,8 +986,8 @@ class CourseList extends ET_Builder_Module {
 		$columns_gap = sanitize_text_field( $this->props['columns_gap'] );
 		$rows_gap    = sanitize_text_field( $this->props['rows_gap'] );
 
-		// set styles
-		// default margin for hover animation
+		// set styles.
+		// default margin for hover animation.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1014,7 +1010,7 @@ class CourseList extends ET_Builder_Module {
 				'declaration' => 'border-radius: 10px;',
 			)
 		);
-		// make list item equal height
+		// make list item equal height.
 		if ( 'classic' === $skin || 'card' === $skin ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1035,7 +1031,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// classic
+		// classic.
 		if ( $skin === 'classic' ) {
 
 			ET_Builder_Element::set_style(
@@ -1047,7 +1043,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 		}
-		// card style
+		// card style.
 		if ( $skin === 'card' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1114,7 +1110,7 @@ class CourseList extends ET_Builder_Module {
 
 		if ( $skin === 'overlayed' ) {
 
-			// style container
+			// style container.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1128,7 +1124,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 
-			// set befault overlay
+			// set befault overlay.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1150,7 +1146,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 
-			// card header style
+			// card header style.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1160,7 +1156,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 
-			// container style
+			// container style.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1172,7 +1168,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 
-			// all text style for overlayed
+			// all text style for overlayed.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1185,7 +1181,7 @@ class CourseList extends ET_Builder_Module {
 					'declaration' => 'color: #fff !important;',
 				)
 			);
-			// hover overlayed
+			// hover overlayed.
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
@@ -1195,9 +1191,9 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 		}
-		// skin layout styles end
+		// skin layout styles end.
 
-		// card style
+		// card style.
 		if ( '' !== $card_background_color && ( 'classic' === $skin || 'card' === $skin || 'overlayed' === $skin ) ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1262,7 +1258,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// card hover animation
+		// card hover animation.
 		if ( 'on' == $hover_animation ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1288,7 +1284,7 @@ class CourseList extends ET_Builder_Module {
 			)
 		);
 
-		// image toggles
+		// image toggles.
 		if ( '' !== $image_spacing ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1302,7 +1298,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// badge toggle
+		// badge toggle.
 		if ( '' !== $badge_background_color ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1355,7 +1351,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// avatar toggle
+		// avatar toggle.
 		if ( '' !== $avatar_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1369,7 +1365,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// rating toggle
+		// rating toggle.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1417,7 +1413,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// footer toggle
+		// footer toggle.
 		if ( '' !== $footer_background ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1457,7 +1453,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// cart button toggle
+		// cart button toggle.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1466,7 +1462,7 @@ class CourseList extends ET_Builder_Module {
 			)
 		);
 
-		// single column style
+		// single column style.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1512,8 +1508,8 @@ class CourseList extends ET_Builder_Module {
 			)
 		);
 
-		// pagination_styles toggle
-		// pagination default align center
+		// pagination_styles toggle.
+		// pagination default align center.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1613,7 +1609,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// masonry styles
+		// masonry styles.
 		if ( $this->props['masonry'] === 'on' ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1684,7 +1680,7 @@ class CourseList extends ET_Builder_Module {
 			);
 		}
 
-		// layout_styles
+		// layout_styles.
 		if ( '' !== $columns_gap ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1710,7 +1706,7 @@ class CourseList extends ET_Builder_Module {
 				)
 			);
 		}
-		// filter
+		// filter.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
@@ -1785,26 +1781,26 @@ class CourseList extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'	=> '%%order_class%% .tutor-course-col-1 .tutor-course-header a img',
-				'declaration' => 'min-height: 300px; height: auto;'
+				'selector'    => '%%order_class%% .tutor-course-col-1 .tutor-course-header a img',
+				'declaration' => 'min-height: 300px; height: auto;',
 			)
 		);
-		//min height for stacked container.
+		// min height for stacked container.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'	=> '%%order_class%% .tutor-courses-layout-2.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
-				'declaration' => 'min-height: 320px !important;'
+				'selector'    => '%%order_class%% .tutor-courses-layout-2.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-courselist-stacked .tutor-divi-courselist-course-container',
+				'declaration' => 'min-height: 320px !important;',
 			)
 		);
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'	=> '%%order_class%% .tutor-courses-layout-1 .tutor-divi-courselist-stacked .tutor-loop-course-container',
-				'declaration' => 'padding: 10px;'
+				'selector'    => '%%order_class%% .tutor-courses-layout-1 .tutor-divi-courselist-stacked .tutor-loop-course-container',
+				'declaration' => 'padding: 10px;',
 			)
 		);
-		// set styles end
+		// set styles end.
 
 		$output = self::get_content( $this->props );
 		// Render empty string if no output is generated to avoid unwanted vertical space.
