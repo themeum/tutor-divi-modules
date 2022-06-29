@@ -128,14 +128,15 @@ function bundleFiles(cb){
 		"!./package-lock.json",
 		"!./includes/modules/**/*.jsx",
 	])
-	.pipe(dest("build/"));
+	.pipe(dest("build/tutor-divi-modules"));
 	cb();
 }
 
 
 // from destination directory take all files make zip
 function exportZip(cb) {
-	const buildName = `tutor-lms-divi-modules.zip`;
+	const package = require('./package.json');
+	const buildName = `tutor-lms-divi-modules-${package.version}.zip`;
 	return src("./build/**/*.*").pipe(zip(buildName)).pipe(dest("./"));
 	cb();
 }
