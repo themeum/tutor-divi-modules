@@ -255,6 +255,10 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 */
 	public static function get_content( $args = array() ) {
 		$course = $args['course'];
+		$is_enabled = tutor_utils()->get_option( 'enable_course_author', false );
+		if ( ! $is_enabled ) {
+			return '';
+		}
 		ob_start();
 		if ( $course ) {
 			include_once dtlms_get_template( 'course/author' );

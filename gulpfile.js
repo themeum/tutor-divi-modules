@@ -128,7 +128,7 @@ function bundleFiles(cb){
 		"!./package-lock.json",
 		"!./includes/modules/**/*.jsx",
 	])
-	.pipe(dest("build/tutor-divi-modules"));
+	.pipe(dest("build/tutor-lms-divi-modules"));
 	cb();
 }
 
