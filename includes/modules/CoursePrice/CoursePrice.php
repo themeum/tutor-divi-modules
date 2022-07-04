@@ -55,7 +55,7 @@ class CoursePrice extends ET_Builder_Module {
 				'course_price'        => array(
 					// 'label'           => esc_html__( 'Course Price', 'tutor-lms-divi-modules' ),
 					'css'         => array(
-						'main' => "$selector ins .woocommerce-Price-amount, %%order_class%% .tutor-course-sidebar-card-pricing .edd_price",
+						'main' => "$selector ins .woocommerce-Price-amount, %%order_class%% .tutor-course-sidebar-card-pricing .edd_price, $selector .woocommerce-Price-amount bdi",
 					),
 					'hide_text_align' => true,
 					'tab_slug'    => 'advanced',

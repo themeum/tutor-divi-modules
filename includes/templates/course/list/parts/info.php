@@ -5,7 +5,7 @@ $course_categories  = get_tutor_course_categories();
 $show_avatar 		= $data['avatar'] === 'on' ;
 $show_author 		= $data['author'] === 'on';
 $show_categories 	= $data['show_category'] === 'on';
-var_dump( $show_categories );
+
 ?>
 
 <?php if ( $show_avatar || $show_author || $show_categories ) : ?>
@@ -25,7 +25,7 @@ var_dump( $show_categories );
         <?php endif; ?>
 
         <?php if( $show_categories && ( !empty( $course_categories ) && is_array( $course_categories ) && count( $course_categories ) ) ) : ?>
-            <span class="dtlms-course-category-meta tutor-meta-key"><?php esc_html_e('In', 'tutor'); ?></span>
+            <span class="tutor-meta-key"><?php esc_html_e('In', 'tutor'); ?></span>
             <?php
                 $category_links = array();
                 foreach ( $course_categories as $course_category ) :

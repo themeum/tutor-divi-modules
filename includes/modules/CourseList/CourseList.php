@@ -53,8 +53,8 @@ class CourseList extends ET_Builder_Module {
 		$badge_selector  = $wrapper . ' .tutor-course-difficulty-level';
 		$avatar_selector = $wrapper . ' .tutor-avatar';
 		$course_title_selector = $wrapper . ' .tutor-course-name';
-		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
-		$category_selector  = $wrapper .' .dtlms-course-category-meta a';
+		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
+		$category_selector  = $wrapper .' .dtlms-course-category-meta';
 		$add_to_cart_button = '%%order_class%% .tutor-btn.add_to_cart_button';
 		// settings modal toggles.
 		$this->settings_modal_toggles = array(

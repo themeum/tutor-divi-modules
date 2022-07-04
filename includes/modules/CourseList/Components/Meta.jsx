@@ -33,12 +33,12 @@ export default function Meta (props) {
         }
         const cats = categories.map((category) => {
             return (
-                <a href='/' id={category.term_id}>{category.name}</a>
+                <a href='/' className='dtlms-course-category-meta' id={category.term_id}>{category.name}</a>
             );
         });
         return(
             <div>
-                <span class="dtlms-course-category-meta tutor-meta-key">In </span>
+                <span class="tutor-meta-key">In </span>
                 {cats}
             </div>
         );
