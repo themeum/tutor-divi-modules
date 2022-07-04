@@ -28,8 +28,7 @@ export default function Meta (props) {
     }
 
     const categoryTemplate = (show_category, categories) => {
-        console.dir(categories)
-        if (show_category === 'off' || ! categories.length ) {
+        if (show_category === 'off' ||  !categories.length ) {
             return '';
         }
         const cats = categories.map((category) => {

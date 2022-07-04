@@ -197,7 +197,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_avg_star'         => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-ratings.tutor-ratings-lg",
+						'main'        => "$reviews_wrapper .tutor-d-inline-block .tutor-ratings-stars span",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_star',
 
@@ -249,7 +249,7 @@ class CourseContent extends ET_Builder_Module {
 				),
 				'review_list_star'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-ratingstutor-is-sm .tutor-rating-stars span ",
+						'main'        => "$reviews_wrapper .tutor-review-summary-ratings .tutor-ratings-stars span",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_comment',
 					),
@@ -510,7 +510,7 @@ class CourseContent extends ET_Builder_Module {
 				'default'        => '5px',
 				'default_unit'   => 'px',
 				'range_settings' => array(
-					'min'  => 0,
+					'min'  => -100,
 					'max'  => 100,
 					'step' => 1,
 				),
@@ -1347,12 +1347,12 @@ class CourseContent extends ET_Builder_Module {
 				)
 			);
 		}
-		// header styles
+		// header styles.
 		if ( $gap ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion',
+					'selector'    => '%%order_class%% .tutor-course-content-title',
 					'declaration' => sprintf(
 						'margin-top: %1$s !important;',
 						$gap
@@ -1364,7 +1364,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion',
+					'selector'    => '%%order_class%% .tutor-course-content-title',
 					'declaration' => sprintf(
 						'margin-top: %1$s !important;',
 						$gap_tablet
@@ -1377,9 +1377,9 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion',
+					'selector'    => '%%order_class%% .tutor-course-content-title',
 					'declaration' => sprintf(
-						'margin-top: %1$s !important;',
+						'margin-bottom: %1$s !important;',
 						$gap_phone
 					),
 					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),

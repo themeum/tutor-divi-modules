@@ -722,7 +722,7 @@ class CourseList extends Component {
                                     <Rating data={{show: props.rating, rating: course.course_rating}}/>
                                     <Title title={course.post_title}/>
                                     <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                                    <Meta data={{avatar: props.avatar, author: props.author,category: props.category, course: course }}/>
+                                    <Meta data={{avatar: props.avatar, author: props.author,category: props.show_category, course: course }}/>
                                 </div>
             
                                 <Footer data={{show: props.footer, course}}/>
@@ -834,7 +834,7 @@ class CourseList extends Component {
                                 <Rating data={{show: props.rating, rating: course.course_rating}}/>
                                 <Title title={course.post_title}/>
                                 <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,category: props.show_category, course: course }}/>
                             </div>
                             <Footer data={{show: props.footer, course}}/>
                         </div>
@@ -858,7 +858,7 @@ class CourseList extends Component {
                             <Rating data={{show: props.rating, rating: course.course_rating}}/>
                             <Title title={course.post_title}/>
                             <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,category: props.show_category, course: course }}/>
                         </div>
                         <Footer data={{show: props.footer, course}}/>
                     </div>
@@ -882,7 +882,7 @@ class CourseList extends Component {
                                 <Rating data={{show: props.rating, rating: course.course_rating}}/>
                                 <Title title={course.post_title}/>
                                 <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,category: props.show_category, course: course }}/>
                             </div>
                             <Footer data={{show: props.footer, course}}/>
                         </div>
@@ -905,7 +905,7 @@ class CourseList extends Component {
                                 <Rating data={{show: props.rating, rating: course.course_rating}}/>
                                 <Title title={course.post_title}/>
                                 <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                                <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                                <Meta data={{avatar: props.avatar, author: props.author,category: props.show_category, course: course }}/>
                             </div>
                             <Footer data={{show: props.footer, course}}/>
                         </div>
@@ -931,7 +931,7 @@ class CourseList extends Component {
         if(!this.props.__courses) {
             return '';
         }
-        console.log( this.props);
+        console.dir(this.props)
         return (
         <Fragment>
             <div className="tutor-courses-wrap tutor-container tutor-divi-courselist-main-wrap">

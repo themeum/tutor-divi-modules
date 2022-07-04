@@ -210,7 +210,7 @@ class CourseInstructor extends ET_Builder_Module {
 				'type'            => 'select',
 				'options'         => array(
 					'_blank' => esc_html__( 'New Window', 'tutor-lms-divi-modules' ),
-					''       => esc_html__( 'Same Window', 'tutor-lms-divi-modules' ),
+					'same'   => esc_html__( 'Same Window', 'tutor-lms-divi-modules' ),
 				),
 				'option_category' => 'basic_option',
 				'description'     => esc_html__( 'Link for the Author Name and Image', 'tutor-lms-divi-modules' ),

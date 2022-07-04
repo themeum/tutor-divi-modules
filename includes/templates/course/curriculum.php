@@ -5,9 +5,9 @@
  * @package CourseCurriculum
  */
 
-$topics      = tutor_utils()->get_topics();
+$course_id   = isset( $args['course'] ) ? $args['course'] : get_the_ID();
+$topics      = tutor_utils()->get_topics( $course_id );
 $topic_title = '';
-$course_id   = get_the_ID();
 $is_enrolled = tutor_utils()->is_enrolled( $course_id );
 $index       = 0;
 

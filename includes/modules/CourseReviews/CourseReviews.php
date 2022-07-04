@@ -85,7 +85,7 @@ class CourseReviews extends ET_Builder_Module {
 				),
 				'review_avg_star'         => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-ratings.tutor-ratings-lg",
+						'main'        => "$reviews_wrapper .tutor-d-inline-block .tutor-ratings-stars span",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_avg_star',
 
@@ -134,7 +134,7 @@ class CourseReviews extends ET_Builder_Module {
 				),
 				'review_list_star'        => array(
 					'css'             => array(
-						'main'        => "$reviews_wrapper .tutor-ratingstutor-is-sm .tutor-rating-stars span ",
+						'main'        => "$reviews_wrapper .tutor-review-summary-ratings .tutor-ratings-stars",
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'review_list_comment',
 					),

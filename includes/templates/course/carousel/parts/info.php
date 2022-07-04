@@ -2,9 +2,9 @@
 global $post, $authordata;
 $profile_url        = tutor_utils()->profile_url( $authordata->ID, true );
 $course_categories  = get_tutor_course_categories();
-$show_avatar 		= $settings['course_carousel_avatar_settings'];
-$show_author 		= $settings['course_carousel_author_settings'];
-$show_categories 	= $settings['course_carousel_category_settings'];
+$show_avatar 		= $data['avatar'] === 'on' ;
+$show_author 		= $data['author'] === 'on';
+$show_categories 	= $data['show_category'] === 'on';
 ?>
 
 <?php if ( $show_avatar || $show_author || $show_categories ) : ?>

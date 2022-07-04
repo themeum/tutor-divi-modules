@@ -40,7 +40,7 @@ if ( isset( $_POST['course_id'] ) ) {
 do_action( 'tutor_course/single/enrolled/before/reviews' );
 ?>
 
-<div class="tutor-pagination-wrapper-replaceable">
+<div class="tutor-pagination-wrapper-replaceable dtlms-course-reviews">
 	<h3 class="tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-24">
 		<?php
 			$review_title = $args['course_reviews_label'];

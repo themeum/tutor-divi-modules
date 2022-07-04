@@ -4,7 +4,8 @@ $profile_url        = tutor_utils()->profile_url( $authordata->ID, true );
 $course_categories  = get_tutor_course_categories();
 $show_avatar 		= $data['avatar'] === 'on' ;
 $show_author 		= $data['author'] === 'on';
-$show_categories 	= $data['category'] === 'on';
+$show_categories 	= $data['show_category'] === 'on';
+var_dump( $show_categories );
 ?>
 
 <?php if ( $show_avatar || $show_author || $show_categories ) : ?>

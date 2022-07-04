@@ -51,7 +51,7 @@ class CourseCarousel extends ET_Builder_Module {
 		$badge_selector  = $wrapper . ' .tutor-course-difficulty-level';
 		$avatar_selector = $wrapper . ' .tutor-avatar';
 		$course_title_selector = $wrapper . ' .tutor-course-name';
-		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
+		$meta_selector = "$wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-icon, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-level, $wrapper .tutor-meta.dtlms-course-duration-meta .tutor-meta-value ";
 		$category_selector  = $wrapper .' .dtlms-course-category-meta a';
 		$add_to_cart_button = '%%order_class%% .tutor-btn.add_to_cart_button';
 		// settings modal toggles.
@@ -402,7 +402,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			),
-			'category'               => array(
+			'show_category'               => array(
 				'label'       => esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
 				'default'     => 'off',

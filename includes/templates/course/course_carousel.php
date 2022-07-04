@@ -47,7 +47,7 @@ $author           = $args['author'];
 $avatar           = $args['avatar'];
 $difficulty_label = $args['difficulty_label'];
 $wish_list        = $args['wish_list'];
-$category         = $args['category'];
+$category         = $args['show_category'];
 $footer           = $args['footer'];
 ?>
 <input type="hidden" id="cart_button_font_icon" value="">

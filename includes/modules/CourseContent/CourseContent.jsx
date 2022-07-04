@@ -475,8 +475,8 @@ class CourseContent extends Component {
         if(gap) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
-                    declaration: `margin-top: ${gap};`
+                    selector: "%%order_class%% .tutor-course-content-title",
+                    declaration: `margin-bottom: ${gap};`
                 }
             ]);            
         }
@@ -484,8 +484,8 @@ class CourseContent extends Component {
         if(gap_tablet) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
-                    declaration: `margin-top: ${gap_tablet};`,
+                    selector: "%%order_class%% .tutor-course-content-title",
+                    declaration: `margin-bottom: ${gap_tablet};`,
                     device: 'tablet'
                 }
             ]);            
@@ -493,8 +493,8 @@ class CourseContent extends Component {
         if(gap_phone) {
             additionalCss.push([
                 {
-                    selector: "%%order_class%% #tutor-course-details-tab-curriculum .tutor-accordion",
-                    declaration: `margin-top: ${gap_phone};`,
+                    selector: "%%order_class%% .tutor-course-content-title",
+                    declaration: `margin-bottom: ${gap_phone};`,
                     device: 'phone'
                 }
             ]);            

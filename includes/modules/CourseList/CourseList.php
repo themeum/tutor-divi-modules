@@ -405,10 +405,10 @@ class CourseList extends ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			),
-			'category'               => array(
+			'show_category'               => array(
 				'label'       => esc_html__( 'Category', 'tutor-lms-divi-modules' ),
 				'type'        => 'yes_no_button',
-				'default'     => 'on',
+				'default'     => 'off',
 				'options'     => array(
 					'on'  => esc_html__( 'Show', 'tutor-lms-divi-modules' ),
 					'off' => esc_html__( 'Hide', 'tutor-lms-divi-modules' ),

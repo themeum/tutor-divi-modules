@@ -60,7 +60,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 
 		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
 		$title_selector = $wrapper . ' .tutor-segment-title';
-		$li_selector    = $wrapper . ' .tutor-course-benefits-items ul li';
+		$li_selector    = $wrapper . ' .tutor-course-benefits-items .list-item';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
 		$this->advanced_fields = array(

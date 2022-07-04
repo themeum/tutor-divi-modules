@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 $disable_course_author = get_tutor_option( 'disable_course_author' );
 $post                  = get_post( $course );
-$profile_url           = tutils()->profile_url( $post->post_author );
+$profile_url           = tutils()->profile_url( $post->post_author, true );
 $link                  = $args['link'];
 $course                = $args['course'];
 

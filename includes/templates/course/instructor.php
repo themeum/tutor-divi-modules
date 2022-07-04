@@ -25,7 +25,7 @@ $profile_picture = $args['profile_picture'];
 $display_name    = $args['display_name'];
 $designation     = $args['designation'];
 $tab_target      = $args['course_instructor_link'];
-
+$tab_target      = '_blank' === $tab_target ? $tab_target : '';
 $instructors = tutor_utils()->get_instructors_by_course( $course_id );
 
 if ( $instructors && count( $instructors ) ) : ?>
@@ -44,7 +44,7 @@ if ( $instructors && count( $instructors ) ) : ?>
 				<?php endif; ?>
 				<div>
 					<?php if ( 'on' === $display_name ) : ?>
-					<a class="tutor-fs-6 tutor-fw-bold tutor-color-black tutor-instructor-name" href="<?php echo esc_url( tutor_utils()->profile_url( $instructor->ID, true ) ); ?>">
+					<a class="tutor-fs-6 tutor-fw-bold tutor-color-black tutor-instructor-name" href="<?php echo esc_url( tutor_utils()->profile_url( $instructor->ID, true ) ); ?>" target="<?php echo esc_attr( $tab_target ); ?>">
 						<?php echo esc_html( $instructor->display_name ); ?>
 					</a>
 					<?php endif; ?>
