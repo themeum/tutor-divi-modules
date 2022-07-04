@@ -87,7 +87,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					),
 				),
 			),
-			'max_width'  => false,
+			'max_width'  => true,
 			// 'margin_padding'  => false,
 			'text'       => false,
 			'borders'    => false,
