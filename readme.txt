@@ -1,7 +1,7 @@
 === Tutor LMS Divi Modules ===
 Contributors: themeum
 Donate link: https://www.themeum.com
-Tags: LMS, e-learning, Learning management system, Courses, Education, Divi integration for LMS, Divi LMS Modules, tutor LMS, Online courses
+Tags: LMS, eLearning, Learning Management System, Courses, Education, Divi Integration for LMS, Divi LMS Modules, Tutor LMS, Online Courses
 Requires at least: 5.3
 Tested up to: 6.0
 Requires PHP: 7.3
@@ -146,9 +146,28 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 2.0.1 - 23 May, 2022
+= 2.0.1 - 04 July, 2022
 
-* Update: Compatibility with Tutor LMS
+* New: Course enrollment add-on now comes with a new toggle button to show/hide the additional information
+* New: Course purchase add-on now comes with a new toggle button to show/hide the additional information
+* Update: Price compatibility is added for EDD and WooCommerce plugin
+* Update: Course Curriculum add-on is now compatible with the latest Tutor 2.0
+* Update: Course Content styling control is now compatible with the latest Tutor 2.0
+* Update: Class Selector updated, tab-body-item to tutor-tab-item
+* Update: Add to Cart selector is updated
+* Update: Course List Addon design is improved
+* Update: Course Carousel Addon design improved
+* Fix: The Solid option in the "Border Styles" section under Card (in Design) was not function
+* Fix: The "Author Show/Hide" option in the Layout function under Content was not functioning
+* Fix: The Style Control for the Single Course page Elements were not working
+* Fix: The "Guest Mode" feature was not working with Divi
+* Fix: Course List Block was not working properly
+* Fix: Enrollment Expiration Time was not available on the Course Details page
+* Fix: Q&A tab was not showing any questions or answers in some cases
+* Fix: Resource tab was not showing any resources in some cases
+* Fix: The review adding/editing option was not appearing on the Review tab in some cases
+* Fix: The Announcements tab was not showing any data in some cases
+* Fix: The Gradebook tab was not showing any data in some cases
 
 = 2.0.0 - 15 March, 2022
 
