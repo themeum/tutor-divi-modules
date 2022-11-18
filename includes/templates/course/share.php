@@ -26,7 +26,7 @@ $share_title   = $args['popup_share_title'];
 ?>
 
 <div class="dtlms-course-share">
-	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost dtlms-course-share-btn">
+	<a data-tutor-modal-target="tutor-course-share-opener" href="#" class="tutor-btn tutor-btn-ghost tutor-course-share-btn dtlms-course-share-btn">
 		<?php if ( 'on' === $args['course_share_icon_show'] ) : ?>
 			<span class="tutor-icon-share" area-hidden="true"></span>
 		<?php endif; ?>
@@ -37,8 +37,7 @@ $share_title   = $args['popup_share_title'];
 		<?php endif; ?>
 	</a>
 </div>
-
-<div id="tutor-course-share-opener" class="tutor-modal dtlms-course-share-modal">
+<div id="tutor-course-share-opener" class="tutor-modal etlms-course-share-modal">
     <span class="tutor-modal-overlay"></span>
     <div class="tutor-modal-window">
         <div class="tutor-modal-content tutor-modal-content-white">
@@ -51,28 +50,26 @@ $share_title   = $args['popup_share_title'];
 					<?php echo esc_html( $section_title ); ?>
                 </div>
 				<?php endif; ?>
-                <div class="dtlms-course-share-modal-sub-title tutor-fs-7 tutor-color-secondary tutor-mb-12">
-                    <?php esc_html_e( 'Page Link', 'tutor-lms-divi-modules' ) ?>
+                <div class="etlms-course-share-modal-sub-title tutor-fs-7 tutor-color-secondary tutor-mb-12">
+                    <?php _e('Page Link', 'tutor-lms-divi-modules') ?>
                 </div>
                 <div class="tutor-mb-32">
-                    <input class="tutor-form-control" value="<?php echo get_permalink( $course_id ); ?>" />
+                    <input class="tutor-form-control" value="<?php echo get_permalink( get_the_ID() ); ?>" />
                 </div>
                 <div>
-                    <?php if ( '' !== $share_title ) : ?>
+					<?php if ( '' !== $share_title ) : ?>
 						<div class="dtlms-course-share-modal-link tutor-color-black tutor-fs-6 tutor-fw-medium tutor-mb-16">
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
                     <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
                         <?php foreach ( $tutor_social_share_icons as $icon ) : ?>
-							<button class="tutor-social-share-button <?php echo esc_attr( $icon['share_class'] ); ?>" style="background-color: <?php echo esc_attr( $icon['color'] ); ?>">
-								<span class="social-icon">
-									<?php
-									if ( 'on' === $args['show_social_icon'] ) {
-										echo $icon['icon_html'];
-									}
-									?>
-								</span>
+							<button class="tutor_share <?php echo esc_attr( $icon['share_class'] ); ?>" style="background-color: <?php echo esc_attr( $icon['color'] ); ?>">
+								<?php
+								if ( 'on' === $args['show_social_icon'] ) {
+									echo $icon['icon_html'];
+								}
+								?>
 								<span>
 									<?php
 									if ( 'on' === $args['show_social_text'] ) {
