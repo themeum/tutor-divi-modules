@@ -505,3 +505,13 @@
 .dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-has-hover-animation:hover {
   transform: translateY(-5px);
 }
+
+.tutor-social-share-wrap button {
+
+  background-color: #272745 !important;
+}
+.tutor-social-share-wrap button {
+ 
+  display: inline-block !important;
+ 
+}

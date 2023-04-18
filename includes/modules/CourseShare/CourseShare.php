@@ -393,6 +393,7 @@ class TutorCourseShare extends ET_Builder_Module {
 	public static function get_content( $args = array() ) {
 		ob_start();
 		include_once dtlms_get_template( 'course/share' );
+		
 		return ob_get_clean();
 	}
 

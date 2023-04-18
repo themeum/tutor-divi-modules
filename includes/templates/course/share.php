@@ -10,11 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $tutor_social_share_icons = tutor_utils()->tutor_social_share_icons();
 $enable     = tutor_utils()->get_option( 'enable_course_share' );
+//var_dump($tutor_social_share_icons);
+
+
 
 if ( ! tutor_utils()->count( $tutor_social_share_icons ) || ! $enable ) {
 	return;
 }
 $course_id 	   = $args['course'];
+
+
+
 $share_config  = array(
 	'title' => get_the_title(),
 	'text'  => get_the_excerpt(),
@@ -22,6 +28,7 @@ $share_config  = array(
 );
 $section_title = $args['popup_section_title'];
 $share_title   = $args['popup_share_title'];
+
 
 ?>
 
@@ -63,26 +70,16 @@ $share_title   = $args['popup_share_title'];
 							<?php echo esc_html( $share_title ); ?>
 						</div>
 					<?php endif; ?>
-                    <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
-                        <?php foreach ( $tutor_social_share_icons as $icon ) : ?>
-							<button class="tutor-social-share-button <?php echo esc_attr( $icon['share_class'] ); ?>" style="background-color: <?php echo esc_attr( $icon['color'] ); ?>">
-								<span class="social-icon">
-									<?php
-									if ( 'on' === $args['show_social_icon'] ) {
-										echo $icon['icon_html'];
-									}
-									?>
-								</span>
-								<span>
-									<?php
-									if ( 'on' === $args['show_social_text'] ) {
-										echo esc_html( $icon['text'] );
-									}
-									?>
-								</span>
-							</button>
-						<?php endforeach; ?>
-                    </div>
+	
+
+					<div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr( json_encode( $share_config ) ); ?>">
+						<?php
+						foreach ( $tutor_social_share_icons as $icon ) {
+							echo '<button class="tutor_share ' . $icon['share_class'] . '"> ' . $icon['icon_html'] . ' </button>'; //phpcs:ignore
+						}
+						?>
+					</div>
+
                 </div>
             </div>
         </div>
