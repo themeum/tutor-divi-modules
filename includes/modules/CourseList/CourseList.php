@@ -30,6 +30,7 @@ class CourseList extends ET_Builder_Module {
 	 * @var $vb_support
 	 */
 	public $vb_support = 'on';
+	public $icon_path;
 
 	/**
 	 * Module Credits (Appears at the bottom of the module settings modal)

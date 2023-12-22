@@ -24,7 +24,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * @var string
 	 */
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal).
 	protected $module_credits = array(
 		'author'     => 'Themeum',
