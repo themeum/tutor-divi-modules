@@ -15,6 +15,7 @@ class CourseCurriculum extends ET_Builder_Module {
 	public $slug       = 'tutor_course_curriculum';
 	public $vb_support = 'on';
 	protected static $curriculum_title;
+	public $icon_path;
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(

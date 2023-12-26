@@ -15,7 +15,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_about';
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
 		'author'     => 'Themeum',
@@ -45,7 +45,7 @@ class TutorCourseAbout extends ET_Builder_Module {
 					'heading'    => array(
 						'title' => esc_html__( 'Heading', 'tutor-lms-divi-modules' ),
 					),
-					'short_text'    => array(
+					'short_text' => array(
 						'title' => esc_html__( 'Short Text', 'tutor-lms-divi-modules' ),
 					),
 					'about_text' => array(

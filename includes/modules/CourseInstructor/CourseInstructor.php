@@ -16,7 +16,7 @@ class CourseInstructor extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_instructor';
 	public $vb_support = 'on';
-
+	public $icon_path;
 	/**
 	 * Module properties initialization
 	 *

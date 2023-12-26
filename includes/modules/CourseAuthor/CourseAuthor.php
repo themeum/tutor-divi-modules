@@ -15,6 +15,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_author';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
@@ -254,7 +255,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_content( $args = array() ) {
-		$course = $args['course'];
+		$course     = $args['course'];
 		$is_enabled = tutor_utils()->get_option( 'enable_course_author', false );
 		if ( ! $is_enabled ) {
 			return '';
@@ -279,8 +280,8 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors
-		$wrapper        = '%%order_class%% .tutor-single-course-author-meta';
-		$img_selector   = '%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img';
+		$wrapper      = '%%order_class%% .tutor-single-course-author-meta';
+		$img_selector = '%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img';
 
 		// props
 		$display   = 'flex';
@@ -300,7 +301,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => "%%order_class%% .tutor-single-course-meta li.tutor-single-course-author-meta",
+				'selector'    => '%%order_class%% .tutor-single-course-meta li.tutor-single-course-author-meta',
 				'declaration' => sprintf(
 					'list-style: none;'
 				),

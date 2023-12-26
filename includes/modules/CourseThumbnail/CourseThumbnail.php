@@ -15,6 +15,7 @@ class CourseThumbnail extends ET_Builder_Module {
 
 	public $slug       = 'tutor_course_thumbnail';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	/**
 	 * Module properties initialization
