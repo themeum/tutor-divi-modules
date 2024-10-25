@@ -18,8 +18,8 @@ export default function Rating(props) {
             <div class="tutor-ratings-stars">
                 {ratings}
             </div>
-            <div class="tutor-ratings-average">{data.rating.rating_avg}</div>
-            <div class="tutor-ratings-count">({data.rating.rating_count})</div>
+            { data.rating.rating_avg === 0 ? '' : <div class="tutor-ratings-average">{data.rating.rating_avg}</div>}
+            { data.rating.rating_count === 0 ? '' : <div class="tutor-ratings-count">({data.rating.rating_count})</div>}
         </div>
     );
 }

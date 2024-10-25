@@ -9,7 +9,7 @@ $show_categories 	= $data['show_category'] === 'on';
 ?>
 
 <?php if ( $show_avatar || $show_author || $show_categories ) : ?>
-<div class="tutor-meta tutor-mt-auto">
+<div class="tutor-meta tutor-mt-auto dtlms-author-category-meta">
     <?php if ( $show_avatar ) : ?>
     <div>
         <a href="<?php echo $profile_url; ?>" class="tutor-d-flex">
