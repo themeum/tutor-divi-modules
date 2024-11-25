@@ -56,7 +56,7 @@ class CourseTags extends ET_Builder_Module {
 		 */
 		$wrapper            = '%%order_class%% .tutor-divi-course-tags-wrapper';
 		$tag_title_selector = $wrapper . ' .tutor-segment-title';
-		$tags_selector      = $wrapper . ' .tutor-course-tags a';
+		$tags_selector      = $wrapper . ' .tutor-tag-list a';
 
 		$this->advanced_fields = array(
 			'fonts'          => array(
@@ -83,8 +83,8 @@ class CourseTags extends ET_Builder_Module {
 				'tags'    => array(
 					'css'         => array(
 						'main'      => array(
-							'border_styles' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags > a',
-							'border_radii'  => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags > a',
+							'border_styles' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-tag-list > a',
+							'border_radii'  => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-tag-list > a',
 						),
 						'important' => true,
 					),
@@ -94,15 +94,15 @@ class CourseTags extends ET_Builder_Module {
 			),
 			'margin_padding' => array(
 				'css' => array(
-					'margin'    => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
-					'padding'   => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
+					'margin'    => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-tag-list a',
+					'padding'   => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-tag-list a',
 					'important' => 'all',
 				),
 			),
 			'box_shadow'     => array(
 				'default' => array(
 					'css' => array(
-						'main' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-course-tags a',
+						'main' => '%%order_class%% .tutor-divi-course-tags-wrapper .tutor-tag-list a',
 					),
 				),
 			),
@@ -153,6 +153,21 @@ class CourseTags extends ET_Builder_Module {
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
+			// advanced tab section title toggles
+			'gap'            => array(
+				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '10',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => -10,
+					'max'  => 100,
+					'step' => 1,
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'title',
+				'mobile_options' => true,
+			),
 			// advanced settings tab tags toggle
 			'tags_background' => array(
 				'label'       => esc_html__( 'Background Color', 'tutor-lms-divi-modules' ),
@@ -162,6 +177,13 @@ class CourseTags extends ET_Builder_Module {
 				'priority'    => 67,
 				'hover'       => 'tabs',
 			),
+			'tags_margin'     => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',  
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'tags',
+				'mobile_options' => true,
+			)
 		);
 	}
 
@@ -207,11 +229,69 @@ class CourseTags extends ET_Builder_Module {
 		// selectors
 		$wrapper            = '%%order_class%% .tutor-divi-course-tags-wrapper';
 		$tag_title_selector = $wrapper . ' .tutor-segment-title';
-		$tags_selector      = $wrapper . ' .tutor-course-tags a';
+		$tag_list           = $wrapper . ' .tutor-tag-list';
+		$tags_selector      = $wrapper . ' .tutor-tag-list a';
 		// props
 		$background       = sanitize_text_field( $this->props['tags_background'] );
 		$background_hover = isset( $this->props['tags_background__hover'] ) ? sanitize_text_field( $this->props['tags_background__hover'] ) : $background;
 
+		$gap        = sanitize_text_field( $this->props['gap'] );
+		$gap_tablet = isset( $this->props['gap_tablet'] ) && $this->props['gap_tablet'] !== '' ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
+		$gap_phone  = isset( $this->props['gap_phone'] ) && $this->props['gap_phone'] !== '' ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
+
+		$tags_margin        = sanitize_text_field( $this->props['tags_margin'] );
+		$tags_margin_tablet = isset( $this->props['tags_margin_tablet'] ) && $this->props['tags_margin_tablet'] !== '' ? sanitize_text_field( $this->props['tags_margin_tablet'] ) : $tags_margin;
+		$tags_margin_phone  = isset( $this->props['tags_margin_phone'] ) && $this->props['tags_margin_phone'] !== '' ? sanitize_text_field( $this->props['tags_margin_phone'] ) : $tags_margin;
+		
+		if ( '' !== $tags_margin && '|||' !== $tags_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $tag_list,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $tags_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		if ( '' !== $tags_margin_tablet && '|||' !== $tags_margin_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $tag_list,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $tags_margin_tablet, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_tablet, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_tablet, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_tablet, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+				)
+			);
+		} 
+
+		if ( '' !== $tags_margin_phone && '|||' !== $tags_margin_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $tag_list,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $tags_margin_phone, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_phone, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_phone, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $tags_margin_phone, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+				)
+			);
+		} 
 		// set styles
 		if ( '' !== $background ) {
 			ET_Builder_Element::set_style(
@@ -238,11 +318,50 @@ class CourseTags extends ET_Builder_Module {
 				)
 			);
 		}
+
+		if ( $gap ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $tag_title_selector,
+					'declaration' => sprintf(
+						'margin-bottom: %1$s;',
+						$gap
+					),
+				)
+			);
+		}
+		if ( $gap_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $tag_title_selector,
+					'declaration' => sprintf(
+						'margin-bottom: %1$s;',
+						$gap_tablet
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+				)
+			);
+		}
+		if ( $gap_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $tag_title_selector,
+					'declaration' => sprintf(
+						'margin-bottom: %1$s;',
+						$gap_phone
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+				)
+			);
+		}
 		// tags style as tutor.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
-				'selector'    => '%%order_class%% .tutor-course-tags a',
+				'selector'    => '%%order_class%% .tutor-tag-list a',
 				'declaration' => 'font-size: 16px;
 				line-height: 26px;
 				text-decoration: none;
@@ -251,8 +370,7 @@ class CourseTags extends ET_Builder_Module {
 				color: #5b616f;
 				border-radius: 6px;
 				-webkit-transition: 200ms;
-				transition: 200ms;
-				background-color: #fff;',
+				transition: 200ms;',
 			)
 		);
 		// set styles end
