@@ -53,7 +53,7 @@ $footer           = $args['footer'];
 <input type="hidden" id="cart_button_font_icon" value="">
 <?php
 /*
-* query arguements
+* query arguments
 */
 $query_args = array(
 	'post_type'      => tutor()->course_post_type,
@@ -92,7 +92,7 @@ if ( $the_query->have_posts() ) :
 	$layout        = $skin;
 	?>
 	<!-- loop start -->
-	<div class="tutor-divi-slick-responsive dtlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $course_cols ); ?> dtlms-coursel-<?php echo esc_attr( $skin ); ?> dtlms-carousel-dots-<?php echo esc_attr( $args['dots_alignment'] ); ?>">
+	<div class="tutor-divi-slick-responsive dtlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-<?php echo esc_attr( $course_cols ); ?> dtlms-carousel-<?php echo esc_attr( $skin ); ?> dtlms-carousel-dots-<?php echo esc_attr( $args['dots_alignment'] ); ?>">
 		<?php
 		while ( $the_query->have_posts() ) :
 			$the_query->the_post();
@@ -129,7 +129,7 @@ if ( $the_query->have_posts() ) :
 		?>
 <!--loading course init-->
 
-<!-- handle elementor settings -->
+<!-- handle divi settings -->
 <?php
 // carousel settings.
 $slides_to_show   = $args['slides_to_show'];
@@ -141,7 +141,7 @@ $smooth_scrolling = $args['smooth_scrolling'];
 $autoplay         = $args['autoplay'];
 $autoplay_speed   = $args['autoplay_speed'];
 $infinite_loop    = $args['infinite_loop'];
-$pause_on_hover   = $args['paush_on_hover'];
+$pause_on_hover   = $args['pause_on_hover'];
 ?>
 <div id="tutor_divi_carousel_settings" slides_to_show="<?php echo esc_attr( $slides_to_show ); ?>" arrows="<?php echo esc_attr( $arrows ); ?>" dots="<?php echo esc_attr( $dots ); ?>" transition="<?php echo esc_attr( $transition ); ?>" center_slides="<?php echo esc_attr( $center_slides ); ?>" smooth_scrolling="<?php echo esc_attr( $smooth_scrolling ); ?>" carousel_autoplay="<?php echo esc_attr( $autoplay ); ?>" autoplay_speed="<?php echo esc_attr( $autoplay_speed ); ?>" infinite_loop="<?php echo esc_attr( $infinite_loop ); ?>" pause_on_hover="<?php echo esc_attr( $pause_on_hover ); ?>">
 
