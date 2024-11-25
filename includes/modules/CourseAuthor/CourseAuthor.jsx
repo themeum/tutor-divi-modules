@@ -71,7 +71,15 @@ class CourseAuthor extends Component {
     additionalCss.push([
       {
         selector: `${wrapper} a`,
-        declaration: `padding: 0`,
+        declaration: `padding: 0;`,
+      },
+    ])
+
+    // remove list padding
+    additionalCss.push([
+      {
+        selector: `%%order_class%% ul`,
+        declaration: `padding: 0 !important;`,
       },
     ])
 
