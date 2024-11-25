@@ -151,7 +151,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			'label'                   => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'         => esc_html__( 'Course Curriculum', 'tutor-lms-divi-modules' ),
+				'default'         => esc_html__( 'Course Content', 'tutor-lms-divi-modules' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 			),
@@ -324,7 +324,7 @@ class CourseCurriculum extends ET_Builder_Module {
 			add_filter( 'tutor_course_topics_title', array( __CLASS__, 'update_curriculumn_title' ) );
 		}
 		ob_start();
-		include dtlms_get_template( 'course/curriculum-editor' );
+		include dtlms_get_template( 'course/curriculum' );
 		return ob_get_clean();
 	}
 

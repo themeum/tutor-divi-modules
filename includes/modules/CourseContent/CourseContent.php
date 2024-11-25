@@ -52,6 +52,9 @@ class CourseContent extends ET_Builder_Module {
 					'about_text'                => array(
 						'title' => esc_html__( 'About Course Text', 'tutor-lms-divi-modules' ),
 					),
+					'course_tabs'               => array(
+						'title' => esc_html__( 'Course Content Tabs', 'tutor-lms-divi-modules' ),
+					),
 					// course benefits advanced toggles.
 					'course_benefits_title'     => array(
 						'title' => esc_html__( 'Course Benefits Title', 'tutor-lms-divi-modules' ),
@@ -93,6 +96,9 @@ class CourseContent extends ET_Builder_Module {
 					'review_list_time'          => esc_html__( 'Review List Time', 'tutor-lms-divi-modules' ),
 					'review_list_comment'       => esc_html__( 'Review List Comment', 'tutor-lms-divi-modules' ),
 					'review_list_star'          => esc_html__( 'Review List Star', 'tutor-lms-divi-modules' ),
+					'review_summary'            => esc_html__( 'Review Summary', 'tutor-lms-divi-modules' ),
+					'review'                    => esc_html__( 'Review', 'tutor-lms-divi-modules'),
+					'review_card'               => esc_html__( 'Review Card', 'tutor-lms-divi-modules' ),
 				),
 			),
 		);
@@ -116,6 +122,7 @@ class CourseContent extends ET_Builder_Module {
 		 */
 
 		// course benefits controls end.
+		$course_about          = '%%order_class%% .tutor-course-details-content';
 		$heading_selector      = '%%order_class%% .tutor-course-details-content h2';
 		$paragraph_selector    = '%%order_class%% .dtlms-course-about-text';
 
@@ -135,17 +142,24 @@ class CourseContent extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'about_text',
 				),
+				'course_tabs_title'       => array(
+					'css' => array(
+						'main'        => '%%order_class%% .tutor-nav .tutor-nav-link',
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'course_tabs',
+				),	
 				// course benefit controls.
 				'course_benefits_title'   => array(
 					'css' => array(
-						'main'        => '%%order_class%% .tutor-course-benefits-wrap .tutor-segment-title',
+						'main'        => '%%order_class%% .tutor-course-details-widget .tutor-course-details-widget-title',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'course_benefits_title',
 					),
 				),
 				'course_benefits_text'    => array(
 					'css'             => array(
-						'main'        => '%%order_class%% ul.tutor-course-benefits-items .list-item',
+						'main'        => '%%order_class%% .tutor-course-details-widget-list .list-item',
 						'tab_slug'    => 'advanced',
 						'toggle_slug' => 'course_benefits_text',
 					),
@@ -177,7 +191,6 @@ class CourseContent extends ET_Builder_Module {
 					'toggle_slug'     => 'lesson',
 					'important'       => true,
 				),
-
 				// reviews controls.
 				'review_section_title'    => array(
 					'css'             => array(
@@ -258,13 +271,28 @@ class CourseContent extends ET_Builder_Module {
 				),
 			),
 			'borders'        => array(
-				'default'                     => false,
+				'default' => false,
+				'course_tabs_border'          => array(
+					'css'        => array(
+						'main'      => array(
+							'border_radii'  => '%%order_class%% .tutor-nav a.is-active',
+							'border_styles' => '%%order_class%% .tutor-nav a.is-active',
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'course_tabs',
+				),
 				'course_benefits_list_border' => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% ul.tutor-course-benefits-items li',
-							'border_styles' => '%%order_class%% ul.tutor-course-benefits-items li',
-
+							'border_radii'  => '%%order_class%% .tutor-course-details-widget-list li',
+							'border_styles' => '%%order_class%% .tutor-course-details-widget-list li',
+						),
+						'defaults'  => array(
+							'border_styles' => array(
+								'style' => 'None',
+							),
 						),
 						'important' => true,
 					),
@@ -276,7 +304,17 @@ class CourseContent extends ET_Builder_Module {
 						'main'      => array(
 							'border_radii'  => $topic_wrapper_selector,
 							'border_styles' => $topic_wrapper_selector,
-
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'topics',
+				),
+				'topic_title'                 => array(
+					'css'         => array(
+						'main'      => array(
+							'border_radii'  => $wrapper . ' .tutor-accordion-item-header.is-active',
+							'border_styles' => $wrapper . ' .tutor-accordion-item-header.is-active',
 						),
 						'important' => true,
 					),
@@ -296,6 +334,51 @@ class CourseContent extends ET_Builder_Module {
 					'tab_slug'    => 'advanced',
 					'toggle_slug' => 'review_list_avatar',
 				),
+				//rating bar border.
+				'rating_bar_border'          => array(
+					'css'         => array(
+						'main'     => array(
+							'border_radii'  => '%%order_class%% .tutor-review-summary-rating .tutor-ratings-progress-bar',
+							'border_styles' => '%%order_class%% .tutor-review-summary-rating .tutor-ratings-progress-bar',
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'rating_bar',
+				),
+				'review_card_border'            => array(
+					'css'         => array(
+						'main'     => array(
+							'border_radii'  => '%%order_class%% .tutor-review-card',
+							'border_styles' => '%%order_class%% .tutor-review-card',
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'review_card',
+				),
+				'review_summary_border'            => array(
+					'css'         => array(
+						'main'     => array(
+							'border_radii'  => $reviews_wrapper . '.tutor-review-summary',
+							'border_styles' => $reviews_wrapper . '.tutor-review-summary',
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'review_summary',
+				),
+				'review_border'            => array(
+					'css'         => array(
+						'main'     => array(
+							'border_radii'  => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item',
+							'border_styles' => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item',
+						),
+						'important' => true,
+					),
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'review',
+				),
 			),
 			'margin_padding' => array(
 				'css' => array(
@@ -306,9 +389,22 @@ class CourseContent extends ET_Builder_Module {
 			'text'           => false,
 			'max_width'      => false,
 			// 'animation'      => false,
-			// 'transform'      => false,
-			'background'     => false,
-			// 'filters'        => false,
+			'transform'      => array(
+				'css' => array(
+					'main'      => '%%order_class%% .tutor-nav',
+					'important' => true,
+				),
+			),
+			'background'     => array(
+				'css' => array(
+					'main'      => '%%order_class%% .tutor-nav',
+					'important' => true,
+				),
+				'settings' => array(
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'course_tabs'
+				),
+			),
 			// 'box_shadow'     => false,
 		);
 	}
@@ -362,6 +458,28 @@ class CourseContent extends ET_Builder_Module {
 					'course_instructor_link',
 				),
 			),
+			// course content controls start.
+			'course_content_title_margin'              => array(
+				'label'          => esc_html__( 'Course Content Title Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'header',
+				'mobile_options' => true,
+			),
+			'course_topics_padding'                     => array(
+				'label'          => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_padding',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'topics',
+				'mobile_options' => true,
+			),
+			'lesson_padding'                            => array(
+				'label'          => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_padding',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'lesson',
+				'mobile_options' => true,
+			),
 			// course benefits controls start.
 			'course_benefits_label'                    => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
@@ -375,10 +493,10 @@ class CourseContent extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'list-teim' => esc_html__( 'List', 'tutor-lms-divi-modules' ),
+					'list-item' => esc_html__( 'List', 'tutor-lms-divi-modules' ),
 					'inline'    => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
 				),
-				'default'         => 'block',
+				'default'         => 'flex',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
@@ -386,7 +504,7 @@ class CourseContent extends ET_Builder_Module {
 			'course_benefits_icon'                     => array(
 				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'            => 'select_icon',
-				'default'         => 'N',
+				'default'         => '',
 				'class'           => array( 'et-pb-font-icon' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
@@ -400,13 +518,22 @@ class CourseContent extends ET_Builder_Module {
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
 			),
+			'course_reviews_alignment'                => array(
+				'label'           => esc_html__( 'Alignment', 'tutor-lms-divi-modules' ),
+				'type'            => 'text_align',
+				'option_category' => 'configuration',
+				'options'         => et_builder_get_text_orientation_options( array( 'justified' ) ),
+				'default'         => 'center',
+				'toggle_slug'     => 'course_reviews',
+				'mobile_options'  => true, 
+			),
 			// course benefits controls end.
 
 			// course curriculum content controls start.
 			'course_topics_label'                      => array(
 				'label'           => esc_html__( 'Label', 'tutor-lms-divi-modules' ),
 				'type'            => 'text',
-				'default'         => esc_html__( 'Course Curriculum', 'tutor-lms-divi-modules' ),
+				'default'         => esc_html__( 'Course Content', 'tutor-lms-divi-modules' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'course_curriculum',
 			),
@@ -466,14 +593,14 @@ class CourseContent extends ET_Builder_Module {
 			'course_benefits_icon_color'               => array(
 				'label'       => esc_html__( 'Color', 'tutor-lms-divi-modules' ),
 				'type'        => 'color-alpha',
-				'default'     => '#3e64de',
+				'default'     => '#757c8e',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'course_benefits_icon',
 			),
 			'course_benefits_icon_size'                => array(
 				'label'          => esc_html__( 'Size', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
-				'default'        => '18px',
+				'default'        => '0.75rem',
 				'default_unit'   => 'px',
 				'range_settings' => array(
 					'min'  => '-10',
@@ -483,6 +610,46 @@ class CourseContent extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'course_benefits_icon',
 				'mobile_options' => true,
+			),
+			'course_icon_margin'                    => array(
+				'label'         => esc_html__( 'Course Icon Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_icon',
+				'mobile_options' => true,
+			),
+			'about_course_margin'                  => array(
+				'label'          => esc_html__( 'About Course Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'heading',
+				'mobile_options' => true,
+			),
+			'course_benefit_margin'               => array(
+				'label'          => esc_html__( 'Course Benefit Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_list',
+				'mobile_options' => true,
+			),
+			'course_benefit_li_margin'               => array(
+				'label'          => esc_html__( 'Course Benefit Items Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_benefits_list',
+				'mobile_options' => true,
+			),
+			'course_benefit_title_margin'           => array(
+				'label'         => esc_html__( 'Course Benefit Title Margin', 'tutor-lms-divi-modules' ),
+				'type'          => 'custom_margin',
+				'tab_slug'      => 'advanced',
+				'toggle_slug'   => 'course_benefits_title',
+			),
+			'course_about_heading_margin'          => array(
+				'label'         => esc_html__( 'Course About Heading Margin', 'tutor-lms-divi-modules' ),
+				'type'          => 'custom_margin',
+				'tab_slug'      => 'advanced',
+				'toggle_slug'   => 'heading',
 			),
 			// advanced tab text toggle
 			'indent'                                   => array(
@@ -500,26 +667,38 @@ class CourseContent extends ET_Builder_Module {
 				'mobile_options' => true,
 			),
 			// course benefits advance controls end.
-
-			/**
-			 * Course curriculum advance tab controls
-			 */
-			// advanced tab header toggle
-			'gap'                                      => array(
+			'course_tabs_gap'                    => array(
 				'label'          => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
-				'default'        => '5px',
+				'default'        => '',
 				'default_unit'   => 'px',
 				'range_settings' => array(
-					'min'  => -100,
+					'min'  => 0,
 					'max'  => 100,
 					'step' => 1,
 				),
 				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'header',
+				'toggle_slug'    => 'course_tabs',
 				'mobile_options' => true,
 			),
-
+			'course_tab_margin'                       => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_tabs',
+				'mobile_options' => true,
+			),
+			'course_tab_padding'                       => array(
+				'label'          => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_padding',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_tabs',
+				'mobile_options' => true,
+			),
+			/**
+			 * Course curriculum advance tab controls
+			 */
+			// advanced tab header toggle
 			// advanced tab topics toggle
 			'topic_icon_size'                          => array(
 				'label'          => esc_html__( 'Icon Size', 'tutor-lms-divi-modules' ),
@@ -680,6 +859,57 @@ class CourseContent extends ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'rating_bar',
 			),
+			'review_title_margin'                     => array(
+				'label'          => esc_html__( 'Title Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'review_section_title',
+				'mobile_options' => true,      
+			),
+			'review_summary_padding'                 => array(
+				'label'          => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_padding',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'review_summary',
+				'mobile_options' => true,
+			),
+			'review_summary_background_color'       => array(
+				'label'       => esc_html__( 'Background', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'default'     => 'rgb(255,255,255)',
+				'important'   => true,
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'review_summary',
+			),
+			'rating_bar_margin'                     => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'rating_bar',
+				'mobile_options' => true, 
+			),
+			'review_padding'                        => array(
+				'label'          => esc_html__( 'Padding', 'tutor-lms-divi-modules'),
+				'toggle_slug'    => 'review',
+				'type'           => 'custom_padding',
+				'tab_slug'       => 'advanced',
+				'mobile_options' => true, 
+			),
+			'review_background_color'       => array(
+				'label'       => esc_html__( 'Background', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'default'     => 'rgb(255,255,255)',
+				'important'   => true,
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'review',
+			),
+			'review_star_color'            => array(
+				'label'       => esc_html__( 'Icon Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'hover'       => 'tabs',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'review',
+			)
 		);
 	}
 
@@ -769,6 +999,10 @@ class CourseContent extends ET_Builder_Module {
 		$topic_icon_selector     = $wrapper . ' .tutor-accordion-item-header::after';
 		$topic_wrapper           = '%%order_class%% .tutor-divi-course-topic';
 
+		$heading_selector        = '%%order_class%% .tutor-course-details-content h2';
+
+		$nav                     = '%%order_class%% .tutor-nav';
+
 		$topic_wrapper_selector  = $wrapper . ' .tutor-course-title';
 
 		$lesson_icon_selector    = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon, %%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status';
@@ -779,10 +1013,6 @@ class CourseContent extends ET_Builder_Module {
 		// props
 		// $icon_position   = sanitize_text_field( $this->props['course_topics_icon_position'] );
 		$topic_icon_size = sanitize_text_field( $this->props['topic_icon_size'] );
-
-		$gap        = sanitize_text_field( $this->props['gap'] );
-		$gap_tablet = isset( $this->props['gap_tablet'] ) && $this->props['gap_tablet'] !== '' ? sanitize_text_field( $this->props['gap_tablet'] ) : $gap;
-		$gap_phone  = isset( $this->props['gap_phone'] ) && $this->props['gap_phone'] !== '' ? sanitize_text_field( $this->props['gap_phone'] ) : $gap;
 
 		$topic_icon_color        = sanitize_text_field( $this->props['topic_icon_color'] );
 		$topic_icon_active_color = sanitize_text_field( $this->props['topic_icon_active_color'] );
@@ -817,9 +1047,15 @@ class CourseContent extends ET_Builder_Module {
 
 		// course benefits styles start.
 		// selectors.
-		$benefits_wrapper       = '%%order_class%% .tutor-course-benefits-wrap';
-		$benefits_li_selector   = '%%order_class%% ul.tutor-course-benefits-items li';
-		$benefits_icon_selector = '%%order_class%% ul.tutor-course-benefits-items .et-pb-icon';
+		$benefits_wrapper       = '%%order_class%% .tutor-course-details-widget';
+		$benefits_title         = '%%order_class%% .tutor-course-details-widget .tutor-course-details-widget-title';
+		$benefits_li_selector   = '%%order_class%% .tutor-course-details-widget-list li';
+		$benefits_icon_selector = '%%order_class%% .tutor-course-details-widget-list .et-pb-icon';
+
+		$course_about          = '%%order_class%% .tutor-course-details-content';
+		$reviews_wrapper       = '%%order_class%% #tutor-course-details-tab-reviews ';
+
+
 		// props.
 		$benefits_icon_size        = sanitize_text_field( $this->props['course_benefits_icon_size'] );
 		$benefits_icon_size_tablet = isset( $this->props['course_benefits_icon_size_tablet'] ) && $this->props['course_benefits_icon_size_tablet'] !== '' ? sanitize_text_field( $this->props['course_benefits_icon_size_tablet'] ) : $benefits_icon_size;
@@ -841,6 +1077,11 @@ class CourseContent extends ET_Builder_Module {
 		$benefits_alignment_tablet = isset( $this->props['course_benefits_alignment_tablet'] ) && '' !== $this->props['course_benefits_alignment_tablet'] ? sanitize_text_field( $this->props['course_benefits_alignment_tablet'] ) : $benefits_alignment;
 		$benefits_alignment_phone  = isset( $this->props['course_benefits_alignment_phone'] ) && '' !== $this->props['course_benefits_alignment_phone'] ? sanitize_text_field( $this->props['course_benefits_alignment_phone'] ) : $benefits_alignment;
 
+		$review_alignment          = $this->props['course_reviews_alignment'];
+		$review_alignment_tablet   = isset( $this->props['course_reviews_alignment_tablet'] ) && '' !== $this->props['course_reviews_alignment_tablet'] ? sanitize_text_field( $this->props['course_reviews_alignment_tablet'] ) : $review_alignment;
+		$review_alignment_phone    = isset( $this->props['course_reviews_alignment_phone'] ) && '' !== $this->props['course_reviews_alignment_phone'] ? sanitize_text_field( $this->props['course_reviews_alignment_phone'] ) : $review_alignment;
+
+
 		$space_between = $this->props['space_between'];
 		$space_tablet  = isset( $this->props['space_between_tablet'] ) && '' !== $this->props['space_between_tablet'] ? sanitize_text_field( $this->props['space_between_tablet'] ) : $space_between;
 		$space_phone   = isset( $this->props['space_between_phone'] ) && '' !== $this->props['space_between_phone'] ? sanitize_text_field( $this->props['space_between_phone'] ) : $space_between;
@@ -848,6 +1089,475 @@ class CourseContent extends ET_Builder_Module {
 		$indent        = $this->props['indent'];
 		$indent_tablet = isset( $this->props['indent_tablet'] ) && '' !== $this->props['indent_tablet'] ? sanitize_text_field( $this->props['indent_tablet'] ) : $indent;
 		$indent_phone  = isset( $this->props['indent_phone'] ) && '' !== $this->props['indent_phone'] ? sanitize_text_field( $this->props['indent_phone'] ) : $indent;
+		
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item .tutor-col-lg-3, ' . $reviews_wrapper . '.tutor-reviews .tutor-review-list-item .tutor-col-lg-9',
+				'declaration' => 'padding-left: 12px !important; padding-right: 12px !important;'
+			)
+		);
+
+		if ( $this->props['review_star_color'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item .tutor-ratings-stars',
+					'declaration' => sprintf(
+						'color: %1$s !important;',
+						$this->props['review_star_color']
+					),
+				)
+			);
+		}
+
+
+		if ( $this->props['review_background_color'] ) {
+
+			ET_Builder_Element::set_style( 
+				$render_slug,
+				array(
+					'selector' => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item',
+					'declaration' => sprintf( 
+						'background: %1$s !important;',
+						$this->props['review_background_color']
+					)
+				)
+			);
+		}
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $reviews_wrapper . '.tutor-ratings-stars span',
+				'declaration' => 'margin-left: 3px !important; margin-right: 3px !important;'
+			)
+		);
+
+		$rating_bar_margin      = $this->props['rating_bar_margin'];
+
+		if( '' !== $rating_bar_margin && '|||' !== $rating_bar_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . '.tutor-review-summary-rating',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $rating_bar_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $rating_bar_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $rating_bar_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $rating_bar_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$review_padding = $this->props['review_padding'];
+
+		if ( '' !== $review_padding && '|||' !== $review_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' =>  $reviews_wrapper . '.tutor-reviews .tutor-review-list-item',
+					'declaration' => sprintf(
+						'padding-top: %1$s !important;padding-right:%2$s !important;padding-bottom:%3$s !important;padding-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $review_padding, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_padding, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_padding, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		// review default styles
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $reviews_wrapper . '.tutor-review-summary .tutor-col-lg-auto',
+				'declaration' => 'padding-left: 24px !important; padding-right: 24px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $reviews_wrapper . '.tutor-review-summary .tutor-col-lg',
+				'declaration' => 'padding-left: 24px !important; padding-right: 24px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $reviews_wrapper . '.tutor-review-summary .tutor-review-summary-average-rating',
+				'declaration' => 'margin-bottom: 20px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $reviews_wrapper . '.tutor-review-summary-rating .tutor-ratings-average',
+				'declaration' => 'margin-left: 12px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $reviews_wrapper . '.tutor-review-summary .tutor-total-rating-count',
+				'declaration' => 'margin-top: 12px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $reviews_wrapper . '.tutor-reviews .tutor-review-list-item .tutor-review-comment',
+				'declaration' => 'margin-top: 12px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $reviews_wrapper . '.tutor-review-summary-rating .tutor-col-auto, ' . $reviews_wrapper . '.tutor-review-summary-rating .tutor-col, ' . $reviews_wrapper . '.tutor-review-summary-rating .tutor-col-4',
+				'declaration' => 'padding-right: 12px !important; padding-left: 12px !important;'
+			)
+		);
+
+		if ( $this->props['review_summary_background_color'] ) {
+			
+			ET_Builder_Element::set_style( 
+				$render_slug,
+				array(
+					'selector' => $reviews_wrapper . '.tutor-review-summary',
+					'declaration' => sprintf( 
+						'background: %1$s !important;',
+						$this->props['review_summary_background_color']
+					)
+				)
+			);
+		}
+
+		$review_summary_padding = $this->props['review_summary_padding'];
+
+
+		if ( '' !== $review_summary_padding && '|||' !== $review_summary_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' =>  $reviews_wrapper . '.tutor-review-summary',
+					'declaration' => sprintf(
+						'padding-top: %1$s !important;padding-right:%2$s !important;padding-bottom:%3$s !important;padding-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $review_summary_padding, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_summary_padding, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_summary_padding, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_summary_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$review_title_margin = $this->props['review_title_margin'];
+
+		if( '' !== $review_title_margin && '|||' !== $review_title_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . 'h3',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $review_title_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_title_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_title_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $review_title_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-is-sticky',
+				'declaration' => 'top: 32px !important; position: sticky !important; backdrop-filter: blur(14px) !important; z-index: 1063 !important;',
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => '%%order_class%% .tutor-accordion .tutor-course-content-list-item-title a',
+				'declaration' => 'color: inherit !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon',
+				'declaration' => 'margin-right: 12px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status',
+				'declaration' => 'margin-left: 20px !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' =>  $wrapper . ' .tutor-accordion-item-header',
+				'declaration' => 'transition: background-color 300ms ease-in !important;'
+			)
+		);
+
+		$lesson_padding         = $this->props['lesson_padding'];
+
+		if ( '' !== $lesson_padding && '|||' !== $lesson_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' =>  $lesson_wrapper_selector,
+					'declaration' => sprintf(
+						'padding-top: %1$s !important;padding-right:%2$s !important;padding-bottom:%3$s !important;padding-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $lesson_padding, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $lesson_padding, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $lesson_padding, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $lesson_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+
+		$course_topics_padding = $this->props['course_topics_padding'];
+
+		if ( '' !== $course_topics_padding && '|||' !== $course_topics_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' =>  $wrapper . ' .tutor-accordion-item-header',
+					'declaration' => sprintf(
+						'padding-top: %1$s !important;padding-right:%2$s !important;padding-bottom:%3$s !important;padding-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_topics_padding, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_topics_padding, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_topics_padding, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_topics_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_content_title_margin = $this->props['course_content_title_margin'];
+
+		if( '' !== $course_content_title_margin && '|||' !== $course_content_title_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-course-content-title',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_content_title_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_content_title_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_content_title_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_content_title_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => 'h2,h3,h4,h5',
+				'declaration' => 'padding:0 !important;',
+			)
+		);
+
+		// course content nav style.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $nav,
+				'declaration' => 'display:flex !important;',
+			)
+		);
+
+		$course_tab_padding = $this->props['course_tab_padding'];
+
+		if ( '' !== $course_tab_padding && '|||' !== $course_tab_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .tutor-nav .tutor-nav-link',
+					'declaration' => sprintf(
+						'padding-top: %1$s;padding-right:%2$s;padding-bottom:%3$s;padding-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_tab_padding, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_padding, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_padding, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_tab_margin = $this->props['course_tab_margin'];
+
+		// course tab margin.
+		if( '' !== $course_tab_margin && '|||' !== $course_tab_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-nav .tutor-nav-link',
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_tab_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_tab_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_benefit_title_margin = $this->props[ 'course_benefit_title_margin' ];
+
+		// course benefit heading margin.
+		if( '' !== $course_benefit_title_margin && '|||' !== $course_benefit_title_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $benefits_title,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_benefit_title_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_title_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_title_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_title_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+		
+
+		$course_about_heading_margin = $this->props[ 'course_about_heading_margin' ];
+
+		// course about heading margin.
+		if( '' !== $course_about_heading_margin && '|||' !== $course_about_heading_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $heading_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_about_heading_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_about_heading_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_about_heading_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_about_heading_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$about_course_margin = $this->props[ 'about_course_margin' ];
+
+		// course benefit margin.
+		if( '' !== $about_course_margin && '|||' !== $about_course_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $course_about,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $about_course_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $about_course_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $about_course_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $about_course_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_benefit_li_margin = $this->props['course_benefit_li_margin'];
+
+		// course benefit margin.
+		if( '' !== $course_benefit_li_margin && '|||' !== $course_benefit_li_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $benefits_li_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_benefit_li_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_li_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_li_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_li_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_benefits_icon_margin = $this->props[ 'course_icon_margin' ];
+
+		// custom benefit icon margin.
+		if( '' !== $course_benefits_icon_margin && '|||' !== $course_benefits_icon_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $benefits_icon_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_benefits_icon_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefits_icon_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefits_icon_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefits_icon_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		$course_benefit_margin = $this->props[ 'course_benefit_margin' ];
+
+		// course benefit margin.
+		if( '' !== $course_benefit_margin && '|||' !== $course_benefit_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $benefits_wrapper,
+					'declaration' => sprintf(
+						'margin-top: %1$s;margin-right:%2$s;margin-bottom:%3$s;margin-left:%4$s;',
+						esc_attr( et_pb_get_spacing( $course_benefit_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_benefit_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+
+		if ( '' !== $this->props[ 'course_tabs_gap' ] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $nav,
+					'declaration' => 
+					sprintf( 
+						'column-gap: %1$s !important;', 
+						$this->props[ 'course_tabs_gap' ] 
+					)
+				)
+			);
+		}
 
 		// set styles
 		ET_Builder_Element::set_style(
@@ -869,7 +1579,7 @@ class CourseContent extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => $benefits_li_selector,
-				'declaration' => 'list-style:none; padding: 0px; border-style: solid;',
+				'declaration' => 'list-style:none; padding: 0px;',
 			)
 		);
 
@@ -1036,6 +1746,47 @@ class CourseContent extends ET_Builder_Module {
 		}
 
 		// alignment
+		if ( $review_alignment ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . '.tutor-review-summary .tutor-col-lg-auto',
+					'declaration' => sprintf(
+						'text-align: %1$s !important;',
+						$review_alignment
+					),
+				)
+			);
+		}
+
+		if ( $review_alignment_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . '.tutor-review-summary .tutor-col-lg-auto',
+					'declaration' => sprintf(
+						'text-align: %1$s !important;',
+						$review_alignment_tablet
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
+				)
+			);
+		}
+
+		if ( $review_alignment_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $reviews_wrapper . '.tutor-review-summary .tutor-col-lg-auto',
+					'declaration' => sprintf(
+						'text-align: %1$s !important;',
+						$review_alignment_phone
+					),
+					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
+				)
+			);
+		}
+
 		if ( $benefits_alignment ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1115,46 +1866,6 @@ class CourseContent extends ET_Builder_Module {
 				)
 			);
 		}
-
-		if ( $indent ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $benefits_li_selector . ' .list-item',
-					'declaration' => sprintf(
-						'padding-left: %1$s !important;',
-						$indent
-					),
-				)
-			);
-		}
-
-		if ( $indent_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $benefits_li_selector . ' .list-item',
-					'declaration' => sprintf(
-						'padding-left: %1$s !important;',
-						$indent_tablet
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
-				)
-			);
-		}
-		if ( $indent_phone ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => $benefits_li_selector . ' .list-item',
-					'declaration' => sprintf(
-						'padding-left: %1$s !important;',
-						$indent_phone
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
-				)
-			);
-		}
 		// course benefits styles start end.
 
 		// set styles.
@@ -1176,7 +1887,7 @@ class CourseContent extends ET_Builder_Module {
 			$render_slug,
 			array(
 				'selector'    => $topic_wrapper_selector,
-				'declaration' => 'display: flex; column-gap: 10px; align-items: center;',
+				'declaration' => 'display: flex; column-gap: 10px; align-items: center !important;',
 			)
 		);
 		ET_Builder_Element::set_style(
@@ -1349,44 +2060,6 @@ class CourseContent extends ET_Builder_Module {
 			);
 		}
 		// header styles.
-		if ( $gap ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-course-content-title',
-					'declaration' => sprintf(
-						'margin-top: %1$s !important;',
-						$gap
-					),
-				)
-			);
-		}
-		if ( $gap_tablet ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-course-content-title',
-					'declaration' => sprintf(
-						'margin-top: %1$s !important;',
-						$gap_tablet
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_980' ),
-				)
-			);
-		}
-		if ( $gap_phone ) {
-			ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .tutor-course-content-title',
-					'declaration' => sprintf(
-						'margin-bottom: %1$s !important;',
-						$gap_phone
-					),
-					'media_query' => ET_Builder_Element::get_media_query( 'max_width_767' ),
-				)
-			);
-		}
 		// lesson style.
 
 		// ET_Builder_Element::set_style(

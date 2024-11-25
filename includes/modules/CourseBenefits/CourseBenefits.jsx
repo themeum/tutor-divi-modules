@@ -8,9 +8,9 @@ class CourseBenefits extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper = '%%order_class%% .tutor-course-benefits-wrap';
-        const li_selector = '%%order_class%% .tutor-course-benefits-wrap ul li';
-		const icon_selector	= "%%order_class%% .tutor-course-benefits-wrap li .et-pb-icon";
+        const wrapper = '%%order_class%% .tutor-course-details-widget';
+        const li_selector = '%%order_class%% .tutor-course-details-widget-list li';
+		const icon_selector	= "%%order_class%% .tutor-course-details-widget-list li .et-pb-icon";
 
         //props
         const layout = props.layout;
@@ -256,7 +256,7 @@ class CourseBenefits extends Component {
         if(indent) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget-list li',
                     declaration: `padding-left: ${indent} !important;`
                 }
             ])
@@ -265,7 +265,7 @@ class CourseBenefits extends Component {
         if(indent_tablet) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget-list .list-item',
                     declaration: `padding-left: ${indent_tablet} !important;`,
                     device: 'tablet'
                 }
@@ -275,7 +275,7 @@ class CourseBenefits extends Component {
         if(indent_phone) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget-list .list-item',
                     declaration: `padding-left: ${indent_phone} !important;`,
                     device: 'phone'
                 }

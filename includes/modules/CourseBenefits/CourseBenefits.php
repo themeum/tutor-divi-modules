@@ -58,9 +58,9 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 		);
 
-		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
-		$li_selector    = $wrapper . ' .tutor-course-benefits-items .list-item';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
+		$li_selector    = $wrapper . ' .tutor-course-details-widget-list li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
 		$this->advanced_fields = array(
@@ -85,8 +85,8 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'list_border' => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-course-benefits-items li',
-							'border_styles' => '%%order_class%% .tutor-course-benefits-items li',
+							'border_radii'  => '%%order_class%% .tutor-course-details-widget-list li',
+							'border_styles' => '%%order_class%% .tutor-course-details-widget-list li',
 						),
 					),
 					'tab_slug'    => 'advanced',
@@ -295,8 +295,8 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors.
-		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
 		$li_selector    = $wrapper . ' li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 

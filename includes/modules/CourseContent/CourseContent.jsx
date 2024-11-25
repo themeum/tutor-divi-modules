@@ -18,6 +18,10 @@ class CourseContent extends Component {
         const topic_wrapper             = '%%order_class%% .tutor-divi-course-topic';
         const topic_title_selector      = '%%order_class%% .tutor-course-title';//
         const topic_icon_selector       = `${wrapper} .tutor-accordion-item-header::after`;
+        const nav                       = '%%order_class%% .tutor-nav';
+
+        const about_course            = '%%order_class%% .tutor-course-details-content';
+        const heading_selector        = '%%order_class%% .tutor-course-details-content h2';
 
         const lesson_icon_selector    = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon, %%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status';
 		const lesson_wrapper_selector = '%%order_class%% .tutor-accordion-item .tutor-course-content-list-item';
@@ -34,11 +38,6 @@ class CourseContent extends Component {
         const lesson_icon_size_phone         = is_responsive_lesson_icon_size && '' !== props.lesson_icon_size_phone ? props.lesson_icon_size_phone: lesson_icon_size;
 
         //const topic_icon_position   = props.icon_position;
-        const gap                   = props.gap;
-        const is_responsive_gap     = props.gap_last_edited && props.gap_last_edited.startsWith("on");
-        const gap_tablet            = is_responsive_gap && props.gap_tablet ? props.gap_tablet : gap;
-        const gap_phone             = is_responsive_gap && props.gap_phone ? props.gap_phone : gap;
-
         const topic_icon_color          = props.topic_icon_color;
         const topic_icon_active_color   = props.topic_icon_active_color;
         const topic_icon_hover_color    = props.topic_icon_hover_color;
@@ -64,9 +63,10 @@ class CourseContent extends Component {
 
         // course benefits styles start
         //selectors
-        const benefits_wrapper = '%%order_class%% .tutor-course-benefits-wrap';
-        const benefits_li_selector = '%%order_class%% ul.tutor-course-benefits-items li';
-		const benefits_icon_selector	= "%%order_class%% ul.tutor-course-benefits-items .et-pb-icon";
+        const benefits_wrapper = '%%order_class%% .tutor-course-details-widget';
+        const benefits_li_selector = '%%order_class%% .tutor-course-details-widget-list li';
+		const benefits_icon_selector	= "%%order_class%% .tutor-course-details-widget-list .et-pb-icon";
+        const benefits_title = '%%order_class%% .tutor-course-details-widget .tutor-course-details-widget-title';
 
         const rating_right_bar_selector = "%%order_class%% .tutor-review-summary-ratings"; 
         //props
@@ -86,6 +86,15 @@ class CourseContent extends Component {
         const course_benefits_alignment_phone = is_responsive_course_benefits_alignment && props.course_benefits_alignment_phone ? props.course_benefits_alignment_phone : course_benefits_alignment;
 
         const course_benefits_icon_size = props.course_benefits_icon_size;
+
+        const course_review_alignment = props.course_reviews_alignment;
+
+        const is_responsive_course_review_alignment = props.course_reviews_alignment_last_edited && props.course_reviews_alignment_last_edited.startsWith('on');
+
+        const course_review_alignment_tablet = is_responsive_course_review_alignment && props.course_review_alignment_tablet ? props.course_review_alignment_tablet : course_review_alignment;
+
+        const course_review_alignment_phone = is_responsive_course_review_alignment && props.course_review_alignment_phone ? props.course_review_alignment_phone : course_review_alignment;
+
 
         const is_responsive_course_benefits_icon_size = props.course_benefits_icon_size_last_edited && props.course_benefits_icon_size_last_edited.startsWith("on");
 
@@ -108,11 +117,259 @@ class CourseContent extends Component {
         const is_responsive_space = props.space_between_last_edited && props.space_between_last_edited.startsWith("on");
         const space_between_tablet = is_responsive_space && props.space_between_tablet ? props.space_between_tablet : space_between;
         const space_between_phone = is_responsive_space && props.space_between_phone ? props.space_between_phone : space_between;
+        const review_wrapper = '%%order_class%% #tutor-course-details-tab-reviews';
 
-        const indent = props.indent;
-        const is_responsive_indent = props.indent_last_edited && props.indent_last_edited.startsWith("on");
-        const indent_tablet = is_responsive_indent && props.indent_tablet ? props.indent_tablet : indent;
-        const indent_phone = is_responsive_indent && props.indent_phone ? props.indent_phone : indent;  
+        if ( props.review_star_color ) {
+            additionalCss.push([{
+                selector: `${review_wrapper} .tutor-reviews .tutor-review-list-item .tutor-ratings-stars`,
+                declaration: `color: ${props.review_star_color} !important;`
+            }]);
+        }
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-reviews .tutor-review-list-item .tutor-review-comment`,
+            declaration: 'margin-top: 12px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-reviews .tutor-review-list-item .tutor-col-lg-3, ${review_wrapper} .tutor-reviews .tutor-review-list-item .tutor-col-lg-9`,
+            declaration: 'padding-left: 12px !important; padding-right: 12px !important;'
+        }])
+
+        if ( props.review_background_color ) {
+            additionalCss.push([{
+                selector: `${review_wrapper} .tutor-reviews .tutor-review-list-item`,
+                declaration: `background: ${props.review_background_color} !important;`
+            }]);
+        }
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-ratings-stars span`,
+            declaration: 'margin-left: 3px !important; margin-right: 3px !important;'
+        }])
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary .tutor-col-lg-auto`,
+            declaration: 'padding-left: 24px !important; padding-right: 24px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary .tutor-col-lg`,
+            declaration: 'padding-left: 24px !important; padding-right: 24px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary .tutor-review-summary-average-rating`,
+            declaration: 'margin-bottom: 20px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary .tutor-total-rating-count`,
+            declaration: 'margin-top: 12px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary-rating .tutor-ratings-average`,
+            declaration: 'margin-left: 12px !important;'
+        }]);
+
+        additionalCss.push([{
+            selector: `${review_wrapper} .tutor-review-summary-rating .tutor-col-auto, ${review_wrapper} .tutor-review-summary-rating .tutor-col, ${review_wrapper} .tutor-review-summary-rating .tutor-col-4`,
+            declaration: 'padding-right: 12px !important; padding-left: 12px !important;'
+        }]);
+
+        if ( props.review_padding ) {
+            const review_padding = props.review_padding.split('|');
+
+             additionalCss.push([{
+                selector: `${review_wrapper} .tutor-reviews .tutor-review-list-item`,
+                declaration: `padding-top: ${review_padding[0]}; padding-right: ${review_padding[1]}; padding-bottom: ${review_padding[2]}; padding-left: ${review_padding[3]};`,
+            }]);
+        }
+
+        if ( props.rating_bar_margin ) {
+            const rating_bar_margin = props.rating_bar_margin.split('|');
+
+             additionalCss.push([{
+                selector: `${review_wrapper} .tutor-review-summary-rating`,
+                declaration: `margin-top: ${rating_bar_margin[0]} !important; margin-right: ${rating_bar_margin[1]} !important; margin-bottom: ${rating_bar_margin[2]} !important; margin-left: ${rating_bar_margin[3]} !important;`,
+            }]);
+        }
+
+        if ( props.review_summary_background_color ) {
+            additionalCss.push([{
+                selector: `${review_wrapper} .tutor-review-summary`,
+                declaration: `background: ${props.review_summary_background_color} !important;`
+            }]);
+        }
+        
+        if ( props.review_summary_padding ) {
+            const review_summary_padding = props.review_summary_padding.split('|');
+
+             additionalCss.push([{
+                selector: `${review_wrapper} .tutor-review-summary`,
+                declaration: `padding-top: ${review_summary_padding[0]}; padding-right: ${review_summary_padding[1]}; padding-bottom: ${review_summary_padding[2]}; padding-left: ${review_summary_padding[3]};`,
+            }]);
+            
+        }
+        if ( props.review_title_margin ) {
+            const review_title_margin = props.review_title_margin.split('|');
+
+             additionalCss.push([{
+                selector: `${review_wrapper} h3`,
+                declaration: `margin-top: ${review_title_margin[0]} !important; margin-right: ${review_title_margin[1]} !important; margin-bottom: ${review_title_margin[2]} !important; margin-left: ${review_title_margin[3]} !important;`,
+            }]);
+        }
+
+        additionalCss.push([{
+            selector: '%%order_class%% .tutor-is-sticky',
+            declaration: 'top: 32px !important; position: sticky !important; backdrop-filter: blur(14px) !important; z-index: 1063 !important;',
+        }]);
+
+
+        additionalCss.push([{
+            selector: '%%order_class%% .tutor-accordion .tutor-course-content-list-item-title a',
+            declaration: 'color: inherit !important;'
+        }]);
+
+        additionalCss.push([
+            {    
+                selector: `${wrapper} .tutor-accordion-item-header`,
+                declaration: 'transition: background-color 300ms ease-in !important;'
+            }   
+        ]);
+
+        additionalCss.push([
+            {    
+                selector: `%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-icon`,
+                declaration: 'margin-right: 12px !important;'
+            }   
+        ]);
+
+        additionalCss.push([
+            {    
+                selector: `%%order_class%% .tutor-accordion-item .tutor-course-content-list-item-status`,
+                declaration: 'margin-left: 20px !important;'
+            }   
+        ]);
+
+        additionalCss.push([
+            {
+                selector: 'h2,h3,h4,h5',
+                declaration: 'padding:0 !important;',
+            }
+        ]);
+
+        if ( props.lesson_padding ) {
+
+             const lesson_padding = props.lesson_padding.split('|');
+
+            additionalCss.push([{
+                selector: lesson_wrapper_selector,
+                declaration: `padding-top: ${lesson_padding[0]} !important; padding-right: ${lesson_padding[1]} !important; padding-bottom: ${lesson_padding[2]} !important; padding-left: ${lesson_padding[3]} !important;`,
+            }]);
+        }
+
+        if ( props.course_topics_padding ) {
+            
+            const course_topics_padding = props.course_topics_padding.split('|');
+
+
+            additionalCss.push([{
+                selector: `${wrapper} .tutor-accordion-item-header`,
+                declaration: `padding-top: ${course_topics_padding[0]} !important; padding-right: ${course_topics_padding[1]} !important; padding-bottom: ${course_topics_padding[2]} !important; padding-left: ${course_topics_padding[3]} !important;`,
+            }]);
+        }
+
+        if ( props.course_content_title_margin ) {
+            const course_content_title_margin = props.course_content_title_margin.split('|');
+
+             additionalCss.push([{
+                selector: '%%order_class%% .tutor-course-content-title',
+                declaration: `margin-top: ${course_content_title_margin[0]} !important; margin-right: ${course_content_title_margin[1]} !important; margin-bottom: ${course_content_title_margin[2]} !important; margin-left: ${course_content_title_margin[3]} !important;`,
+            }]);
+        }
+
+        if ( props.course_icon_margin ) {
+            const course_icon_margin = props.course_icon_margin.split('|');
+
+            additionalCss.push([{
+                selector: benefits_icon_selector,
+                declaration: `margin-top: ${course_icon_margin[0]}; margin-right: ${course_icon_margin[1]}; margin-bottom: ${course_icon_margin[2]}; margin-left: ${course_icon_margin[3]};`,
+            }]);
+        }
+
+        if ( props.about_course_margin ) {
+            const about_course_margin = props.about_course_margin.split('|');
+
+            additionalCss.push([{
+                selector: about_course,
+                declaration: `margin-top: ${about_course_margin[0]}; margin-right: ${about_course_margin[1]}; margin-bottom: ${about_course_margin[2]}; margin-left: ${about_course_margin[3]};`,
+            }]);
+        }
+
+        if ( props.course_benefit_li_margin ) {
+             const course_benefit_li_margin = props.course_benefit_li_margin.split('|');
+
+            additionalCss.push([{
+                selector: benefits_li_selector,
+                declaration: `margin-top: ${course_benefit_li_margin[0]}; margin-right: ${course_benefit_li_margin[1]}; margin-bottom: ${course_benefit_li_margin[2]}; margin-left: ${course_benefit_li_margin[3]};`,
+            }]);
+        }
+
+        if ( props.course_tab_padding ) {
+            const course_tab_padding = props.course_tab_padding.split('|');
+
+            additionalCss.push([{
+                selector: '%%order_class%% .tutor-nav .tutor-nav-link',
+                declaration: `padding-top: ${course_tab_padding[0]}; padding-right: ${course_tab_padding[1]}; padding-bottom: ${course_tab_padding[2]}; padding-left: ${course_tab_padding[3]};`,
+            }]);
+        }
+
+        if ( props.course_tab_margin ) {
+             const course_tab_margin = props.course_tab_margin.split('|');
+
+            additionalCss.push([{
+                selector: '%%order_class%% .tutor-nav .tutor-nav-link',
+                declaration: `margin-top: ${course_tab_margin[0]}; margin-right: ${course_tab_margin[1]}; margin-bottom: ${course_tab_margin[2]}; margin-left: ${course_tab_margin[3]};`,
+            }]);
+        }
+        
+
+        if ( props.course_benefit_margin ) {
+            const course_benefit_margin = props.course_benefit_margin.split('|');
+
+            additionalCss.push([{
+                selector: benefits_wrapper,
+                declaration: `margin-top: ${course_benefit_margin[0]}; margin-right: ${course_benefit_margin[1]}; margin-bottom: ${course_benefit_margin[2]}; margin-left: ${course_benefit_margin[3]};`,
+            }]);
+        }
+
+        if ( props.course_about_heading_margin ) {
+            const course_about_heading_margin = props.course_about_heading_margin.split('|');
+
+            additionalCss.push([{
+                selector: heading_selector,
+                declaration: `margin-top: ${course_about_heading_margin[0]}; margin-right: ${course_about_heading_margin[1]}; margin-bottom: ${course_about_heading_margin[2]}; margin-left: ${course_about_heading_margin[3]};`,
+            }]);
+        }
+
+        if ( props.course_benefit_title_margin ) {
+            const course_benefit_title_margin = props.course_benefit_title_margin.split('|');
+
+            additionalCss.push([{
+                selector: benefits_title,
+                declaration: `margin-top: ${course_benefit_title_margin[0]}; margin-right: ${course_benefit_title_margin[1]}; margin-bottom: ${course_benefit_title_margin[2]}; margin-left: ${course_benefit_title_margin[3]};`,
+            }]);
+        }
+
+        // set course content nav styles
+        additionalCss.push([
+            {
+                selector: nav,
+                declaration: 'display:flex !important;',
+            }
+        ]);
 
         //set styles
         additionalCss.push([
@@ -207,7 +464,7 @@ class CourseContent extends Component {
             additionalCss.push([
                 {
                     selector: benefits_li_selector,
-                    declaration: `display: ${course_benefits_layout};`
+                    declaration: `display: ${course_benefits_layout} !important;`
                 }
             ])
         }
@@ -215,7 +472,7 @@ class CourseContent extends Component {
             additionalCss.push([
                 {
                     selector: benefits_li_selector,
-                    declaration: `display: ${course_benefits_layout_tablet};`,
+                    declaration: `display: ${course_benefits_layout_tablet} !important;`,
                     device: 'tablet'
                 }
             ])
@@ -224,9 +481,38 @@ class CourseContent extends Component {
             additionalCss.push([
                 {
                     selector: benefits_li_selector,
-                    declaration: `display: ${course_benefits_layout_phone};`,
+                    declaration: `display: ${course_benefits_layout_phone} !important;`,
                     device: 'phone'
                 }
+            ])
+        }
+
+        if ( course_review_alignment ) {
+            additionalCss.push([
+               {
+                    selector: `${review_wrapper} .tutor-review-summary .tutor-col-lg-auto`,
+                    declaration: `text-align: ${course_review_alignment} !important;`
+               }
+            ])
+        }
+
+        if ( course_review_alignment_tablet ) {
+            additionalCss.push([
+               {
+                    selector: `${review_wrapper} .tutor-review-summary .tutor-col-lg-auto`,
+                    declaration: `text-align: ${course_review_alignment_tablet} !important;`,
+                    device: 'tablet',
+               }
+            ])
+        }
+
+        if ( course_review_alignment_phone ) {
+            additionalCss.push([
+               {
+                    selector: `${review_wrapper} .tutor-review-summary .tutor-col-lg-auto`,
+                    declaration: `text-align: ${course_review_alignment_phone} !important;`,
+                    device: 'phone',
+               }
             ])
         }
 
@@ -291,35 +577,6 @@ class CourseContent extends Component {
                 {
                     selector: `${benefits_li_selector}:not(:last-child)`,
                     declaration: `margin-bottom: ${space_between_phone};`,
-                    device: 'phone'
-                }
-            ])
-        }
-        //text indent
-        if(indent) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
-                    declaration: `padding-left: ${indent} !important;`
-                }
-            ])
-        }
-
-        if(indent_tablet) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
-                    declaration: `padding-left: ${indent_tablet} !important;`,
-                    device: 'tablet'
-                }
-            ])
-        }
-
-        if(indent_phone) {
-            additionalCss.push([
-                {
-                    selector: '%%order_class%% .tutor-course-benefits-wrap .list-item',
-                    declaration: `padding-left: ${indent_phone} !important;`,
                     device: 'phone'
                 }
             ])
@@ -472,33 +729,6 @@ class CourseContent extends Component {
             ])            
         }
         //header gap style
-        if(gap) {
-            additionalCss.push([
-                {
-                    selector: "%%order_class%% .tutor-course-content-title",
-                    declaration: `margin-bottom: ${gap};`
-                }
-            ]);            
-        }
-
-        if(gap_tablet) {
-            additionalCss.push([
-                {
-                    selector: "%%order_class%% .tutor-course-content-title",
-                    declaration: `margin-bottom: ${gap_tablet};`,
-                    device: 'tablet'
-                }
-            ]);            
-        }
-        if(gap_phone) {
-            additionalCss.push([
-                {
-                    selector: "%%order_class%% .tutor-course-content-title",
-                    declaration: `margin-bottom: ${gap_phone};`,
-                    device: 'phone'
-                }
-            ]);            
-        }  
         //lesson styles
         //lesson icon
         if('' !== lesson_icon_size) {
