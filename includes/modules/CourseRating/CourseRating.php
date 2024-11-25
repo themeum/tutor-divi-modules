@@ -49,6 +49,10 @@ class TutorCourseRating extends ET_Builder_Module {
 						'title'    => esc_html__( 'Rating Stars', 'tutor-lms-divi-modules' ),
 						'priority' => 49,
 					),
+					'rating' => array(
+						'title'    => esc_html__( 'Rating', 'tutor-lms-divi-modules'),
+						'priority' => 50,
+					)
 				),
 			),
 		);
@@ -57,12 +61,20 @@ class TutorCourseRating extends ET_Builder_Module {
 			'fonts'          => array(
 				'count_text' => array(
 					'css'             => array(
-						'main' => '%%order_class%% .tutor-single-course-rating .tutor-single-rating-count',
+						'main' => '%%order_class%% .tutor-ratings .tutor-ratings-count',
 					),
 					'hide_text_align' => true,
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'rating_stars',
 				),
+				'avg_text' => array(
+					'css'             => array(
+						'main' => '%%order_class%% .tutor-ratings .tutor-ratings-average',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'rating',
+				)
 			),
 			'background'     => array(
 				'settings' => array(
@@ -182,6 +194,23 @@ class TutorCourseRating extends ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'rating_stars',
 			),
+			'rating_gap'         => array(
+				'label'          => esc_html__( 'Rating Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'allowed_units'  => array( '%', 'em', 'rem', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ex', 'vh', 'vw' ),
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '0',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'range_settings' => array(
+					'min' => 0,
+					'max' => 100,
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'rating',
+			),
 
 		);
 
@@ -216,9 +245,9 @@ class TutorCourseRating extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// Process image size value into style.
-		$selector        = '%%order_class%% .dtlms-rating-wrapper';
+		$selector        = '%%order_class%% .dtlms-rating-wrapper .tutor-ratings';
 		$star_icon_group = "$selector .tutor-ratings-stars";
-		$star_icon       = "$selector .tutor-ratings-stars i";
+		$star_icon       = "$selector .tutor-ratings-stars span";
 		$layout          = $this->props['rating_layout'];
 		// prepare alignment props.
 		$alignment        = $this->props['rating_alignment'];
@@ -251,7 +280,7 @@ class TutorCourseRating extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .tutor-single-course-rating',
+					'selector'    => '%%order_class%% .tutor-ratings',
 					'declaration' => sprintf(
 						'display: flex;
 						column-gap: 3px;
@@ -268,7 +297,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'justify-content: %1$s;',
 							$alignment
@@ -280,7 +309,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'justify-content: %1$s;',
 							$alignment_tablet
@@ -293,7 +322,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'justify-content: %1$s;',
 							$alignment_mobile
@@ -302,6 +331,18 @@ class TutorCourseRating extends ET_Builder_Module {
 					)
 				);
 			}
+
+			// set tutor rating layout gap
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-ratings',
+					'declaration' => sprintf(
+						'column-gap: %1$s;',
+						$this->props['rating_gap']
+					),
+				)
+			);
 		}
 
 		if ( 'column' === $layout ) {
@@ -309,7 +350,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'align-items: %1$s;',
 							$alignment
@@ -321,7 +362,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'align-items: %1$s;',
 							$alignment_tablet
@@ -334,7 +375,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
-						'selector'    => '%%order_class%% .tutor-single-course-rating',
+						'selector'    => '%%order_class%% .tutor-ratings',
 						'declaration' => sprintf(
 							'align-items: %1$s;',
 							$alignment_mobile
@@ -343,10 +384,30 @@ class TutorCourseRating extends ET_Builder_Module {
 					)
 				);
 			}
+			// set tutor rating layout gap
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-ratings',
+					'declaration' => sprintf(
+						'row-gap: %1$s;',
+						$this->props['rating_gap']
+					),
+				)
+			);
 		}
 
 		// alignment end.
 		
+		// star group style
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => $star_icon_group,
+				'declaration' => 'display: flex; flex-direction:row;'
+			)
+		);
+
 		// default star color.
 		ET_Builder_Element::set_style(
 			$render_slug,
@@ -362,7 +423,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				array(
 					'selector'    => $star_icon,
 					'declaration' => sprintf(
-						'font-size: %1$s !important;',
+						'font-size: %1$s;',
 						esc_html( $this->props['star_size'] )
 					),
 				)
@@ -389,7 +450,7 @@ class TutorCourseRating extends ET_Builder_Module {
 				array(
 					'selector'    => $star_icon_group,
 					'declaration' => sprintf(
-						'letter-spacing: %1$s;',
+						'column-gap: %1$s;',
 						esc_html( $this->props['star_gap'] )
 					),
 				)
