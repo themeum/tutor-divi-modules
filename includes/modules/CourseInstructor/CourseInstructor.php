@@ -230,6 +230,20 @@ class CourseInstructor extends ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'instructor_avatar',
 			),
+			'course_instructor_label_margin'           => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'course_instructor_title',
+				'mobile_options' => true,
+			),
+			'course_instructor_avatar_margin'           => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'instructor_avatar',
+				'mobile_options' => true,
+			)
 		);
 	}
 
@@ -258,6 +272,127 @@ class CourseInstructor extends ET_Builder_Module {
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		$text_avatar_background = $this->props['course_instructor_avatar_background_color'];
 		$avatar_text_color      = $this->props['course_instructor_avatar_text_color'];
+
+		$course_instructor_label_margin                   = $this->props['course_instructor_label_margin'];
+		$course_instructor_label_margin_tablet            = $this->props['course_instructor_label_margin_tablet'];
+		$course_instructor_label_margin_phone             = $this->props['course_instructor_label_margin_phone'];
+		$course_instructor_label_margin_last_edited       = $this->props['course_instructor_label_margin' . '_last_edited'];
+		$course_instructor_label_margin_responsive_active = et_pb_get_responsive_status( $course_instructor_label_margin_last_edited );
+
+		$course_instructor_avatar_margin                   = $this->props['course_instructor_avatar_margin'];
+		$course_instructor_avatar_margin_tablet            = $this->props['course_instructor_avatar_margin_tablet'];
+		$course_instructor_avatar_margin_phone             = $this->props['course_instructor_avatar_margin_phone'];
+		$course_instructor_avatar_margin_last_edited       = $this->props['course_instructor_avatar_margin' . '_last_edited'];
+		$course_instructor_avatar_margin_responsive_active = et_pb_get_responsive_status( $course_instructor_avatar_margin_last_edited );
+
+		// Course instructor avatar default margin.
+		if ( '' !== $course_instructor_avatar_margin && '|||' !== $course_instructor_avatar_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-wrapper .tutor-avatar',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		// Course instructor avatar margin tablet.
+		if ( '' !== $course_instructor_avatar_margin_tablet && '|||' !== $course_instructor_avatar_margin_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-wrapper .tutor-avatar',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_tablet, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_tablet, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_tablet, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_tablet, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);
+		}
+
+		// Course instructor avatar margin phone.
+		if ( '' !== $course_instructor_avatar_margin_phone && '|||' !== $course_instructor_avatar_margin_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-wrapper .tutor-avatar',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_phone, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_phone, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_phone, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_avatar_margin_phone, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);
+		}
+
+
+		// Course instructor label margin.
+		if ( '' !== $course_instructor_label_margin && '|||' !== $course_instructor_label_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-title',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		// Course instructor label margin tablet.
+		if ( '' !== $course_instructor_label_margin_tablet && '|||' !== $course_instructor_label_margin_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-title',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_tablet, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_tablet, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_tablet, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_tablet, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);
+		}
+
+		// Course instructor label margin phone.
+		if ( '' !== $course_instructor_label_margin_phone && '|||' !== $course_instructor_label_margin_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .dtlms-course-instructor-title',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_phone, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_phone, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_phone, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $course_instructor_label_margin_phone, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);
+		}
+
+
 		if ( '' !== $text_avatar_background ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
