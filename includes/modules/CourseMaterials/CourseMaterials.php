@@ -59,8 +59,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			),
 		);
 
-		$wrapper        = '%%order_class%% .tutor-course-material-includes-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
 		$li_selector    = $wrapper . ' li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
@@ -86,8 +86,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'list'    => array(
 					'css'         => array(
 						'main'      => array(
-							'border_radii'  => '%%order_class%% ul li', // "{$this->main_css_element} .tutor-social-share-wrap i",
-							'border_styles' => '%%order_class%% ul li',
+							'border_radii'  => $li_selector, // "{$this->main_css_element} .tutor-social-share-wrap i",
+							'border_styles' => $li_selector,
 						),
 						'important' => true,
 					),
@@ -159,7 +159,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 			'icon'          => array(
 				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'            => 'select_icon',
-				'default'         => 'N',
+				'default'         => '',
 				'class'           => array( 'et-pb-font-icon' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
@@ -224,6 +224,7 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'type'           => 'range',
 				'default'        => '12px',
 				'default_unit'   => 'px',
+				'important'      => true,
 				'range_settings' => array(
 					'min'  => '-10',
 					'max'  => '100',
@@ -248,6 +249,20 @@ class TutorCourseMaterials extends ET_Builder_Module {
 				'toggle_slug'    => 'material_text',
 				'mobile_options' => true,
 			),
+			'title_margin' => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'title',
+				'mobile_options' => true,
+			),
+			'list_margin' => array(
+				'label'          => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'           => 'custom_margin',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'list',
+				'mobile_options' => true,
+			)
 		);
 
 		return $fields;
@@ -298,8 +313,8 @@ class TutorCourseMaterials extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors
-		$wrapper        = '%%order_class%% .tutor-course-material-includes-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
 		$li_selector    = $wrapper . ' li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
@@ -332,6 +347,125 @@ class TutorCourseMaterials extends ET_Builder_Module {
 		$indent_tablet = isset( $this->props['indent_tablet'] ) && '' !== $this->props['indent_tablet'] ? sanitize_text_field( $this->props['indent_tablet'] ) : $indent;
 		$indent_phone  = isset( $this->props['indent_phone'] ) && '' !== $this->props['indent_phone'] ? sanitize_text_field( $this->props['indent_phone'] ) : $indent;
 
+		$title_margin                   = $this->props['title_margin'];
+		$title_margin_tablet            = $this->props['title_margin_tablet'];
+		$title_margin_phone             = $this->props['title_margin_phone'];
+		$title_margin_last_edited       = $this->props['title_margin' . '_last_edited'];
+		$title_margin_responsive_active = et_pb_get_responsive_status( $title_margin_last_edited );
+
+
+		$list_margin                   = $this->props['list_margin'];
+		$list_margin_tablet            = $this->props['list_margin_tablet'];
+		$list_margin_phone             = $this->props['list_margin_phone'];
+		$list_margin_last_edited       = $this->props['list_margin' . '_last_edited'];
+		$list_margin_responsive_active = et_pb_get_responsive_status( $list_margin_last_edited );
+
+
+		// Materials list default margin.
+		if ( '' !== $list_margin && '|||' !== $list_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $li_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $list_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		// Materials list margin tablet.
+		if ( '' !== $list_margin_tablet && '|||' !== $list_margin_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $li_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $list_margin_tablet, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_tablet, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_tablet, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_tablet, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);
+		}
+
+		// Materials list margin phone.
+		if ( '' !== $list_margin_phone && '|||' !== $list_margin_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $li_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $list_margin_phone, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_phone, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_phone, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $list_margin_phone, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);
+		}
+
+		// Materials title default margin.
+		if ( '' !== $title_margin && '|||' !== $title_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $title_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $title_margin, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		// Materials title margin tablet.
+		if ( '' !== $title_margin_tablet && '|||' !== $title_margin_tablet ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $title_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $title_margin_tablet, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_tablet, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_tablet, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_tablet, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_980')
+				)
+			);
+		}
+
+		// Materials title margin phone.
+		if ( '' !== $title_margin_phone && '|||' !== $title_margin_phone ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $title_selector,
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $title_margin_phone, 'top', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_phone, 'right', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_phone, 'bottom', '0px' ) ),
+						esc_attr( et_pb_get_spacing( $title_margin_phone, 'left', '0px' ) ),
+					),
+					'media_query' => ET_Builder_Element::get_media_query('max_width_767')
+				)
+			);
+		}
 		// set styles
 		ET_Builder_Element::set_style(
 			$render_slug,
