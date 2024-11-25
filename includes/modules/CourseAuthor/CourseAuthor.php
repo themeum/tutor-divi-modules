@@ -57,6 +57,7 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		);
 
 		$author_selector       = '%%order_class%% .tutor-single-course-author-meta .tutor-single-course-author-name';
+		$author_avatar         = '%%order_class%% .tutor-single-course-author-meta .tutor-single-course-avatar .tutor-avatar';
 		$this->advanced_fields = array(
 			'fonts'      => array(
 				'author_label_text' => array(
@@ -79,6 +80,16 @@ class TutorCourseAuthor extends ET_Builder_Module {
 					'tab_slug'        => 'advanced',
 					'toggle_slug'     => 'author_name_text',
 				),
+
+				'author_image' => array(
+					'label'            => esc_html__( 'Avatar', 'tutor-lms-divi-modules' ),
+					'css'              => array(
+						'main' => $author_avatar . ' span',
+					),
+					'hide_text_align' => true,
+					'tab_slug'        => 'advanced',
+					'toggle_slug'     => 'author_image',
+				)
 			),
 
 			'box_shadow' => array(
@@ -92,7 +103,15 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			// 'margin_padding'  => false,
 			'text'       => false,
 			'borders'    => false,
-			'background' => false,
+			'background' => array(
+				'css'     => array(
+					'main' => $author_avatar . ' span',
+				),
+				'settings' => array(
+					'tab_slug'    => 'advanced',
+					'toggle_slug' => 'author_image'
+				)
+			),
 			'filters'    => false,
 			'animation'  => false,
 			'transform'  => false,
@@ -222,6 +241,23 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				),
 				'mobile_options'  => true,
 			),
+			'avatar_border_radius'  => array(
+				'label'           => esc_html__( 'Border Radius', 'tutor-lms-divi-modules' ),
+				'type'            => 'range',
+				'option_category' => 'layout',
+				'default_unit'    => 'px',
+				'default'         => '100px',
+				'range_settings'  => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'        => 'advanced',
+				'toggle_slug'     => 'author_image',
+				'show_if'         => array(
+					'profile_picture' => 'on',
+				),
+			),
 			// author avatar settings in advanced tab end
 		);
 
@@ -307,6 +343,18 @@ class TutorCourseAuthor extends ET_Builder_Module {
 				),
 			)
 		);
+
+		// remove default padding below avatar and name.
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'  => $wrapper . ' a',
+				'declaration' => sprintf(
+					'padding: 0;'
+				),
+			)
+		);
+		
 		if ( '' !== $avatar_size ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -515,6 +563,20 @@ class TutorCourseAuthor extends ET_Builder_Module {
 						'align-items: %1$s',
 						esc_html( $alignment )
 					),
+				)
+			);
+		}
+
+		// set avatar border radius
+		if ( '' !== $this->props['avatar_border_radius'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => $img_selector,
+					'declaration' => sprintf(
+						'border-radius : %1s',
+						esc_html( $this->props['avatar_border_radius'] )
+					)
 				)
 			);
 		}

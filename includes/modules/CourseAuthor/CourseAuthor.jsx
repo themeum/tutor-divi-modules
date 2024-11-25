@@ -67,6 +67,14 @@ class CourseAuthor extends Component {
       },
     ]);
 
+    // remove default padding below avatar and name
+    additionalCss.push([
+      {
+        selector: `${wrapper} a`,
+        declaration: `padding: 0`,
+      },
+    ])
+
     if (avatar_size) {
       additionalCss.push([
         {
@@ -189,6 +197,15 @@ class CourseAuthor extends Component {
       ]);
     }
 
+    if( props.avatar_border_radius ) {
+      additionalCss.push([
+        {
+          selector: img_selector,
+          declaration: `border-radius: ${props.avatar_border_radius}`
+        },
+      ]);
+    }
+
     return additionalCss;
   }
 
@@ -196,7 +213,7 @@ class CourseAuthor extends Component {
     //conditionally render
     if (props.profile_picture === "on") {
       return (
-        <div className="tutor-single-course-avatar">
+        <div className="tutor-single-course-avatar tutor-d-flex">
           <a
             href={this.props.__author.profile_url}
             dangerouslySetInnerHTML={{ __html: props.__author.avatar_url }}
@@ -228,7 +245,7 @@ class CourseAuthor extends Component {
       <Fragment>
         <div className="tutor-single-course-meta tutor-meta-top">
           <ul>
-            <li className="tutor-single-course-author-meta">
+            <li className="tutor-single-course-author-meta tutor-align-center">
               {this.authorAvatar(this.props)}
               {this.authorName(this.props)}
             </li>
