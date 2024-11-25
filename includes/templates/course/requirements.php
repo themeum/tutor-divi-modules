@@ -25,9 +25,9 @@ if ( is_array( $course_requirements ) && count( $course_requirements ) ) {
 
 	<div class="tutor-single-course-segment  tutor-course-requirements-wrap">
 	
-		<h4 class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
+		<h3 class="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6">
 			<?php esc_html_e( $args['label'] ); ?>
-		</h4>
+		</h3>
 		<div class="tutor-course-requirements-content">
 			<ul class="tutor-course-requirements-items">
 				<?php

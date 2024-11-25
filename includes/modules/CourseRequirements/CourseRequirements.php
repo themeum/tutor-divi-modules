@@ -613,7 +613,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 
 		// space between.
 		if ( $space_between ) {
-			if ( 'list' === $space_between ) {
+			if ( 'list' === $layout ) {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(
