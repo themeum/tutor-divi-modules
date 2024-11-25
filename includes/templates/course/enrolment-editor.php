@@ -5,37 +5,60 @@
  * @package Enrollment Widget
  */
 
-$enrollment_mode = $args['preview_mode'];
-$course          = get_post( $args['course'] );
-$is_purchasable  = tutor_utils()->is_course_purchasable( $args['course'] );
-$is_enable_date  = get_tutor_option( 'enable_course_update_date' );
+use Tutor\Models\CourseModel;
+
+global $is_enrolled;
+
+$is_enrolled          = apply_filters( 'tutor_alter_enroll_status', $is_enrolled );
+
+$enrollment_mode      = $is_enrolled ? 'enrolled' : $args['preview_mode'];
+$course               = get_post( $args['course'] );
+$is_purchasable       = tutor_utils()->is_course_purchasable( $args['course'] );
+$lesson_url           = tutor_utils()->get_course_first_lesson( );
+$is_privileged_user   = tutor_utils()->has_user_course_content_access( get_current_user_id(), $args['course'] );
+$is_enable_date       = get_tutor_option( 'enable_course_update_date' );
+
+$tutor_course_sell_by = apply_filters( 'tutor_course_sell_by', null );
+$is_public            = get_post_meta( $args['course'], '_tutor_is_public_course', true ) == 'yes';
+
+
+$monetize_by    = tutor_utils()->get_option( 'monetize_by' );
 
 $tutor_course_sell_by  = apply_filters( 'tutor_course_sell_by', null );
-$sidebar_meta = apply_filters(
-	'tutor/course/single/sidebar/metadata',
+$default_meta = array(
 	array(
-		array(
-			'icon_class' => 'tutor-icon-mortarboard',
-			'label'      => __( 'Total Enrolled', 'tutor' ),
-			'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
-		),
-		array(
-			'icon_class' => 'tutor-icon-clock-line',
-			'label'      => __( 'Duration', 'tutor' ),
-			'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
-		),
-		array(
-			'icon_class' => 'tutor-icon-refresh-o',
-			'label'      => __( 'Last Updated', 'tutor' ),
-			'value'      => get_tutor_option( 'enable_course_update_date' ) ? date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ) : null,
-		),
+		'icon_class' => 'tutor-icon-mortarboard',
+		'label'      => __( 'Total Enrolled', 'tutor' ),
+		'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() . ' ' . __( 'Total Enrolled', 'tutor' ) : null,
 	),
-	$args['course']
+	array(
+		'icon_class' => 'tutor-icon-clock-line',
+		'label'      => __( 'Duration', 'tutor' ),
+		'value'      => get_tutor_option( 'enable_course_duration' ) ? ( get_tutor_course_duration_context() ? get_tutor_course_duration_context() . ' ' . __( 'Duration', 'tutor' ) : false ) : null,
+	),
+	array(
+		'icon_class' => 'tutor-icon-refresh-o',
+		'label'      => __( 'Last Updated', 'tutor' ),
+		'value'      => get_tutor_option( 'enable_course_update_date' ) ? get_the_modified_date( get_option( 'date_format' ) ) . ' ' . __( 'Last Updated', 'tutor' ) : null,
+	),
 );
+
+// Add level if enabled.
+if ( tutor_utils()->get_option( 'enable_course_level', true, true ) ) {
+	array_unshift(
+		$default_meta,
+		array(
+			'icon_class' => 'tutor-icon-level',
+			'label'      => __( 'Level', 'tutor' ),
+			'value'      => get_tutor_course_level( $args['course'] ),
+		)
+	);
+}
 $button_size  		= '' === $args['button_size'] ? 'medium' : $args['button_size'];
 $button_alignment  	= '' === $args['alignment'] ? 'center' : $args['alignment'];
 $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 
+$sidebar_meta = apply_filters( 'tutor/course/single/sidebar/metadata', $default_meta, $args['course'] );
 $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true ) ? '' : wp_login_url( tutor()->current_url );
 ?>
 <div class="tutor-card tutor-card-md tutor-sidebar-card dtlms-enroll-btn-width-<?php echo esc_attr( $button_width ); ?> dtlms-enroll-btn-align-<?php echo esc_attr( $button_alignment ); ?> dtlms-enroll-btn-size-<?php echo esc_attr( $button_size ); ?>">
@@ -51,8 +74,30 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			$retake_course       = tutor_utils()->can_user_retake_course();
 			$course_id           = $args['course'];
 			$course_progress     = tutor_utils()->get_course_completed_percent( $course_id, 0, true );
+			$completed_percent   = $course_progress['completed_percent'];
 			?>
-
+			<!-- course progress -->
+			<?php if ( tutor_utils()->get_option( 'enable_course_progress_bar', true, true ) && is_array( $course_progress ) && count( $course_progress ) ) : ?>
+				<div class="tutor-course-progress-wrapper tutor-mb-32">
+					<h3 class="tutor-color-black tutor-fs-5 tutor-fw-bold tutor-mb-16">
+						<?php esc_html_e( 'Course Progress', 'tutor' ); ?>
+					</h3>
+					<div class="list-item-progress">
+						<div class="tutor-fs-6 tutor-color-secondary tutor-d-flex tutor-align-center tutor-justify-between">
+							<span class="progress-steps">
+								<?php echo esc_html( $course_progress['completed_count'] . '/' . $course_progress['total_count'] ); ?>
+							</span>
+							<span class="progress-percentage">
+								<?php echo esc_html( $completed_percent . '%' ); ?>
+								<?php esc_html_e( 'Complete', 'tutor' ); ?>
+							</span>
+						</div>
+						<div class="tutor-progress-bar tutor-mt-12" style="--tutor-progress-value:<?php echo esc_attr( $completed_percent ); ?>%;">
+							<span class="tutor-progress-value" area-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
 			<?php
 			$start_content = '';
 
@@ -61,47 +106,79 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 
 			// Show Start/Continue/Retake Button
 			if ( $lesson_url ) {
-				$button_class = 'tutor-btn ' .
-								( $retake_course ? 'tutor-btn-outline-primary' : 'tutor-btn-primary' ) .
-								' tutor-btn-block' .
-								( $retake_course ? ' tutor-course-retake-button' : '' );
-
-				// Button identifier class
-				$button_identifier = 'start-continue-retake-button';
-				$tag               = $retake_course ? 'button' : 'a';
 				ob_start();
-				?>
-					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( $args['course'] ); ?>">
-					<?php
-					if ( $retake_course ) {
-						esc_html_e( 'Retake This Course', 'tutor' );
-					} elseif ( $completed_percent <= 0 ) {
-						esc_html_e( 'Start Learning', 'tutor' );
-					} else {
-						esc_html_e( 'Continue Learning', 'tutor' );
-					}
+
+				if ( $retake_course && ( CourseModel::MODE_FLEXIBLE === $completion_mode || $is_completed_course ) ) {
 					?>
-					</<?php echo $tag; ?>>
+					<button type="button" 
+							class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
+							href="<?php echo esc_url( $lesson_url ); ?>"
+							data-course_id="<?php echo esc_attr( $course_id ); ?>">
+						<?php esc_html_e( 'Retake This Course', 'tutor' ); ?>
+					</button>
 					<?php
-					$start_content = ob_get_clean();
+				}
+
+				/**
+				 * Start/Continue learning button
+				 *
+				 * @since 1.0.0
+				 * @since 2.4.0 refactored for enhance readibility.
+				 */
+				$link_text = '';
+				if ( ! $is_completed_course ) {
+					if ( 0 === (int) $completed_percent ) {
+						$link_text = __( 'Start Learning', 'tutor' );
+					}
+					if ( $completed_percent > 0 && $completed_percent < 100 ) {
+						$link_text = __( 'Continue Learning', 'tutor' );
+					}
+
+					/**
+					 * `Review Progress` link text shown when
+					 * - strict mode enabled
+					 * - course progress 100%
+					 * - in course progress any quiz or assignemnt result is not passed.
+					 *
+					 * @since 2.4.0
+					 */
+					if ( 100 === (int) $completed_percent && false === CourseModel::can_complete_course( $course_id, get_current_user_id() ) ) {
+						$lesson_url = CourseModel::get_review_progress_link( $course_id, get_current_user_id() );
+						$link_text  = __( 'Review Progress', 'tutor' );
+					}
+				}
+
+				if ( strlen( $link_text ) > 0 ) {
+					?>
+					<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
+						class="tutor-btn tutor-btn-block tutor-btn-primary start-continue-retake-button tutor-mt-20">
+						<?php echo esc_html( $link_text ); ?>
+					</a>
+					<?php
+				}
+				
+				$start_content = ob_get_clean();
 			}
 			echo apply_filters( 'tutor_course/single/start/button', $start_content, $args['course'] );
 
 			// Show Course Completion Button.
-			
-			ob_start();
-			?>
+			if ( ! $is_completed_course ) {
+				ob_start();
+				?>
 				<form method="post" class="tutor-mt-20">
-					<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
+					<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce, false ); ?>
 
-					<input type="hidden" value="<?php echo esc_attr( $args['course'] ); ?>" name="course_id"/>
+					<input type="hidden" value="<?php echo esc_attr( $course_id ); ?>" name="course_id"/>
 					<input type="hidden" value="tutor_complete_course" name="tutor_action"/>
 
 					<button type="submit" class="tutor-btn tutor-btn-outline-primary tutor-btn-block" name="complete_course_btn" value="complete_course">
 						<?php esc_html_e( 'Complete Course', 'tutor' ); ?>
 					</button>
 				</form>
-				<?php echo apply_filters( 'tutor_course/single/complete_form', ob_get_clean() ); ?>
+				<?php
+				echo apply_filters( 'tutor_course/single/complete_form', ob_get_clean() );//phpcs:ignore
+			}
+			?>
 				<?php
 					// check if has enrolled date.
 					$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : tutor_get_formated_date( get_option( 'date_format' ), date( 'Y-m-d' ) );
@@ -153,7 +230,11 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 			} else {
 				ob_start();
 				?>
-
+					<div class="tutor-course-single-pricing">
+						<span class="tutor-fs-4 tutor-fw-bold tutor-color-black">
+							<?php esc_html_e( 'Free', 'tutor' ); ?>
+						</span>
+					</div>
 					<div class="tutor-course-single-btn-group <?php echo is_user_logged_in() ? '' : 'tutor-course-entry-box-login'; ?>" data-login_url="<?php echo $login_url; ?>">
 						<form class="tutor-enrol-course-form" method="post">
 							<?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce ); ?>
@@ -165,7 +246,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 						</form>
 					</div>
 
-					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-text-center">
+					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-text-center dtlms-course-monetization-text">
 						<?php esc_html_e( 'Free access this course', 'tutor' ); ?>
 					</div>
 				<?php
@@ -180,7 +261,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 	<!-- Course Info -->
 	<?php if ( 'on' === $args['enrollment_box'] ) : ?>
 		<div class="tutor-card-footer">
-			<ul class="tutor-ul">
+			<ul class="tutor-ul dtlms-sidebar-meta-info">
 				<?php foreach ( $sidebar_meta as $key => $meta ) : ?>
 					<?php
 					if ( ! $meta['value'] ) {
