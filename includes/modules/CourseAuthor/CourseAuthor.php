@@ -344,14 +344,21 @@ class TutorCourseAuthor extends ET_Builder_Module {
 			)
 		);
 
+		// remove list padding
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% ul',
+				'declaration' => 'padding: 0 !important;'
+			)
+		);
+
 		// remove default padding below avatar and name.
 		ET_Builder_Element::set_style(
 			$render_slug,
 			array(
 				'selector'  => $wrapper . ' a',
-				'declaration' => sprintf(
-					'padding: 0;'
-				),
+				'declaration' => 'padding: 0;'
 			)
 		);
 		
