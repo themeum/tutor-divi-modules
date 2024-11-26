@@ -70,7 +70,7 @@ class CourseEnrollment extends ET_Builder_Module {
 				'course_pricing_title'   => array(
 					'label'          => esc_html__( 'Course Pricing', 'tutor-lms-divi-modules' ),
 					'css'            => array(
-						'main' => '%%order_class%% .tutor-course-single-pricing span'
+						'main' => '%%order_class%% .tutor-course-single-pricing span, %%order_class%% .tutor-course-sidebar-card-pricing span'
 					),
 					'hide_text_align'=> true,
 					'tab_slug'       => 'advanced',
@@ -184,7 +184,7 @@ class CourseEnrollment extends ET_Builder_Module {
 						),
 					),
 					'css'           => array(
-						'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button',
+						'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button, %%order_class%% .tutor-btn-primary.tutor-native-add-to-cart',
 					),
 					'use_alignment' => false,
 					'tab_slug'      => 'advanced',
