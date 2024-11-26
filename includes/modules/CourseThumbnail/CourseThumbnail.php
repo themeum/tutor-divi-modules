@@ -108,7 +108,7 @@ class CourseThumbnail extends ET_Builder_Module {
 		$content   = '';
 		$has_video = true; // (bool) tutor_utils()->has_video_in_single( $course_id );
 		$video     = tutor_utils()->get_video( $course_id );
-		if ( $video && tutor_utils()->array_get( 'source', $video ) !== '-1' ) {
+		if ( count( $video ) && tutor_utils()->array_get( 'source', $video ) !== '-1' ) {
 			$not_empty = ! empty( $video['source_video_id'] ) ||
 				! empty( $video['source_external_url'] ) ||
 				! empty( $video['source_youtube'] ) ||
@@ -116,6 +116,9 @@ class CourseThumbnail extends ET_Builder_Module {
 				! empty( $video['source_embedded'] ) ||
 				! empty( $video['source_shortcode'] );
 			$has_video = $not_empty ? $video : false;
+		}
+		else{
+			$has_video = false;
 		}
 		if ( false === $has_video ) {
 			$post_thumbnail_id = (int) get_post_thumbnail_id( $course_id );
