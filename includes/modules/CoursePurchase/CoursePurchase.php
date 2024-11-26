@@ -168,7 +168,7 @@ class CoursePurchase extends ET_Builder_Module {
 						),
 					),
 					'css'           => array(
-						'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button',
+						'main' => '%%order_class%% .tutor-btn-primary.tutor-add-to-cart-button, %%order_class%% .tutor-btn-primary.tutor-native-add-to-cart',
 					),
 					'use_alignment' => false,
 					'tab_slug'      => 'advanced',
