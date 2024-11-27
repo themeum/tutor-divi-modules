@@ -72,6 +72,7 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 		// Course Info
 		$completed_percent   = tutor_utils()->get_course_completed_percent();
 		$is_completed_course = tutor_utils()->is_completed_course();
+		$completion_mode     = tutor_utils()->get_option( 'course_completion_process' );
 		$user_id             = get_current_user_id();
 		$course_id           = $args['course'];
 		$retake_course       = tutor_utils()->can_user_retake_course();

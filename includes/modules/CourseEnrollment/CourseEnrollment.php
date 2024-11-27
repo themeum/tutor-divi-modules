@@ -44,6 +44,7 @@ class CourseEnrollment extends ET_Builder_Module {
 			'advanced' => array(
 				'toggles' => array(
 					'enrollment_button'     => esc_html__( 'Enroll Button', 'tutor-lms-divi-modules' ),
+					'buy_now_button'        => esc_html__( 'Buy Now Button', 'tutor-lms-divi-modules' ),
 					'add_to_cart_button'    => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'start_continue_button' => esc_html__( 'Start/Continue/Retake Button', 'tutor-lms-divi-modules' ),
 					'complete_course_btn'   => esc_html__( 'Complete Course Button', 'tutor-lms-divi-modules' ),
@@ -60,7 +61,8 @@ class CourseEnrollment extends ET_Builder_Module {
 					'enrolled_info'         => esc_html__( 'Enrolled Info', 'tutor-lms-divi-modules' ),
 					'course_alert'          => esc_html__( 'Course Alert', 'tutor-lms-divi-modules' ),
 					'course_pricing'        => esc_html__( 'Course Pricing', 'tutor-lms-divi-modules' ),
-				),
+					'course_subscription'   => esc_html__( 'Course Subscription', 'tutor-lms-divi-modules' )
+ 				),
 			),
 		);
 
@@ -75,6 +77,51 @@ class CourseEnrollment extends ET_Builder_Module {
 					'hide_text_align'=> true,
 					'tab_slug'       => 'advanced',
 					'toggle_slug'    => 'course_pricing'
+				),
+				'course_subscription_plan_feature_icon' => array(
+					'label'          => esc_html__( 'Subscription Plan Feature Icon', 'tutor-lms-divi-modules' ),
+					'css'            => array(
+						'main' => '%%order_class%% .tutor-plan-feature-item i'
+					),
+					'hide_text_align'=> true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'course_subscription'
+				),
+				'course_subscription_plan_feature' => array(
+					'label'          => esc_html__( 'Subscription Plan Feature', 'tutor-lms-divi-modules' ),
+					'css'            => array(
+						'main' => '%%order_class%% .tutor-plan-feature-item'
+					),
+					'hide_text_align'=> true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'course_subscription'
+				),
+				'course_subscription_title' => array(
+					'label'          => esc_html__( 'Subscription Title', 'tutor-lms-divi-modules' ),
+					'css'            => array(
+						'main' => '%%order_class%% .tutor-subscription-header .tutor-align-center span'
+					),
+					'hide_text_align'=> true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'course_subscription'
+				),
+				'course_subscription_price' => array(
+					'label'          => esc_html__( 'Subscription Price', 'tutor-lms-divi-modules' ),
+					'css'            => array(
+						'main' => '%%order_class%% .tutor-subscription-header .tutor-subscription-price'
+					),
+					'hide_text_align'=> true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'course_subscription'
+				),
+				'course_subscription_period' => array(
+					'label'          => esc_html__( 'Subscription Period', 'tutor-lms-divi-modules' ),
+					'css'            => array(
+						'main' => '%%order_class%% .tutor-subscription-header .tutor-color-subdued'
+					),
+					'hide_text_align'=> true,
+					'tab_slug'       => 'advanced',
+					'toggle_slug'    => 'course_subscription'
 				),
 				'course_progress_title'  => array(
 					'label'          => esc_html__( 'Title Text', 'tutor-lms-divi-modules' ),
@@ -176,6 +223,25 @@ class CourseEnrollment extends ET_Builder_Module {
 					'important'     => true,
 					'hide_icon'     => true,
 				),
+				'buy_now_button'     => array(
+					'label'         => esc_html__( 'Buy Now Button', 'tutor-lms-divi-modules' ),
+					'box_shadow'    => array(
+						'css' => array(
+							'main' => '%%order_class%% .tutor-subscription-buy-now',
+						),
+					),
+					'css'           => array(
+						'main' => '%%order_class%% .tutor-subscription-buy-now',
+					),
+					'use_alignment' => false,
+					'tab_slug'      => 'advanced',
+					'toggle_slug'   => 'buy_now_button',
+					'show_if'       => array(
+						'preview_mode' => 'enrollment',
+					),
+					'important'     => true,
+					'hide_icon'     => true,
+				),
 				'add_to_cart_button'    => array(
 					'label'         => esc_html__( 'Add to Cart Button', 'tutor-lms-divi-modules' ),
 					'box_shadow'    => array(
@@ -233,6 +299,18 @@ class CourseEnrollment extends ET_Builder_Module {
 				),
 			),
 			'borders'    => array(
+				'subscription_plan_border' => array(
+					'label'        => esc_html__( 'Subscription Plan Border', 'tutor-lms-divi-modules' ),
+					'css'           => array(
+						'main' => array(
+							'border_radii'  => '%%order_class%% .tutor-course-subscription-plan',
+							'border_styles' => '%%order_class%% .tutor-course-subscription-plan',
+						),
+					),
+					'tab_slug'     => 'advanced',
+					'toggle_slug'  => 'course_subscription',
+					'label_prefix' => 'subscription_plan_border',
+				),
 				'course_alert_border' => array(
 					'label'         => esc_html__( 'Border', 'tutor-lms-divi-modules' ),
 					'css'           => array(
@@ -598,7 +676,86 @@ class CourseEnrollment extends ET_Builder_Module {
 				'tab_slug'       => 'advanced',
 				'toggle_slug'    => 'course_alert',
 				'mobile_options' => true
-			)
+			),
+			'subscription_plan_gap'   => array(
+				'label'       => esc_html__( 'Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '12px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'mobile_options' => true,
+				'toggle_slug' => 'course_subscription',
+			),
+			// subscription plan color
+			'subscription_plan_background_color'   => array(
+				'label'       => esc_html__( 'Subscription Plan Background Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'course_subscription',
+			),
+			//subscription plan padding
+			'subscription_plan_padding' => array(
+				'label'         => esc_html__( 'Padding', 'tutor-lms-divi-modules' ),
+				'type'          => 'custom_padding',
+				'tab_slug'      => 'advanced',
+				'toggle_slug'   => 'course_subscription',
+				'mobile_options'=> true
+			),
+			//subscription plan margin
+			'subscription_plan_margin' => array(
+				'label'         => esc_html__( 'Margin', 'tutor-lms-divi-modules' ),
+				'type'          => 'custom_margin',
+				'tab_slug'      => 'advanced',
+				'toggle_slug'   => 'course_subscription',
+				'mobile_options'=> true
+			),
+			'subscription_plan_feature_margin' => array(
+				'label'         => esc_html__( 'Subscription Plan Feature Margin', 'tutor-lms-divi-modules' ),
+				'type'          => 'custom_margin',
+				'tab_slug'      => 'advanced',
+				'toggle_slug'   => 'course_subscription',
+				'mobile_options'=> true
+			),
+			'plan_feature_icon_color'   => array(
+				'label'       => esc_html__( 'Subscription Plan Feature Icon Color', 'tutor-lms-divi-modules' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'default'        => '#000000',
+				'toggle_slug' => 'course_subscription',
+			),
+			'plan_list_gap'   => array(
+				'label'       => esc_html__( 'Subscription Plan Feature List Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '8px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'mobile_options' => true,
+				'toggle_slug'    => 'course_subscription',
+			),
+			'plan_item_gap'   => array(
+				'label'       => esc_html__( 'Subscription Plan Feature Item Gap', 'tutor-lms-divi-modules' ),
+				'type'           => 'range',
+				'default'        => '8px',
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => '1',
+					'max'  => '100',
+					'step' => '1',
+				),
+				'tab_slug'       => 'advanced',
+				'mobile_options' => true,
+				'toggle_slug'    => 'course_subscription',
+			),
 		);
 	}
 
@@ -728,6 +885,23 @@ class CourseEnrollment extends ET_Builder_Module {
 				'selector'    => '%%order_class%% .enrolment-expire-info .tutor-ml-4',
 				'declaration' => 'margin-left: 4px !important;'
 			)
+		);
+
+		// set radio appearance to none
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% .tutor-form-check-input',
+				'declaration' => 'appearance: none !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% .tutor-btn.tutor-d-none',
+				'declaration'  => 'display:none !important;'
+			)	
 		);
 
 		if( '' !==  $enrollment_expire_info_margin && '|||' !== $enrollment_expire_info_margin ){
@@ -966,13 +1140,6 @@ class CourseEnrollment extends ET_Builder_Module {
 				)
 			);
 		}
-
-		// if ( 'enrolled' === $this->props['preview_mode'] || tutor_utils()->is_enrolled( $this->props['course'], get_current_user_id() ) ) {
-
-
-			
-		// }
-
 
 		ET_Builder_Element::set_style(
 				$render_slug,
@@ -1388,7 +1555,161 @@ class CourseEnrollment extends ET_Builder_Module {
 				)
 			);
 		}
-		// set styles end
+
+		// subscription plans.
+
+		ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-plan-feature-item',
+					'declaration' => 'display: flex;align-items:center;'
+				)
+			);
+		ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-subscription-plan-wrapper',
+					'declaration' => 'display: flex;flex-direction: column;'
+				)
+			);
+
+		ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-course-subscription-plan',
+					'declaration' => 'display: block;'
+				)
+			);
+
+		if ( '' !== $this->props['subscription_plan_background_color'] ){
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-course-subscription-plan',
+					'declaration' => sprintf(
+						'background-color: %1$s;',
+						$this->props['subscription_plan_background_color']
+					),
+				)
+			);
+		}
+
+		$subscription_plan_margin = $this->props['subscription_plan_margin'];
+
+		if ( '' !== $subscription_plan_margin && '|||' !== $subscription_plan_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .tutor-course-subscription-plan',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $subscription_plan_margin, 'top', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_margin, 'right', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_margin, 'bottom', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector' => '%%order_class%% .tutor-plan-feature-list',
+				'declaration' => 'display: flex;flex-direction: column;'
+			)
+		);
+
+		$subscription_plan_feature_margin = $this->props['subscription_plan_feature_margin'];
+
+		if ( '' !== $subscription_plan_feature_margin && '|||' !== $subscription_plan_feature_margin ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .tutor-plan-feature-list',
+					'declaration' => sprintf(
+						'margin-top: %1$s !important;margin-right:%2$s !important;margin-bottom:%3$s !important;margin-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $subscription_plan_feature_margin, 'top', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_feature_margin, 'right', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_feature_margin, 'bottom', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_feature_margin, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+
+		$subscription_plan_padding = $this->props['subscription_plan_padding'];
+
+		if ( '' !== $subscription_plan_padding && '|||' !== $subscription_plan_padding ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector' => '%%order_class%% .tutor-course-subscription-plan',
+					'declaration' => sprintf(
+						'padding-top: %1$s !important;padding-right:%2$s !important;padding-bottom:%3$s !important;padding-left:%4$s !important;',
+						esc_attr( et_pb_get_spacing( $subscription_plan_padding, 'top', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_padding, 'right', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_padding, 'bottom', '0px' ) ),
+					    esc_attr( et_pb_get_spacing( $subscription_plan_padding, 'left', '0px' ) ),
+					)
+				)
+			);
+		}
+
+		if ( '' !== $this->props['subscription_plan_gap'] ){
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-subscription-plan-wrapper',
+					'declaration' => sprintf(
+						'gap: %1$s;',
+						$this->props['subscription_plan_gap']
+					),
+				)
+			);
+		}
+
+		if ( '' !== $this->props['plan_list_gap'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-plan-feature-list',
+					'declaration' => sprintf(
+						'gap: %1$s;',
+						$this->props['plan_list_gap']
+					),
+				)
+			);
+		}
+
+		if ( '' !== $this->props['plan_item_gap'] ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-plan-feature-item',
+					'declaration' => sprintf(
+						'gap: %1$s;',
+						$this->props['plan_item_gap']
+					),
+				)
+			);
+		}
+
+		if ( '' !== $this->props['plan_feature_icon_color'] ){
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .tutor-plan-feature-item i',
+					'declaration' => sprintf(
+						'color: %1$s !important;',
+						$this->props['plan_feature_icon_color']
+					),
+				)
+			);
+		}
+
+		// set styles end.
 
 		$output = self::get_content( $this->props );
 		if ( '' === $output ) {
