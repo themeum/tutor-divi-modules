@@ -269,7 +269,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 					}
 					?>
 					<li class="tutor-d-flex<?php echo $key > 0 ? ' tutor-mt-12' : ''; ?>">
-						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black tutor-mt-4 tutor-mr-12 dtlms-enrollment-meta-label" aria-labelledby="<?php echo esc_html( $meta['label'] ); ?>"></span>
+						<span class="<?php echo esc_attr( $meta['icon_class'] ); ?> tutor-color-black tutor-mr-12 dtlms-enrollment-meta-label" aria-labelledby="<?php echo esc_html( $meta['label'] ); ?>"></span>
 						<span class="tutor-fs-6 tutor-color-secondary dtlms-enrollment-meta-value">
 							<?php echo wp_kses_post( $meta['value'] ); ?>
 						</span>
