@@ -18,7 +18,7 @@ if ( ! $disable_course_author ) : ?>
 		<li class="tutor-single-course-author-meta tutor-align-center">
 			<?php if ( 'on' === $args['profile_picture'] ) : ?>
 			<div class="tutor-single-course-avatar tutor-d-flex">
-				<a href="<?php echo esc_url( $profile_url ); ?>" target="<?php echo $link == 'new' ? esc_html( '_blank' ) : ''; ?>" class="tutor-p-0"> 
+				<a href="<?php echo esc_url( $profile_url ); ?>" target="<?php echo $link == 'new' ? esc_html( '_blank' ) : ''; ?>" class="tutor-p-0 tutor-d-inline-flex"> 
 				<?php
 					echo wp_kses(
 						tutor_utils()->get_tutor_avatar( get_the_author_meta( 'ID' ) ),

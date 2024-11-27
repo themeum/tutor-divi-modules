@@ -225,6 +225,7 @@ class CourseAuthor extends Component {
           <a
             href={this.props.__author.profile_url}
             dangerouslySetInnerHTML={{ __html: props.__author.avatar_url }}
+            className="tutor-d-inline-flex tutor-p-0"
           ></a>
         </div>
       );
