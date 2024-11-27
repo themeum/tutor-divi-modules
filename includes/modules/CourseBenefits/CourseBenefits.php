@@ -131,9 +131,14 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				),
 				'computed_depends_on' => array(
 					'course',
+					'course_benefits_label',
+					'course_benefits_icon',
+
 				),
 				'computed_minimum'    => array(
 					'course',
+					'course_benefits_label',
+					'course_benefits_icon',
 				),
 			),
 			// general settings content tab
@@ -160,7 +165,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			'course_benefits_icon'          => array(
 				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'            => 'select_icon',
-				'default'         => 'N',
+				'default'         => '',
 				'class'           => array( 'et-pb-font-icon' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
@@ -261,9 +266,12 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_props( $args = array() ) {
-		$course_id = $args['course'];
-		$benefits  = tutor_course_benefits( $course_id );
-		return $benefits;
+		ob_start();
+		if (  $args['course'] ) {
+			include dtlms_get_template( 'course/benefits' );
+		}
+
+		return ob_get_clean();
 	}
 
 	/**
