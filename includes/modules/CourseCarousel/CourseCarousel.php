@@ -1170,14 +1170,7 @@ class CourseCarousel extends ET_Builder_Module {
 			);
 		}
  
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => 'h1,h2,h3,a',
-				'declaration' => 'padding: 0px !important;color: inherit !important;'
-			)
-		);
-
+	
 		if ( '' !== $card_body_margin && '|||' !== $card_body_margin ) {
 			ET_Builder_Element::set_style(
 				$render_slug,
@@ -1214,6 +1207,14 @@ class CourseCarousel extends ET_Builder_Module {
 			array(
 				'selector'    => '%%order_class%% .tutor-course-thumbnail .tutor-ratio-16x9',
 				'declaration' => 'padding-top: 56.25% !important;'
+			)
+		);
+
+		ET_Builder_Element::set_style(
+			$render_slug,
+			array(
+				'selector'    => $footer_selector . ' .list-item-price .price',
+				'declaration' => 'flex-direction: column;'
 			)
 		);
 
@@ -1745,7 +1746,7 @@ class CourseCarousel extends ET_Builder_Module {
 			array(
 				'selector'    => $dots_wrapper_selector,
 				'declaration' => sprintf(
-					'display: flex !important; justify-content: %1$s; column-gap: %2$s;',
+					'display: flex !important; bottom: -50px !important; justify-content: %1$s; column-gap: %2$s;',
 					$dots_alignment,
 					$dots_space
 				),
