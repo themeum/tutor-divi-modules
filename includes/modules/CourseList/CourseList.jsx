@@ -102,12 +102,6 @@ class CourseList extends Component {
             }]);
         }
 
-
-        additionalCss.push([{
-            selector: 'h1,h2,h3,a',
-            declaration: 'padding: 0px !important; color: inherit !important;'
-        }]);
-
         // thumbnail default styles
         additionalCss.push([
             {
