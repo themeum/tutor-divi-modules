@@ -685,7 +685,7 @@ class CourseList extends ET_Builder_Module {
 				'label'          => esc_html__( 'Body Padding', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
-				'default'        => '0px',
+				'default'        => '18px',
 				'range_settings' => array(
 					'min'  => '0',
 					'max'  => '100',
@@ -1265,13 +1265,6 @@ class CourseList extends ET_Builder_Module {
 		}
 
 
-		ET_Builder_Element::set_style(
-			$render_slug,
-			array(
-				'selector'    => 'h1,h2,h3,a',
-				'declaration' => 'padding: 0px !important;color: inherit !important;'
-			)
-		);
 
 		// thumbnail default styles.
 		ET_Builder_Element::set_style(

@@ -303,23 +303,12 @@ class CourseBenefits extends Component {
         if(!this.props.__benefits) {
             return '';
         }
-   
+
         return (
+            
             <Fragment>
-            <div class="tutor-single-course-segment tutor-course-benefits-wrap">
-
-                <div class="course-benefits-title">
-                    <h4 class="tutor-segment-title">
-                        {this.props.course_benefits_label}
-                    </h4>
-                </div>
-
-                <div class="tutor-divi-course-benefits-content">
-                    <ul class="tutor-course-benefits-items">
-                        { this.benefitsList(this.props.__benefits, this.props.course_benefits_icon)}
-                    </ul>
-                </div>
-
+            <div class="" dangerouslySetInnerHTML={{__html: this.props.__benefits }}>
+               
             </div>
             </Fragment>
         );

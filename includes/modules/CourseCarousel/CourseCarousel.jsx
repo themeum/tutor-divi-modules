@@ -60,10 +60,6 @@ class CourseCarousel extends Component {
         const arrows_padding            = props.arrows_padding;
 
         //set styles
-        additionalCss.push([{
-            selector: 'h1,h2,h3,a',
-            declaration: 'padding: 0px !important; color: inherit !important;'
-        }]);
 
         if ( props.category_margin ) {
              const category_margin = props.category_margin.split('|');
@@ -110,6 +106,12 @@ class CourseCarousel extends Component {
             }]);
         }
 
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .list-item-price .price`,
+                declaration: `flex-direction: column;`
+            }
+        ]);
         additionalCss.push([
             {
                 selector: thumbnail_selector,
@@ -170,7 +172,7 @@ class CourseCarousel extends Component {
             additionalCss.push([
                 {
                     selector: card_selector,
-                    declaration: `background-color: ${card_background_color};`
+                    declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
         }
@@ -547,7 +549,7 @@ class CourseCarousel extends Component {
         additionalCss.push([
             {
                 selector: dots_wrapper_selector,
-                declaration: `display:flex !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
+                declaration: `display:flex !important; bottom: -50px !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
             }
         ]);
 		//add padding if thumbnail hide
