@@ -196,7 +196,7 @@ $button_width  		= '' === $args['btn_width'] ? 'fill' : $args['btn_width'];
 				$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
 				if ( '' !== $post_date ) :
 				?>
-				<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  dtlms-course-enroll-info-wrapper">
+				<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex  dtlms-course-enroll-info-wrapper tutor-align-center">
 					<span class="tutor-fs-5 tutor-color-success tutor-icon-purchase-mark tutor-mr-8"></span>
 					<span class="tutor-enrolled-info-text">
 						<?php esc_html_e( 'You enrolled in this course on', 'tutor' ); ?>
