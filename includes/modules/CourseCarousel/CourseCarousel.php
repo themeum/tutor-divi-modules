@@ -656,7 +656,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'          => esc_html__( 'Body Padding', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
-				'default'        => '0px',
+				'default'        => '18px',
 				'range_settings' => array(
 					'min'  => '0',
 					'max'  => '100',
@@ -669,7 +669,7 @@ class CourseCarousel extends ET_Builder_Module {
 				'label'          => esc_html__( 'Card Gap', 'tutor-lms-divi-modules' ),
 				'type'           => 'range',
 				'default_unit'   => 'px',
-				'default'        => '0px',
+				'default'        => '15px',
 				'range_settings' => array(
 					'min'  => '0',
 					'max'  => '100',
@@ -942,7 +942,7 @@ class CourseCarousel extends ET_Builder_Module {
 
 				$post->post_thumbnail = $thumbnail;
 
-				$post->author_avatar = tutor_utils()->get_tutor_avatar( $post->post_author, array( 'force_default' => true ) );
+				$post->author_avatar = tutor_utils()->get_tutor_avatar( $post->post_author );
 
 				$post->course_duration = get_tutor_course_duration_context( $post->ID );
 

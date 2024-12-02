@@ -170,7 +170,7 @@ class CourseCarousel extends Component {
             additionalCss.push([
                 {
                     selector: card_selector,
-                    declaration: `background-color: ${card_background_color};`
+                    declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
         }
