@@ -463,7 +463,7 @@ class CourseContent extends Component {
         if(course_benefits_layout) {
             additionalCss.push([
                 {
-                    selector: benefits_li_selector,
+                    selector: `${benefits_wrapper} ul`,
                     declaration: `display: ${course_benefits_layout} !important;`
                 }
             ])
@@ -471,7 +471,7 @@ class CourseContent extends Component {
         if(course_benefits_layout_tablet) {
             additionalCss.push([
                 {
-                    selector: benefits_li_selector,
+                    selector: `${benefits_wrapper} ul`,
                     declaration: `display: ${course_benefits_layout_tablet} !important;`,
                     device: 'tablet'
                 }
@@ -480,7 +480,7 @@ class CourseContent extends Component {
         if(course_benefits_layout_phone) {
             additionalCss.push([
                 {
-                    selector: benefits_li_selector,
+                    selector: `${benefits_wrapper} ul`,
                     declaration: `display: ${course_benefits_layout_phone} !important;`,
                     device: 'phone'
                 }

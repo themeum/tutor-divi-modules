@@ -137,7 +137,7 @@ class CourseBenefits extends Component {
         if(layout) {
             additionalCss.push([
                 {
-                    selector: li_selector,
+                    selector: `${wrapper} ul`,
                     declaration: `display: ${layout};`
                 }
             ])
@@ -145,7 +145,7 @@ class CourseBenefits extends Component {
         if(layout_tablet) {
             additionalCss.push([
                 {
-                    selector: li_selector,
+                    selector: `${wrapper} ul`,
                     declaration: `display: ${layout_tablet};`,
                     device: 'tablet'
                 }
@@ -154,7 +154,7 @@ class CourseBenefits extends Component {
         if(layout_phone) {
             additionalCss.push([
                 {
-                    selector: li_selector,
+                    selector: `${wrapper} ul`,
                     declaration: `display: ${layout_phone};`,
                     device: 'phone'
                 }

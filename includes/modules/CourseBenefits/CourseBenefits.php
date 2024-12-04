@@ -131,12 +131,19 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				),
 				'computed_depends_on' => array(
 					'course',
+					'layout',
+					'course_benefits_label',
+					'course_benefits_icon',
+
 					'course_benefits_label',
 					'course_benefits_icon',
 
 				),
 				'computed_minimum'    => array(
 					'course',
+					'layout',
+					'course_benefits_label',
+					'course_benefits_icon',
 					'course_benefits_label',
 					'course_benefits_icon',
 				),
@@ -154,10 +161,10 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'list'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'flex'        => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'inline' => esc_html__( 'List', 'tutor-lms-divi-modules' ),
 				),
-				'default'         => 'block',
+				'default'         => 'flex',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
@@ -481,7 +488,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout
@@ -493,7 +500,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout_tablet
@@ -506,7 +513,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout_phone

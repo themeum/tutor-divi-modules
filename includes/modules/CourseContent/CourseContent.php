@@ -429,6 +429,7 @@ class CourseContent extends ET_Builder_Module {
 					'course',
 					'course_benefits_label',
 					'course_benefits_icon',
+					'course_benefits_layout',
 					'course_instructor_label',
 					'course_topics_label',
 					'course_reviews_label',
@@ -442,6 +443,7 @@ class CourseContent extends ET_Builder_Module {
 					'course',
 					'course_benefits_label',
 					'course_benefits_icon',
+					'course_benefits_layout',
 					'course_instructor_label',
 					'course_topics_label',
 					'course_reviews_label',
@@ -493,8 +495,8 @@ class CourseContent extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'list-item' => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline'    => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'flex'      => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'inline'    => esc_html__( 'List', 'tutor-lms-divi-modules' ),
 				),
 				'default'         => 'flex',
 				'option_category' => 'layout',
@@ -1710,7 +1712,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $benefits_li_selector,
+					'selector'    => $benefits_wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$benefits_layout
@@ -1722,7 +1724,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $benefits_li_selector,
+					'selector'    => $benefits_wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$benefits_layout_tablet
@@ -1735,7 +1737,7 @@ class CourseContent extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $benefits_li_selector,
+					'selector'    => $benefits_wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$benefits_layout_phone
