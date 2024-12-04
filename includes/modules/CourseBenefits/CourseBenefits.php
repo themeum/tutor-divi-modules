@@ -15,7 +15,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_benefits';
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
 		'author'     => 'Themeum',
@@ -58,9 +58,9 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			),
 		);
 
-		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
-		$li_selector    = $wrapper . ' .tutor-course-benefits-items .list-item';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
+		$li_selector    = $wrapper . ' .tutor-course-details-widget-list li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
 		$this->advanced_fields = array(
@@ -85,8 +85,8 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'list_border' => array(
 					'css'         => array(
 						'main' => array(
-							'border_radii'  => '%%order_class%% .tutor-course-benefits-items li',
-							'border_styles' => '%%order_class%% .tutor-course-benefits-items li',
+							'border_radii'  => '%%order_class%% .tutor-course-details-widget-list li',
+							'border_styles' => '%%order_class%% .tutor-course-details-widget-list li',
 						),
 					),
 					'tab_slug'    => 'advanced',
@@ -131,9 +131,21 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				),
 				'computed_depends_on' => array(
 					'course',
+					'layout',
+					'course_benefits_label',
+					'course_benefits_icon',
+
+					'course_benefits_label',
+					'course_benefits_icon',
+
 				),
 				'computed_minimum'    => array(
 					'course',
+					'layout',
+					'course_benefits_label',
+					'course_benefits_icon',
+					'course_benefits_label',
+					'course_benefits_icon',
 				),
 			),
 			// general settings content tab
@@ -149,10 +161,10 @@ class TutorCourseBenefits extends ET_Builder_Module {
 				'label'           => esc_html( 'Layout', 'tutor-lms-divi-modules' ),
 				'type'            => 'select',
 				'options'         => array(
-					'list'        => esc_html__( 'List', 'tutor-lms-divi-modules' ),
-					'inline' => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'flex'        => esc_html__( 'Inline', 'tutor-lms-divi-modules' ),
+					'inline' => esc_html__( 'List', 'tutor-lms-divi-modules' ),
 				),
-				'default'         => 'block',
+				'default'         => 'flex',
 				'option_category' => 'layout',
 				'toggle_slug'     => 'main_content',
 				'mobile_options'  => true,
@@ -160,7 +172,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			'course_benefits_icon'          => array(
 				'label'           => esc_html__( 'Icon', 'tutor-lms-divi-modules' ),
 				'type'            => 'select_icon',
-				'default'         => 'N',
+				'default'         => '',
 				'class'           => array( 'et-pb-font-icon' ),
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
@@ -261,9 +273,12 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 * @return string
 	 */
 	public static function get_props( $args = array() ) {
-		$course_id = $args['course'];
-		$benefits  = tutor_course_benefits( $course_id );
-		return $benefits;
+		ob_start();
+		if (  $args['course'] ) {
+			include dtlms_get_template( 'course/benefits' );
+		}
+
+		return ob_get_clean();
 	}
 
 	/**
@@ -295,8 +310,8 @@ class TutorCourseBenefits extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors.
-		$wrapper        = '%%order_class%% .tutor-course-benefits-wrap';
-		$title_selector = $wrapper . ' .tutor-segment-title';
+		$wrapper        = '%%order_class%% .tutor-course-details-widget';
+		$title_selector = $wrapper . ' .tutor-course-details-widget-title';
 		$li_selector    = $wrapper . ' li';
 		$icon_selector  = $li_selector . ' .et-pb-icon';
 
@@ -473,7 +488,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout
@@ -485,7 +500,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout_tablet
@@ -498,7 +513,7 @@ class TutorCourseBenefits extends ET_Builder_Module {
 			ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => $li_selector,
+					'selector'    => $wrapper . ' ul',
 					'declaration' => sprintf(
 						'display: %1$s !important;',
 						$layout_phone

@@ -23,16 +23,16 @@ $course_tags = get_tutor_course_tags( $course_id );
 if(is_array($course_tags) && count($course_tags)){ ?>
     <div class="tutor-single-course-segment tutor-divi-course-tags-wrapper">
         <div class="course-benefits-title">
-            <h4 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h4>
+            <h3 class="tutor-segment-title"><?php esc_html_e( $args['label'] ); ?></h3>
         </div>
-        <div class="tutor-course-tags">
+        <ul class="tutor-tag-list">
             <?php
                 foreach ($course_tags as $course_tag){
                     $tag_link = get_term_link($course_tag->term_id);
-                    echo "<a href='".esc_attr( $tag_link )."'> ".esc_html( $course_tag->name )." </a>";
+                    echo "<li><a href='".esc_attr( $tag_link )."'> ".esc_html( $course_tag->name )." </a></li>";
                 }
             ?>
-        </div>
+        </ul>
     </div>
 <?php
 }

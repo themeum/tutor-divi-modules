@@ -20,25 +20,33 @@ export default function Meta (props) {
             return '';
         }
         return(
-            <div>
+            <>
                 <span class="dtlms-course-author-meta tutor-meta-key">By</span>
                 <a class="dtlms-course-author-meta tutor-meta-value" href="http://localhost/tutor-v2/profile/tutor?view=instructor">{` ${course.author_name}`}</a>
-            </div>
+            </>
         );
     }
 
-    const categoryTemplate = (show_category, categories) => {
+    const categoryTemplate = (show_category, categories, show_author, course) => {
+        const author = authorTemplate(show_author,course);
+        
         if (show_category === 'off' ||  !categories.length ) {
-            return '';
+            return (<div>
+                {author}
+            </div>);
         }
-        const cats = categories.map((category) => {
+        const cats = categories.map((category,idx) => {
             return (
-                <a href='/' className='dtlms-course-category-meta' id={category.term_id}>{category.name}</a>
+                <>
+                    <a href='/' className='dtlms-course-category-meta tutor-meta-value' id={category.term_id} tabIndex={0}>{category.name}</a>
+                    { idx !== categories.length - 1 ? ', ' : ''}
+                </>
             );
         });
         return(
             <div>
-                <span class="tutor-meta-key">In </span>
+                {author}
+                <span class="tutor-meta-key"> In </span>
                 {cats}
             </div>
         );
@@ -49,10 +57,9 @@ export default function Meta (props) {
     }
     return (
         <Fragment>
-            <div class="tutor-meta tutor-mt-auto">
+            <div class="tutor-meta tutor-mt-auto dtlms-author-category-meta">
                 { avatarTemplate(data.avatar, data.course) }
-                { authorTemplate(data.author, data.course) }
-                { categoryTemplate(data.category, data.course.course_category) }
+                { categoryTemplate(data.category, data.course.course_category, data.author, data.course) }
             </div>
         </Fragment>
         

@@ -30,7 +30,7 @@ class CourseRating extends Component {
 
         if (layout) {
             additionalCss.push([{
-                selector: '%%order_class%% .tutor-single-course-rating',
+                selector: '%%order_class%% .tutor-ratings',
                 declaration: `display: flex; column-gap: 3px; flex-direction: ${layout};`,
             }]);
         }
@@ -39,68 +39,92 @@ class CourseRating extends Component {
         if ( 'row' === layout ) {
             if ( '' !== alignment ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `justify-content: ${alignment};`,
                 }]);
             }
             if ( '' !== alignment_tablet ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `justify-content: ${alignment_tablet};`,
                     device: 'tablet',
                 }]);
             }
             if ( '' !== alignment_phone ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `justify-content: ${alignment_phone};`,
                     device: 'phone'
                 }]);
             }
+
+            // set tutor ratings layout gap
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-ratings',
+                    declaration: `column-gap: ${props.rating_gap}`
+                }
+            ]);
         }
 
         if ( 'column' === layout ) {
             if ( '' !== alignment ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `align-items: ${alignment};`,
                 }]);
             }
             if ( '' !== alignment_tablet ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `align-items: ${alignment_tablet};`,
                     device: 'tablet'
                 }]);
             }
             if ( '' !== alignment_phone ) {
                 additionalCss.push([{
-                    selector: '%%order_class%% .tutor-single-course-rating',
+                    selector: '%%order_class%% .tutor-ratings',
                     declaration: `align-items: ${alignment_phone};`,
                     device: 'phone'
                 }]);
             }
+
+            // set tutor ratings layout gap
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-ratings',
+                    declaration: `row-gap: ${props.rating_gap}`
+                }
+            ]);
         }
         // alignments end
         
         //default star color
         additionalCss.push([
             {
-                selector: '%%order_class%% .tutor-star-rating-group i',
+                selector: '%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars span',
 				declaration: 'color: #ed9700;'
             }
         ]);
+
+        //star group style
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars',
+                declaration: 'display:flex;flex-direction:row;'
+            }
+        ])
     
         if (props.star_size) {
             additionalCss.push([{
-                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars i`,
+                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars span`,
                 declaration: `font-size: ${props.star_size};`,
             }]);
         }
         
         if (props.star_color) {
             additionalCss.push([{
-                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars i`,
+                selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars span`,
                 declaration: `color: ${props.star_color};`,
             }]);
         }
@@ -108,7 +132,7 @@ class CourseRating extends Component {
         if (props.star_gap) {
             additionalCss.push([{
                 selector: `%%order_class%% .dtlms-rating-wrapper .tutor-ratings-stars`,
-                declaration: `letter-spacing: ${props.star_gap};`,
+                declaration: `column-gap: ${props.star_gap};`,
             }]);
         }
 

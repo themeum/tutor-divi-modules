@@ -15,7 +15,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_categories';
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
 		'author'     => 'Themeum',
@@ -223,13 +223,19 @@ class TutorCourseCategories extends ET_Builder_Module {
 		';
 		if ( $course ) {
 			$course_categories = get_tutor_course_categories();
-			$count             = 1;
-			foreach ( $course_categories as $course_category ) {
-				$category_name = $course_category->name;
-				$comma         = count( $course_categories ) > $count ? ', ' : '';
-				$category_link = get_term_link( $course_category->term_id );
-				$markup       .= " <a href='$category_link'>$category_name</a>" . $comma;
-				$count++;
+			if ( is_array( $course_categories) && count( $course_categories ) ){
+				$count             = 1;
+				foreach ( $course_categories as $course_category ) {
+					$category_name = $course_category->name;
+					$comma         = count( $course_categories ) > $count ? ', ' : '';
+					$category_link = get_term_link( $course_category->term_id );
+					$markup       .= " <a href='$category_link'>$category_name</a>" . $comma;
+					$count++;
+				}
+			}
+			else{
+				$markup = '<div class="tutor-single-course-meta-categories tutor-course-details-category tutor-meta tutor-course-details-info">
+					<div>';
 			}
 		}
 		$markup .= '</div></div>';

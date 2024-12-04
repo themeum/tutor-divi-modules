@@ -20,8 +20,8 @@ class CourseCarousel extends Component {
         const additionalCss = [];
 
         //selectors
-        const wrapper               = '%%order_class%% .tutor-divi-carousel-main-wrap';
-        const card_selector         = `${wrapper} .dtlms-course-list-col > .tutor-card`;
+        const wrapper               = '%%order_class%% .tutor-courses-loop-wrap';
+        const card_selector         = `${wrapper} .tutor-course-card`;
         const footer_selector       = `${wrapper} .tutor-card-footer:not(.tutor-no-border)`;
         const badge_selector        = `${wrapper} .tutor-course-difficulty-level`;
         const avatar_selector       = `${wrapper} .tutor-avatar`;
@@ -31,17 +31,14 @@ class CourseCarousel extends Component {
         const arrows_selector       = '%%order_class%% .slick-prev:before, %%order_class%% .slick-next:before';
         const dots_wrapper_selector = '%%order_class%% .slick-dots';
         const thumbnail_selector    = '%%order_class%% .tutor-course-thumbnail img';
+        const card_body_selector    = `${wrapper} .tutor-card-body`;
         //props
         const skin                      = props.skin;
         const hover_animation           = props.hover_animation;
         const card_background_color     = props.card_background_color;
 
-        const footer_seperator_width    = props.footer_seperator_width
-        const footer_seperator_color    = props.footer_seperator_color
-
         const card_custom_padding       = props.card_custom_padding;
 
-        const image_spacing             = props.image_spacing;
 
         const badge_background_color    = props.badge_background_color;
         const badge_text_color          = props.badge_text_color;
@@ -63,43 +60,119 @@ class CourseCarousel extends Component {
         const arrows_padding            = props.arrows_padding;
 
         //set styles
-        //mergin for hover animation
-            additionalCss.push([
-                {
-                    selector: `%%order_class%%
-                        .tutor-divi-card.hover-animation`,
-                    declaration: `margin-top: 7px;`
-                }
-            ]);        
+
+        if ( props.category_margin ) {
+             const category_margin = props.category_margin.split('|');
+
+            additionalCss.push([{
+                selector: `${wrapper} .dtlms-author-category-meta`,
+                declaration: `margin-top: ${category_margin[0]}; margin-right: ${category_margin[1]}; margin-bottom: ${category_margin[2]}; margin-left: ${category_margin[3]};`,
+            }]);
+        } 
+
+        if (props.card_body_margin) {
+            const card_body_margin = props.card_body_margin.split('|');
+
+            additionalCss.push([{
+                selector: card_body_selector,
+                declaration: `margin-top: ${card_body_margin[0]}; margin-right: ${card_body_margin[1]}; margin-bottom: ${card_body_margin[2]}; margin-left: ${card_body_margin[3]};`,
+            }]);
+        }
+
+        if ( props.meta_margin ) {
+            const meta_margin = props.meta_margin.split('|');
+
+            additionalCss.push([{
+                selector: `${wrapper} .dtlms-course-duration-meta`,
+                declaration: `margin-top: ${meta_margin[0]}; margin-right: ${meta_margin[1]}; margin-bottom: ${meta_margin[2]}; margin-left: ${meta_margin[3]};`,
+            }]);
+        }
+
+        if ( props.rating_margin ) {
+            const rating_margin = props.rating_margin.split('|');
+
+            additionalCss.push([{
+                selector: `${wrapper} .tutor-ratings`,
+                declaration: `margin-top: ${rating_margin[0]}; margin-right: ${rating_margin[1]}; margin-bottom: ${rating_margin[2]}; margin-left: ${rating_margin[3]};`,
+            }]);
+        }
+
+        if ( props.title_margin ) {
+            const title_margin = props.title_margin.split('|');
+
+            additionalCss.push([{
+                selector: `${wrapper} .tutor-course-name`,
+                declaration: `margin-top: ${title_margin[0]}; margin-right: ${title_margin[1]}; margin-bottom: ${title_margin[2]}; margin-left: ${title_margin[3]};`,
+            }]);
+        }
+
+        additionalCss.push([
+            {
+                selector: `%%order_class%% .list-item-price .price`,
+                declaration: `flex-direction: column;`
+            }
+        ]);
+        additionalCss.push([
+            {
+                selector: thumbnail_selector,
+                declaration: `height: 100% !important; max-width: 100% !important; display: block !important;`
+            }
+        ]);
+
+        additionalCss.push([
+            {
+                selector:  `%%order_class%% .tutor-course-thumbnail .tutor-ratio-16x9`,
+                declaration: `padding-top: 56.25% !important;`
+            }
+        ]);
+        //margin for hover animation
+        additionalCss.push([
+            {
+                selector: `%%order_class%%
+                    .tutor-course-card.dtlms-has-hover-animation"`,
+                declaration: `margin-top: 7px;`
+            }
+        ]);        
         //card hover animation
         if(hover_animation === 'on') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-card.hover-animation`,
+                    selector: `%%order_class%% .tutor-course-card.dtlms-has-hover-animation"`,
 					declaration: `position: relative; top: 0; z-index: 99; transition: top .5s;`
                 }
             ]);
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-card.hover-animation:hover`,
+                    selector: `%%order_class%% .tutor-course-card.dtlms-has-hover-animation":hover`,
 					declaration: `top: -5px;`
                 }
             ]);
         }
 
-        //card toogle style
+        //card toggle style
         //prepare header for background overlay & css filters
         additionalCss.push([
             {
-                selector: '%%order_class%% .tutor-divi-carousel-classic .tutor-course-header:before,%%order_class%% .tutor-divi-carousel-card .tutor-course-header:before, %%order_class%% .tutor-divi-carousel-stacked .tutor-course-header:before',
+                selector: '%%order_class%% .tutor-course-thumbnail:before,%%order_class%% .dtlms-course-card .tutor-course-thumbnail:before, %%order_class%% .dtlms-course-card-stacked .tutor-course-thumbnail:before',
                 declaration: 'width: 100%;height: 100%; position: absolute;content: "";z-index: 2;'  
             }
         ]);
+
+        if ( '' !== props.card_gap ) {
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .slick-slide',
+                    declaration: `margin-left: ${props.card_gap} !important; margin-right: ${props.card_gap} !important;`
+                }
+            ]);
+
+        }
+
         if('' !== card_background_color && ('classic' === skin || 'card' === skin || 'overlayed' === skin )) {
             additionalCss.push([
                 {
                     selector: card_selector,
-                    declaration: `background-color: ${card_background_color};`
+                    declaration: `background-color: ${card_background_color} !important;`
                 }
             ]);
         }
@@ -111,30 +184,11 @@ class CourseCarousel extends Component {
                 }
             ]);
         }
-
-        if('' !== footer_seperator_width) {
-            additionalCss.push([
-                {
-                    selector: footer_selector,
-                    declaration: `border-top: ${footer_seperator_width} solid;`
-                }
-            ]);
-        }
-
-        if('' !== footer_seperator_color) {
-            additionalCss.push([
-                {
-                    selector: footer_selector,
-                    declaration: `color: ${footer_seperator_color};`
-                }
-            ]);
-        }
-
         if('' !== card_custom_padding) {
             additionalCss.push([
                 {
-                    selector: card_selector,
-                    declaration: `padding: ${card_custom_padding};`
+                    selector: card_body_selector,
+                    declaration: `padding: ${card_custom_padding} !important;`
                 }
             ]);
         }
@@ -143,28 +197,27 @@ class CourseCarousel extends Component {
         if(skin === 'classic' || skin === 'card') {
             additionalCss.push([
                 {
-                     selector: `%%order_class%% .slick-track`,
-                        declaration: `display: -ms-flexbox;
-                        display: -webkit-flex;
-                        display: flex;
-                        -webkit-flex-direction: row;
-                        -ms-flex-direction: row;
-                        flex-direction: row;
-                        -webkit-flex-wrap: nowrap;
-                        -ms-flex-wrap: nowrap;
-                        flex-wrap: nowrap;
-                        -webkit-justify-content: space-between;
-                        -ms-flex-pack: justify;
-                        justify-content: space-between;
-                        -webkit-align-content: stretch;
-                        -ms-flex-line-pack: stretch;
-                        align-content: stretch;
-                        -webkit-align-items: stretch;
-                        -ms-flex-align: stretch;
-                        align-items: stretch;`
+                    selector: `%%order_class%%  .slick-track`,
+                    declaration: `display: -ms-flexbox;
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-flex-direction: row;
+                    -ms-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-flex-wrap: nowrap;
+                    -ms-flex-wrap: nowrap;
+                    flex-wrap: nowrap;
+                    -webkit-justify-content: space-between;
+                    -ms-flex-pack: justify;
+                    justify-content: space-between;
+                    -webkit-align-content: stretch;
+                    -ms-flex-line-pack: stretch;
+                    align-content: stretch;
+                    -webkit-align-items: stretch;
+                    -ms-flex-align: stretch;
+                    align-items: stretch;`
                             
                 }
-
             ]);             
 
             additionalCss.push([
@@ -176,8 +229,8 @@ class CourseCarousel extends Component {
              
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-divi-card',
-                    declaration: 'display: flex; flex-direction: column; justify-content: space-between; height: 100%;'   
+                    selector: '%%order_class%% .tutor-course-card',
+                    declaration: 'display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 100% !important;'   
                 }
             ]);  
 
@@ -188,7 +241,7 @@ class CourseCarousel extends Component {
         if(skin === 'classic') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card`,
+                    selector: `%%order_class%%  .tutor-course-card`,
                     declaration: `border-radius: 8px;
                         border: 1px solid #EBEBEB;
                         overflow: hidden;`
@@ -197,7 +250,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-classic .tutor-divi-card:hover`,
+                    selector: `%%order_class%% .tutor-course-card:hover`,
                     declaration: `-webkit-box-shadow: 0px 5px 2px #ebebeb;
                         box-shadow: 0px 5px 2px #ebebeb;`
                 }
@@ -208,7 +261,7 @@ class CourseCarousel extends Component {
         if(skin === 'card') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-card .tutor-divi-card`,
+                    selector: `%%order_class%% .dtlms-course-card.tutor-course-card`,
                     declaration: `
                         -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
                                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
@@ -219,7 +272,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-card .tutor-divi-card:hover`,
+                    selector: `%%order_class%% .dtlms-course-card.tutor-course-card:hover`,
                     declaration: `-webkit-box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);
                         box-shadow:0px 24px 34px -5px rgba(0, 0, 0, 0.1);`
                 }
@@ -231,7 +284,7 @@ class CourseCarousel extends Component {
         if(skin === 'stacked') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-course-header`,
+                    selector: `%%order_class%% .dtlms-course-card-stacked .tutor-course-thumbnail`,
                     declaration: `border-radius: 10px;
                         overflow: hidden; z-index: 1;`                    
                 }
@@ -239,14 +292,14 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-card`,
+                    selector: `%%order_class%% .dtlms-course-card-stacked.tutor-course-card`,
                     declaration: `overflow: visible !important;`  
                 }
             ]);
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container`,
+                    selector: `%%order_class%% .dtlms-course-card-stacked .tutor-card-body`,
                     declaration: `z-index: 99;
                         margin-top: -80px;
                         background: white;
@@ -262,7 +315,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-stacked .tutor-divi-carousel-course-container:hover`,
+                    selector: `%%order_class%% .dtlms-course-card-stacked .tutor-card-body:hover`,
                     declaration: `-webkit-box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);
                         box-shadow: 0px 54px 58px -20px rgba(0, 0, 0, 0.15);`
                 }
@@ -272,7 +325,7 @@ class CourseCarousel extends Component {
         if(skin === 'overlayed') {
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card`,
+                    selector: `%%order_class%% .dtlms-course-card-overlay`,
                     declaration: `background-size: cover;
                         background-repeat: no-repeat;
                         border-radius: 20px;
@@ -284,7 +337,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:before`,
+                    selector: `%%order_class%% .dtlms-course-card-overlay:before`,
                     declaration: `background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.0001) 0%, #000000 100%);
                         background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.0001)), to(#000000));
                         background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, #000000 100%) !important;
@@ -304,7 +357,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-course-header`,
+                    selector: `%%order_class%% .dtlms-course-card-overlay .tutor-course-thumbnail`,
                     declaration: `z-index: 2;
                         height: 100%;`
                 }
@@ -312,7 +365,7 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-carousel-course-container`,
+                    selector: `%%order_class%% .dtlms-course-card-overlay .tutor-card-body`,
                     declaration: `position: absolute;
                         z-index: 99;
                         width: 100%;
@@ -322,19 +375,19 @@ class CourseCarousel extends Component {
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-card .tutor-rating-count,
-                        %%order_class%% .tutor-divi-card .tutor-course-loop-title h2 a,
-                        %%order_class%% .tutor-divi-card .tutor-course-loop-meta,
-                        %%order_class%% .tutor-divi-card .tutor-loop-author>div a,
-                        %%order_class%% .tutor-divi-card .etlms-loop-cart-btn-wrap a,
-                        %%order_class%% .tutor-divi-card .price, %%order_class%% .tutor-loop-cart-btn-wrap a, %%order_class%% .tutor-loop-cart-btn-wrap a:before`,
+                    selector: `%%order_class%% .tutor-course-card .tutor-rating-count,
+                        %%order_class%% .tutor-course-card .tutor-course-loop-title h2 a,
+                        %%order_class%% .tutor-course-card .tutor-course-loop-meta,
+                        %%order_class%% .tutor-course-card .tutor-loop-author>div a,
+                        %%order_class%% .tutor-course-card .etlms-loop-cart-btn-wrap a,
+                        %%order_class%% .tutor-course-card .price, %%order_class%% .tutor-loop-cart-btn-wrap a, %%order_class%% .tutor-loop-cart-btn-wrap a:before`,
                     declaration: `color: #fff !important;` 
                 }
             ]);            
 
             additionalCss.push([
                 {
-                    selector: `%%order_class%% .tutor-divi-carousel-overlayed .tutor-divi-card:hover`,
+                    selector: `%%order_class%% .dtlms-course-card-overlay:hover`,
                     declaration: `-webkit-box-shadow: 0px 8px 28px 0px #d0d0d0;
                         box-shadow: 0px 8px 28px 0px #d0d0d0;` 
                 }
@@ -343,15 +396,6 @@ class CourseCarousel extends Component {
         } 
         //card layouts style end
 
-        //image toggle
-        if('' !== image_spacing) {
-            additionalCss.push([
-                {
-                    selector: thumbnail_selector,
-                    declaration: `padding: ${image_spacing};`
-                }
-            ]);
-        }
 
         //badge toggle
         if('' !== badge_background_color) {
@@ -428,8 +472,26 @@ class CourseCarousel extends Component {
         if('' !== star_gap) {
             additionalCss.push([
                 {
+                    selector: star_selector,
+                    declaration: `margin-left: ${star_gap} !important;margin-right: ${star_gap} !important;`
+                }
+            ]);
+        }
+
+        if ( '' !== props.bookmark_background_color) {
+             additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-bookmark',
+                    declaration: `background-color: ${props.bookmark_background_color};`
+                }
+            ]);
+        }
+
+        if('' !== star_gap) {
+            additionalCss.push([
+                {
                     selector: star_wrapper_selector,
-                    declaration: `column-gap: ${star_gap};`
+                    declaration: `margin-left: -${star_gap} !important;margin-right: -${star_gap} !important;`
                 }
             ]);
         }
@@ -444,13 +506,13 @@ class CourseCarousel extends Component {
             ]);
         }
 
-        if('' !== footer_padding) {
-            additionalCss.push([
-                {
-                    selector: footer_selector,
-                    declaration: `padding: ${footer_padding};`
-                }
-            ]);
+        if ( footer_padding ) {
+            const footer_padding = props.footer_padding.split('|');
+
+            additionalCss.push([{
+                selector: `${wrapper} .tutor-card-footer`,
+                declaration: `padding-top: ${footer_padding[0]}; padding-right: ${footer_padding[1]}; padding-bottom: ${footer_padding[2]}; padding-left: ${footer_padding[3]};`,
+            }]);
         }
         //cart button toggle
         additionalCss.push([
@@ -487,13 +549,13 @@ class CourseCarousel extends Component {
         additionalCss.push([
             {
                 selector: dots_wrapper_selector,
-                declaration: `display:flex !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
+                declaration: `display:flex !important; bottom: -50px !important; justify-content: ${dots_alignment}; column-gap: ${dots_space};`
             }
         ]);
 		//add padding if thumbnail hide
 		additionalCss.push([
             {
-                selector: '%%order_class%% .hide-thumbnail .tutor-divi-carousel-course-container',
+                selector: '%%order_class%% .hide-thumbnail .tutor-card-body',
                 declaration: 'padding-top: 30px;'
             },
         ]);
@@ -528,123 +590,12 @@ class CourseCarousel extends Component {
         // min height for stacked container
         additionalCss.push([
             {
-                selector: '%%order_class%% .tutor-courses-layout-2.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container, %%order_class%% .tutor-courses-layout-3.tutor-divi-carousel-stacked .tutor-divi-carousel-course-container',
+                selector: '%%order_class%% .tutor-courses-layout-2.dtlms-course-card-stacked .tutor-card-body, %%order_class%% .tutor-courses-layout-3.dtlms-course-card-stacked .tutor-card-body',
                 declaration: 'min-height: 320px;',
             }
         ]);
         //set styles end
         return additionalCss;
-    }
-    /**
-     * @return total ratings star
-     * @param avg_rating
-     */
-    ratingStars(show,avg_rating) {
-        if(show === 'off') {
-            return '';
-        }
-        const ratings = [];
-        for(let i=1; i < 6; i++) {
-            if(avg_rating >= i) {
-                ratings.push(<span className='tutor-icon-star-full-filled'></span>)
-            } else {
-                ratings.push(<span className='tutor-icon-star-line-filled'></span>)
-            }
-        }
-        return ratings;
-    }
-
-    thumbnailTemplate(show,course) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-        <a href="/">
-            <img src={course.post_thumbnail} alt="thumbnail"/>
-        </a> 
-        );
-    }
-
-    levelTemplate(show,level) {
-        if(show === 'off') {
-            return ''
-        }
-        return (
-            <span className="tutor-course-loop-level">{level}</span>
-        );
-    }
-    metaTemplate(show,course) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-            <Fragment>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-user-filled tutor-color-text-hints'></i>
-                    <span> {course.enroll_count} </span>
-                </div>
-                <div className="tutor-single-loop-meta">
-                    <i className='meta-icon tutor-icon-clock-filled tutor-color-text-hints'></i> 
-                    <span dangerouslySetInnerHTML={{__html: course.course_duration}}></span>
-                </div>
-            </Fragment>
-            
-        );
-    }
-    
-    avatarTemplate(show,avatar) {
-        if(show === 'off') {
-            return '';
-        }
-        return (
-            <div className="tutor-single-course-avatar" dangerouslySetInnerHTML={{__html: avatar}}>
-                
-            </div>
-        );
-    }
-
-    wishlistTemplate(show) {
-        if(show === 'off') {
-            return ''
-        }
-        return(
-        <span className="tutor-course-wishlist">
-            <span className="tutor-icon-fav-line-filled tutor-course-wishlist-btn  "></span> 
-        </span>
-        );
-    }
-
-    categoryTemplate(show,course_cat) {
-        if(show === 'off') {
-            return '';
-        }
-        const categories = course_cat.map((category) => {
-            return (
-                <a href="/" dangerouslySetInnerHTML={{__html: category.name}}></a>
-            );
-        })
-        return categories
-    }
-
-    footerButtonText(is_enrolled, course) {
-        if(is_enrolled) {
-            return 'Continue Course';
-        } 
-        if(course.loop_price.regular_price !== '' && course.loop_price.regular_price !== 'Free' ) {
-            return 'Add to Cart';
-        } else {
-            return 'Get Enrolled';
-        }
-    }
-
-    footerTemplate(show,course) {
-        if(show === 'off') {
-            return '';
-        }
-        return(
-            <div class="tutor-loop-course-footer tutor-divi-carousel-footer" dangerouslySetInnerHTML={{__html: course.footer_template}}>
-        </div> 
-        );
     }
 
     sliderTemplate(props) {
@@ -663,7 +614,6 @@ class CourseCarousel extends Component {
     
             easing: props.smooth_scrolling === 'off' ? 'linear' : 'ease',
     
-            //rtl: elementorFrontend.config.is_rtl ? true : false,
     
             responsive: [
                 {
@@ -698,7 +648,6 @@ class CourseCarousel extends Component {
         const courses = props.__courses.map((course) => {
             return(
 
-                <div className="dtlms-course-list-col">
                     <div className={`tutor-card tutor-course-card tutor-loop-course-container ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
@@ -711,7 +660,6 @@ class CourseCarousel extends Component {
                         </div>
                         <Footer data={{show: props.footer, course}}/>
                     </div>
-                </div>
             );
         })
         return courses;
@@ -721,20 +669,18 @@ class CourseCarousel extends Component {
         const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
-                <div className="dtlms-course-list-col">
                     <div className={`tutor-card tutor-course-card tutor-loop-course-container dtlms-course-card ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
                         <Level data={{show: props.difficulty_label, level: course.course_level}}/>
-                        <div className="tutor-card-body">
+                        <div className="tutor-card-body dtlms-tutor-card-body">
                             <Rating data={{show: props.rating, rating: course.course_rating}}/>
                             <Title title={course.post_title}/>
                             <Info data={{args: props, meta_data: props.meta_data, course: course}}/>
-                            <Meta data={{avatar: props.avatar, author: props.author,course: course}}/>
+                            <Meta data={{avatar: props.avatar, author: props.author,course: course, category: props.show_category}}/>
                         </div>
                         <Footer data={{show: props.footer, course}}/>
                     </div>
-                </div>
             );
         })
         return courses;
@@ -744,7 +690,6 @@ class CourseCarousel extends Component {
         const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
-                <div className="dtlms-course-list-col">
                     <div className={`tutor-course-card dtlms-course-card-stacked ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <Wishlist show={props.wish_list}/>
@@ -759,7 +704,6 @@ class CourseCarousel extends Component {
                             <Footer data={{show: props.footer, course}}/>
                         </div>
                     </div>
-                </div>
             );
         })
         return courses;
@@ -769,7 +713,6 @@ class CourseCarousel extends Component {
         const animation_class = props.hover_animation === 'on' ? 'dtlms-has-hover-animation' : '';
         const courses = props.__courses.map((course) => {
             return(
-                <div className="dtlms-course-list-col">
                     <div className={`tutor-course-card dtlms-course-card-overlay ${animation_class}`}>
                         <Thumbnail data={{show: props.show_image, course}}/>
                         <div className="tutor-card tutor-loop-course-container">
@@ -782,86 +725,19 @@ class CourseCarousel extends Component {
                             <Footer data={{show: props.footer, course}}/>
                         </div>
                     </div>
-                </div>
             );
         })
         return courses;    
-    }
-    /**
-     * 
-     * @param {*} props 
-     * @returns course template
-     */
-    courseTemplate(props) {
-        const hover_animation = props.hover_animation === 'on' ? 'hover-animation' : '';
-        const courses = props.__courses.map((course) => {
-           
-            return (
-            <div className="tutor-course-col">
-                <div className={`tutor-divi-card ${hover_animation}`}>
-
-                        <div className="tutor-course-header ">
-                             { this.thumbnailTemplate(props.show_image,course) }                       
-                            <div className="tutor-course-loop-header-meta">
-                                    { this.levelTemplate(props.difficulty_label, course.course_level) }
-                                    { this.wishlistTemplate(props.wish_list)}
-                            </div> 
-                        </div>
-                    
-                        <div className="tutor-divi-carousel-course-container">
-                            <div className="tutor-loop-course-container">
-
-                                <div className="tutor-loop-rating-wrap">
-                                    <div className="tutor-ratings">
-                                        <div className="tutor-rating-stars">
-                                            {this.ratingStars(props.rating, course.course_rating.rating_avg)}
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div className="tutor-course-loop-title">
-                                    <h2>
-                                        <a href="/" className='tutor-text-medium-h5 tutor-color-text-primary'>
-                                            {course.post_title}
-                                        </a>
-                                    </h2>
-                                </div>
-                            
-                                <div className="tutor-course-loop-meta">
-                                    { this.metaTemplate(props.meta_data,course) }
-                                </div>
-
-                                <div className="tutor-loop-author list-item-author tutor-d-flex tutor-align-items-center tutor-mt-30">
-                                    { this.avatarTemplate(props.avatar,course.author_avatar) }
-                                    <div className='tutor-course-lising-category'>
-                                        <span className="tutor-single-course-author-name tutor-course-meta-name">
-                                            <a href="/">By {course.author_name}</a>
-                                        </span>
-                                        { course.course_category.length && props.category === 'on' ? <span className='tutor-color-text-subsued tutor-course-meta-cat tutor-pl-2 tutor-pr-2'> In </span> : '' }
-                                        { this.categoryTemplate(props.category,course.course_category) }
-                                    </div>
-                                </div>
-                            </div>
-                            { this.footerTemplate(props.footer, course) }
-                        </div> 
-
-                </div>
-            </div>    
-                             
-            );
-        })
-        return courses;
     }
 
     render(){
         if(!this.props.__courses) {
             return '';
         }
-        console.log(`carousel: ${this.props}`)
         return (
         <Fragment>
 
-            <div className="tutor-courses-wrap tutor-container tutor-divi-carousel-main-wrap dtlms-course-carousel-loop-wrap">
+            <div className={`tutor-divi-slick-responsive dtlms-carousel-loop-wrap tutor-courses tutor-courses-loop-wrap tutor-courses-layout-${Number(this.props.slides_to_show)} dtlms-carousel-${this.props.skin} dtlms-carousel-dots-${this.props.dots_alignment}`}>
                 { this.sliderTemplate( this.props) }
                 <div className="tutor-divi-carousel-arrow tutor-divi-carousel-arrow-prev">
                     <i className="fa fa-angle-left" aria-hidden="true"></i>

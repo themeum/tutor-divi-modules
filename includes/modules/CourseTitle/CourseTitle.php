@@ -24,7 +24,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 	 * @var string
 	 */
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal).
 	protected $module_credits = array(
 		'author'     => 'Themeum',
@@ -151,7 +151,7 @@ class TutorCourseTitle extends ET_Builder_Module {
 		$course_title = self::get_title( $this->props );
 
 		return sprintf(
-			'<%1$s>%2$s</%1$s>',
+			'<%1$s class="tutor-course-details-title tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mt-12 tutor-mb-0">%2$s</%1$s>',
 			et_pb_process_header_level( $header_level, 'h1' ),
 			et_core_esc_previously( $course_title )
 		);
