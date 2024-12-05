@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, eLearning, Learning Management System, Courses, Education, Divi Integration for LMS, Divi LMS Modules, Tutor LMS, Online Courses
 Requires at least: 5.3
-Tested up to: 6.0
+Tested up to: 6.7.1
 Requires PHP: 7.3
-Stable tag: 2.0.1
+Stable tag: 3.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -145,6 +145,14 @@ If you find a conflict or problem in your theme, please post on the support sect
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
 == Changelog ==
+
+= 3.0.0 - 04 December, 2024
+
+* New: Added a new layout.
+* Update: Introduced compatibility with PHP 8.0.
+* Update: Introduced compatibility with Tutor LMS 3.0.
+* Update: Added Tutor LMS native eCommerce and subscription options for Course Enrollment and Course Purchase modules.
+* Update: Optimized the existing Divi modules.
 
 = 2.0.1 - 04 July, 2022
 
