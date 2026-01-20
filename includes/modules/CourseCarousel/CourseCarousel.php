@@ -985,7 +985,7 @@ class CourseCarousel extends ET_Builder_Module {
 				} else {
 					echo esc_html( $template . ' file not exists', 'tutor-lms-divi-modules' );
 				}
-				$footer_template       = apply_filters( 'tutor_course_loop_price', ob_get_clean() );
+				$footer_template       = apply_filters( 'tutor_course_loop_price', ob_get_clean(), $post->ID );
 				$post->footer_template = $footer_template;
 				// prepare footer end.
 				array_push( $courses, $post );
