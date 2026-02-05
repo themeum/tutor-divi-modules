@@ -3,9 +3,9 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, eLearning, Learning Management System, Courses, Education, Divi Integration for LMS, Divi LMS Modules, Tutor LMS, Online Courses
 Requires at least: 5.3
-Tested up to: 6.7.1
+Tested up to: 6.9
 Requires PHP: 7.3
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -145,6 +145,12 @@ If you find a conflict or problem in your theme, please post on the support sect
 You can post on the support section of this plugin or use the contact form at themeum.com.
 
 == Changelog ==
+
+= 3.0.1 - 09 December, 2026
+
+New: New layout added for Divi 5
+Update: WordPress 6.9 compatibility
+Fix: Course list module not showing on the builder in some cases.
 
 = 3.0.0 - 04 December, 2024
 
