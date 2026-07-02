@@ -316,8 +316,9 @@ class TutorCourseAuthor extends ET_Builder_Module {
 	 */
 	public function render( $attrs, $content, $render_slug ) {
 		// selectors
-		$wrapper      = '%%order_class%% .tutor-single-course-author-meta';
-		$img_selector = '%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img';
+		$wrapper               = '%%order_class%% .tutor-single-course-author-meta';
+		$course_author_wrapper = '.tutor_course_author_0';
+		$img_selector          = '%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img';
 
 		// props
 		$display   = 'flex';
@@ -589,6 +590,16 @@ class TutorCourseAuthor extends ET_Builder_Module {
 		}
 
 		$output = self::get_content( $this->props );
+
+		if ( '' === $output ) {
+			ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => $course_author_wrapper,
+					'declaration' => 'display: none !important',
+				)
+			);
+		}
 
 		// Render empty string if no output is generated to avoid unwanted vertical space.
 		if ( '' === $output ) {

@@ -340,6 +340,11 @@ class TutorCourseRequirements extends ET_Builder_Module {
 	public static function get_content( $args = array() ) {
 		$course_id = Helper::get_course( $args );
 		ob_start();
+
+		if ( ! tutor_utils()->get_option( 'enable_course_requirements', false ) ) {
+			return '';
+		}
+
 		if ( $course_id ) {
 			include_once dtlms_get_template( 'course/requirements' );
 		}

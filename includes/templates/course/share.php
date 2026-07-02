@@ -54,8 +54,11 @@ $share_title   = $args['popup_share_title'];
                 <div class="dtlms-course-share-modal-sub-title tutor-fs-7 tutor-color-secondary tutor-mb-12">
                     <?php esc_html_e( 'Page Link', 'tutor-lms-divi-modules' ) ?>
                 </div>
-                <div class="tutor-mb-32">
-                    <input class="tutor-form-control" value="<?php echo get_permalink( $course_id ); ?>" />
+                <div class="tutor-mb-32 tutor-position-relative">
+                    <input class="tutor-form-control" value="<?php echo get_permalink( $course_id ); ?>" aria-label="<?php esc_attr_e( 'Course Link', 'tutor-lms-divi-modules' ); ?> " readonly />
+					<button class="tutor-btn tutor-btn-icon tutor-copy-text tutor-position-absolute tutor-bg-white" style="right: 2px; top: 2px;" data-text="<?php echo esc_attr( get_permalink( $course_id ) ); ?>" aria-label="<?php esc_attr_e( 'Copy link', 'tutor-lms-divi-modules' ); ?>">
+						<span class="icon tutor-icon-copy" aria-hidden="true"></span>
+					</button>
                 </div>
                 <div>
                     <?php if ( '' !== $share_title ) : ?>
@@ -66,20 +69,16 @@ $share_title   = $args['popup_share_title'];
                     <div class="tutor-social-share-wrap" data-social-share-config="<?php echo esc_attr( wp_json_encode( $share_config ) ); ?>">
                         <?php foreach ( $tutor_social_share_icons as $icon ) : ?>
 							<button class="tutor-social-share-button tutor_share <?php echo esc_attr( $icon['share_class'] ); ?>" style="background-color: <?php echo esc_attr( $icon['color'] ); ?>">
-								<span class="social-icon">
-									<?php
-									if ( 'on' === $args['show_social_icon'] ) {
-										echo $icon['icon_html'];
-									}
-									?>
-								</span>
-								<span>
-									<?php
-									if ( 'on' === $args['show_social_text'] ) {
-										echo esc_html( $icon['text'] );
-									}
-									?>
-								</span>
+								<?php
+								if ( 'on' === $args['show_social_icon'] ) {
+									echo $icon['icon_html'];
+								}
+								?>
+								<?php
+								if ( 'on' === $args['show_social_text'] ) {
+									echo esc_html( $icon['text'] );
+								}
+								?>
 							</button>
 						<?php endforeach; ?>
                     </div>

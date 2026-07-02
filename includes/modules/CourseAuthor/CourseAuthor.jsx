@@ -13,6 +13,7 @@ class CourseAuthor extends Component {
   static css(props) {
     const additionalCss = [];
     const wrapper = "%%order_class%% .tutor-single-course-author-meta";
+    const course_author_wrapper = ".tutor_course_author_0";
     const img_selector =
       "%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img";
     //const label_selector = '%%order_class%% .tutor-single-course-author-name > span';
@@ -211,6 +212,16 @@ class CourseAuthor extends Component {
           selector: img_selector,
           declaration: `border-radius: ${props.avatar_border_radius}`
         },
+      ]);
+    }
+
+
+    if ( props.__author == null ) {
+      additionalCss.push([
+        {
+          selector: course_author_wrapper,
+          declaration: `display: none !important`
+        }
       ]);
     }
 
