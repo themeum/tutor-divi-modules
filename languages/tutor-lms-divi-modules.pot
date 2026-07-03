@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Tutor Divi Modules
+# Copyright (C) 2026 Tutor Divi Modules
 # This file is distributed under the same license as the Tutor Divi Modules package.
 msgid ""
 msgstr ""
@@ -475,6 +475,10 @@ msgstr ""
 
 #: includes/modules/CourseCategories/CourseCategories.php:185, includes/modules/CourseDuration/CourseDuration.php:208, includes/modules/CourseLastUpdate/CourseLastUpdate.php:184, includes/modules/CourseLevel/CourseLevel.php:192, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:183
 msgid "Style"
+msgstr ""
+
+#: includes/modules/CourseCategories/CourseCategories.php:240
+msgid "Uncategorized"
 msgstr ""
 
 #: includes/modules/CourseContent/CourseContent.php:31
@@ -1259,6 +1263,14 @@ msgstr ""
 
 #: includes/templates/course/share.php:55
 msgid "Page Link"
+msgstr ""
+
+#: includes/templates/course/share.php:58
+msgid "Course Link"
+msgstr ""
+
+#: includes/templates/course/share.php:59
+msgid "Copy link"
 msgstr ""
 
 #: includes/templates/course/status.php:24
