@@ -1,6 +1,6 @@
 {
   "name": "tutor-lms-divi-modules",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "dependencies": {
     "autoprefixer": "^9.7.4",
@@ -51,6 +51,6 @@
     "gulp-sass": "^6.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
-    "sass": "^1.97.2"
+    "sass": "^1.101.0"
   }
 }

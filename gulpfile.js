@@ -1,17 +1,17 @@
 var gulp = require("gulp"),
-	sass = require("gulp-sass"),
-    rename = require("gulp-rename"),
-    sourcemaps = require("gulp-sourcemaps"),
-    notify = require("gulp-notify"),
+	sass = require("gulp-sass")(require('sass')),
+	rename = require("gulp-rename"),
+	sourcemaps = require("gulp-sourcemaps"),
+	notify = require("gulp-notify"),
 	wpPot = require('gulp-wp-pot'),
 	clean = require("gulp-clean"),
-    plumber = require("gulp-plumber");
+	plumber = require("gulp-plumber");
 
 var tasks = {
-    backendExpended: {src: "assets/scss/backend-main.scss", mode: 'expanded', destination: 'admin_notice.css'},
-    backendCompressed: {src: "assets/scss/backend-main.scss", mode: 'compressed', destination: 'admin_notice.min.css'},
-    frontendExpanded: {src: "assets/scss/frontend-main.scss", mode: 'expanded', destination: 'tutor-divi-style.css'},
-    frontendCompressed: {src: "assets/scss/frontend-main.scss", mode: 'compressed', destination: 'tutor-divi-style.min.css'},
+	backendExpended: { src: "assets/scss/backend-main.scss", mode: 'expanded', destination: 'admin_notice.css' },
+	backendCompressed: { src: "assets/scss/backend-main.scss", mode: 'compressed', destination: 'admin_notice.min.css' },
+	frontendExpanded: { src: "assets/scss/frontend-main.scss", mode: 'expanded', destination: 'tutor-divi-style.css' },
+	frontendCompressed: { src: "assets/scss/frontend-main.scss", mode: 'compressed', destination: 'tutor-divi-style.min.css' },
 };
 
 var task_keys = Object.keys(tasks);
@@ -26,23 +26,23 @@ var onError = function (err) {
 	this.emit("end");
 };
 
-for(let task in tasks) {
+for (let task in tasks) {
 
-    let blueprint = tasks[task];
-    
-    gulp.task(task, function () {
-        return gulp
+	let blueprint = tasks[task];
+
+	gulp.task(task, function () {
+		return gulp
 			.src(blueprint.src)
 			.pipe(plumber({
 				errorHandler: onError
 			}))
 			.pipe(sass({
-				outputStyle: blueprint.mode
+				style: blueprint.mode
 			}))
 			.pipe(rename(blueprint.destination))
 			.pipe(sourcemaps.write("."))
-			.pipe(gulp.dest("assets/css"));        
-    });
+			.pipe(gulp.dest("assets/css"));
+	});
 }
 
 
@@ -53,21 +53,21 @@ for(let task in tasks) {
 */
 const { series, src, dest } = require('gulp');
 //install plugins
-const uglify	= require('gulp-uglify');
+const uglify = require('gulp-uglify');
 
 const zip = require('gulp-zip');
 
-const babel		= require('gulp-babel');
+const babel = require('gulp-babel');
 
-const package = require('./package.json'); 
+const package = require('./package.json');
 
 // minify all js
 function minifyJs(cb) {
 	return src('assets/js/*.js')
-	.pipe(babel())
-	.pipe(uglify())
-	.pipe(rename('scripts.min.js'))
-	.pipe(dest('assets/js/'));
+		.pipe(babel())
+		.pipe(uglify())
+		.pipe(rename('scripts.min.js'))
+		.pipe(dest('assets/js/'));
 
 	cb();
 }
@@ -105,10 +105,10 @@ function makePot(cb) {
 			package: 'Tutor Divi Modules'
 		}))
 		.pipe(gulp.dest('languages/tutor-lms-divi-modules.pot'));
-		cb();
+	cb();
 };
 // bundle all files export to destination directory
-function bundleFiles(cb){
+function bundleFiles(cb) {
 	return src([
 		"./**/*.*",
 		"!./build/**",
@@ -128,7 +128,7 @@ function bundleFiles(cb){
 		"!./package-lock.json",
 		"!./includes/modules/**/*.jsx",
 	])
-	.pipe(dest("build/tutor-lms-divi-modules"));
+		.pipe(dest("build/tutor-lms-divi-modules"));
 	cb();
 }
 
@@ -146,5 +146,5 @@ gulp.task("watch", function () {
 	gulp.watch("assets/scss/**/*.scss", gulp.series(...task_keys));
 });
 
-exports.default 	= series(...task_keys, "watch");
-exports.build 		= series(...task_keys, cleanZip,cleanBuild,makePot,bundleFiles, exportZip);
+exports.default = series(...task_keys, "watch");
+exports.build = series(...task_keys, cleanZip, cleanBuild, makePot, bundleFiles, exportZip);

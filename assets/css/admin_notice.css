@@ -2,7 +2,6 @@
   padding: 20px;
   display: block;
 }
-
 .dtlms-install-notice .dtlms-install-notice-inner {
   min-height: 64px;
 }
@@ -16,7 +15,6 @@
   float: right;
   margin-top: 14px;
 }
-
 .dtlms-install-notice-button .button {
   padding: 6px 30px;
   height: auto;
@@ -30,22 +28,20 @@
   display: block;
 }
 
+.dtlms-install-notice-content h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.dtlms-install-notice-content p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 0;
+}
 .dtlms-install-notice-content {
   flex-grow: 1;
   padding-left: 20px;
   padding-right: 20px;
   display: inline-block;
-}
-
-.dtlms-install-notice-content h2 {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.dtlms-install-notice-content p {
-  margin-top: 3px;
-  margin-bottom: 3px;
-  padding: 0;
 }
 
 @media (max-width: 1320px) {
