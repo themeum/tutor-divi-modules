@@ -89,7 +89,7 @@ Tutor LMS Divi Modules currently offers the following Divi Page builder modules 
 
 = Minimum Requirements =
 
-* PHP version 7.3 or greater
+* PHP version 7.4 or greater
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 = Automatic installation =
