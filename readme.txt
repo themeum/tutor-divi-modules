@@ -159,12 +159,6 @@ Fix: Fixed enrollment settings and "coming soon" course settings not working on 
 Fix: Fixed the Divi Modules template redirection issue in the learning area.
 Fix: Removed unnecessary whitespace from the Course Details page template when the course author is disabled or not found.
 
-= 3.0.1 - 09 December, 2026 =
-
-New: New layout added for Divi 5
-Update: WordPress 6.9 compatibility
-Fix: Course list module not showing on the builder in some cases.
-
 = 3.0.0 - 04 December, 2024 =
 
 New: Added a new layout.
