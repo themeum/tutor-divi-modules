@@ -29,6 +29,7 @@ jobs:
           generate-zip: true
           dry-run: true
         env:
+          SLUG: tutor-lms-divi-modules
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           BUILD_DIR: build/tutor-lms-divi-modules
