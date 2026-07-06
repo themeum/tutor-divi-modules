@@ -1,8 +1,8 @@
 name: Build and Deploy to SVN
 on:
   push:
-    branches:
-      - "auto-deploy"
+    tags:
+      - "*"
 jobs:
   build:
     runs-on: ubuntu-latest
