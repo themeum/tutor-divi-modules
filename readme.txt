@@ -89,7 +89,7 @@ Tutor LMS Divi Modules currently offers the following Divi Page builder modules 
 
 = Minimum Requirements =
 
-* PHP version 7.3 or greater
+* PHP version 7.4 or greater
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 = Automatic installation =
@@ -146,60 +146,70 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 3.0.1 - 09 December, 2026
+= 4.0.0 - 08 July, 2026 =
 
-New: New layout added for Divi 5
-Update: WordPress 6.9 compatibility
-Fix: Course list module not showing on the builder in some cases.
+Update: Added compatibility with Tutor LMS v4.
+Update: Added Divi 5 compatible pre-built layouts.
+Update: Added the ‘Edit with Divi’ button to the Course Builder.
+Update: Updated social share module style to match the current social share modal.
+Update: Added a fallback for the Course Requirements module when course requirements are disabled.
+Update: Added "Uncategorized" label when no course category is selected.
+Fix: Fixed the error in the Course Carousel and Course List modules.
+Fix: Fixed enrollment settings and "coming soon" course settings not working on the course price block.
+Fix: Fixed the Divi Modules template redirection issue in the learning area.
+Fix: Removed unnecessary whitespace from the Course Details page template when the course author is disabled or not found.
 
-= 3.0.0 - 04 December, 2024
+= 3.0.0 - 04 December, 2024 =
 
-* New: Added a new layout.
-* Update: Introduced compatibility with PHP 8.0.
-* Update: Introduced compatibility with Tutor LMS 3.0.
-* Update: Added Tutor LMS native eCommerce and subscription options for Course Enrollment and Course Purchase modules.
-* Update: Optimized the existing Divi modules.
+New: Added a new layout.
+Update: Introduced compatibility with PHP 8.0.
+Update: Introduced compatibility with Tutor LMS 3.0.
+Update: Added Tutor LMS native eCommerce and subscription options for Course Enrollment and Course Purchase modules.
+Update: Optimized the existing Divi modules.
 
-= 2.0.1 - 04 July, 2022
+= 2.0.1 - 04 July, 2022 =
 
-* New: Course enrollment add-on now comes with a new toggle button to show/hide the additional information
-* New: Course purchase add-on now comes with a new toggle button to show/hide the additional information
-* Update: Price compatibility is added for EDD and WooCommerce plugin
-* Update: Course Curriculum add-on is now compatible with the latest Tutor 2.0
-* Update: Course Content styling control is now compatible with the latest Tutor 2.0
-* Update: Class Selector updated, tab-body-item to tutor-tab-item
-* Update: Add to Cart selector is updated
-* Update: Course List Addon design is improved
-* Update: Course Carousel Addon design improved
-* Fix: The Solid option in the "Border Styles" section under Card (in Design) was not function
-* Fix: The "Author Show/Hide" option in the Layout function under Content was not functioning
-* Fix: The Style Control for the Single Course page Elements were not working
-* Fix: The "Guest Mode" feature was not working with Divi
-* Fix: Course List Block was not working properly
-* Fix: Enrollment Expiration Time was not available on the Course Details page
-* Fix: Q&A tab was not showing any questions or answers in some cases
-* Fix: Resource tab was not showing any resources in some cases
-* Fix: The review adding/editing option was not appearing on the Review tab in some cases
-* Fix: The Announcements tab was not showing any data in some cases
-* Fix: The Gradebook tab was not showing any data in some cases
+New: Course enrollment add-on now comes with a new toggle button to show/hide the additional information
+New: Course purchase add-on now comes with a new toggle button to show/hide the additional information
+Update: Price compatibility is added for EDD and WooCommerce plugin
+Update: Course Curriculum add-on is now compatible with the latest Tutor 2.0
+Update: Course Content styling control is now compatible with the latest Tutor 2.0
+Update: Class Selector updated, tab-body-item to tutor-tab-item
+Update: Add to Cart selector is updated
+Update: Course List Addon design is improved
+Update: Course Carousel Addon design improved
+Fix: The Solid option in the "Border Styles" section under Card (in Design) was not function
+Fix: The "Author Show/Hide" option in the Layout function under Content was not functioning
+Fix: The Style Control for the Single Course page Elements were not working
+Fix: The "Guest Mode" feature was not working with Divi
+Fix: Course List Block was not working properly
+Fix: Enrollment Expiration Time was not available on the Course Details page
+Fix: Q&A tab was not showing any questions or answers in some cases
+Fix: Resource tab was not showing any resources in some cases
+Fix: The review adding/editing option was not appearing on the Review tab in some cases
+Fix: The Announcements tab was not showing any data in some cases
+Fix: The Gradebook tab was not showing any data in some cases
 
-= 2.0.0 - 15 March, 2022
+= 2.0.0 - 15 March, 2022 =
 
-* New: Introducing compatibility with WordPress 5.9
-* New: Full compatibility with Tutor LMS 2.0
-* New: New Tutor LMS Divi Module for course content
-* New: New Tutor LMS Divi Module for course wishlist
-* New: New Tutor LMS Divi Module for course purchase
-* Update: Course requirement title doesn’t show up now without description
-* Update: Course materials title doesn’t show up now without description
-* Update: Target audience title doesn’t show up now without description
-* Fix: Pagination on course listing page redirected to course archive page issue
+New: Introducing compatibility with WordPress 5.9
+New: Full compatibility with Tutor LMS 2.0
+New: New Tutor LMS Divi Module for course content
+New: New Tutor LMS Divi Module for course wishlist
+New: New Tutor LMS Divi Module for course purchase
+Update: Course requirement title doesn’t show up now without description
+Update: Course materials title doesn’t show up now without description
+Update: Target audience title doesn’t show up now without description
+Fix: Pagination on course listing page redirected to course archive page issue
+
+= 1.0.1 - Sep 10, 2021 =
+
+Course carousel woocommerce currency symbol issue fixed
+Course list woocommerce currency symbol issue fixed
 
 = 1.0.0 =
-* Initial Release
 
-= 1.0.1 Sep 10, 2021=
-* Course carousel woocommerce currency symbol issue fixed
-* Course list woocommerce currency symbol issue fixed
+Initial Release
 
 == Upgrade Notice ==
+Update to the latest version to get new features, improvements, and bug fixes.
