@@ -1,12 +1,16 @@
 <?php
 /**
- * TutorDiviModules class
+ * TutorDiviModules
+ *
+ * @since 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * TutorDiviModules class
+ */
 class TutorDiviModules extends DiviExtension {
-
 	/**
 	 * The gettext domain for the extension's translations.
 	 *
@@ -40,8 +44,8 @@ class TutorDiviModules extends DiviExtension {
 	 * load scripts
 	 * load text-domain
 	 *
-	 * @param string $name
-	 * @param array  $args
+	 * @param string $name Name of the extension.
+	 * @param array  $args Arguments for the extension.
 	 */
 	public function __construct( $name = 'tutor-lms-divi-modules', $args = array() ) {
 		$this->plugin_dir     = plugin_dir_path( __FILE__ );
@@ -55,11 +59,15 @@ class TutorDiviModules extends DiviExtension {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_divi_scripts' ), 99 );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 99 );
-
-		add_filter( 'tutor_course_builder_editor_list', array( $this, 'add_edit_with_divi_button' ), 10, 2 );
-		add_filter( 'tutor_course_builder_editor_used', array( $this, 'check_divi_builder' ), 10, 2 );
 	}
 
+	/**
+	 * Load dependencies.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function load_dependencies() {
 		require_once $this->plugin_dir . 'functions.php';
 		require_once $this->plugin_dir . 'classes/Helper.php';
@@ -67,6 +75,13 @@ class TutorDiviModules extends DiviExtension {
 		require_once $this->plugin_dir . 'classes/Requirements.php';
 	}
 
+	/**
+	 * Enqueue Divi styles.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function enqueue_divi_styles() {
 		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
 		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
@@ -91,6 +106,13 @@ class TutorDiviModules extends DiviExtension {
 		);
 	}
 
+	/**
+	 * Enqueue Divi scripts.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function enqueue_divi_scripts() {
 
 		$this->enqueue_divi_styles();
@@ -117,6 +139,13 @@ class TutorDiviModules extends DiviExtension {
 		wp_add_inline_script( 'tutor-divi-scripts', 'const dtlmsData = ' . json_encode( $inline_data ), 'before' );
 	}
 
+	/**
+	 * Enqueue Divi styles.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function admin_enqueue_scripts() {
 		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
 		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
@@ -127,47 +156,6 @@ class TutorDiviModules extends DiviExtension {
 			$version
 		);
 	}
-
-	public function add_edit_with_divi_button( $editors, $post_id ) {
-		if ( function_exists( 'et_setup_theme' ) ){
-			$name             = 'divi';
-			$is_divi_edit     = 'on' === get_post_meta( $post_id, '_et_pb_use_builder', true );
-			$editors[ $name ] = array(
-				'name'  => $name,
-				'label' => __( 'Divi', 'tutor' ),
-				'link'  => add_query_arg(
-					$is_divi_edit ? array(
-						'et_fb' => 1,
-						'PageSpeed' => 'off',
-					) : array(
-						'et_fb_activation_nonce' => wp_create_nonce( 'et_fb_activation_nonce_' . $post_id ),
-					),
-					get_permalink( $post_id )
-				),
-			);
-		}
-		return $editors;
-	}
-
-	public function check_divi_builder( $editor, $post_id ){
-		if ( 'on' === get_post_meta( $post_id, '_et_pb_use_builder', true ) ) {
-			$name   = 'divi';
-			$editor = array(
-				'name'  => $name,
-				'label' => __( 'Divi', 'tutor' ),
-				'link'  => add_query_arg(
-					array(
-						'et_fb' => 1,
-						'PageSpeed' => 'off',
-					),
-					get_permalink( $post_id )
-				),
-			);
-		}
-		return $editor;
-	}
-
 }
 
 new TutorDiviModules();
-

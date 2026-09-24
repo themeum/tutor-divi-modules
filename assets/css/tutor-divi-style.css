@@ -1,3 +1,6 @@
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./assets/scss/frontend-main.scss ***!
+  \*********************************************************************************************************************************************************************************/
 .tutor-course-reviews .et_module_title {
   margin-top: 10px;
 }
@@ -448,3 +451,5 @@
 .dtlms-course-carousel-loop-wrap .tutor-course-card.dtlms-has-hover-animation:hover {
   transform: translateY(-5px);
 }
+
+/*# sourceMappingURL=tutor-divi-style.css.map*/
