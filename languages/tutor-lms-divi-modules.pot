@@ -57,6 +57,10 @@ msgstr ""
 msgid "Learn more about Tutor LMS"
 msgstr ""
 
+#: includes/div5modules/course-title/CourseTitle.php:127, includes/modules/CourseTitle/CourseTitle.php:135
+msgid "Course Title"
+msgstr ""
+
 #: includes/modules/CourseAbout/CourseAbout.php:32
 msgid "Tutor Course About"
 msgstr ""
@@ -1219,10 +1223,6 @@ msgstr ""
 
 #: includes/modules/CourseTitle/CourseTitle.php:59
 msgid "Sizing"
-msgstr ""
-
-#: includes/modules/CourseTitle/CourseTitle.php:135
-msgid "Course Title"
 msgstr ""
 
 #: includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:32

@@ -30,7 +30,12 @@ if ( ! function_exists( 'tutor_divi_course_categories' ) ) {
 		$course_categories      = array();
 		$course_categories_term = tutils()->get_course_categories_term();
 		foreach ( $course_categories_term as $term ) {
-			$course_categories[ $term->term_id ] = $term->name;
+			$term_id = is_object( $term ) ? ( $term->term_id ?? 0 ) : ( $term['term_id'] ?? 0 );
+			$name    = is_object( $term ) ? ( $term->name ?? '' ) : ( $term['name'] ?? '' );
+
+			if ( $term_id ) {
+				$course_categories[ $term_id ] = $name;
+			}
 		}
 
 		return $course_categories;

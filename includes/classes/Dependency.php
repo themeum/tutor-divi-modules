@@ -57,7 +57,7 @@ class Dependency {
 					</div>
 				</div>
 			</div>
-				<?php
+		<?php
 	}
 
 	/**
