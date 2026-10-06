@@ -1,0 +1,62 @@
+{
+  "advanced": {
+    "fonts": {
+      "card_title": "title.decoration.font",
+      "meta": "meta.decoration.font",
+      "category": "category.decoration.font"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "animation": "module.decoration.animation",
+    "box_shadow": {
+      "default": "module.decoration.boxShadow"
+    },
+    "disabled_on": "module.decoration.disabledOn",
+    "filters": {
+      "default": "module.decoration.filters"
+    },
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transform": "module.decoration.transform",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "skin": "content.advanced.skin.*",
+    "columns": "content.advanced.columns.*",
+    "hover_animation": "content.advanced.hoverAnimation.*",
+    "show_image": "content.advanced.showImage.*",
+    "image_size": "content.advanced.imageSize.*",
+    "meta_data": "content.advanced.metaData.*",
+    "rating": "content.advanced.rating.*",
+    "avatar": "content.advanced.avatar.*",
+    "author": "content.advanced.author.*",
+    "difficulty_label": "content.advanced.difficultyLabel.*",
+    "wish_list": "content.advanced.wishList.*",
+    "show_category": "content.advanced.showCategory.*",
+    "footer": "content.advanced.footer.*",
+    "pagination": "content.advanced.pagination.*",
+    "order_by": "content.advanced.orderBy.*",
+    "order": "content.advanced.order.*",
+    "limit": "content.advanced.limit.*",
+    "category_includes": "content.advanced.categoryIncludes.*",
+    "author_includes": "content.advanced.authorIncludes.*",
+    "pagination_type": "content.advanced.paginationType.*",
+    "prev_level": "content.advanced.prevLabel.*",
+    "next_level": "content.advanced.nextLabel.*",
+    "columns_gap": "layout.advanced.columnsGap.*",
+    "rows_gap": "layout.advanced.rowsGap.*",
+    "card_background_color": "card.advanced.backgroundColor.*",
+    "star_color": "rating.advanced.starColor.*",
+    "star_size": "rating.advanced.starSize.*"
+  }
+}
