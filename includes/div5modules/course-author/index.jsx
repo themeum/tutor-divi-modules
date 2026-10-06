@@ -176,9 +176,6 @@ const CourseAuthorEdit = ({ attrs, id, name, elements }) => {
 
   const html = response?.html ?? '';
 
-  console.log('html', html);
-  console.log('response', response);
-
   return (
     <ModuleContainer
       attrs={attrs}
