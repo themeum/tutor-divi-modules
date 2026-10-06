@@ -20,7 +20,7 @@ jobs:
         run: npm ci
 
       - name: Build plugin
-        run: gulp build
+        run: npm run zip
 
       - name: WordPress Plugin Deploy
         id: deploy

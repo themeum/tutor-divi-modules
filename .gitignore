@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+includes/div5modules/node_modules
 /build
 *.zip
 # testing
@@ -12,6 +13,10 @@
 /styles/bundle.min.css
 asset-manifest.json
 *.map
+/assets/css/admin_notice.css
+/assets/css/admin_notice.min.css
+/assets/css/tutor-divi-style.css
+/assets/css/tutor-divi-style.min.css
 
 # misc
 .DS_Store

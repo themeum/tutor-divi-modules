@@ -11,7 +11,7 @@ $course_id = get_the_ID();
 if ( isset( $data['post_id'] ) ) {
 	$course_id = $data['post_id'];
 }
-if ( isset( $args['course'] ) ) {
+if ( ! empty( $args['course'] ) ) {
 	$course_id = $args['course'];
 }
 
