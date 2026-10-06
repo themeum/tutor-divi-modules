@@ -107,34 +107,7 @@
       }
     },
     "content": {
-      "type": "object",
-      "settings": {
-        "advanced": {
-          "course": {
-            "groupType": "group-item",
-            "item": {
-              "groupSlug": "contentMainContent",
-              "attrName": "content.advanced.course",
-              "label": "Course",
-              "description": "Here you can select the Course.",
-              "priority": 10,
-              "render": true,
-              "features": {
-                "sticky": false,
-                "hover": false,
-                "responsive": false
-              },
-              "component": {
-                "type": "field",
-                "name": "divi/select",
-                "props": {
-                  "options": {}
-                }
-              }
-            }
-          }
-        }
-      }
+      "type": "object"
     }
   },
   "customCssFields": {},
@@ -143,18 +116,6 @@
     "design": "auto",
     "advanced": "auto",
     "groups": {
-      "contentMainContent": {
-        "panel": "content",
-        "priority": 10,
-        "groupName": "contentMainContent",
-        "multiElements": true,
-        "component": {
-          "name": "divi/composite",
-          "props": {
-            "groupLabel": "Content"
-          }
-        }
-      },
       "designHeading": {
         "panel": "design",
         "priority": 10,

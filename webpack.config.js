@@ -162,6 +162,7 @@ function divi5Config(isProduction) {
 		externals: {
 			react: ['vendor', 'React'],
 			'@wordpress/hooks': ['vendor', 'wp', 'hooks'],
+			'@divi/data': ['divi', 'data'],
 			'@divi/rest': ['divi', 'rest'],
 			'@divi/module': ['divi', 'module'],
 			'@divi/module-library': ['divi', 'moduleLibrary'],

@@ -2,6 +2,7 @@ import { addAction } from '@wordpress/hooks';
 import { registerModule } from '@divi/module-library';
 import { courseTitleModule } from './course-title/index.jsx';
 import { courseAboutModule } from './course-about/index.jsx';
+import { courseAuthorModule } from './course-author/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -12,5 +13,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseAboutModule.metadata, {
     conversionOutline: courseAboutModule.conversionOutline,
     renderers: courseAboutModule.renderers,
+  });
+
+  registerModule(courseAuthorModule.metadata, {
+    conversionOutline: courseAuthorModule.conversionOutline,
+    renderers: courseAuthorModule.renderers,
   });
 });

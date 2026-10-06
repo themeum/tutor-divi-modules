@@ -13,6 +13,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: includes/classes/CourseBuilderEditor.php:99, includes/classes/CourseBuilderEditor.php:121
+msgid "Divi"
+msgstr ""
+
 #: includes/classes/Dependency.php:39
 msgid "WARNING: YOU NEED TO INSTALL THE REQUIRED TUTOR LMS VERSION"
 msgstr ""
@@ -1279,8 +1283,4 @@ msgstr ""
 
 #: includes/templates/course/carousel/card.php:27, includes/templates/course/carousel/card.php:48, includes/templates/course/carousel/card.php:63, includes/templates/course/carousel/classic.php:27, includes/templates/course/carousel/classic.php:48, includes/templates/course/carousel/classic.php:63, includes/templates/course/carousel/overlayed.php:22, includes/templates/course/carousel/overlayed.php:42, includes/templates/course/carousel/overlayed.php:57, includes/templates/course/carousel/stacked.php:27, includes/templates/course/carousel/stacked.php:49, includes/templates/course/carousel/stacked.php:64, includes/templates/course/list/card.php:27, includes/templates/course/list/card.php:48, includes/templates/course/list/card.php:63, includes/templates/course/list/classic.php:27, includes/templates/course/list/classic.php:48, includes/templates/course/list/classic.php:63, includes/templates/course/list/overlayed.php:22, includes/templates/course/list/overlayed.php:42, includes/templates/course/list/overlayed.php:57, includes/templates/course/list/stacked.php:27, includes/templates/course/list/stacked.php:49, includes/templates/course/list/stacked.php:64, includes/templates/course/list/grid/card.php:19, includes/templates/course/list/grid/card.php:42, includes/templates/course/list/grid/card.php:57, includes/templates/course/list/grid/classic.php:19, includes/templates/course/list/grid/classic.php:42, includes/templates/course/list/grid/classic.php:57, includes/templates/course/list/grid/overlayed.php:15, includes/templates/course/list/grid/overlayed.php:37, includes/templates/course/list/grid/overlayed.php:52, includes/templates/course/list/grid/stacked.php:19, includes/templates/course/list/grid/stacked.php:43, includes/templates/course/list/grid/stacked.php:58
 msgid "not found"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/basic-theme/page-templates/full-width.php:3
-msgid "Full Width"
 msgstr ""

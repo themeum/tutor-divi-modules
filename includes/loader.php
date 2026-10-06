@@ -27,6 +27,7 @@ if ( function_exists( 'dtlms_is_divi5' ) && dtlms_is_divi5() ) {
 	$d5_replaced_modules = array(
 		'CourseTitle',
 		'CourseAbout',
+		'CourseAuthor',
 	);
 }
 

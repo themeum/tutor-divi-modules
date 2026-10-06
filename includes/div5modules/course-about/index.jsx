@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useFetch } from '@divi/rest';
 import {
   ModuleContainer,
@@ -58,28 +58,14 @@ const CourseAboutEdit = ({ attrs, id, name, elements }) => {
     response,
     isLoading,
   } = useFetch({});
-  const fetchAbortRef = useRef();
 
   useEffect(() => {
-    if (fetchAbortRef.current) {
-      fetchAbortRef.current.abort();
-    }
-
-    fetchAbortRef.current = new AbortController();
-
     fetch({
       restRoute: `/tutor-divi/v1/course-about?course=${encodeURIComponent(courseId)}`,
       method: 'GET',
-      signal: fetchAbortRef.current.signal,
     }).catch((error) => {
       console.error(error);
     });
-
-    return () => {
-      if (fetchAbortRef.current) {
-        fetchAbortRef.current.abort();
-      }
-    };
   }, [courseId]);
 
   const html = response?.html ?? '';

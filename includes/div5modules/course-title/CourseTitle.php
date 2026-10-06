@@ -268,7 +268,7 @@ class CourseTitle implements DependencyInterface {
 				'scriptDataComponent' => array( self::class, 'module_script_data' ),
 				'parentAttrs'         => is_object( $parent ) ? ( $parent->attrs ?? array() ) : array(),
 				'parentId'            => is_object( $parent ) ? ( $parent->id ?? '' ) : '',
-				'parentName'          => is_object( $parent ) ? ( $parent->blockName ?? '' ) : '',
+				'parentName'          => is_object( $parent ) ? ( $parent->block_name ?? '' ) : '',
 				'children'            => array(
 					$elements->style_components(
 						array(

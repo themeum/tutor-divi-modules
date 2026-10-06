@@ -10,72 +10,12 @@
 defined( 'ABSPATH' ) || exit;
 
 use TutorLMS\Divi\D5\CourseAbout\CourseAbout;
+use TutorLMS\Divi\D5\CourseAuthor\CourseAuthor;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
-use TutorLMS\Divi\Helper;
 
 require_once __DIR__ . '/course-title/CourseTitle.php';
 require_once __DIR__ . '/course-about/CourseAbout.php';
-
-/**
- * Inject published course options into Divi 5 Course select fields.
- *
- * @param array $metadata Module metadata.
- * @return array
- */
-function dtlms_d5_inject_course_field_options( $metadata ) {
-	$module_names = array( 'tutor-lms/course-title', 'tutor-lms/course-about' );
-
-	if ( empty( $metadata['name'] ) || ! in_array( $metadata['name'], $module_names, true ) ) {
-		return $metadata;
-	}
-
-	if ( ! class_exists( Helper::class ) ) {
-		return $metadata;
-	}
-
-	$options = array();
-
-	foreach ( Helper::get_courses() as $course_id => $label ) {
-		if ( ! is_numeric( $course_id ) ) {
-			continue;
-		}
-
-		$options[ (string) $course_id ] = array(
-			'label' => $label,
-		);
-	}
-
-	if ( empty( $options ) ) {
-		return $metadata;
-	}
-
-	$metadata['attributes']['content']['settings']['advanced']['course']['item']['component']['props']['options'] = $options;
-
-	return $metadata;
-}
-add_filter( 'block_type_metadata', 'dtlms_d5_inject_course_field_options' );
-
-/**
- * Default the Course field to the current course when editing a course.
- *
- * @param array $defaults Default attributes.
- * @return array
- */
-function dtlms_d5_default_course_attributes( $defaults ) {
-	if ( ! class_exists( Helper::class ) ) {
-		return $defaults;
-	}
-
-	$course_id = Helper::get_course_default();
-
-	if ( $course_id ) {
-		$defaults['content']['advanced']['course']['desktop']['value'] = (string) $course_id;
-	}
-
-	return $defaults;
-}
-add_filter( 'divi_module_library_module_default_attributes_tutor-lms/course-title', 'dtlms_d5_default_course_attributes' );
-add_filter( 'divi_module_library_module_default_attributes_tutor-lms/course-about', 'dtlms_d5_default_course_attributes' );
+require_once __DIR__ . '/course-author/CourseAuthor.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -88,6 +28,7 @@ add_filter( 'divi_module_library_module_default_attributes_tutor-lms/course-abou
 function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseTitle() );
 	$dependency_tree->add_dependency( new CourseAbout() );
+	$dependency_tree->add_dependency( new CourseAuthor() );
 }
 
 /**
@@ -119,6 +60,7 @@ function dtlms_d5_enqueue_visual_builder_assets() {
 				'deps'               => array(
 					'divi-vendor-react',
 					'jquery',
+					'divi-data',
 					'divi-module',
 					'divi-module-library',
 					'divi-rest',
