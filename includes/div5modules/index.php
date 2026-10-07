@@ -14,6 +14,7 @@ use TutorLMS\Divi\D5\CourseAuthor\CourseAuthor;
 use TutorLMS\Divi\D5\CourseBenefits\CourseBenefits;
 use TutorLMS\Divi\D5\CourseCarousel\CourseCarousel;
 use TutorLMS\Divi\D5\CourseCategories\CourseCategories;
+use TutorLMS\Divi\D5\CourseContent\CourseContent;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
 
@@ -24,6 +25,7 @@ require_once __DIR__ . '/course-list/CourseList.php';
 require_once __DIR__ . '/course-carousel/CourseCarousel.php';
 require_once __DIR__ . '/course-benefits/CourseBenefits.php';
 require_once __DIR__ . '/course-categories/CourseCategories.php';
+require_once __DIR__ . '/course-content/CourseContent.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -41,6 +43,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseCarousel() );
 	$dependency_tree->add_dependency( new CourseBenefits() );
 	$dependency_tree->add_dependency( new CourseCategories() );
+	$dependency_tree->add_dependency( new CourseContent() );
 }
 
 /**
