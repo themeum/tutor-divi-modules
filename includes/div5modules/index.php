@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 use TutorLMS\Divi\D5\CourseAbout\CourseAbout;
 use TutorLMS\Divi\D5\CourseAuthor\CourseAuthor;
+use TutorLMS\Divi\D5\CourseBenefits\CourseBenefits;
 use TutorLMS\Divi\D5\CourseCarousel\CourseCarousel;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
@@ -20,6 +21,7 @@ require_once __DIR__ . '/course-about/CourseAbout.php';
 require_once __DIR__ . '/course-author/CourseAuthor.php';
 require_once __DIR__ . '/course-list/CourseList.php';
 require_once __DIR__ . '/course-carousel/CourseCarousel.php';
+require_once __DIR__ . '/course-benefits/CourseBenefits.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -35,6 +37,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseAuthor() );
 	$dependency_tree->add_dependency( new CourseList() );
 	$dependency_tree->add_dependency( new CourseCarousel() );
+	$dependency_tree->add_dependency( new CourseBenefits() );
 }
 
 /**
@@ -78,7 +81,8 @@ function dtlms_d5_enqueue_visual_builder_assets() {
 				'enqueue_app_window' => true,
 				'data_app_window'    => array_merge(
 					CourseList::visual_builder_data(),
-					CourseCarousel::visual_builder_data()
+					CourseCarousel::visual_builder_data(),
+					CourseBenefits::visual_builder_data()
 				),
 			),
 		)

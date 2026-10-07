@@ -5,6 +5,7 @@ import { courseAboutModule } from './course-about/index.jsx';
 import { courseAuthorModule } from './course-author/index.jsx';
 import { courseListModule } from './course-list/index.jsx';
 import { courseCarouselModule } from './course-carousel/index.jsx';
+import { courseBenefitsModule } from './course-benefits/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -30,5 +31,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseCarouselModule.metadata, {
     conversionOutline: courseCarouselModule.conversionOutline,
     renderers: courseCarouselModule.renderers,
+  });
+
+  registerModule(courseBenefitsModule.metadata, {
+    conversionOutline: courseBenefitsModule.conversionOutline,
+    renderers: courseBenefitsModule.renderers,
   });
 });
