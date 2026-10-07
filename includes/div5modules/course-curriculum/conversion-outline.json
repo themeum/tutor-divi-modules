@@ -1,0 +1,52 @@
+{
+  "advanced": {
+    "fonts": {
+      "header": "header.decoration.font",
+      "topics": "topics.decoration.font",
+      "lesson": "lesson.decoration.font"
+    },
+    "borders": {
+      "topics": "topics.decoration.border"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "course": "content.advanced.course.*",
+    "label": "content.advanced.label.*",
+    "icon_position": "content.advanced.iconPosition.*",
+    "gap": "header.advanced.gap.*",
+    "topic_icon_size": "topics.advanced.iconSize.*",
+    "topic_icon_color": "topics.advanced.iconColor.*",
+    "topic_icon_active_color": "topics.advanced.iconActiveColor.*",
+    "topic_icon_hover_color": "topics.advanced.iconHoverColor.*",
+    "topic_text_color": "topics.advanced.textColor.*",
+    "topic_text_active_color": "topics.advanced.textActiveColor.*",
+    "topic_text_hover_color": "topics.advanced.textHoverColor.*",
+    "topic_background_color": "topics.advanced.backgroundColor.*",
+    "topic_background_active_color": "topics.advanced.backgroundActiveColor.*",
+    "topic_background_hover_color": "topics.advanced.backgroundHoverColor.*",
+    "space_between_topics": "topics.advanced.spaceBetween.*",
+    "lesson_icon_size": "lesson.advanced.iconSize.*",
+    "lesson_icon_color": "lesson.advanced.iconColor.*",
+    "lesson_icon_color__hover": "lesson.advanced.iconColorHover.*",
+    "lesson_info_color": "lesson.advanced.infoColor.*",
+    "lesson_info_color__hover": "lesson.advanced.infoColorHover.*",
+    "lesson_background_color": "lesson.advanced.backgroundColor.*",
+    "lesson_background_color__hover": "lesson.advanced.backgroundColorHover.*"
+  }
+}
