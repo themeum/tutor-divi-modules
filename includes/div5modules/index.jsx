@@ -9,6 +9,7 @@ import { courseBenefitsModule } from './course-benefits/index.jsx';
 import { courseCategoriesModule } from './course-categories/index.jsx';
 import { courseContentModule } from './course-content/index.jsx';
 import { courseCurriculumModule } from './course-curriculum/index.jsx';
+import { courseDurationModule } from './course-duration/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -54,5 +55,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseCurriculumModule.metadata, {
     conversionOutline: courseCurriculumModule.conversionOutline,
     renderers: courseCurriculumModule.renderers,
+  });
+
+  registerModule(courseDurationModule.metadata, {
+    conversionOutline: courseDurationModule.conversionOutline,
+    renderers: courseDurationModule.renderers,
   });
 });
