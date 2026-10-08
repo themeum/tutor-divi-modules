@@ -18,6 +18,7 @@ import { courseMaterialsModule } from './course-materials/index.jsx';
 import { coursePriceModule } from './course-price/index.jsx';
 import { coursePurchaseModule } from './course-purchase/index.jsx';
 import { courseRatingModule } from './course-rating/index.jsx';
+import { courseRequirementsModule } from './course-requirements/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -108,5 +109,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseRatingModule.metadata, {
     conversionOutline: courseRatingModule.conversionOutline,
     renderers: courseRatingModule.renderers,
+  });
+
+  registerModule(courseRequirementsModule.metadata, {
+    conversionOutline: courseRequirementsModule.conversionOutline,
+    renderers: courseRequirementsModule.renderers,
   });
 });

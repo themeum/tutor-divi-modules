@@ -25,6 +25,7 @@ use TutorLMS\Divi\D5\CourseMaterials\CourseMaterials;
 use TutorLMS\Divi\D5\CoursePrice\CoursePrice;
 use TutorLMS\Divi\D5\CoursePurchase\CoursePurchase;
 use TutorLMS\Divi\D5\CourseRating\CourseRating;
+use TutorLMS\Divi\D5\CourseRequirements\CourseRequirements;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
 
@@ -46,6 +47,7 @@ require_once __DIR__ . '/course-materials/CourseMaterials.php';
 require_once __DIR__ . '/course-price/CoursePrice.php';
 require_once __DIR__ . '/course-purchase/CoursePurchase.php';
 require_once __DIR__ . '/course-rating/CourseRating.php';
+require_once __DIR__ . '/course-requirements/CourseRequirements.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -74,6 +76,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CoursePrice() );
 	$dependency_tree->add_dependency( new CoursePurchase() );
 	$dependency_tree->add_dependency( new CourseRating() );
+	$dependency_tree->add_dependency( new CourseRequirements() );
 }
 
 /**
