@@ -49,7 +49,6 @@
     "after": "css.*.after"
   },
   "module": {
-    "course": "content.advanced.course.*",
     "course_benefits_label": "content.advanced.benefitsLabel.*",
     "course_benefits_layout": "content.advanced.layout.*",
     "course_benefits_icon": "content.advanced.icon.*",

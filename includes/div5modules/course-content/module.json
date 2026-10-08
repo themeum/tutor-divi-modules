@@ -76,29 +76,6 @@
       },
       "settings": {
         "advanced": {
-          "course": {
-            "groupType": "group-item",
-            "item": {
-              "groupSlug": "contentCourse",
-              "attrName": "content.advanced.course",
-              "label": "Course",
-              "priority": 10,
-              "render": true,
-              "features": {
-                "sticky": false,
-                "hover": false,
-                "responsive": false
-              },
-              "component": {
-                "type": "field",
-                "name": "divi/select",
-                "props": {
-                  "options": {}
-                }
-              },
-              "description": "Here you can select the Course."
-            }
-          },
           "benefitsLabel": {
             "groupType": "group-item",
             "item": {
@@ -2306,18 +2283,6 @@
     "design": "auto",
     "advanced": "auto",
     "groups": {
-      "contentCourse": {
-        "panel": "content",
-        "priority": 10,
-        "groupName": "contentCourse",
-        "multiElements": true,
-        "component": {
-          "name": "divi/composite",
-          "props": {
-            "groupLabel": "Course"
-          }
-        }
-      },
       "contentBenefits": {
         "panel": "content",
         "priority": 20,

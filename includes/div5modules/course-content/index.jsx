@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { select } from '@divi/data';
 import { useFetch } from '@divi/rest';
 import {
   CommonStyle,
@@ -38,18 +39,14 @@ const breakpointValue = (attr, breakpoint, fallback) => {
   return desktopValue(attr, fallback);
 };
 
-const withCourseOptions = (moduleMetadata) => {
-  const data = typeof window !== 'undefined' ? (window.TutorLmsDivi5VisualBuilderData || {}) : {};
-  const next = JSON.parse(JSON.stringify(moduleMetadata));
-  const options = {};
+const editingPostId = () => {
+  try {
+    const postId = select('divi/settings')?.getSetting?.(['post', 'id']);
 
-  (data.courses || []).forEach((course) => {
-    options[course.value] = { label: course.label };
-  });
-
-  next.attributes.content.settings.advanced.course.item.component.props.options = options;
-
-  return next;
+    return postId ? String(postId) : '';
+  } catch (error) {
+    return '';
+  }
 };
 
 const fixedStyle = (selector, declaration) => (
@@ -281,7 +278,6 @@ const moduleClassnames = ({ classnamesInstance, attrs }) => {
 
 const CourseContentEdit = ({ attrs, id, name, elements }) => {
   const content = attrs?.content?.advanced ?? {};
-  const courseId = desktopValue(content.course, '');
   const benefitsLabel = desktopValue(content.benefitsLabel, 'What Will You Learn?');
   const topicsLabel = desktopValue(content.topicsLabel, 'Course Content');
   const reviewsLabel = desktopValue(content.reviewsLabel, 'Student Ratings & Reviews');
@@ -294,13 +290,13 @@ const CourseContentEdit = ({ attrs, id, name, elements }) => {
 
   useEffect(() => {
     const params = new URLSearchParams({
-      course: String(courseId || ''),
       benefits_label: String(benefitsLabel || ''),
       topics_label: String(topicsLabel || ''),
       reviews_label: String(reviewsLabel || ''),
       icon_unicode: icon?.unicode || '',
       icon_type: icon?.type || '',
       icon_weight: icon?.weight ? String(icon.weight) : '',
+      et_post_id: editingPostId(),
     });
 
     fetch({
@@ -310,7 +306,6 @@ const CourseContentEdit = ({ attrs, id, name, elements }) => {
       console.error(error);
     });
   }, [
-    courseId,
     benefitsLabel,
     topicsLabel,
     reviewsLabel,
@@ -342,7 +337,7 @@ const CourseContentEdit = ({ attrs, id, name, elements }) => {
 };
 
 export const courseContentModule = {
-  metadata: withCourseOptions(metadata),
+  metadata,
   conversionOutline,
   renderers: {
     edit: CourseContentEdit,
