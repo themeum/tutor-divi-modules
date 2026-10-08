@@ -17,6 +17,7 @@ use TutorLMS\Divi\D5\CourseCategories\CourseCategories;
 use TutorLMS\Divi\D5\CourseContent\CourseContent;
 use TutorLMS\Divi\D5\CourseCurriculum\CourseCurriculum;
 use TutorLMS\Divi\D5\CourseDuration\CourseDuration;
+use TutorLMS\Divi\D5\CourseEnrollment\CourseEnrollment;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
 
@@ -30,6 +31,7 @@ require_once __DIR__ . '/course-categories/CourseCategories.php';
 require_once __DIR__ . '/course-content/CourseContent.php';
 require_once __DIR__ . '/course-curriculum/CourseCurriculum.php';
 require_once __DIR__ . '/course-duration/CourseDuration.php';
+require_once __DIR__ . '/course-enrollment/CourseEnrollment.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -50,6 +52,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseContent() );
 	$dependency_tree->add_dependency( new CourseCurriculum() );
 	$dependency_tree->add_dependency( new CourseDuration() );
+	$dependency_tree->add_dependency( new CourseEnrollment() );
 }
 
 /**
