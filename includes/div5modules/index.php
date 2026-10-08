@@ -94,7 +94,6 @@ function dtlms_d5_enqueue_visual_builder_assets() {
 				'data_app_window'    => array_merge(
 					CourseList::visual_builder_data(),
 					CourseCarousel::visual_builder_data(),
-					CourseBenefits::visual_builder_data(),
 				),
 			),
 		)

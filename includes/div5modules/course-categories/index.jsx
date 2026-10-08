@@ -79,20 +79,6 @@ const editingPostId = () => {
   }
 };
 
-const withCourseOptions = (moduleMetadata) => {
-  const data = typeof window !== 'undefined' ? (window.TutorLmsDivi5VisualBuilderData || {}) : {};
-  const next = JSON.parse(JSON.stringify(moduleMetadata));
-  const options = {};
-
-  (data.courses || []).forEach((course) => {
-    options[course.value] = { label: course.label };
-  });
-
-  next.attributes.content.settings.advanced.course.item.component.props.options = options;
-
-  return next;
-};
-
 const ModuleStyles = ({
   attrs,
   elements,
@@ -171,7 +157,6 @@ const moduleClassnames = ({ classnamesInstance, attrs }) => {
 
 const CourseCategoriesEdit = ({ attrs, id, name, elements }) => {
   const content = attrs?.content?.advanced ?? {};
-  const courseId = desktopValue(content.course, '');
   const label = desktopValue(content.label, 'Categories:');
   const {
     fetch,
@@ -181,7 +166,6 @@ const CourseCategoriesEdit = ({ attrs, id, name, elements }) => {
 
   useEffect(() => {
     const params = new URLSearchParams({
-      course: String(courseId || ''),
       label: String(label || ''),
       et_post_id: editingPostId(),
     });
@@ -192,10 +176,7 @@ const CourseCategoriesEdit = ({ attrs, id, name, elements }) => {
     }).catch((error) => {
       console.error(error);
     });
-  }, [
-    courseId,
-    label,
-  ]);
+  }, [label]);
 
   const html = response?.html ?? '';
 
@@ -222,7 +203,7 @@ const CourseCategoriesEdit = ({ attrs, id, name, elements }) => {
 };
 
 export const courseCategoriesModule = {
-  metadata: withCourseOptions(metadata),
+  metadata,
   conversionOutline,
   renderers: {
     edit: CourseCategoriesEdit,

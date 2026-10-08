@@ -39,7 +39,6 @@ class CourseCarousel implements DependencyInterface {
 			add_action( 'init', array( self::class, 'register_module' ) );
 		}
 
-		add_filter( 'block_type_metadata', array( self::class, 'filter_block_metadata' ) );
 		add_filter( 'divi.moduleLibrary.conversion.moduleConversionOutline', array( self::class, 'filter_conversion_outline' ), 10, 2 );
 		add_filter( 'divi.moduleLibrary.conversion.valueExpansionFunctionMap', array( self::class, 'filter_value_expansion_map' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_rest_routes' ) );
@@ -74,23 +73,6 @@ class CourseCarousel implements DependencyInterface {
 				'theme'  => DTLMS_ASSETS . 'slick/slick-theme.css',
 			),
 		);
-	}
-
-	/**
-	 * Fill checkbox options on the registered block metadata.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array
-	 */
-	public static function filter_block_metadata( $metadata ) {
-		if ( 'tutor-lms/course-carousel' !== ( $metadata['name'] ?? '' ) ) {
-			return $metadata;
-		}
-
-		$metadata['attributes']['content']['settings']['advanced']['categoryIncludes']['item']['component']['props']['options'] = self::checkbox_options( self::available_categories() );
-		$metadata['attributes']['content']['settings']['advanced']['authorIncludes']['item']['component']['props']['options']    = self::checkbox_options( self::available_authors() );
-
-		return $metadata;
 	}
 
 	/**
@@ -429,25 +411,6 @@ class CourseCarousel implements DependencyInterface {
 		$authors = tutor_divi_course_authors();
 
 		return is_array( $authors ) ? $authors : array();
-	}
-
-	/**
-	 * Checkbox options for a Divi checkboxes field.
-	 *
-	 * @param array $items ID to label map.
-	 * @return array
-	 */
-	private static function checkbox_options( $items ) {
-		$options = array();
-
-		foreach ( $items as $id => $label ) {
-			$options[] = array(
-				'value' => (string) $id,
-				'label' => (string) $label,
-			);
-		}
-
-		return $options;
 	}
 
 	/**

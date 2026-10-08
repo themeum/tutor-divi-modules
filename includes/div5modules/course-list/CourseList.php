@@ -39,7 +39,6 @@ class CourseList implements DependencyInterface {
 			add_action( 'init', array( self::class, 'register_module' ) );
 		}
 
-		add_filter( 'block_type_metadata', array( self::class, 'filter_block_metadata' ) );
 		add_filter( 'divi.moduleLibrary.conversion.moduleConversionOutline', array( self::class, 'filter_conversion_outline' ), 10, 2 );
 		add_filter( 'divi.moduleLibrary.conversion.valueExpansionFunctionMap', array( self::class, 'filter_value_expansion_map' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_rest_routes' ) );
@@ -69,23 +68,6 @@ class CourseList implements DependencyInterface {
 			'categories' => self::checkbox_options( self::available_categories() ),
 			'authors'    => self::checkbox_options( self::available_authors() ),
 		);
-	}
-
-	/**
-	 * Fill checkbox options on the registered block metadata.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array
-	 */
-	public static function filter_block_metadata( $metadata ) {
-		if ( 'tutor-lms/course-list' !== ( $metadata['name'] ?? '' ) ) {
-			return $metadata;
-		}
-
-		$metadata['attributes']['content']['settings']['advanced']['categoryIncludes']['item']['component']['props']['options'] = self::checkbox_options( self::available_categories() );
-		$metadata['attributes']['content']['settings']['advanced']['authorIncludes']['item']['component']['props']['options']    = self::checkbox_options( self::available_authors() );
-
-		return $metadata;
 	}
 
 	/**

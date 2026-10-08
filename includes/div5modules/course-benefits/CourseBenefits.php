@@ -41,7 +41,6 @@ class CourseBenefits implements DependencyInterface {
 			add_action( 'init', array( self::class, 'register_module' ) );
 		}
 
-		add_filter( 'block_type_metadata', array( self::class, 'filter_block_metadata' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_rest_routes' ) );
 	}
 
@@ -60,41 +59,6 @@ class CourseBenefits implements DependencyInterface {
 	}
 
 	/**
-	 * Course choices passed to the Visual Builder script.
-	 *
-	 * @return array
-	 */
-	public static function visual_builder_data() {
-		return array(
-			'courses' => self::course_choices(),
-		);
-	}
-
-	/**
-	 * Fill the course select on the registered block metadata.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array
-	 */
-	public static function filter_block_metadata( $metadata ) {
-		if ( 'tutor-lms/course-benefits' !== ( $metadata['name'] ?? '' ) ) {
-			return $metadata;
-		}
-
-		$options = array();
-
-		foreach ( self::course_choices() as $course ) {
-			$options[ $course['value'] ] = array(
-				'label' => $course['label'],
-			);
-		}
-
-		$metadata['attributes']['content']['settings']['advanced']['course']['item']['component']['props']['options'] = $options;
-
-		return $metadata;
-	}
-
-	/**
 	 * Register REST routes used by the Visual Builder.
 	 *
 	 * @return void
@@ -108,11 +72,6 @@ class CourseBenefits implements DependencyInterface {
 				'callback'            => array( self::class, 'rest_index' ),
 				'permission_callback' => array( self::class, 'rest_permission' ),
 				'args'                => array(
-					'course'       => array(
-						'type'              => 'string',
-						'required'          => false,
-						'sanitize_callback' => 'sanitize_text_field',
-					),
 					'label'        => array(
 						'type'              => 'string',
 						'required'          => false,
@@ -166,7 +125,6 @@ class CourseBenefits implements DependencyInterface {
 
 		$html = self::get_content(
 			array(
-				'course'               => $request->get_param( 'course' ),
 				'benefit_title'        => $request->get_param( 'label' ),
 				'course_benefits_icon' => $icon,
 			)
@@ -195,13 +153,12 @@ class CourseBenefits implements DependencyInterface {
 		$args = wp_parse_args(
 			$args,
 			array(
-				'course'               => '',
 				'benefit_title'        => '',
 				'course_benefits_icon' => '',
 			)
 		);
 
-		$course = Helper::get_course( $args );
+		$course = Helper::get_course();
 
 		if ( ! $course ) {
 			return '';
@@ -214,28 +171,6 @@ class CourseBenefits implements DependencyInterface {
 		ob_start();
 		include dtlms_get_template( 'course/benefits' );
 		return ob_get_clean();
-	}
-
-	/**
-	 * Course select choices.
-	 *
-	 * @return array<int, array{value: string, label: string}>
-	 */
-	private static function course_choices() {
-		if ( ! class_exists( Helper::class ) || ! function_exists( 'tutor' ) ) {
-			return array();
-		}
-
-		$choices = array();
-
-		foreach ( Helper::get_courses() as $id => $label ) {
-			$choices[] = array(
-				'value' => (string) $id,
-				'label' => wp_strip_all_tags( (string) $label ),
-			);
-		}
-
-		return $choices;
 	}
 
 	/**
@@ -607,7 +542,6 @@ class CourseBenefits implements DependencyInterface {
 		$content_attrs = $attrs['content']['advanced'] ?? array();
 		$output        = self::get_content(
 			array(
-				'course'               => $content_attrs['course']['desktop']['value'] ?? '',
 				'benefit_title'        => $content_attrs['label']['desktop']['value'] ?? '',
 				'course_benefits_icon' => $content_attrs['icon']['desktop']['value'] ?? '',
 			)

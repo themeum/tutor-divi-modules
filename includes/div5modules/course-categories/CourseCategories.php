@@ -40,7 +40,6 @@ class CourseCategories implements DependencyInterface {
 			add_action( 'init', array( self::class, 'register_module' ) );
 		}
 
-		add_filter( 'block_type_metadata', array( self::class, 'filter_block_metadata' ) );
 		add_action( 'rest_api_init', array( self::class, 'register_rest_routes' ) );
 	}
 
@@ -59,30 +58,6 @@ class CourseCategories implements DependencyInterface {
 	}
 
 	/**
-	 * Fill the course select on the registered block metadata.
-	 *
-	 * @param array $metadata Block metadata.
-	 * @return array
-	 */
-	public static function filter_block_metadata( $metadata ) {
-		if ( 'tutor-lms/course-categories' !== ( $metadata['name'] ?? '' ) ) {
-			return $metadata;
-		}
-
-		$options = array();
-
-		foreach ( self::course_choices() as $course ) {
-			$options[ $course['value'] ] = array(
-				'label' => $course['label'],
-			);
-		}
-
-		$metadata['attributes']['content']['settings']['advanced']['course']['item']['component']['props']['options'] = $options;
-
-		return $metadata;
-	}
-
-	/**
 	 * Register REST routes used by the Visual Builder.
 	 *
 	 * @return void
@@ -96,12 +71,7 @@ class CourseCategories implements DependencyInterface {
 				'callback'            => array( self::class, 'rest_index' ),
 				'permission_callback' => array( self::class, 'rest_permission' ),
 				'args'                => array(
-					'course' => array(
-						'type'              => 'string',
-						'required'          => false,
-						'sanitize_callback' => 'sanitize_text_field',
-					),
-					'label'  => array(
+					'label' => array(
 						'type'              => 'string',
 						'required'          => false,
 						'sanitize_callback' => 'sanitize_text_field',
@@ -133,8 +103,7 @@ class CourseCategories implements DependencyInterface {
 	public static function rest_index( WP_REST_Request $request ) {
 		$html = self::get_content(
 			array(
-				'course' => $request->get_param( 'course' ),
-				'label'  => $request->get_param( 'label' ),
+				'label' => $request->get_param( 'label' ),
 			)
 		);
 
@@ -155,13 +124,12 @@ class CourseCategories implements DependencyInterface {
 		$args = wp_parse_args(
 			$args,
 			array(
-				'course' => '',
-				'label'  => __( 'Categories:', 'tutor-lms-divi-modules' ),
+				'label' => __( 'Categories:', 'tutor-lms-divi-modules' ),
 			)
 		);
 
 		$label  = sanitize_text_field( (string) $args['label'] );
-		$course = Helper::get_course( $args );
+		$course = Helper::get_course();
 		$links  = '';
 
 		if ( '' === $label ) {
@@ -191,28 +159,6 @@ class CourseCategories implements DependencyInterface {
 		}
 
 		return '<div class="tutor-single-course-meta-categories tutor-course-details-category tutor-meta tutor-course-details-info">' . esc_html( $label ) . '<div>' . $links . '</div></div>';
-	}
-
-	/**
-	 * Course select choices.
-	 *
-	 * @return array<int, array{value: string, label: string}>
-	 */
-	private static function course_choices() {
-		if ( ! class_exists( Helper::class ) || ! function_exists( 'tutor' ) ) {
-			return array();
-		}
-
-		$choices = array();
-
-		foreach ( Helper::get_courses() as $id => $label ) {
-			$choices[] = array(
-				'value' => (string) $id,
-				'label' => wp_strip_all_tags( (string) $label ),
-			);
-		}
-
-		return $choices;
 	}
 
 	/**
@@ -480,8 +426,7 @@ class CourseCategories implements DependencyInterface {
 		$content_attrs = $attrs['content']['advanced'] ?? array();
 		$output        = self::get_content(
 			array(
-				'course' => $content_attrs['course']['desktop']['value'] ?? '',
-				'label'  => $content_attrs['label']['desktop']['value'] ?? '',
+				'label' => $content_attrs['label']['desktop']['value'] ?? '',
 			)
 		);
 

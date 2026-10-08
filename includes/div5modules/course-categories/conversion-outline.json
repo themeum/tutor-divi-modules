@@ -22,7 +22,6 @@
     "after": "css.*.after"
   },
   "module": {
-    "course": "content.advanced.course.*",
     "label": "content.advanced.label.*",
     "layout": "content.advanced.layout.*",
     "alignment": "content.advanced.alignment.*",
