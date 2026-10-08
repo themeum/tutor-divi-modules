@@ -26,7 +26,6 @@
     "after": "css.*.after"
   },
   "module": {
-    "course": "content.advanced.course.*",
     "label": "content.advanced.label.*",
     "icon_position": "content.advanced.iconPosition.*",
     "gap": "header.advanced.gap.*",

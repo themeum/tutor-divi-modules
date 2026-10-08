@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { select } from '@divi/data';
 import { useFetch } from '@divi/rest';
 import {
   CommonStyle,
@@ -29,18 +30,14 @@ const cssLength = (value) => {
   return /^-?\d+(\.\d+)?$/.test(length) ? `${length}px` : length;
 };
 
-const withCourseOptions = (moduleMetadata) => {
-  const data = typeof window !== 'undefined' ? (window.TutorLmsDivi5VisualBuilderData || {}) : {};
-  const next = JSON.parse(JSON.stringify(moduleMetadata));
-  const options = {};
+const editingPostId = () => {
+  try {
+    const postId = select('divi/settings')?.getSetting?.(['post', 'id']);
 
-  (data.courses || []).forEach((course) => {
-    options[course.value] = { label: course.label };
-  });
-
-  next.attributes.content.settings.advanced.course.item.component.props.options = options;
-
-  return next;
+    return postId ? String(postId) : '';
+  } catch (error) {
+    return '';
+  }
 };
 
 const fixedStyle = (selector, declaration) => (
@@ -157,7 +154,6 @@ const moduleClassnames = ({ classnamesInstance, attrs }) => {
 
 const CourseCurriculumEdit = ({ attrs, id, name, elements }) => {
   const content = attrs?.content?.advanced ?? {};
-  const courseId = desktopValue(content.course, '');
   const label = desktopValue(content.label, 'Course Content');
   const {
     fetch,
@@ -167,8 +163,8 @@ const CourseCurriculumEdit = ({ attrs, id, name, elements }) => {
 
   useEffect(() => {
     const params = new URLSearchParams({
-      course: String(courseId || ''),
       label: String(label || ''),
+      et_post_id: editingPostId(),
     });
 
     fetch({
@@ -177,7 +173,7 @@ const CourseCurriculumEdit = ({ attrs, id, name, elements }) => {
     }).catch((error) => {
       console.error(error);
     });
-  }, [courseId, label]);
+  }, [label]);
 
   return (
     <ModuleContainer
@@ -202,7 +198,7 @@ const CourseCurriculumEdit = ({ attrs, id, name, elements }) => {
 };
 
 export const courseCurriculumModule = {
-  metadata: withCourseOptions(metadata),
+  metadata,
   conversionOutline,
   renderers: {
     edit: CourseCurriculumEdit,
