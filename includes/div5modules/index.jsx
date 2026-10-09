@@ -26,6 +26,7 @@ import { courseTagsModule } from './course-tags/index.jsx';
 import { courseTargetAudienceModule } from './course-target-audience/index.jsx';
 import { courseThumbnailModule } from './course-thumbnail/index.jsx';
 import { courseTotalEnrollModule } from './course-total-enroll/index.jsx';
+import { courseWishlistModule } from './course-wishlist/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -156,5 +157,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseTotalEnrollModule.metadata, {
     conversionOutline: courseTotalEnrollModule.conversionOutline,
     renderers: courseTotalEnrollModule.renderers,
+  });
+
+  registerModule(courseWishlistModule.metadata, {
+    conversionOutline: courseWishlistModule.conversionOutline,
+    renderers: courseWishlistModule.renderers,
   });
 });

@@ -1,0 +1,36 @@
+{
+  "advanced": {
+    "fonts": {
+      "label_style": "labelText.decoration.font",
+      "icon_style": "iconText.decoration.font"
+    },
+    "box_shadow": {
+      "default": "module.decoration.boxShadow"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "animation": "module.decoration.animation",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transform": "module.decoration.transform",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "label": "content.advanced.label.*",
+    "course_wishlist_text_show": "content.advanced.showLabel.*",
+    "course_wishlist_icon_show": "content.advanced.showIcon.*",
+    "alignment": "content.advanced.alignment.*",
+    "space_between": "content.advanced.spaceBetween.*"
+  }
+}
