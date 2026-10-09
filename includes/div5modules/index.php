@@ -29,6 +29,7 @@ use TutorLMS\Divi\D5\CourseRequirements\CourseRequirements;
 use TutorLMS\Divi\D5\CourseReviews\CourseReviews;
 use TutorLMS\Divi\D5\CourseShare\CourseShare;
 use TutorLMS\Divi\D5\CourseStatus\CourseStatus;
+use TutorLMS\Divi\D5\CourseTags\CourseTags;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
 
@@ -54,6 +55,7 @@ require_once __DIR__ . '/course-requirements/CourseRequirements.php';
 require_once __DIR__ . '/course-reviews/CourseReviews.php';
 require_once __DIR__ . '/course-share/CourseShare.php';
 require_once __DIR__ . '/course-status/CourseStatus.php';
+require_once __DIR__ . '/course-tags/CourseTags.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -86,6 +88,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseReviews() );
 	$dependency_tree->add_dependency( new CourseShare() );
 	$dependency_tree->add_dependency( new CourseStatus() );
+	$dependency_tree->add_dependency( new CourseTags() );
 }
 
 /**
