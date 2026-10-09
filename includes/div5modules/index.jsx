@@ -23,6 +23,7 @@ import { courseReviewsModule } from './course-reviews/index.jsx';
 import { courseShareModule } from './course-share/index.jsx';
 import { courseStatusModule } from './course-status/index.jsx';
 import { courseTagsModule } from './course-tags/index.jsx';
+import { courseTargetAudienceModule } from './course-target-audience/index.jsx';
 
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5Modules', () => {
   registerModule(courseTitleModule.metadata, {
@@ -138,5 +139,10 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'tutorLms.divi5
   registerModule(courseTagsModule.metadata, {
     conversionOutline: courseTagsModule.conversionOutline,
     renderers: courseTagsModule.renderers,
+  });
+
+  registerModule(courseTargetAudienceModule.metadata, {
+    conversionOutline: courseTargetAudienceModule.conversionOutline,
+    renderers: courseTargetAudienceModule.renderers,
   });
 });
