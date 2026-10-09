@@ -1,0 +1,46 @@
+{
+  "advanced": {
+    "fonts": {
+      "review_section_title": "sectionTitle.decoration.font",
+      "review_avg_total": "avgTotal.decoration.font",
+      "review_avg_star": "avgStar.decoration.font",
+      "review_avg_text": "avgText.decoration.font",
+      "rating_bar": "ratingBar.decoration.font",
+      "review_list_author_name": "authorName.decoration.font",
+      "review_list_time": "listTime.decoration.font",
+      "review_list_comment": "listComment.decoration.font",
+      "review_list_star": "listStar.decoration.font"
+    },
+    "borders": {
+      "review_list_avatar": "listAvatar.decoration.border",
+      "section_content": "section.decoration.border"
+    },
+    "box_shadow": {
+      "section_background": "section.decoration.boxShadow"
+    },
+    "background": "module.decoration.background",
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "course_reviews_label": "content.advanced.label.*",
+    "review_right_star": "ratingBar.advanced.starColor.*",
+    "review_right_bar_height": "ratingBar.advanced.barHeight.*",
+    "review_right_bar_color": "ratingBar.advanced.barColor.*",
+    "review_right_bar_fill_color": "ratingBar.advanced.barFillColor.*"
+  }
+}

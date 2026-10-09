@@ -1,0 +1,36 @@
+{
+  "advanced": {
+    "fonts": {
+      "status_title": "statusTitle.decoration.font",
+      "status_text": "statusText.decoration.font"
+    },
+    "background": "module.decoration.background",
+    "box_shadow": {
+      "default": "module.decoration.boxShadow"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "course_progress_title": "content.advanced.progressTitle.*",
+    "bar_color": "progress.advanced.barColor.*",
+    "bar_background": "progress.advanced.barBackground.*",
+    "bar_height": "progress.advanced.barHeight.*",
+    "bar_radius": "progress.advanced.barRadius.*",
+    "bar_gap": "progress.advanced.barGap.*"
+  }
+}
