@@ -31,6 +31,7 @@ use TutorLMS\Divi\D5\CourseShare\CourseShare;
 use TutorLMS\Divi\D5\CourseStatus\CourseStatus;
 use TutorLMS\Divi\D5\CourseTags\CourseTags;
 use TutorLMS\Divi\D5\CourseTargetAudience\CourseTargetAudience;
+use TutorLMS\Divi\D5\CourseThumbnail\CourseThumbnail;
 use TutorLMS\Divi\D5\CourseList\CourseList;
 use TutorLMS\Divi\D5\CourseTitle\CourseTitle;
 
@@ -58,6 +59,7 @@ require_once __DIR__ . '/course-share/CourseShare.php';
 require_once __DIR__ . '/course-status/CourseStatus.php';
 require_once __DIR__ . '/course-tags/CourseTags.php';
 require_once __DIR__ . '/course-target-audience/CourseTargetAudience.php';
+require_once __DIR__ . '/course-thumbnail/CourseThumbnail.php';
 
 /**
  * Register Divi 5 modules with the module library dependency tree.
@@ -92,6 +94,7 @@ function dtlms_d5_register_modules( $dependency_tree ) {
 	$dependency_tree->add_dependency( new CourseStatus() );
 	$dependency_tree->add_dependency( new CourseTags() );
 	$dependency_tree->add_dependency( new CourseTargetAudience() );
+	$dependency_tree->add_dependency( new CourseThumbnail() );
 }
 
 /**
