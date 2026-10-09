@@ -1,0 +1,53 @@
+{
+  "advanced": {
+    "fonts": {
+      "share_label": "shareLabel.decoration.font",
+      "share_icon": "shareIcon.decoration.font",
+      "popup_section_title": "popupTitle.decoration.font",
+      "popup_share_title": "popupShareTitle.decoration.font",
+      "popup_share_link": "shareInput.decoration.font",
+      "popup_share_link_title": "shareLinkTitle.decoration.font",
+      "social_buttons_icon": "socialIcon.decoration.font",
+      "social_buttons_text": "socialText.decoration.font"
+    },
+    "borders": {
+      "default": "module.decoration.border",
+      "link_input_border": "shareInput.decoration.border",
+      "social_buttons_border": "social.decoration.border"
+    },
+    "box_shadow": {
+      "default": "module.decoration.boxShadow"
+    },
+    "background": "module.decoration.background",
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "label": "content.advanced.label.*",
+    "course_share_text_show": "content.advanced.showLabel.*",
+    "course_share_icon_show": "content.advanced.showIcon.*",
+    "alignment": "content.advanced.alignment.*",
+    "space_between": "content.advanced.spaceBetween.*",
+    "popup_section_title": "popup.advanced.sectionTitle.*",
+    "popup_share_title": "popup.advanced.shareTitle.*",
+    "show_social_icon": "popup.advanced.showSocialIcon.*",
+    "show_social_text": "popup.advanced.showSocialText.*",
+    "social_icon_background": "social.advanced.background.*",
+    "close_button_color": "close.advanced.color.*",
+    "close_button_size": "close.advanced.size.*"
+  }
+}
