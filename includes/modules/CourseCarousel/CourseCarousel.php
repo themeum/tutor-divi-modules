@@ -1052,6 +1052,10 @@ class CourseCarousel extends ET_Builder_Module {
 	 * @param string $render_slug module slug.
 	 */
 	public function render( $unprocessed_props, $content, $render_slug ) {
+		if ( function_exists( 'dtlms_enqueue_carousel_assets' ) ) {
+			dtlms_enqueue_carousel_assets();
+		}
+
 		// selectors.
 		$wrapper            = '%%order_class%% .dtlms-carousel-loop-wrap';
 		$card_selector      = $wrapper . ' .tutor-card';

@@ -1,0 +1,882 @@
+{
+  "name": "tutor-lms/course-share",
+  "d4Shortcode": "tutor_course_share",
+  "title": "Tutor Course Share",
+  "titles": "Tutor Course Share",
+  "category": "module",
+  "moduleClassName": "et_pb_tutor_course_share",
+  "moduleOrderClassName": "et_pb_tutor_course_share",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Tutor Course Share"
+            }
+          }
+        }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "html": {}
+        },
+        "decoration": {
+          "background": {},
+          "border": {},
+          "boxShadow": {},
+          "spacing": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
+        }
+      },
+      "styleProps": {
+        "background": {
+          "selector": "{{selector}} .tutor-modal-content-white",
+          "important": true
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-modal-content-white"
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "default": {
+        "advanced": {
+          "label": {
+            "desktop": {
+              "value": "Share"
+            }
+          },
+          "showLabel": {
+            "desktop": {
+              "value": "on"
+            }
+          },
+          "showIcon": {
+            "desktop": {
+              "value": "on"
+            }
+          },
+          "alignment": {
+            "desktop": {
+              "value": "left"
+            }
+          },
+          "spaceBetween": {
+            "desktop": {
+              "value": "2px"
+            }
+          }
+        }
+      },
+      "settings": {
+        "advanced": {
+          "label": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.label",
+              "label": "Label",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "showLabel": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.showLabel",
+              "label": "Show Label",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/toggle",
+                "props": {
+                  "on": "Show",
+                  "off": "Hide"
+                }
+              }
+            }
+          },
+          "showIcon": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.showIcon",
+              "label": "Show Icon",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/toggle",
+                "props": {
+                  "on": "Show",
+                  "off": "Hide"
+                }
+              }
+            }
+          },
+          "alignment": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.alignment",
+              "label": "Alignment",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/button-options",
+                "props": {
+                  "options": {
+                    "left": {
+                      "icon": "divi/align-left"
+                    },
+                    "center": {
+                      "icon": "divi/align-center"
+                    },
+                    "right": {
+                      "icon": "divi/align-right"
+                    }
+                  },
+                  "showLabel": false
+                }
+              }
+            }
+          },
+          "spaceBetween": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.spaceBetween",
+              "label": "Space Between",
+              "priority": 50,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 1,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": ["px"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "popup": {
+      "type": "object",
+      "default": {
+        "advanced": {
+          "sectionTitle": {
+            "desktop": {
+              "value": "Share Course"
+            }
+          },
+          "shareTitle": {
+            "desktop": {
+              "value": "Share Course"
+            }
+          },
+          "showSocialIcon": {
+            "desktop": {
+              "value": "on"
+            }
+          },
+          "showSocialText": {
+            "desktop": {
+              "value": "on"
+            }
+          }
+        }
+      },
+      "settings": {
+        "advanced": {
+          "sectionTitle": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentSharePopup",
+              "attrName": "popup.advanced.sectionTitle",
+              "label": "Section",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "shareTitle": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentSharePopup",
+              "attrName": "popup.advanced.shareTitle",
+              "label": "Share Title",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "showSocialIcon": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentSharePopup",
+              "attrName": "popup.advanced.showSocialIcon",
+              "label": "Social Icon",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/toggle",
+                "props": {
+                  "on": "Show",
+                  "off": "Hide"
+                }
+              }
+            }
+          },
+          "showSocialText": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentSharePopup",
+              "attrName": "popup.advanced.showSocialText",
+              "label": "Social Text",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/toggle",
+                "props": {
+                  "on": "Show",
+                  "off": "Hide"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "shareLabel": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-icon-share",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designShareLabel",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Share Label",
+                  "fieldLabel": "Share Label",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-icon-share"
+        }
+      }
+    },
+    "shareIcon": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-share-label",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designShareLabel",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Share Icon",
+                  "fieldLabel": "Share Icon",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-share-label"
+        }
+      }
+    },
+    "popupTitle": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-share-modal-title",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designPopupTitle",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Popup Section Title",
+                  "fieldLabel": "Popup Section Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-share-modal-title"
+        }
+      }
+    },
+    "popupShareTitle": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-share-modal-link",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designPopupShareTitle",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Popup Share Title",
+                  "fieldLabel": "Popup Share Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-share-modal-link"
+        }
+      }
+    },
+    "shareInput": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-modal-body .tutor-form-control",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designShareLink",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Popup Share Input",
+                  "fieldLabel": "Popup Share Input",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designShareLink",
+              "attrName": "shareInput.decoration.border",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Input"
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-modal-body .tutor-form-control"
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-modal-body .tutor-form-control",
+          "important": true
+        }
+      }
+    },
+    "shareLinkTitle": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-share-modal-sub-title",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designShareLink",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Popup Share Link Title",
+                  "fieldLabel": "Popup Share Link Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-share-modal-sub-title"
+        }
+      }
+    },
+    "socialIcon": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-social-share-button .social-icon",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designSocialButtons",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Icon",
+                  "fieldLabel": "Icon",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-social-share-button .social-icon"
+        }
+      }
+    },
+    "socialText": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-social-share-button span:nth-child(2)",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designSocialButtons",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Text",
+                  "fieldLabel": "Text",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-social-share-button span:nth-child(2)"
+        }
+      }
+    },
+    "social": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-social-share-button",
+      "settings": {
+        "advanced": {
+          "background": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designSocialButtons",
+              "attrName": "social.advanced.background",
+              "label": "Background Color",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designSocialButtons",
+              "attrName": "social.decoration.border",
+              "priority": 40,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Social Buttons"
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "border": {
+          "selector": "{{selector}} .tutor-social-share-button",
+          "important": true
+        }
+      }
+    },
+    "close": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-iconic-btn",
+      "default": {
+        "advanced": {
+          "size": {
+            "desktop": {
+              "value": "30px"
+            }
+          }
+        }
+      },
+      "settings": {
+        "advanced": {
+          "color": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCloseButton",
+              "attrName": "close.advanced.color",
+              "label": "Color",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "size": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCloseButton",
+              "attrName": "close.advanced.size",
+              "label": "Size",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 1,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": ["px"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "customCssFields": {},
+  "settings": {
+    "content": "auto",
+    "design": "auto",
+    "advanced": "auto",
+    "groups": {
+      "contentMainContent": {
+        "panel": "content",
+        "priority": 10,
+        "groupName": "contentMainContent",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Content"
+          }
+        }
+      },
+      "contentSharePopup": {
+        "panel": "content",
+        "priority": 20,
+        "groupName": "contentSharePopup",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Share Popup"
+          }
+        }
+      },
+      "designShareLabel": {
+        "panel": "design",
+        "priority": 10,
+        "groupName": "designShareLabel",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Share Label & Icon"
+          }
+        }
+      },
+      "designPopupTitle": {
+        "panel": "design",
+        "priority": 20,
+        "groupName": "designPopupTitle",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Popup Section Title",
+            "presetGroup": "divi/font",
+            "dynamicSubgroupHost": true
+          }
+        }
+      },
+      "designPopupShareTitle": {
+        "panel": "design",
+        "priority": 30,
+        "groupName": "designPopupShareTitle",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Popup Share Title",
+            "presetGroup": "divi/font",
+            "dynamicSubgroupHost": true
+          }
+        }
+      },
+      "designShareLink": {
+        "panel": "design",
+        "priority": 40,
+        "groupName": "designShareLink",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Popup Share Link"
+          }
+        }
+      },
+      "designSocialButtons": {
+        "panel": "design",
+        "priority": 50,
+        "groupName": "designSocialButtons",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Social Buttons"
+          }
+        }
+      },
+      "designCloseButton": {
+        "panel": "design",
+        "priority": 60,
+        "groupName": "designCloseButton",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Close Button"
+          }
+        }
+      }
+    }
+  }
+}

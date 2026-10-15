@@ -1,0 +1,2623 @@
+{
+  "name": "tutor-lms/course-content",
+  "d4Shortcode": "tutor_course_content",
+  "title": "Tutor Course Content",
+  "titles": "Tutor Course Content",
+  "category": "module",
+  "moduleClassName": "et_pb_tutor_course_content",
+  "moduleOrderClassName": "et_pb_tutor_course_content",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Tutor Course Content"
+            }
+          }
+        }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "html": {}
+        },
+        "decoration": {
+          "spacing": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "default": {
+        "advanced": {
+          "benefitsLabel": {
+            "desktop": {
+              "value": "What Will You Learn?"
+            }
+          },
+          "layout": {
+            "desktop": {
+              "value": "flex"
+            }
+          },
+          "alignment": {
+            "desktop": {
+              "value": "left"
+            }
+          },
+          "topicsLabel": {
+            "desktop": {
+              "value": "Course Content"
+            }
+          },
+          "reviewsLabel": {
+            "desktop": {
+              "value": "Student Ratings & Reviews"
+            }
+          },
+          "reviewsAlignment": {
+            "desktop": {
+              "value": "center"
+            }
+          }
+        }
+      },
+      "settings": {
+        "advanced": {
+          "benefitsLabel": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentBenefits",
+              "attrName": "content.advanced.benefitsLabel",
+              "label": "Label",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "layout": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentBenefits",
+              "attrName": "content.advanced.layout",
+              "label": "Layout",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/select",
+                "props": {
+                  "options": {
+                    "flex": {
+                      "label": "Inline"
+                    },
+                    "inline": {
+                      "label": "List"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "icon": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentBenefits",
+              "attrName": "content.advanced.icon",
+              "label": "Icon",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/icon-picker"
+              }
+            }
+          },
+          "alignment": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentBenefits",
+              "attrName": "content.advanced.alignment",
+              "label": "Alignment",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/button-options",
+                "props": {
+                  "options": {
+                    "left": {
+                      "icon": "divi/align-left"
+                    },
+                    "center": {
+                      "icon": "divi/align-center"
+                    },
+                    "right": {
+                      "icon": "divi/align-right"
+                    }
+                  },
+                  "showLabel": false
+                }
+              }
+            }
+          },
+          "topicsLabel": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentCurriculum",
+              "attrName": "content.advanced.topicsLabel",
+              "label": "Label",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "reviewsLabel": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentReviews",
+              "attrName": "content.advanced.reviewsLabel",
+              "label": "Label",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "reviewsAlignment": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentReviews",
+              "attrName": "content.advanced.reviewsAlignment",
+              "label": "Alignment",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/button-options",
+                "props": {
+                  "options": {
+                    "left": {
+                      "icon": "divi/align-left"
+                    },
+                    "center": {
+                      "icon": "divi/align-center"
+                    },
+                    "right": {
+                      "icon": "divi/align-right"
+                    }
+                  },
+                  "showLabel": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "about": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-content",
+      "styleProps": {
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-content"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designAbout",
+              "attrName": "about.decoration.spacing",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "About Course",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "aboutHeading": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-content h2",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-course-details-content h2"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-content h2"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designAbout",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Heading",
+                  "fieldLabel": "Heading",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designAbout",
+              "attrName": "aboutHeading.decoration.spacing",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Heading",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "aboutText": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-about-text",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-about-text"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designAboutText",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Text",
+                  "fieldLabel": "Text",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "courseTabs": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-nav .tutor-nav-link",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-nav .tutor-nav-link"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-nav .tutor-nav-link"
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-nav a.is-active"
+        },
+        "background": {
+          "selector": "{{selector}} .tutor-nav"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "gap": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCourseTabs",
+              "attrName": "courseTabs.advanced.gap",
+              "label": "Gap",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCourseTabs",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Tabs",
+                  "fieldLabel": "Tabs",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCourseTabs",
+              "attrName": "courseTabs.decoration.spacing",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Tabs"
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCourseTabs",
+              "attrName": "courseTabs.decoration.border",
+              "priority": 40,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Active Tab"
+                }
+              }
+            }
+          },
+          "background": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCourseTabs",
+              "attrName": "courseTabs.decoration.background",
+              "priority": 50,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/background"
+              }
+            }
+          }
+        }
+      }
+    },
+    "benefits": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-widget",
+      "styleProps": {
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-widget"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsList",
+              "attrName": "benefits.decoration.spacing",
+              "priority": 50,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Benefits",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "benefitsTitle": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-widget-title",
+      "default": {
+        "advanced": {
+          "gap": {
+            "desktop": {
+              "value": "10px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-course-details-widget-title"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-widget-title"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "gap": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsTitle",
+              "attrName": "benefitsTitle.advanced.gap",
+              "label": "Gap",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": -10,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsTitle",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Title",
+                  "fieldLabel": "Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsTitle",
+              "attrName": "benefitsTitle.decoration.spacing",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Title",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "benefitsList": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-widget-list li",
+      "default": {
+        "advanced": {
+          "spaceBetween": {
+            "desktop": {
+              "value": "10px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-course-details-widget-list li"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-widget-list li"
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-course-details-widget-list li"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "spaceBetween": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsList",
+              "attrName": "benefitsList.advanced.spaceBetween",
+              "label": "Space Between",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": -10,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsList",
+              "attrName": "benefitsList.decoration.spacing",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "List"
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsList",
+              "attrName": "benefitsList.decoration.border",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "benefitsText": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-widget-list .list-item",
+      "default": {
+        "advanced": {
+          "indent": {
+            "desktop": {
+              "value": "7px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-course-details-widget-list .list-item"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "indent": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsText",
+              "attrName": "benefitsText.advanced.indent",
+              "label": "Text Indent",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsText",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Text",
+                  "fieldLabel": "Text",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "benefitsIcon": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-details-widget-list .et-pb-icon",
+      "default": {
+        "advanced": {
+          "color": {
+            "desktop": {
+              "value": "#757c8e"
+            }
+          },
+          "size": {
+            "desktop": {
+              "value": "0.75rem"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-details-widget-list .et-pb-icon"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "color": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsIcon",
+              "attrName": "benefitsIcon.advanced.color",
+              "label": "Color",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "size": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsIcon",
+              "attrName": "benefitsIcon.advanced.size",
+              "label": "Size",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 1,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px",
+                    "rem",
+                    "em"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designBenefitsIcon",
+              "attrName": "benefitsIcon.decoration.spacing",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Icon",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "curriculumHeader": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-course-content-title",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-course-content-title"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-course-content-title"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCurriculumHeader",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Header",
+                  "fieldLabel": "Header",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designCurriculumHeader",
+              "attrName": "curriculumHeader.decoration.spacing",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Header",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topics": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-curriculum .tutor-accordion-item-header",
+      "default": {
+        "advanced": {
+          "iconSize": {
+            "desktop": {
+              "value": "16px"
+            }
+          },
+          "spaceBetween": {
+            "desktop": {
+              "value": "10px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .dtlms-course-curriculum .tutor-accordion-item-header"
+        },
+        "spacing": {
+          "selector": "{{selector}} .dtlms-course-curriculum .tutor-accordion-item-header"
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-accordion-item"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "iconSize": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.iconSize",
+              "label": "Icon Size",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          },
+          "iconColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.iconColor",
+              "label": "Icon Color",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "iconActiveColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.iconActiveColor",
+              "label": "Active Icon Color",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "iconHoverColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.iconHoverColor",
+              "label": "Hover Icon Color",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "textColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.textColor",
+              "label": "Text Color",
+              "priority": 50,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "textActiveColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.textActiveColor",
+              "label": "Active Text Color",
+              "priority": 60,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "textHoverColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.textHoverColor",
+              "label": "Hover Text Color",
+              "priority": 70,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "backgroundColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.backgroundColor",
+              "label": "Background Color",
+              "priority": 80,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "backgroundActiveColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.backgroundActiveColor",
+              "label": "Active Background Color",
+              "priority": 90,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "backgroundHoverColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.backgroundHoverColor",
+              "label": "Hover Background Color",
+              "priority": 100,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "spaceBetween": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.advanced.spaceBetween",
+              "label": "Space Between Topics",
+              "priority": 110,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "priority": 120,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Topics",
+                  "fieldLabel": "Topics",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.decoration.spacing",
+              "priority": 130,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Topics",
+                  "fields": {
+                    "margin": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topics.decoration.border",
+              "priority": 140,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Topics"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topicTitle": {
+      "type": "object",
+      "selector": "{{selector}} .dtlms-course-curriculum .tutor-accordion-item-header.is-active",
+      "styleProps": {
+        "border": {
+          "selector": "{{selector}} .dtlms-course-curriculum .tutor-accordion-item-header.is-active"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTopics",
+              "attrName": "topicTitle.decoration.border",
+              "priority": 150,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Active Topic"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-accordion .tutor-course-content-list-item-title",
+      "default": {
+        "advanced": {
+          "iconSize": {
+            "desktop": {
+              "value": "18px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-accordion .tutor-course-content-list-item-title"
+        },
+        "spacing": {
+          "selector": "{{selector}} .tutor-accordion-item .tutor-course-content-list-item"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "iconSize": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.iconSize",
+              "label": "Icon Size",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          },
+          "iconColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.iconColor",
+              "label": "Icon Color",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "iconColorHover": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.iconColorHover",
+              "label": "Icon Hover Color",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "infoColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.infoColor",
+              "label": "Info Color",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "infoColorHover": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.infoColorHover",
+              "label": "Info Hover Color",
+              "priority": 50,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "backgroundColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.backgroundColor",
+              "label": "Background Color",
+              "priority": 60,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "backgroundColorHover": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.advanced.backgroundColorHover",
+              "label": "Background Hover Color",
+              "priority": 70,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "priority": 80,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Lesson",
+                  "fieldLabel": "Lesson",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLesson",
+              "attrName": "lesson.decoration.spacing",
+              "priority": 90,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Lesson",
+                  "fields": {
+                    "margin": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewSectionTitle": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews h3",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews h3"
+        },
+        "spacing": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews h3"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewSectionTitle",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Title",
+                  "fieldLabel": "Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewSectionTitle",
+              "attrName": "reviewSectionTitle.decoration.spacing",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Title",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewAvg": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-average-rating",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-average-rating"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewAverage",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Average",
+                  "fieldLabel": "Average",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewAvgText": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-average-rating ~ .tutor-color-secondary",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-average-rating ~ .tutor-color-secondary"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewAverageText",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Average Text",
+                  "fieldLabel": "Average Text",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewAvgStar": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-d-inline-block .tutor-ratings-stars span",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-d-inline-block .tutor-ratings-stars span"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewAverageStar",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Average Star",
+                  "fieldLabel": "Average Star",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ratingBar": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-individual-star-rating",
+      "default": {
+        "advanced": {
+          "height": {
+            "desktop": {
+              "value": "8px"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-individual-star-rating"
+        },
+        "spacing": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-rating"
+        },
+        "border": {
+          "selector": "{{selector}} .tutor-review-summary-rating .tutor-ratings-progress-bar"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "starColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.advanced.starColor",
+              "label": "Right Star Color",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "height": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.advanced.height",
+              "label": "Bar Height",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": [
+                    "px"
+                  ]
+                }
+              }
+            }
+          },
+          "barColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.advanced.barColor",
+              "label": "Bar Color",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "fillColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.advanced.fillColor",
+              "label": "Bar Fill Color",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "priority": 50,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Rating Text",
+                  "fieldLabel": "Rating Text",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.decoration.spacing",
+              "priority": 60,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Rating Bar",
+                  "fields": {
+                    "padding": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designRatingBar",
+              "attrName": "ratingBar.decoration.border",
+              "priority": 70,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Rating Bar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewAuthor": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviewer-name a",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviewer-name a"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewAuthor",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Author",
+                  "fieldLabel": "Author",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewTime": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviewed-on",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviewed-on"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewTime",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Time",
+                  "fieldLabel": "Time",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewComment": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-comment",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-comment"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewComment",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Comment",
+                  "fieldLabel": "Comment",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewListStar": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-ratings .tutor-ratings-stars span",
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary-ratings .tutor-ratings-stars span"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewListStar",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Star",
+                  "fieldLabel": "Star",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewSummary": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary",
+      "default": {
+        "advanced": {
+          "background": {
+            "desktop": {
+              "value": "rgb(255,255,255)"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "spacing": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary"
+        },
+        "border": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-review-summary"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "background": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewSummary",
+              "attrName": "reviewSummary.advanced.background",
+              "label": "Background",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewSummary",
+              "attrName": "reviewSummary.decoration.spacing",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Summary",
+                  "fields": {
+                    "margin": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewSummary",
+              "attrName": "reviewSummary.decoration.border",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Summary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviews .tutor-review-list-item",
+      "default": {
+        "advanced": {
+          "background": {
+            "desktop": {
+              "value": "rgb(255,255,255)"
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "spacing": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviews .tutor-review-list-item"
+        },
+        "border": {
+          "selector": "{{selector}} #tutor-course-details-tab-reviews .tutor-reviews .tutor-review-list-item"
+        }
+      },
+      "settings": {
+        "advanced": {
+          "background": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReview",
+              "attrName": "review.advanced.background",
+              "label": "Background",
+              "priority": 10,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "starColor": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReview",
+              "attrName": "review.advanced.starColor",
+              "label": "Icon Color",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "starColorHover": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReview",
+              "attrName": "review.advanced.starColorHover",
+              "label": "Icon Hover Color",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReview",
+              "attrName": "review.decoration.spacing",
+              "priority": 40,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Review",
+                  "fields": {
+                    "margin": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReview",
+              "attrName": "review.decoration.border",
+              "priority": 50,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Review"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewAvatar": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-reviews .tutor-avatar",
+      "styleProps": {
+        "border": {
+          "selector": "{{selector}} .tutor-reviews .tutor-avatar"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewAvatar",
+              "attrName": "reviewAvatar.decoration.border",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Avatar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "reviewCard": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-review-card",
+      "styleProps": {
+        "border": {
+          "selector": "{{selector}} .tutor-review-card"
+        }
+      },
+      "settings": {
+        "decoration": {
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designReviewCard",
+              "attrName": "reviewCard.decoration.border",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false,
+                  "fieldLabel": "Card"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "customCssFields": {},
+  "settings": {
+    "content": "auto",
+    "design": "auto",
+    "advanced": "auto",
+    "groups": {
+      "contentBenefits": {
+        "panel": "content",
+        "priority": 20,
+        "groupName": "contentBenefits",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Benefits"
+          }
+        }
+      },
+      "contentCurriculum": {
+        "panel": "content",
+        "priority": 30,
+        "groupName": "contentCurriculum",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Curriculum"
+          }
+        }
+      },
+      "contentReviews": {
+        "panel": "content",
+        "priority": 40,
+        "groupName": "contentReviews",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Reviews"
+          }
+        }
+      },
+      "designAbout": {
+        "panel": "design",
+        "priority": 10,
+        "groupName": "designAbout",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "About Course",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designAboutText": {
+        "panel": "design",
+        "priority": 20,
+        "groupName": "designAboutText",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "About Course Text",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designCourseTabs": {
+        "panel": "design",
+        "priority": 30,
+        "groupName": "designCourseTabs",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Content Tabs",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designBenefitsTitle": {
+        "panel": "design",
+        "priority": 40,
+        "groupName": "designBenefitsTitle",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Benefits Title",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designBenefitsList": {
+        "panel": "design",
+        "priority": 50,
+        "groupName": "designBenefitsList",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Benefits List",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designBenefitsText": {
+        "panel": "design",
+        "priority": 60,
+        "groupName": "designBenefitsText",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Benefits Text",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designBenefitsIcon": {
+        "panel": "design",
+        "priority": 70,
+        "groupName": "designBenefitsIcon",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Course Benefits Icon",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designCurriculumHeader": {
+        "panel": "design",
+        "priority": 80,
+        "groupName": "designCurriculumHeader",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Curriculum Header",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designTopics": {
+        "panel": "design",
+        "priority": 90,
+        "groupName": "designTopics",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Topics",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designLesson": {
+        "panel": "design",
+        "priority": 100,
+        "groupName": "designLesson",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Lesson",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewSectionTitle": {
+        "panel": "design",
+        "priority": 110,
+        "groupName": "designReviewSectionTitle",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Section Title",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewAverage": {
+        "panel": "design",
+        "priority": 120,
+        "groupName": "designReviewAverage",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Average Total",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewAverageText": {
+        "panel": "design",
+        "priority": 130,
+        "groupName": "designReviewAverageText",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Average Text",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewAverageStar": {
+        "panel": "design",
+        "priority": 140,
+        "groupName": "designReviewAverageStar",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Average Star",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designRatingBar": {
+        "panel": "design",
+        "priority": 150,
+        "groupName": "designRatingBar",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Right Rating Bar",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewAuthor": {
+        "panel": "design",
+        "priority": 160,
+        "groupName": "designReviewAuthor",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Author",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewTime": {
+        "panel": "design",
+        "priority": 170,
+        "groupName": "designReviewTime",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Time",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewComment": {
+        "panel": "design",
+        "priority": 180,
+        "groupName": "designReviewComment",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Comment",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewListStar": {
+        "panel": "design",
+        "priority": 190,
+        "groupName": "designReviewListStar",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review List Star",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewSummary": {
+        "panel": "design",
+        "priority": 200,
+        "groupName": "designReviewSummary",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Summary",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReview": {
+        "panel": "design",
+        "priority": 210,
+        "groupName": "designReview",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewAvatar": {
+        "panel": "design",
+        "priority": 220,
+        "groupName": "designReviewAvatar",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Avatar",
+            "clipboardCategory": "style"
+          }
+        }
+      },
+      "designReviewCard": {
+        "panel": "design",
+        "priority": 230,
+        "groupName": "designReviewCard",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Review Card",
+            "clipboardCategory": "style"
+          }
+        }
+      }
+    }
+  }
+}
