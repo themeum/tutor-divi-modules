@@ -126,6 +126,30 @@ function dtlms_register_course_builder_editor() {
 }
 add_action( 'init', 'dtlms_register_course_builder_editor' );
 
+/**
+ * Replace Tutor's single course template when the course uses Divi 5.
+ *
+ * Divi 5 skips `divi_extensions_init`, so TutorDiviModules never loads and
+ * the template override in Template.php never runs. The imported layout then
+ * stays nested inside Tutor's default course details markup.
+ *
+ * @since 4.0.0
+ * @return void
+ */
+function dtlms_load_single_course_template() {
+	if ( ! defined( 'TUTOR_VERSION' ) || ! dtlms_is_divi5() ) {
+		return;
+	}
+
+	if ( class_exists( 'TutorLMS\\Divi\\Template', false ) ) {
+		return;
+	}
+
+	require_once DTLMS_DIR_PATH . 'includes/functions.php';
+	require_once DTLMS_DIR_PATH . 'includes/classes/Template.php';
+}
+add_action( 'init', 'dtlms_load_single_course_template' );
+
 if ( ! function_exists( 'tudm_initialize_extension' ) ) :
 	/**
 	 * Creates the extension's main class instance.

@@ -564,6 +564,8 @@ class CourseContent implements DependencyInterface {
 			self::fixed_style( $selector['benefits_list'], 'list-style: none; padding: 0; margin: 0;' ),
 			self::fixed_style( $selector['benefits_item'], 'list-style: none; border-style: solid;' ),
 			self::fixed_style( $selector['nav'], 'display: flex !important;' ),
+			self::fixed_style( "{$selector['nav']} .tutor-nav-more-list", 'list-style: none !important; padding: 0 !important; margin: 0 !important;' ),
+			self::fixed_style( "{$selector['nav']} .tutor-nav-more-list li", 'list-style: none !important;' ),
 			self::fixed_style( "{$selector['curriculum']} .tutor-is-sticky", 'top: 32px !important; position: sticky !important; backdrop-filter: blur(14px) !important; z-index: 1063 !important;' ),
 			self::fixed_style( "{$selector['topic_item']} .tutor-course-content-list-item-title a", 'color: inherit !important;' ),
 			self::fixed_style( "{$selector['topic_item']} .tutor-course-content-list-item-icon", 'margin-right: 12px !important;' ),

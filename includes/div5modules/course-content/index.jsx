@@ -140,6 +140,8 @@ const ModuleStyles = ({
       {fixedStyle(benefitsList, 'list-style: none; padding: 0; margin: 0;')}
       {fixedStyle(benefitsItem, 'list-style: none; border-style: solid;')}
       {fixedStyle(nav, 'display: flex !important;')}
+      {fixedStyle(`${nav} .tutor-nav-more-list`, 'list-style: none !important; padding: 0 !important; margin: 0 !important;')}
+      {fixedStyle(`${nav} .tutor-nav-more-list li`, 'list-style: none !important;')}
       {fixedStyle(`${curriculum} .tutor-is-sticky`, 'top: 32px !important; position: sticky !important; backdrop-filter: blur(14px) !important; z-index: 1063 !important;')}
       {fixedStyle(`${topicItem} .tutor-course-content-list-item-title a`, 'color: inherit !important;')}
       {fixedStyle(`${topicItem} .tutor-course-content-list-item-icon`, 'margin-right: 12px !important;')}
