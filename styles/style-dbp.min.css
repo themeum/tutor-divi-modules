@@ -1,4 +1,7 @@
-.et_divi_builder #et_builder_outer_content /* Slider */
+.et_divi_builder #et_builder_outer_content /*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/slick-carousel/slick/slick.css ***!
+  \***************************************************************************************************************************/
+/* Slider */
 .slick-slider{
     position: relative;
 
@@ -98,7 +101,11 @@
 .et_divi_builder #et_builder_outer_content .slick-arrow.slick-hidden{
     display: none;
 }
-.et_divi_builder #et_builder_outer_content @charset 'UTF-8';
+
+.et_divi_builder #et_builder_outer_content /*!*********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/slick-carousel/slick/slick-theme.css ***!
+  \*********************************************************************************************************************************/
+@charset 'UTF-8';
 /* Slider */
 .slick-loading .slick-list{
     background: #fff url(../media/ajax-loader.gif) center center no-repeat;
@@ -269,3 +276,5 @@
     color: black;
 }
 
+
+/*# sourceMappingURL=style.min.css.map*/
