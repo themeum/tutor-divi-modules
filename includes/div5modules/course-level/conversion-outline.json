@@ -1,0 +1,30 @@
+{
+  "advanced": {
+    "fonts": {
+      "label_text": "labelText.decoration.font",
+      "value_text": "valueText.decoration.font"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "course_level_label": "content.advanced.label.*",
+    "layout": "content.advanced.layout.*",
+    "alignment": "content.advanced.alignment.*",
+    "gap": "content.advanced.gap.*"
+  }
+}

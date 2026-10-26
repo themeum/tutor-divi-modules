@@ -91,19 +91,6 @@ class TutorDiviModules extends DiviExtension {
 			array(),
 			$version
 		);
-		wp_enqueue_style(
-			'tutor-divi-slick-css',
-			DTLMS_ASSETS . 'slick/slick.min.css',
-			null,
-			$this->version
-		);
-
-		wp_enqueue_style(
-			'tutor-divi-slick-theme-css',
-			DTLMS_ASSETS . 'slick/slick-theme.css',
-			null,
-			$this->version
-		);
 	}
 
 	/**
@@ -114,23 +101,16 @@ class TutorDiviModules extends DiviExtension {
 	 * @return void
 	 */
 	public function enqueue_divi_scripts() {
-
 		$this->enqueue_divi_styles();
 
 		$version      = $this->version;
 		$scripts_file = 'js/scripts.js';
+
 		wp_enqueue_script(
 			'tutor-divi-scripts',
 			DTLMS_ASSETS . $scripts_file,
 			array( 'jquery' ),
 			$version,
-			true
-		);
-		wp_enqueue_script(
-			'tutor-divi-slick',
-			DTLMS_ASSETS . 'slick/slick.min.js',
-			array( 'jquery' ),
-			$this->version,
 			true
 		);
 		$inline_data = array(

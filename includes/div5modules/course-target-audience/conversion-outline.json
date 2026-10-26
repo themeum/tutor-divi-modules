@@ -1,0 +1,43 @@
+{
+  "advanced": {
+    "fonts": {
+      "title": "title.decoration.font",
+      "target_aud_text": "audienceText.decoration.font"
+    },
+    "borders": {
+      "list": "list.decoration.border"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "label": "content.advanced.label.*",
+    "layout": "content.advanced.layout.*",
+    "icon": "content.advanced.icon.*",
+    "alignment": "content.advanced.alignment.*",
+    "gap": "title.advanced.gap.*",
+    "space_between": "list.advanced.spaceBetween.*",
+    "padding": "list.decoration.spacing.*.padding",
+    "color": "icon.advanced.color.*",
+    "size": "icon.advanced.size.*",
+    "indent": "audienceText.advanced.indent.*"
+  },
+  "valueExpansionFunctionMap": {
+    "icon": "convertFontIcon",
+    "padding": "convertSpacing"
+  }
+}

@@ -33,11 +33,11 @@ msgstr ""
 msgid "Here you can select the Course."
 msgstr ""
 
-#: includes/classes/Helper.php:173
+#: includes/classes/Helper.php:182
 msgid "This Course"
 msgstr ""
 
-#: includes/classes/Helper.php:176
+#: includes/classes/Helper.php:185
 msgid "Latest Course"
 msgstr ""
 
@@ -59,6 +59,34 @@ msgstr ""
 
 #: includes/templates/admin_notice.php:29
 msgid "Learn more about Tutor LMS"
+msgstr ""
+
+#: includes/div5modules/course-categories/CourseCategories.php:127, includes/div5modules/course-categories/CourseCategories.php:136, includes/modules/CourseCategories/CourseCategories.php:121
+msgid "Categories:"
+msgstr ""
+
+#: includes/div5modules/course-categories/CourseCategories.php:157, includes/modules/CourseCategories/CourseCategories.php:240
+msgid "Uncategorized"
+msgstr ""
+
+#: includes/div5modules/course-instructor/CourseInstructor.php:155, includes/modules/CourseInstructor/CourseInstructor.php:174
+msgid "A Course by"
+msgstr ""
+
+#: includes/div5modules/course-level/CourseLevel.php:145, includes/templates/course/level.php:17
+msgid "All Levels"
+msgstr ""
+
+#: includes/div5modules/course-list/CourseList.php:263, includes/div5modules/course-list/CourseList.php:349, includes/modules/CourseList/CourseList.php:610, includes/templates/course/course_list.php:53
+msgid "Previous"
+msgstr ""
+
+#: includes/div5modules/course-list/CourseList.php:264, includes/div5modules/course-list/CourseList.php:350, includes/modules/CourseList/CourseList.php:620, includes/modules/CourseList/CourseList.php:1049, includes/templates/course/course_list.php:54
+msgid "Next"
+msgstr ""
+
+#: includes/div5modules/course-status/CourseStatus.php:160, includes/modules/CourseStatus/CourseStatus.php:198
+msgid "50% Complete"
 msgstr ""
 
 #: includes/div5modules/course-title/CourseTitle.php:127, includes/modules/CourseTitle/CourseTitle.php:135
@@ -469,10 +497,6 @@ msgstr ""
 msgid "Tutor Course Categories"
 msgstr ""
 
-#: includes/modules/CourseCategories/CourseCategories.php:121
-msgid "Categories:"
-msgstr ""
-
 #: includes/modules/CourseCategories/CourseCategories.php:178, includes/modules/CourseList/CourseList.php:853
 msgid "Normal"
 msgstr ""
@@ -483,10 +507,6 @@ msgstr ""
 
 #: includes/modules/CourseCategories/CourseCategories.php:185, includes/modules/CourseDuration/CourseDuration.php:208, includes/modules/CourseLastUpdate/CourseLastUpdate.php:184, includes/modules/CourseLevel/CourseLevel.php:192, includes/modules/CourseTotalEnroll/CourseTotalEnroll.php:183
 msgid "Style"
-msgstr ""
-
-#: includes/modules/CourseCategories/CourseCategories.php:240
-msgid "Uncategorized"
 msgstr ""
 
 #: includes/modules/CourseContent/CourseContent.php:31
@@ -929,10 +949,6 @@ msgstr ""
 msgid "Instructor Avatar"
 msgstr ""
 
-#: includes/modules/CourseInstructor/CourseInstructor.php:174
-msgid "A Course by"
-msgstr ""
-
 #: includes/modules/CourseInstructor/CourseInstructor.php:199
 msgid "Designation"
 msgstr ""
@@ -993,16 +1009,8 @@ msgstr ""
 msgid "Prev Level"
 msgstr ""
 
-#: includes/modules/CourseList/CourseList.php:610, includes/templates/course/course_list.php:53
-msgid "Previous"
-msgstr ""
-
 #: includes/modules/CourseList/CourseList.php:618
 msgid "Next Level"
-msgstr ""
-
-#: includes/modules/CourseList/CourseList.php:620, includes/modules/CourseList/CourseList.php:1049, includes/templates/course/course_list.php:54
-msgid "Next"
 msgstr ""
 
 #: includes/modules/CourseList/CourseList.php:629
@@ -1193,10 +1201,6 @@ msgstr ""
 msgid "Tutor Course Status"
 msgstr ""
 
-#: includes/modules/CourseStatus/CourseStatus.php:198
-msgid "50% Complete"
-msgstr ""
-
 #: includes/modules/CourseTags/CourseTags.php:33
 msgid "Tutor Course Tags"
 msgstr ""
@@ -1251,10 +1255,6 @@ msgstr ""
 
 #: includes/templates/course/level.php:15
 msgid "Course level:"
-msgstr ""
-
-#: includes/templates/course/level.php:17
-msgid "All Levels"
 msgstr ""
 
 #: includes/templates/course/purchase-editor.php:111

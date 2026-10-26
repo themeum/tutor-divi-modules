@@ -1,0 +1,69 @@
+{
+  "advanced": {
+    "fonts": {
+      "card_title": "title.decoration.font",
+      "meta": "meta.decoration.font",
+      "category": "category.decoration.font"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "animation": "module.decoration.animation",
+    "box_shadow": {
+      "default": "module.decoration.boxShadow"
+    },
+    "disabled_on": "module.decoration.disabledOn",
+    "filters": {
+      "default": "module.decoration.filters"
+    },
+    "margin_padding": "module.decoration.spacing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transform": "module.decoration.transform",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "skin": "content.advanced.skin.*",
+    "slides_to_show": "content.advanced.slidesToShow.*",
+    "hover_animation": "content.advanced.hoverAnimation.*",
+    "show_image": "content.advanced.showImage.*",
+    "image_size": "content.advanced.imageSize.*",
+    "meta_data": "content.advanced.metaData.*",
+    "rating": "content.advanced.rating.*",
+    "avatar": "content.advanced.avatar.*",
+    "author": "content.advanced.author.*",
+    "difficulty_label": "content.advanced.difficultyLabel.*",
+    "wish_list": "content.advanced.wishList.*",
+    "show_category": "content.advanced.showCategory.*",
+    "footer": "content.advanced.footer.*",
+    "order_by": "content.advanced.orderBy.*",
+    "order": "content.advanced.order.*",
+    "limit": "content.advanced.limit.*",
+    "category_includes": "content.advanced.categoryIncludes.*",
+    "author_includes": "content.advanced.authorIncludes.*",
+    "arrows": "content.advanced.arrows.*",
+    "dots": "content.advanced.dots.*",
+    "transition": "content.advanced.transition.*",
+    "center_slides": "content.advanced.centerSlides.*",
+    "smooth_scrolling": "content.advanced.smoothScrolling.*",
+    "autoplay": "content.advanced.autoplay.*",
+    "autoplay_speed": "content.advanced.autoplaySpeed.*",
+    "infinite_loop": "content.advanced.infiniteLoop.*",
+    "pause_on_hover": "content.advanced.pauseOnHover.*",
+    "dots_alignment": "content.advanced.dotsAlignment.*",
+    "card_background_color": "card.advanced.backgroundColor.*",
+    "card_custom_padding": "card.advanced.bodyPadding.*",
+    "card_gap": "card.advanced.gap.*",
+    "star_color": "rating.advanced.starColor.*",
+    "star_size": "rating.advanced.starSize.*",
+    "star_gap": "rating.advanced.starGap.*"
+  }
+}

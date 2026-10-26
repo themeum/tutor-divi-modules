@@ -24,11 +24,16 @@ if ( empty( $course_benefits ) ) {
 }
 
 if ( is_array( $course_benefits ) && count( $course_benefits ) ) {
+	$benefit_title = apply_filters( 'tutor_course_benefit_title', __( 'What Will You Learn?', 'tutor' ) );
+
+	if ( ! empty( $args['benefit_title'] ) ) {
+		$benefit_title = $args['benefit_title'];
+	}
 	?>
 
 	<div class="tutor-course-details-widget tutor-course-details-widget-col-2 tutor-mt-lg-50 tutor-mt-32">
 		<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-fw-bold tutor-color-black tutor-mb-16">
-			<?php echo esc_html( apply_filters( 'tutor_course_benefit_title', __( 'What Will You Learn?', 'tutor' ) ) ); ?>
+			<?php echo esc_html( $benefit_title ); ?>
 		</h3>
 		<ul class="tutor-course-details-widget-list tutor-color-black tutor-fs-6 tutor-m-0 tutor-mt-16">
 			<?php foreach ( $course_benefits as $benefit ) : ?>
