@@ -148,10 +148,9 @@ You can post on the support section of this plugin or use the contact form at th
 
 = 4.0.1 - 22 October, 2026 =
 
-New: Added Divi 5 modules for Tutor LMS course pages, lists, and carousels.
+New: Tutor Divi modules have been made compatible with Divi 5.
 New: Added a Divi 5 pre-built single course layout.
 Update: Single course pages that use Divi 5 now replace Tutor's default course template.
-Update: Divi 4 modules stay unloaded when Divi 5 is active.
 
 = 4.0.0 - 08 July, 2026 =
 
