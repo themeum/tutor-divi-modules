@@ -3,7 +3,7 @@ Contributors: themeum
 Donate link: https://www.themeum.com
 Tags: LMS, eLearning, Learning Management System, Courses, Education, Divi Integration for LMS, Divi LMS Modules, Tutor LMS, Online Courses
 Requires at least: 5.3
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 4.0.1
 License: GPLv3
@@ -146,7 +146,7 @@ You can post on the support section of this plugin or use the contact form at th
 
 == Changelog ==
 
-= 4.0.1 - 22 October, 2026 =
+= 4.0.1 - 12 Nov, 2026 =
 
 New: Tutor Divi modules have been made compatible with Divi 5.
 New: Added a Divi 5 pre-built single course layout.
