@@ -1,0 +1,63 @@
+{
+  "name": "tutor-lms/course-thumbnail",
+  "d4Shortcode": "tutor_course_thumbnail",
+  "title": "Tutor Course Thumbnail",
+  "titles": "Tutor Course Thumbnail",
+  "category": "module",
+  "moduleClassName": "et_pb_tutor_course_thumbnail",
+  "moduleOrderClassName": "et_pb_tutor_course_thumbnail",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Tutor Course Thumbnail"
+            }
+          }
+        }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "html": {}
+        },
+        "decoration": {
+          "border": {},
+          "boxShadow": {},
+          "sizing": {},
+          "spacing": {},
+          "transform": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
+        }
+      },
+      "styleProps": {
+        "border": {
+          "selector": "{{selector}} .tutor-divi-course-thumbnail"
+        },
+        "boxShadow": {
+          "selector": "{{selector}} .tutor-divi-course-thumbnail"
+        },
+        "sizing": {
+          "selector": "{{selector}} .tutor-divi-course-thumbnail"
+        }
+      }
+    }
+  },
+  "customCssFields": {},
+  "settings": {
+    "content": "auto",
+    "design": "auto",
+    "advanced": "auto"
+  }
+}
