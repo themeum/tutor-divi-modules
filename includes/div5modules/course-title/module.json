@@ -1,0 +1,116 @@
+{
+  "name": "tutor-lms/course-title",
+  "d4Shortcode": "tutor_course_title",
+  "title": "Tutor Course Title",
+  "titles": "Tutor Course Title",
+  "category": "module",
+  "moduleClassName": "et_pb_tutor_course_title",
+  "moduleOrderClassName": "et_pb_tutor_course_title",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Tutor Course Title"
+            }
+          }
+        }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "html": {}
+        },
+        "decoration": {
+          "spacing": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
+        }
+      }
+    },
+    "title": {
+      "type": "object",
+      "selector": "{{selector}} h1, {{selector}} h2, {{selector}} h3, {{selector}} h4, {{selector}} h5, {{selector}} h6",
+      "default": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "headingLevel": "h1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designTitleText",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Title Text",
+                  "fieldLabel": "Title",
+                  "fields": {
+                    "headingLevel": {
+                      "render": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} h1, {{selector}} h2, {{selector}} h3, {{selector}} h4, {{selector}} h5, {{selector}} h6"
+        }
+      }
+    },
+    "content": {
+      "type": "object"
+    }
+  },
+  "customCssFields": {},
+  "settings": {
+    "content": "auto",
+    "design": "auto",
+    "advanced": "auto",
+    "groups": {
+      "designTitleText": {
+        "panel": "design",
+        "priority": 49,
+        "groupName": "designTitleText",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Title Text",
+            "presetGroup": "divi/font",
+            "dynamicSubgroupHost": true
+          }
+        }
+      }
+    }
+  }
+}
