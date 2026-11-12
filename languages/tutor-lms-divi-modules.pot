@@ -25,19 +25,19 @@ msgstr ""
 msgid "Note: Tutor LMS Divi Modules will be installed but you will not be able to avail any of its’ features as well specific Tutor LMS add-ons."
 msgstr ""
 
-#: includes/classes/Helper.php:32
+#: includes/classes/Helper.php:37
 msgid "Course"
 msgstr ""
 
-#: includes/classes/Helper.php:35
+#: includes/classes/Helper.php:40
 msgid "Here you can select the Course."
 msgstr ""
 
-#: includes/classes/Helper.php:182
+#: includes/classes/Helper.php:192
 msgid "This Course"
 msgstr ""
 
-#: includes/classes/Helper.php:185
+#: includes/classes/Helper.php:195
 msgid "Latest Course"
 msgstr ""
 

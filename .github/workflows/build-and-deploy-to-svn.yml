@@ -22,16 +22,16 @@ jobs:
       - name: Build plugin
         run: npm run zip
 
-      # - name: WordPress Plugin Deploy
-      #   id: deploy
-      #   uses: 10up/action-wordpress-plugin-deploy@stable
-      #   with:
-      #     generate-zip: true
-      #   env:
-      #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-      #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-      #     SLUG: tutor-lms-divi-modules
-      #     BUILD_DIR: build/tutor-lms-divi-modules
+      - name: WordPress Plugin Deploy
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: tutor-lms-divi-modules
+          BUILD_DIR: build/tutor-lms-divi-modules
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
