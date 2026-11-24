@@ -1,0 +1,41 @@
+{
+  "advanced": {
+    "fonts": {
+      "author_label_text": "authorLabel.decoration.font",
+      "author_name_text": "authorName.decoration.font",
+      "author_image": "avatar.decoration.font"
+    },
+    "admin_label": "module.meta.adminLabel",
+    "background": "avatar.decoration.background",
+    "box_shadow": {
+      "default": "avatar.decoration.boxShadow"
+    },
+    "disabled_on": "module.decoration.disabledOn",
+    "margin_padding": "module.decoration.spacing",
+    "max_width": "module.decoration.sizing",
+    "module": "module.advanced.htmlAttributes",
+    "overflow": "module.decoration.overflow",
+    "position_fields": "module.decoration.position",
+    "scroll": "module.decoration.scroll",
+    "sticky": "module.decoration.sticky",
+    "transition": "module.decoration.transition",
+    "z_index": "module.decoration.zIndex"
+  },
+  "css": {
+    "free_form": "css.*.freeForm",
+    "before": "css.*.before",
+    "main_element": "css.*.mainElement",
+    "after": "css.*.after"
+  },
+  "module": {
+    "course": "content.advanced.course.*",
+    "profile_picture": "content.advanced.profilePicture.*",
+    "display_name": "content.advanced.displayName.*",
+    "link": "content.advanced.link.*",
+    "layout": "content.advanced.layout.*",
+    "author_alignment": "content.advanced.alignment.*",
+    "avatar_size": "avatar.advanced.size.*",
+    "avatar_gap": "avatar.advanced.gap.*",
+    "avatar_border_radius": "avatar.advanced.borderRadius.*"
+  }
+}

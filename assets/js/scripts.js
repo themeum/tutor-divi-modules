@@ -3,14 +3,14 @@
  * @since 1.0.0
  */
 jQuery(document).ready(function($){
+    var inBuilder = typeof dtlmsData !== 'undefined' && dtlmsData.is_divi_builder;
 
-    //check if not front end builder
-    if(dtlmsData.is_divi_builder) {
+    if (inBuilder) {
         /**
          * Tutor Divi Modules
          * course curriculum on click toggle icon
          * @since 1.0.0
-         */            
+         */
         $(document).on('click', '.tutor-accordion-item-header', function() {
             $(this).toggleClass('is-active');
             var sibling = $(this).next();
@@ -20,75 +20,92 @@ jQuery(document).ready(function($){
                 sibling.css('maxHeight', 0);
             }
         });
+    }
 
-    } else {
-        /**
-         * Tutor Course Carousel Modules
-         * course carousel settings
-         * @since 1.0.0
-         */        
-        $('.tutor-divi-carousel-main-wrap').each(function(i,obj){
-            var settings                    = $(this).find("#tutor_divi_carousel_settings");
-            var slides_to_show              = settings.attr('slides_to_show');
+    /**
+     * Start a course carousel from the settings element rendered with its markup.
+     * The Divi Visual Builder inserts that markup after document ready.
+     */
+    function initCourseCarousel(wrap) {
+        var $wrap = $(wrap);
+        var $carousel = $wrap.find('.tutor-divi-slick-responsive').first();
+        var settings = $wrap.find('#tutor_divi_carousel_settings').first();
 
-            var carousel_arrows             = settings.attr('arrows');
-            var carousel_dots               = settings.attr('dots');
-            var carousel_transition         = settings.attr('transition');
-            var carousel_center             = settings.attr('center_slides');
-            var smooth_scroll               = settings.attr('smooth_scrolling');
-            var carousel_autoplay           = settings.attr('carousel_autoplay');
-            var carousel_autoplay_speed     = settings.attr('autoplay_speed');
-            var carousel_infinite_loop      = settings.attr('infinite_loop');
-            var carousel_pause_on_hover     = settings.attr('pause_on_hover');
+        if (!$.fn.slick || !$carousel.length || !settings.length || $carousel.hasClass('slick-initialized')) {
+            return;
+        }
 
-            carousel_arrows     == 'off' ? carousel_arrows = false : carousel_arrows = true;
-            carousel_dots       == 'off' ? carousel_dots = false : carousel_dots = true;
-            carousel_transition = Number(carousel_transition);
-            carousel_center     == 'off' ? carousel_center = false : carousel_center = true;
-            carousel_autoplay   == 'off' ? carousel_autoplay = false : carousel_autoplay = true;
-            
-            Number(carousel_autoplay_speed);
-            slides_to_show = Number(slides_to_show);
-           
-            if(smooth_scroll === 'off') {
-                smooth_scroll = 'linear';
-            } else {
-                smooth_scroll = 'ease';
-            }
-            carousel_infinite_loop  == 'off' ? carousel_infinite_loop = false : carousel_infinite_loop = true;
-            carousel_pause_on_hover == 'off' ? carousel_pause_on_hover = false : carousel_pause_on_hover = true;
-            $(this).find('.tutor-divi-slick-responsive').slick({
-                dots: carousel_dots,
-                arrows: carousel_arrows,
-                infinite: carousel_infinite_loop,
-                autoplay: carousel_autoplay,
-                autoplaySpeed: carousel_autoplay_speed,             
-                slidesToShow: slides_to_show,
-                slidesToScroll: 1,
-                speed: carousel_transition,
-                centerMode: carousel_center,
-                pauseOnHover: carousel_pause_on_hover,
-                cssEase: smooth_scroll,
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
+        if ($carousel.width() < 20) {
+            return;
+        }
+
+        var slidesToShow = Number(settings.attr('slides_to_show')) || 3;
+        var arrows = settings.attr('arrows') !== 'off';
+        var dots = settings.attr('dots') !== 'off';
+        var transition = Number(settings.attr('transition')) || 600;
+        var centerSlides = settings.attr('center_slides') !== 'off';
+        var smoothScroll = settings.attr('smooth_scrolling') === 'off' ? 'linear' : 'ease';
+        var autoplay = settings.attr('carousel_autoplay') !== 'off';
+        var autoplaySpeed = Number(settings.attr('autoplay_speed')) || 5000;
+        var infiniteLoop = settings.attr('infinite_loop') !== 'off';
+        var pauseOnHover = settings.attr('pause_on_hover') !== 'off';
+
+        $carousel.slick({
+            dots: dots,
+            arrows: arrows,
+            infinite: infiniteLoop,
+            autoplay: autoplay,
+            autoplaySpeed: autoplaySpeed,
+            slidesToShow: slidesToShow,
+            slidesToScroll: 1,
+            speed: transition,
+            centerMode: centerSlides,
+            pauseOnHover: pauseOnHover,
+            cssEase: smoothScroll,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
                     }
-                ]
-            })
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         });
+    }
+
+    function initCourseCarousels() {
+        $('.tutor-divi-carousel-main-wrap').each(function() {
+            initCourseCarousel(this);
+        });
+    }
+
+    window.dtlmsInitCourseCarousels = initCourseCarousels;
+    initCourseCarousels();
+    document.addEventListener('dtlms-course-carousel-init', initCourseCarousels);
+
+    if (inBuilder && window.MutationObserver && document.body) {
+        var scheduled = false;
+        var observer = new MutationObserver(function() {
+            if (scheduled) {
+                return;
+            }
+            scheduled = true;
+            window.requestAnimationFrame(function() {
+                scheduled = false;
+                initCourseCarousels();
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 });
 
