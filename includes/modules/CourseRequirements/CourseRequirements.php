@@ -15,6 +15,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_requirements';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
@@ -339,6 +340,11 @@ class TutorCourseRequirements extends ET_Builder_Module {
 	public static function get_content( $args = array() ) {
 		$course_id = Helper::get_course( $args );
 		ob_start();
+
+		if ( ! tutor_utils()->get_option( 'enable_course_requirements', false ) ) {
+			return '';
+		}
+
 		if ( $course_id ) {
 			include_once dtlms_get_template( 'course/requirements' );
 		}
@@ -612,7 +618,7 @@ class TutorCourseRequirements extends ET_Builder_Module {
 
 		// space between.
 		if ( $space_between ) {
-			if ( 'list' === $space_between ) {
+			if ( 'list' === $layout ) {
 				ET_Builder_Element::set_style(
 					$render_slug,
 					array(

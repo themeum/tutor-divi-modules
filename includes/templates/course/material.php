@@ -25,17 +25,20 @@ if ( empty( $materials ) ) {
 if ( is_array( $materials ) && count( $materials ) ) {
 	?>
 
-	<div class="tutor-single-course-segment  tutor-course-material-includes-wrap">
-		<h4 class="tutor-segment-title tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"><?php echo esc_html( $args['label'] ); ?></h4>
-		<div class="tutor-course-target-audience-content">
-			<ul class="tutor-course-target-audience-items">
-				<?php
-				foreach ( $materials as $material ) {
-					echo "<li class='tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span class='et-pb-icon tutor-color-design-brand'> " . esc_html( $icon ) . " </span> <span class='list-item'> " . esc_html( $material ) . ' </span> </li>';
-				}
-				?>
-			</ul>
-		</div>
+	<div class="tutor-course-details-widget">
+		<h3 class="tutor-course-details-widget-title tutor-fs-5 tutor-color-black tutor-fw-bold tutor-mb-16"><?php echo esc_html( $args['label'] ); ?></h3>
+		<ul class="tutor-course-details-widget-list tutor-fs-6 tutor-color-black">
+			<?php foreach ( $materials as $material ): ?>
+				<li class="tutor-d-flex tutor-mb-12 tutor-align-center">
+					<?php if ( empty( $icon ) ): ?>
+					<span class="tutor-icon-bullet-point et-pb-icon tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span>
+					<?php else: ?>
+					<span class="et-pb-icon tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"> <?php echo esc_html( $icon ) ?></span>
+					<?php endif; ?>
+					<span class="list-item"><?php echo esc_html( $material ); ?></span>
+				</li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 
 <?php } ?>

@@ -30,7 +30,12 @@ if ( ! function_exists( 'tutor_divi_course_categories' ) ) {
 		$course_categories      = array();
 		$course_categories_term = tutils()->get_course_categories_term();
 		foreach ( $course_categories_term as $term ) {
-			$course_categories[ $term->term_id ] = $term->name;
+			$term_id = is_object( $term ) ? ( $term->term_id ?? 0 ) : ( $term['term_id'] ?? 0 );
+			$name    = is_object( $term ) ? ( $term->name ?? '' ) : ( $term['name'] ?? '' );
+
+			if ( $term_id ) {
+				$course_categories[ $term_id ] = $name;
+			}
 		}
 
 		return $course_categories;
@@ -106,5 +111,58 @@ if ( ! function_exists( 'tutor_divi_get_user_selected_authors' ) ) {
 			array_push( $selected_author_ids, $available_author_ids[ $k ] );
 		}
 		return $selected_author_ids;
+	}
+}
+
+/**
+ * Enqueue Slick.
+ *
+ * Called from the Course Carousel render callback, so the files load only when
+ * that module is rendered.
+ *
+ * @since 4.0.0
+ * @return void
+ */
+if ( ! function_exists( 'dtlms_enqueue_carousel_assets' ) ) {
+	function dtlms_enqueue_carousel_assets() {
+		wp_enqueue_style(
+			'tutor-divi-slick-css',
+			DTLMS_ASSETS . 'slick/slick.min.css',
+			array(),
+			DTLMS_VERSION
+		);
+		wp_enqueue_style(
+			'tutor-divi-slick-theme-css',
+			DTLMS_ASSETS . 'slick/slick-theme.css',
+			array(),
+			DTLMS_VERSION
+		);
+		wp_enqueue_script(
+			'tutor-divi-slick',
+			DTLMS_ASSETS . 'slick/slick.min.js',
+			array( 'jquery' ),
+			DTLMS_VERSION,
+			true
+		);
+
+		if ( wp_script_is( 'tutor-divi-scripts', 'registered' ) ) {
+			global $wp_scripts;
+
+			$deps = $wp_scripts->registered['tutor-divi-scripts']->deps;
+
+			if ( ! in_array( 'tutor-divi-slick', $deps, true ) ) {
+				$wp_scripts->registered['tutor-divi-scripts']->deps[] = 'tutor-divi-slick';
+			}
+		}
+
+		// Module render runs after wp_head, so print the stylesheets in the body.
+		if ( did_action( 'wp_print_styles' ) ) {
+			wp_print_styles(
+				array(
+					'tutor-divi-slick-css',
+					'tutor-divi-slick-theme-css',
+				)
+			);
+		}
 	}
 }

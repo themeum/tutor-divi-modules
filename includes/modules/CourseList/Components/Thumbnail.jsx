@@ -8,7 +8,7 @@ export default function Thumbnail(props) {
     return (
         <div className="tutor-course-thumbnail">
             <a href='/' className="tutor-d-block">
-                <div className={`tutor-ratio tutor-ratio-${data.course.skin === 'overlayed' ? 'overlayed' : '1x1'}`}>
+                <div className={`tutor-ratio tutor-ratio-${data.course.skin === 'overlayed' ? 'overlayed' : '16x9'}`}>
                     <img src={data.course.post_thumbnail} className="tutor-card-image-top" loading="lazy" alt="" />
                 </div>
             </a>

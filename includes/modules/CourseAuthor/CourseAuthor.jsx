@@ -13,6 +13,7 @@ class CourseAuthor extends Component {
   static css(props) {
     const additionalCss = [];
     const wrapper = "%%order_class%% .tutor-single-course-author-meta";
+    const course_author_wrapper = ".tutor_course_author_0";
     const img_selector =
       "%%order_class%% .tutor-avatar, %%order_class%% .tutor-avatar img";
     //const label_selector = '%%order_class%% .tutor-single-course-author-name > span';
@@ -66,6 +67,22 @@ class CourseAuthor extends Component {
         declaration: `display: ${display};`,
       },
     ]);
+
+    // remove default padding below avatar and name
+    additionalCss.push([
+      {
+        selector: `${wrapper} a`,
+        declaration: `padding: 0;`,
+      },
+    ])
+
+    // remove list padding
+    additionalCss.push([
+      {
+        selector: `%%order_class%% ul`,
+        declaration: `padding: 0 !important;`,
+      },
+    ])
 
     if (avatar_size) {
       additionalCss.push([
@@ -189,6 +206,25 @@ class CourseAuthor extends Component {
       ]);
     }
 
+    if( props.avatar_border_radius ) {
+      additionalCss.push([
+        {
+          selector: img_selector,
+          declaration: `border-radius: ${props.avatar_border_radius}`
+        },
+      ]);
+    }
+
+
+    if ( props.__author == null ) {
+      additionalCss.push([
+        {
+          selector: course_author_wrapper,
+          declaration: `display: none !important`
+        }
+      ]);
+    }
+
     return additionalCss;
   }
 
@@ -196,10 +232,11 @@ class CourseAuthor extends Component {
     //conditionally render
     if (props.profile_picture === "on") {
       return (
-        <div className="tutor-single-course-avatar">
+        <div className="tutor-single-course-avatar tutor-d-flex">
           <a
             href={this.props.__author.profile_url}
             dangerouslySetInnerHTML={{ __html: props.__author.avatar_url }}
+            className="tutor-d-inline-flex tutor-p-0"
           ></a>
         </div>
       );
@@ -228,7 +265,7 @@ class CourseAuthor extends Component {
       <Fragment>
         <div className="tutor-single-course-meta tutor-meta-top">
           <ul>
-            <li className="tutor-single-course-author-meta">
+            <li className="tutor-single-course-author-meta tutor-align-center">
               {this.authorAvatar(this.props)}
               {this.authorName(this.props)}
             </li>

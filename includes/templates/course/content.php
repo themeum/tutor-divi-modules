@@ -19,8 +19,12 @@ add_filter(
 ?>
 <div class="tutor-wrap dtlms-course-curriculum">
 		<?php do_action( 'tutor_course/single/before/inner-wrap' ); ?>
-		<div class="tutor-default-tab tutor-course-details-tab tutor-tab-has-seemore tutor-mt-30">
-			<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
+		<div class="tutor-default-tab tutor-course-details-tab tutor-mt-30">
+			<?php if ( is_array( $course_nav_items ) && count( $course_nav_items ) > 1 ) : ?>
+				<div class="tutor-is-sticky">
+					<?php tutor_load_template( 'single.course.enrolled.nav', array( 'course_nav_item' => $course_nav_items ) ); ?>
+				</div>
+			<?php endif; ?>
 			<div class="tutor-tab tutor-pt-24">
 				<?php
 				foreach ( $course_nav_items as $key => $subpage ) {

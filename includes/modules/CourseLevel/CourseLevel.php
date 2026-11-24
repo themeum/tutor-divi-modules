@@ -14,6 +14,7 @@ class TutorCourseLevel extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_level';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(

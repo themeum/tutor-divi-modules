@@ -8,9 +8,10 @@ class CourseMaterials extends Component {
     static css(props) {
         const additionalCss = [];
         //selectors
-        const wrapper = '%%order_class%% .tutor-course-material-includes-wrap';
-        const li_selector = '%%order_class%% .tutor-course-material-includes-wrap li';
-		const icon_selector	= "%%order_class%% .tutor-course-material-includes-wrap li .et-pb-icon";
+        const wrapper = '%%order_class%% .tutor-course-details-widget';
+        const li_selector = '%%order_class%% .tutor-course-details-widget li';
+		const icon_selector	= "%%order_class%% .tutor-course-details-widget li .et-pb-icon";
+        const title_selector = `${wrapper} .tutor-course-details-widget-title`;
 
         //props
         const layout = props.layout;
@@ -44,6 +45,79 @@ class CourseMaterials extends Component {
         const is_responsive_indent = props.indent_last_edited && props.indent_last_edited.startsWith("on");
         const indent_tablet = is_responsive_indent && props.indent_tablet ? props.indent_tablet : indent;
         const indent_phone = is_responsive_indent && props.indent_phone ? props.indent_phone : indent;  
+
+         if ( props.title_margin ) {
+
+            const title_margin = props.title_margin.split('|');
+            const title_margin_last_edited = props.title_margin_last_edited;
+            const title_margin_responsive_active = title_margin_last_edited && title_margin_last_edited.startsWith('on');
+
+            additionalCss.push([{
+                selector: title_selector,
+                declaration: `margin-top: ${title_margin[0]} !important; margin-right: ${title_margin[1]} !important; margin-bottom: ${title_margin[2]} !important; margin-left: ${title_margin[3]} !important;`,
+            }]);
+
+
+            if ( props.title_margin_tablet && '' !==  props.title_margin_tablet && title_margin_responsive_active ) {
+
+                const title_margin_tablet = props.title_margin_tablet.split('|');
+
+                 additionalCss.push([{
+                    selector: title_selector,
+                    declaration: `margin-top: ${title_margin_tablet[0]} !important; margin-right: ${title_margin_tablet[1]} !important; margin-bottom: ${title_margin_tablet[2]} !important; margin-left: ${title_margin_tablet[3]} !important;`,
+                    device: 'tablet'
+                }]);
+            }
+
+             if ( props.title_margin_phone && '' !==  props.title_margin_phone && title_margin_responsive_active ) {
+
+                const title_margin_phone = props.title_margin_phone.split('|');
+
+                 additionalCss.push([{
+                    selector: title_selector,
+                    declaration: `margin-top: ${title_margin_phone[0]} !important; margin-right: ${title_margin_phone[1]} !important; margin-bottom: ${title_margin_phone[2]} !important; margin-left: ${title_margin_phone[3]} !important;`,
+                    device: 'phone'
+                }]);
+            }
+
+        }
+        
+
+         if ( props.list_margin ) {
+
+            const list_margin = props.list_margin.split('|');
+            const list_margin_last_edited = props.list_margin_last_edited;
+            const list_margin_responsive_active = list_margin_last_edited && list_margin_last_edited.startsWith('on');
+
+            additionalCss.push([{
+                selector: li_selector,
+                declaration: `margin-top: ${list_margin[0]} !important; margin-right: ${list_margin[1]} !important; margin-bottom: ${list_margin[2]} !important; margin-left: ${list_margin[3]} !important;`,
+            }]);
+
+
+            if ( props.list_margin_tablet && '' !==  props.list_margin_tablet && list_margin_responsive_active ) {
+
+                const list_margin_tablet = props.list_margin_tablet.split('|');
+
+                 additionalCss.push([{
+                    selector: li_selector,
+                    declaration: `margin-top: ${list_margin_tablet[0]} !important; margin-right: ${list_margin_tablet[1]} !important; margin-bottom: ${list_margin_tablet[2]} !important; margin-left: ${list_margin_tablet[3]} !important;`,
+                    device: 'tablet'
+                }]);
+            }
+
+             if ( props.list_margin_phone && '' !==  props.list_margin_phone && list_margin_responsive_active ) {
+
+                const list_margin_phone = props.list_margin_phone.split('|');
+
+                 additionalCss.push([{
+                    selector: li_selector,
+                    declaration: `margin-top: ${list_margin_phone[0]} !important; margin-right: ${list_margin_phone[1]} !important; margin-bottom: ${list_margin_phone[2]} !important; margin-left: ${list_margin_phone[3]} !important;`,
+                    device: 'phone'
+                }]);
+            }
+
+        }
 
         //set styles
         additionalCss.push([
@@ -229,7 +303,7 @@ class CourseMaterials extends Component {
         if(indent) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-material-includes-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget .list-item',
                     declaration: `padding-left: ${indent} !important;`
                 }
             ])
@@ -238,7 +312,7 @@ class CourseMaterials extends Component {
         if(indent_tablet) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-material-includes-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget .list-item',
                     declaration: `padding-left: ${indent_tablet} !important;`,
                     device: 'tablet'
                 }
@@ -248,7 +322,7 @@ class CourseMaterials extends Component {
         if(indent_phone) {
             additionalCss.push([
                 {
-                    selector: '%%order_class%% .tutor-course-material-includes-wrap .list-item',
+                    selector: '%%order_class%% .tutor-course-details-widget .list-item',
                     declaration: `padding-left: ${indent_phone} !important;`,
                     device: 'phone'
                 }
@@ -262,9 +336,14 @@ class CourseMaterials extends Component {
     materialsList(lists,icon) {
         const utils = window.ET_Builder.API.Utils;
         const et_icon = utils.processFontIcon(icon);
+        const custom_icon = <span className="et-pb-icon tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true">{et_icon}</span>;
+        const default_icon = <span class="tutor-icon-bullet-point et-pb-icon tutor-color-muted tutor-mt-2 tutor-mr-8 tutor-fs-8" area-hidden="true"></span>;
         if(lists !== 0) {
             const list =  lists.map((list)=> {
-                return <li className='tutor-align-items-center tutor-color-text-primary tutor-text-regular-body tutor-mb-10'> <span className="et-pb-icon tutor-color-design-brand"> {et_icon}</span> <span className="list-item"> {list} </span> </li>
+                return (<li className='tutor-d-flex tutor-align-center tutor-mb-12'> 
+                            { et_icon ? custom_icon : default_icon }
+                            <span className="list-item"> {list} </span> 
+                        </li>)
             });
             return list;
         }
@@ -278,13 +357,11 @@ class CourseMaterials extends Component {
         }
         return (
             <Fragment>
-            <div className="tutor-single-course-segment  tutor-course-material-includes-wrap">
-                <h4 className="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"> { this.props.label } </h4>
-                <div className="tutor-course-target-audience-content">
-                    <ul className="tutor-course-target-audience-items">
-                        { this.materialsList(this.props.__materials, this.props.icon) }
-                    </ul>
-                </div>
+            <div className="tutor-course-details-widget">
+                <h3 className="tutor-course-details-widget-title tutor-fs-5 tutor-color-black tutor-fw-bold tutor-mb-16"> { this.props.label } </h3>
+                <ul className="tutor-course-details-widget-list tutor-fs-6 tutor-color-black">
+                    { this.materialsList(this.props.__materials, this.props.icon) }
+                </ul>
             </div>
             </Fragment>
         );

@@ -1,12 +1,16 @@
 <?php
 /**
- * TutorDiviModules class
+ * TutorDiviModules
+ *
+ * @since 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * TutorDiviModules class
+ */
 class TutorDiviModules extends DiviExtension {
-
 	/**
 	 * The gettext domain for the extension's translations.
 	 *
@@ -40,8 +44,8 @@ class TutorDiviModules extends DiviExtension {
 	 * load scripts
 	 * load text-domain
 	 *
-	 * @param string $name
-	 * @param array  $args
+	 * @param string $name Name of the extension.
+	 * @param array  $args Arguments for the extension.
 	 */
 	public function __construct( $name = 'tutor-lms-divi-modules', $args = array() ) {
 		$this->plugin_dir     = plugin_dir_path( __FILE__ );
@@ -57,6 +61,13 @@ class TutorDiviModules extends DiviExtension {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), 99 );
 	}
 
+	/**
+	 * Load dependencies.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function load_dependencies() {
 		require_once $this->plugin_dir . 'functions.php';
 		require_once $this->plugin_dir . 'classes/Helper.php';
@@ -64,6 +75,13 @@ class TutorDiviModules extends DiviExtension {
 		require_once $this->plugin_dir . 'classes/Requirements.php';
 	}
 
+	/**
+	 * Enqueue Divi styles.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function enqueue_divi_styles() {
 		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
 		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
@@ -73,39 +91,26 @@ class TutorDiviModules extends DiviExtension {
 			array(),
 			$version
 		);
-		wp_enqueue_style(
-			'tutor-divi-slick-css',
-			DTLMS_ASSETS . 'slick/slick.min.css',
-			null,
-			$this->version
-		);
-
-		wp_enqueue_style(
-			'tutor-divi-slick-theme-css',
-			DTLMS_ASSETS . 'slick/slick-theme.css',
-			null,
-			$this->version
-		);
 	}
 
+	/**
+	 * Enqueue Divi scripts.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function enqueue_divi_scripts() {
-
 		$this->enqueue_divi_styles();
 
 		$version      = $this->version;
 		$scripts_file = 'js/scripts.js';
+
 		wp_enqueue_script(
 			'tutor-divi-scripts',
 			DTLMS_ASSETS . $scripts_file,
 			array( 'jquery' ),
 			$version,
-			true
-		);
-		wp_enqueue_script(
-			'tutor-divi-slick',
-			DTLMS_ASSETS . 'slick/slick.min.js',
-			array( 'jquery' ),
-			$this->version,
 			true
 		);
 		$inline_data = array(
@@ -114,6 +119,13 @@ class TutorDiviModules extends DiviExtension {
 		wp_add_inline_script( 'tutor-divi-scripts', 'const dtlmsData = ' . json_encode( $inline_data ), 'before' );
 	}
 
+	/**
+	 * Enqueue Divi styles.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
 	public function admin_enqueue_scripts() {
 		$css_file = DTLMS_ENV == 'DEV' ? 'css/tutor-divi-style.css' : 'css/tutor-divi-style.min.css';
 		$version  = DTLMS_ENV == 'DEV' ? time() : $this->version;
@@ -124,8 +136,6 @@ class TutorDiviModules extends DiviExtension {
 			$version
 		);
 	}
-
 }
 
 new TutorDiviModules();
-

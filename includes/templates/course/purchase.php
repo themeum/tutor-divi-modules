@@ -7,6 +7,8 @@
  * @package DTLMCourseEnrollment
  */
 
+use Tutor\Models\CourseModel;
+use TutorLMS\Divi\Helper;
 // Utility data.
 $is_enrolled           = apply_filters( 'tutor_alter_enroll_status', tutor_utils()->is_enrolled() );
 $lesson_url            = tutor_utils()->get_course_first_lesson();
@@ -28,17 +30,17 @@ $default_meta = array(
 	array(
 		'icon_class' => 'tutor-icon-mortarboard',
 		'label'      => __( 'Total Enrolled', 'tutor' ),
-		'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() : null,
+		'value'      => tutor_utils()->get_option( 'enable_course_total_enrolled' ) ? tutor_utils()->count_enrolled_users_by_course() . ' ' . __( 'Total Enrolled', 'tutor' ) : null,
 	),
 	array(
 		'icon_class' => 'tutor-icon-clock-line',
 		'label'      => __( 'Duration', 'tutor' ),
-		'value'      => get_tutor_option( 'enable_course_duration' ) ? get_tutor_course_duration_context() : null,
+		'value'      => get_tutor_option( 'enable_course_duration' ) ? ( get_tutor_course_duration_context() ? get_tutor_course_duration_context() . ' ' . __( 'Duration', 'tutor' ) : false ) : null,
 	),
 	array(
 		'icon_class' => 'tutor-icon-refresh-o',
 		'label'      => __( 'Last Updated', 'tutor' ),
-		'value'      => get_tutor_option( 'enable_course_update_date' ) ? date_i18n( get_option( 'date_format' ), strtotime( get_the_modified_date() ) ) : null,
+		'value'      => get_tutor_option( 'enable_course_update_date' ) ? get_the_modified_date( get_option( 'date_format' ) ) . ' ' . __( 'Last Updated', 'tutor' ) : null,
 	),
 );
 
@@ -101,29 +103,66 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 
 			// Show Start/Continue/Retake Button
 			if ( $lesson_url ) {
-				$button_class = 'tutor-btn ' .
-								( $retake_course ? 'tutor-btn-outline-primary' : 'tutor-btn-primary' ) .
-								' tutor-btn-block' .
-								( $retake_course ? ' tutor-course-retake-button' : '' );
 
-				// Button identifier class
-				$button_identifier = 'start-continue-retake-button';
-				$tag               = $retake_course ? 'button' : 'a';
 				ob_start();
-				?>
-					<<?php echo $tag; ?> <?php echo $retake_course ? 'disabled="disabled"' : ''; ?> href="<?php echo esc_url( $lesson_url ); ?>" class="<?php echo esc_attr( $button_class . ' ' . $button_identifier ); ?>" data-course_id="<?php echo esc_attr( get_the_ID() ); ?>">
-					<?php
-					if ( $retake_course ) {
-						esc_html_e( 'Retake This Course', 'tutor' );
-					} elseif ( $completed_percent <= 0 ) {
-						esc_html_e( 'Start Learning', 'tutor' );
-					} else {
-						esc_html_e( 'Continue Learning', 'tutor' );
-					}
+				/**
+				 * Course retake button.
+				 *
+				 * Todo: `href` attribute is exist for backward compatibility.
+				 *       we need to make it `data-link` attribute and update the js code at course-landing.js
+				 *
+				 * @since 1.0.0
+				 * @since 2.4.0 refactored and hide it when strict mode enabled and course not completed.
+				 */
+				if ( $retake_course && ( CourseModel::MODE_FLEXIBLE === $completion_mode || $is_completed_course ) ) {
 					?>
-					</<?php echo $tag; ?>>
+					<button type="button" 
+							class="tutor-btn tutor-btn-block tutor-btn-outline-primary start-continue-retake-button tutor-course-retake-button" 
+							href="<?php echo esc_url( $lesson_url ); ?>"
+							data-course_id="<?php echo esc_attr( $course_id ); ?>">
+						<?php esc_html_e( 'Retake This Course', 'tutor' ); ?>
+					</button>
 					<?php
-					$start_content = ob_get_clean();
+				}
+
+				/**
+				 * Start/Continue learning button
+				 *
+				 * @since 1.0.0
+				 * @since 2.4.0 refactored for enhance readibility.
+				 */
+				$link_text = '';
+				if ( ! $is_completed_course ) {
+					if ( 0 === (int) $completed_percent ) {
+						$link_text = __( 'Start Learning', 'tutor' );
+					}
+					if ( $completed_percent > 0 && $completed_percent < 100 ) {
+						$link_text = __( 'Continue Learning', 'tutor' );
+					}
+					/**
+					 * `Review Progress` link text shown when
+					 * - strict mode enabled
+					 * - course progress 100%
+					 * - in course progress any quiz or assignemnt result is not passed.
+					 *
+					 * @since 2.4.0
+					 */
+					if ( 100 === (int) $completed_percent && false === CourseModel::can_complete_course( $course_id, $user_id ) ) {
+						$lesson_url = CourseModel::get_review_progress_link( $course_id, $user_id );
+						$link_text  = __( 'Review Progress', 'tutor' );
+					}
+				}
+
+				if ( strlen( $link_text ) > 0 ) {
+					?>
+					<a 	href="<?php echo esc_url( $lesson_url ); ?>" 
+						class="tutor-btn tutor-btn-block tutor-btn-primary start-continue-retake-button tutor-mt-20">
+						<?php echo esc_html( $link_text ); ?>
+					</a>
+					<?php
+				}
+
+				$start_content = ob_get_clean();
 			}
 			echo apply_filters( 'tutor_course/single/start/button', $start_content, get_the_ID() );
 
@@ -151,7 +190,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 					$post_date = is_object( $is_enrolled ) && isset( $is_enrolled->post_date ) ? $is_enrolled->post_date : '';
 					if ( '' !== $post_date ) :
 					?>
-					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex dtlms-enrolled-info-wrapper">
+					<div class="tutor-fs-7 tutor-color-muted tutor-mt-20 tutor-d-flex dtlms-enrolled-info-wrapper tutor-align-center">
 						<span class="tutor-fs-5 tutor-color-success tutor-icon-purchase-mark tutor-mr-8"></span>
 						<span class="tutor-enrolled-info-text">
 							<?php esc_html_e( 'You enrolled in this course on', 'tutor' ); ?>
@@ -198,7 +237,7 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 				// Load template based on monetization option
 				ob_start();
 				tutor_load_template( 'single.course.add-to-cart-' . $tutor_course_sell_by );
-				echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(), get_the_ID() );
+				echo apply_filters( 'tutor/course/single/entry-box/purchasable', ob_get_clean(),  get_the_ID() );
 			} else {
 				ob_start();
 				?>

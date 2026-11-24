@@ -23,6 +23,22 @@ class CoursePurchase extends Component {
         /**
          * default template styling
          */
+
+          // set radio appearance
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-form-check-input',
+                declaration: 'appearance: none !important;',
+            }
+        ])
+
+        //set button appearance
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-btn.tutor-d-none',
+                declaration : 'display: none !important;'
+            }
+        ])
         additionalCss.push([
             {
                 selector: `%%order_class%% .tutor-card-body`,
@@ -220,6 +236,110 @@ class CoursePurchase extends Component {
                 }
             ]);
 		}
+
+        //subscription plans
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-subscription-plan-wrapper',
+                declaration: `display: flex;flex-direction: column;`
+            }
+        ]);
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-plan-feature-list',
+                declaration: `display: flex;flex-direction: column;`
+            }
+        ]);
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-plan-feature-item',
+                declaration: `display: flex;align-items:center;`
+            }
+        ]);
+
+        if ( '' !== props.subscription_plan_gap ){
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-subscription-plan-wrapper',
+                    declaration: `gap: ${props.subscription_plan_gap};`
+                }
+            ])
+        }
+
+        if ( '' !== props.plan_list_gap ){
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-plan-feature-list',
+                    declaration: `gap: ${props.plan_list_gap};`
+                }
+            ])
+        }
+
+        if ( '' !== props.plan_item_gap ){
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-plan-feature-item',
+                    declaration: `gap: ${props.plan_item_gap};`
+                }
+            ])
+        }
+
+        additionalCss.push([
+            {
+                selector: '%%order_class%% .tutor-course-subscription-plan',
+                declaration: `display: block;`
+            }
+        ]);
+
+        if ( '' !== props.subscription_plan_background_color ){
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-course-subscription-plan',
+                    declaration: `background-color: ${props.subscription_plan_background_color};`
+                }
+            ])
+        }
+
+        if ( '' !== props.plan_feature_icon_color ){
+            additionalCss.push([
+                {
+                    selector: '%%order_class%% .tutor-plan-feature-item i',
+                    declaration: `color: ${props.plan_feature_icon_color} !important;`
+                }
+            ])
+        }
+
+        // custom margin for subscription plan.
+        if( props.subscription_plan_margin ){
+            const subscription_plan_margin = props.subscription_plan_margin.split('|');
+
+            additionalCss.push([{
+                selector: '%%order_class%% .tutor-course-subscription-plan',
+                declaration: `margin-top: ${subscription_plan_margin[0]}; margin-right: ${subscription_plan_margin[1]}; margin-bottom: ${subscription_plan_margin[2]}; margin-left: ${subscription_plan_margin[3]};`,
+            }]);
+        }
+
+        if( props.subscription_plan_feature_margin ){
+            const subscription_plan_feature_margin = props.subscription_plan_feature_margin.split('|');
+
+            additionalCss.push([{
+                selector: '%%order_class%% .tutor-plan-feature-list',
+                declaration: `margin-top: ${subscription_plan_feature_margin[0]}; margin-right: ${subscription_plan_feature_margin[1]}; margin-bottom: ${subscription_plan_feature_margin[2]}; margin-left: ${subscription_plan_feature_margin[3]};`,
+            }]);
+        }
+
+        // custom padding for subscription plan.
+        if( props.subscription_plan_padding ){
+            const subscription_plan_padding = props.subscription_plan_padding.split('|');
+
+            additionalCss.push([{
+                selector: '%%order_class%% .tutor-course-subscription-plan',
+                declaration: `padding-top: ${subscription_plan_padding[0]}; padding-right: ${subscription_plan_padding[1]}; padding-bottom: ${subscription_plan_padding[2]}; padding-left: ${subscription_plan_padding[3]};`,
+            }]);
+        }
         // course progress style end
         //set styles end
         return additionalCss;

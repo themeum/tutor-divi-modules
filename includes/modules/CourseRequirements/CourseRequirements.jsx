@@ -282,7 +282,7 @@ class CourseRequirements extends Component {
             <Fragment>
               	<div className="tutor-single-course-segment  tutor-course-requirements-wrap">
                     <div className="course-requirements-title">
-                        <h4 className="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"> { this.props.label } </h4>
+                        <h3 className="tutor-segment-title tutor-color-text-primary tutor-text-medium-h6"> { this.props.label } </h3>
                     </div>
 
                     <div className="tutor-course-requirements-content">

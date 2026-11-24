@@ -15,7 +15,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
 	public $slug       = 'tutor_course_categories';
 	public $vb_support = 'on';
-
+	public $icon_path;
 	// Module Credits (Appears at the bottom of the module settings modal)
 	protected $module_credits = array(
 		'author'     => 'Themeum',
@@ -119,7 +119,7 @@ class TutorCourseCategories extends ET_Builder_Module {
 				'type'            => 'text',
 				'option_category' => 'layout',
 				'default'         => esc_html__( 'Categories:', 'tutor-lms-divi-modules' ),
-				'toggle_slug'	  => 'main_content',
+				'toggle_slug'     => 'main_content',
 			),
 			'layout'       => array(
 				'label'           => esc_html__( 'Layout', 'tutor-lms-divi-modules' ),
@@ -223,13 +223,22 @@ class TutorCourseCategories extends ET_Builder_Module {
 		';
 		if ( $course ) {
 			$course_categories = get_tutor_course_categories();
-			$count             = 1;
-			foreach ( $course_categories as $course_category ) {
-				$category_name = $course_category->name;
-				$comma         = count( $course_categories ) > $count ? ', ' : '';
-				$category_link = get_term_link( $course_category->term_id );
-				$markup       .= " <a href='$category_link'>$category_name</a>" . $comma;
-				$count++;
+			if ( is_array( $course_categories ) && count( $course_categories ) ) {
+				$count = 1;
+				foreach ( $course_categories as $course_category ) {
+					$category_name = $course_category->name;
+					$comma         = count( $course_categories ) > $count ? ', ' : '';
+					$category_link = get_term_link( $course_category->term_id );
+					$markup       .= " <a href='$category_link'>$category_name</a>" . $comma;
+					++$count;
+				}
+			} else {
+				$markup = sprintf(
+					'<div class="tutor-single-course-meta-categories tutor-course-details-category tutor-meta tutor-course-details-info">
+					%s
+					<div>',
+					esc_html__( 'Uncategorized', 'tutor-lms-divi-modules' )
+				);
 			}
 		}
 		$markup .= '</div></div>';

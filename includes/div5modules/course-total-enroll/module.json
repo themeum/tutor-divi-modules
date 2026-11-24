@@ -1,0 +1,308 @@
+{
+  "name": "tutor-lms/course-total-enroll",
+  "d4Shortcode": "tutor_course_total_enroll",
+  "title": "Tutor Course Total Enroll",
+  "titles": "Tutor Course Total Enroll",
+  "category": "module",
+  "moduleClassName": "et_pb_tutor_course_total_enroll",
+  "moduleOrderClassName": "et_pb_tutor_course_total_enroll",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Tutor Course Total Enroll"
+            }
+          }
+        }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "html": {}
+        },
+        "decoration": {
+          "spacing": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "default": {
+        "advanced": {
+          "label": {
+            "desktop": {
+              "value": "Enrolled:"
+            }
+          },
+          "layout": {
+            "desktop": {
+              "value": "row"
+            }
+          },
+          "alignment": {
+            "desktop": {
+              "value": "left"
+            }
+          },
+          "gap": {
+            "desktop": {
+              "value": "5px"
+            }
+          }
+        }
+      },
+      "settings": {
+        "advanced": {
+          "label": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.label",
+              "label": "Label",
+              "priority": 20,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            }
+          },
+          "layout": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.layout",
+              "label": "Layout",
+              "priority": 30,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/select",
+                "props": {
+                  "options": {
+                    "row": {
+                      "label": "Left"
+                    },
+                    "column": {
+                      "label": "Up"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "alignment": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.alignment",
+              "label": "Alignment",
+              "priority": 40,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/button-options",
+                "props": {
+                  "options": {
+                    "left": {
+                      "icon": "divi/align-left"
+                    },
+                    "center": {
+                      "icon": "divi/align-center"
+                    },
+                    "right": {
+                      "icon": "divi/align-right"
+                    }
+                  },
+                  "showLabel": false
+                }
+              }
+            }
+          },
+          "gap": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentMainContent",
+              "attrName": "content.advanced.gap",
+              "label": "Gap",
+              "priority": 50,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "hover": false,
+                "responsive": true
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 1,
+                  "max": 100,
+                  "step": 1,
+                  "defaultUnit": "px",
+                  "allowedUnits": ["px"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "labelText": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-single-course-meta-total-enroll label",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designLabel",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Label",
+                  "fieldLabel": "Label",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-single-course-meta-total-enroll label",
+          "important": true
+        }
+      }
+    },
+    "valueText": {
+      "type": "object",
+      "selector": "{{selector}} .tutor-single-course-meta-total-enroll span",
+      "settings": {
+        "decoration": {
+          "font": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designValue",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/font",
+                "props": {
+                  "grouped": false,
+                  "groupLabel": "Value",
+                  "fieldLabel": "Value",
+                  "fields": {
+                    "headingLevel": {
+                      "render": false
+                    },
+                    "textAlign": {
+                      "render": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "selector": "{{selector}} .tutor-single-course-meta-total-enroll span",
+          "important": true
+        }
+      }
+    }
+  },
+  "customCssFields": {},
+  "settings": {
+    "content": "auto",
+    "design": "auto",
+    "advanced": "auto",
+    "groups": {
+      "contentMainContent": {
+        "panel": "content",
+        "priority": 10,
+        "groupName": "contentMainContent",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Content"
+          }
+        }
+      },
+      "designLabel": {
+        "panel": "design",
+        "priority": 10,
+        "groupName": "designLabel",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Label",
+            "presetGroup": "divi/font",
+            "dynamicSubgroupHost": true
+          }
+        }
+      },
+      "designValue": {
+        "panel": "design",
+        "priority": 20,
+        "groupName": "designValue",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "clipboardCategory": "style",
+            "groupLabel": "Value",
+            "presetGroup": "divi/font",
+            "dynamicSubgroupHost": true
+          }
+        }
+      }
+    }
+  }
+}
